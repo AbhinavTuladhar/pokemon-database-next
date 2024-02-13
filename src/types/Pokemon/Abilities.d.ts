@@ -1,5 +1,6 @@
+import { Generation } from "../Games/Generations"
 import { VersionGroup } from "../Games/VersionGroups"
-import { Name, VerboseEffect } from "../utils/Common"
+import { Effect, Name, VerboseEffect } from "../utils/Common"
 import { Language } from "../utils/Language"
 import { NamedApiResource } from "../utils/NamedResource"
 import { Pokemon } from "./Pokemon"
@@ -8,7 +9,7 @@ export interface Ability {
   id: number,
   name: string,
   is_main_series: boolean,
-  generation: NamedApiResource<TODO> // Generation
+  generation: NamedApiResource<Generation>
   names: Array<Name>
   effect_entries: Array<VerboseEffect>
   effect_changes: Array<AbilityEffectChange>
@@ -17,7 +18,7 @@ export interface Ability {
 }
 
 interface AbilityEffectChange {
-  effect_entries: Array<TODO> // Effect
+  effect_entries: Array<Effect>
   version_group: NamedApiResource<VersionGroup>
 }
 

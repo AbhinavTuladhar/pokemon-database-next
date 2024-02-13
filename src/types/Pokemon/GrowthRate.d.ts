@@ -1,6 +1,5 @@
 import { Description } from "../utils/Common"
 import { NamedApiResource } from "../utils/NamedResource"
-import { TODO } from "../utils/TODO"
 import { PokemonSpecies } from "./PokemonSpecies"
 
 export interface GrowthRate {

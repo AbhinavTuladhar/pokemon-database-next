@@ -14,7 +14,7 @@ import { Type } from './Types'
 import { Version } from '../Games/Version'
 import { Item } from '../Items/Item'
 
-interface Pokemon {
+export interface Pokemon {
   abilities: Array<PokemonAbility>,
   base_experience: number,
   cries: PokemonCries,
@@ -37,50 +37,55 @@ interface Pokemon {
   weight: number
 }
 
-interface PokemonAbility {
+export interface PokemonAbility {
   ability: NamedApiResource<Ability>,
   is_hidden: boolean,
   slot: number
 }
 
-interface PokemonCries {
+export interface PokemonCries {
   latest?: string,
   legacy?: string,
 }
 
-interface PokemonMove {
+export interface PokemonMove {
   move: NamedApiResource<Move>
   version_group_details: Array<PokemonMoveVersion>
 }
 
-interface PokemonMoveVersion {
+export interface PokemonMoveVersion {
   move_learn_method: NamedApiResource<MoveLearnMethods>
   version_group: NamedApiResource<VersionGroup>,
   level_learned_at: number
 }
 
-interface PokemonPastType {
+export interface PokemonPastType {
   generation: NamedApiResource<Generation>,
   types: Array<PokemonType>
 }
 
-interface PokemonStat {
+export interface PokemonStat {
   base_stat: number,
   effort: number,
   stat: NamedApiResource<Stats>
 }
 
-interface PokemonType {
+export interface PokemonType {
   slot: number,
   type: NamedApiResource<Type>
 }
 
-interface PokemonHeldItem {
+export interface PokemonFormType {
+  slot: number,
+  type: NamedApiResource<Type>
+}
+
+export interface PokemonHeldItem {
   item: NamedApiResource<Item>,
   version_details: Array<NamedApiResource<PokemonHeldItemVersion>>
 }
 
-interface PokemonHeldItemVersion {
+export interface PokemonHeldItemVersion {
   rarity: number,
   version: NamedApiResource<Version>
 }
