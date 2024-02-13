@@ -1,3 +1,4 @@
+import { Region } from '../Locations/Regions'
 import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Description, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
@@ -11,7 +12,7 @@ export interface Pokedex {
   descriptions: Array<Description>
   names: Array<Name>
   pokemon_entries: Array<PokemonEntry>
-  region: NamedApiResource<TODO> // Region
+  region: NamedApiResource<Region>
   version_groups: Array<NamedApiResource<VersionGroup>>
 }
 
