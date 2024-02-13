@@ -1,12 +1,14 @@
-import { Resource } from '@/types/utils/Resource'
-import { TODO } from '@/types/utils/TODO'
+import { Resource } from '../utils/Resource'
+import { NamedApiResource } from '../utils/NamedResource'
+import { VersionGameIndex } from '../utils/Common'
+import { TODO } from '../utils/TODO'
 
 interface Pokemon {
   abilities: Array<PokemonAbility>,
   base_experience: number,
   cries: PokemonCries,
-  forms: Array<Resource>,
-  game_indices: Array<TODO>,
+  forms: Array<NamedApiResource<TODO>>,
+  game_indices: Array<VersionGameIndex>,
   height: number,
   held_items: Array<TODO>,
   id: number,
@@ -17,7 +19,7 @@ interface Pokemon {
   order: number,
   past_abilities: Array<TODO>,
   past_types: Array<PokemonPastType>,
-  species: Resource,
+  species: NamedApiResource<TODO>,
   sprites: TODO,
   stats: PokemonStat,
   types: Array<PokemonType>,
@@ -25,7 +27,7 @@ interface Pokemon {
 }
 
 interface PokemonAbility {
-  ability: Resource,
+  ability: NamedApiResource<TODO>,
   is_hidden: boolean,
   slot: number
 }
@@ -36,17 +38,17 @@ interface PokemonCries {
 }
 
 interface PokemonPastType {
-  generation: Resource,
+  generation: NamedApiResource<TODO>,
   types: Array<PokemonType>
 }
 
 interface PokemonStat {
   base_stat: number,
   effort: number,
-  stat: Resource
+  stat: NamedApiResource<TODO>
 }
 
 interface PokemonType {
   slot: number,
-  type: Resource
+  type: NamedApiResource<TODO>
 }

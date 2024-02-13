@@ -54,12 +54,12 @@ export interface VerboseEffect {
 export interface VersionEncounterDetail {
   version: NamedApiResource<TODO>,
   max_chance: number,
-  encounter_details: TODO
+  encounter_details: Array<TODO>
 }
 
 export interface VersionGameIndex {
   game_index: number,
-  version: NamedApiResource
+  version: NamedApiResource<TODO>
 }
 
 export interface VersionGroupFlavorText {
