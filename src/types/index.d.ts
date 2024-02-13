@@ -43,6 +43,8 @@ import { PokemonSpecies } from './Pokemon/PokemonSpecies'
 import { Stats } from './Pokemon/Stats'
 import { Type } from './Pokemon/Types'
 
+import { NamedApiResource } from './utils/NamedResource'
+
 export * from './Encounters/EncounterConditions'
 export * from './Encounters/EncounterConditionValues'
 export * from './Encounters/EncounterMethods'
@@ -80,3 +82,4 @@ export * from './Pokemon/PokemonShapes'
 export * from './Pokemon/PokemonSpecies'
 export * from './Pokemon/Stats'
 export * from './Pokemon/Types'
+export * from './utils/NamedResource'

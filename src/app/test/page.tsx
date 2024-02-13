@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import type { ResourceList } from '../types'
+import type { NamedApiResourceList } from '@/types'
 
 const fetchData = async () => {
   const urls = [
@@ -10,9 +10,7 @@ const fetchData = async () => {
   ]
   try {
     const responses = await Promise.all(urls.map((url) => fetch(url)))
-    const data: Array<ResourceList> = await Promise.all(
-      responses.map((response) => response.json()),
-    )
+    const data = await Promise.all(responses.map((response) => response.json()))
     return data
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -29,9 +27,6 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-y-4">
       <Link href="/"> Home page</Link>
-      {list.map((item) => (
-        <p> {item.name} </p>
-      ))}
     </div>
   )
 }
