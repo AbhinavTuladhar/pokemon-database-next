@@ -2,24 +2,35 @@ import { Resource } from '../utils/Resource'
 import { NamedApiResource } from '../utils/NamedResource'
 import { VersionGameIndex } from '../utils/Common'
 import { TODO } from '../utils/TODO'
+import { PokemonForm } from './PokemonForms'
+import { PokemonSpecies } from './PokemonSpecies'
+import { VersionGroup } from '../Games/VersionGroups'
+import { Ability } from './Abilities'
+import { Move } from '../Moves/Moves'
+import { MoveLearnMethods } from '../Moves/MoveLearnMethod'
+import { Generation } from '../Games/Generations'
+import { Stats } from './Stats'
+import { Type } from './Types'
+import { Version } from '../Games/Version'
+import { Item } from '../Items/Item'
 
 interface Pokemon {
   abilities: Array<PokemonAbility>,
   base_experience: number,
   cries: PokemonCries,
-  forms: Array<NamedApiResource<TODO>>,
+  forms: Array<NamedApiResource<PokemonForm>>,
   game_indices: Array<VersionGameIndex>,
   height: number,
-  held_items: Array<TODO>,
+  held_items: Array<PokemonHeldItem>,
   id: number,
   is_default: boolean,
   location_area_encounters: string,
-  moves: Array<TODO>,
+  moves: Array<PokemonMove>,
   name: string,
   order: number,
   past_abilities: Array<TODO>,
   past_types: Array<PokemonPastType>,
-  species: NamedApiResource<TODO>,
+  species: NamedApiResource<PokemonSpecies>,
   sprites: TODO,
   stats: PokemonStat,
   types: Array<PokemonType>,
@@ -27,7 +38,7 @@ interface Pokemon {
 }
 
 interface PokemonAbility {
-  ability: NamedApiResource<TODO>,
+  ability: NamedApiResource<Ability>,
   is_hidden: boolean,
   slot: number
 }
@@ -37,18 +48,39 @@ interface PokemonCries {
   legacy?: string,
 }
 
+interface PokemonMove {
+  move: NamedApiResource<Move>
+  version_group_details: Array<PokemonMoveVersion>
+}
+
+interface PokemonMoveVersion {
+  move_learn_method: NamedApiResource<MoveLearnMethods>
+  version_group: NamedApiResource<VersionGroup>,
+  level_learned_at: number
+}
+
 interface PokemonPastType {
-  generation: NamedApiResource<TODO>,
+  generation: NamedApiResource<Generation>,
   types: Array<PokemonType>
 }
 
 interface PokemonStat {
   base_stat: number,
   effort: number,
-  stat: NamedApiResource<TODO>
+  stat: NamedApiResource<Stats>
 }
 
 interface PokemonType {
   slot: number,
-  type: NamedApiResource<TODO>
+  type: NamedApiResource<Type>
+}
+
+interface PokemonHeldItem {
+  item: NamedApiResource<Item>,
+  version_details: Array<NamedApiResource<PokemonHeldItemVersion>>
+}
+
+interface PokemonHeldItemVersion {
+  rarity: number,
+  version: NamedApiResource<Version>
 }
