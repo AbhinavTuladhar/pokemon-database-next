@@ -1,10 +1,17 @@
+import { Generation } from '../Games/Generations'
 import { VersionGroup } from '../Games/VersionGroups'
 import { AbilityEffectChange } from '../Pokemon/Abilities'
 import { Pokemon } from '../Pokemon/Pokemon'
-import { APIResource, Name, VerboseEffect } from '../utils/Common'
+import { Stats } from '../Pokemon/Stats'
+import { Type } from '../Pokemon/Types'
+import { APIResource, MachineVersionDetail, Name, VerboseEffect } from '../utils/Common'
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+import { MoveAilment } from './MoveAilments'
+import { MoveCategory } from './MoveCategories'
+import { MoveDamageClass } from './MoveDamageClasses'
+import { MoveTarget } from './MoveTargets'
 
 export interface Move {
   id: number
@@ -17,20 +24,20 @@ export interface Move {
   contest_combos: TODO
   contest_type: TODO
   contest_Effect: APIResource<TODO>
-  damage_class: NamedApiResource<TODO> // MoveDamageClass
+  damage_class: NamedApiResource<MoveDamageClass>
   effect_entries: Array<VerboseEffect>
   effect_changes: Array<AbilityEffectChange>
   learned_by_pokemon: Array<NamedApiResource<Pokemon>>
   flavor_text_entries: Array<MoveFlavourText>
-  generation: NamedApiResource<TODO> // Generation,
-  machines: Array<TODO> // Machine Version Detail
+  generation: NamedApiResource<Generation>
+  machines: Array<MachineVersionDetail>
   meta: MoveMetaData
   names: Array<Name>
   past_values: Array<PastMoveStatValues>
   stat_changes: Array<MoveStatChange>
   super_contest_effect: TODO
-  target: NamedApiResource<TODO> // Move Target,
-  type: NamedApiResource<TODO> // Type
+  target: NamedApiResource<MoveTarget>
+  type: NamedApiResource<Type>
 }
 
 interface MoveFlavourText {
@@ -40,8 +47,8 @@ interface MoveFlavourText {
 }
 
 interface MoveMetaData {
-  ailment: NamedApiResource<TODO> // Move Ailment
-  category: NamedApiResource<TODO> // Move category
+  ailment: NamedApiResource<MoveAilment>
+  category: NamedApiResource<MoveCategory>
   min_hits: number
   max_hits: number
   min_turns: number
@@ -56,7 +63,7 @@ interface MoveMetaData {
 
 interface MoveStatChange {
   change: number
-  stat: NamedApiResource<TODO> // Stat
+  stat: NamedApiResource<Stats>
 }
 
 interface PastMoveStatValues {
@@ -65,6 +72,6 @@ interface PastMoveStatValues {
   power: number
   pp: number
   effect_entries: Array<VerboseEffect>
-  type: NamedApiResource<TODO> // Type
+  type: NamedApiResource<Type>
   version_group: NamedApiResource<VersionGroup>
 }
