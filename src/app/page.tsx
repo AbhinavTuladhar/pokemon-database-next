@@ -66,12 +66,9 @@ const WelcomePage = () => {
     <div>
       <div className="flex flex-col items-center justify-center gap-y-4 py-4 md:flex-row">
         <div className="w-5/6 md:w-475/1000">
-          <div>
-            <TitleText />
-          </div>
+          <TitleText />
           <div className="flex flex-col space-y-4 py-4">
             <InformativeText />
-            {/* <IssuesText /> */}
           </div>
         </div>
 
