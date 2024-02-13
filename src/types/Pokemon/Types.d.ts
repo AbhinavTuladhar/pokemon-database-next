@@ -1,13 +1,13 @@
-import { Generation } from "../Games/Generations";
-import { Move } from "../Moves/Moves";
-import { Pokemon } from "./Pokemon";
-import { GenerationGameIndex, Name } from "../utils/Common";
-import { NamedApiResource } from "../utils/NamedResource";
+import { Generation } from '../Games/Generations'
+import { Move } from '../Moves/Moves'
+import { Pokemon } from './Pokemon'
+import { GenerationGameIndex, Name } from '../utils/Common'
+import { NamedApiResource } from '../utils/NamedResource'
 
 export interface Type {
-  id: number,
-  name: string,
-  damage_relations: TypeRelations,
+  id: number
+  name: string
+  damage_relations: TypeRelations
   past_damage_relations: Array<TypeRelationsPast>
   game_indices: Array<GenerationGameIndex>
   generation: NamedApiResource<Generation>
@@ -18,7 +18,7 @@ export interface Type {
 }
 
 interface TypePokemon {
-  slot: number,
+  slot: number
   pokemon: NamedApiResource<Pokemon>
 }
 
@@ -32,6 +32,6 @@ interface TypeRelations {
 }
 
 interface TypeRelationsPast {
-  generation: NamedApiResource<Generation>,
+  generation: NamedApiResource<Generation>
   damage_relations: TypeRelations
 }

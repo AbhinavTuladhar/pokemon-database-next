@@ -1,3 +1,3 @@
-import { ResourceList } from "./utils/ResourceList";
+import { ResourceList } from './utils/ResourceList'
 
-export * from "./utils/ResourceList"
+export * from './utils/ResourceList'

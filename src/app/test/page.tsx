@@ -11,7 +11,7 @@ const fetchData = async () => {
   try {
     const responses = await Promise.all(urls.map((url) => fetch(url)))
     const data: Array<ResourceList> = await Promise.all(
-      responses.map((response) => response.json())
+      responses.map((response) => response.json()),
     )
     return data
   } catch (error) {

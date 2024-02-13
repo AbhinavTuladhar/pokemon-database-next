@@ -1,4 +1,4 @@
 export interface Resource {
-  name: string,
+  name: string
   url: string
 }

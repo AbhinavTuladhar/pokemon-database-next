@@ -15,37 +15,37 @@ import { Version } from '../Games/Version'
 import { Item } from '../Items/Item'
 
 export interface Pokemon {
-  abilities: Array<PokemonAbility>,
-  base_experience: number,
-  cries: PokemonCries,
-  forms: Array<NamedApiResource<PokemonForm>>,
-  game_indices: Array<VersionGameIndex>,
-  height: number,
-  held_items: Array<PokemonHeldItem>,
-  id: number,
-  is_default: boolean,
-  location_area_encounters: string,
-  moves: Array<PokemonMove>,
-  name: string,
-  order: number,
-  past_abilities: Array<TODO>,
-  past_types: Array<PokemonPastType>,
-  species: NamedApiResource<PokemonSpecies>,
-  sprites: TODO,
-  stats: PokemonStat,
-  types: Array<PokemonType>,
+  abilities: Array<PokemonAbility>
+  base_experience: number
+  cries: PokemonCries
+  forms: Array<NamedApiResource<PokemonForm>>
+  game_indices: Array<VersionGameIndex>
+  height: number
+  held_items: Array<PokemonHeldItem>
+  id: number
+  is_default: boolean
+  location_area_encounters: string
+  moves: Array<PokemonMove>
+  name: string
+  order: number
+  past_abilities: Array<TODO>
+  past_types: Array<PokemonPastType>
+  species: NamedApiResource<PokemonSpecies>
+  sprites: TODO
+  stats: PokemonStat
+  types: Array<PokemonType>
   weight: number
 }
 
 export interface PokemonAbility {
-  ability: NamedApiResource<Ability>,
-  is_hidden: boolean,
+  ability: NamedApiResource<Ability>
+  is_hidden: boolean
   slot: number
 }
 
 export interface PokemonCries {
-  latest?: string,
-  legacy?: string,
+  latest?: string
+  legacy?: string
 }
 
 export interface PokemonMove {
@@ -55,37 +55,37 @@ export interface PokemonMove {
 
 export interface PokemonMoveVersion {
   move_learn_method: NamedApiResource<MoveLearnMethods>
-  version_group: NamedApiResource<VersionGroup>,
+  version_group: NamedApiResource<VersionGroup>
   level_learned_at: number
 }
 
 export interface PokemonPastType {
-  generation: NamedApiResource<Generation>,
+  generation: NamedApiResource<Generation>
   types: Array<PokemonType>
 }
 
 export interface PokemonStat {
-  base_stat: number,
-  effort: number,
+  base_stat: number
+  effort: number
   stat: NamedApiResource<Stats>
 }
 
 export interface PokemonType {
-  slot: number,
+  slot: number
   type: NamedApiResource<Type>
 }
 
 export interface PokemonFormType {
-  slot: number,
+  slot: number
   type: NamedApiResource<Type>
 }
 
 export interface PokemonHeldItem {
-  item: NamedApiResource<Item>,
+  item: NamedApiResource<Item>
   version_details: Array<NamedApiResource<PokemonHeldItemVersion>>
 }
 
 export interface PokemonHeldItemVersion {
-  rarity: number,
+  rarity: number
   version: NamedApiResource<Version>
 }
