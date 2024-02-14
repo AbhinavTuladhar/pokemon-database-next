@@ -1,5 +1,6 @@
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import TypeWrapper from './TypeWrapper'
 // import TypeChartFull from '../components/TypeChartFull'
 
 const TypeListing = () => {
@@ -60,6 +61,10 @@ const TypeListing = () => {
         <div className="mb-4 flex flex-row flex-wrap justify-center gap-4">{typeCardList}</div>
 
         <h1 className="mb-4 text-3xl font-bold">Type Chart</h1>
+
+        <div>
+          <TypeWrapper />
+        </div>
 
         {/* <section className="flex flex-row flex-wrap justify-between">
           <div className="w-full mdlg:w-1/3">
