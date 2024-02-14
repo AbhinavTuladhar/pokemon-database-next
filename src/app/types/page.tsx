@@ -1,6 +1,6 @@
 import TypeCard from '@/components/TypeCard'
+import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 // import TypeChartFull from '../components/TypeChartFull'
-// import TypeMultiplierBox from '../components/TypeMultiplierBox'
 
 const TypeListing = () => {
   const typeList = [
