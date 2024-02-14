@@ -1,17 +1,14 @@
 import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query'
-import Hydrate from '../Hydrate'
+import fetchData from '@/services/fetchData'
 import TypesList from './TypesList'
+import { TypesApi } from '@/services/TypesApi'
 
 export default async function TypeWrapper() {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery({
     queryKey: ['types-list'],
-    queryFn: async () => {
-      const response = await fetch('https://pokeapi.co/api/v2/type')
-      const data = await response.json()
-      return data
-    },
+    queryFn: () => TypesApi.getAll(),
   })
 
   const dehydratedState = dehydrate(queryClient)
