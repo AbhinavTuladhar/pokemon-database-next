@@ -11,7 +11,7 @@ const TypesList: React.FC<any> = () => {
     queryFn: () => TypesApi.getAll(),
   })
 
-  return <div>{JSON.stringify(typeData, null, 2)}</div>
+  return <div>{typeData?.results.map((type) => <div>{type.name}</div>)}</div>
 }
 
 export default TypesList
