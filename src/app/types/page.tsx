@@ -2,8 +2,24 @@ import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import TypeWrapper from './TypeWrapper'
 // import TypeChartFull from '../components/TypeChartFull'
+import { TypesApi } from '@/services/TypesApi'
+import fetchData from '@/services/fetchData'
+import { NamedApiResourceList, Type } from '@/types'
 
-const TypeListing = () => {
+const getData = async () => {
+  const response = await fetch('https://pokeapi.co/api/v2/type')
+
+  if (!response.ok) {
+    throw new Error('unable to fetch data')
+  }
+
+  const data = await response.json()
+  return data
+}
+
+const TypeListing = async () => {
+  const data = await TypesApi.getAll()
+
   const typeList = [
     'normal',
     'fire',
@@ -62,9 +78,7 @@ const TypeListing = () => {
 
         <h1 className="mb-4 text-3xl font-bold">Type Chart</h1>
 
-        <div>
-          <TypeWrapper />
-        </div>
+        <div>{JSON.stringify(data, null, 2)}</div>
 
         {/* <section className="flex flex-row flex-wrap justify-between">
           <div className="w-full mdlg:w-1/3">
