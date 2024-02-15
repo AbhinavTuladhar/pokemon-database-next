@@ -6,6 +6,7 @@ import { Pokemon } from '@/types'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import baseURL from '@/services/baseUrl'
 import PokeCard from '@/components/PokeCard'
+import trimUrl from '@/utils/trimUrl'
 
 const getPokemonData = async (offset: number, limit: number) => {
   // We first need to find the urls of all the pokemon in that generation.
@@ -17,7 +18,7 @@ const getPokemonData = async (offset: number, limit: number) => {
     const urlOffset = baseURL.length
     // For the pokemon names, we use the actual name instead of the id number.
     const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
-    return replacedUrl.slice(urlOffset)
+    return trimUrl(replacedUrl)
   })
 
   const data = await fetchMultipleData<Pokemon>(urlList)
