@@ -45,6 +45,8 @@ import { Type } from './Pokemon/Types'
 
 import { NamedApiResource } from './utils/NamedResource'
 
+import { TransformedType } from './Computed'
+
 export * from './Encounters/EncounterConditions'
 export * from './Encounters/EncounterConditionValues'
 export * from './Encounters/EncounterMethods'
@@ -83,3 +85,4 @@ export * from './Pokemon/PokemonSpecies'
 export * from './Pokemon/Stats'
 export * from './Pokemon/Types'
 export * from './utils/NamedResource'
+export * from './Computed'

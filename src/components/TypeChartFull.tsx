@@ -1,15 +1,16 @@
-import React from 'react'
-import { useQueries } from '@tanstack/react-query'
+import React, { Fragment } from 'react'
 import TypeCard from './TypeCard'
 import MiniTypeCard from './MiniTypeCard'
 import TypeMultiplierBox from './TypeMultiplierBox'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import fetchData from '../utils/fetchData'
-import calculateTypeEffectiveness from '../utils/typeEffectiveness'
+import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import multiplierToString from '../utils/multiplierToString'
-import formatName from '../utils/NameFormatting'
+import formatName from '@/utils/formatName'
+import fetchMultipleData from '@/services/fetchMultipleData'
+// import { Tooltip } from 'react-tooltip'
+import { Type } from '@/types'
 
-const TypeChartFull = () => {
+const getData = async () => {
   const typeListing = [
     'normal',
     'fire',
@@ -30,10 +31,31 @@ const TypeChartFull = () => {
     'steel',
     'fairy',
   ]
-  const typeData = typeListing.map((type) => ({
-    name: type,
-    url: `https://pokeapi.co/api/v2/type/${type}`,
-  }))
+  const typeUrls = typeListing.map((type) => `/type/${type}`)
+
+  const data = await fetchMultipleData<Type>(typeUrls)
+
+  // Next we need to transform the data into a usable state.
+  const transformedTypeData = data.map((type) => {
+    const extractedInfo = TypeExtractor(type)
+    const { name: typeName } = extractedInfo
+    const typeChart = findTypeEffectiveness([extractedInfo])
+    const typeDefenceInfo = Object.entries(typeChart).map(([typeName, multiplier]) => ({
+      typeName,
+      multiplier,
+    }))
+    return { typeName, typeDefenceInfo }
+  })
+
+  return transformedTypeData
+}
+
+const TypeChartFull = async () => {
+  const typeData = await getData()
+
+  if (typeData.length === 0) {
+    return
+  }
 
   /*
   Step 1: Extract type information
@@ -41,40 +63,6 @@ const TypeChartFull = () => {
   type name
   Step 3: Properly format the type chart object.
   */
-  const transformData = (type) => {
-    const extractedInfo = TypeExtractor(type)
-    const { name: typeName } = extractedInfo
-    const typeChart = calculateTypeEffectiveness([extractedInfo])
-    const typeDefenceInfo = Object.entries(typeChart).map(([typeName, multiplier]) => ({
-      typeName,
-      multiplier,
-    }))
-    return { typeName, typeDefenceInfo }
-  }
-
-  const { data: extractedInformation, isLoading } = useQueries({
-    queries: typeData.map((type) => {
-      return {
-        queryKey: ['type', type.url],
-        queryFn: () => fetchData(type.url),
-        staleTime: Infinity,
-        cacheTime: Infinity,
-        select: (data) => transformData(data),
-      }
-    }),
-    combine: (results) => {
-      return {
-        data: results.map((result) => result.data),
-        isLoading: results.some((result) => result.isLoading),
-      }
-    },
-  })
-
-  if (isLoading) {
-    return (
-      <Skeleton width="90%" height="46rem" containerClassName="flex-1 w-full flex justify-end" />
-    )
-  }
 
   // To show the defending and attacking types.
   const cornerDiv = (
@@ -84,12 +72,23 @@ const TypeChartFull = () => {
     </div>
   )
 
+  const firstTypeCardData: typeof typeData = [
+    {
+      typeName: '',
+      typeDefenceInfo: [{ typeName: '', multiplier: 1 }],
+    },
+  ]
+
   // An empty array at the beginning for a div containing info about the axes.
-  const fullTypeCards = [[], ...typeListing].map((type, index) => {
+  const fullTypeCards = [...firstTypeCardData, ...typeData].map((type, index) => {
     if (index === 0) {
       return cornerDiv
     } else {
-      return <TypeCard typeName={type} className="h-9" />
+      return (
+        <Fragment key={index}>
+          <TypeCard typeName={type?.typeName} className="h-9" />
+        </Fragment>
+      )
     }
   })
 
@@ -99,10 +98,7 @@ const TypeChartFull = () => {
     </div>
   ))
 
-  // Make a dummy object in order to account for the first row.
-  const dummy = [{ typeName: '', typeDefenceInfo: [{ typeName: '', multiplier: 1 }] }]
-
-  const tableColumns = [dummy, ...extractedInformation]?.map((type, index) => {
+  const tableColumns = typeData.map((type, index) => {
     const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
 
     const tableCells = defenceInfo?.map((defendingType, cellIndex) => {
@@ -132,25 +128,25 @@ const TypeChartFull = () => {
     )
   })
 
-  const tooltips = extractedInformation?.map((type, index) => {
-    const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
+  // const tooltips = typeData?.map((type, index) => {
+  //   const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
 
-    return defenceInfo?.map((defendingType, innerIndex) => {
-      const { typeName: attackingTypeName, multiplier } = defendingType
-      const effectString = multiplierToString(multiplier)
-      return (
-        <Tooltip
-          anchorSelect={`#${attackingTypeName}-${defendingTypeName}`}
-          key={`tooltip-${innerIndex}`}
-          place="bottom"
-        >
-          <span className="text-xs">
-            {`${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`}
-          </span>
-        </Tooltip>
-      )
-    })
-  })
+  //   return defenceInfo?.map((defendingType, innerIndex) => {
+  //     const { typeName: attackingTypeName, multiplier } = defendingType
+  //     const effectString = multiplierToString(multiplier)
+  //     return (
+  //       <Tooltip
+  //         anchorSelect={`#${attackingTypeName}-${defendingTypeName}`}
+  //         key={`tooltip-${innerIndex}`}
+  //         place="bottom"
+  //       >
+  //         <span className="text-xs">
+  //           {`${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`}
+  //         </span>
+  //       </Tooltip>
+  //     )
+  //   })
+  // })
 
   return (
     <>
@@ -161,7 +157,7 @@ const TypeChartFull = () => {
         </div>
       </div>
 
-      <>{tooltips}</>
+      {/* <>{tooltips}</> */}
     </>
   )
 }

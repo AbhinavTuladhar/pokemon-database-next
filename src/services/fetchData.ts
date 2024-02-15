@@ -19,8 +19,6 @@ import baseURL from './baseUrl'
 const fetchData = async <T>(url: string) => {
   const response = await fetch(`${baseURL}${url}`, { cache: 'force-cache' })
 
-  console.log('The requested url is', `${baseURL}${url}`)
-
   if (!response.ok) {
     throw new Error(`Failed to fetch data from {url}`)
   }

@@ -1,24 +1,24 @@
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import TypeWrapper from './TypeWrapper'
-// import TypeChartFull from '../components/TypeChartFull'
+import TypeChartFull from '@/components/TypeChartFull'
 import { TypesApi } from '@/services/TypesApi'
 import fetchData from '@/services/fetchData'
 import { NamedApiResourceList, Type } from '@/types'
+import fetchMultipleData from '@/services/fetchMultipleData'
 
 const getData = async () => {
-  const response = await fetch('https://pokeapi.co/api/v2/type')
+  const urls = ['/type/1', '/type/2', '/type/3']
 
-  if (!response.ok) {
-    throw new Error('unable to fetch data')
-  }
+  const dataNew = await fetchMultipleData<Type>(urls)
 
-  const data = await response.json()
-  return data
+  return dataNew
 }
 
 const TypeListing = async () => {
   const data = await TypesApi.getAll()
+
+  // const newData = await getData()
 
   const typeList = [
     'normal',
@@ -55,15 +55,15 @@ const TypeListing = async () => {
     { multiplier: 2, text: 'Super-effective (200%)' },
   ]
 
-  // const chartKeyInfo = chartKeyData.map((row, rowIndex) => {
-  //   const { multiplier, text } = row
-  //   return (
-  //     <div className="flex flex-row items-center gap-x-4" key={rowIndex}>
-  //       <TypeMultiplierBox multiplier={multiplier} />
-  //       <p> {text} </p>
-  //     </div>
-  //   )
-  // })
+  const chartKeyInfo = chartKeyData.map((row, rowIndex) => {
+    const { multiplier, text } = row
+    return (
+      <div className="flex flex-row items-center gap-x-4" key={rowIndex}>
+        <TypeMultiplierBox multiplier={multiplier} />
+        <p> {text} </p>
+      </div>
+    )
+  })
 
   return (
     <div>
@@ -78,9 +78,7 @@ const TypeListing = async () => {
 
         <h1 className="mb-4 text-3xl font-bold">Type Chart</h1>
 
-        <div>{JSON.stringify(data, null, 2)}</div>
-
-        {/* <section className="flex flex-row flex-wrap justify-between">
+        <section className="flex flex-row flex-wrap justify-between">
           <div className="w-full mdlg:w-1/3">
             <p>
               The full type chart here displays the strengths and weaknesses of each type. Look down
@@ -95,7 +93,7 @@ const TypeListing = async () => {
           <div className="mt-4 flex w-full justify-center mdlg:mt-0 mdlg:w-2/3 mdlg:justify-end">
             <TypeChartFull />
           </div>
-        </section> */}
+        </section>
       </section>
     </div>
   )
