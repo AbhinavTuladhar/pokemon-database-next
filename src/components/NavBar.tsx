@@ -83,14 +83,13 @@ const DropDownMenu: FC<DropDownProps> = ({ menuData, parentText }) => {
 
 const NavBar = () => {
   const linkData = [
-    { path: '/pokemon/generation-1', name: 'Gen 1' },
-    { path: '/pokemon/generation-2', name: 'Gen 2' },
-    { path: '/pokemon/generation-3', name: 'Gen 3' },
-    { path: '/pokemon/generation-4', name: 'Gen 4' },
-    { path: '/pokemon/generation-5', name: 'Gen 5' },
-    { path: '/pokemon/generation-6', name: 'Gen 6' },
-    { path: '/pokemon/generation-7', name: 'Gen 7' },
-    { path: '/pokemon/forms', name: 'Forms' },
+    { path: '/pokedex/generation/1', name: 'Gen 1' },
+    { path: '/pokedex/generation/2', name: 'Gen 2' },
+    { path: '/pokedex/generation/3', name: 'Gen 3' },
+    { path: '/pokedex/generation/4', name: 'Gen 4' },
+    { path: '/pokedex/generation/5', name: 'Gen 5' },
+    { path: '/pokedex/generation/6', name: 'Gen 6' },
+    { path: '/pokedex/generation/7', name: 'Gen 7' },
     { path: '/moves', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
     { path: '/berry', name: 'Berries' },
