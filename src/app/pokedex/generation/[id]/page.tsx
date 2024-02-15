@@ -12,9 +12,12 @@ const getPokemonData = async (offset: number, limit: number) => {
   const generationResponse = await PokemonApi.getByGeneration(offset, limit)
 
   const urlList = generationResponse.results.map((pokemon) => {
+    const { name, url } = pokemon
     // We need to not use the complete url, hence the offset is used.
     const urlOffset = baseURL.length
-    return pokemon.url.slice(urlOffset)
+    // For the pokemon names, we use the actual name instead of the id number.
+    const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
+    return replacedUrl.slice(urlOffset)
   })
 
   const data = await fetchMultipleData<Pokemon>(urlList)
