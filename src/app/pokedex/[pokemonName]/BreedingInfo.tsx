@@ -1,0 +1,81 @@
+import { FC } from 'react'
+import SectionTitle from '@/components/SectionTitle'
+import TableContainer from '@/components/TableContainer'
+import formatName from '@/utils/formatName'
+import BlueLink from '@/components/BlueLink'
+import { EggGroup, NamedApiResource } from '@/types'
+
+interface BreedingInfoProps {
+  egg_groups: Array<NamedApiResource<EggGroup>>
+  gender_rate: number
+  hatch_counter: number
+}
+
+const generateGenderInfo = (genderRate: number) => {
+  // The gender_rate is a value showing how many out of 8 pokemon are female.
+  // -1 means genderless.
+  if (genderRate === -1) return ['Genderless']
+  let femaleRatio = ((genderRate / 8) * 100).toFixed(2)
+  let maleRatio = (100 - Number(femaleRatio)).toFixed(2)
+  return [`${maleRatio}% male`, `${femaleRatio}% female`]
+}
+
+const BreedingInfo: FC<BreedingInfoProps> = ({ egg_groups, gender_rate, hatch_counter }) => {
+  // List the egg groups
+  const eggGroupList = egg_groups?.map((group, index) => (
+    <span key={index}>
+      <BlueLink href={`/egg-group/${group.name}`}>{formatName(group.name)}</BlueLink>
+      {index < egg_groups.length - 1 && ', '}
+    </span>
+  ))
+
+  // For the gender.
+  const [maleRatio, femaleRatio] = generateGenderInfo(gender_rate)
+  const genderRow = (
+    <>
+      <span className={maleRatio !== 'Genderless' ? 'text-blue-500' : ''}>{maleRatio}</span>
+      {femaleRatio && (
+        <>
+          ,&nbsp;
+          <span className="text-pink-400">{femaleRatio}</span>
+        </>
+      )}
+    </>
+  )
+
+  // For the egg cycles
+  const maxStepsRequired = 257 * hatch_counter
+  const minStepsRequired = Math.ceil(maxStepsRequired * 0.95)
+  const eggCycleRow = `${hatch_counter} (${minStepsRequired} - ${maxStepsRequired} steps)`
+
+  // Now build the table rows
+  const tableRows = [
+    { label: 'Egg Groups', value: eggGroupList },
+    { label: 'Gender Rate', value: genderRow },
+    { label: 'Egg Cycles', value: eggCycleRow },
+  ]
+
+  const tableDiv = tableRows.map((row, rowIndex) => {
+    return (
+      <div className="table-row h-12 py-2" key={rowIndex}>
+        <div className="table-cell w-4/12 border-t border-gray-200 text-right align-middle">
+          {' '}
+          {row.label}{' '}
+        </div>
+        <div className="table-cell w-8/12 items-center border-t border-gray-200 pl-4 align-middle">
+          {' '}
+          {row.value}{' '}
+        </div>
+      </div>
+    )
+  })
+
+  return (
+    <div>
+      <SectionTitle>Breeding</SectionTitle>
+      <TableContainer>{tableDiv}</TableContainer>
+    </div>
+  )
+}
+
+export default BreedingInfo

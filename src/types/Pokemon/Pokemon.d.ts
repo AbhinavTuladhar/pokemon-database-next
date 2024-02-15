@@ -32,7 +32,7 @@ export interface Pokemon {
   past_types: Array<PokemonPastType>
   species: NamedApiResource<PokemonSpecies>
   sprites: PokemonSprites
-  stats: PokemonStat
+  stats: Array<PokemonStat>
   types: Array<PokemonType>
   weight: number
 }

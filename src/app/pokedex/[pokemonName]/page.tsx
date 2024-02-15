@@ -7,6 +7,8 @@ import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import ImageTile from './ImageTile'
 import AdjacentLinks from './AdjacentLinks'
 import PokeDexData from './PokedexData'
+import TrainingInfo from './TrainingInfo'
+import BreedingInfo from './BreedingInfo'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -40,8 +42,19 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     front_default: defaultSprite,
     front_shiny: shinySprite,
     types,
+    base_experience,
+    stats,
   } = pokemonData
-  const { genus, pokedex_numbers } = speciesData
+  const {
+    egg_groups,
+    gender_rate,
+    hatch_counter,
+    capture_rate,
+    base_happiness,
+    genus,
+    pokedex_numbers,
+    growth_rate,
+  } = speciesData
 
   return (
     <div className="flex flex-col">
@@ -62,7 +75,20 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             weight={weight}
           />
         </div>
-        <div> Third column</div>
+        <div className="col-span-2 flex w-full flex-col gap-y-6 mdlg:col-span-1">
+          <TrainingInfo
+            base_experience={base_experience}
+            base_happiness={base_happiness}
+            capture_rate={capture_rate}
+            growth_rate={growth_rate}
+            stats={stats}
+          />
+          <BreedingInfo
+            egg_groups={egg_groups}
+            gender_rate={gender_rate}
+            hatch_counter={hatch_counter}
+          />
+        </div>
       </section>
     </div>
   )
