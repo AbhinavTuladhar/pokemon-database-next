@@ -2,10 +2,11 @@ import { FC } from 'react'
 import { PokemonApi } from '@/services/PokemonApi'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import formatName from '@/utils/formatName'
-import ImageTile from './ImageTile'
-import AdjacentLinks from './AdjacentLinks'
 import { SpeciesApi } from '@/services/SpeciesApi'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
+import ImageTile from './ImageTile'
+import AdjacentLinks from './AdjacentLinks'
+import PokeDexData from './PokedexData'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -29,15 +30,38 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     getSpeciesData(pokemonName),
   ])
 
-  const { id, name, front_default: defaultSprite, front_shiny: shinySprite } = pokemonData
+  const {
+    id,
+    height,
+    weight,
+    nationalNumber,
+    abilities,
+    name,
+    front_default: defaultSprite,
+    front_shiny: shinySprite,
+    types,
+  } = pokemonData
+  const { genus, pokedex_numbers } = speciesData
 
   return (
     <div className="flex flex-col">
       <div className="flex justify-center text-4xl font-bold">{formatName(name)}</div>
       <AdjacentLinks id={id} />
       <section className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
-        <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
-        <div> Second column</div>
+        <div className="col-span-2 md:col-span-1">
+          <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
+        </div>
+        <div className="col-span-2 md:col-span-1">
+          <PokeDexData
+            abilities={abilities}
+            genus={genus}
+            height={height}
+            nationalNumber={nationalNumber}
+            pokedex_numbers={pokedex_numbers}
+            types={types}
+            weight={weight}
+          />
+        </div>
         <div> Third column</div>
       </section>
     </div>
