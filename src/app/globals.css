@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --link-colour: #3b82f6;
+  --link-hover-colour: #ef4444;
+}
+
+.fancy-link {
+  color: var(--link-colour);
+  background-image: linear-gradient(var(--link-colour), var(--link-colour));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left 1.25rem;
+  transition: background-size ease-out 0.2s;
+}
+
+.fancy-link:hover {
+  color: var(--link-hover-colour);
+  background-image: linear-gradient(var(--link-hover-colour), var(--link-hover-colour));
+  cursor: pointer;
+  background-size: 100% 1px;
+}
