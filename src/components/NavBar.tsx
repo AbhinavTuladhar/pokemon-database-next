@@ -109,9 +109,9 @@ const NavBar = () => {
       </div>
       <nav>
         <ul className="flex list-none flex-wrap">
-          <DropDownMenu parentText="Pokédex" menuData={linkData.slice(0, 8)} />
-          <DropDownMenu parentText="Lists" menuData={linkData.slice(8, 13)} />
-          <ListItem items={linkData.slice(13)} subMenuFlag={false} />
+          <DropDownMenu parentText="Pokédex" menuData={linkData.slice(0, 7)} />
+          <DropDownMenu parentText="Lists" menuData={linkData.slice(7, 12)} />
+          <ListItem items={linkData.slice(12)} subMenuFlag={false} />
         </ul>
       </nav>
     </section>
