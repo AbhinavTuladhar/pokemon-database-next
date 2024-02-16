@@ -24,7 +24,7 @@ const TypeCard: FC<TypeCardProps> = ({ typeName, useTextOnly, className }) => {
   }
   return (
     <div
-      className={`${backgroundColour} ${className} mx-1 my-0 flex w-20 flex-col flex-wrap items-center justify-center rounded-md px-2 py-1 text-sm duration-200 hover:brightness-110`}
+      className={`${backgroundColour} ${className} h-9 flex w-16 text-xs flex-col items-center justify-center rounded duration-200 hover:brightness-110`}
     >
       <Link href={targetLink}>{typeName?.toUpperCase()}</Link>
     </div>

@@ -66,7 +66,7 @@ const TypeChartFull = async () => {
 
   // To show the defending and attacking types.
   const cornerDiv = (
-    <div className="flex h-9 w-20 flex-col items-center justify-center rounded-md border border-slate-700 text-xs">
+    <div className="flex h-[38px] -mb-px w-16 text-[10px] flex-col items-center justify-center rounded border border-slate-700">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>
@@ -86,14 +86,14 @@ const TypeChartFull = async () => {
     } else {
       return (
         <Fragment key={index}>
-          <TypeCard typeName={type?.typeName} className="h-9" />
+          <TypeCard typeName={type?.typeName} />
         </Fragment>
       )
     }
   })
 
   const finalTypeCards = fullTypeCards.map((typeCard, index) => (
-    <div className="my-[2px] flex items-center justify-center" key={`card-${index}`}>
+    <div className="flex items-center justify-center" key={`card-${index}`}>
       {typeCard}
     </div>
   ))
@@ -152,8 +152,8 @@ const TypeChartFull = async () => {
     <>
       <div className="overflow-auto">
         <div className="inline-flex">
-          <div className="flex flex-col">{finalTypeCards}</div>
-          <div className="gap flex flex-row justify-center py-[2px]">{tableColumns}</div>
+          <div className="flex flex-col gap-y-px">{finalTypeCards}</div>
+          <div className="flex flex-row justify-center py-[2px]">{tableColumns}</div>
         </div>
       </div>
 

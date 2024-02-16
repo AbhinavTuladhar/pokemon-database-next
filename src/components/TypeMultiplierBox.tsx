@@ -28,7 +28,7 @@ const TypeMultiplierBox: FC<BoxProps> = ({ multiplier, className }) => {
 
   return (
     <div
-      className={`${backgroundColourMultiplier} ${className} mt-1 flex h-9 w-9 items-center justify-center rounded border border-slate-700 px-1 text-center`}
+      className={`${backgroundColourMultiplier} ${className} flex h-[37px] w-[37px] items-center justify-center border border-slate-900 text-center`}
     >
       {icon}
     </div>
