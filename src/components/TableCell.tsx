@@ -5,7 +5,9 @@ interface CellProps {
 }
 
 const TableCell: FC<CellProps> = ({ children }) => {
-  return <td className="table-cell border-t border-gray-200 py-2 pl-4 align-middle">{children}</td>
+  return (
+    <td className="table-cell border-t border-gray-200 px-2 py-[10px] align-middle">{children}</td>
+  )
 }
 
 export default TableCell
