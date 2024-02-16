@@ -35,12 +35,10 @@ const getData = async () => {
 
   const data = await fetchMultipleData<Type>(typeUrls)
 
-  /*
-  Step 1: Extract type information
-  Step 2: Calculate the type chart, and return an object containing the type chart with the defending
-  type name
-  Step 3: Properly format the type chart object.
-  */
+  // Step 1: Extract type information
+  // Step 2: Calculate the type chart, and return an object containing the type chart with the defending
+  // type name
+  // Step 3: Properly format the type chart object.
 
   // Next we need to transform the data into a usable state.
   const transformedTypeData = data.map((type) => {
