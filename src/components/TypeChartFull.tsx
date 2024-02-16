@@ -35,6 +35,13 @@ const getData = async () => {
 
   const data = await fetchMultipleData<Type>(typeUrls)
 
+  /*
+  Step 1: Extract type information
+  Step 2: Calculate the type chart, and return an object containing the type chart with the defending
+  type name
+  Step 3: Properly format the type chart object.
+  */
+
   // Next we need to transform the data into a usable state.
   const transformedTypeData = data.map((type) => {
     const extractedInfo = TypeExtractor(type)
@@ -53,20 +60,9 @@ const getData = async () => {
 const TypeChartFull = async () => {
   const typeData = await getData()
 
-  if (typeData.length === 0) {
-    return
-  }
-
-  /*
-  Step 1: Extract type information
-  Step 2: Calculate the type chart, and return an object containing the type chart with the defending
-  type name
-  Step 3: Properly format the type chart object.
-  */
-
   // To show the defending and attacking types.
   const cornerDiv = (
-    <div className="flex h-[38px] -mb-px w-16 text-[10px] flex-col items-center justify-center rounded border border-slate-700">
+    <div className="flex h-[36px] -mb-px w-16 text-[10px] flex-col items-center justify-center rounded border border-slate-700">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>
@@ -152,8 +148,8 @@ const TypeChartFull = async () => {
     <>
       <div className="overflow-auto">
         <div className="inline-flex">
-          <div className="flex flex-col gap-y-px">{finalTypeCards}</div>
-          <div className="flex flex-row justify-center py-[2px]">{tableColumns}</div>
+          <div className="flex flex-col justify-start items-start gap-y-px">{finalTypeCards}</div>
+          <div className="flex flex-row justify-center items-start">{tableColumns}</div>
         </div>
       </div>
 
