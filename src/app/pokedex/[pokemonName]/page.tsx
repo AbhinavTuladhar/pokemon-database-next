@@ -10,6 +10,7 @@ import PokeDexData from './PokedexData'
 import TrainingInfo from './TrainingInfo'
 import BreedingInfo from './BreedingInfo'
 import BaseStat from './BaseStats'
+import TypeChart from './TypeChart'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -95,7 +96,9 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <section className="col-span-2">
           <BaseStat stats={stats} />
         </section>
-        <div>Another column</div>
+        <section className="col-span-2 mdlg:col-span-1">
+          <TypeChart pokemonName={name} types={types} />
+        </section>
       </div>
     </div>
   )
