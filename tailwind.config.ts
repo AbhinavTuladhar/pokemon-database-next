@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -18,9 +18,25 @@ module.exports = {
         '2-flexible': 'repeat(auto-fit, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fit, minmax(min(210px, 90%), 1fr))',
       },
+      textShadow: {
+        sm: '0 1px 2px var(--tw-shadow-color)',
+        DEFAULT: '1px 1px 2px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') },
+      )
+    }),
+  ],
   safelist: [
     'bg-greyYellow',
     'bg-gray-400',

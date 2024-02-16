@@ -14,7 +14,9 @@ const MiniTypeCard: React.FC<CardProps> = ({ typeName }) => {
     <div
       className={`${backgroundColourType} flex h-[36px] w-[36px] items-center justify-center rounded text-xs tracking-tight duration-300 hover:brightness-125`}
     >
-      <Link href={`/types/${typeName}`}>{typeName.slice(0, 3).toUpperCase()}</Link>
+      <Link className="text-shadow shadow-black/70" href={`/types/${typeName}`}>
+        {typeName.slice(0, 3).toUpperCase()}
+      </Link>
     </div>
   )
 }
