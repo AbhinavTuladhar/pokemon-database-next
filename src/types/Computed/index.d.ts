@@ -2,4 +2,11 @@ import TypeExtractor from '@/extractors/TypeExtractor'
 
 type TransformedType = ReturnType<typeof TypeExtractor>
 
-export type { TransformedType }
+interface StatTable {
+  name: string
+  value: number
+  width: string
+  colour: string
+}
+
+export type { TransformedType, StatTable }

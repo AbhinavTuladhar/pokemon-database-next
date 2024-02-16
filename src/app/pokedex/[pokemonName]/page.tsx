@@ -6,9 +6,10 @@ import { SpeciesApi } from '@/services/SpeciesApi'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import ImageTile from './ImageTile'
 import AdjacentLinks from './AdjacentLinks'
-import PokeDexData from './PokeDexData'
+import PokeDexData from './PokedexData'
 import TrainingInfo from './TrainingInfo'
 import BreedingInfo from './BreedingInfo'
+import BaseStat from './BaseStats'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -90,6 +91,12 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           />
         </div>
       </section>
+      <div className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
+        <section className="col-span-2">
+          <BaseStat stats={stats} />
+        </section>
+        <div>Another column</div>
+      </div>
     </div>
   )
 }
