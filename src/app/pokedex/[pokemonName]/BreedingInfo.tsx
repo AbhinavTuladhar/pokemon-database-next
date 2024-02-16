@@ -4,6 +4,9 @@ import TableContainer from '@/components/TableContainer'
 import formatName from '@/utils/formatName'
 import BlueLink from '@/components/BlueLink'
 import { EggGroup, NamedApiResource } from '@/types'
+import TableRow from '@/components/TableRow'
+import TableCellHeader from '@/components/TableCellHeader'
+import TableCell from '@/components/TableCell'
 
 interface BreedingInfoProps {
   egg_groups: Array<NamedApiResource<EggGroup>>
@@ -57,16 +60,10 @@ const BreedingInfo: FC<BreedingInfoProps> = ({ egg_groups, gender_rate, hatch_co
 
   const tableDiv = tableRows.map((row, rowIndex) => {
     return (
-      <div className="table-row h-12 py-2" key={rowIndex}>
-        <div className="table-cell w-4/12 border-t border-gray-200 text-right align-middle">
-          {' '}
-          {row.label}{' '}
-        </div>
-        <div className="table-cell w-8/12 items-center border-t border-gray-200 pl-4 align-middle">
-          {' '}
-          {row.value}{' '}
-        </div>
-      </div>
+      <TableRow key={rowIndex}>
+        <TableCellHeader> {row.label} </TableCellHeader>
+        <TableCell> {row.value} </TableCell>
+      </TableRow>
     )
   })
 

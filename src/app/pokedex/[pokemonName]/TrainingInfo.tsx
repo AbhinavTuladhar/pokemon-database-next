@@ -1,7 +1,11 @@
 import { FC, ReactNode } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 import TableContainer from '@/components/TableContainer'
-import { PokemonStat, Stats } from '@/types'
+import { PokemonStat } from '@/types'
+
+import TableCellHeader from '@/components/TableCellHeader'
+import TableCell from '@/components/TableCell'
+import TableRow from '@/components/TableRow'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
 const formatField = (field: string) => {
@@ -54,16 +58,10 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
 
   const tableDiv = tableData.map((row, rowIndex) => {
     return (
-      <div className="table-row h-12 border-t border-gray-200 py-2" key={rowIndex}>
-        <div className="table-cell w-4/12 border-t border-gray-200 text-right align-middle">
-          {' '}
-          {row.label}{' '}
-        </div>
-        <div className="table-cell items-center border-t border-gray-200 pl-4 align-middle">
-          {' '}
-          {row.value}{' '}
-        </div>
-      </div>
+      <TableRow key={rowIndex}>
+        <TableCellHeader> {row.label} </TableCellHeader>
+        <TableCell> {row.value} </TableCell>
+      </TableRow>
     )
   })
 

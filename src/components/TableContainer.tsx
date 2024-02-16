@@ -7,7 +7,7 @@ interface TableProps {
 const TableContainer: FC<TableProps> = ({ children }) => {
   return (
     <div className="overflow-x-auto overflow-y-hidden">
-      <div className="table min-w-full border-b border-slate-300">{children}</div>
+      <table className="table min-w-full border-b border-slate-300">{children}</table>
     </div>
   )
 }

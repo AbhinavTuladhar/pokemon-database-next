@@ -7,6 +7,8 @@ import fetchMultipleData from '@/services/fetchMultipleData'
 import { Pokedex, PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
 import trimUrl from '@/utils/trimUrl'
 import TableContainer from '@/components/TableContainer'
+import TableCell from '@/components/TableCell'
+import TableCellHeader from '@/components/TableCellHeader'
 
 const getGameData = async (urls: Array<string>) => {
   // Trim off the urls of the games
@@ -137,14 +139,12 @@ const PokeDexData: FC<DexDataProps> = async ({
   const tableEntries = tableData.map((row, rowIndex) => {
     const spacing = row.label === 'Abilities' || row.label === 'Regional no.' ? 'min-h-14' : 'h-12'
     return (
-      <div className={`table-row border-t border-gray-200 py-2 ${spacing}`} key={rowIndex}>
-        <div className="table-cell w-3/12 border-t border-gray-200 py-2 text-right align-middle">
-          {row.label}
-        </div>
-        <div className="table-cell w-9/12 border-t border-gray-200 py-2 pl-4 align-middle">
+      <tr className={`table-row border-t border-gray-200 py-2 ${spacing}`} key={rowIndex}>
+        <TableCellHeader>{row.label}</TableCellHeader>
+        <TableCell>
           <div className="flex">{row.value}</div>
-        </div>
-      </div>
+        </TableCell>
+      </tr>
     )
   })
 

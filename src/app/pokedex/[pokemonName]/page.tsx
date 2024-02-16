@@ -6,7 +6,7 @@ import { SpeciesApi } from '@/services/SpeciesApi'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import ImageTile from './ImageTile'
 import AdjacentLinks from './AdjacentLinks'
-import PokeDexData from './PokedexData'
+import PokeDexData from './PokeDexData'
 import TrainingInfo from './TrainingInfo'
 import BreedingInfo from './BreedingInfo'
 
