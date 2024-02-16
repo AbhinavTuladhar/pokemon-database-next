@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.cdnfonts.com/css/fira-sans-book");
-
 :root {
   --link-colour: #3b82f6;
   --link-hover-colour: #ef4444;
-}
-
-* {
-  font-family: "Fira Sans", sans-serif;
 }
 
 .fancy-link {
