@@ -18,7 +18,7 @@ const EvolutionPokemonCard: FC<CardProps> = ({ homeSprite, name, id, types, spli
     const typeName = type.type.name
     return (
       <span key={index}>
-        <TypeCard typeName={typeName} useTextOnly={true} />
+        <TypeCard typeName={typeName} variant="text" />
         {index !== types.length - 1 && <span> · </span>}
       </span>
     )

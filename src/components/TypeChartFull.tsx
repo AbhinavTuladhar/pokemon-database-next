@@ -80,7 +80,7 @@ const TypeChartFull = async () => {
     } else {
       return (
         <Fragment key={index}>
-          <TypeCard typeName={type?.typeName} />
+          <TypeCard typeName={type?.typeName} variant="big" />
         </Fragment>
       )
     }

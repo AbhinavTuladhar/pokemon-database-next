@@ -1,22 +1,7 @@
 import React, { ReactNode } from 'react'
-import Image from 'next/image'
-import { useQueries, useQuery } from '@tanstack/react-query'
-import { BsArrowRight, BsArrowDown, BsArrowUpRight, BsArrowDownRight } from 'react-icons/bs'
-import TypeCard from '@/components/TypeCard'
 import SectionTitle from '@/components/SectionTitle'
-import fetchData from '@/services/fetchData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import formatName from '@/utils/formatName'
-import evolutionStringFinder from '@/utils/evolutionStringFinder'
-import BlueLink from '@/components/BlueLink'
-import type {
-  PokemonType,
-  EvolutionDetail,
-  EvolutionTrigger,
-  EvolutionChain,
-  ChainLink,
-  EvolutionPokemon,
-} from '@/types'
+import type { EvolutionDetail, EvolutionChain, ChainLink, EvolutionPokemon } from '@/types'
 import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
 import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'

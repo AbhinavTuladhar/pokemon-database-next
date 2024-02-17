@@ -4,16 +4,16 @@ import typeMapping from '@/utils/typeMapping'
 
 interface TypeCardProps {
   typeName: string
-  useTextOnly?: boolean
   className?: string
+  variant?: 'small' | 'big' | 'text'
 }
 
-const TypeCard: FC<TypeCardProps> = ({ typeName, useTextOnly, className }) => {
+const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' }) => {
   const typeKey = typeName?.toLowerCase()
   const backgroundColour = 'bg-' + typeMapping[typeKey]
   const targetLink = `/types/${typeName}`
 
-  if (useTextOnly) {
+  if (variant === 'text') {
     const fontColour = 'text-' + typeMapping[typeKey]
     const properName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
     return (
@@ -24,7 +24,7 @@ const TypeCard: FC<TypeCardProps> = ({ typeName, useTextOnly, className }) => {
   }
   return (
     <div
-      className={`${backgroundColour} ${className} h-9 flex w-16 text-xs flex-col items-center justify-center rounded duration-200 hover:brightness-110`}
+      className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} flex w-16 text-xs flex-col items-center justify-center rounded duration-200 hover:brightness-110`}
     >
       <Link className="text-shadow shadow-black/70" href={targetLink}>
         {typeName?.toUpperCase()}

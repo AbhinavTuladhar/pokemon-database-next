@@ -63,7 +63,7 @@ const PokeDexData: FC<DexDataProps> = async ({
   const typeDiv = (
     <div className="flex items-center gap-x-1.5">
       {typeNames.map((typeName, index) => (
-        <TypeCard typeName={typeName} key={index} />
+        <TypeCard typeName={typeName} key={index} variant="small" />
       ))}
     </div>
   )

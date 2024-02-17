@@ -43,7 +43,7 @@ const TypeListing = async () => {
 
   const typeCardList = typeList.map((type, index) => (
     <div key={index}>
-      <TypeCard typeName={type} />
+      <TypeCard typeName={type} variant="big" />
     </div>
   ))
 
