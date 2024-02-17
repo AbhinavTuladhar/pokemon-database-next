@@ -14,7 +14,7 @@ export interface Type {
   move_damage_class: NamedApiResource<TODO> // MoveDamageClass
   names: Array<Name>
   pokemon: Array<TypePokemon>
-  moves: NamedApiResource<Move>
+  moves: Array<NamedApiResource<Move>>
 }
 
 interface TypePokemon {
