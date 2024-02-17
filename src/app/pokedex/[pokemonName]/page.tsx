@@ -11,6 +11,7 @@ import TrainingInfo from './TrainingInfo'
 import BreedingInfo from './BreedingInfo'
 import BaseStat from './BaseStats'
 import TypeChart from './TypeChart'
+import EvolutionChain from './EvolutionChain'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -48,6 +49,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     stats,
   } = pokemonData
   const {
+    evolutionChainUrl,
     egg_groups,
     gender_rate,
     hatch_counter,
@@ -100,6 +102,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <TypeChart pokemonName={name} types={types} />
         </section>
       </div>
+      <EvolutionChain url={evolutionChainUrl} />
     </div>
   )
 }

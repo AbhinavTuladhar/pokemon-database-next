@@ -4,6 +4,8 @@ import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Type } from '../Pokemon/Types'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+import { EvolutionTrigger } from './EvolutionTriggers'
+import { Location } from '../Locations/Locations'
 
 export interface EvolutionChain {
   id: number
@@ -11,30 +13,30 @@ export interface EvolutionChain {
   chain: ChainLink
 }
 
-interface ChainLink {
+export interface ChainLink {
   is_baby: boolean
   species: NamedApiResource<PokemonSpecies>
-  evolution_details: Array<TODO>
-  volves_to: Array<ChainLink>
+  evolution_details: Array<EvolutionDetail>
+  evolves_to: Array<ChainLink>
 }
 
-interface EvolutionDetail {
-  item: NamedApiResource<Item>
-  trigger: NamedApiResource<TODO> // Evolution trigger
-  gender: number
-  held_item: NamedApiResource<Item>
-  known_move: NamedApiResource<Move>
-  known_move_type: NamedApiResource<Type>
-  location: NamedApiResource<TODO> // Location
-  min_level: number
-  min_happiness: number
-  min_beauty: number
-  min_affection: number
-  needs_overworld_rain: boolean
-  party_species: NamedApiResource<PokemonSpecies>
-  party_type: NamedApiResource<Type>
-  relative_physical_stats: number
-  time_of_day: string
-  trade_species: NamedApiResource<PokemonSpecies>
-  turn_upside_down: boolean
+export interface EvolutionDetail {
+  item: NamedApiResource<Item> | null
+  trigger: NamedApiResource<EvolutionTrigger>
+  gender: number | null
+  held_item: NamedApiResource<Item> | null
+  known_move: NamedApiResource<Move> | null
+  known_move_type: NamedApiResource<Type> | null
+  location: NamedApiResource<Location> | null
+  min_level: number | null
+  min_happiness: number | null
+  min_beauty: number | null
+  min_affection: number | null
+  needs_overworld_rain: boolean | null
+  party_species: NamedApiResource<PokemonSpecies> | null
+  party_type: NamedApiResource<Type> | null
+  relative_physical_stats: number | null
+  time_of_day: string | null
+  trade_species: NamedApiResource<PokemonSpecies> | null
+  turn_upside_down: boolean | null
 }

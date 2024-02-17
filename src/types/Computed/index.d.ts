@@ -1,5 +1,9 @@
+import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import TypeExtractor from '@/extractors/TypeExtractor'
+import type { PokemonType } from '../Pokemon/Pokemon'
+import { EvolutionDetail } from '../Evolution/EvolutionChains'
 
+type TransformedSpecies = ReturnType<typeof SpeciesExtractor>
 type TransformedType = ReturnType<typeof TypeExtractor>
 
 interface StatTable {
@@ -9,4 +13,16 @@ interface StatTable {
   colour: string
 }
 
-export type { TransformedType, StatTable }
+interface EvolutionPokemon {
+  isSplitEvo: boolean
+  nextEvoSplit: boolean | undefined
+  id: number
+  evolutionDetails?: Partial<EvolutionDetail>[] | undefined
+  speciesName?: string | undefined
+  speciesUrl?: string | undefined
+  name: string
+  homeSprite: string | null
+  types: PokemonType[]
+}
+
+export type { TransformedSpecies, TransformedType, StatTable, EvolutionPokemon }

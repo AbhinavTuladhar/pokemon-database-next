@@ -60,7 +60,13 @@ const PokeDexData: FC<DexDataProps> = async ({
   const typeNames = types.map((type) => type.type.name)
 
   // Convert the types of the Pokemon into its corresponding component.
-  const typeDiv = typeNames.map((typeName, index) => <TypeCard typeName={typeName} key={index} />)
+  const typeDiv = (
+    <div className="flex items-center gap-x-1.5">
+      {typeNames.map((typeName, index) => (
+        <TypeCard typeName={typeName} key={index} />
+      ))}
+    </div>
+  )
 
   // Making an actual list of all the abilities.
   const abilityList = abilities.map((ability, index) => {

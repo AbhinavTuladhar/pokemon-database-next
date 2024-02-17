@@ -2,7 +2,7 @@ import { EncounterCondition } from './Encounters/EncounterConditions'
 import { EncounterConditionValue } from './Encounters/EncounterConditionValues'
 import { EncounterMethod } from './Encounters/EncounterMethods'
 
-import { EvolutionChain } from './Evolution/EvolutionChains'
+import { EvolutionChain, ChainLink, EvolutionDetail } from './Evolution/EvolutionChains'
 import { EvolutionTrigger } from './Evolution/EvolutionTriggers'
 
 import { Generation } from './Games/Generations'
@@ -45,7 +45,7 @@ import { Type } from './Pokemon/Types'
 
 import { NamedApiResource } from './utils/NamedResource'
 
-import { TransformedType, StatTable } from './Computed'
+import { TransformedSpecies, TransformedType, StatTable, EvolutionPokemon } from './Computed'
 
 export * from './Encounters/EncounterConditions'
 export * from './Encounters/EncounterConditionValues'
