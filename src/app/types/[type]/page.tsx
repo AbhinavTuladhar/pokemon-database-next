@@ -18,7 +18,6 @@ interface ProsAndConsProps {
   doubeDamageList: React.JSX.Element[]
   halfDamageList: React.JSX.Element[]
   noDamageList: React.JSX.Element[]
-  typeName: string
   doubleDamageMessage: string
   halfDamageMessage: string
   noDamageMessage: string
@@ -32,32 +31,33 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
   noDamageList,
   noDamageMessage,
   title,
-  typeName,
 }) => (
   <div className="flex flex-col flex-wrap">
     <div className="text-3xl font-bold">
-      Attack <span className="italic text-gray-300"> pros & cons </span>
+      <span> {title} </span>
+      <span className="italic text-gray-300"> pros & cons </span>
     </div>
     {doubeDamageList?.length > 0 && (
       <>
-        <div className="my-2 flex flex-row items-center gap-2 py-2">
-          <AiFillCheckCircle className="text-green-400" /> <span>{doubleDamageMessage}</span>
+        <div className="my-2 flex flex-row items-start gap-2 py-2">
+          <AiFillCheckCircle className="text-green-400" />
+          <span className="-mt-1">{doubleDamageMessage}</span>
         </div>
         <div className="ml-5 flex flex-row flex-wrap gap-2">{doubeDamageList}</div>
       </>
     )}
 
-    <div className="my-2 flex flex-row items-center gap-2 py-2">
+    <div className="my-2 flex flex-row items-start gap-2 py-2">
       <AiFillCloseCircle className="text-red-400" />
-      <span> {halfDamageMessage}</span>
+      <span className="-mt-1"> {halfDamageMessage}</span>
     </div>
     <div className="ml-5 flex flex-row flex-wrap gap-2">{halfDamageList}</div>
 
     {noDamageList?.length > 0 && (
       <>
-        <div className="my-2 flex flex-row items-center gap-2 py-2">
+        <div className="my-2 flex flex-row items-start gap-2 py-2">
           <AiFillCloseCircle className="text-red-400" />
-          <span> {noDamageMessage} </span>
+          <span className="-mt-1"> {noDamageMessage} </span>
         </div>
         <div className="ml-5 flex flex-row flex-wrap gap-2">{noDamageList}</div>
       </>
@@ -140,7 +140,6 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
                 halfDamageMessage={`${formattedType} moves are not very effective against`}
                 noDamageList={noDamageToList}
                 noDamageMessage={`${formattedType} moves have no effect on`}
-                typeName={type}
               />
             </div>
             <div>
@@ -152,7 +151,6 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
                 halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
                 noDamageList={noDamageFromList}
                 noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
-                typeName={type}
               />
             </div>
           </div>
