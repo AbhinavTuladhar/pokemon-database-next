@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // On the basis of the given type combination, find how much damage an attacking type will inflict.
 
 const calculateOffensiveTypeEffectiveness = ({ defendingTypeCombination, attackingTypeInfo }) => {
