@@ -3,6 +3,8 @@ import { Inter, Fira_Sans } from 'next/font/google'
 import './globals.css'
 import NavBar from '@/components/NavBar'
 import Providers from '@/components/Providers'
+import { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 // const inter = Inter({ subsets: ['latin'] })
 const FiraSans = Fira_Sans({ subsets: ['latin'], weight: '400' })
@@ -20,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={FiraSans.className}>
-        <div className="min-h-screen max-w-full bg-gray-950 text-white">
-          <NavBar />
-          <div className="mx-4 pb-4 md:mx-8">{children}</div>
-        </div>
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <div className="min-h-screen max-w-full bg-gray-950 text-white">
+            <NavBar />
+            <div className="mx-4 pb-4 md:mx-8">{children}</div>
+          </div>
+        </SkeletonTheme>
       </body>
     </html>
   )

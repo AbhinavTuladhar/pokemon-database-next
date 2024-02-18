@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, Suspense } from 'react'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 import TypeCard from '@/components/TypeCard'
 // import PokemonCardList from '@/components/PokemonCardList'
@@ -8,7 +8,7 @@ import formatName from '@/utils/formatName'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import TypeSummaryRow from './TypeSummaryRow'
-import { Suspense } from 'react'
+import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesApi.get(typeName)
@@ -165,18 +165,9 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           </div>
         </div>
 
-        <Suspense fallback={<div> Loading pokemon...</div>}>
-          <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokemon`} />
+        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
+          <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokémon`} />
         </Suspense>
-
-        {/* <div>
-          {
-            <PokemonCardList
-              title={`${formatName(type)} Pokemon`}
-              pokemonUrls={typeInformation.pokemonList}
-            />
-          }
-        </div> */}
       </div>
     </div>
   )
