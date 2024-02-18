@@ -2,12 +2,13 @@ import React, { FC, ReactNode } from 'react'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 import TypeCard from '@/components/TypeCard'
 // import PokemonCardList from '@/components/PokemonCardList'
-import TypeDetailCard from './TypeDetailCard'
+import MiniCardList from '@/components/MiniCardList'
 import DualTypeChart from './DualTypeChart'
 import formatName from '@/utils/formatName'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import TypeSummaryRow from './TypeSummaryRow'
+import { Suspense } from 'react'
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesApi.get(typeName)
@@ -75,7 +76,7 @@ interface PageProps {
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)
 
-  const { pokemonList, moveList } = typeInformation
+  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemonList, moveList } = typeInformation
 
   const formattedType = formatName(type.charAt(0).toUpperCase() + type.slice(1))
 
@@ -110,8 +111,6 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
       <span className="brightness-75"> (type) </span>
     </h1>
   )
-
-  const { doubleDamageTo, halfDamageTo, noDamageTo } = typeInformation
 
   return (
     <div>
@@ -165,6 +164,10 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
             </div>
           </div>
         </div>
+
+        <Suspense fallback={<div> Loading pokemon...</div>}>
+          <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokemon`} />
+        </Suspense>
 
         {/* <div>
           {

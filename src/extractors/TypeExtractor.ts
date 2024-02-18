@@ -1,4 +1,4 @@
-import { Type, NamedApiResource } from '@/types'
+import { Type, NamedApiResource, PokemonType, Pokemon } from '@/types'
 
 const TypeExtractor = (data: Type) => {
   const { damage_relations: damageRelations, moves: moveList, pokemon: pokemonList, name } = data
@@ -13,10 +13,10 @@ const TypeExtractor = (data: Type) => {
 
   // Use the actual pokemon name in the url instead of their id.
   // Also filter out gen 7+ forms.
-  const pokemonUrls = pokemonList
+  const pokemonUrls: Array<NamedApiResource<Pokemon>> = pokemonList
     .map((pokemon) => pokemon.pokemon)
     .filter((pokemon) => {
-      const { name, url } = pokemon
+      const { url } = pokemon
       if (url === null) return
       // const idNumber = url?.match(/\/(\d+)\/$/)[1]
       // @ts-ignore: Object is possibly 'null'.
@@ -26,7 +26,7 @@ const TypeExtractor = (data: Type) => {
     .map((pokemon) => {
       const { name, url } = pokemon
       const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
-      return replacedUrl
+      return { name, url: replacedUrl }
     })
 
   const extractName = (arr: Array<NamedApiResource<Type>>) => arr.map((type) => type.name)
