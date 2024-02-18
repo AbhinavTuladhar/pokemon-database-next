@@ -18,7 +18,7 @@ interface TypeRowProps {
 
 const TypeDefenceRow: FC<TypeRowProps> = ({ typeDefenceInfo, extraClassName }) => (
   <div
-    className={`mx-auto flex flex-row justify-center overflow-x-auto overflow-y-hidden sm:mx-0 gap-x-px ${extraClassName}`}
+    className={`mx-auto flex flex-row justify-center overflow-x-hidden overflow-y-hidden gap-x-px sm:mx-0 ${extraClassName}`}
   >
     {typeDefenceInfo.map((row, rowIndex) => (
       <div className="flex w-9 flex-col text-center" key={rowIndex}>
@@ -65,7 +65,7 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
       <SectionTitle>Type Defences</SectionTitle>
       <span> {`The effectiveness of each type on ${formatName(pokemonName)}: `} </span>
 
-      <div className="flex flex-col justify-center overflow-x-auto sm:flex-row md:flex-row mdlg:flex-col">
+      <div className="flex flex-col justify-center overflow-x-auto min-[720px]:flex-row md:flex-row mdlg:flex-col">
         <TypeDefenceRow
           typeDefenceInfo={typeDefenseInfo.slice(0, 9)}
           extraClassName={firstClassName}
