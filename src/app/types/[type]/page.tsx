@@ -3,7 +3,7 @@ import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 import TypeCard from '@/components/TypeCard'
 // import PokemonCardList from '@/components/PokemonCardList'
 import TypeDetailCard from './TypeDetailCard'
-// import DualTypeChart from './DualTypeChart'
+import DualTypeChart from './DualTypeChart'
 import formatName from '@/utils/formatName'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
@@ -113,13 +113,6 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
 
   const { doubleDamageTo, halfDamageTo, noDamageTo } = typeInformation
 
-  const DualTypeChartProps = {
-    typeName: type,
-    doubleDamageTo,
-    halfDamageTo,
-    noDamageTo,
-  }
-
   return (
     <div>
       <div>
@@ -163,7 +156,12 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
               <p className="my-4">
                 {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
               </p>
-              {/* <DualTypeChart data={DualTypeChartProps} /> */}
+              <DualTypeChart
+                doubleDamageTo={doubleDamageTo}
+                halfDamageTo={halfDamageTo}
+                noDamageTo={noDamageTo}
+                typeName={type}
+              />
             </div>
           </div>
         </div>

@@ -1,10 +1,11 @@
-// @ts-nocheck
-
 // On the basis of the given type combination, find how much damage an attacking type will inflict.
 
-const calculateOffensiveTypeEffectiveness = ({ defendingTypeCombination, attackingTypeInfo }) => {
-  if (!defendingTypeCombination || !attackingTypeInfo) return
+import { TransformedType } from '@/types'
 
+const calculateOffensiveTypeEffectiveness = (
+  defendingTypeCombination: Array<string>,
+  attackingTypeInfo: Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>,
+) => {
   const { doubleDamageTo, halfDamageTo, noDamageTo } = attackingTypeInfo
 
   const multiplierMapping = [
