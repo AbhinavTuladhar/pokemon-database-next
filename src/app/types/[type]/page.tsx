@@ -7,6 +7,7 @@ import TypeDetailCard from './TypeDetailCard'
 import formatName from '@/utils/formatName'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
+import TypeSummaryRow from './TypeSummaryRow'
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesApi.get(typeName)
@@ -122,45 +123,48 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   return (
     <div>
       <div>
-        <div>
+        <div className="space-y-4">
           <div>{titleDiv}</div>
           <div>
-            <TypeDetailCard moveCount={moveCount} pokemonCount={pokemonCount} typeName={type} />
+            <TypeSummaryRow
+              moveCount={moveCount}
+              pokemonCount={pokemonCount}
+              typeName={formattedType}
+            />
           </div>
-        </div>
-
-        <div className="mt-4 flex flex-row flex-wrap justify-between">
-          <div className="w-full space-y-10 mdlg:w-1/3">
-            <div>
-              <ProsAndConsInfo
-                title="Attack"
-                doubeDamageList={doubleDamageToList}
-                doubleDamageMessage={`${formattedType} moves are super-effective against`}
-                halfDamageList={halfDamageToList}
-                halfDamageMessage={`${formattedType} moves are not very effective against`}
-                noDamageList={noDamageToList}
-                noDamageMessage={`${formattedType} moves have no effect on`}
-              />
+          <div className="flex flex-row flex-wrap justify-between">
+            <div className="w-full space-y-10 mdlg:w-1/3">
+              <div>
+                <ProsAndConsInfo
+                  title="Attack"
+                  doubeDamageList={doubleDamageToList}
+                  doubleDamageMessage={`${formattedType} moves are super-effective against`}
+                  halfDamageList={halfDamageToList}
+                  halfDamageMessage={`${formattedType} moves are not very effective against`}
+                  noDamageList={noDamageToList}
+                  noDamageMessage={`${formattedType} moves have no effect on`}
+                />
+              </div>
+              <div>
+                <ProsAndConsInfo
+                  title="Defence"
+                  doubeDamageList={doubleDamageFromList}
+                  doubleDamageMessage={`These types are super-effective against ${formattedType} type Pokémon`}
+                  halfDamageList={halfDamageFromList}
+                  halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
+                  noDamageList={noDamageFromList}
+                  noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
+                />
+              </div>
             </div>
-            <div>
-              <ProsAndConsInfo
-                title="Defence"
-                doubeDamageList={doubleDamageFromList}
-                doubleDamageMessage={`These types are super-effective against ${formattedType} type Pokémon`}
-                halfDamageList={halfDamageFromList}
-                halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
-                noDamageList={noDamageFromList}
-                noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
-              />
-            </div>
-          </div>
 
-          <div className="mt-4 flex w-full flex-col pl-0 mdlg:mt-0 mdlg:w-2/3 mdlg:pl-16">
-            <h1 className="text-3xl font-bold">Dual type attack pros & cons</h1>
-            <p className="my-4">
-              {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
-            </p>
-            {/* <DualTypeChart data={DualTypeChartProps} /> */}
+            <div className="mt-4 flex w-full flex-col pl-0 mdlg:mt-0 mdlg:w-2/3 mdlg:pl-16">
+              <h1 className="text-3xl font-bold">Dual type attack pros & cons</h1>
+              <p className="my-4">
+                {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
+              </p>
+              {/* <DualTypeChart data={DualTypeChartProps} /> */}
+            </div>
           </div>
         </div>
 
