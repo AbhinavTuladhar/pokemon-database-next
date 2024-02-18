@@ -23,23 +23,21 @@ const MiniPokeCard: FC<MiniCardProps> = ({ name, id, gameSprite, types, national
     return (
       <div key={index}>
         <TypeCard typeName={typeName} variant="text" />
-        {index !== types.length - 1 && <span> &nbsp; · &nbsp; </span>}
+        {index !== types.length - 1 && <span>&nbsp;·&nbsp;</span>}
       </div>
     )
   })
 
   return (
-    <article className="flex w-full py-4">
-      <Image src={gameSprite} width={75} height={45} alt={name} />
-      <div className="flex flex-col">
-        <div>
-          <BlueLink href={`/pokemon/${name}`} boldFlag={true}>
-            {formatName(name)}
-          </BlueLink>
-        </div>
-        <div className="flex">
+    <article className="flex w-full">
+      <Image src={gameSprite} width={60} height={56} alt={name} />
+      <div className="flex flex-col justify-start items-start">
+        <BlueLink href={`/pokemon/${name}`} boldFlag={true}>
+          {formatName(name)}
+        </BlueLink>
+        <span className="text-sm inline-flex">
           {`#${properId}`} / &nbsp;{typeDiv}{' '}
-        </div>
+        </span>
       </div>
     </article>
   )

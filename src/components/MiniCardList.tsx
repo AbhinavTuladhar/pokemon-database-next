@@ -29,10 +29,10 @@ const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonList }) => {
 
   // We now map the Pokemon data into the respective cards.
   const pokeCards = pokemonData?.map((pokemon, index) => {
-    const { icon, id, name, nationalNumber, types } = pokemon
+    const { id, name, nationalNumber, types, gameSprite } = pokemon
     return (
       <MiniPokeCard
-        gameSprite={icon}
+        gameSprite={gameSprite}
         id={id}
         name={name}
         nationalNumber={nationalNumber}
@@ -45,7 +45,7 @@ const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonList }) => {
   return (
     <>
       <SectionTitle>{title}</SectionTitle>
-      <div className="grid grid-cols-card-list gap-x-3 gap-y-6">{pokeCards}</div>
+      <div className="grid grid-cols-card-list gap-x-3 gap-y-8">{pokeCards}</div>
     </>
   )
 }
