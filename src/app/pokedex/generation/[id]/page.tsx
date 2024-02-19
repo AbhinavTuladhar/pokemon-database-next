@@ -1,10 +1,10 @@
 import { FC, Fragment } from 'react'
 import generationData from '@/data/generationData'
+import PokeCardContainer from '@/components/containers/PokeCardContainer'
 import fetchMultipleData from '@/services/fetchMultipleData'
 import { PokemonApi } from '@/services/PokemonApi'
 import { Pokemon } from '@/types'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import baseURL from '@/services/baseUrl'
 import PokeCard from '@/components/PokeCard'
 import trimUrl from '@/utils/trimUrl'
 
@@ -15,7 +15,6 @@ const getPokemonData = async (offset: number, limit: number) => {
   const urlList = generationResponse.results.map((pokemon) => {
     const { name, url } = pokemon
     // We need to not use the complete url, hence the offset is used.
-    const urlOffset = baseURL.length
     // For the pokemon names, we use the actual name instead of the id number.
     const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
     return trimUrl(replacedUrl)
@@ -44,23 +43,23 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const data = await getPokemonData(offset, limit)
 
   return (
-    <div>
+    <main>
       <h1 className="text-4xl font-bold text-center my-4">
-        {' '}
         Pokemon of generation {generationNumber}
       </h1>
-      <div className="flex flex-row gap-8 justify-center items-center  flex-wrap">
-        {data.map((pokemon) => {
-          const { id, name, types, front_default: defaultSprite = '' } = pokemon
-
-          return (
-            <Fragment key={id}>
-              <PokeCard id={id} name={name} types={types} defaultSprite={defaultSprite} />
-            </Fragment>
-          )
-        })}
+      <div>
+        <PokeCardContainer>
+          {data.map((pokemon) => {
+            const { id, name, types, front_default: defaultSprite = '' } = pokemon
+            return (
+              <Fragment key={id}>
+                <PokeCard id={id} name={name} types={types} defaultSprite={defaultSprite} />
+              </Fragment>
+            )
+          })}
+        </PokeCardContainer>
       </div>
-    </div>
+    </main>
   )
 }
 
