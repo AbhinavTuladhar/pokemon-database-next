@@ -18,8 +18,8 @@ const getPokemonData = async (pokemonName: string) => {
   return PokemonExtractor(pokemonData)
 }
 
-const getSpeciesData = async (id: string | number) => {
-  const speciesData = await SpeciesApi.get(id)
+const getSpeciesData = async (url: string) => {
+  const speciesData = await SpeciesApi.get(url)
   return SpeciesExtractor(speciesData)
 }
 
@@ -30,10 +30,7 @@ interface PokemonPageProps {
 }
 
 const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) => {
-  const [pokemonData, speciesData] = await Promise.all([
-    getPokemonData(pokemonName),
-    getSpeciesData(pokemonName),
-  ])
+  const pokemonData = await getPokemonData(pokemonName)
 
   const {
     id,
@@ -47,7 +44,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     types,
     base_experience,
     stats,
+    speciesLink,
   } = pokemonData
+
+  const speciesData = await getSpeciesData(speciesLink)
+
   const {
     evolutionChainUrl,
     egg_groups,

@@ -9,8 +9,8 @@ export const SpeciesApi = {
     const response = await fetchData<PokemonSpecies>(trimUrl(url))
     return response
   },
-  get: async function (id: number | string) {
-    const response = await fetchData<PokemonSpecies>(`/pokemon-species/${id}`)
+  get: async function (url: string) {
+    const response = await fetchData<PokemonSpecies>(trimUrl(url))
     return response
   },
 }

@@ -13,6 +13,11 @@ interface LinksParams {
 }
 
 const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
+  // Skip rendering for pokemon forms.
+  if (id >= 10_000) {
+    return
+  }
+
   const offsetValue = id !== 1 ? id - 2 : 0
   const adjacentData = await getAdjacentPokemonNames(offsetValue)
 

@@ -20,7 +20,7 @@ const fetchData = async <T>(url: string) => {
   const response = await fetch(`${baseURL}${url}`, { cache: 'force-cache' })
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch data from {url}`)
+    throw new Error(`Failed to fetch data from ${url}`)
   }
 
   const data = (await response.json()) as T
