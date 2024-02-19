@@ -6,6 +6,7 @@ import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
 import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
 import EvolutionDiv from './EvolutionDiv'
+import stringifyUrl from '@/utils/stringifyUrl'
 
 // A function to find all the keys of an object that are not null, false or ''
 const nonNullValues = (obj: EvolutionDetail): Partial<EvolutionDetail> => {
@@ -81,7 +82,9 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   // Find the urls of all the pokemon in the evolution chain.
   // Find the Pokemon Url, NOT the species url.
   const pokemonUrls = evolutionChainData.map((pokemon) => {
-    return `https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`
+    const { id, speciesName } = pokemon
+    const tempUrl = `https://pokeapi.co/api/v2/pokemon/${id}`
+    return stringifyUrl(tempUrl, speciesName)
   })
 
   const allPokemonData = await getAllPokemonData(pokemonUrls)

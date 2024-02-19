@@ -7,6 +7,7 @@ import { PokemonType } from '@/types'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
+import stringifyUrl from '@/utils/stringifyUrl'
 
 interface TypeRowProps {
   typeDefenceInfo: Array<{
@@ -37,8 +38,12 @@ interface TypeChartProps {
 }
 
 // Fetches type data only for the one or two types of the Pokemon.
-const fetchTypesData = async (urls: Array<string>) => {
-  const typeData = await TypesApi.getSome(urls)
+const fetchTypesData = async (urls: Array<string>, replacements: Array<string>) => {
+  const properUrls = urls.map((url, number) => {
+    const typeName = replacements[number]
+    return stringifyUrl(url, typeName)
+  })
+  const typeData = await TypesApi.getSome(properUrls)
 
   return typeData.map(TypeExtractor)
 }
@@ -48,7 +53,7 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeNames = types.map((type) => formatName(type.type.name))
   // const typeNamesString = typeNames.join('/')
 
-  const typeData = await fetchTypesData(typeUrls)
+  const typeData = await fetchTypesData(typeUrls, typeNames)
 
   // Now calculate a type-effectiveness object
   const obj = findTypeEffectiveness(typeData)
@@ -65,7 +70,7 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
       <SectionTitle>Type Defences</SectionTitle>
       <span> {`The effectiveness of each type on ${formatName(pokemonName)}: `} </span>
 
-      <div className="flex flex-col justify-center overflow-x-auto min-[720px]:flex-row md:flex-row mdlg:flex-col">
+      <div className="flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row mdlg:flex-col">
         <TypeDefenceRow
           typeDefenceInfo={typeDefenseInfo.slice(0, 9)}
           extraClassName={firstClassName}
