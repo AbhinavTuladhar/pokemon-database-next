@@ -1,8 +1,10 @@
+import MoveExtractor from '@/extractors/MoveExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import type { PokemonType } from '../Pokemon/Pokemon'
 import { EvolutionDetail } from '../Evolution/EvolutionChains'
 
+type TransformedMove = ReturnType<typeof MoveExtractor>
 type TransformedSpecies = ReturnType<typeof SpeciesExtractor>
 type TransformedType = ReturnType<typeof TypeExtractor>
 
@@ -25,4 +27,4 @@ interface EvolutionPokemon {
   types: PokemonType[]
 }
 
-export type { TransformedSpecies, TransformedType, StatTable, EvolutionPokemon }
+export type { TransformedMove, TransformedSpecies, TransformedType, StatTable, EvolutionPokemon }
