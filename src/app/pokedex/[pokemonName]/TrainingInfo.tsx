@@ -1,10 +1,10 @@
 import { FC, ReactNode } from 'react'
 import SectionTitle from '@/components/SectionTitle'
-import TableContainer from '@/components/TableContainer'
+import TableContainer from '@/components/containers/TableContainer'
 import { PokemonStat } from '@/types'
 
-import TableCellHeader from '@/components/TableCellHeader'
-import TableCell from '@/components/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableCell from '@/components/containers/TableCell'
 import TableRow from '@/components/TableRow'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
@@ -59,7 +59,9 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
   const tableDiv = tableData.map((row, rowIndex) => {
     return (
       <TableRow key={rowIndex}>
-        <TableCellHeader> {row.label} </TableCellHeader>
+        <TableCellHeader>
+          <span className="text-sm">{row.label}</span>
+        </TableCellHeader>
         <TableCell> {row.value} </TableCell>
       </TableRow>
     )

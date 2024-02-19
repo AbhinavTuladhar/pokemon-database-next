@@ -1,10 +1,10 @@
 import { FC, useState, useEffect, useMemo } from 'react'
 import SectionTitle from '@/components/SectionTitle'
-import TableContainer from '@/components/TableContainer'
+import TableContainer from '@/components/containers/TableContainer'
 import calculateStats from '@/utils/calculateStats'
 import { PokemonStat } from '@/types'
 import TableRow from '@/components/TableRow'
-import TableCellHeader from '@/components/TableCellHeader'
+import TableCellHeader from '@/components/containers/TableCellHeader'
 /*
 Here, we define a custom hook for returning an aray of objects containing:
 1. The name of the state,

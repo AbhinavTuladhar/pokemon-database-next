@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { FlavourText } from '@/types/utils/Common'
 import SectionTitle from '@/components/SectionTitle'
-import TableCell from '@/components/TableCell'
-import TableCellHeader from '@/components/TableCellHeader'
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableRow from '@/components/TableRow'
 
 interface VersionDescription {
@@ -69,7 +69,9 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   const entryRows = finalEntry.map((entry, i) => {
     return (
       <TableRow key={i}>
-        <TableCellHeader>{entry.versionName}</TableCellHeader>
+        <TableCellHeader>
+          <span className="text-sm">{entry.versionName}</span>
+        </TableCellHeader>
         <TableCell>{entry.description}</TableCell>
       </TableRow>
     )
