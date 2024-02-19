@@ -34,7 +34,7 @@ const EvolutionPokemonCard: FC<CardProps> = ({ homeSprite, name, id, types, spli
       {homeSprite && <Image src={homeSprite} alt={name} width={128} height={128} />}
       <div className="flex w-full flex-col items-center justify-center">
         {formattedId}
-        <BlueLink href={`/pokemon/${name}`}>{formatName(name)}</BlueLink>
+        <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
         <span className="text-center">{typeDiv}</span>
       </div>
     </div>
