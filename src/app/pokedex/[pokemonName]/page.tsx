@@ -67,7 +67,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     <div className="flex flex-col">
       <div className="flex justify-center text-4xl font-bold">{formatName(name)}</div>
       <AdjacentLinks id={id} />
-      <section className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6 place-content-start">
+      <section className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6">
         <div className="col-span-2 md:col-span-1">
           <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
         </div>
@@ -82,7 +82,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             weight={weight}
           />
         </div>
-        <div className="grid-cols-1 md:grid-cols-2 mdlg:grid-cols-1 grid w-full gap-y-6 mdlg:col-span-1 col-span-2 gap-x-8">
+        <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">
           <TrainingInfo
             base_experience={base_experience}
             base_happiness={base_happiness}

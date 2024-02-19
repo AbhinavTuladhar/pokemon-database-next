@@ -6,7 +6,7 @@ interface PokeCardContainerProps {
 
 const PokeCardContainer: FC<PokeCardContainerProps> = ({ children }) => {
   return (
-    <section className="flex flex-row gap-8 justify-center items-center flex-wrap">
+    <section className="flex flex-row flex-wrap items-center justify-center gap-8">
       {children}
     </section>
   )

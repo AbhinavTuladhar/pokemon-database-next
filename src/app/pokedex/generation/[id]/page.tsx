@@ -44,7 +44,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
 
   return (
     <main>
-      <h1 className="text-4xl font-bold text-center my-4">
+      <h1 className="my-4 text-center text-4xl font-bold">
         Pokemon of generation {generationNumber}
       </h1>
       <div>

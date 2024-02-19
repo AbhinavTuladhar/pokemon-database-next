@@ -18,7 +18,7 @@ interface TypeRowProps {
 
 const TypeDefenceRow: FC<TypeRowProps> = ({ typeDefenceInfo, extraClassName }) => (
   <div
-    className={`mx-auto flex flex-row justify-center overflow-x-hidden overflow-y-hidden gap-x-px sm:mx-0 ${extraClassName}`}
+    className={`mx-auto flex flex-row justify-center gap-x-px overflow-x-hidden overflow-y-hidden sm:mx-0 ${extraClassName}`}
   >
     {typeDefenceInfo.map((row, rowIndex) => (
       <div className="flex w-9 flex-col text-center" key={rowIndex}>

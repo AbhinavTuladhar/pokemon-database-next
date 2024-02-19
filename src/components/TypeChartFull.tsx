@@ -60,7 +60,7 @@ const TypeChartFull = async () => {
 
   // To show the defending and attacking types.
   const cornerDiv = (
-    <div className="flex h-[36px] -mb-px w-16 text-[10px] flex-col items-center justify-center rounded border border-slate-700">
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-slate-700 text-[10px]">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>
@@ -146,8 +146,8 @@ const TypeChartFull = async () => {
     <>
       <div className="overflow-auto">
         <div className="inline-flex">
-          <div className="flex flex-col justify-start items-start gap-y-px">{finalTypeCards}</div>
-          <div className="flex flex-row justify-center items-start">{tableColumns}</div>
+          <div className="flex flex-col items-start justify-start gap-y-px">{finalTypeCards}</div>
+          <div className="flex flex-row items-start justify-center">{tableColumns}</div>
         </div>
       </div>
 

@@ -125,7 +125,7 @@ const BaseStat: FC<BaseStatProps> = ({ stats }) => {
     <>
       <SectionTitle>Base Stats</SectionTitle>
       <TableContainer>{rowValues}</TableContainer>
-      <div className="mt-4 font-extralight text-sm">
+      <div className="mt-4 text-sm font-extralight">
         The ranges shown on the right are for a level 100 Pokémon. Maximum values are based on a
         beneficial nature, 252 EVs, 31 IVs; minimum values are based on a hindering nature, 0 EVs, 0
         IVs.

@@ -24,9 +24,9 @@ const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' })
   }
   return (
     <div
-      className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} flex w-16 text-xs flex-col items-center justify-center rounded duration-200 hover:brightness-110`}
+      className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} flex w-16 flex-col items-center justify-center rounded text-xs duration-200 hover:brightness-110`}
     >
-      <Link className="text-shadow shadow-black/70" href={targetLink}>
+      <Link className="shadow-black/70 text-shadow" href={targetLink}>
         {typeName?.toUpperCase()}
       </Link>
     </div>

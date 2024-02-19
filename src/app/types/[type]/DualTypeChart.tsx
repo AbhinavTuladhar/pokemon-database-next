@@ -111,7 +111,7 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
     <>
       <div className="overflow-auto">
         <div className="inline-flex flex-col">
-          <div className="gap-x-px flex flex-row">{firstRow}</div>
+          <div className="flex flex-row gap-x-px">{firstRow}</div>
           <>{tableRows}</>
           {/* <>{toolTips}</> */}
         </div>
