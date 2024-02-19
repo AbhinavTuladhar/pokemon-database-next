@@ -12,6 +12,7 @@ import BreedingInfo from './BreedingInfo'
 import BaseStat from './BaseStats'
 import TypeChart from './TypeChart'
 import EvolutionChain from './EvolutionChain'
+import PokeDexEntries from './PokeDexEntries'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -50,6 +51,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
   const speciesData = await getSpeciesData(speciesLink)
 
   const {
+    flavor_text_entries,
     evolutionChainUrl,
     egg_groups,
     gender_rate,
@@ -104,6 +106,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         </section>
       </div>
       <EvolutionChain url={evolutionChainUrl} />
+      <PokeDexEntries flavourTextEntries={flavor_text_entries} />
     </div>
   )
 }

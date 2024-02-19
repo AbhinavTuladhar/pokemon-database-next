@@ -1,6 +1,9 @@
 import { TODO } from './TODO'
 import { NamedApiResource } from './NamedResource'
 import { Language } from './Language'
+import { Version } from '../Games/Version'
+import { Generation } from '../Games/Generations'
+import { VersionGroup } from '../Games/VersionGroups'
 
 export interface APIResource {
   url: string
@@ -25,19 +28,19 @@ export interface Encounter {
 }
 
 export interface FlavourText {
-  flavor_text?: string
+  flavor_text: string
   language: NamedApiResource<Language>
-  version?: NamedApiResource<TODO>
+  version: NamedApiResource<Version>
 }
 
 export interface GenerationGameIndex {
   game_index: number
-  generation: NamedApiResource<TODO>
+  generation: NamedApiResource<Generation>
 }
 
 export interface MachineVersionDetail {
   machine: APIResource
-  version_group: NamedApiResource<TODO>
+  version_group: NamedApiResource<VersionGroup>
 }
 
 export interface Name {
@@ -52,14 +55,14 @@ export interface VerboseEffect {
 }
 
 export interface VersionEncounterDetail {
-  version: NamedApiResource<TODO>
+  version: NamedApiResource<Version>
   max_chance: number
-  encounter_details: Array<TODO>
+  encounter_details: Array<Encounter>
 }
 
 export interface VersionGameIndex {
   game_index: number
-  version: NamedApiResource<TODO>
+  version: NamedApiResource<Version>
 }
 
 export interface VersionGroupFlavorText {
