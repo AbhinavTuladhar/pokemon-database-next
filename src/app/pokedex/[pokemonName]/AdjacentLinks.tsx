@@ -51,7 +51,7 @@ const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
         const leftPart = index === 0 && id !== 1 ? '←' : ''
         const rightPart = index !== 0 || id === 1 ? '→' : ''
         return (
-          <BlueLink href={`/pokemon/${name}`} key={index}>
+          <BlueLink href={`/pokedex/${name}`} key={index}>
             {`${leftPart} ${formattedId} ${formatName(name)} ${rightPart}`}
           </BlueLink>
         )

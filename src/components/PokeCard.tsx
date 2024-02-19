@@ -33,7 +33,11 @@ const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
 
   // Now map each type to its corresponding type card.
   const typeDivs = typeList?.map((type, index) => {
-    return <TypeCard typeName={type} key={index} variant="big" />
+    return (
+      <div className="shadow shadow-black/20" key={index}>
+        <TypeCard typeName={type} variant="big" />
+      </div>
+    )
   })
 
   // When the user clicks on the Pokemon name, they are brought to the detail page.
@@ -60,7 +64,7 @@ const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
         {/* <img src={defaultSprite} className="h-[100px]" alt={name} /> */}
         {defaultSprite && <Image src={defaultSprite} height={100} width={100} alt={name} />}
       </div>
-      <div className="mb-2 mt-4 flex flex-row">{typeDivs}</div>
+      <div className="mb-2 mt-4 flex flex-row gap-x-2">{typeDivs}</div>
     </div>
   )
 }
