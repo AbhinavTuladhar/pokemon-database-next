@@ -22,8 +22,6 @@ export default async function Home() {
   const response = await fetchData()
   const list = response[0].results
 
-  console.log(JSON.stringify(response, null, 2))
-
   return (
     <div className="flex flex-col gap-y-4">
       <Link href="/"> Home page</Link>

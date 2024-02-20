@@ -27,4 +27,15 @@ interface EvolutionPokemon {
   types: PokemonType[]
 }
 
-export type { TransformedMove, TransformedSpecies, TransformedType, StatTable, EvolutionPokemon }
+interface TransformedMoveLevel extends TransformedMove {
+  levelLearnedAt: number
+}
+
+export type {
+  TransformedMove,
+  TransformedSpecies,
+  TransformedType,
+  StatTable,
+  EvolutionPokemon,
+  TransformedMoveLevel,
+}

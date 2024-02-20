@@ -51,6 +51,7 @@ import {
   TransformedType,
   StatTable,
   EvolutionPokemon,
+  TransformedMoveLevel,
 } from './Computed'
 
 export * from './Encounters/EncounterConditions'

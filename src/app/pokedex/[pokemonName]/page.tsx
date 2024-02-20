@@ -13,6 +13,7 @@ import BaseStat from './BaseStats'
 import TypeChart from './TypeChart'
 import EvolutionChain from './EvolutionChain'
 import PokeDexEntries from './PokeDexEntries'
+import MovesLearned from './MovesLearned'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -46,6 +47,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     base_experience,
     stats,
     speciesLink,
+    moves,
   } = pokemonData
 
   const speciesData = await getSpeciesData(speciesLink)
@@ -107,6 +109,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       </div>
       <EvolutionChain url={evolutionChainUrl} />
       <PokeDexEntries flavourTextEntries={flavor_text_entries} />
+      <MovesLearned moves={moves} pokemonName={pokemonName} />
     </div>
   )
 }
