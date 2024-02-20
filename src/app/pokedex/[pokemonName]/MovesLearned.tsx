@@ -1,20 +1,7 @@
 import { FC } from 'react'
-import BlueLink from '@/components/BlueLink'
-import TypeCard from '@/components/TypeCard'
 import SectionTitle from '@/components/SectionTitle'
-import TableContainer from '@/components/containers/TableContainer'
 import formatName from '@/utils/formatName'
-import movePhysical from '../../images/move-physical.png'
-import moveSpecial from '../../images/move-special.png'
-import moveStatus from '../../images/move-status.png'
-import {
-  PokemonMove,
-  PokemonMoveVersion,
-  NamedApiResource,
-  Move,
-  TransformedMoveLevel,
-  TransformedMove,
-} from '@/types'
+import { PokemonMove, PokemonMoveVersion, NamedApiResource, Move, TransformedMove } from '@/types'
 import stringifyUrl from '@/utils/stringifyUrl'
 import { MovesApi } from '@/services/MovesApi'
 import MoveExtractor from '@/extractors/MoveExtractor'
@@ -46,16 +33,7 @@ const separateMoves = ({ data, learnMethod }: { data: Array<MoveData>; learnMeth
   return finalFilteredMoves
 }
 
-// This is for mapping the move damage class to its respective image.
-// const returnMoveImage = (damageClass) => {
-//   if (damageClass === 'physical') return movePhysical
-//   else if (damageClass === 'special') return moveSpecial
-//   else if (damageClass === 'status') return moveStatus
-//   else return ''
-// }
-
 const fetchMovesInformation = async (urls: string[]) => {
-  // const responses = await fetchMultipleData<PokemonMove>(urls)
   const responses = await MovesApi.getByUrls(urls)
   return responses.map(MoveExtractor)
 }
@@ -147,7 +125,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
     <div className="grid grid-cols-pokemon-move-grid gap-x-8 gap-y-6">
       <div className="flex flex-col">
         <SectionTitle>Moves learnt by level up</SectionTitle>
-        {finalMoveDetails.level.length > 1 ? (
+        {finalMoveDetails.level.length > 0 ? (
           <>
             <span className="mb-4">
               {`${properPokemonName} learns the following moves in generation 7 at the levels specified.`}
@@ -159,7 +137,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
         )}
 
         <SectionTitle>Moves learnt by tutor</SectionTitle>
-        {finalMoveDetails?.tutor?.length > 1 ? (
+        {finalMoveDetails?.tutor?.length > 0 ? (
           <>
             <span className="mb-4">
               {`${properPokemonName} can be taught the following moves in generation 7 by move tutors.`}
@@ -170,7 +148,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
           `${properPokemonName} does not learn any move taught by a tutor.`
         )}
         <SectionTitle>Moves learnt by Breeding</SectionTitle>
-        {finalMoveDetails?.egg?.length > 1 ? (
+        {finalMoveDetails?.egg?.length > 0 ? (
           <>
             <span className="mb-4">
               {`${properPokemonName} learns the following moves in generation 7 by breeding.`}
@@ -183,7 +161,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
       </div>
       <div className="flex flex-col">
         <SectionTitle>Moves learnt by HM/TM</SectionTitle>
-        {finalMoveDetails?.machine?.length > 1 ? (
+        {finalMoveDetails?.machine?.length > 0 ? (
           <>
             <span className="mb-4">
               {`${properPokemonName} is compatible with these Technical Machines in Generation 7:`}

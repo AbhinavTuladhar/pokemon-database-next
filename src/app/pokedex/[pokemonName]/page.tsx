@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import { PokemonApi } from '@/services/PokemonApi'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import formatName from '@/utils/formatName'
@@ -109,7 +109,9 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       </div>
       <EvolutionChain url={evolutionChainUrl} />
       <PokeDexEntries flavourTextEntries={flavor_text_entries} />
-      <MovesLearned moves={moves} pokemonName={pokemonName} />
+      <Suspense fallback={<div> Loading moves data... </div>}>
+        <MovesLearned moves={moves} pokemonName={pokemonName} />
+      </Suspense>
     </div>
   )
 }

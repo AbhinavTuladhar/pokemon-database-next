@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Image from 'next/image'
 import { TransformedMove } from '@/types'
 import TableContainer from '@/components/containers/TableContainer'
 import TableCell from '@/components/containers/TableCell'
@@ -10,6 +11,14 @@ import TypeCard from '@/components/TypeCard'
 
 interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt?: number
+}
+
+// This is for mapping the move damage class to its respective image.
+const getMoveImage = (damageClass: string) => {
+  if (damageClass === 'physical') return 'move-physical.png'
+  else if (damageClass === 'special') return 'move-special.png'
+  else if (damageClass === 'status') return 'move-status.png'
+  else return ''
 }
 
 interface MovesTableProps {
@@ -26,25 +35,34 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
     <TableContainer>
       <TableRow className="bg-[#1a1a1a] font-bold">
         {firstRowLabels.map((label, index) => (
-          <TableCellHeader key={index}> {label}</TableCellHeader>
+          <TableCellHeader key={index} type="column">
+            {label}
+          </TableCellHeader>
         ))}
       </TableRow>
       {movesData.map((move, rowIndex) => {
+        const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
+
+        const moveImageSource = getMoveImage(damageClass)
+        const imageSource = `/move-types/${moveImageSource}`
+
         return (
           <TableRow key={rowIndex} className="odd:bg-gray-900">
-            {move.levelLearnedAt && <TableCell>{move.levelLearnedAt}</TableCell>}
+            {levelLearnedAt && <TableCell>{levelLearnedAt}</TableCell>}
             <TableCell extraClassName="whitespace-nowrap pr-4">
-              <BlueLink href={`/move/${move.moveName}`} boldFlag={true}>
-                {formatName(move.moveName)}
+              <BlueLink href={`/move/${moveName}`} boldFlag={true}>
+                {formatName(moveName)}
               </BlueLink>
             </TableCell>
             <TableCell>
-              <TypeCard typeName={move.moveType} />
+              <TypeCard typeName={moveType} />
             </TableCell>
-            <TableCell>{move.damageClass}</TableCell>
-            <TableCell>{move.PP}</TableCell>
-            <TableCell>{move.power}</TableCell>
-            <TableCell>{move.accuracy}</TableCell>
+            <TableCell>
+              <Image src={imageSource} height={20} width={30} alt={damageClass} />
+            </TableCell>
+            <TableCell>{PP}</TableCell>
+            <TableCell>{power}</TableCell>
+            <TableCell>{accuracy}</TableCell>
           </TableRow>
         )
       })}
