@@ -248,7 +248,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
 
   return (
     <>
-      <SectionTitle>Evoluion Chart</SectionTitle>
+      <SectionTitle>Evolution Chart</SectionTitle>
       {finalEvolutionDiv ? (
         <div className="flex flex-col justify-center gap-x-5 sm:flex-col md:flex-row">
           {finalEvolutionDiv}

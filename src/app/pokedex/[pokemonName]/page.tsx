@@ -4,6 +4,8 @@ import PokemonExtractor from '@/extractors/PokemonExtractor'
 import formatName from '@/utils/formatName'
 import { SpeciesApi } from '@/services/SpeciesApi'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
+import BasicIntro from './BasicIntro'
+import PageNavigation from './PageNavigation'
 import ImageTile from './ImageTile'
 import AdjacentLinks from './AdjacentLinks'
 import PokeDexData from './PokedexData'
@@ -77,7 +79,14 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     <div className="flex flex-col">
       <div className="flex justify-center text-4xl font-bold">{formatName(name)}</div>
       <AdjacentLinks id={id} />
-      <section className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6">
+
+      <PageNavigation />
+
+      <BasicIntro genus={genus} id={id} name={pokemonName} types={types} />
+      <section
+        id="info"
+        className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
+      >
         <div className="col-span-2 md:col-span-1">
           <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
         </div>
@@ -107,23 +116,37 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           />
         </div>
       </section>
-      <div className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
+      <section id="base-stats" className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
         <section className="col-span-2">
           <BaseStat stats={stats} />
         </section>
         <section className="col-span-2 mdlg:col-span-1">
           <TypeChart pokemonName={name} types={types} />
         </section>
-      </div>
-      <EvolutionChain url={evolutionChainUrl} />
-      <PokeDexEntries flavourTextEntries={flavor_text_entries} />
-      <Suspense fallback={<div> Loading moves data... </div>}>
-        <MovesLearned moves={moves} pokemonName={pokemonName} />
-      </Suspense>
-      <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
-      <Locations id={id} name={pokemonName} />
-      <OtherLanguages genera={genera} names={names} />
-      <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
+      </section>
+      <section id="evolution-chain">
+        <EvolutionChain url={evolutionChainUrl} />
+      </section>
+      <section id="pokedex-entries">
+        <PokeDexEntries flavourTextEntries={flavor_text_entries} />
+      </section>
+      <section id="moves-learned">
+        <Suspense fallback={<div> Loading moves data... </div>}>
+          <MovesLearned moves={moves} pokemonName={pokemonName} />
+        </Suspense>
+      </section>
+      <section id="sprites">
+        <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
+      </section>
+      <section id="locations">
+        <Locations id={id} name={pokemonName} />
+      </section>
+      <section id="languages">
+        <OtherLanguages genera={genera} names={names} />
+      </section>
+      <section id="forms">
+        <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
+      </section>
       <AdjacentLinks id={id} />
     </div>
   )
