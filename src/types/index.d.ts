@@ -43,6 +43,8 @@ import { PokemonSpecies } from './Pokemon/PokemonSpecies'
 import { Stats } from './Pokemon/Stats'
 import { Type } from './Pokemon/Types'
 
+import { Name } from './utils/Common'
+
 import { NamedApiResource } from './utils/NamedResource'
 
 import {
@@ -93,4 +95,5 @@ export * from './Pokemon/PokemonSpecies'
 export * from './Pokemon/Stats'
 export * from './Pokemon/Types'
 export * from './utils/NamedResource'
+export * from './utils/Common'
 export * from './Computed'

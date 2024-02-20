@@ -15,6 +15,7 @@ import EvolutionChain from './EvolutionChain'
 import PokeDexEntries from './PokeDexEntries'
 import MovesLearned from './MovesLearned'
 import SpriteTable from './SpriteTable'
+import OtherLanguages from './OtherLanguages'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -65,6 +66,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     genus,
     pokedex_numbers,
     growth_rate,
+    names,
+    genera,
   } = speciesData
 
   return (
@@ -115,6 +118,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <MovesLearned moves={moves} pokemonName={pokemonName} />
       </Suspense>
       <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
+      <OtherLanguages genera={genera} names={names} />
     </div>
   )
 }
