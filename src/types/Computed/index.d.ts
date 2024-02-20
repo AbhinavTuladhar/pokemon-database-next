@@ -31,6 +31,12 @@ interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt: number
 }
 
+interface GenerationSprite {
+  generation: string,
+  frontSprite: string | null,
+  shinySprite: string | null
+}
+
 export type {
   TransformedMove,
   TransformedSpecies,
@@ -38,4 +44,5 @@ export type {
   StatTable,
   EvolutionPokemon,
   TransformedMoveLevel,
+  GenerationSprite,
 }

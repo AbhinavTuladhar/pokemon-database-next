@@ -14,6 +14,7 @@ import TypeChart from './TypeChart'
 import EvolutionChain from './EvolutionChain'
 import PokeDexEntries from './PokeDexEntries'
 import MovesLearned from './MovesLearned'
+import SpriteTable from './SpriteTable'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -48,6 +49,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     stats,
     speciesLink,
     moves,
+    spriteCollection,
   } = pokemonData
 
   const speciesData = await getSpeciesData(speciesLink)
@@ -112,6 +114,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       <Suspense fallback={<div> Loading moves data... </div>}>
         <MovesLearned moves={moves} pokemonName={pokemonName} />
       </Suspense>
+      <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
     </div>
   )
 }

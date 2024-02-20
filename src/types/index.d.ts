@@ -52,6 +52,7 @@ import {
   StatTable,
   EvolutionPokemon,
   TransformedMoveLevel,
+  GenerationSprite,
 } from './Computed'
 
 export * from './Encounters/EncounterConditions'
