@@ -17,6 +17,7 @@ import MovesLearned from './MovesLearned'
 import SpriteTable from './SpriteTable'
 import OtherLanguages from './OtherLanguages'
 import Locations from './Locations'
+import PokemonVarieties from './PokemonVarieties'
 
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
@@ -69,6 +70,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     growth_rate,
     names,
     genera,
+    varieties,
   } = speciesData
 
   return (
@@ -121,6 +123,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
       <Locations id={id} name={pokemonName} />
       <OtherLanguages genera={genera} names={names} />
+      <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
+      <AdjacentLinks id={id} />
     </div>
   )
 }

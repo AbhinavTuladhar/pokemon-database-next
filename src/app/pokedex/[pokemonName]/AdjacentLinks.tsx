@@ -50,7 +50,7 @@ const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
   const alignment = id !== 1 ? 'justify-between' : 'justify-end'
 
   return (
-    <div className={`flex ${alignment}`}>
+    <div className={`my-4 flex ${alignment}`}>
       {transformedPokemonData.map((pokemon, index) => {
         const { name, formattedId } = pokemon
         const leftPart = index === 0 && id !== 1 ? '←' : ''
