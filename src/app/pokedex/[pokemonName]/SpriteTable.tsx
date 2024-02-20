@@ -26,17 +26,19 @@ const SpriteTable: FC<SpriteTableProps> = ({ pokemonName, spriteCollection }) =>
   return (
     <>
       <SectionTitle>{`${formatName(pokemonName)} sprites`}</SectionTitle>
-      <div className="overflow-x-auto">
-        <div className="inline-flex">
-          <SpriteTableColumn title="Type" columnIndex={0} images={['', '']} />
-          {properSpriteCollection.map((data, index) => (
-            <SpriteTableColumn
-              columnIndex={index + 1}
-              images={[data.frontSprite, data.shinySprite]}
-              title={data.generation}
-              key={index}
-            />
-          ))}
+      <div className="flex justify-center">
+        <div className="overflow-x-auto">
+          <div className="inline-flex">
+            <SpriteTableColumn title="Type" columnIndex={0} images={['', '']} />
+            {properSpriteCollection.map((data, index) => (
+              <SpriteTableColumn
+                columnIndex={index + 1}
+                images={[data.frontSprite, data.shinySprite]}
+                title={data.generation}
+                key={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
