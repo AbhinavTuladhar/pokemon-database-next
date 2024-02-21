@@ -5,8 +5,8 @@ import fetchMultipleData from './fetchMultipleData'
 import trimUrl from '@/utils/trimUrl'
 
 export const AbilityApi = {
-  getById: async function (id: number) {
-    const response = await fetchData<Ability[]>(`/pokemon/${id}/encounters`)
+  get: async function (name: string) {
+    const response = await fetchData<Ability>(`/ability/${name}`)
     return response
   },
   getAllUrls: async function () {
