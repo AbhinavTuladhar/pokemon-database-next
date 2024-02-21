@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import TypeCard from '@/components/TypeCard'
 import formatName from '@/utils/formatName'
 import fetchMultipleData from '@/services/fetchMultipleData'

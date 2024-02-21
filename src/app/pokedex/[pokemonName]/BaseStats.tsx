@@ -1,9 +1,9 @@
 import { FC, useState, useEffect, useMemo } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import TableContainer from '@/components/containers/TableContainer'
 import calculateStats from '@/utils/calculateStats'
 import { PokemonStat } from '@/types'
-import TableRow from '@/components/TableRow'
+import TableRow from '@/components/containers/TableRow'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 /*
 Here, we define a custom hook for returning an aray of objects containing:

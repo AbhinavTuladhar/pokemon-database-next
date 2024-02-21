@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 
 interface EffectProps {
   entry: string

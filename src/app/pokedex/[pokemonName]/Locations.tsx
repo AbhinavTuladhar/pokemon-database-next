@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import formatName from '@/utils/formatName'
 import { EncountersApi } from '@/services/EncountersApi'
 import { LocationAreaEncounter } from '@/types'
-import TableRow from '@/components/TableRow'
+import TableRow from '@/components/containers/TableRow'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableCell from '@/components/containers/TableCell'
 

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import SectionTitle from './SectionTitle'
+import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
 import fetchMultipleData from '@/services/fetchMultipleData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'

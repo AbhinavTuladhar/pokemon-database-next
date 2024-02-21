@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import type { EvolutionDetail, EvolutionChain, ChainLink, EvolutionPokemon } from '@/types'
 import { EvolutionApi } from '@/services/EvolutionApi'

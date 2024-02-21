@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import languageNameMapping from '@/data/languageNameMapping'
 import { Language } from '@/types/utils/Language'
 import { Genus, Name } from '@/types'

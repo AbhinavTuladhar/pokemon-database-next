@@ -6,6 +6,7 @@ import { TypesApi } from '@/services/TypesApi'
 import fetchData from '@/services/fetchData'
 import { NamedApiResourceList, Type } from '@/types'
 import fetchMultipleData from '@/services/fetchMultipleData'
+import SectionTitle from '@/components/containers/SectionTitle'
 
 const getData = async () => {
   const urls = ['/type/1', '/type/2', '/type/3']
@@ -67,9 +68,7 @@ const TypeListing = async () => {
 
   return (
     <main>
-      <h1 className="my-6 flex justify-center text-center text-5xl font-bold">
-        Pokémon types & type chart
-      </h1>
+      <h1 className="my-4 text-center text-5xl font-bold">Pokémon types & type chart</h1>
       <section>
         <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr,_2fr]">
           <div>

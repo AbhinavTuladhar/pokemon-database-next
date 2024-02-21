@@ -1,7 +1,7 @@
 import React from 'react'
-import SectionTitle from '../SectionTitle'
+import SectionTitle from '../containers/SectionTitle'
 import TableContainer from '../containers/TableContainer'
-import TableRow from '../TableRow'
+import TableRow from '../containers/TableRow'
 import TableCell from '../containers/TableCell'
 import Skeleton from 'react-loading-skeleton'
 

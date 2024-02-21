@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import SectionTitle from '@/components/SectionTitle'
+import SectionTitle from '@/components/containers/SectionTitle'
 import formatName from '@/utils/formatName'
 import MiniTypeCard from '@/components/MiniTypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'

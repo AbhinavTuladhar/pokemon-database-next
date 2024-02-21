@@ -1,6 +1,6 @@
 import React from 'react'
 import { AbilityApi } from '@/services/AbilityApi'
-import TableRow from '@/components/TableRow'
+import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
