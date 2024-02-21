@@ -25,33 +25,35 @@ const page = async () => {
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
 
   return (
-    <TableContainer>
-      <TableRow className="bg-[#1a1a1a]">
-        {headers.map((header, index) => (
-          <TableCellHeader type="column" key={index}>
-            <span className="font-bold text-white"> {header}</span>
-          </TableCellHeader>
-        ))}
-      </TableRow>
-      {allAbilityData.map((ability, rowIndex) => {
-        const { name, pokemonCount, shortEntry, generationIntroduced } = ability
-        const cellInformation = [name, pokemonCount, shortEntry, generationIntroduced]
-        return (
-          <TableRow className="odd:bg-gray-900" key={rowIndex}>
-            <TableCell>
-              <BlueLink href={`/ability/${name}`} boldFlag={true}>
-                {formatName(name)}
-              </BlueLink>
-            </TableCell>
-            <TableCell extraClassName="w-6">{pokemonCount}</TableCell>
-            <TableCell extraClassName="min-w-[40rem]">{shortEntry}</TableCell>
-            <TableCell extraClassName="w-1">
-              {generationIntroduced[generationIntroduced.length - 1]}
-            </TableCell>
-          </TableRow>
-        )
-      })}
-    </TableContainer>
+    <main>
+      <h2 className="my-5 text-center text-4xl font-bold"> Pokémon Abilities </h2>
+      <TableContainer>
+        <TableRow className="bg-[#1a1a1a]">
+          {headers.map((header, index) => (
+            <TableCellHeader type="column" key={index}>
+              <span className="font-bold text-white"> {header}</span>
+            </TableCellHeader>
+          ))}
+        </TableRow>
+        {allAbilityData.map((ability, rowIndex) => {
+          const { name, pokemonCount, shortEntry, generationIntroduced } = ability
+          return (
+            <TableRow className="odd:bg-gray-900" key={rowIndex}>
+              <TableCell>
+                <BlueLink href={`/ability/${name}`} boldFlag={true}>
+                  {formatName(name)}
+                </BlueLink>
+              </TableCell>
+              <TableCell extraClassName="w-6">{pokemonCount}</TableCell>
+              <TableCell extraClassName="min-w-[40rem]">{shortEntry}</TableCell>
+              <TableCell extraClassName="w-1">
+                {generationIntroduced[generationIntroduced.length - 1]}
+              </TableCell>
+            </TableRow>
+          )
+        })}
+      </TableContainer>
+    </main>
   )
 }
 

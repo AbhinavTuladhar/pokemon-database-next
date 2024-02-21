@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import AbilityEffect from './AbilityEffect'
 import AbilityDescription from './AbilityDescriptions'
 import formatName from '@/utils/formatName'
 import PokemonTable from './PokemonTable'
+import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 
 interface AbilityPageParams {
   params: {
@@ -31,7 +32,9 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
           <AbilityDescription descriptions={descriptions} />
         </div>
         <div>
-          <PokemonTable abilityName={name} pokemonList={pokemon} />
+          <Suspense fallback={<PokemonTableSkeleton />}>
+            <PokemonTable abilityName={name} pokemonList={pokemon} />
+          </Suspense>
         </div>
       </div>
     </main>
