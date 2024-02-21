@@ -4,6 +4,7 @@ import { AbilityApi } from '@/services/AbilityApi'
 import AbilityEffect from './AbilityEffect'
 import AbilityDescription from './AbilityDescriptions'
 import formatName from '@/utils/formatName'
+import PokemonTable from './PokemonTable'
 
 interface AbilityPageParams {
   params: {
@@ -24,10 +25,13 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
       <h1 className="flex justify-center text-center text-4xl font-bold">
         {formatName(abilityName)} (ability)
       </h1>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2">
         <div>
           <AbilityEffect entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
+        </div>
+        <div>
+          <PokemonTable abilityName={name} pokemonList={pokemon} />
         </div>
       </div>
     </main>
