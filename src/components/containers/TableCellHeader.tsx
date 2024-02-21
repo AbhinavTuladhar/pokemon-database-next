@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react'
 
 interface HeaderProps {
   children: ReactNode
-  type?: 'column' | 'row'
+  type?: 'column' | 'row',
 }
 
 const TableCellHeader: FC<HeaderProps> = ({ children, type = 'row' }) => {
