@@ -6,6 +6,14 @@ interface CellProps {
   extraClassName?: string
 }
 
+/**
+ * A <td> component which represents the cell of a table. It takes three possible props:
+ *
+ * `extraClassName` - More class names to add in the parent of the component.
+ *
+ * `variant` - Whether to use a 'columnar' or 'row-wise' table. Columnar tables are regular tables,
+ *  whereas row-wise tables are those which have the table header at the left of the row.
+ */
 const TableCell: FC<CellProps> = ({ children, extraClassName, variant }) => {
   return (
     <td

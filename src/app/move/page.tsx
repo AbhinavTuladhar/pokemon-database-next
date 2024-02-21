@@ -70,7 +70,7 @@ const MoveList = async () => {
           {PP}
         </TableCell>
         <TableCell variant="column" extraClassName="min-w-10">
-          {shortEntry}
+          {shortEntry.replace('$effect_chance% ', '')}
         </TableCell>
         <TableCell variant="column">{effect_chance}</TableCell>
       </TableRow>
