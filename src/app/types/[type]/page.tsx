@@ -105,71 +105,65 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
     <TypeCard typeName={type} key={index} />
   ))
 
-  const titleDiv = (
-    <h1 className="flex flex-row justify-center text-4xl font-semibold">
-      {formattedType}&nbsp;
-      <span className="brightness-75"> (type) </span>
-    </h1>
-  )
-
   return (
-    <div>
-      <div>
-        <div className="space-y-4">
-          <div>{titleDiv}</div>
+    <main className="space-y-4">
+      <h1 className="my-4 text-center text-5xl font-bold">
+        {formattedType}&nbsp;
+        <span className="brightness-75"> (type) </span>
+      </h1>
+      <section>
+        <TypeSummaryRow
+          moveCount={moveCount}
+          pokemonCount={pokemonCount}
+          typeName={formattedType}
+        />
+      </section>
+      <div className="grid grid-cols-1 gap-x-8 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
+        <div className="space-y-10">
           <div>
-            <TypeSummaryRow
-              moveCount={moveCount}
-              pokemonCount={pokemonCount}
-              typeName={formattedType}
+            <ProsAndConsInfo
+              title="Attack"
+              doubeDamageList={doubleDamageToList}
+              doubleDamageMessage={`${formattedType} moves are super-effective against`}
+              halfDamageList={halfDamageToList}
+              halfDamageMessage={`${formattedType} moves are not very effective against`}
+              noDamageList={noDamageToList}
+              noDamageMessage={`${formattedType} moves have no effect on`}
             />
           </div>
-          <div className="flex flex-row flex-wrap justify-between">
-            <div className="w-full space-y-10 mdlg:w-1/3">
-              <div>
-                <ProsAndConsInfo
-                  title="Attack"
-                  doubeDamageList={doubleDamageToList}
-                  doubleDamageMessage={`${formattedType} moves are super-effective against`}
-                  halfDamageList={halfDamageToList}
-                  halfDamageMessage={`${formattedType} moves are not very effective against`}
-                  noDamageList={noDamageToList}
-                  noDamageMessage={`${formattedType} moves have no effect on`}
-                />
-              </div>
-              <div>
-                <ProsAndConsInfo
-                  title="Defence"
-                  doubeDamageList={doubleDamageFromList}
-                  doubleDamageMessage={`These types are super-effective against ${formattedType} type Pokémon`}
-                  halfDamageList={halfDamageFromList}
-                  halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
-                  noDamageList={noDamageFromList}
-                  noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
-                />
-              </div>
-            </div>
-
-            <div className="mt-4 flex w-full flex-col pl-0 mdlg:mt-0 mdlg:w-2/3 mdlg:pl-16">
-              <h1 className="text-3xl font-bold">Dual type attack pros & cons</h1>
-              <p className="my-4">
-                {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
-              </p>
-              <DualTypeChart
-                doubleDamageTo={doubleDamageTo}
-                halfDamageTo={halfDamageTo}
-                noDamageTo={noDamageTo}
-                typeName={type}
-              />
-            </div>
+          <div>
+            <ProsAndConsInfo
+              title="Defence"
+              doubeDamageList={doubleDamageFromList}
+              doubleDamageMessage={`These types are super-effective against ${formattedType} type Pokémon`}
+              halfDamageList={halfDamageFromList}
+              halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
+              noDamageList={noDamageFromList}
+              noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
+            />
           </div>
         </div>
 
-        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
-          <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokémon`} />
-        </Suspense>
+        <div className="mt-4 flex flex-col mdlg:mt-0">
+          <h2 className="text-3xl font-bold">Dual type attack pros & cons</h2>
+          <p className="my-4">
+            {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
+          </p>
+          <div className="flex justify-center mdlg:justify-start">
+            <DualTypeChart
+              doubleDamageTo={doubleDamageTo}
+              halfDamageTo={halfDamageTo}
+              noDamageTo={noDamageTo}
+              typeName={type}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+
+      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
+        <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokémon`} />
+      </Suspense>
+    </main>
   )
 }
 

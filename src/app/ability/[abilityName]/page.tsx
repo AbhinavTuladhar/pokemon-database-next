@@ -22,10 +22,8 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
   const { descriptions, longEntry, name, pokemon } = await getAbilityData(abilityName)
 
   return (
-    <main className="space-y-4">
-      <h1 className="flex justify-center text-center text-4xl font-bold">
-        {formatName(abilityName)} (ability)
-      </h1>
+    <main>
+      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(abilityName)} (ability)</h1>
       <div className="grid grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2">
         <div>
           <AbilityEffect entry={longEntry} />

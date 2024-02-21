@@ -43,7 +43,7 @@ const TypeListing = async () => {
 
   const typeCardList = typeList.map((type, index) => (
     <div key={index}>
-      <TypeCard typeName={type} variant="big" />
+      <TypeCard typeName={type} variant="small" />
     </div>
   ))
 
@@ -66,36 +66,34 @@ const TypeListing = async () => {
   })
 
   return (
-    <div>
+    <main>
+      <h1 className="my-6 flex justify-center text-center text-5xl font-bold">
+        Pokémon types & type chart
+      </h1>
       <section>
-        <h1 className="mb-8 flex justify-center text-center text-5xl font-bold">
-          Pokémon types & type chart
-        </h1>
-        <h1 className="mb-10 flex justify-center text-center text-4xl font-bold">
-          Type quick-list
-        </h1>
-        <div className="mb-4 flex flex-row flex-wrap justify-center gap-4">{typeCardList}</div>
-
-        <h1 className="mb-4 text-3xl font-bold">Type Chart</h1>
-
-        <section className="flex flex-row flex-wrap justify-between">
-          <div className="w-full mdlg:w-1/3">
+        <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr,_2fr]">
+          <div>
+            <h2 className="mb-4 flex justify-center text-center text-4xl font-bold">
+              Type quick-list
+            </h2>
+            <div className="mb-4 flex flex-row flex-wrap justify-center gap-2">{typeCardList}</div>
+            <h2 className="mb-4 text-4xl font-bold">Type Chart</h2>
             <p>
               The full type chart here displays the strengths and weaknesses of each type. Look down
               the left hand side for the attacking type, then move across to see how effective it is
               against each Pokémon type.
             </p>
             <div>
-              <h1 className="my-4 text-2xl font-bold">Chart Key</h1>
+              <h3 className="my-4 text-2xl font-bold">Chart Key</h3>
               {chartKeyInfo}
             </div>
           </div>
-          <div className="mt-4 flex w-full justify-center mdlg:mt-0 mdlg:w-2/3 mdlg:justify-end">
+          <div className="mt-4 flex w-full justify-center lg:justify-end">
             <TypeChartFull />
           </div>
         </section>
       </section>
-    </div>
+    </main>
   )
 }
 

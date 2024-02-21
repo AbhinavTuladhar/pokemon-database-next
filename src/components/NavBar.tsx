@@ -100,11 +100,10 @@ const NavBar = () => {
   ]
 
   return (
-    <section className="mb-4">
+    <header>
       <div className="flex flex-wrap justify-center bg-gradient-to-t from-slate-900 to-slate-800 p-2 text-center text-5xl font-semibold tracking-tight lg:text-6xl lg:font-bold">
         <Link href="/" className="text-sky-500">
-          {' '}
-          Pokémon Database{' '}
+          Pokémon Database
         </Link>
       </div>
       <nav>
@@ -114,7 +113,7 @@ const NavBar = () => {
           <ListItem items={linkData.slice(12)} subMenuFlag={false} />
         </ul>
       </nav>
-    </section>
+    </header>
   )
 }
 

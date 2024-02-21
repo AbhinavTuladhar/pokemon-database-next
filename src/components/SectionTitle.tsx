@@ -5,7 +5,7 @@ interface TitleProps {
 }
 
 const SectionTitle: FC<TitleProps> = ({ children }) => {
-  return <div className="my-5 text-3xl font-bold">{children}</div>
+  return <div className="my-4 text-4xl font-bold">{children}</div>
 }
 
 export default SectionTitle

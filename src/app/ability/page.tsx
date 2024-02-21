@@ -26,7 +26,7 @@ const page = async () => {
 
   return (
     <main>
-      <h2 className="my-5 text-center text-4xl font-bold"> Pokémon Abilities </h2>
+      <h1 className="my-4 text-center text-5xl font-bold"> Pokémon Abilities </h1>
       <TableContainer>
         <TableRow className="bg-[#1a1a1a]">
           {headers.map((header, index) => (

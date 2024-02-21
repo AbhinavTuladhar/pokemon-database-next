@@ -76,8 +76,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
   } = speciesData
 
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-center text-4xl font-bold">{formatName(name)}</div>
+    <main>
+      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(name)}</h1>
       <AdjacentLinks id={id} />
 
       <PageNavigation />
@@ -148,7 +148,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
       </section>
       <AdjacentLinks id={id} />
-    </div>
+    </main>
   )
 }
 
