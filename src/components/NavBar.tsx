@@ -90,7 +90,7 @@ const NavBar = () => {
     { path: '/pokedex/generation/5', name: 'Gen 5' },
     { path: '/pokedex/generation/6', name: 'Gen 6' },
     { path: '/pokedex/generation/7', name: 'Gen 7' },
-    { path: '/moves', name: 'Moves' },
+    { path: '/move', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
     { path: '/berry', name: 'Berries' },
     { path: '/egg-group', name: 'Egg groups' },

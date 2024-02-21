@@ -10,7 +10,7 @@ interface HeaderProps {
 const TableCellHeader: FC<HeaderProps> = ({ children, type, wrapFlag, className }) => {
   return (
     <td
-      className={`table-cell border-t border-gray-200 px-2 py-[10px] align-middle text-gray-300 ${type === 'row' ? 'text-right text-gray-300' : 'text-left'} ${wrapFlag ? 'w-auto' : 'w-[1%] whitespace-nowrap'} ${className}`}
+      className={`table-cell border-t border-gray-200 py-[10px] align-middle text-gray-300 ${type === 'row' ? 'px-2 text-right text-gray-300' : 'w-min px-4 text-left'} ${wrapFlag ? 'w-auto' : 'w-[1%] whitespace-nowrap'} ${className ? className : ''}`}
     >
       {children}
     </td>
