@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import { MovesApi } from '@/services/MovesApi'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import TableCellHeader from '@/components/containers/TableCellHeader'
@@ -7,10 +6,9 @@ import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import formatName from '@/utils/formatName'
-import getMoveImage from '@/utils/getMoveImage'
 import TypeCard from '@/components/TypeCard'
-import BlueLink from '@/components/BlueLink'
 import Link from 'next/link'
+import MoveCategoryImage from '@/components/MoveCategoryImage'
 
 const getUrlList = async () => {
   const response = await MovesApi.getAllUrls()
@@ -26,8 +24,6 @@ const MoveList = async () => {
   const movesUrlList = await getUrlList()
   const allMovesData = await getAllMovesData(movesUrlList)
 
-  const smallStyle = 'w-min'
-
   const headers = ['Name', 'Type', 'Cat.', 'Power', 'Acc', 'PP', 'Effect', 'Prob (%)']
 
   const HeaderRowCells = headers.map((header, index) => (
@@ -38,9 +34,6 @@ const MoveList = async () => {
 
   const MoveDataRows = allMovesData.map((move, rowIndex) => {
     const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
-
-    const moveImageFile = getMoveImage(damageClass)
-    const moveImagePath = `/move-types/${moveImageFile}`
 
     return (
       <TableRow className="odd:bg-gray-900" key={rowIndex}>
@@ -57,7 +50,7 @@ const MoveList = async () => {
         </TableCell>
         <TableCell variant="column">
           <div className="flex w-full justify-end">
-            <Image src={moveImagePath} width={30} height={20} alt={damageClass} />
+            <MoveCategoryImage category={damageClass} />
           </div>
         </TableCell>
         <TableCell variant="column" extraClassName="text-right">
