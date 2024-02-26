@@ -40,7 +40,7 @@ const MoveList = async () => {
         <TableCell variant="column">
           <Link
             href={`/move/${moveName}`}
-            className="font-bold text-blue-500 hover:text-red-500 hover:underline"
+            className="font-bold less-fancy-link"
           >
             {formatName(moveName)}
           </Link>

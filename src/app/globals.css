@@ -35,3 +35,20 @@
   transform: scaleX(1);
   transform-origin: left;
 }
+
+.less-fancy-link {
+  background: linear-gradient(to bottom, var(--link-colour), var(--link-colour));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left 1.1em;
+  color: var(--link-colour);
+  transition: all 0.4s ease-in-out;
+}
+
+.less-fancy-link:hover {
+  background: linear-gradient(to bottom, var(--link-hover-colour), var(--link-hover-colour));
+  background-size: 100% 2px;
+  background-repeat: no-repeat;
+  background-position: left 1.1em;
+  color: var(--link-hover-colour);
+}
