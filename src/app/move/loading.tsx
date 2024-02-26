@@ -1,7 +1,5 @@
-import React from 'react'
+import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 
-const loading = () => {
-  return <div>loading</div>
-}
+const loading = () => <PokemonTableSkeleton />
 
 export default loading
