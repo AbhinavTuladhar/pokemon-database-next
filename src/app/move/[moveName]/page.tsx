@@ -38,7 +38,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
   return (
     <main>
       <h1 className="my-4 text-center text-5xl font-bold"> {formatName(moveName)}</h1>
-      <div className="grid grid-cols-[1fr,_3fr] gap-x-10 gap-y-6">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
           <MoveData
             PP={PP}
@@ -54,7 +54,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <MoveEffect chance={effect_chance} entry={longEntry} />
         </section>
       </div>
-      <div className="grid grid-cols-[1fr,_2fr] gap-x-10 gap-y-6">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
         <section>
           <MoveTarget targetType={targetType} />
         </section>

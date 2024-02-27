@@ -61,7 +61,7 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
 
   const tableRows = properGroupedData.map((row, rowIndex) => (
     <TableRow key={rowIndex}>
-      <TableCellHeader>
+      <TableCellHeader wrapFlag={true}>
         {row.version.map((version, index) => (
           <ul key={index}>
             <li className="text-sm font-normal text-white">{formatName(version)}</li>
