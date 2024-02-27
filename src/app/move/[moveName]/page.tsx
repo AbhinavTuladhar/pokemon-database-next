@@ -5,6 +5,7 @@ import formatName from '@/utils/formatName'
 import MoveData from './MoveData'
 import MoveEffect from './MoveEffect'
 import MoveTarget from './MoveTarget'
+import GameDescription from './GameDescription'
 
 const getMoveData = async (moveName: string) => {
   const response = await MovesApi.get(moveName)
@@ -31,6 +32,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     effect_chance,
     longEntry,
     targetType,
+    descriptions,
   } = moveData
 
   return (
@@ -57,7 +59,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <MoveTarget targetType={targetType} />
         </section>
         <section>
-          <h2 className="my-4 text-4xl font-bold"> Game Descriptions </h2>
+          <GameDescription descriptions={descriptions} />
         </section>
       </div>
     </main>
