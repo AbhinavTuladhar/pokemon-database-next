@@ -4,6 +4,7 @@ import { MovesApi } from '@/services/MovesApi'
 import formatName from '@/utils/formatName'
 import MoveData from './MoveData'
 import MoveEffect from './MoveEffect'
+import MoveTarget from './MoveTarget'
 
 const getMoveData = async (moveName: string) => {
   const response = await MovesApi.get(moveName)
@@ -29,6 +30,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     priority,
     effect_chance,
     longEntry,
+    targetType,
   } = moveData
 
   return (
@@ -48,6 +50,14 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
         <section>
           <MoveEffect chance={effect_chance} entry={longEntry} />
+        </section>
+      </div>
+      <div className="grid grid-cols-[1fr,_2fr] gap-x-10 gap-y-6">
+        <section>
+          <MoveTarget targetType={targetType} />
+        </section>
+        <section>
+          <h2 className="my-4 text-4xl font-bold"> Game Descriptions </h2>
         </section>
       </div>
     </main>
