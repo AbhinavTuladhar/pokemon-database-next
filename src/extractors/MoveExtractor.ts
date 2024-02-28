@@ -1,6 +1,6 @@
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
-import { Move } from '@/types'
+import { Move, NamedApiResource } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
 
 const MoveExtractor = (move: Move) => {
@@ -51,10 +51,10 @@ const MoveExtractor = (move: Move) => {
   const shortEntry = englishEffect.short_effect
 
   // Find the URLs of all the Pokemon that can learn the move.
-  const pokemonUrls = learned_by_pokemon?.map((pokemon) => {
+  const pokemonUrls: Array<NamedApiResource<Move>> = learned_by_pokemon.map((pokemon) => {
     const { name, url } = pokemon
     const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
-    return replacedUrl
+    return { name, url: replacedUrl }
   })
 
   // Dealing with keys which might have null values.

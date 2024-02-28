@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 import formatName from '@/utils/formatName'
@@ -6,6 +6,9 @@ import MoveData from './MoveData'
 import MoveEffect from './MoveEffect'
 import MoveTarget from './MoveTarget'
 import GameDescription from './GameDescription'
+import OtherLanguages from './OtherLanguages'
+import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
+import MiniCardList from '@/components/MiniCardList'
 
 const getMoveData = async (moveName: string) => {
   const response = await MovesApi.get(moveName)
@@ -33,6 +36,8 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     longEntry,
     targetType,
     descriptions,
+    names,
+    pokemonUrls,
   } = moveData
 
   return (
@@ -55,13 +60,24 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
       </div>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
-        <section>
-          <MoveTarget targetType={targetType} />
-        </section>
+        <div className="space-y-8">
+          <section>
+            <MoveTarget targetType={targetType} />
+          </section>
+          <section>
+            <OtherLanguages names={names} />
+          </section>
+        </div>
         <section>
           <GameDescription descriptions={descriptions} />
         </section>
       </div>
+      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
+        <MiniCardList
+          pokemonList={pokemonUrls}
+          title={`Pokémon that can learn ${formatName(moveName)}`}
+        />
+      </Suspense>
     </main>
   )
 }
