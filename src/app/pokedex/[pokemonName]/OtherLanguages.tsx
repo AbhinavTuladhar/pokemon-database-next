@@ -3,6 +3,10 @@ import SectionTitle from '@/components/containers/SectionTitle'
 import languageNameMapping from '@/data/languageNameMapping'
 import { Language } from '@/types/utils/Language'
 import { Genus, Name } from '@/types'
+import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableCell from '@/components/containers/TableCell'
 
 const customOrder: Record<string, number> = {
   English: 1,
@@ -75,19 +79,19 @@ const OtherLanguages: FC<OtherLanguageProps> = ({ names, genera }) => {
 
   const nameRows = languagesListNew.map((row, index) => {
     return (
-      <div className="table-row h-12 border-t border-gray-200" key={index}>
-        <LanguageCell>{row.languageName}</LanguageCell>
+      <TableRow key={index}>
+        <TableCellHeader>{row.languageName}</TableCellHeader>
         <NameCell>{row.pokemonName}</NameCell>
-      </div>
+      </TableRow>
     )
   })
 
   const genusRows = generaListNew.map((row, index) => {
     return (
-      <div className="table-row h-12 w-screen border-t border-gray-200" key={index}>
-        <LanguageCell>{row.languageName}</LanguageCell>
-        <NameCell>{row.genusName}</NameCell>
-      </div>
+      <TableRow key={index}>
+        <TableCellHeader>{row.languageName}</TableCellHeader>
+        <TableCell>{row.genusName}</TableCell>
+      </TableRow>
     )
   })
 
@@ -95,13 +99,9 @@ const OtherLanguages: FC<OtherLanguageProps> = ({ names, genera }) => {
     <>
       <SectionTitle>Other Languages</SectionTitle>
       <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
-        <div className="table min-w-full flex-1 border-b border-gray-200 md:min-w-fit">
-          {nameRows}
-        </div>
+        <TableContainer>{nameRows}</TableContainer>
 
-        <div className="table min-w-full flex-1 border-b border-gray-200 md:min-w-fit ">
-          {genusRows}
-        </div>
+        <TableContainer>{genusRows}</TableContainer>
       </div>
     </>
   )
