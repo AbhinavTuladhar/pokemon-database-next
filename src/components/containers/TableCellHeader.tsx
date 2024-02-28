@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react'
+import classNames from 'classNames'
 
 interface HeaderProps {
   children: ReactNode
@@ -20,7 +21,14 @@ interface HeaderProps {
 const TableCellHeader: FC<HeaderProps> = ({ children, type, wrapFlag, className }) => {
   return (
     <th
-      className={`table-cell border-t border-gray-200 py-[10px] align-middle text-gray-300 ${type === 'row' ? 'px-2 text-right text-sm font-normal text-gray-200' : 'w-min px-4 text-left'} ${wrapFlag ? 'w-auto' : 'w-[1%] whitespace-nowrap'} ${className ? className : ''}`}
+      className={classNames(
+        'table-cell border-t border-gray-200 py-[10px] align-middle',
+        { 'px-2 text-right text-sm font-normal text-gray-200': type === 'row' },
+        { 'w-min px-4 text-left': type === 'column' },
+        { 'w-auto': wrapFlag },
+        { 'w-[1%] whitespace-nowrap': !wrapFlag },
+        `${className ? className : ''}`,
+      )}
     >
       {children}
     </th>

@@ -39,20 +39,20 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
         return (
           <TableRow key={rowIndex} className="odd:bg-gray-900">
             {levelLearnedAt && <TableCell>{levelLearnedAt}</TableCell>}
-            <TableCell extraClassName="whitespace-nowrap pr-4">
+            <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
               <BlueLink href={`/move/${moveName}`} boldFlag={true}>
                 {formatName(moveName)}
               </BlueLink>
             </TableCell>
-            <TableCell>
+            <TableCell variant="column">
               <TypeCard typeName={moveType} />
             </TableCell>
-            <TableCell>
+            <TableCell variant="column">
               <MoveCategoryImage category={damageClass} />
             </TableCell>
-            <TableCell>{PP}</TableCell>
-            <TableCell>{power}</TableCell>
-            <TableCell>{accuracy}</TableCell>
+            <TableCell variant="column">{PP}</TableCell>
+            <TableCell variant="column">{power}</TableCell>
+            <TableCell variant="column">{accuracy}</TableCell>
           </TableRow>
         )
       })}

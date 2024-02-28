@@ -38,10 +38,7 @@ const MoveList = async () => {
     return (
       <TableRow className="odd:bg-gray-900" key={rowIndex}>
         <TableCell variant="column">
-          <Link
-            href={`/move/${moveName}`}
-            className="font-bold less-fancy-link"
-          >
+          <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
             {formatName(moveName)}
           </Link>
         </TableCell>

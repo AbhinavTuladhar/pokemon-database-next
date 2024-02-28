@@ -39,14 +39,18 @@ const page = async () => {
           const { name, pokemonCount, shortEntry, generationIntroduced } = ability
           return (
             <TableRow className="odd:bg-gray-900" key={rowIndex}>
-              <TableCell>
+              <TableCell variant="column">
                 <BlueLink href={`/ability/${name}`} boldFlag={true}>
                   {formatName(name)}
                 </BlueLink>
               </TableCell>
-              <TableCell extraClassName="w-6">{pokemonCount}</TableCell>
-              <TableCell extraClassName="min-w-[40rem]">{shortEntry}</TableCell>
-              <TableCell extraClassName="w-1">
+              <TableCell variant="column" extraClassName="w-6">
+                {pokemonCount}
+              </TableCell>
+              <TableCell variant="column" extraClassName="min-w-[40rem]">
+                {shortEntry}
+              </TableCell>
+              <TableCell variant="column" extraClassName="w-1">
                 {generationIntroduced[generationIntroduced.length - 1]}
               </TableCell>
             </TableRow>
