@@ -7,5 +7,5 @@ export interface Machine {
   id: number
   item: NamedApiResource<Item>
   move: NamedApiResource<Move>
-  version_Group: NamedApiResource<VersionGroup>
+  version_group: NamedApiResource<VersionGroup>
 }

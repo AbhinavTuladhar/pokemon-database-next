@@ -43,7 +43,7 @@ import { PokemonSpecies } from './Pokemon/PokemonSpecies'
 import { Stats } from './Pokemon/Stats'
 import { Type } from './Pokemon/Types'
 
-import { Name } from './utils/Common'
+import { Name, MachineVersionDetail } from './utils/Common'
 
 import { NamedApiResource } from './utils/NamedResource'
 

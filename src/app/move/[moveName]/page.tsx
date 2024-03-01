@@ -9,6 +9,7 @@ import GameDescription from './GameDescription'
 import OtherLanguages from './OtherLanguages'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 import MiniCardList from '@/components/MiniCardList'
+import MachineRecord from './MachineRecord'
 
 const getMoveData = async (moveName: string) => {
   const response = await MovesApi.get(moveName)
@@ -38,6 +39,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     descriptions,
     names,
     pokemonUrls,
+    machines,
   } = moveData
 
   return (
@@ -54,6 +56,9 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
             power={power}
             priority={priority}
           />
+          <Suspense fallback={<div> Loading TM data... </div>}>
+            <MachineRecord machineList={machines} />
+          </Suspense>
         </section>
         <section>
           <MoveEffect chance={effect_chance} entry={longEntry} />

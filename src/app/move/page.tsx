@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { MovesApi } from '@/services/MovesApi'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import TableCellHeader from '@/components/containers/TableCellHeader'
@@ -7,7 +8,6 @@ import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import formatName from '@/utils/formatName'
 import TypeCard from '@/components/TypeCard'
-import Link from 'next/link'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
 
 const getUrlList = async () => {
@@ -33,7 +33,17 @@ const MoveList = async () => {
   ))
 
   const MoveDataRows = allMovesData.map((move, rowIndex) => {
-    const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
+    const {
+      moveName,
+      moveType,
+      damageClass,
+      power,
+      accuracy,
+      PP,
+      shortEntry,
+      effect_chance,
+      machines,
+    } = move
 
     return (
       <TableRow className="odd:bg-gray-900" key={rowIndex}>
