@@ -1,20 +1,9 @@
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
-import TypeWrapper from './TypeWrapper'
 import TypeChartFull from '@/components/TypeChartFull'
 import { TypesApi } from '@/services/TypesApi'
-import fetchData from '@/services/fetchData'
-import { NamedApiResourceList, Type } from '@/types'
+import { Type } from '@/types'
 import fetchMultipleData from '@/services/fetchMultipleData'
-import SectionTitle from '@/components/containers/SectionTitle'
-
-const getData = async () => {
-  const urls = ['/type/1', '/type/2', '/type/3']
-
-  const dataNew = await fetchMultipleData<Type>(urls)
-
-  return dataNew
-}
 
 const TypeListing = async () => {
   const data = await TypesApi.getAll()
