@@ -3,11 +3,11 @@ import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 import TypeCard from '@/components/TypeCard'
 // import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
-import DualTypeChart from './DualTypeChart'
+import DualTypeChart from './_components/DualTypeChart'
 import formatName from '@/utils/formatName'
 import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import TypeSummaryRow from './TypeSummaryRow'
+import TypeSummaryRow from './_components/TypeSummaryRow'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 
 const getTypeData = async (typeName: string) => {

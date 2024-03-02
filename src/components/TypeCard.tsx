@@ -11,7 +11,7 @@ interface TypeCardProps {
 const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' }) => {
   const typeKey = typeName?.toLowerCase()
   const backgroundColour = 'bg-' + typeMapping[typeKey]
-  const targetLink = `/types/${typeName}`
+  const targetLink = `/type/${typeName}`
 
   if (variant === 'text') {
     const fontColour = 'text-' + typeMapping[typeKey]

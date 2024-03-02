@@ -95,7 +95,7 @@ const NavBar = () => {
     { path: '/berry', name: 'Berries' },
     { path: '/egg-group', name: 'Egg groups' },
     { path: '/nature', name: 'Natures' },
-    { path: '/types', name: 'Types' },
+    { path: '/type', name: 'Types' },
     { path: '/location', name: 'Locations' },
   ]
 
