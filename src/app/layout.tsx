@@ -25,7 +25,7 @@ export default function RootLayout({
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
           <div className="min-h-screen max-w-full bg-gray-950 text-white">
             <NavBar />
-            <div className="mx-4 pb-4 md:mx-8">{children}</div>
+            <div className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto">{children}</div>
           </div>
         </SkeletonTheme>
       </body>
