@@ -1,3 +1,7 @@
+import { Berry } from './Berries/Berry'
+import { BerryFirmness } from './Berries/BerryFirmness'
+import { BerryFlavour } from './Berries/BerryFlavour'
+
 import { EncounterCondition } from './Encounters/EncounterConditions'
 import { EncounterConditionValue } from './Encounters/EncounterConditionValues'
 import { EncounterMethod } from './Encounters/EncounterMethods'
@@ -57,6 +61,9 @@ import {
   GenerationSprite,
 } from './Computed'
 
+export * from './Berries/Berry'
+export * from './Berries/BerryFirmness'
+export * from './Berries/BerryFlavour'
 export * from './Encounters/EncounterConditions'
 export * from './Encounters/EncounterConditionValues'
 export * from './Encounters/EncounterMethods'
