@@ -4,6 +4,8 @@ import { Language } from './Language'
 import { Version } from '../Games/Version'
 import { Generation } from '../Games/Generations'
 import { VersionGroup } from '../Games/VersionGroups'
+import { EncounterMethod } from '../Encounters/EncounterMethods'
+import { EncounterConditionValue } from '../Encounters/EncounterConditionValues'
 
 export interface APIResource {
   url: string
@@ -21,9 +23,9 @@ export interface Effect {
 
 export interface Encounter {
   chance: number
-  condition_values: Array<NamedApiResource<TODO>>
+  condition_values: Array<NamedApiResource<EncounterConditionValue>>
   max_level: number
-  method: NamedApiResource<TODO>
+  method: NamedApiResource<EncounterMethod>
   min_level: number
 }
 

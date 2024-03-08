@@ -3,6 +3,13 @@ import fetchData from './fetchData'
 import trimUrl from '@/utils/trimUrl'
 import fetchMultipleData from './fetchMultipleData'
 
+export const LocationApi = {
+  getByName: async function (url: string) {
+    const response = await fetchData<Location>(url)
+    return response
+  },
+}
+
 export const RegionApi = {
   get: async function (url: string) {
     const response = await fetchData<Region>(trimUrl(url))
