@@ -1,8 +1,9 @@
 import { Generation } from '../Games/Generations'
 import { Move } from '../Moves/Moves'
-import { Pokemon } from './Pokemon'
 import { GenerationGameIndex, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
+import { Pokemon } from './Pokemon'
 
 export interface Type {
   id: number

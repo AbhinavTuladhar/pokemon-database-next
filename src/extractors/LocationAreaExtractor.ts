@@ -1,4 +1,5 @@
-import { LocationArea, Name, TransformedEncounter, GroupedLocationArea } from '@/types'
+import { GroupedLocationArea,LocationArea, Name, TransformedEncounter } from '@/types'
+
 import EncounterExtractor from './EncounterExtractor'
 
 const LocationAreaExtractor = (locationAreaData: LocationArea) => {

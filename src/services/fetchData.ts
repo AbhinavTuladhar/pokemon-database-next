@@ -1,7 +1,8 @@
-import { api } from './axiosConfig'
-import { AxiosRequestConfig } from 'axios'
-import baseURL from './baseUrl'
 import { URL } from 'next/dist/compiled/@edge-runtime/primitives/url'
+import { AxiosRequestConfig } from 'axios'
+
+import { api } from './axiosConfig'
+import baseURL from './baseUrl'
 
 // const fetchData = async <T>(url: string, options?: AxiosRequestConfig) => {
 //   try {

@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import TableRow from '@/components/containers/TableRow'
+
 import TableCell from '@/components/containers/TableCell'
+import TableRow from '@/components/containers/TableRow'
 
 interface TableColumnProps {
   columnIndex: number

@@ -1,14 +1,15 @@
 import { FC } from 'react'
 import Image from 'next/image'
+
 import BlueLink from '@/components/BlueLink'
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
-import TableRow from '@/components/containers/TableRow'
-import TableContainer from '@/components/containers/TableContainer'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableCell from '@/components/containers/TableCell'
+import formatName from '@/utils/formatName'
 
 interface PokemonTableProps {
   pokemonList: Array<string>

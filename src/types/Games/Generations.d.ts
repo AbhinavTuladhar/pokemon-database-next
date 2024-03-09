@@ -5,6 +5,7 @@ import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Type } from '../Pokemon/Types'
 import { Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { VersionGroup } from './VersionGroups'
 
 export interface Generation {

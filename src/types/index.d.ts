@@ -1,28 +1,21 @@
 import { Berry } from './Berries/Berry'
 import { BerryFirmness } from './Berries/BerryFirmness'
 import { BerryFlavour } from './Berries/BerryFlavour'
-
 import { EncounterCondition } from './Encounters/EncounterConditions'
 import { EncounterConditionValue } from './Encounters/EncounterConditionValues'
 import { EncounterMethod } from './Encounters/EncounterMethods'
-
-import { EvolutionChain, ChainLink, EvolutionDetail } from './Evolution/EvolutionChains'
+import { ChainLink, EvolutionChain, EvolutionDetail } from './Evolution/EvolutionChains'
 import { EvolutionTrigger } from './Evolution/EvolutionTriggers'
-
 import { Generation } from './Games/Generations'
 import { Pokedex } from './Games/Pokedexes'
 import { Version } from './Games/Version'
 import { VersionGroup } from './Games/VersionGroups'
-
 import { Item } from './Items/Item'
-
 import { LocationArea } from './Locations/LocationAreas'
 import { Location } from './Locations/Locations'
 import { PalParkArea } from './Locations/PalParkAreas'
 import { Region } from './Locations/Regions'
-
 import { Machine } from './Machines/Machines'
-
 import { MoveAilment } from './Moves/MoveAilments'
 import { MoveBattleStyle } from './Moves/MoveBattleStyles'
 import { MoveCategory } from './Moves/MoveCategories'
@@ -30,7 +23,6 @@ import { MoveDamageClass } from './Moves/MoveDamageClasses'
 import { MoveLearnMethods } from './Moves/MoveLearnMethod'
 import { Move } from './Moves/Moves'
 import { MoveTarget } from './Moves/MoveTargets'
-
 import { Ability } from './Pokemon/Abilities'
 import { Characteristic } from './Pokemon/Characteristics'
 import { EggGroup } from './Pokemon/EggGroups'
@@ -46,26 +38,24 @@ import { PokemonShape } from './Pokemon/PokemonShapes'
 import { PokemonSpecies } from './Pokemon/PokemonSpecies'
 import { Stats } from './Pokemon/Stats'
 import { Type } from './Pokemon/Types'
-
-import { Name, MachineVersionDetail } from './utils/Common'
-
+import { MachineVersionDetail,Name } from './utils/Common'
 import { NamedApiResource } from './utils/NamedResource'
-
 import {
-  TransformedMove,
-  TransformedSpecies,
-  TransformedType,
-  TransformedEncounter,
-  StatTable,
   EvolutionPokemon,
-  TransformedMoveLevel,
   GenerationSprite,
   GroupedLocationArea,
+  StatTable,
+  TransformedEncounter,
+  TransformedMove,
+  TransformedMoveLevel,
+  TransformedSpecies,
+  TransformedType,
 } from './Computed'
 
 export * from './Berries/Berry'
 export * from './Berries/BerryFirmness'
 export * from './Berries/BerryFlavour'
+export * from './Computed'
 export * from './Encounters/EncounterConditions'
 export * from './Encounters/EncounterConditionValues'
 export * from './Encounters/EncounterMethods'
@@ -103,6 +93,5 @@ export * from './Pokemon/PokemonShapes'
 export * from './Pokemon/PokemonSpecies'
 export * from './Pokemon/Stats'
 export * from './Pokemon/Types'
-export * from './utils/NamedResource'
 export * from './utils/Common'
-export * from './Computed'
+export * from './utils/NamedResource'

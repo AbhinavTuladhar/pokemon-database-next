@@ -1,8 +1,9 @@
-import { NamedApiResource } from '../utils/NamedResource'
-import { Pokemon, PokemonFormType } from './Pokemon'
-import { TODO } from '../utils/TODO'
-import { Name } from '../utils/Common'
 import { VersionGroup } from '../Games/VersionGroups'
+import { Name } from '../utils/Common'
+import { NamedApiResource } from '../utils/NamedResource'
+import { TODO } from '../utils/TODO'
+
+import { Pokemon, PokemonFormType } from './Pokemon'
 
 export interface PokemonForm {
   id: number

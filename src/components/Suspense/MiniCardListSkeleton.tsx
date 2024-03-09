@@ -1,6 +1,8 @@
 import { FC } from 'react'
-import MiniPokeCardSkeleton from './MiniPokeCardSkeleton'
+
 import SectionTitle from '../containers/SectionTitle'
+
+import MiniPokeCardSkeleton from './MiniPokeCardSkeleton'
 
 interface MiniCardListSkeletonProps {
   pokemonCount: number

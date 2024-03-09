@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import { FlavourText } from '@/types/utils/Common'
+
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableRow from '@/components/containers/TableRow'
+import { FlavourText } from '@/types/utils/Common'
 
 interface VersionDescription {
   versionName: string

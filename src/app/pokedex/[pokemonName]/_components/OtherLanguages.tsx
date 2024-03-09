@@ -1,11 +1,12 @@
 import { FC } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import languageNameMapping from '@/data/languageNameMapping'
-import { Genus, Name } from '@/types'
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableCell from '@/components/containers/TableCell'
+import languageNameMapping from '@/data/languageNameMapping'
+import { Genus, Name } from '@/types'
 
 const customOrder: Record<string, number> = {
   English: 1,

@@ -1,6 +1,7 @@
 import { Name } from '../utils/Common'
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { PokemonSpecies } from './PokemonSpecies'
 
 export interface PokemonShape {

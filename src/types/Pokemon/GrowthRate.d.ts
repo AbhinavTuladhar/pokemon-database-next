@@ -1,5 +1,6 @@
 import { Description } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { PokemonSpecies } from './PokemonSpecies'
 
 export interface GrowthRate {

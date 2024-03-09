@@ -1,7 +1,9 @@
 import { FC } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
 import { GenerationSprite } from '@/types'
+import formatName from '@/utils/formatName'
+
 import SpriteTableColumn from './SpriteTableColumn'
 
 interface SpriteTableProps {

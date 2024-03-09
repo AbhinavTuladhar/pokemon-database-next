@@ -1,6 +1,7 @@
 import { GenerationGameIndex, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { LocationArea } from './LocationAreas'
 import { Region } from './Regions'
 

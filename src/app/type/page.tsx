@@ -1,9 +1,9 @@
 import TypeCard from '@/components/TypeCard'
-import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import TypeChartFull from '@/components/TypeChartFull'
+import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import fetchMultipleData from '@/services/fetchMultipleData'
 import { TypesApi } from '@/services/TypesApi'
 import { Type } from '@/types'
-import fetchMultipleData from '@/services/fetchMultipleData'
 
 const TypeListing = async () => {
   const data = await TypesApi.getAll()

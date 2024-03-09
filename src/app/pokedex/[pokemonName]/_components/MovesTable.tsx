@@ -1,14 +1,15 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { TransformedMove } from '@/types'
-import TableContainer from '@/components/containers/TableContainer'
+
+import BlueLink from '@/components/BlueLink'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import formatName from '@/utils/formatName'
-import BlueLink from '@/components/BlueLink'
-import TypeCard from '@/components/TypeCard'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
+import TypeCard from '@/components/TypeCard'
+import { TransformedMove } from '@/types'
+import formatName from '@/utils/formatName'
 
 interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt?: number

@@ -1,12 +1,14 @@
 import React, { ReactNode } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
+import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import type { EvolutionDetail, EvolutionChain, ChainLink, EvolutionPokemon } from '@/types'
 import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
-import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
-import EvolutionDiv from './EvolutionDiv'
+import type { ChainLink, EvolutionChain, EvolutionDetail, EvolutionPokemon } from '@/types'
 import stringifyUrl from '@/utils/stringifyUrl'
+
+import EvolutionDiv from './EvolutionDiv'
 
 // A function to find all the keys of an object that are not null, false or ''
 const nonNullValues = (obj: EvolutionDetail): Partial<EvolutionDetail> => {

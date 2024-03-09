@@ -1,11 +1,12 @@
 import { FC } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableRow from '@/components/containers/TableRow'
 import { EncountersApi } from '@/services/EncountersApi'
 import { LocationAreaEncounter } from '@/types'
-import TableRow from '@/components/containers/TableRow'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableCell from '@/components/containers/TableCell'
+import formatName from '@/utils/formatName'
 
 interface LocationAndVersion {
   versionName: string

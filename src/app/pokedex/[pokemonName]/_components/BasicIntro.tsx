@@ -1,8 +1,9 @@
 import { FC } from 'react'
+
 import TypeCard from '@/components/TypeCard'
-import formatName from '@/utils/formatName'
 import idToGenerationMap from '@/data/idToGenerationMap'
 import { PokemonType } from '@/types'
+import formatName from '@/utils/formatName'
 
 interface IntroProps {
   id: number

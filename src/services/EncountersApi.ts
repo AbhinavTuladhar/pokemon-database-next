@@ -1,4 +1,5 @@
 import { LocationAreaEncounter } from '@/types'
+
 import fetchData from './fetchData'
 
 export const EncountersApi = {

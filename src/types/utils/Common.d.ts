@@ -1,11 +1,12 @@
-import { TODO } from './TODO'
-import { NamedApiResource } from './NamedResource'
-import { Language } from './Language'
-import { Version } from '../Games/Version'
-import { Generation } from '../Games/Generations'
-import { VersionGroup } from '../Games/VersionGroups'
-import { EncounterMethod } from '../Encounters/EncounterMethods'
 import { EncounterConditionValue } from '../Encounters/EncounterConditionValues'
+import { EncounterMethod } from '../Encounters/EncounterMethods'
+import { Generation } from '../Games/Generations'
+import { Version } from '../Games/Version'
+import { VersionGroup } from '../Games/VersionGroups'
+
+import { Language } from './Language'
+import { NamedApiResource } from './NamedResource'
+import { TODO } from './TODO'
 
 export interface APIResource {
   url: string

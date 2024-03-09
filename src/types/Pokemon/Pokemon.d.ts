@@ -1,18 +1,19 @@
-import { Resource } from '../utils/Resource'
-import { NamedApiResource } from '../utils/NamedResource'
+import { Generation } from '../Games/Generations'
+import { Version } from '../Games/Version'
+import { VersionGroup } from '../Games/VersionGroups'
+import { Item } from '../Items/Item'
+import { MoveLearnMethods } from '../Moves/MoveLearnMethod'
+import { Move } from '../Moves/Moves'
 import { VersionGameIndex } from '../utils/Common'
+import { NamedApiResource } from '../utils/NamedResource'
+import { Resource } from '../utils/Resource'
 import { TODO } from '../utils/TODO'
+
+import { Ability } from './Abilities'
 import { PokemonForm } from './PokemonForms'
 import { PokemonSpecies } from './PokemonSpecies'
-import { VersionGroup } from '../Games/VersionGroups'
-import { Ability } from './Abilities'
-import { Move } from '../Moves/Moves'
-import { MoveLearnMethods } from '../Moves/MoveLearnMethod'
-import { Generation } from '../Games/Generations'
 import { Stats } from './Stats'
 import { Type } from './Types'
-import { Version } from '../Games/Version'
-import { Item } from '../Items/Item'
 
 export interface Pokemon {
   abilities: Array<PokemonAbility>

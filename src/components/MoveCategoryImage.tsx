@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
+
 import getMoveImage from '@/utils/getMoveImage'
 
 interface MoveCategoryProps {

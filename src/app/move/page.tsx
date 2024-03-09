@@ -1,14 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
-import { MovesApi } from '@/services/MovesApi'
-import MoveExtractor from '@/extractors/MoveExtractor'
+
+import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import TableCell from '@/components/containers/TableCell'
-import formatName from '@/utils/formatName'
-import TypeCard from '@/components/TypeCard'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
+import TypeCard from '@/components/TypeCard'
+import MoveExtractor from '@/extractors/MoveExtractor'
+import { MovesApi } from '@/services/MovesApi'
+import formatName from '@/utils/formatName'
 
 const getUrlList = async () => {
   const response = await MovesApi.getAllUrls()

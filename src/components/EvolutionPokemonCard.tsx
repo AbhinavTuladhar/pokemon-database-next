@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { PokemonType } from '@/types'
-import TypeCard from '@/components/TypeCard'
+
 import BlueLink from '@/components/BlueLink'
+import TypeCard from '@/components/TypeCard'
+import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
 interface CardProps {

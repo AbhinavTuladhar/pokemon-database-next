@@ -1,8 +1,9 @@
 import { FC } from 'react'
+
 import BlueLink from '@/components/BlueLink'
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
 import { PokemonSpeciesVariety } from '@/types'
+import formatName from '@/utils/formatName'
 
 interface VarietiesProps {
   pokemonName: string

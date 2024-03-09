@@ -1,11 +1,11 @@
 import { FC, ReactNode } from 'react'
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableContainer from '@/components/containers/TableContainer'
-import { PokemonStat } from '@/types'
 
-import TableCellHeader from '@/components/containers/TableCellHeader'
+import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { PokemonStat } from '@/types'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
 const formatField = (field: string) => {

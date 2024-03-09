@@ -1,6 +1,7 @@
 import { Location, LocationArea, Region } from '@/types'
-import fetchData from './fetchData'
 import trimUrl from '@/utils/trimUrl'
+
+import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
 
 export const LocationApi = {

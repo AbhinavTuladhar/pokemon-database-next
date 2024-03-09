@@ -1,5 +1,5 @@
-import { Resource } from './Resource'
 import { Name } from './Common'
+import { Resource } from './Resource'
 
 export interface Language {
   id: number

@@ -1,4 +1,5 @@
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { PokemonSpecies } from './PokemonSpecies'
 
 export interface Gender {

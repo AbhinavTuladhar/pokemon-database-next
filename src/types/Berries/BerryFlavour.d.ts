@@ -1,6 +1,7 @@
 import { Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { Berry } from './Berry'
 
 export interface BerryFlavour {

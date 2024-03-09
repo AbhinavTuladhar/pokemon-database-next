@@ -1,4 +1,5 @@
 import { EvolutionDetail } from '@/types'
+
 import formatName from './formatName'
 
 const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>> | undefined) => {

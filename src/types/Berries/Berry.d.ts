@@ -1,6 +1,7 @@
 import { Item } from '../Items/Item'
 import { Type } from '../Pokemon/Types'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { BerryFirmness } from './BerryFirmness'
 import { BerryFlavour } from './BerryFlavour'
 

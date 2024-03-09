@@ -5,6 +5,7 @@ import { PalParkArea } from '../Locations/PalParkAreas'
 import { APIResource, Description, FlavourText, Name } from '../utils/Common'
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { EggGroup } from './EggGroups'
 import { GrowthRate } from './GrowthRate'
 import { Pokemon } from './Pokemon'

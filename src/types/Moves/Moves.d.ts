@@ -8,6 +8,7 @@ import { APIResource, MachineVersionDetail, Name, VerboseEffect } from '../utils
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { MoveAilment } from './MoveAilments'
 import { MoveCategory } from './MoveCategories'
 import { MoveDamageClass } from './MoveDamageClasses'

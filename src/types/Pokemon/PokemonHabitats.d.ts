@@ -1,4 +1,5 @@
 import { Name } from '../utils/Common'
+
 import { PokemonSpecies } from './PokemonSpecies'
 
 export interface PokemonHabitat {

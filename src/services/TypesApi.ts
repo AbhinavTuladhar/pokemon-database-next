@@ -1,7 +1,8 @@
 import { NamedApiResourceList, Type } from '@/types'
+import trimUrl from '@/utils/trimUrl'
+
 import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
-import trimUrl from '@/utils/trimUrl'
 
 export const TypesApi = {
   getAll: async function () {

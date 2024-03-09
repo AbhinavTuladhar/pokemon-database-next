@@ -4,6 +4,7 @@ import { Pokemon } from '../Pokemon/Pokemon'
 import { Name, VersionEncounterDetail } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { Location } from './Locations'
 
 export interface LocationArea {

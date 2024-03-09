@@ -1,11 +1,12 @@
 import { FC, Fragment } from 'react'
-import generationData from '@/data/generationData'
+
 import PokeCardContainer from '@/components/containers/PokeCardContainer'
+import PokeCard from '@/components/PokeCard'
+import generationData from '@/data/generationData'
+import PokemonExtractor from '@/extractors/PokemonExtractor'
 import fetchMultipleData from '@/services/fetchMultipleData'
 import { PokemonApi } from '@/services/PokemonApi'
 import { Pokemon } from '@/types'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import PokeCard from '@/components/PokeCard'
 import trimUrl from '@/utils/trimUrl'
 
 const getPokemonData = async (offset: number, limit: number) => {

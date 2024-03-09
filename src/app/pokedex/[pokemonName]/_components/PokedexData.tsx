@@ -1,14 +1,15 @@
 import { FC } from 'react'
+
 import BlueLink from '@/components/BlueLink'
 import SectionTitle from '@/components/containers/SectionTitle'
-import TypeCard from '@/components/TypeCard'
-import formatName from '@/utils/formatName'
-import fetchMultipleData from '@/services/fetchMultipleData'
-import { Pokedex, PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
-import trimUrl from '@/utils/trimUrl'
-import TableContainer from '@/components/containers/TableContainer'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
+import TypeCard from '@/components/TypeCard'
+import fetchMultipleData from '@/services/fetchMultipleData'
+import { Pokedex, PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
+import formatName from '@/utils/formatName'
+import trimUrl from '@/utils/trimUrl'
 
 const getGameData = async (urls: Array<string>) => {
   // Trim off the urls of the games

@@ -1,10 +1,11 @@
 import { FC } from 'react'
-import TableContainer from '@/components/containers/TableContainer'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
-import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
+import formatName from '@/utils/formatName'
 
 interface GameDescription {
   description: string

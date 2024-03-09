@@ -1,7 +1,8 @@
 import { Item } from '@/types'
+import trimUrl from '@/utils/trimUrl'
+
 import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
-import trimUrl from '@/utils/trimUrl'
 
 export const ItemApi = {
   get: async function (url: string) {

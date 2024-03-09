@@ -1,9 +1,11 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import TypeCard from './TypeCard'
-import formatName from '@/utils/formatName'
+
 import { PokemonType } from '@/types'
+import formatName from '@/utils/formatName'
+
 import BlueLink from './BlueLink'
+import TypeCard from './TypeCard'
 
 interface MiniCardProps {
   name: string

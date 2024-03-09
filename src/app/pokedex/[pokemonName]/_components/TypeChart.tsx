@@ -1,12 +1,13 @@
 import { FC } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
 import MiniTypeCard from '@/components/MiniTypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
-import { PokemonType } from '@/types'
-import { TypesApi } from '@/services/TypesApi'
 import TypeExtractor from '@/extractors/TypeExtractor'
+import { TypesApi } from '@/services/TypesApi'
+import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
+import formatName from '@/utils/formatName'
 import stringifyUrl from '@/utils/stringifyUrl'
 
 interface TypeRowProps {

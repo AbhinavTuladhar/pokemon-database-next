@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import formatName from '@/utils/formatName'
 
 interface TypeCardProps {

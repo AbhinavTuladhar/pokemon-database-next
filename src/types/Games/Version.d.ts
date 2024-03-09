@@ -1,5 +1,6 @@
 import { Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { VersionGroup } from './VersionGroups'
 
 export interface Version {

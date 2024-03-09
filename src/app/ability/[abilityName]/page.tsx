@@ -1,11 +1,13 @@
 import { FC, Suspense } from 'react'
+
+import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
-import AbilityEffect from './_components/AbilityEffect'
-import AbilityDescription from './_components/AbilityDescriptions'
 import formatName from '@/utils/formatName'
+
+import AbilityDescription from './_components/AbilityDescriptions'
+import AbilityEffect from './_components/AbilityEffect'
 import PokemonTable from './_components/PokemonTable'
-import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 
 interface AbilityPageParams {
   params: {

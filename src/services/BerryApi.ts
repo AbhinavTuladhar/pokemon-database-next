@@ -1,8 +1,9 @@
 import { NamedApiResourceList } from '@/types'
-import fetchData from './fetchData'
 import { Berry } from '@/types'
-import fetchMultipleData from './fetchMultipleData'
 import trimUrl from '@/utils/trimUrl'
+
+import fetchData from './fetchData'
+import fetchMultipleData from './fetchMultipleData'
 
 export const BerryApi = {
   getAll: async function () {

@@ -1,18 +1,20 @@
 import { FC } from 'react'
-import GameBox from './_components/GameBox'
-import LocationExtractor from '@/extractors/LocationExtractor'
-import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
-import generationToGameListMap from '@/data/generationToGameListMap'
-import formatName from '@/utils/formatName'
-import { LocationApi, LocationAreaApi } from '@/services/LocationApi'
-import { GroupedLocationArea } from '@/types'
 import Image from 'next/image'
+
 import BlueLink from '@/components/BlueLink'
-import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
+import generationToGameListMap from '@/data/generationToGameListMap'
+import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
+import LocationExtractor from '@/extractors/LocationExtractor'
+import { LocationApi, LocationAreaApi } from '@/services/LocationApi'
+import { GroupedLocationArea } from '@/types'
+import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
+
+import GameBox from './_components/GameBox'
 
 const getLocationData = async (name: string) => {
   const response = await LocationApi.getByName(name)

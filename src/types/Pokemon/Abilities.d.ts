@@ -3,6 +3,7 @@ import { VersionGroup } from '../Games/VersionGroups'
 import { Effect, Name, VerboseEffect } from '../utils/Common'
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { Pokemon } from './Pokemon'
 
 export interface Ability {

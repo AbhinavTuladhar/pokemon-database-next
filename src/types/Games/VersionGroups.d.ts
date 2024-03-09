@@ -1,6 +1,7 @@
 import { Region } from '../Locations/Regions'
 import { MoveLearnMethods } from '../Moves/MoveLearnMethod'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { Generation } from './Generations'
 import { Pokedex } from './Pokedexes'
 import { Version } from './Version'

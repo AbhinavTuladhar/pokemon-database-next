@@ -1,14 +1,17 @@
 import React, { Fragment } from 'react'
-import TypeCard from './TypeCard'
-import MiniTypeCard from './MiniTypeCard'
-import TypeMultiplierBox from './TypeMultiplierBox'
+
 import TypeExtractor from '@/extractors/TypeExtractor'
-import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
-import multiplierToString from '../utils/multiplierToString'
-import formatName from '@/utils/formatName'
 import fetchMultipleData from '@/services/fetchMultipleData'
 // import { Tooltip } from 'react-tooltip'
 import { Type } from '@/types'
+import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
+import formatName from '@/utils/formatName'
+
+import multiplierToString from '../utils/multiplierToString'
+
+import MiniTypeCard from './MiniTypeCard'
+import TypeCard from './TypeCard'
+import TypeMultiplierBox from './TypeMultiplierBox'
 
 const getData = async () => {
   const typeListing = [

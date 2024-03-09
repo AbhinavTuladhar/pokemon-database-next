@@ -1,14 +1,16 @@
 import React, { FC, Suspense } from 'react'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
-import TypeCard from '@/components/TypeCard'
+
 // import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
-import DualTypeChart from './_components/DualTypeChart'
-import formatName from '@/utils/formatName'
-import { TypesApi } from '@/services/TypesApi'
-import TypeExtractor from '@/extractors/TypeExtractor'
-import TypeSummaryRow from './_components/TypeSummaryRow'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
+import TypeCard from '@/components/TypeCard'
+import TypeExtractor from '@/extractors/TypeExtractor'
+import { TypesApi } from '@/services/TypesApi'
+import formatName from '@/utils/formatName'
+
+import DualTypeChart from './_components/DualTypeChart'
+import TypeSummaryRow from './_components/TypeSummaryRow'
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesApi.get(typeName)

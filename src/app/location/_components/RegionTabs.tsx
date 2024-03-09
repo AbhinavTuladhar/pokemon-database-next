@@ -1,7 +1,8 @@
 'use client'
 
 import { FC } from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { Tab, TabList, TabPanel,Tabs } from 'react-tabs'
+
 import BlueLink from '@/components/BlueLink'
 import formatName from '@/utils/formatName'
 

@@ -1,5 +1,6 @@
-import { NamedApiResource } from '../utils/NamedResource'
 import { Name } from '../utils/Common'
+import { NamedApiResource } from '../utils/NamedResource'
+
 import { Berry } from './Berry'
 
 export interface BerryFirmness {

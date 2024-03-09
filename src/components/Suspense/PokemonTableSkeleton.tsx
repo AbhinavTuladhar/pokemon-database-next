@@ -1,9 +1,10 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
+
 import SectionTitle from '../containers/SectionTitle'
+import TableCell from '../containers/TableCell'
 import TableContainer from '../containers/TableContainer'
 import TableRow from '../containers/TableRow'
-import TableCell from '../containers/TableCell'
-import Skeleton from 'react-loading-skeleton'
 
 const PokemonTableSkeleton = () => {
   return (

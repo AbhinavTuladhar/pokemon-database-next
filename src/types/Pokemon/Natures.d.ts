@@ -1,5 +1,6 @@
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { Stats } from './Stats'
 
 export interface Nature {

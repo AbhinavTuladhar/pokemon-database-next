@@ -1,7 +1,8 @@
 import { PokemonSpecies } from '@/types'
-import fetchData from './fetchData'
-import baseURL from './baseUrl'
 import trimUrl from '@/utils/trimUrl'
+
+import baseURL from './baseUrl'
+import fetchData from './fetchData'
 
 export const SpeciesApi = {
   getByFullUrl: async function (url: string) {

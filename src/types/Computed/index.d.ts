@@ -1,9 +1,10 @@
+import EncounterExtractor from '@/extractors/EncounterExtractor'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import EncounterExtractor from '@/extractors/EncounterExtractor'
-import type { PokemonType } from '../Pokemon/Pokemon'
+
 import { EvolutionDetail } from '../Evolution/EvolutionChains'
+import type { PokemonType } from '../Pokemon/Pokemon'
 
 type TransformedMove = ReturnType<typeof MoveExtractor>
 type TransformedSpecies = ReturnType<typeof SpeciesExtractor>
@@ -50,13 +51,13 @@ interface GenerationSprite {
 }
 
 export type {
-  TransformedMove,
-  TransformedSpecies,
-  TransformedType,
-  TransformedEncounter,
-  StatTable,
   EvolutionPokemon,
-  TransformedMoveLevel,
   GenerationSprite,
   GroupedLocationArea,
+  StatTable,
+  TransformedEncounter,
+  TransformedMove,
+  TransformedMoveLevel,
+  TransformedSpecies,
+  TransformedType,
 }

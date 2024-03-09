@@ -1,8 +1,9 @@
 import { Move, NamedApiResourceList } from '@/types'
+import stringifyUrl from '@/utils/stringifyUrl'
+import trimUrl from '@/utils/trimUrl'
+
 import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
-import trimUrl from '@/utils/trimUrl'
-import stringifyUrl from '@/utils/stringifyUrl'
 
 export const MovesApi = {
   get: async function (name: string) {

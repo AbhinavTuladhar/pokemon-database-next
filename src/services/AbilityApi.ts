@@ -1,8 +1,9 @@
 import { Ability, NamedApiResourceList } from '@/types'
-import fetchData from './fetchData'
 import stringifyUrl from '@/utils/stringifyUrl'
-import fetchMultipleData from './fetchMultipleData'
 import trimUrl from '@/utils/trimUrl'
+
+import fetchData from './fetchData'
+import fetchMultipleData from './fetchMultipleData'
 
 export const AbilityApi = {
   get: async function (name: string) {

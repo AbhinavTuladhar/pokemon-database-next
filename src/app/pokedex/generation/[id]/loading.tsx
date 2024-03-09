@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import PokeCardContainer from '@/components/containers/PokeCardContainer'
 import PokeCardSkeleton from '@/components/Suspense/PokeCardSkeleton'
 

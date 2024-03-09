@@ -2,6 +2,7 @@ import { MoveDamageClass } from '../Moves/MoveDamageClasses'
 import { Move } from '../Moves/Moves'
 import { APIResource, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { Characteristic } from './Characteristics'
 import { Nature } from './Natures'
 

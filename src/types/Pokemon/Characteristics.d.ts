@@ -1,5 +1,6 @@
 import { Description } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
+
 import { Stats } from './Stats'
 
 export interface Characteristic {

@@ -1,11 +1,12 @@
 import { FC } from 'react'
+
 import MiniTypeCard from '@/components/MiniTypeCard'
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
-import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+import formatName from '@/utils/formatName'
 // import { Tooltip } from 'react-tooltip'
 import multiplierToString from '@/utils/multiplierToString'
-import formatName from '@/utils/formatName'
+import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
 interface DualTypeChartProps {
   typeName: string

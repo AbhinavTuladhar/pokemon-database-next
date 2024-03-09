@@ -1,4 +1,4 @@
-import { Type, TransformedType } from '@/types'
+import { TransformedType,Type } from '@/types'
 
 interface MappingInterface {
   [key: string]: number

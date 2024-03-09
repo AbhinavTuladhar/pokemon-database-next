@@ -1,6 +1,7 @@
 import RegionExtractor from '@/extractors/RegionExtractor'
 import { RegionApi } from '@/services/LocationApi'
 import { NamedApiResource } from '@/types'
+
 import RegionTabs from './_components/RegionTabs'
 
 const getRegionData = async (urls: Array<string>) => {

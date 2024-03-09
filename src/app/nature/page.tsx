@@ -1,9 +1,9 @@
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableCell from '@/components/containers/TableCell'
-import { NatureApi } from '@/services/NatureApi'
 import NatureExtractor from '@/extractors/NatureExtractor'
+import { NatureApi } from '@/services/NatureApi'
 import formatName from '@/utils/formatName'
 
 const getNatures = async () => {

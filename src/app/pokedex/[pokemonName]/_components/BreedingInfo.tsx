@@ -1,12 +1,13 @@
 import { FC } from 'react'
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableContainer from '@/components/containers/TableContainer'
-import formatName from '@/utils/formatName'
+
 import BlueLink from '@/components/BlueLink'
-import { EggGroup, NamedApiResource } from '@/types'
-import TableRow from '@/components/containers/TableRow'
-import TableCellHeader from '@/components/containers/TableCellHeader'
+import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
+import { EggGroup, NamedApiResource } from '@/types'
+import formatName from '@/utils/formatName'
 
 interface BreedingInfoProps {
   egg_groups: Array<NamedApiResource<EggGroup>>

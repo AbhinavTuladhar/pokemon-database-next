@@ -1,14 +1,15 @@
+import Image from 'next/image'
+
+import SectionTitle from '@/components/containers/SectionTitle'
+import TableCell from '@/components/containers/TableCell'
+import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
 import BerryExtractor from '@/extractors/BerryExtractor'
 import ItemExtractor from '@/extractors/ItemExtractor'
 import { BerryApi } from '@/services/BerryApi'
 import { ItemApi } from '@/services/ItemApi'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableCell from '@/components/containers/TableCell'
-import Image from 'next/image'
 import formatName from '@/utils/formatName'
-import SectionTitle from '@/components/containers/SectionTitle'
 
 const getBerryUrls = async () => {
   const response = await BerryApi.getAll()

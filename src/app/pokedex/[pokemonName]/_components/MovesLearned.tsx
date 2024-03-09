@@ -1,10 +1,12 @@
 import { FC } from 'react'
+
 import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
-import { PokemonMove, PokemonMoveVersion, NamedApiResource, Move, TransformedMove } from '@/types'
-import stringifyUrl from '@/utils/stringifyUrl'
-import { MovesApi } from '@/services/MovesApi'
 import MoveExtractor from '@/extractors/MoveExtractor'
+import { MovesApi } from '@/services/MovesApi'
+import { Move, NamedApiResource, PokemonMove, PokemonMoveVersion, TransformedMove } from '@/types'
+import formatName from '@/utils/formatName'
+import stringifyUrl from '@/utils/stringifyUrl'
+
 import MovesTable from './MovesTable'
 
 interface MoveData {

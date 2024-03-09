@@ -1,8 +1,8 @@
-import { Encounter, PokemonEncounter } from '@/types'
 import {
   gameNameToGenerationMap,
   gameNameToGenerationMapInternal,
 } from '@/data/gameNameToGenerationMap'
+import { Encounter, PokemonEncounter } from '@/types'
 
 const DetailedEncounterExtractor = (data: Encounter) => {
   const { chance, condition_values, max_level, min_level, method } = data

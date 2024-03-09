@@ -1,10 +1,12 @@
 import { FC } from 'react'
+
+import PokemonExtractor from '@/extractors/PokemonExtractor'
+import fetchMultipleData from '@/services/fetchMultipleData'
+import { PokemonApi } from '@/services/PokemonApi'
+import { NamedApiResource, Pokemon } from '@/types'
+
 import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
-import fetchMultipleData from '@/services/fetchMultipleData'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { NamedApiResource, Pokemon } from '@/types'
-import { PokemonApi } from '@/services/PokemonApi'
 
 interface MiniCardListProps {
   title: string

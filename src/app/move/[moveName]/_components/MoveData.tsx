@@ -1,13 +1,14 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import TypeCard from '@/components/TypeCard'
-import TableContainer from '@/components/containers/TableContainer'
+
+import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
-import SectionTitle from '@/components/containers/SectionTitle'
-import formatName from '@/utils/formatName'
+import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
+import TypeCard from '@/components/TypeCard'
+import formatName from '@/utils/formatName'
 
 interface MoveDataProps {
   moveType: string

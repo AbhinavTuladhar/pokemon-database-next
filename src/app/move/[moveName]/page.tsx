@@ -1,15 +1,17 @@
 import { FC, Suspense } from 'react'
+
+import MiniCardList from '@/components/MiniCardList'
+import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 import formatName from '@/utils/formatName'
+
+import GameDescription from './_components/GameDescription'
+import MachineRecord from './_components/MachineRecord'
 import MoveData from './_components/MoveData'
 import MoveEffect from './_components/MoveEffect'
 import MoveTarget from './_components/MoveTarget'
-import GameDescription from './_components/GameDescription'
 import OtherLanguages from './_components/OtherLanguages'
-import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
-import MiniCardList from '@/components/MiniCardList'
-import MachineRecord from './_components/MachineRecord'
 
 const getMoveData = async (moveName: string) => {
   const response = await MovesApi.get(moveName)

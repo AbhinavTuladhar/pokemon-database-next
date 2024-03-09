@@ -1,11 +1,12 @@
 import { Item } from '../Items/Item'
+import { Location } from '../Locations/Locations'
 import { Move } from '../Moves/Moves'
 import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Type } from '../Pokemon/Types'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
+
 import { EvolutionTrigger } from './EvolutionTriggers'
-import { Location } from '../Locations/Locations'
 
 export interface EvolutionChain {
   id: number

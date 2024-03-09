@@ -1,12 +1,13 @@
 import React from 'react'
-import { AbilityApi } from '@/services/AbilityApi'
-import TableRow from '@/components/containers/TableRow'
+
+import BlueLink from '@/components/BlueLink'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
-import AbilityExtractor from '@/extractors/AbilityExtractor'
 import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
+import AbilityExtractor from '@/extractors/AbilityExtractor'
+import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
-import BlueLink from '@/components/BlueLink'
 
 const getUrlList = async () => {
   const response = await AbilityApi.getAllUrls()
