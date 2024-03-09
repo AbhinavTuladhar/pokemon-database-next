@@ -55,10 +55,12 @@ import {
   TransformedMove,
   TransformedSpecies,
   TransformedType,
+  TransformedEncounter,
   StatTable,
   EvolutionPokemon,
   TransformedMoveLevel,
   GenerationSprite,
+  GroupedLocationArea,
 } from './Computed'
 
 export * from './Berries/Berry'

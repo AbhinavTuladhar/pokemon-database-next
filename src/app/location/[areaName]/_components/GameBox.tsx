@@ -28,9 +28,9 @@ const gameMapping: Record<string, IconColourMap> = {
   soulsilver: { icon: 'SS', backgroundColour: 'bg-indigo-300' },
 
   black: { icon: 'B', backgroundColour: 'bg-gray-900' },
-  white: { icon: 'W', backgroundColour: 'bg-gray-400' },
+  white: { icon: 'W', backgroundColour: 'bg-gray-400 !text-black' },
   'black-2': { icon: 'B2', backgroundColour: 'bg-gray-900' },
-  'white-2': { icon: 'W2', backgroundColour: 'bg-gray-400' },
+  'white-2': { icon: 'W2', backgroundColour: 'bg-gray-400 !text-black' },
 
   x: { icon: 'X', backgroundColour: 'bg-blue-500' },
   y: { icon: 'Y', backgroundColour: 'bg-red-500' },
@@ -46,14 +46,11 @@ interface GameBoxProps {
 const GameBox: FC<GameBoxProps> = ({ gameName, activeFlag }) => {
   const { icon, backgroundColour } = gameMapping[gameName]
 
-  const activeClassName = `${backgroundColour} text-gray-500`
+  const activeClassName = `${backgroundColour} text-white`
 
   return (
     <div
-      className={classNames(
-        'flex h-14 w-14 items-center justify-center border border-slate-200 text-lg font-bold',
-        { activeClassName: activeFlag },
-      )}
+      className={`font-bold, flex h-[67px] w-14 items-center justify-center border border-slate-200 text-lg ${activeFlag ? activeClassName : 'text-gray-500'}`}
     >
       {icon}
     </div>

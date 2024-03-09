@@ -18,7 +18,7 @@ const EncounterExtractor = (encounterData: PokemonEncounter) => {
 
   // To get the icon url
   const idNumber = parseInt(pokemonUrl.match(/\/(\d+)\/$/)![1])
-  const iconSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/icons/${idNumber}.png`
+  const iconSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/ultra-sun-ultra-moon/${idNumber}.png`
 
   const toReturn = version_details.map((row) => {
     const {
