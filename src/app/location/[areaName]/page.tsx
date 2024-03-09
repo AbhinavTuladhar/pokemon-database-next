@@ -12,32 +12,7 @@ import TableRow from '@/components/containers/TableRow'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
-import EncounterRow from './_components/EncounterRow'
-import EncounterCell from './_components/EncounterCell'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
-// import { Tooltip } from 'react-tooltip'
-
-// @ts-ignore
-// const TableCell = ({ value, isHeader }) => {
-//   return (
-//     <div
-//       className={`${isHeader && 'bg-gray-900 font-bold'} table-cell h-14 whitespace-nowrap border-t border-slate-200 px-4 text-center align-middle`}
-//     >
-//       {value}
-//     </div>
-//   )
-// }
-
-// // @ts-ignore
-// const TableRow = ({ rowIndex, rowData }) => {
-//   return (
-//     <div className="table-row">
-//       {rowData.map(({ key, value }, index) => (
-//         <TableCell value={value} key={key} index={index} isHeader={rowIndex === 0} />
-//       ))}
-//     </div>
-//   )
-// }
 
 const getLocationData = async (name: string) => {
   const response = await LocationApi.getByName(name)
@@ -235,9 +210,6 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
                   {headerRow}
                   {tableRows}
                 </TableContainer>
-                {/* <div className="w-full overflow-auto lg:w-7/12">
-                  <div className="mx-auto table border-b border-slate-200">{tableRows}</div>
-                </div> */}
               </div>
             </div>
           )
