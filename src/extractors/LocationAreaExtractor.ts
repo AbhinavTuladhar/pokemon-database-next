@@ -1,11 +1,13 @@
-import { GroupedLocationArea,LocationArea, Name, TransformedEncounter } from '@/types'
+import { GroupedLocationArea, LocationArea, Name, TransformedEncounter } from '@/types'
 
 import EncounterExtractor from './EncounterExtractor'
 
 const LocationAreaExtractor = (locationAreaData: LocationArea) => {
-  const { names, pokemon_encounters } = locationAreaData
-  // For getting the 'proper' sub location name
-  const properLocationAreaName = (names.find((name) => name.language.name === 'en') as Name).name
+  const { names, pokemon_encounters, name } = locationAreaData
+  // For getting the 'proper' sub location name. Some locations don't have a proper English name,
+  // so we use the raw name as a fallback.
+  const properLocationAreaName =
+    (names.find((name) => name.language.name === 'en') as Name)?.name || name
   // Use a flat map to convert the array of array of objects to just an array of objects.
   const encounterDetails = pokemon_encounters.map(EncounterExtractor).flatMap((row) => row)
 

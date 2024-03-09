@@ -36,6 +36,11 @@ const gameMapping: Record<string, IconColourMap> = {
   y: { icon: 'Y', backgroundColour: 'bg-red-500' },
   'omega-ruby': { icon: 'OR', backgroundColour: 'bg-red-500' },
   'alpha-sapphire': { icon: 'AS', backgroundColour: 'bg-blue-500' },
+
+  sun: { icon: 'S', backgroundColour: 'bg-orange-400' },
+  moon: { icon: 'M', backgroundColour: 'bg-blue-500' },
+  'ultra-sun': { icon: 'US', backgroundColour: 'bg-orange-600' },
+  'ultra-moon': { icon: 'UM', backgroundColour: 'bg-cyan-600' },
 }
 
 interface GameBoxProps {

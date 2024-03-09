@@ -7,6 +7,7 @@ const generationToGameListMap: Record<string, string[]> = {
   'Generation 4 remake': ['heartgold', 'soulsilver'],
   'Generation 5': ['black', 'white', 'black-2', 'white-2'],
   'Generation 6': ['x', 'y'],
+  'Generation 7': ['sun', 'moon', 'ultra-sun', 'ultra-moon'],
 }
 
 export default generationToGameListMap
