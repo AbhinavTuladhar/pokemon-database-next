@@ -36,11 +36,17 @@ const SpriteTableColumn: React.FC<TableColumnProps> = ({ columnIndex, images, ti
       {images.map((image, imageIndex) => {
         return (
           <div
-            className="grid h-36 w-40 place-items-center border border-slate-300 object-contain p-2"
+            className="grid h-36 w-40 place-items-center border border-slate-300 object-center p-2"
             key={imageIndex}
           >
             {image ? (
-              <Image src={image} width={120} height={120} alt="test" />
+              <Image
+                src={image}
+                width={120}
+                height={120}
+                alt="test"
+                className="aspect-square object-contain"
+              />
             ) : (
               <span className="text-4xl"> — </span>
             )}

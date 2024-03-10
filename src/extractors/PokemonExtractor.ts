@@ -16,6 +16,7 @@ const PokemonExtractor = (data: Pokemon) => {
       other: {
         'official-artwork': { front_default, front_shiny },
         home: { front_default: homeSprite },
+        showdown: { front_default: animatedSprite, front_shiny: animatedShinySprite },
       },
       versions: {
         'generation-i': {
@@ -81,6 +82,7 @@ const PokemonExtractor = (data: Pokemon) => {
     },
     { generation: 'Generation 7', frontSprite: gameSprite, shinySprite: sevenGenthShinySprite },
     { generation: 'Icon', frontSprite: icon, shinySprite: null },
+    { generation: 'Animated', frontSprite: animatedSprite, shinySprite: animatedShinySprite },
   ]
 
   const nationalNumber = parseInt(speciesLink.match(/\/(\d+)\/$/)![1])
