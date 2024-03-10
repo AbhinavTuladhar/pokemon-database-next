@@ -1,9 +1,56 @@
 import React from 'react'
 import Image from 'next/image'
+import type { Variants } from 'framer-motion'
+
+import { MotionDiv, MotionSpan } from '@/components/Motion'
+
+const fadeInVariant: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      staggerChildren: 0.4,
+      ease: 'easeOut',
+    },
+  },
+}
+
+const welcomeVariant: Variants = {
+  initial: { y: '10rem', opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { staggerChildren: 0.15, ease: 'easeOut', duration: 0.8 },
+  },
+}
+
+const entryVariantLeft: Variants = {
+  initial: { x: '-10rem', opacity: 0 },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: { staggerChildren: 0.25, ease: 'easeOut', duration: 1 },
+  },
+}
+
+const entryVariantRight: Variants = {
+  initial: { x: '10rem', opacity: 0 },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: { staggerChildren: 0.3, ease: 'easeInOut', duration: 0.8, delay: 0.4 },
+  },
+}
 
 const ImageColumn = () => {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-y-10 md:w-4/12">
+    <MotionDiv
+      variants={entryVariantRight}
+      className="flex h-full w-full flex-col items-center justify-center gap-y-10 md:w-4/12"
+    >
       <Image
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif"
         className="h-40 flex-grow"
@@ -18,23 +65,23 @@ const ImageColumn = () => {
         width={173}
         height={160}
       />
-    </div>
+    </MotionDiv>
   )
 }
 
 const TitleText = () => {
   return (
     <>
-      <div>
-        <span className="text-center">
+      <MotionDiv variants={entryVariantLeft} initial="initial" animate="animate">
+        <MotionSpan className="text-center" variants={entryVariantLeft}>
           <span className="text-5xl font-bold">Welcome to</span>
           <br />
           <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-5xl font-bold text-transparent">
             Pokémon Database
           </span>
-        </span>
+        </MotionSpan>
         <small className="text-xs">s clone!</small>
-      </div>
+      </MotionDiv>
     </>
   )
 }
@@ -42,38 +89,43 @@ const TitleText = () => {
 const InformativeText = () => {
   return (
     <>
-      <span>
+      <MotionSpan variants={entryVariantLeft}>
         This is a simple clone of the{' '}
         <a href="https://pokemondb.net/" className="text-blue-500">
           {' '}
           Pokemon Database website.{' '}
         </a>
-      </span>
-      <span>This was made using ReactJS, React Router, Tailwind CSS and some other libraries.</span>
-      <span>
+      </MotionSpan>
+      <MotionSpan variants={entryVariantLeft}>
+        This was made using ReactJS, React Router, Tailwind CSS and some other libraries.
+      </MotionSpan>
+      <MotionSpan variants={entryVariantLeft}>
         You can view the source code{' '}
         <a href="https://github.com/AbhinavTuladhar/Pokemon-App" className="text-blue-500">
           {' '}
           here.{' '}
         </a>
-      </span>
+      </MotionSpan>
     </>
   )
 }
 
 const WelcomePage = () => {
   return (
-    <div>
-      <div className="flex flex-row items-center justify-center gap-4 py-4 md:flex-row">
-        <div>
-          <TitleText />
-          <div className="flex flex-col space-y-4 py-4">
-            <InformativeText />
-          </div>
-        </div>
-        <ImageColumn />
-      </div>
-    </div>
+    <MotionDiv
+      variants={welcomeVariant}
+      initial="initial"
+      animate="animate"
+      className="flex flex-row items-center justify-center gap-4 overflow-x-hidden py-4 md:flex-row"
+    >
+      <MotionDiv variants={entryVariantLeft}>
+        <TitleText />
+        <MotionDiv variants={entryVariantLeft} className="flex flex-col space-y-4 py-4">
+          <InformativeText />
+        </MotionDiv>
+      </MotionDiv>
+      <ImageColumn />
+    </MotionDiv>
   )
 }
 
