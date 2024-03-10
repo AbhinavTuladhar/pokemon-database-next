@@ -26,7 +26,7 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
   return (
     <main>
       <h1 className="mt-4 text-center text-5xl font-bold">{formatName(abilityName)} (ability)</h1>
-      <div className="grid grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-20 gap-y-4 lg:grid-cols-2">
         <div>
           <AbilityEffect entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />

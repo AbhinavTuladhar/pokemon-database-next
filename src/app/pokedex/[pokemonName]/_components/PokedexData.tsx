@@ -6,18 +6,32 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TypeCard from '@/components/TypeCard'
+import pokedexToGameMap from '@/data/pokedexToGameMap'
 import fetchMultipleData from '@/services/fetchMultipleData'
 import { Pokedex, PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 import trimUrl from '@/utils/trimUrl'
 
-const getGameData = async (urls: Array<string>) => {
-  // Trim off the urls of the games
-  const trimmedUrls = urls.map(trimUrl)
-
-  const response = await fetchMultipleData<Pokedex>(trimmedUrls)
-  return response
-}
+const ignoredPokedexes = [
+  'conquest-gallery',
+  'national',
+  'original-melemele',
+  'original-akala',
+  'original-ulaula',
+  'original-poni',
+  'updated-melemele',
+  'updated-akala',
+  'updated-ulaula',
+  'updated-poni',
+  'letsgo-kanto',
+  'galar',
+  'isle-of-armor',
+  'crown-tundra',
+  'hisui',
+  'paldea',
+  'kitakami',
+  'blueberry',
+]
 
 interface DexDataProps {
   types: Array<PokemonType>
@@ -29,7 +43,7 @@ interface DexDataProps {
   nationalNumber: number
 }
 
-const PokeDexData: FC<DexDataProps> = async ({
+const PokeDexData: FC<DexDataProps> = ({
   types,
   genus,
   height,
@@ -38,19 +52,6 @@ const PokeDexData: FC<DexDataProps> = async ({
   pokedex_numbers,
   nationalNumber,
 }) => {
-  /*
-  This is for omitting entries for national dex and conquest gallery.
-  */
-  const excludedRegions = ['national', 'conquest-gallery']
-
-  // Now we find the corresponding URLs of the regions.
-  // This is for extracting the names of the corresponding games.
-  // Omit the national and conquest gallery pokedex entries.
-  const versionURLs = pokedex_numbers
-    ?.filter((entry) => !excludedRegions.includes(entry.pokedex.name))
-    .map((entry) => entry.pokedex.url)
-
-  const gameData = await getGameData(versionURLs)
   const formattedNationalNumber = `${'00' + nationalNumber}`.slice(-3)
 
   // This is for unit conversion of the height and weight.
@@ -84,48 +85,29 @@ const PokeDexData: FC<DexDataProps> = async ({
   })
   const abilityListFinal = <ol className="list-inside list-none">{abilityList}</ol>
 
-  // Now dealing with the Pokedex numbers for each region.
-  // Omit the national region number and conquest gallery numbers, for the reasons specified before.
-  const nonNationalValues = pokedex_numbers?.filter(
-    (entry) => !excludedRegions.includes(entry.pokedex.name),
-  )
-  const regionNumberValues = nonNationalValues?.map((entry, index) => {
-    const regionName = entry.pokedex.name
-    const entryNumber = entry.entry_number.toString().padStart(4, '0')
-    return { id: index, number: entryNumber, region: regionName }
-  })
-
-  /*
-  Now combining the regionNumberValues and gameData.
-  This will combine two objects: one object contains the name of the region, while the other contains the name of the games.
-  */
-  const properGameData = regionNumberValues?.map((obj1) => {
-    const obj2 = gameData?.find((obj2) => obj2?.name === obj1?.region)
-    return {
-      dexNumber: obj1.number,
-      gameNames: obj2?.version_groups.map((version) => version.name),
-    }
-  })
-
-  // Now format the text of the properGameData object.
-  const finalGameData = properGameData?.map((game) => {
-    const gameNames = game?.gameNames
-    const gameList = gameNames?.map((item) => {
-      const individualGames = item.split('-').map((game) => game.toLowerCase())
-      const formattedIndividualGames = individualGames?.map(
-        (game) => game.charAt(0).toUpperCase() + game.slice(1),
-      )
-      const gameListTemp = formattedIndividualGames?.join(' / ')
-      return gameListTemp
+  const regionLevelData = pokedex_numbers
+    .filter((pokedex) => {
+      const {
+        pokedex: { name: pokedexName },
+      } = pokedex
+      return !ignoredPokedexes.includes(pokedexName)
     })
-    return { dexNumber: game.dexNumber, game: gameList?.join(' / ') }
-  })
+    .map((pokedex) => {
+      const {
+        entry_number,
+        pokedex: { name: pokedexName },
+      } = pokedex
+      const paddedNumber = entry_number.toString().padStart(4, '0')
+      const gameNames = pokedexToGameMap[pokedexName] ?? 'Not implemented'
 
-  const regionNumberList = finalGameData?.map((number, index) => {
+      return { number: paddedNumber, games: gameNames }
+    })
+
+  const regionNumberList = regionLevelData.map((entry, index) => {
     return (
       <div className="table-row" key={index}>
-        <div className="table-cell px-1">{number.dexNumber}</div>
-        <div className="table-cell px-1 brightness-90">{number.game}</div>
+        <div className="table-cell px-1">{entry.number}</div>
+        <div className="table-cell px-1 text-sm text-gray-300">{`(${entry.games})`}</div>
       </div>
     )
   })

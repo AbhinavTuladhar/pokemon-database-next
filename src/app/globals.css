@@ -22,7 +22,7 @@
   background-color: var(--link-colour);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
 .fancy-link:hover {

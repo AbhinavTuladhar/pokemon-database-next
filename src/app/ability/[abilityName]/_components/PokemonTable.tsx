@@ -61,13 +61,13 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
 
     return (
       <TableRow key={rowIndex}>
-        <TableCell>
+        <TableCell extraClassName="w-[1%] whitespace-nowrap !pr-4">
           <div className="flex items-center">
             {gameSprite && <Image src={gameSprite} alt={name} width={60} height={56} />}
             <span> {properId} </span>
           </div>
         </TableCell>
-        <TableCell extraClassName="w-[1%] whitespace-nowrap">
+        <TableCell>
           <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
         </TableCell>
         <TableCell>
