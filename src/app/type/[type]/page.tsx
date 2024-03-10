@@ -120,7 +120,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           typeName={formattedType}
         />
       </section>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
+      <div className="grid grid-cols-1 justify-between gap-x-20 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
         <div className="space-y-10">
           <div>
             <ProsAndConsInfo

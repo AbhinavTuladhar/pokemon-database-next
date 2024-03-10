@@ -219,7 +219,7 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
         })
         return (
           <section key={subIndex}>
-            <h1 className="mt-4 text-3xl font-bold">{`${generation} - ${subLocationName}`}</h1>
+            <h2 className="mt-4 text-3xl font-bold">{`${generation} - ${formatName(subLocationName)}`}</h2>
             <div key={subIndex}> {encounterMethodDiv} </div>
           </section>
         )

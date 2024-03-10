@@ -33,7 +33,7 @@ const formatRegionResponse = (data: Awaited<ReturnType<typeof getRegionData>>) =
 
 const LocationList = async () => {
   const locationUrls = Array.from(
-    { length: 8 },
+    { length: 7 },
     (_, index) => `https://pokeapi.co/api/v2/region/${index + 1}`,
   )
 
