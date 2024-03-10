@@ -6,6 +6,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { Tooltip } from '@/components/ReactTooltip'
 import generationToGameListMap from '@/data/generationToGameListMap'
 import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
 import LocationExtractor from '@/extractors/LocationExtractor'
@@ -236,15 +237,15 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
   return (
     <main>
-      <h1 className="text-center text-3xl font-bold">{formatName(areaName)}</h1>
+      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(areaName)}</h1>
 
-      {/* <>
+      <>
         {tooltipData.map((row, index) => (
           <Tooltip anchorSelect={row.id} place="bottom" key={index}>
             {row.text}
           </Tooltip>
         ))}
-      </> */}
+      </>
 
       {/* For rendering skeleton when the content has not been loaded */}
       <>

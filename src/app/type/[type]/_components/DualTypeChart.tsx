@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, JSX } from 'react'
 
 import MiniTypeCard from '@/components/MiniTypeCard'
+import { Tooltip } from '@/components/ReactTooltip'
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import formatName from '@/utils/formatName'
-// import { Tooltip } from 'react-tooltip'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
@@ -43,7 +43,7 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
     'fairy',
   ]
 
-  const toolTips = []
+  const toolTips: Array<JSX.Element> = []
 
   // Calculate all the dual-type combinations possible
   const typeRows = typeList.flatMap((type) => {
@@ -82,11 +82,11 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
           : 1
       const multiplierString = multiplierToString(multiplierValue)
 
-      // toolTips.push(
-      //   <Tooltip anchorSelect={`#${firstType || 'a'}-${secondType || 'b'}`}>
-      //     <span className="text-xs">{`${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`}</span>
-      //   </Tooltip>,
-      // )
+      toolTips.push(
+        <Tooltip anchorSelect={`#${firstType || 'a'}-${secondType || 'b'}`} key={cellIndex}>
+          <span className="text-xs">{`${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`}</span>
+        </Tooltip>,
+      )
 
       if (cellIndex === 0) {
         return <TypeCard typeName={type} variant="big" key={cellIndex} />
@@ -114,7 +114,7 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
         <div className="inline-flex flex-col">
           <div className="flex flex-row gap-x-px">{firstRow}</div>
           <>{tableRows}</>
-          {/* <>{toolTips}</> */}
+          <>{toolTips}</>
         </div>
       </div>
     </>

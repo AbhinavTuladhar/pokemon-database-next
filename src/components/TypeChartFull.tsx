@@ -2,14 +2,15 @@ import React, { Fragment } from 'react'
 
 import TypeExtractor from '@/extractors/TypeExtractor'
 import fetchMultipleData from '@/services/fetchMultipleData'
-// import { Tooltip } from 'react-tooltip'
 import { Type } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 
 import multiplierToString from '../utils/multiplierToString'
 
+import NoSSR from './containers/NoSSR'
 import MiniTypeCard from './MiniTypeCard'
+import { Tooltip } from './ReactTooltip'
 import TypeCard from './TypeCard'
 import TypeMultiplierBox from './TypeMultiplierBox'
 
@@ -125,25 +126,25 @@ const TypeChartFull = async () => {
     )
   })
 
-  // const tooltips = typeData?.map((type, index) => {
-  //   const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
+  const tooltips = typeData?.map((type, index) => {
+    const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
 
-  //   return defenceInfo?.map((defendingType, innerIndex) => {
-  //     const { typeName: attackingTypeName, multiplier } = defendingType
-  //     const effectString = multiplierToString(multiplier)
-  //     return (
-  //       <Tooltip
-  //         anchorSelect={`#${attackingTypeName}-${defendingTypeName}`}
-  //         key={`tooltip-${innerIndex}`}
-  //         place="bottom"
-  //       >
-  //         <span className="text-xs">
-  //           {`${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`}
-  //         </span>
-  //       </Tooltip>
-  //     )
-  //   })
-  // })
+    return defenceInfo?.map((defendingType, innerIndex) => {
+      const { typeName: attackingTypeName, multiplier } = defendingType
+      const effectString = multiplierToString(multiplier)
+      return (
+        <Tooltip
+          anchorSelect={`#${attackingTypeName}-${defendingTypeName}`}
+          key={`tooltip-${innerIndex}`}
+          place="bottom"
+        >
+          <span className="text-xs">
+            {`${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`}
+          </span>
+        </Tooltip>
+      )
+    })
+  })
 
   return (
     <>
@@ -154,7 +155,7 @@ const TypeChartFull = async () => {
         </div>
       </div>
 
-      {/* <>{tooltips}</> */}
+      <>{tooltips}</>
     </>
   )
 }

@@ -2,12 +2,14 @@ import { FC } from 'react'
 
 import SectionTitle from '@/components/containers/SectionTitle'
 import MiniTypeCard from '@/components/MiniTypeCard'
+import { Tooltip } from '@/components/ReactTooltip'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services/TypesApi'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
+import multiplierToString from '@/utils/multiplierToString'
 import stringifyUrl from '@/utils/stringifyUrl'
 
 interface TypeRowProps {
@@ -52,7 +54,7 @@ const fetchTypesData = async (urls: Array<string>, replacements: Array<string>) 
 const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeUrls = types.map((type) => type.type.url)
   const typeNames = types.map((type) => formatName(type.type.name))
-  // const typeNamesString = typeNames.join('/')
+  const typeNamesString = typeNames.join('/')
 
   const typeData = await fetchTypesData(typeUrls, typeNames)
 
@@ -60,6 +62,16 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const obj = findTypeEffectiveness(typeData)
   const typeDefenseInfo = Object.entries(obj).map(([type, multiplier]) => {
     return { type, multiplier }
+  })
+
+  const toolTipData = typeDefenseInfo.map((obj, index) => {
+    const { type, multiplier } = obj
+    const effectivenessString = multiplierToString(multiplier)
+    return (
+      <Tooltip anchorSelect={`#${type}`} place="bottom" key={index}>
+        <span className="text-xs">{`${formatName(type)} → ${typeNamesString} = ${effectivenessString}`}</span>
+      </Tooltip>
+    )
   })
 
   const firstClassName = 'mt-6'
@@ -82,7 +94,7 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
         />
       </div>
 
-      {/* <>{toolTipData}</> */}
+      <>{toolTipData}</>
     </section>
   )
 }

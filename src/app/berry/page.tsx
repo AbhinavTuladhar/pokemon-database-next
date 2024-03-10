@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { Tooltip } from '@/components/ReactTooltip'
 import BerryExtractor from '@/extractors/BerryExtractor'
 import ItemExtractor from '@/extractors/ItemExtractor'
 import { BerryApi } from '@/services/BerryApi'
@@ -54,7 +55,10 @@ const page = async () => {
     <TableRow className="bg-[#1a1a1a] font-bold">
       {tableHeaderNames.map((header, index) => (
         <TableCellHeader type="column" key={index} className="border-x text-center">
-          <span id={header.id}> {header.header}</span>
+          <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
+            {' '}
+            {header.header}
+          </span>
         </TableCellHeader>
       ))}
     </TableRow>
@@ -102,6 +106,13 @@ const page = async () => {
     )
   })
 
+  const tooltipData = [
+    { id: 'growthTime', text: 'Time it takes the tree to grow one stage, in hours.' },
+    { id: 'firmness', text: 'The firmness of this berry, used in making Pokéblocks or Poffins.' },
+    { id: 'size', text: 'The size of this Berry, in centimetres.' },
+    { id: 'maxHarvest', text: 'The maximum number of these berries that can grow on one tree.' },
+  ]
+
   return (
     <main>
       <h1 className="my-4 text-center text-5xl font-bold"> Berries </h1>
@@ -109,6 +120,18 @@ const page = async () => {
         {tableHeader}
         {tableRows}
       </TableContainer>
+      <>
+        {tooltipData.map((tip, index) => (
+          <Tooltip
+            anchorSelect={`#${tip.id}`}
+            place="bottom"
+            key={index}
+            style={{ backgroundColor: 'black', padding: '0.5rem' }}
+          >
+            <span className="text-xs"> {tip.text} </span>
+          </Tooltip>
+        ))}
+      </>
     </main>
   )
 }
