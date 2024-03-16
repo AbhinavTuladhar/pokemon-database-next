@@ -7,6 +7,7 @@ import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
 import type { ChainLink, EvolutionChain, EvolutionDetail, EvolutionPokemon } from '@/types'
 import stringifyUrl from '@/utils/stringifyUrl'
+import trimUrl from '@/utils/trimUrl'
 
 import EvolutionDiv from './EvolutionDiv'
 
@@ -80,15 +81,14 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   }
 
   const evolutionChainData = getAllData()
-
   // Find the urls of all the pokemon in the evolution chain.
   // Find the Pokemon Url, NOT the species url.
   const pokemonUrls = evolutionChainData.map((pokemon) => {
     const { id, speciesName } = pokemon
-    const tempUrl = `https://pokeapi.co/api/v2/pokemon/${id}`
-    return stringifyUrl(tempUrl, speciesName)
+    return `https://pokeapi.co/api/v2/pokemon/${id}`
+    // return trimUrl(tempUrl)
+    // return stringifyUrl(tempUrl, speciesName)
   })
-
   const allPokemonData = await getAllPokemonData(pokemonUrls)
 
   // Now perform a join operation on allPokemonData and evolutionChainData on the basis of the pokemon id.
