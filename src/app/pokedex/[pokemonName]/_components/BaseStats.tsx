@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo,useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCellHeader from '@/components/containers/TableCellHeader'
@@ -125,7 +125,9 @@ const BaseStat: FC<BaseStatProps> = ({ stats }) => {
   return (
     <>
       <SectionTitle>Base Stats</SectionTitle>
-      <TableContainer>{rowValues}</TableContainer>
+      <TableContainer>
+        <tbody>{rowValues}</tbody>
+      </TableContainer>
       <div className="mt-4 text-sm font-extralight">
         The ranges shown on the right are for a level 100 Pokémon. Maximum values are based on a
         beneficial nature, 252 EVs, 31 IVs; minimum values are based on a hindering nature, 0 EVs, 0

@@ -218,8 +218,8 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
               <div className="flex justify-center">
                 <TableContainer>
-                  {headerRow}
-                  {tableRows}
+                  <thead>{headerRow}</thead>
+                  <tbody>{tableRows}</tbody>
                 </TableContainer>
               </div>
             </div>

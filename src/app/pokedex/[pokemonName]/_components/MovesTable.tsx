@@ -27,36 +27,39 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
 
   return (
     <TableContainer>
-      <TableRow className="bg-[#1a1a1a] font-bold">
-        {firstRowLabels.map((label, index) => (
-          <TableCellHeader key={index} type="column">
-            {label}
-          </TableCellHeader>
-        ))}
-      </TableRow>
-      {movesData.map((move, rowIndex) => {
-        const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
-
-        return (
-          <TableRow key={rowIndex} className="odd:bg-gray-900">
-            {levelLearnedAt && <TableCell>{levelLearnedAt}</TableCell>}
-            <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
-              <BlueLink href={`/move/${moveName}`} boldFlag={true}>
-                {formatName(moveName)}
-              </BlueLink>
-            </TableCell>
-            <TableCell variant="column">
-              <TypeCard typeName={moveType} />
-            </TableCell>
-            <TableCell variant="column">
-              <MoveCategoryImage category={damageClass} />
-            </TableCell>
-            <TableCell variant="column">{PP}</TableCell>
-            <TableCell variant="column">{power}</TableCell>
-            <TableCell variant="column">{accuracy}</TableCell>
-          </TableRow>
-        )
-      })}
+      <thead>
+        <TableRow className="bg-[#1a1a1a] font-bold">
+          {firstRowLabels.map((label, index) => (
+            <TableCellHeader key={index} type="column">
+              {label}
+            </TableCellHeader>
+          ))}
+        </TableRow>
+      </thead>
+      <tbody>
+        {movesData.map((move, rowIndex) => {
+          const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
+          return (
+            <TableRow key={rowIndex} className="odd:bg-gray-900">
+              {levelLearnedAt && <TableCell>{levelLearnedAt}</TableCell>}
+              <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
+                <BlueLink href={`/move/${moveName}`} boldFlag={true}>
+                  {formatName(moveName)}
+                </BlueLink>
+              </TableCell>
+              <TableCell variant="column">
+                <TypeCard typeName={moveType} />
+              </TableCell>
+              <TableCell variant="column">
+                <MoveCategoryImage category={damageClass} />
+              </TableCell>
+              <TableCell variant="column">{PP}</TableCell>
+              <TableCell variant="column">{power}</TableCell>
+              <TableCell variant="column">{accuracy}</TableCell>
+            </TableRow>
+          )
+        })}
+      </tbody>
     </TableContainer>
   )
 }

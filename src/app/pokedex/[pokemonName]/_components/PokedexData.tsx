@@ -142,7 +142,9 @@ const PokeDexData: FC<DexDataProps> = ({
   return (
     <>
       <SectionTitle>Pokédex data</SectionTitle>
-      <TableContainer>{tableEntries}</TableContainer>
+      <TableContainer>
+        <tbody>{tableEntries}</tbody>
+      </TableContainer>
     </>
   )
 }

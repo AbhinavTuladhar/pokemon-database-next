@@ -82,8 +82,10 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
           : 1
       const multiplierString = multiplierToString(multiplierValue)
 
+      const tooltipKey = `${rowIndex}-${cellIndex}-tooltip`
+
       toolTips.push(
-        <Tooltip anchorSelect={`#${firstType || 'a'}-${secondType || 'b'}`} key={cellIndex}>
+        <Tooltip anchorSelect={`#${firstType || 'a'}-${secondType || 'b'}`} key={tooltipKey}>
           <span className="text-xs">{`${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`}</span>
         </Tooltip>,
       )

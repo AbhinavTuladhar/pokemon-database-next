@@ -70,7 +70,9 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
   return (
     <div>
       <SectionTitle>Training Data</SectionTitle>
-      <TableContainer>{tableDiv}</TableContainer>
+      <TableContainer>
+        <tbody>{tableDiv}</tbody>
+      </TableContainer>
     </div>
   )
 }

@@ -73,7 +73,9 @@ const BreedingInfo: FC<BreedingInfoProps> = ({ egg_groups, gender_rate, hatch_co
   return (
     <div>
       <SectionTitle>Breeding</SectionTitle>
-      <TableContainer>{tableDiv}</TableContainer>
+      <TableContainer>
+        <tbody>{tableDiv}</tbody>
+      </TableContainer>
     </div>
   )
 }

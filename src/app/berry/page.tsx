@@ -61,7 +61,6 @@ const page = async () => {
       {tableHeaderNames.map((header, index) => (
         <TableCellHeader type="column" key={index} className="border-x text-center">
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
-            {' '}
             {header.header}
           </span>
         </TableCellHeader>
@@ -122,8 +121,8 @@ const page = async () => {
     <main>
       <h1 className="my-4 text-center text-5xl font-bold"> Berries </h1>
       <TableContainer>
-        {tableHeader}
-        {tableRows}
+        <thead>{tableHeader}</thead>
+        <tbody>{tableRows}</tbody>
       </TableContainer>
       <>
         {tooltipData.map((tip, index) => (

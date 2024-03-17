@@ -83,9 +83,13 @@ const OtherLanguages: FC<OtherLanguageProps> = ({ names, genera }) => {
     <>
       <SectionTitle>Other Languages</SectionTitle>
       <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
-        <TableContainer>{nameRows}</TableContainer>
+        <TableContainer>
+          <tbody>{nameRows}</tbody>
+        </TableContainer>
 
-        <TableContainer>{genusRows}</TableContainer>
+        <TableContainer>
+          <tbody>{genusRows}</tbody>
+        </TableContainer>
       </div>
     </>
   )

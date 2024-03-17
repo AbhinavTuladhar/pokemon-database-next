@@ -132,7 +132,9 @@ const Locations: FC<LocationsProps> = async ({ id, name }) => {
     <>
       <SectionTitle>{`Where to find ${formatName(name)}`}</SectionTitle>
       {finalTable.length > 0 ? (
-        <div className="table w-full border-b border-gray-200">{finalTable}</div>
+        <div className="table w-full border-b border-gray-200">
+          <tbody>{finalTable}</tbody>
+        </div>
       ) : (
         <p> No locations were found. </p>
       )}

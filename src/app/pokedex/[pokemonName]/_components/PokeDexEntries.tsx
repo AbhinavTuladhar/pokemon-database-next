@@ -3,6 +3,7 @@ import { FC } from 'react'
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { FlavourText } from '@/types/utils/Common'
 
@@ -81,7 +82,9 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   return (
     <>
       <SectionTitle>Pokédex Entries</SectionTitle>
-      <div className="table w-full border-b border-gray-200">{entryRows}</div>
+      <TableContainer>
+        <tbody>{entryRows}</tbody>
+      </TableContainer>
     </>
   )
 }

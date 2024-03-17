@@ -47,8 +47,8 @@ const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) => {
             src={imageSrc}
             height={400}
             width={300}
-            className="min-h-[400px] w-auto object-center"
             alt={'pokemon'}
+            style={{ width: 'auto' }}
           />
         )}
       </div>
