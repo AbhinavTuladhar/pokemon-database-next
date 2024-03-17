@@ -38,7 +38,7 @@ import { PokemonShape } from './Pokemon/PokemonShapes'
 import { PokemonSpecies } from './Pokemon/PokemonSpecies'
 import { Stats } from './Pokemon/Stats'
 import { Type } from './Pokemon/Types'
-import { MachineVersionDetail,Name } from './utils/Common'
+import { MachineVersionDetail, Name } from './utils/Common'
 import { NamedApiResource } from './utils/NamedResource'
 import {
   EvolutionPokemon,
@@ -48,6 +48,7 @@ import {
   TransformedEncounter,
   TransformedMove,
   TransformedMoveLevel,
+  TransformedPokemon,
   TransformedSpecies,
   TransformedType,
 } from './Computed'

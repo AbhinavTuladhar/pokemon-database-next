@@ -1,6 +1,5 @@
 import { FC, Fragment } from 'react'
 
-import PokeCardContainer from '@/components/containers/PokeCardContainer'
 import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
@@ -8,6 +7,9 @@ import fetchMultipleData from '@/services/fetchMultipleData'
 import { PokemonApi } from '@/services/PokemonApi'
 import { Pokemon } from '@/types'
 import trimUrl from '@/utils/trimUrl'
+
+import PokeCardContainer from './_components/PokeCardContainer'
+import PokeCardsWithFilter from './_components/PokeCardsWithFilter'
 
 const getPokemonData = async (offset: number, limit: number) => {
   // We first need to find the urls of all the pokemon in that generation.
@@ -48,18 +50,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
       <h1 className="my-4 text-center text-5xl font-bold">
         Pokémon of generation {generationNumber}
       </h1>
-      <div>
-        <PokeCardContainer>
-          {data.map((pokemon) => {
-            const { id, name, types, front_default: defaultSprite = '' } = pokemon
-            return (
-              <Fragment key={id}>
-                <PokeCard id={id} name={name} types={types} defaultSprite={defaultSprite} />
-              </Fragment>
-            )
-          })}
-        </PokeCardContainer>
-      </div>
+      <PokeCardsWithFilter pokemonData={data} />
     </main>
   )
 }
