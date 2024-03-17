@@ -18,6 +18,20 @@ export const EggGroupApi = {
   getByUrls: async function (urls: Array<string>) {
     const trimmedUrls = urls.map(trimUrl)
     const responses = await fetchMultipleData<EggGroup>(trimmedUrls)
-    return responses
+
+    // The pokemon species will have data of gen 8+ pokemon so we filter it out
+
+    return responses.map((group) => {
+      const { pokemon_species } = group
+      const reducedSpecies = pokemon_species.filter((species) => {
+        const { url } = species
+        const idNumber = url.match(/\/(\d+)\/$/)![1]
+        return +idNumber <= 807
+      })
+      return {
+        ...group,
+        pokemon_species: reducedSpecies,
+      }
+    })
   },
 }

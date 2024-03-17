@@ -15,6 +15,8 @@ const getGroupList = async () => {
 
 const getAllGroupData = async (urls: string[]) => {
   const response = await EggGroupApi.getByUrls(urls)
+
+  // We now filter out gen 8+ pokemon from the list
   return response.sort((a, b) => (a.name > b.name ? 1 : -1))
 }
 
@@ -28,11 +30,13 @@ const EggGroupTable = async () => {
     <main>
       <h1 className="my-4 text-center text-5xl font-bold">Pokémon Egg Groups</h1>
       <div className="flex w-full justify-center">
-        <div className="w-72 max-w-full">
+        <div className="w-60 max-w-full">
           <TableContainer>
             <TableRow className="bg-[#1a1a1a]">
               <TableCellHeader type="column"> Name </TableCellHeader>
-              <TableCellHeader type="column"> Pokemon </TableCellHeader>
+              <TableCellHeader type="column" className="text-right">
+                Pokemon
+              </TableCellHeader>
             </TableRow>
             {eggGroupData.map((group, index) => {
               const { name, pokemon_species } = group
@@ -44,7 +48,9 @@ const EggGroupTable = async () => {
                       {formatName(name)}
                     </BlueLink>
                   </TableCell>
-                  <TableCell variant="column"> {pokemonCount} </TableCell>
+                  <TableCell variant="column" extraClassName="text-right">
+                    {pokemonCount}
+                  </TableCell>
                 </TableRow>
               )
             })}
