@@ -1,8 +1,14 @@
+import { Metadata } from 'next'
+
 import RegionExtractor from '@/extractors/RegionExtractor'
 import { RegionApi } from '@/services/LocationApi'
 import { NamedApiResource } from '@/types'
 
 import RegionTabs from './_components/RegionTabs'
+
+export const metadata: Metadata = {
+  title: 'Pokémon locations | Pokémon Database',
+}
 
 const getRegionData = async (urls: Array<string>) => {
   const responses = await RegionApi.getAll(urls)

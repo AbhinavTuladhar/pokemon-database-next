@@ -1,6 +1,6 @@
-import { FC, Fragment } from 'react'
+import { FC } from 'react'
+import { Metadata } from 'next'
 
-import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import fetchMultipleData from '@/services/fetchMultipleData'
@@ -8,7 +8,6 @@ import { PokemonApi } from '@/services/PokemonApi'
 import { Pokemon } from '@/types'
 import trimUrl from '@/utils/trimUrl'
 
-import PokeCardContainer from './_components/PokeCardContainer'
 import PokeCardsWithFilter from './_components/PokeCardsWithFilter'
 
 const getPokemonData = async (offset: number, limit: number) => {
@@ -34,6 +33,13 @@ const getPokemonData = async (offset: number, limit: number) => {
 interface PageProps {
   params: {
     id: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = params
+  return {
+    title: `Generation ${id} Pokémon | Pokémon Database`,
   }
 }
 

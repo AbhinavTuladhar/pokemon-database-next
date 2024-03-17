@@ -1,4 +1,5 @@
 import { FC, Suspense } from 'react'
+import { Metadata } from 'next'
 
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
@@ -12,6 +13,13 @@ import PokemonTable from './_components/PokemonTable'
 interface AbilityPageParams {
   params: {
     abilityName: string
+  }
+}
+
+export async function generateMetadata({ params }: AbilityPageParams): Promise<Metadata> {
+  const { abilityName } = params
+  return {
+    title: `${formatName(abilityName)} | Pokémon abilities | Pokémon Database`,
   }
 }
 

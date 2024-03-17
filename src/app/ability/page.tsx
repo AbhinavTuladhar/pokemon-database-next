@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 import BlueLink from '@/components/BlueLink'
 import TableCell from '@/components/containers/TableCell'
@@ -8,6 +9,10 @@ import TableRow from '@/components/containers/TableRow'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
+
+export const metadata: Metadata = {
+  title: 'Pokémon Abilities | Pokémon Database',
+}
 
 const getUrlList = async () => {
   const response = await AbilityApi.getAllUrls()

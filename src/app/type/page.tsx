@@ -1,9 +1,13 @@
+import { Metadata } from 'next'
+
 import TypeCard from '@/components/TypeCard'
 import TypeChartFull from '@/components/TypeChartFull'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
-import fetchMultipleData from '@/services/fetchMultipleData'
 import { TypesApi } from '@/services/TypesApi'
-import { Type } from '@/types'
+
+export const metadata: Metadata = {
+  title: 'Pokémon Types | Pokémon Database',
+}
 
 const TypeListing = async () => {
   const data = await TypesApi.getAll()

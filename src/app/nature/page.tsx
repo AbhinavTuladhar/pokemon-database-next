@@ -1,3 +1,5 @@
+import { Metadata } from 'next'
+
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -5,6 +7,10 @@ import TableRow from '@/components/containers/TableRow'
 import NatureExtractor from '@/extractors/NatureExtractor'
 import { NatureApi } from '@/services/NatureApi'
 import formatName from '@/utils/formatName'
+
+export const metadata: Metadata = {
+  title: 'Pokémon Nature List | Pokémon Database',
+}
 
 const getNatures = async () => {
   const response = await NatureApi.get()

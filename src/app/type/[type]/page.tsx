@@ -1,4 +1,5 @@
 import React, { FC, Suspense } from 'react'
+import { Metadata } from 'next'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
 // import PokemonCardList from '@/components/PokemonCardList'
@@ -11,6 +12,19 @@ import formatName from '@/utils/formatName'
 
 import DualTypeChart from './_components/DualTypeChart'
 import TypeSummaryRow from './_components/TypeSummaryRow'
+
+interface PageProps {
+  params: {
+    type: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { type } = params
+  return {
+    title: `${formatName(type)} type Pokémon | Pokémon Database`,
+  }
+}
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesApi.get(typeName)
@@ -68,12 +82,6 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
     )}
   </div>
 )
-
-interface PageProps {
-  params: {
-    type: string
-  }
-}
 
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)

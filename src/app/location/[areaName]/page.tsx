@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
@@ -17,6 +18,19 @@ import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
 
 import GameBox from './_components/GameBox'
 
+interface PageProps {
+  params: {
+    areaName: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { areaName } = params
+  return {
+    title: `${formatName(areaName)} | Pokémon locations | Pokémon Database`,
+  }
+}
+
 const getLocationData = async (name: string) => {
   const response = await LocationApi.getByName(name)
   return LocationExtractor(response)
@@ -25,12 +39,6 @@ const getLocationData = async (name: string) => {
 const getSubLocationData = async (urls: string[]) => {
   const responses = await LocationAreaApi.getByUrls(urls)
   return responses.map(LocationAreaExtractor)
-}
-
-interface PageProps {
-  params: {
-    areaName: string
-  }
 }
 
 interface MethodGroup {

@@ -1,4 +1,5 @@
 import { FC, Suspense } from 'react'
+import { Metadata } from 'next'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
@@ -23,6 +24,19 @@ import SpriteTable from './_components/SpriteTable'
 import TrainingInfo from './_components/TrainingInfo'
 import TypeChart from './_components/TypeChart'
 
+interface PokemonPageProps {
+  params: {
+    pokemonName: string
+  }
+}
+
+export async function generateMetadata({ params }: PokemonPageProps): Promise<Metadata> {
+  const { pokemonName } = params
+  return {
+    title: `${formatName(pokemonName)} Pokédex: stats, moves, evolution & locations | Pokémon Database`,
+  }
+}
+
 const getPokemonData = async (pokemonName: string) => {
   const pokemonData = await PokemonApi.get(pokemonName)
   return PokemonExtractor(pokemonData)
@@ -31,12 +45,6 @@ const getPokemonData = async (pokemonName: string) => {
 const getSpeciesData = async (url: string) => {
   const speciesData = await SpeciesApi.get(url)
   return SpeciesExtractor(speciesData)
-}
-
-interface PokemonPageProps {
-  params: {
-    pokemonName: string
-  }
 }
 
 const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) => {

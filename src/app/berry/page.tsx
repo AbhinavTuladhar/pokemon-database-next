@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import SectionTitle from '@/components/containers/SectionTitle'
@@ -11,6 +12,10 @@ import ItemExtractor from '@/extractors/ItemExtractor'
 import { BerryApi } from '@/services/BerryApi'
 import { ItemApi } from '@/services/ItemApi'
 import formatName from '@/utils/formatName'
+
+export const metadata: Metadata = {
+  title: 'Berry list | Pokémon Database',
+}
 
 const getBerryUrls = async () => {
   const response = await BerryApi.getAll()

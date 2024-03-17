@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 import Link from 'next/link'
 
 import TableCell from '@/components/containers/TableCell'
@@ -10,6 +11,10 @@ import TypeCard from '@/components/TypeCard'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 import formatName from '@/utils/formatName'
+
+export const metadata: Metadata = {
+  title: 'Pokémon move list | Pokémon Database',
+}
 
 const getUrlList = async () => {
   const response = await MovesApi.getAllUrls()

@@ -1,4 +1,5 @@
 import { FC, Suspense } from 'react'
+import { Metadata } from 'next'
 
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
@@ -13,15 +14,22 @@ import MoveEffect from './_components/MoveEffect'
 import MoveTarget from './_components/MoveTarget'
 import OtherLanguages from './_components/OtherLanguages'
 
-const getMoveData = async (moveName: string) => {
-  const response = await MovesApi.get(moveName)
-  return MoveExtractor(response)
-}
-
 interface MovePageProps {
   params: {
     moveName: string
   }
+}
+
+export async function generateMetadata({ params }: MovePageProps): Promise<Metadata> {
+  const { moveName } = params
+  return {
+    title: `${formatName(moveName)} | Pokémon moves | Pokémon Database`,
+  }
+}
+
+const getMoveData = async (moveName: string) => {
+  const response = await MovesApi.get(moveName)
+  return MoveExtractor(response)
 }
 
 const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
