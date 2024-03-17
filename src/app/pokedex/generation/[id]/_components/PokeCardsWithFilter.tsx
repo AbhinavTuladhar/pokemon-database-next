@@ -17,7 +17,6 @@ const PokeCardsWithFilter: FC<FilterProps> = ({ pokemonData }) => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchString = event.target.value.toLowerCase()
-    console.log('🚀 ~ handleChange ~ searchString:', searchString)
     setFilterText(searchString)
     if (!searchString) {
       setFilteredData(pokemonData)
