@@ -62,7 +62,9 @@ const OtherLanguages: FC<OtherLanguageProps> = ({ names }) => {
   return (
     <>
       <SectionTitle>Other Languages</SectionTitle>
-      <TableContainer>{nameRows}</TableContainer>
+      <TableContainer>
+        <tbody>{nameRows}</tbody>
+      </TableContainer>
     </>
   )
 }

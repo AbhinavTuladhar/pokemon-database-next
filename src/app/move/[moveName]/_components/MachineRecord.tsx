@@ -93,7 +93,9 @@ const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
   return (
     <>
       <SectionTitle>Machine/Record</SectionTitle>
-      <TableContainer>{tableRows}</TableContainer>
+      <TableContainer>
+        <tbody>{tableRows}</tbody>
+      </TableContainer>
     </>
   )
 }

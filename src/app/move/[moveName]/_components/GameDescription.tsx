@@ -76,7 +76,9 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
   return (
     <>
       <SectionTitle>Game Descriptions</SectionTitle>
-      <TableContainer>{tableRows}</TableContainer>
+      <TableContainer>
+        <tbody> {tableRows}</tbody>
+      </TableContainer>
     </>
   )
 }

@@ -93,8 +93,8 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
     <>
       <SectionTitle>Pokémon with {abilityName}</SectionTitle>
       <TableContainer>
-        {headerRow}
-        {pokemonRow}
+        <thead> {headerRow}</thead>
+        <tbody>{pokemonRow}</tbody>
       </TableContainer>
     </>
   )

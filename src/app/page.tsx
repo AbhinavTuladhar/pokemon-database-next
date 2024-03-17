@@ -116,7 +116,7 @@ const WelcomePage = () => {
       variants={welcomeVariant}
       initial="initial"
       animate="animate"
-      className="flex flex-row items-center justify-center gap-4 overflow-x-hidden py-4 md:flex-row"
+      className="flex flex-row flex-wrap items-center justify-center gap-4 overflow-x-hidden py-4 md:flex-row"
     >
       <MotionDiv variants={entryVariantLeft}>
         <TitleText />

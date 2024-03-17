@@ -55,14 +55,16 @@ const MoveData: FC<MoveDataProps> = ({
     <>
       <SectionTitle> Move Data </SectionTitle>
       <TableContainer>
-        {tableData.map((row, rowIndex) => (
-          <TableRow key={rowIndex}>
-            <TableCellHeader>
-              <span className="text-sm font-normal text-white"> {row.header} </span>
-            </TableCellHeader>
-            <TableCell> {row.children} </TableCell>
-          </TableRow>
-        ))}
+        <tbody>
+          {tableData.map((row, rowIndex) => (
+            <TableRow key={rowIndex}>
+              <TableCellHeader>
+                <span className="text-sm font-normal text-white"> {row.header} </span>
+              </TableCellHeader>
+              <TableCell> {row.children} </TableCell>
+            </TableRow>
+          ))}
+        </tbody>
       </TableContainer>
     </>
   )

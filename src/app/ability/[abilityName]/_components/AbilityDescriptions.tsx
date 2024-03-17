@@ -47,12 +47,13 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
     ? Object?.values(groupedData).filter((row) => row.generation !== undefined)
     : []
 
-  const tableRows = properGroupedData.map((row, rowIndex) => {
+  const tableRows = properGroupedData.map((generationKey, rowIndex) => {
+    const { description, versionName } = generationKey
     return (
-      <div className="table-row" key={rowIndex}>
-        <div className="table-cell h-12 border-t border-slate-200 px-4 py-2 text-right align-middle">
+      <TableRow key={rowIndex}>
+        <TableCellHeader wrapFlag={true}>
           <ul>
-            {row.versionName?.map((version) => {
+            {versionName.map((version) => {
               return (
                 <li className="list-none" key={version}>
                   {formatName(version)}
@@ -60,11 +61,9 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
               )
             })}
           </ul>
-        </div>
-        <div className="table-cell h-12 border-t border-slate-200 px-4 py-2 align-middle">
-          {row?.description}
-        </div>
-      </div>
+        </TableCellHeader>
+        <TableCell>{description}</TableCell>
+      </TableRow>
     )
   })
 
@@ -72,25 +71,7 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
     <>
       <SectionTitle>Game Descriptions</SectionTitle>
       <TableContainer>
-        {properGroupedData.map((generationKey, rowIndex) => {
-          const { description, versionName } = generationKey
-          return (
-            <TableRow key={rowIndex}>
-              <TableCellHeader wrapFlag={true}>
-                <ul>
-                  {versionName.map((version) => {
-                    return (
-                      <li className="list-none" key={version}>
-                        {formatName(version)}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </TableCellHeader>
-              <TableCell>{description}</TableCell>
-            </TableRow>
-          )
-        })}
+        <tbody>{tableRows}</tbody>
       </TableContainer>
     </>
   )

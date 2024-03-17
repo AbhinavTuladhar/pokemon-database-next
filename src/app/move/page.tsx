@@ -87,7 +87,9 @@ const MoveList = async () => {
     <main>
       <h1 className="my-4 text-center text-5xl font-bold"> Pokémon Moves</h1>
       <TableContainer>
-        <TableRow className="bg-[#1a1a1a]">{HeaderRowCells}</TableRow>
+        <thead>
+          <TableRow className="bg-[#1a1a1a]">{HeaderRowCells}</TableRow>
+        </thead>
         <tbody>{MoveDataRows}</tbody>
       </TableContainer>
     </main>

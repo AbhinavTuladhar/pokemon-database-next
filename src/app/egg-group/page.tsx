@@ -32,28 +32,32 @@ const EggGroupTable = async () => {
       <div className="flex w-full justify-center">
         <div className="w-60 max-w-full">
           <TableContainer>
-            <TableRow className="bg-[#1a1a1a]">
-              <TableCellHeader type="column"> Name </TableCellHeader>
-              <TableCellHeader type="column" className="text-right">
-                Pokemon
-              </TableCellHeader>
-            </TableRow>
-            {eggGroupData.map((group, index) => {
-              const { name, pokemon_species } = group
-              const pokemonCount = pokemon_species.length
-              return (
-                <TableRow key={index}>
-                  <TableCell variant="column">
-                    <BlueLink href={`/egg-group/${name}`} boldFlag>
-                      {formatName(name)}
-                    </BlueLink>
-                  </TableCell>
-                  <TableCell variant="column" extraClassName="text-right">
-                    {pokemonCount}
-                  </TableCell>
-                </TableRow>
-              )
-            })}
+            <thead>
+              <TableRow className="bg-[#1a1a1a]">
+                <TableCellHeader type="column"> Name </TableCellHeader>
+                <TableCellHeader type="column" className="text-right">
+                  Pokemon
+                </TableCellHeader>
+              </TableRow>
+            </thead>
+            <tbody>
+              {eggGroupData.map((group, index) => {
+                const { name, pokemon_species } = group
+                const pokemonCount = pokemon_species.length
+                return (
+                  <TableRow key={index}>
+                    <TableCell variant="column">
+                      <BlueLink href={`/egg-group/${name}`} boldFlag>
+                        {formatName(name)}
+                      </BlueLink>
+                    </TableCell>
+                    <TableCell variant="column" extraClassName="text-right">
+                      {pokemonCount}
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </tbody>
           </TableContainer>
         </div>
       </div>
