@@ -1,7 +1,7 @@
 'use client'
 
 import { FC } from 'react'
-import { Tab, TabList, TabPanel,Tabs } from 'react-tabs'
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import BlueLink from '@/components/BlueLink'
 import formatName from '@/utils/formatName'
@@ -25,11 +25,11 @@ const RegionTabs: FC<PanelProps> = ({ regionData }) => {
   // Alola has slightly long names, so we provide a special exception to it.
   return (
     <Tabs>
-      <TabList className="flex">
+      <TabList className="flex flex-wrap">
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tabIndex}
-            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-gray-900 py-3 duration-300 hover:cursor-pointer hover:border-white hover:text-white hover:brightness-110"
+            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-gray-900 p-3 duration-300 hover:cursor-pointer hover:border-white hover:text-white hover:brightness-110"
             selectedClassName="!border-blue-500 text-blue-500"
           >
             {formatName(tab)}

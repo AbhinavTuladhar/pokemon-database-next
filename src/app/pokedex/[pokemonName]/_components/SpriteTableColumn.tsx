@@ -46,6 +46,7 @@ const SpriteTableColumn: React.FC<TableColumnProps> = ({ columnIndex, images, ti
                 height={140}
                 alt="test"
                 className="aspect-square object-contain"
+                unoptimized={image.endsWith('.gif')}
               />
             ) : (
               <span className="text-4xl"> — </span>

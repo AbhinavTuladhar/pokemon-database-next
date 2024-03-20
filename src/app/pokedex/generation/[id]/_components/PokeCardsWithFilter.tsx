@@ -36,14 +36,12 @@ const PokeCardsWithFilter: FC<FilterProps> = ({ pokemonData }) => {
           value={filterText}
         />
       </div>
-      {filteredData.length > 0 ? (
+      {filteredData.length ? (
         <PokeCardContainer>
           {filteredData.map((pokemon) => {
             const { id, name, types, front_default: defaultSprite = '' } = pokemon
             return (
-              <Fragment key={id}>
-                <PokeCard id={id} name={name} types={types} defaultSprite={defaultSprite} />
-              </Fragment>
+              <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />
             )
           })}
         </PokeCardContainer>
