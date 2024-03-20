@@ -4,6 +4,7 @@ import generationData from '@/data/generationData'
 import { PokemonApi } from '@/services/PokemonApi'
 
 import GenerationSection from './_components/GenerationSection'
+import PageNavigation from './_components/PageNavigation'
 import SpriteTable from './_components/SpriteTable'
 
 const getPokemonList = async () => {
@@ -17,12 +18,11 @@ const AnimatedSprites = async () => {
 
   const generations = Array.from({ length: 7 }, (_, index) => index + 1)
 
-  // Process some of the data
-
   return (
     <main className="space-y-4">
       <h1 className="mt-4 text-center text-5xl font-bold">Animated Pokémon Sprite Collection</h1>
       <p>The table represents the regular and shiny sprites in generation 7, respectively. </p>
+      <PageNavigation />
       {generations.map((generationNumber) => {
         const genData = generationData[generationNumber - 1]
 
@@ -31,11 +31,12 @@ const AnimatedSprites = async () => {
         const generationPokemonData = data.slice(startIndex, endIndex)
 
         return (
-          <GenerationSection
-            key={generationNumber}
-            pokemonData={generationPokemonData}
-            generationNumber={generationNumber}
-          />
+          <section id={`gen-${generationNumber}`} key={generationNumber}>
+            <GenerationSection
+              pokemonData={generationPokemonData}
+              generationNumber={generationNumber}
+            />
+          </section>
         )
       })}
     </main>

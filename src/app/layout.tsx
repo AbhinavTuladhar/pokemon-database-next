@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={FiraSans.className}>
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
           <div className="min-h-screen max-w-full bg-gray-950 text-white">
