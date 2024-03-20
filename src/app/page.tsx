@@ -82,7 +82,7 @@ const TitleText = () => {
             Pokémon Database
           </span>
         </MotionSpan>
-        <small className="text-xs">s clone!</small>
+        <small className="text-xs">{"'s clone!"}</small>
       </MotionDiv>
     </>
   )
@@ -94,18 +94,19 @@ const InformativeText = () => {
       <MotionSpan variants={entryVariantLeft}>
         This is a simple clone of the{' '}
         <a href="https://pokemondb.net/" className="text-blue-500">
-          {' '}
-          Pokemon Database website.{' '}
+          Pokemon Database website.
         </a>
       </MotionSpan>
       <MotionSpan variants={entryVariantLeft}>
-        This was made using ReactJS, React Router, Tailwind CSS and some other libraries.
+        This was made using primarily using NextJS, TypeScript, TailwindCSS and Framer Motion.
       </MotionSpan>
       <MotionSpan variants={entryVariantLeft}>
         You can view the source code{' '}
-        <a href="https://github.com/AbhinavTuladhar/Pokemon-App" className="text-blue-500">
-          {' '}
-          here.{' '}
+        <a
+          href="https://github.com/AbhinavTuladhar/pokemon-database-next"
+          className="text-blue-500"
+        >
+          here.
         </a>
       </MotionSpan>
     </>
