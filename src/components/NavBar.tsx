@@ -1,6 +1,6 @@
 'use client'
 
-import { FC,useState } from 'react'
+import { FC, useState } from 'react'
 import Link from 'next/link'
 
 interface ListItemProps {
@@ -82,7 +82,7 @@ const DropDownMenu: FC<DropDownProps> = ({ menuData, parentText }) => {
 }
 
 const NavBar = () => {
-  const linkData = [
+  const pokedexLinks = [
     { path: '/pokedex/generation/1', name: 'Gen 1' },
     { path: '/pokedex/generation/2', name: 'Gen 2' },
     { path: '/pokedex/generation/3', name: 'Gen 3' },
@@ -90,11 +90,18 @@ const NavBar = () => {
     { path: '/pokedex/generation/5', name: 'Gen 5' },
     { path: '/pokedex/generation/6', name: 'Gen 6' },
     { path: '/pokedex/generation/7', name: 'Gen 7' },
+  ]
+
+  const listLinks = [
     { path: '/move', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
     { path: '/berry', name: 'Berries' },
     { path: '/egg-group', name: 'Egg groups' },
     { path: '/nature', name: 'Natures' },
+    { path: '/sprites/animated', name: 'Animated sprites' },
+  ]
+
+  const otherLinks = [
     { path: '/type', name: 'Types' },
     { path: '/location', name: 'Locations' },
   ]
@@ -108,9 +115,9 @@ const NavBar = () => {
       </div>
       <nav>
         <ul className="flex list-none flex-wrap">
-          <DropDownMenu parentText="Pokédex" menuData={linkData.slice(0, 7)} />
-          <DropDownMenu parentText="Lists" menuData={linkData.slice(7, 12)} />
-          <ListItem items={linkData.slice(12)} subMenuFlag={false} />
+          <DropDownMenu parentText="Pokédex" menuData={pokedexLinks} />
+          <DropDownMenu parentText="Lists" menuData={listLinks} />
+          <ListItem items={otherLinks} subMenuFlag={false} />
         </ul>
       </nav>
     </header>

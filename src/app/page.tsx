@@ -57,6 +57,7 @@ const ImageColumn = () => {
         alt="Pikachu gif"
         width={173}
         height={160}
+        unoptimized
       />
       <Image
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
@@ -64,6 +65,7 @@ const ImageColumn = () => {
         alt="Charizard gif"
         width={173}
         height={160}
+        unoptimized
       />
     </MotionDiv>
   )
