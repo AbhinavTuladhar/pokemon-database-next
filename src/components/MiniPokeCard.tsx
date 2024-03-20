@@ -31,8 +31,8 @@ const MiniPokeCard: FC<MiniCardProps> = ({ name, id, gameSprite, types, national
   })
 
   return (
-    <article className="flex w-full">
-      <Image src={gameSprite} width={60} height={56} alt={name} style={{ width: 'auto' }} />
+    <article className="flex w-full gap-x-1">
+      <Image src={gameSprite} width={64} height={64} alt={name} />
       <div className="flex flex-col items-start justify-start">
         <BlueLink href={`/pokedex/${name}`} boldFlag={true}>
           {formatName(name)}

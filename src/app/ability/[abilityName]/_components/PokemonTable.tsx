@@ -63,9 +63,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
       <TableRow key={rowIndex}>
         <TableCell extraClassName="w-[1%] whitespace-nowrap !pr-4">
           <div className="flex items-center">
-            {gameSprite && (
-              <Image src={gameSprite} alt={name} width={60} height={56} style={{ width: 'auto' }} />
-            )}
+            {gameSprite && <Image src={gameSprite} alt={name} width={60} height={56} />}
             <span> {properId} </span>
           </div>
         </TableCell>
