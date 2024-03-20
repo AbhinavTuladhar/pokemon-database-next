@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import classNames from 'classNames'
+import classNames from 'classnames'
 
 interface HeaderProps {
   children: ReactNode
