@@ -64,7 +64,6 @@ const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
         {properName}
       </Link>
       <div>
-        {/* <img src={defaultSprite} className="h-[100px]" alt={name} /> */}
         {defaultSprite && <Image src={defaultSprite} height={100} width={100} alt={name} />}
       </div>
       <div className="mb-2 mt-4 flex flex-row gap-x-2">{typeDivs}</div>
