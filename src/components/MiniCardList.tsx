@@ -1,22 +1,18 @@
 import { FC } from 'react'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import fetchMultipleData from '@/services/fetchMultipleData'
 import { PokemonApi } from '@/services/PokemonApi'
-import { NamedApiResource, Pokemon } from '@/types'
 
 import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
 
 interface MiniCardListProps {
   title: string
-  pokemonList: Array<NamedApiResource<Pokemon>>
+  pokemonUrls: Array<string>
 }
 
-const fetchPokemonData = async (pokemonList: Array<NamedApiResource<Pokemon>>) => {
-  const pokemonUrls = pokemonList.map((pokemon) => pokemon.url)
+const fetchPokemonData = async (pokemonUrls: Array<string>) => {
   const responses = await PokemonApi.getByUrls(pokemonUrls)
-  // const responses = await fetchMultipleData<Pokemon>(pokemonUrls)
   const extractedInfo = responses.map(PokemonExtractor)
 
   // Sort the pokemon by their national number
@@ -26,8 +22,8 @@ const fetchPokemonData = async (pokemonList: Array<NamedApiResource<Pokemon>>) =
   return sortedResponses
 }
 
-const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonList }) => {
-  const pokemonData = await fetchPokemonData(pokemonList)
+const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonUrls }) => {
+  const pokemonData = await fetchPokemonData(pokemonUrls)
 
   // We now map the Pokemon data into the respective cards.
   const pokeCards = pokemonData?.map((pokemon, index) => {

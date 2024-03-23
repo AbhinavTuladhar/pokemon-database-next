@@ -1,6 +1,8 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import SectionTitle from '@/components/containers/SectionTitle'
+import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 import MoveExtractor from '@/extractors/MoveExtractor'
@@ -52,6 +54,8 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     machines,
   } = moveData
 
+  const urlList = pokemonUrls.map((pokemon) => pokemon.url)
+
   return (
     <main>
       <h1 className="my-4 text-center text-5xl font-bold"> {formatName(moveName)}</h1>
@@ -87,12 +91,21 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <GameDescription descriptions={descriptions} />
         </section>
       </div>
-      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
-        <MiniCardList
-          pokemonList={pokemonUrls}
-          title={`Pokémon that can learn ${formatName(moveName)}`}
-        />
-      </Suspense>
+
+      {/* Use infinite scrolling if there are more than 100 urls. */}
+      {pokemonUrls.length >= 100 ? (
+        <>
+          <SectionTitle>Pokémon that can learn {formatName(moveName)}</SectionTitle>
+          <InfiniteMiniCardScroll increment={20} urlList={urlList} />
+        </>
+      ) : (
+        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
+          <MiniCardList
+            pokemonUrls={urlList}
+            title={`Pokémon that can learn ${formatName(moveName)}`}
+          />
+        </Suspense>
+      )}
     </main>
   )
 }

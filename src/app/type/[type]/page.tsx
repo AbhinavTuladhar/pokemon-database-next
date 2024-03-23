@@ -171,7 +171,10 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
       </div>
 
       <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
-        <MiniCardList pokemonList={pokemonList} title={`${formatName(type)} Pokémon`} />
+        <MiniCardList
+          pokemonUrls={pokemonList.map((pokemon) => pokemon.url)}
+          title={`${formatName(type)} Pokémon`}
+        />
       </Suspense>
     </main>
   )

@@ -5,14 +5,8 @@ import { getPokemonByGeneration, getPokemonByName, getPokemonByUrls } from '@/ac
 import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import fetchMultipleData from '@/services/fetchMultipleData'
-import { PokemonApi } from '@/services/PokemonApi'
-import { Pokemon } from '@/types'
-import trimUrl from '@/utils/trimUrl'
 
-import InfiniteScroll from './_components/InfiniteScroll'
 import PokeCardContainer from './_components/PokeCardContainer'
-import PokeCardsWithFilter from './_components/PokeCardsWithFilter'
 
 interface PageProps {
   params: {
@@ -43,12 +37,23 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
     return replacedUrl
   })
 
+  const pokemonData = await getPokemonByUrls(urlList)
+  const extractedPokemonData = pokemonData.map(PokemonExtractor)
+
   return (
     <main>
       <h1 className="my-4 text-center text-5xl font-bold">
         Pokémon of generation {generationNumber}
       </h1>
-      <InfiniteScroll increment={20} urlList={urlList} />
+      <PokeCardContainer>
+        {extractedPokemonData.map((pokemon) => {
+          const { id, name, types, front_default: defaultSprite = '' } = pokemon
+          return (
+            <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />
+          )
+        })}
+      </PokeCardContainer>
+      {/* <InfiniteScroll increment={20} urlList={urlList} /> */}
     </main>
   )
 }
