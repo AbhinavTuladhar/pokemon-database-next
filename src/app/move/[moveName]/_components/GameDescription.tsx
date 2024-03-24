@@ -6,6 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { gameBlackLists } from '@/data/blacklists'
+import gameNameMap from '@/data/gameNameMap'
 import formatName from '@/utils/formatName'
 
 interface GameDescription {
@@ -31,8 +32,6 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
   */
 
   type GroupeDataInterface = Record<string, GroupedByGames>
-
-  console.log(descriptions)
 
   const groupedData = descriptions
     .filter((description) => !gameBlackLists.includes(description.version))
@@ -70,7 +69,9 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
       <TableCellHeader wrapFlag={true}>
         {row.version.map((version, index) => (
           <ul key={index}>
-            <li className="text-sm font-normal text-white">{formatName(version)}</li>
+            <li className="inline break-words text-sm font-normal text-white">
+              {gameNameMap[version]}
+            </li>
           </ul>
         ))}
       </TableCellHeader>

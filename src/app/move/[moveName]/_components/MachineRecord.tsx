@@ -6,6 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { gameBlackLists } from '@/data/blacklists'
+import gameNameMap from '@/data/gameNameMap'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { MachineApi } from '@/services/MachineApi'
 import type { MachineVersionDetail } from '@/types'
@@ -85,7 +86,7 @@ const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
         <TableCellHeader wrapFlag={true}>
           <ul>
             {versionName.map((version, index) => (
-              <li key={index}>{formatName(version)}</li>
+              <li key={index}>{gameNameMap[version]}</li>
             ))}
           </ul>
         </TableCellHeader>

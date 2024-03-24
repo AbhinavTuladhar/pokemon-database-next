@@ -6,6 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { gameBlackLists } from '@/data/blacklists'
+import gameNameMap from '@/data/gameNameMap'
 import formatName from '@/utils/formatName'
 
 interface DescriptionInterface {
@@ -50,6 +51,8 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
     ? Object?.values(groupedData).filter((row) => row.generation !== undefined)
     : []
 
+  // console.log(properGroupedData)
+
   const tableRows = properGroupedData.map((generationKey, rowIndex) => {
     const { description, versionName } = generationKey
     return (
@@ -59,7 +62,7 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
             {versionName.map((version) => {
               return (
                 <li className="list-none" key={version}>
-                  {formatName(version)}
+                  {gameNameMap[version]}
                 </li>
               )
             })}
