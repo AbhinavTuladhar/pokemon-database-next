@@ -143,11 +143,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       <section id="pokedex-entries">
         <PokeDexEntries flavourTextEntries={flavor_text_entries} />
       </section>
-      <section id="moves-learned">
-        <Suspense fallback={<div> Loading moves data... </div>}>
+      <Suspense fallback={<div> Loading moves data... </div>}>
+        <section id="moves-learned">
           <MovesLearned moves={moves} pokemonName={pokemonName} />
-        </Suspense>
-      </section>
+        </section>
+      </Suspense>
       <section id="sprites">
         <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
       </section>
