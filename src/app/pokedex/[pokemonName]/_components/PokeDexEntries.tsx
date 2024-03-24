@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { gameBlackLists } from '@/data/blacklists'
 import { FlavourText } from '@/types/utils/Common'
 
 interface VersionDescription {
@@ -41,8 +42,14 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     return null
   }
 
-  // Let's find all the English entries first.
-  const englishEntries = flavourTextEntries.filter((entry) => entry.language.name === 'en')
+  // Let's find all the English entries first that are not in the blacklisted games.
+  const englishEntries = flavourTextEntries.filter((entry) => {
+    const {
+      language: { name: languageName },
+      version: { name: versionName },
+    } = entry
+    return languageName === 'en' && !gameBlackLists.includes(versionName)
+  })
 
   // Find an object containing the version anme and the Pokedex entry.
   const englishInfo = englishEntries.map((entry) => {

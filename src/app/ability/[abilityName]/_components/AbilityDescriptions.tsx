@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { gameBlackLists } from '@/data/blacklists'
 import formatName from '@/utils/formatName'
 
 interface DescriptionInterface {
@@ -26,21 +27,23 @@ interface DescriptionProps {
 }
 
 const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
-  const groupedData = descriptions.reduce((acc, curr) => {
-    const { description: rawDescription, generation, versionName } = curr
-    // There are escape characters in the descriptions, which shall now be removed.
-    const description = rawDescription?.replace(/\n/g, ' ')
-    if (!acc[generation]) {
-      acc[generation] = {
-        description,
-        generation,
-        versionName: [versionName],
+  const groupedData = descriptions
+    .filter((description) => !gameBlackLists.includes(description.versionName))
+    .reduce((acc, curr) => {
+      const { description: rawDescription, generation, versionName } = curr
+      // There are escape characters in the descriptions, which shall now be removed.
+      const description = rawDescription?.replace(/\n/g, ' ')
+      if (!acc[generation]) {
+        acc[generation] = {
+          description,
+          generation,
+          versionName: [versionName],
+        }
+      } else {
+        acc[generation].versionName.push(versionName)
       }
-    } else {
-      acc[generation].versionName.push(versionName)
-    }
-    return acc
-  }, {} as AbilityByGeneration)
+      return acc
+    }, {} as AbilityByGeneration)
 
   // Filter out undefined generations
   const properGroupedData = descriptions

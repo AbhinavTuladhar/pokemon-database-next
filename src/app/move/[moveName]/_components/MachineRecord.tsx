@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { gameBlackLists } from '@/data/blacklists'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { MachineApi } from '@/services/MachineApi'
 import type { MachineVersionDetail } from '@/types'
@@ -45,7 +46,10 @@ interface GroupedMachines {
 
 const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
   const formattedData = responses.filter(
-    (machine) => machine.versionName !== 'colosseum' && machine.versionName !== 'xd',
+    (machine) =>
+      machine.versionName !== 'colosseum' &&
+      machine.versionName !== 'xd' &&
+      !gameBlackLists.includes(machine.versionName),
   )
   const transformedData = formattedData.reduce(
     (acc, item) => {

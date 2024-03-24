@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import { gameBlackLists } from '@/data/blacklists'
 import formatName from '@/utils/formatName'
 
 interface GameDescription {
@@ -31,29 +32,33 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
 
   type GroupeDataInterface = Record<string, GroupedByGames>
 
-  const groupedData = descriptions.reduce((acc, curr) => {
-    const { description: rawDescription, generation, version } = curr
-    // There are escape characters in the descriptions, which shall now be removed.
-    const description = rawDescription?.replace(/\n/g, ' ')
-    if (!acc[generation]) {
-      acc[generation] = {
-        description,
-        generation,
-        version: [version],
+  console.log(descriptions)
+
+  const groupedData = descriptions
+    .filter((description) => !gameBlackLists.includes(description.version))
+    .reduce((acc, curr) => {
+      const { description: rawDescription, generation, version } = curr
+      // There are escape characters in the descriptions, which shall now be removed.
+      const description = rawDescription?.replace(/\n/g, ' ')
+      if (!acc[generation]) {
+        acc[generation] = {
+          description,
+          generation,
+          version: [version],
+        }
+        // Games in the same generation may have different descriptions. So another key is allocated here
+      } else if (acc[generation].description !== description) {
+        const newGeneration = `${generation}_new`
+        acc[newGeneration] = {
+          description,
+          generation: newGeneration,
+          version: [version],
+        }
+      } else {
+        acc[generation].version.push(version)
       }
-      // Games in the same generation may have different descriptions. So another key is allocated here
-    } else if (acc[generation].description !== description) {
-      const newGeneration = `${generation}_new`
-      acc[newGeneration] = {
-        description,
-        generation: newGeneration,
-        version: [version],
-      }
-    } else {
-      acc[generation].version.push(version)
-    }
-    return acc
-  }, {} as GroupeDataInterface)
+      return acc
+    }, {} as GroupeDataInterface)
 
   // Filter out undefined generations
   const properGroupedData = descriptions
