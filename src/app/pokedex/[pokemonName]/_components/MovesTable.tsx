@@ -41,7 +41,11 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
           const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
           return (
             <TableRow key={rowIndex} className="odd:bg-gray-900">
-              {levelLearnedAt && <TableCell>{levelLearnedAt}</TableCell>}
+              {levelLearnedAt && (
+                <TableCell variant="column" extraClassName="text-right">
+                  {levelLearnedAt}
+                </TableCell>
+              )}
               <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
                 <BlueLink href={`/move/${moveName}`} boldFlag={true}>
                   {formatName(moveName)}
