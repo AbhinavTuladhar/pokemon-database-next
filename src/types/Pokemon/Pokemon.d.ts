@@ -45,8 +45,8 @@ export interface PokemonAbility {
 }
 
 export interface PokemonCries {
-  latest?: string
-  legacy?: string
+  latest: string
+  legacy: string | null
 }
 
 export interface PokemonMove {

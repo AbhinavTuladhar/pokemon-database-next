@@ -19,6 +19,7 @@ import OtherLanguages from './_components/OtherLanguages'
 import PageNavigation from './_components/PageNavigation'
 import PokeDexData from './_components/PokedexData'
 import PokeDexEntries from './_components/PokeDexEntries'
+import PokemonCry from './_components/PokemonCry'
 import PokemonVarieties from './_components/PokemonVarieties'
 import SpriteTable from './_components/SpriteTable'
 import TrainingInfo from './_components/TrainingInfo'
@@ -52,6 +53,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
   const {
     id,
+    cries: { latest: latestCry, legacy: legacyCry },
     height,
     weight,
     nationalNumber,
@@ -99,6 +101,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       >
         <div className="col-span-2 md:col-span-1">
           <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
+          <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={name} />
         </div>
         <div className="col-span-2 md:col-span-1">
           <PokeDexData

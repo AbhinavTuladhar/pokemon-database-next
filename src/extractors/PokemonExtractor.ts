@@ -4,6 +4,7 @@ const PokemonExtractor = (data: Pokemon) => {
   const {
     abilities,
     base_experience,
+    cries,
     forms,
     game_indices,
     height,
@@ -89,6 +90,7 @@ const PokemonExtractor = (data: Pokemon) => {
   return {
     abilities,
     base_experience,
+    cries,
     forms,
     game_indices,
     height,
