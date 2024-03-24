@@ -2,6 +2,7 @@ import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
+import SectionTitle from '@/components/containers/SectionTitle'
 // import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
@@ -170,11 +171,9 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         </div>
       </div>
 
+      <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
       <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
-        <MiniCardList
-          pokemonUrls={pokemonList.map((pokemon) => pokemon.url)}
-          title={`${formatName(type)} Pokémon`}
-        />
+        <MiniCardList pokemonUrls={pokemonList.map((pokemon) => pokemon.url)} />
       </Suspense>
     </main>
   )

@@ -7,7 +7,6 @@ import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
 
 interface MiniCardListProps {
-  title: string
   pokemonUrls: Array<string>
 }
 
@@ -22,7 +21,7 @@ const fetchPokemonData = async (pokemonUrls: Array<string>) => {
   return sortedResponses
 }
 
-const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonUrls }) => {
+const MiniCardList: FC<MiniCardListProps> = async ({ pokemonUrls }) => {
   const pokemonData = await fetchPokemonData(pokemonUrls)
 
   // We now map the Pokemon data into the respective cards.
@@ -40,12 +39,7 @@ const MiniCardList: FC<MiniCardListProps> = async ({ title, pokemonUrls }) => {
     )
   })
 
-  return (
-    <>
-      <SectionTitle>{title}</SectionTitle>
-      <div className="grid grid-cols-card-list gap-x-3 gap-y-8">{pokeCards}</div>
-    </>
-  )
+  return <div className="grid grid-cols-card-list gap-x-3 gap-y-8">{pokeCards}</div>
 }
 
 export default MiniCardList

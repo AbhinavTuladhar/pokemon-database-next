@@ -99,12 +99,12 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <InfiniteMiniCardScroll increment={20} urlList={urlList} />
         </>
       ) : (
-        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
-          <MiniCardList
-            pokemonUrls={urlList}
-            title={`Pokémon that can learn ${formatName(moveName)}`}
-          />
-        </Suspense>
+        <>
+          <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
+          <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
+            <MiniCardList pokemonUrls={urlList} />
+          </Suspense>
+        </>
       )}
     </main>
   )
