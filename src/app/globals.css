@@ -52,3 +52,22 @@
   background-position: left 1.1em;
   color: var(--link-hover-colour);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 2px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: royalblue;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, red, yellow);
+}

@@ -1,11 +1,15 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 import generationData from '@/data/generationData'
 import { PokemonApi } from '@/services/PokemonApi'
 
 import GenerationSection from './_components/GenerationSection'
 import PageNavigation from './_components/PageNavigation'
-import SpriteTable from './_components/SpriteTable'
+
+export const metadata: Metadata = {
+  title: 'Pokémon animated sprite gallery | Pokémon Database',
+}
 
 const getPokemonList = async () => {
   const response = await PokemonApi.getByGeneration(0, 809)
