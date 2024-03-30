@@ -1,5 +1,5 @@
 import { EggGroup, NamedApiResourceList } from '@/types'
-import { Berry } from '@/types'
+import filterGens from '@/utils/filterGens'
 import trimUrl from '@/utils/trimUrl'
 
 import fetchData from './fetchData'
@@ -10,9 +10,8 @@ export const EggGroupApi = {
     const response = await fetchData<NamedApiResourceList<EggGroup>>('/egg-group')
     return response
   },
-  get: async function (url: string) {
-    const trimmedUrl = trimUrl(url)
-    const response = await fetchData<EggGroup>(trimmedUrl)
+  get: async function (name: string) {
+    const response = await fetchData<EggGroup>(`/egg-group/${name}`)
     return response
   },
   getByUrls: async function (urls: Array<string>) {
@@ -25,8 +24,7 @@ export const EggGroupApi = {
       const { pokemon_species } = group
       const reducedSpecies = pokemon_species.filter((species) => {
         const { url } = species
-        const idNumber = url.match(/\/(\d+)\/$/)![1]
-        return +idNumber <= 807
+        return filterGens(url)
       })
       return {
         ...group,
