@@ -5,6 +5,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
 import formatName from '@/utils/formatName'
 
@@ -17,7 +18,7 @@ const getAllGroupData = async (urls: string[]) => {
   const response = await EggGroupApi.getByUrls(urls)
 
   // We now filter out gen 8+ pokemon from the list
-  return response.sort((a, b) => (a.name > b.name ? 1 : -1))
+  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
 }
 
 const EggGroupTable = async () => {
@@ -42,8 +43,8 @@ const EggGroupTable = async () => {
             </thead>
             <tbody>
               {eggGroupData.map((group, index) => {
-                const { name, pokemon_species } = group
-                const pokemonCount = pokemon_species.length
+                const { name, pokemonSpecies } = group
+                const pokemonCount = pokemonSpecies.length
                 return (
                   <TableRow key={index}>
                     <TableCell variant="column">

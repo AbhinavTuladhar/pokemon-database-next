@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import formatName from '@/utils/formatName'
 
 import GroupList from './_components/GroupList'
+import PokemonTable from './_components/PokemonTable'
 
 interface PageProps {
   params: {
@@ -17,7 +18,10 @@ const EggPage: FC<PageProps> = ({ params: { eggGroup } }) => {
         <span> {formatName(eggGroup)} </span>
         <span className="text-gray-600"> (egg group) </span>
       </h1>
-      <GroupList />
+      <div className="flex flex-wrap gap-x-8">
+        <GroupList />
+        <PokemonTable />
+      </div>
     </main>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 
 import BlueLink from '@/components/BlueLink'
 import SectionTitle from '@/components/containers/SectionTitle'
+import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
 import formatName from '@/utils/formatName'
 
@@ -14,7 +15,7 @@ const getAllGroupData = async (urls: string[]) => {
   const response = await EggGroupApi.getByUrls(urls)
 
   // We now filter out gen 8+ pokemon from the list
-  return response.sort((a, b) => (a.name > b.name ? 1 : -1))
+  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
 }
 
 const GroupList = async () => {
@@ -27,8 +28,8 @@ const GroupList = async () => {
       <SectionTitle>Egg Groups</SectionTitle>
       <ul className="list-inside list-disc">
         {eggGroupData.map((group) => {
-          const { id, name, pokemon_species } = group
-          const pokemonCount = pokemon_species.length
+          const { id, name, pokemonSpecies } = group
+          const pokemonCount = pokemonSpecies.length
           return (
             <li key={id}>
               <BlueLink href={`/egg-group/${name}`}>{formatName(name)}</BlueLink>{' '}
