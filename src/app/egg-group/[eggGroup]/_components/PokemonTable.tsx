@@ -72,13 +72,10 @@ const PokemonTable: FC<TableProps> = ({ finalTableData }) => {
   })
 
   return (
-    <div className="-mt-5">
-      <SectionTitle> The Pokémon</SectionTitle>
-      <TableContainer>
-        <thead>{tableHeaders}</thead>
-        <tbody>{pokmemonRows}</tbody>
-      </TableContainer>
-    </div>
+    <TableContainer>
+      <thead>{tableHeaders}</thead>
+      <tbody>{pokmemonRows}</tbody>
+    </TableContainer>
   )
 }
 

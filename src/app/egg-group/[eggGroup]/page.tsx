@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import SectionTitle from '@/components/containers/SectionTitle'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
@@ -69,8 +70,15 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
         <span className="text-gray-600"> (egg group) </span>
       </h1>
       <div className="flex flex-wrap gap-x-8">
-        <GroupList />
-        <PokemonTable finalTableData={finalTableData} />
+        <div className="w-full lg:w-1/3">
+          <GroupList />
+        </div>
+        <div className="mt-0 w-full overflow-x-auto lg:-mt-5 lg:w-auto">
+          <SectionTitle> The Pokémon </SectionTitle>
+          <div className="flex justify-center">
+            <PokemonTable finalTableData={finalTableData} />
+          </div>
+        </div>
       </div>
     </main>
   )

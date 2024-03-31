@@ -24,7 +24,7 @@ const GroupList = async () => {
 
   const eggGroupData = await getAllGroupData(urlList)
   return (
-    <section className="w-96 self-start rounded bg-[#19272d] px-4 pb-4 pt-px">
+    <section className="self-start rounded bg-[#19272d] px-4 pb-4 pt-px">
       <SectionTitle>Egg Groups</SectionTitle>
       <ul className="list-inside list-disc">
         {eggGroupData.map((group) => {
