@@ -2,29 +2,60 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import TypeCard from '@/components/TypeCard'
+import PokemonExtractor from '@/extractors/PokemonExtractor'
+import SpeciesExtractor from '@/extractors/SpeciesExtractor'
+import { PokemonApi } from '@/services/PokemonApi'
+import { SpeciesApi } from '@/services/SpeciesApi'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
-interface FinalTableData {
-  id: number
-  otherEggGroup?: string | undefined
-  nationalNumber: number
-  gameSprite: string | null
-  name: string
-  types: PokemonType[]
-}
-
 interface TableProps {
-  finalTableData: FinalTableData[]
+  speciesUrls: Array<string>
+  eggGroup: string
 }
 
-const PokemonTable: FC<TableProps> = ({ finalTableData }) => {
+const getSpeciesData = async (urls: string[], eggGroupName: string) => {
+  const responses = await SpeciesApi.getByUrls(urls)
+  return responses.map((species) => {
+    const { id, egg_groups } = SpeciesExtractor(species)
+    const otherEggGroup = egg_groups
+      .map((group) => group.name)
+      .filter((group) => group !== eggGroupName)[0]
+    return { id, otherEggGroup }
+  })
+}
+
+const getPokemonData = async (urls: string[]) => {
+  const responses = await PokemonApi.getByUrls(urls)
+  return responses.map((pokemon) => {
+    const { id, nationalNumber, gameSprite, name, types } = PokemonExtractor(pokemon)
+    return { id, nationalNumber, gameSprite, name, types }
+  })
+}
+
+const PokemonTable: FC<TableProps> = async ({ speciesUrls, eggGroup }) => {
+  const pokemonUrls = speciesUrls.map((url) => url.replace('pokemon-species', 'pokemon'))
+
+  const [speciesData, pokemonData] = await Promise.all([
+    getSpeciesData(speciesUrls, eggGroup),
+    getPokemonData(pokemonUrls),
+  ])
+
+  // Joining the data
+  const finalTableData = pokemonData
+    .map((obj1) => {
+      const obj2 = speciesData.find((obj2) => obj2.id === obj1.id)
+      return { ...obj1, ...obj2 }
+    })
+    .filter(
+      (entry) => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157),
+    )
+
   const headerNames = ['#', 'Name', 'Types', 'Other group']
   const tableHeaders = (
     <TableRow className="bg-[#1a1a1a]">

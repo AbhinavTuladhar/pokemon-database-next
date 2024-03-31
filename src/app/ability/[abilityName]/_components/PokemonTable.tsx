@@ -90,13 +90,10 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   })
 
   return (
-    <>
-      <SectionTitle>Pokémon with {abilityName}</SectionTitle>
-      <TableContainer>
-        <thead>{headerRow}</thead>
-        <tbody>{pokemonRow}</tbody>
-      </TableContainer>
-    </>
+    <TableContainer>
+      <thead>{headerRow}</thead>
+      <tbody>{pokemonRow}</tbody>
+    </TableContainer>
   )
 }
 

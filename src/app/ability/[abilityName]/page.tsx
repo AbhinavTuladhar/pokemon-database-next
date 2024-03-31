@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import SectionTitle from '@/components/containers/SectionTitle'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
@@ -39,10 +40,13 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
           <AbilityEffect entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
         </div>
-        <div>
-          <Suspense fallback={<PokemonTableSkeleton />}>
-            <PokemonTable abilityName={name} pokemonList={pokemon} />
-          </Suspense>
+        <div className="w-full lg:w-auto">
+          <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>
+          <div className="flex justify-center">
+            <Suspense fallback={<PokemonTableSkeleton />}>
+              <PokemonTable abilityName={name} pokemonList={pokemon} />
+            </Suspense>
+          </div>
         </div>
       </div>
     </main>

@@ -1,12 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, Suspense } from 'react'
 
 import SectionTitle from '@/components/containers/SectionTitle'
+import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
-import { PokemonApi } from '@/services/PokemonApi'
-import { SpeciesApi } from '@/services/SpeciesApi'
 import formatName from '@/utils/formatName'
 
 import GroupList from './_components/GroupList'
@@ -23,45 +20,10 @@ const getEggGroupData = async (name: string) => {
   return EggGroupExtractor(response)
 }
 
-const getSpeciesData = async (urls: string[], eggGroupName: string) => {
-  const responses = await SpeciesApi.getByUrls(urls)
-  return responses.map((species) => {
-    const { id, egg_groups } = SpeciesExtractor(species)
-    const otherEggGroup = egg_groups
-      .map((group) => group.name)
-      .filter((group) => group !== eggGroupName)[0]
-    return { id, otherEggGroup }
-  })
-}
-
-const getPokemonData = async (urls: string[]) => {
-  const responses = await PokemonApi.getByUrls(urls)
-  return responses.map((pokemon) => {
-    const { id, nationalNumber, gameSprite, name, types } = PokemonExtractor(pokemon)
-    return { id, nationalNumber, gameSprite, name, types }
-  })
-}
-
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
   const data = await getEggGroupData(eggGroup)
 
   const speciesUrls = data.pokemonSpecies.map((species) => species.url)
-  const pokemonUrls = speciesUrls.map((url) => url.replace('pokemon-species', 'pokemon'))
-
-  const [speciesData, pokemonData] = await Promise.all([
-    getSpeciesData(speciesUrls, eggGroup),
-    getPokemonData(pokemonUrls),
-  ])
-
-  // Joinig the data
-  const finalTableData = pokemonData
-    .map((obj1) => {
-      const obj2 = speciesData.find((obj2) => obj2.id === obj1.id)
-      return { ...obj1, ...obj2 }
-    })
-    .filter(
-      (entry) => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157),
-    )
 
   return (
     <main>
@@ -74,10 +36,12 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
           <GroupList />
         </div>
         <div className="mt-0 w-full overflow-x-auto lg:-mt-5 lg:w-auto">
-          <SectionTitle> The Pokémon </SectionTitle>
-          <div className="flex justify-center">
-            <PokemonTable finalTableData={finalTableData} />
-          </div>
+          <Suspense fallback={<PokemonTableSkeleton />}>
+            <SectionTitle> The Pokémon </SectionTitle>
+            <div className="flex justify-center">
+              <PokemonTable speciesUrls={speciesUrls} eggGroup={eggGroup} />
+            </div>
+          </Suspense>
         </div>
       </div>
     </main>
