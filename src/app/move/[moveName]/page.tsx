@@ -52,9 +52,8 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     names,
     pokemonUrls,
     machines,
+    pokemon,
   } = moveData
-
-  const urlList = pokemonUrls.map((pokemon) => pokemon.url)
 
   return (
     <main>
@@ -92,8 +91,15 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
       </div>
 
+      <>
+        <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
+        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
+          <MiniCardList pokemonNames={pokemon} />
+        </Suspense>
+      </>
+
       {/* Use infinite scrolling if there are more than 100 urls. */}
-      {pokemonUrls.length >= 100 ? (
+      {/* {pokemonUrls.length >= 100 ? (
         <>
           <SectionTitle>Pokémon that can learn {formatName(moveName)}</SectionTitle>
           <InfiniteMiniCardScroll increment={20} urlList={urlList} />
@@ -105,7 +111,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
             <MiniCardList pokemonUrls={urlList} />
           </Suspense>
         </>
-      )}
+      )} */}
     </main>
   )
 }

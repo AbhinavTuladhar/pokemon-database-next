@@ -7,11 +7,11 @@ import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
 
 interface MiniCardListProps {
-  pokemonUrls: Array<string>
+  pokemonNames: Array<string>
 }
 
-const fetchPokemonData = async (pokemonUrls: Array<string>) => {
-  const responses = await PokemonApi.getByUrls(pokemonUrls)
+const fetchPokemonData = async (pokemonNames: Array<string>) => {
+  const responses = await PokemonApi.getByNames(pokemonNames)
   const extractedInfo = responses.map(PokemonExtractor)
 
   // Sort the pokemon by their national number
@@ -21,8 +21,8 @@ const fetchPokemonData = async (pokemonUrls: Array<string>) => {
   return sortedResponses
 }
 
-const MiniCardList: FC<MiniCardListProps> = async ({ pokemonUrls }) => {
-  const pokemonData = await fetchPokemonData(pokemonUrls)
+const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
+  const pokemonData = await fetchPokemonData(pokemonNames)
 
   // We now map the Pokemon data into the respective cards.
   const pokeCards = pokemonData?.map((pokemon, index) => {

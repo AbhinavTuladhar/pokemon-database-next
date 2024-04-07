@@ -57,6 +57,9 @@ const MoveExtractor = (move: Move) => {
     return { name, url: replacedUrl }
   })
 
+  // Find the names of all the Pokemon that can learn the move
+  const pokemon = learned_by_pokemon.map((pokemon) => pokemon.name)
+
   // Dealing with keys which might have null values.
   const realAccuracy = accuracy === null ? '-' : accuracy
   const realPower = power === null ? '-' : power
@@ -91,6 +94,7 @@ const MoveExtractor = (move: Move) => {
     id,
     machines,
     pokemonUrls,
+    pokemon,
   }
 }
 

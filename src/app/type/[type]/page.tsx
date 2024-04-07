@@ -87,12 +87,12 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)
 
-  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemonList, moveList } = typeInformation
+  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemon, moveList } = typeInformation
 
   const formattedType = formatName(type.charAt(0).toUpperCase() + type.slice(1))
 
   // Count the number of pokemon and moves for the type.
-  const pokemonCount = pokemonList.length
+  const pokemonCount = pokemon.length
   const moveCount = moveList.length
 
   // Now format the data for rendering purposes.
@@ -172,8 +172,8 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
       </div>
 
       <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
-      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
-        <MiniCardList pokemonUrls={pokemonList.map((pokemon) => pokemon.url)} />
+      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
+        <MiniCardList pokemonNames={pokemon} />
       </Suspense>
     </main>
   )
