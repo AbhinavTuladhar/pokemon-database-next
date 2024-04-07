@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import { getPokemonByGeneration, getPokemonByName, getPokemonByUrls } from '@/actions/fetchPokemon'
 import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonApi } from '@/services/PokemonApi'
+import { GenericNamedResource } from '@/types'
 
 import PokeCardContainer from './_components/PokeCardContainer'
 
@@ -21,23 +22,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+const getPokemonData = async (urls: Array<GenericNamedResource>) => {
+  const responses = await PokemonApi.getByNames(urls)
+  return responses
+}
+
+const getPokemonDataByGeneration = async (offset: number, limit: number) => {
+  const response = await PokemonApi.getByGeneration(offset, limit)
+  return response
+}
+
 const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const generationNumber = parseInt(id)
   // Getting the corresponding object from external file
   const routeData = generationData[generationNumber - 1]
   const { limit, offset } = routeData
 
-  const generationResponse = await getPokemonByGeneration(offset, limit)
+  const generationResponse = (await getPokemonDataByGeneration(
+    offset,
+    limit,
+  )) as unknown as GenericNamedResource[]
 
-  const urlList = generationResponse.results.map((pokemon) => {
-    const { name, url } = pokemon
-    // We need to not use the complete url, hence the offset is used.
-    // For the pokemon names, we use the actual name instead of the id number.
-    const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
-    return replacedUrl
-  })
-
-  const pokemonData = await getPokemonByUrls(urlList)
+  const pokemonData = await getPokemonData(generationResponse)
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
   return (

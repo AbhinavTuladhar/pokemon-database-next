@@ -52,9 +52,15 @@ interface GenerationSprite {
   shinySprite: string | null
 }
 
+interface GenericNamedResource {
+  name: string
+  url: string
+}
+
 export type {
   EvolutionPokemon,
   GenerationSprite,
+  GenericNamedResource,
   GroupedLocationArea,
   StatTable,
   TransformedEncounter,

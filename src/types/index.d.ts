@@ -43,6 +43,7 @@ import { NamedApiResource } from './utils/NamedResource'
 import {
   EvolutionPokemon,
   GenerationSprite,
+  GenericNamedResource,
   GroupedLocationArea,
   StatTable,
   TransformedEncounter,
