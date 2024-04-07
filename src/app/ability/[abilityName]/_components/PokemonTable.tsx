@@ -16,8 +16,8 @@ interface PokemonTableProps {
   abilityName: string
 }
 
-const getPokemonData = async (urls: Array<string>, abilityName: string) => {
-  const responses = await PokemonApi.getByUrls(urls)
+const getPokemonData = async (names: Array<string>, abilityName: string) => {
+  const responses = await PokemonApi.getByNames(names)
 
   // We now need to find the pokemon name, icons and other abilities.
   const simplifiedResponse = responses.map((response) => {

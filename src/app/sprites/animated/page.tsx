@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 const getPokemonList = async () => {
-  const response = await PokemonApi.getByGeneration(0, 809)
+  const response = await PokemonApi.getByOffsetAndLimit(0, 809)
   // const response = await PokemonApi.getByGeneration(0, 10)
   return response.results
 }

@@ -39,6 +39,8 @@ const AbilityExtractor = (data: Ability) => {
     return replacedUrl
   })
 
+  const pokemonList = pokemon.map((pokemon) => pokemon.pokemon.name)
+
   const [generationString, generationNumber] = generationIntroducedRaw.split('-')
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)
   const generationIntroduced = `${newGenerationString} ${numberMapper[generationNumber]}`
@@ -51,7 +53,7 @@ const AbilityExtractor = (data: Ability) => {
     id,
     name,
     pokemonCount,
-    pokemon: pokemonUrls,
+    pokemon: pokemonList,
   }
 }
 

@@ -43,8 +43,9 @@ const getPokemonData = async (pokemonName: string) => {
   return PokemonExtractor(pokemonData)
 }
 
-const getSpeciesData = async (id: number) => {
-  const speciesData = await SpeciesApi.getById(id)
+const getSpeciesData = async (id: number | string) => {
+  const param = typeof id === 'string' ? +id : id
+  const speciesData = await SpeciesApi.getById(param)
   return SpeciesExtractor(speciesData)
 }
 

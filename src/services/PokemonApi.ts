@@ -31,10 +31,13 @@ export const PokemonApi = {
     const response = await Api.pokemon.getPokemonByName(name)
     return response as unknown as Pokemon
   },
-  getByNames: async function (urls: Array<GenericNamedResource>) {
-    const pokemonNames = urls.map((url) => url.name)
-    const fetchRequests = pokemonNames.map((pokemon) => Api.pokemon.getPokemonByName(pokemon))
+  getByNames: async function (names: Array<string>) {
+    const fetchRequests = names.map((pokemon) => Api.pokemon.getPokemonByName(pokemon))
     const responses = await Promise.all(fetchRequests)
     return responses as Pokemon[]
+  },
+  getByOffsetAndLimit: async function (offset: number, limit: number) {
+    const response = await Api.pokemon.listPokemons(offset, limit)
+    return response
   },
 }

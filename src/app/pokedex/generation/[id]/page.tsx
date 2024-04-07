@@ -22,13 +22,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-const getPokemonData = async (urls: Array<GenericNamedResource>) => {
-  const responses = await PokemonApi.getByNames(urls)
+const getPokemonData = async (names: Array<string>) => {
+  const responses = await PokemonApi.getByNames(names)
   return responses
 }
 
 const getPokemonDataByGeneration = async (offset: number, limit: number) => {
-  const response = await PokemonApi.getByGeneration(offset, limit)
+  const response = await PokemonApi.getByOffsetAndLimit(offset, limit)
   return response
 }
 
@@ -40,7 +40,9 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
 
   const generationResponse = await getPokemonDataByGeneration(offset, limit)
 
-  const pokemonData = await getPokemonData(generationResponse.results as GenericNamedResource[])
+  const pokemonData = await getPokemonData(
+    generationResponse.results.map((pokemon) => pokemon.name),
+  )
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
   return (
