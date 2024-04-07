@@ -38,7 +38,7 @@ export interface PokemonSpecies {
   names: Array<Name>
   pal_park_encounters: Array<PalParkEncounterArea>
   flavor_text_entries: Array<FlavourText>
-  from_descriptions: Array<Description>
+  form_descriptions: Array<Description>
   genera: Array<Genus>
   varieties: Array<PokemonSpeciesVariety>
 }

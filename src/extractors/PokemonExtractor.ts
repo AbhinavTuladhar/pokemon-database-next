@@ -1,4 +1,5 @@
 import { Pokemon } from '@/types'
+import { getResourceId } from '@/utils/urlUtils'
 
 const PokemonExtractor = (data: Pokemon) => {
   const {
@@ -87,6 +88,7 @@ const PokemonExtractor = (data: Pokemon) => {
   ]
 
   const nationalNumber = parseInt(speciesLink.match(/\/(\d+)\/$/)![1])
+  const speciesId = getResourceId(speciesLink)
   return {
     abilities,
     base_experience,
@@ -101,6 +103,7 @@ const PokemonExtractor = (data: Pokemon) => {
     nationalNumber,
     order,
     speciesLink,
+    speciesId,
     front_default,
     front_shiny,
     gameSprite,

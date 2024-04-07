@@ -38,12 +38,9 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const routeData = generationData[generationNumber - 1]
   const { limit, offset } = routeData
 
-  const generationResponse = (await getPokemonDataByGeneration(
-    offset,
-    limit,
-  )) as unknown as GenericNamedResource[]
+  const generationResponse = await getPokemonDataByGeneration(offset, limit)
 
-  const pokemonData = await getPokemonData(generationResponse)
+  const pokemonData = await getPokemonData(generationResponse.results as GenericNamedResource[])
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
   return (

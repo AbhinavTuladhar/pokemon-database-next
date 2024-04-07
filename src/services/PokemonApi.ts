@@ -14,7 +14,7 @@ export const PokemonApi = {
     const response = await fetchData<NamedApiResourceList<Pokemon>>(
       `/pokemon?offset=${offset}&limit=${limit}`,
     )
-    return response.results
+    return response
   },
   get: async function (name: string) {
     const response = await api.getPokemonByName(name)

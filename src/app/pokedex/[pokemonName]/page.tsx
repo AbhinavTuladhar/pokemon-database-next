@@ -39,12 +39,12 @@ export async function generateMetadata({ params }: PokemonPageProps): Promise<Me
 }
 
 const getPokemonData = async (pokemonName: string) => {
-  const pokemonData = await PokemonApi.get(pokemonName)
+  const pokemonData = await PokemonApi.getByName(pokemonName)
   return PokemonExtractor(pokemonData)
 }
 
-const getSpeciesData = async (url: string) => {
-  const speciesData = await SpeciesApi.get(url)
+const getSpeciesData = async (id: number) => {
+  const speciesData = await SpeciesApi.getById(id)
   return SpeciesExtractor(speciesData)
 }
 
@@ -64,12 +64,12 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     types,
     base_experience,
     stats,
-    speciesLink,
+    speciesId,
     moves,
     spriteCollection,
   } = pokemonData
 
-  const speciesData = await getSpeciesData(speciesLink)
+  const speciesData = await getSpeciesData(+speciesId)
 
   const {
     flavor_text_entries,
