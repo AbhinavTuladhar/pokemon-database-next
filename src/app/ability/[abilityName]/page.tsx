@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: AbilityPageParams): Promise<M
 }
 
 const getAbilityData = async (name: string) => {
-  const response = await AbilityApi.get(name)
+  const response = await AbilityApi.getByName(name)
   return AbilityExtractor(response)
 }
 

@@ -14,19 +14,19 @@ export const metadata: Metadata = {
   title: 'Pokémon Abilities | Pokémon Database',
 }
 
-const getUrlList = async () => {
-  const response = await AbilityApi.getAllUrls()
+const getAbilityList = async () => {
+  const response = await AbilityApi.getAllNames()
   return response
 }
 
-const getAllAbilityData = async (urls: Array<string>) => {
-  const abilityData = await AbilityApi.getByUrls(urls)
+const getAllAbilityData = async (names: Array<string>) => {
+  const abilityData = await AbilityApi.getByNames(names)
   return abilityData.map(AbilityExtractor).sort((a, b) => (a.name > b.name ? 1 : -1))
 }
 
 const page = async () => {
-  const abilityUrlList = await getUrlList()
-  const allAbilityData = await getAllAbilityData(abilityUrlList)
+  const abilityNames = await getAbilityList()
+  const allAbilityData = await getAllAbilityData(abilityNames)
 
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
 

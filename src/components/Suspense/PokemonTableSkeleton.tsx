@@ -8,8 +8,8 @@ import TableRow from '../containers/TableRow'
 
 const PokemonTableSkeleton = () => {
   return (
-    <section>
-      <SectionTitle>Loading Pokémon data...</SectionTitle>
+    <section className="min-w-64">
+      {/* <SectionTitle>Loading Pokémon data...</SectionTitle> */}
       <TableContainer>
         <tbody>
           {Array(10)
