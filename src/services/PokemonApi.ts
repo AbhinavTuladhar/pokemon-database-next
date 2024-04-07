@@ -6,8 +6,7 @@ import trimUrl from '@/utils/trimUrl'
 
 import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
-
-const api = new PokemonClient()
+import Api from './MainApi'
 
 export const PokemonApi = {
   getByGeneration: async function (offset: number, limit: number) {
@@ -17,8 +16,8 @@ export const PokemonApi = {
     return response
   },
   get: async function (name: string) {
-    const response = await api.getPokemonByName(name)
-    const test = await api.listPokemonSpecies(1, 100)
+    const response = await Api.pokemon.getPokemonByName(name)
+    const test = await Api.pokemon.listPokemonSpecies(1, 100)
     // const response = await fetchData<Pokemon>(`/pokemon/${name}`)
     return response
   },
@@ -29,12 +28,12 @@ export const PokemonApi = {
   },
 
   getByName: async function (name: string) {
-    const response = await api.getPokemonByName(name)
+    const response = await Api.pokemon.getPokemonByName(name)
     return response as unknown as Pokemon
   },
   getByNames: async function (urls: Array<GenericNamedResource>) {
     const pokemonNames = urls.map((url) => url.name)
-    const fetchRequests = pokemonNames.map((pokemon) => api.getPokemonByName(pokemon))
+    const fetchRequests = pokemonNames.map((pokemon) => Api.pokemon.getPokemonByName(pokemon))
     const responses = await Promise.all(fetchRequests)
     return responses as Pokemon[]
   },

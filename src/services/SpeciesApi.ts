@@ -1,13 +1,9 @@
-import { PokemonClient } from 'pokenode-ts'
-
 import { PokemonSpecies } from '@/types'
 import trimUrl from '@/utils/trimUrl'
 
-import baseURL from './baseUrl'
 import fetchData from './fetchData'
 import fetchMultipleData from './fetchMultipleData'
-
-const api = new PokemonClient({ cacheOptions: {} })
+import Api from './MainApi'
 
 export const SpeciesApi = {
   getByFullUrl: async function (url: string) {
@@ -26,7 +22,7 @@ export const SpeciesApi = {
   },
 
   getById: async function (id: number) {
-    const response = await api.getPokemonSpeciesById(id)
+    const response = await Api.pokemon.getPokemonSpeciesById(id)
     return response as unknown as PokemonSpecies
   },
 }
