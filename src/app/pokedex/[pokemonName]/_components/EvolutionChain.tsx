@@ -6,8 +6,7 @@ import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
 import type { ChainLink, EvolutionChain, EvolutionDetail, EvolutionPokemon } from '@/types'
-import stringifyUrl from '@/utils/stringifyUrl'
-import trimUrl from '@/utils/trimUrl'
+import { getResourceId } from '@/utils/urlUtils'
 
 import EvolutionDiv from './EvolutionDiv'
 
@@ -22,8 +21,8 @@ interface EvolutionProps {
   url: string
 }
 
-const getEvolutionData = async (url: string) => {
-  const response = await EvolutionApi.get(url)
+const getEvolutionData = async (id: number) => {
+  const response = await EvolutionApi.getById(id)
   return response
 }
 
@@ -36,7 +35,7 @@ const getAllPokemonData = async (ids: Array<number>) => {
 }
 
 const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
-  const evolutionData = await getEvolutionData(url)
+  const evolutionData = await getEvolutionData(+getResourceId(url))
 
   interface EvolutionInformation {
     id: number

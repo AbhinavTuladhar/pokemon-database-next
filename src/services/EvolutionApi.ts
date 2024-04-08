@@ -1,11 +1,10 @@
-import { EvolutionChain,NamedApiResourceList, Pokemon } from '@/types'
-import trimUrl from '@/utils/trimUrl'
+import { EvolutionChain } from '@/types'
 
-import fetchData from './fetchData'
+import Api from './MainApi'
 
 export const EvolutionApi = {
-  get: async function (url: string) {
-    const response = await fetchData<EvolutionChain>(trimUrl(url))
-    return response
+  getById: async function (id: number) {
+    const response = await Api.evolution.getEvolutionChainById(id)
+    return response as EvolutionChain
   },
 }
