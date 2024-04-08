@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 const getEggGroupData = async (name: string) => {
-  const response = await EggGroupApi.get(name)
+  const response = await EggGroupApi.getByName(name)
   return EggGroupExtractor(response)
 }
 
