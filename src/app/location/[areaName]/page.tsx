@@ -37,8 +37,8 @@ const getLocationData = async (name: string) => {
   return LocationExtractor(response)
 }
 
-const getSubLocationData = async (urls: string[]) => {
-  const responses = await LocationAreaApi.getByUrls(urls)
+const getSubLocationData = async (names: string[]) => {
+  const responses = await LocationAreaApi.getByNames(names)
   return responses.map(LocationAreaExtractor)
 }
 
@@ -60,8 +60,8 @@ interface LocationGroup {
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   const locationData = await getLocationData(areaName)
 
-  const subLocationUrls = locationData.subLocations.map((subLocation) => subLocation.url)
-  const subLocationData = await getSubLocationData(subLocationUrls)
+  const subLocationNames = locationData.subLocations.map((subLocation) => subLocation.name)
+  const subLocationData = await getSubLocationData(subLocationNames)
 
   // Inform the user if there is no encounter information.
   if (subLocationData?.length === 0) {
