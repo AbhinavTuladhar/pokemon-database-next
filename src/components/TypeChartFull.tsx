@@ -1,51 +1,29 @@
 import React, { Fragment } from 'react'
 
+import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import fetchMultipleData from '@/services/fetchMultipleData'
+import { TypesApi } from '@/services/TypesApi'
 import { Type } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 
 import multiplierToString from '../utils/multiplierToString'
 
-import NoSSR from './containers/NoSSR'
 import MiniTypeCard from './MiniTypeCard'
 import { Tooltip } from './ReactTooltip'
 import TypeCard from './TypeCard'
 import TypeMultiplierBox from './TypeMultiplierBox'
 
-const getData = async () => {
-  const typeListing = [
-    'normal',
-    'fire',
-    'water',
-    'electric',
-    'grass',
-    'ice',
-    'fighting',
-    'poison',
-    'ground',
-    'flying',
-    'psychic',
-    'bug',
-    'rock',
-    'ghost',
-    'dragon',
-    'dark',
-    'steel',
-    'fairy',
-  ]
-  const typeUrls = typeListing.map((type) => `/type/${type}`)
-
-  const data = await fetchMultipleData<Type>(typeUrls)
+const getAllTypeData = async () => {
+  const typeData = await TypesApi.getByNames(typeList)
 
   // Step 1: Extract type information
   // Step 2: Calculate the type chart, and return an object containing the type chart with the defending
   // type name
   // Step 3: Properly format the type chart object.
-
   // Next we need to transform the data into a usable state.
-  const transformedTypeData = data.map((type) => {
+  const transformedTypeData = typeData.map((type) => {
     const extractedInfo = TypeExtractor(type)
     const { name: typeName } = extractedInfo
     const typeChart = findTypeEffectiveness([extractedInfo])
@@ -60,7 +38,7 @@ const getData = async () => {
 }
 
 const TypeChartFull = async () => {
-  const typeData = await getData()
+  const typeData = await getAllTypeData()
 
   // To show the defending and attacking types.
   const cornerDiv = (

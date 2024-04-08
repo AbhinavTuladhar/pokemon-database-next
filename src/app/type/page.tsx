@@ -3,38 +3,14 @@ import { Metadata } from 'next'
 import TypeCard from '@/components/TypeCard'
 import TypeChartFull from '@/components/TypeChartFull'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import typeList from '@/data/typeList'
 import { TypesApi } from '@/services/TypesApi'
 
 export const metadata: Metadata = {
   title: 'Pokémon Types | Pokémon Database',
 }
 
-const TypeListing = async () => {
-  const data = await TypesApi.getAll()
-
-  // const newData = await getData()
-
-  const typeList = [
-    'normal',
-    'fire',
-    'water',
-    'electric',
-    'grass',
-    'ice',
-    'fighting',
-    'poison',
-    'ground',
-    'flying',
-    'psychic',
-    'bug',
-    'rock',
-    'ghost',
-    'dragon',
-    'dark',
-    'steel',
-    'fairy',
-  ]
-
+const TypeListing = () => {
   const typeCardList = typeList.map((type, index) => (
     <div key={index}>
       <TypeCard typeName={type} variant="small" />

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getTypeData = async (typeName: string) => {
-  const response = await TypesApi.get(typeName)
+  const response = await TypesApi.getByName(typeName)
   return TypeExtractor(response)
 }
 

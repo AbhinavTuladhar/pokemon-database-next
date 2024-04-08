@@ -51,12 +51,17 @@ const fetchTypesData = async (urls: Array<string>, replacements: Array<string>) 
   return typeData.map(TypeExtractor)
 }
 
+const getTypesData = async (names: Array<string>) => {
+  const response = await TypesApi.getByNames(names.map((name) => name.toLowerCase()))
+  return response.map(TypeExtractor)
+}
+
 const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeUrls = types.map((type) => type.type.url)
   const typeNames = types.map((type) => formatName(type.type.name))
   const typeNamesString = typeNames.join('/')
 
-  const typeData = await fetchTypesData(typeUrls, typeNames)
+  const typeData = await getTypesData(typeNames)
 
   // Now calculate a type-effectiveness object
   const obj = findTypeEffectiveness(typeData)

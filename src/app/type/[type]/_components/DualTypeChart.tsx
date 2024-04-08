@@ -4,6 +4,7 @@ import MiniTypeCard from '@/components/MiniTypeCard'
 import { Tooltip } from '@/components/ReactTooltip'
 import TypeCard from '@/components/TypeCard'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import typeList from '@/data/typeList'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
@@ -22,27 +23,6 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
   typeName,
 }) => {
   const mainType = typeName
-  const typeList = [
-    'normal',
-    'fire',
-    'water',
-    'electric',
-    'grass',
-    'ice',
-    'fighting',
-    'poison',
-    'ground',
-    'flying',
-    'psychic',
-    'bug',
-    'rock',
-    'ghost',
-    'dragon',
-    'dark',
-    'steel',
-    'fairy',
-  ]
-
   const toolTips: Array<JSX.Element> = []
 
   // Calculate all the dual-type combinations possible
