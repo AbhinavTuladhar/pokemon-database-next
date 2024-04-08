@@ -42,11 +42,11 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
         </div>
         <div>
           <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>
-          <div className="flex w-full justify-center lg:justify-stretch">
-            <Suspense fallback={<PokemonTableSkeleton />}>
+          <Suspense fallback={<PokemonTableSkeleton />}>
+            <div className="flex w-full justify-center lg:justify-stretch">
               <PokemonTable abilityName={name} pokemonList={pokemon} />
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
         </div>
       </div>
     </main>

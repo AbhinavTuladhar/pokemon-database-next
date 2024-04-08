@@ -47,7 +47,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   const headerRow = (
     <TableRow className="bg-[#1a1a1a]">
       {headers.map((header) => (
-        <TableCellHeader className="min-w-48" key={header} type="column">
+        <TableCellHeader className="first:w-28" key={header} type="column">
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
       ))}
@@ -90,8 +90,8 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   })
 
   return (
-    <TableContainer>
-      <thead>{headerRow}</thead>
+    <TableContainer className="w-auto lg:w-full">
+      <thead className="table-header-group">{headerRow}</thead>
       <tbody>{pokemonRow}</tbody>
     </TableContainer>
   )
