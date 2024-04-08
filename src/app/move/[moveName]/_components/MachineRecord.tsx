@@ -11,13 +11,14 @@ import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { MachineApi } from '@/services/MachineApi'
 import type { MachineVersionDetail } from '@/types'
 import formatName from '@/utils/formatName'
+import { getResourceId } from '@/utils/urlUtils'
 
 interface RecordProps {
   machineList: Array<MachineVersionDetail>
 }
 
-const getMachineInfo = async (urls: Array<string>) => {
-  const responses = await MachineApi.getByUrls(urls)
+const getMachineInfo = async (ids: Array<number>) => {
+  const responses = await MachineApi.getByIds(ids)
   return responses
 }
 
@@ -73,9 +74,14 @@ const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
 }
 
 const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
-  const urlList = machineList.map((machine) => machine.machine.url)
+  const machineIds = machineList.map((machine) => {
+    const {
+      machine: { url },
+    } = machine
+    return +getResourceId(url)
+  })
 
-  const machineInfo = await getMachineInfo(urlList)
+  const machineInfo = await getMachineInfo(machineIds)
 
   const finalMachineData = groupByGenerations(getTmNumbers(machineInfo))
 
