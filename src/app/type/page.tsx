@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import TypeCard from '@/components/TypeCard'
 import TypeChartFull from '@/components/TypeChartFull'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
@@ -37,7 +38,7 @@ const TypeListing = () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Pokémon types & type chart</h1>
+      <PageTitle>Pokémon types & type chart</PageTitle>
       <section>
         <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr,_2fr]">
           <div>

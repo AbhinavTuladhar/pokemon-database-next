@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
@@ -119,7 +120,7 @@ const page = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> Berries </h1>
+      <PageTitle> Berries </PageTitle>
       <TableContainer>
         <thead>{tableHeader}</thead>
         <tbody>{tableRows}</tbody>

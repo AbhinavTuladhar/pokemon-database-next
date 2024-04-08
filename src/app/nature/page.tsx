@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -63,7 +64,7 @@ const NatureList = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Natures</h1>
+      <PageTitle>Natures</PageTitle>
       <TableContainer>
         {tableHeaders}
         {tableRows}

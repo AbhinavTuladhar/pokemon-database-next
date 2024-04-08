@@ -1,5 +1,6 @@
 import React, { FC, Suspense } from 'react'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
@@ -27,10 +28,10 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">
+      <PageTitle>
         <span> {formatName(eggGroup)} </span>
         <span className="text-gray-600"> (egg group) </span>
-      </h1>
+      </PageTitle>
       <div className="flex flex-wrap gap-x-8">
         <div className="w-full lg:w-1/3">
           <GroupList />

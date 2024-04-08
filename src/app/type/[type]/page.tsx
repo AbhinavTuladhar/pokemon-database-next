@@ -2,6 +2,7 @@ import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 // import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
@@ -118,10 +119,10 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
 
   return (
     <main className="space-y-4">
-      <h1 className="my-4 text-center text-5xl font-bold">
+      <PageTitle>
         {formattedType}&nbsp;
         <span className="brightness-75"> (type) </span>
-      </h1>
+      </PageTitle>
       <section>
         <TypeSummaryRow
           moveCount={moveCount}

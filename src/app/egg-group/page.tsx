@@ -1,6 +1,7 @@
 import React from 'react'
 
 import BlueLink from '@/components/BlueLink'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -29,7 +30,7 @@ const EggGroupTable = async () => {
   const eggGroupData = await getAllGroupData(urlList)
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Pokémon Egg Groups</h1>
+      <PageTitle>Pokémon Egg Groups</PageTitle>
       <div className="flex w-full justify-center">
         <div className="w-60 max-w-full">
           <TableContainer>

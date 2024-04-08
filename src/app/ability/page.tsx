@@ -2,6 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import BlueLink from '@/components/BlueLink'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -32,7 +33,7 @@ const page = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> Pokémon Abilities </h1>
+      <PageTitle>Pokémon Abilities</PageTitle>
       <TableContainer>
         <thead>
           <TableRow className="bg-[#1a1a1a]">

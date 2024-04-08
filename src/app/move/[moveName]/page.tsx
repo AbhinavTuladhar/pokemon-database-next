@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
@@ -57,7 +58,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> {formatName(moveName)}</h1>
+      <PageTitle>{formatName(moveName)}</PageTitle>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
           <MoveData

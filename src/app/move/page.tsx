@@ -2,6 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -85,7 +86,7 @@ const MoveList = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> Pokémon Moves</h1>
+      <PageTitle>Pokémon Moves</PageTitle>
       <TableContainer>
         <thead>
           <TableRow className="bg-[#1a1a1a]">{HeaderRowCells}</TableRow>

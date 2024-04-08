@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import RegionExtractor from '@/extractors/RegionExtractor'
 import { RegionApi } from '@/services/LocationApi'
 import { NamedApiResource } from '@/types'
@@ -48,7 +49,7 @@ const LocationList = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Pokémon Locations</h1>
+      <PageTitle>Pokémon Locations</PageTitle>
       <RegionTabs regionData={regionData} />
     </main>
   )

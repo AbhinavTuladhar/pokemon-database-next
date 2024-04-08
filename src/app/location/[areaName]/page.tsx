@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -245,8 +246,7 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
   return (
     <main>
-      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(areaName)}</h1>
-
+      <PageTitle>{formatName(areaName)}</PageTitle>
       <>
         {tooltipData.map((row, index) => (
           <Tooltip anchorSelect={row.id} place="bottom" key={index}>
