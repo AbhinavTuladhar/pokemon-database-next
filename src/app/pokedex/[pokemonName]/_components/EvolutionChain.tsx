@@ -27,8 +27,8 @@ const getEvolutionData = async (url: string) => {
   return response
 }
 
-const getAllPokemonData = async (urls: Array<string>) => {
-  const responses = await PokemonApi.getByUrls(urls)
+const getAllPokemonData = async (ids: Array<number>) => {
+  const responses = await PokemonApi.getByIds(ids)
   return responses.map((response) => {
     const { name, homeSprite, id, types } = PokemonExtractor(response)
     return { name, homeSprite, id, types }
@@ -81,15 +81,10 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   }
 
   const evolutionChainData = getAllData()
-  // Find the urls of all the pokemon in the evolution chain.
-  // Find the Pokemon Url, NOT the species url.
-  const pokemonUrls = evolutionChainData.map((pokemon) => {
-    const { id, speciesName } = pokemon
-    return `https://pokeapi.co/api/v2/pokemon/${id}`
-    // return trimUrl(tempUrl)
-    // return stringifyUrl(tempUrl, speciesName)
-  })
-  const allPokemonData = await getAllPokemonData(pokemonUrls)
+
+  const pokemonIds = evolutionChainData.map((pokemon) => pokemon.id)
+
+  const allPokemonData = await getAllPokemonData(pokemonIds)
 
   // Now perform a join operation on allPokemonData and evolutionChainData on the basis of the pokemon id.
   const preFinalPokemonData = allPokemonData.map((pokemon) => {
