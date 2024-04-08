@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
 import BlueLink from '@/components/BlueLink'
@@ -7,6 +7,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import LoadingPageFallback from '@/components/Suspense/LoadingPageFallback'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
@@ -31,44 +32,48 @@ const page = async () => {
 
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
 
+  const headerRows = (
+    <TableRow className="bg-[#1a1a1a]">
+      {headers.map((header, index) => (
+        <TableCellHeader type="column" key={index}>
+          <span className="font-bold text-white"> {header}</span>
+        </TableCellHeader>
+      ))}
+    </TableRow>
+  )
+
+  const abilityDataRows = allAbilityData.map((ability, rowIndex) => {
+    const { name, pokemonCount, shortEntry, generationIntroduced } = ability
+    return (
+      <TableRow className="odd:bg-gray-900" key={rowIndex}>
+        <TableCell variant="column">
+          <BlueLink href={`/ability/${name}`} boldFlag={true}>
+            {formatName(name)}
+          </BlueLink>
+        </TableCell>
+        <TableCell variant="column" extraClassName="w-6">
+          {pokemonCount}
+        </TableCell>
+        <TableCell variant="column" extraClassName="min-w-[40rem]">
+          {shortEntry}
+        </TableCell>
+        <TableCell variant="column" extraClassName="w-1">
+          {generationIntroduced[generationIntroduced.length - 1]}
+        </TableCell>
+      </TableRow>
+    )
+  })
+
   return (
-    <main>
-      <PageTitle>Pokémon Abilities</PageTitle>
-      <TableContainer>
-        <thead>
-          <TableRow className="bg-[#1a1a1a]">
-            {headers.map((header, index) => (
-              <TableCellHeader type="column" key={index}>
-                <span className="font-bold text-white"> {header}</span>
-              </TableCellHeader>
-            ))}
-          </TableRow>
-        </thead>
-        <tbody>
-          {allAbilityData.map((ability, rowIndex) => {
-            const { name, pokemonCount, shortEntry, generationIntroduced } = ability
-            return (
-              <TableRow className="odd:bg-gray-900" key={rowIndex}>
-                <TableCell variant="column">
-                  <BlueLink href={`/ability/${name}`} boldFlag={true}>
-                    {formatName(name)}
-                  </BlueLink>
-                </TableCell>
-                <TableCell variant="column" extraClassName="w-6">
-                  {pokemonCount}
-                </TableCell>
-                <TableCell variant="column" extraClassName="min-w-[40rem]">
-                  {shortEntry}
-                </TableCell>
-                <TableCell variant="column" extraClassName="w-1">
-                  {generationIntroduced[generationIntroduced.length - 1]}
-                </TableCell>
-              </TableRow>
-            )
-          })}
-        </tbody>
-      </TableContainer>
-    </main>
+    <Suspense fallback={<LoadingPageFallback />}>
+      <main>
+        <PageTitle>Pokémon Abilities</PageTitle>
+        <TableContainer>
+          <thead>{headerRows}</thead>
+          <tbody>{abilityDataRows}</tbody>
+        </TableContainer>
+      </main>
+    </Suspense>
   )
 }
 

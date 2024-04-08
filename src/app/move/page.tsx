@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -8,6 +8,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
+import LoadingPageFallback from '@/components/Suspense/LoadingPageFallback'
 import TypeCard from '@/components/TypeCard'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
@@ -33,13 +34,17 @@ const MoveList = async () => {
 
   const headers = ['Name', 'Type', 'Cat.', 'Power', 'Acc', 'PP', 'Effect', 'Prob (%)']
 
-  const HeaderRowCells = headers.map((header, index) => (
-    <TableCellHeader type="column" key={index}>
-      <span className="font-bold text-white">{header}</span>
-    </TableCellHeader>
-  ))
+  const headerRowCells = (
+    <TableRow className="bg-[#1a1a1a]">
+      {headers.map((header, index) => (
+        <TableCellHeader type="column" key={index}>
+          <span className="font-bold text-white">{header}</span>
+        </TableCellHeader>
+      ))}
+    </TableRow>
+  )
 
-  const MoveDataRows = allMovesData.map((move, rowIndex) => {
+  const moveDataRows = allMovesData.map((move, rowIndex) => {
     const {
       moveName,
       moveType,
@@ -85,15 +90,15 @@ const MoveList = async () => {
   })
 
   return (
-    <main>
-      <PageTitle>Pokémon Moves</PageTitle>
-      <TableContainer>
-        <thead>
-          <TableRow className="bg-[#1a1a1a]">{HeaderRowCells}</TableRow>
-        </thead>
-        <tbody>{MoveDataRows}</tbody>
-      </TableContainer>
-    </main>
+    <Suspense fallback={<LoadingPageFallback />}>
+      <main>
+        <PageTitle>Pokémon Moves</PageTitle>
+        <TableContainer>
+          <thead>{headerRowCells}</thead>
+          <tbody>{moveDataRows}</tbody>
+        </TableContainer>
+      </main>
+    </Suspense>
   )
 }
 
