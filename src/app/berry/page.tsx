@@ -18,26 +18,26 @@ export const metadata: Metadata = {
   title: 'Berry list | Pokémon Database',
 }
 
-const getBerryUrls = async () => {
-  const response = await BerryApi.getAll()
-  return response
+const getBerryNames = async () => {
+  const berryNames = await BerryApi.getAll()
+  return berryNames
 }
 
-const getBerryInformation = async (urls: Array<string>) => {
-  const responses = await BerryApi.getByUrls(urls)
+const getBerryInformationByNames = async (names: Array<string>) => {
+  const responses = await BerryApi.getByNames(names)
   return responses.map(BerryExtractor)
 }
 
-const getItemInformation = async (urls: Array<string>) => {
-  const responses = await ItemApi.getByUrls(urls)
+const getItemInformationByNames = async (names: Array<string>) => {
+  const responses = await ItemApi.getByNames(names)
   return responses.map(ItemExtractor)
 }
 
 const page = async () => {
-  const berryList = await getBerryUrls()
-  const berryInformation = await getBerryInformation(berryList.results.map((berry) => berry.url))
-  const itemUrls = berryInformation.map((berry) => berry.url)
-  const itemInformation = await getItemInformation(itemUrls)
+  const berryNames = await getBerryNames()
+  const berryInformation = await getBerryInformationByNames(berryNames)
+  const itemNames = berryInformation.map((berry) => berry.itemName)
+  const itemInformation = await getItemInformationByNames(itemNames)
 
   // Combine the two corresponding objects in the berry and item arrays
   const combinedInformation = berryInformation.map((berry) => {

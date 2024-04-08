@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Loader from '@/components/Loader'
+import LoadingPageFallback from '@/components/Suspense/LoadingPageFallback'
 
 const loading = () => {
-  return <Loader />
+  return <LoadingPageFallback />
 }
 
 export default loading
