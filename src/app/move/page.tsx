@@ -18,19 +18,19 @@ export const metadata: Metadata = {
   title: 'Pokémon move list | Pokémon Database',
 }
 
-const getUrlList = async () => {
-  const response = await MovesApi.getAllUrls()
+const getMovesList = async () => {
+  const response = await MovesApi.getAllNames()
   return response
 }
 
-const getAllMovesData = async (urls: Array<string>) => {
-  const movesData = await MovesApi.getByUrls(urls)
+const getAllMoveData = async (names: Array<string>) => {
+  const movesData = await MovesApi.getByNames(names)
   return movesData.map(MoveExtractor).sort((a, b) => (a.moveName > b.moveName ? 1 : -1))
 }
 
 const MoveList = async () => {
-  const movesUrlList = await getUrlList()
-  const allMovesData = await getAllMovesData(movesUrlList)
+  const moveList = await getMovesList()
+  const allMovesData = await getAllMoveData(moveList)
 
   const headers = ['Name', 'Type', 'Cat.', 'Power', 'Acc', 'PP', 'Effect', 'Prob (%)']
 

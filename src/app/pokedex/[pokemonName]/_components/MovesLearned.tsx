@@ -35,8 +35,8 @@ const separateMoves = ({ data, learnMethod }: { data: Array<MoveData>; learnMeth
   return finalFilteredMoves
 }
 
-const fetchMovesInformation = async (urls: string[]) => {
-  const responses = await MovesApi.getByUrls(urls)
+const getMovesInformation = async (names: Array<string>) => {
+  const responses = await MovesApi.getByNames(names)
   return responses.map(MoveExtractor)
 }
 
@@ -94,21 +94,19 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
     }
   })
 
-  const moveUrls = {
-    level: sortedLevelMoves?.map((move) => move.moveURL),
-    machine: machineMoves?.map((move) => move.moveURL),
-    egg: eggMoves?.map((move) => move.moveURL),
-    tutor: tutorMoves?.map((move) => move.moveURL),
+  const moveNames = {
+    level: sortedLevelMoves.map((move) => move.name),
+    machine: machineMoves.map((move) => move.name),
+    egg: eggMoves.map((move) => move.name),
+    tutor: tutorMoves.map((move) => move.name),
   }
-
-  // const levelMoveDetails = await fetchMovesInformation(moveUrls.level)
 
   const [levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails] =
     await Promise.all([
-      fetchMovesInformation(moveUrls.level),
-      fetchMovesInformation(moveUrls.tutor),
-      fetchMovesInformation(moveUrls.machine),
-      fetchMovesInformation(moveUrls.egg),
+      getMovesInformation(moveNames.level),
+      getMovesInformation(moveNames.tutor),
+      getMovesInformation(moveNames.machine),
+      getMovesInformation(moveNames.egg),
     ])
 
   const combinedLevelDetails = levelLearntData.map((obj1) => {

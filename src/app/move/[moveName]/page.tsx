@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 }
 
 const getMoveData = async (moveName: string) => {
-  const response = await MovesApi.get(moveName)
+  const response = await MovesApi.getByName(moveName)
   return MoveExtractor(response)
 }
 
