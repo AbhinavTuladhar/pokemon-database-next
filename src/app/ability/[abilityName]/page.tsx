@@ -40,9 +40,9 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
           <AbilityEffect entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
         </div>
-        <div className="w-full lg:w-auto">
+        <div>
           <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>
-          <div className="flex justify-center">
+          <div className="flex w-full justify-center lg:justify-stretch">
             <Suspense fallback={<PokemonTableSkeleton />}>
               <PokemonTable abilityName={name} pokemonList={pokemon} />
             </Suspense>

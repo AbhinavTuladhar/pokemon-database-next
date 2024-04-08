@@ -47,7 +47,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   const headerRow = (
     <TableRow className="bg-[#1a1a1a]">
       {headers.map((header) => (
-        <TableCellHeader className="min-w-24" key={header} type="column">
+        <TableCellHeader className="min-w-48" key={header} type="column">
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
       ))}
@@ -61,16 +61,16 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
 
     return (
       <TableRow key={rowIndex}>
-        <TableCell extraClassName="w-[1%] whitespace-nowrap !pr-4">
+        <TableCell variant="column" extraClassName="!pr-4">
           <div className="flex items-center">
             {gameSprite && <Image src={gameSprite} alt={name} width={60} height={56} />}
             <span> {properId} </span>
           </div>
         </TableCell>
-        <TableCell>
+        <TableCell variant="column">
           <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
         </TableCell>
-        <TableCell>
+        <TableCell variant="column">
           {otherAbilities.length > 0 ? (
             <ul>
               {otherAbilities.map((ability, index) => (
