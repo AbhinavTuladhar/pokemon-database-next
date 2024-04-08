@@ -6,6 +6,7 @@ import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
 import formatName from '@/utils/formatName'
+import { getResourceId } from '@/utils/urlUtils'
 
 import GroupList from './_components/GroupList'
 import PokemonTable from './_components/PokemonTable'
@@ -24,7 +25,10 @@ const getEggGroupData = async (name: string) => {
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
   const data = await getEggGroupData(eggGroup)
 
-  const speciesUrls = data.pokemonSpecies.map((species) => species.url)
+  const speciesIds = data.pokemonSpecies.map((species) => {
+    const { url } = species
+    return Number(getResourceId(url))
+  })
 
   return (
     <main>
@@ -40,7 +44,7 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
           <Suspense fallback={<PokemonTableSkeleton />}>
             <SectionTitle> The Pokémon </SectionTitle>
             <div className="flex justify-center">
-              <PokemonTable speciesUrls={speciesUrls} eggGroup={eggGroup} />
+              <PokemonTable eggGroup={eggGroup} speciesIds={speciesIds} />
             </div>
           </Suspense>
         </div>

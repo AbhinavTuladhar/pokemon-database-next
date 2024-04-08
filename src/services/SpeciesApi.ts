@@ -25,4 +25,18 @@ export const SpeciesApi = {
     const response = await Api.pokemon.getPokemonSpeciesById(id)
     return response as unknown as PokemonSpecies
   },
+  getByName: async function (name: string) {
+    const response = await Api.pokemon.getPokemonSpeciesByName(name)
+    return response as unknown as PokemonSpecies
+  },
+  getByNames: async function (names: Array<string>) {
+    const requests = names.map((name) => Api.pokemon.getPokemonSpeciesByName(name))
+    const responses = await Promise.all(requests)
+    return responses as unknown as PokemonSpecies[]
+  },
+  getByIds: async function (ids: Array<number>) {
+    const requests = ids.map((id) => Api.pokemon.getPokemonSpeciesById(id))
+    const responses = await Promise.all(requests)
+    return responses as unknown as PokemonSpecies[]
+  },
 }

@@ -36,6 +36,11 @@ export const PokemonApi = {
     const responses = await Promise.all(fetchRequests)
     return responses as Pokemon[]
   },
+  getByIds: async function (ids: Array<number>) {
+    const fetchRequests = ids.map((id) => Api.pokemon.getPokemonById(id))
+    const responses = await Promise.all(fetchRequests)
+    return responses as Pokemon[]
+  },
   getByOffsetAndLimit: async function (offset: number, limit: number) {
     const response = await Api.pokemon.listPokemons(offset, limit)
     return response
