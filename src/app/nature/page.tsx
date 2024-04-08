@@ -23,9 +23,19 @@ const getAllNaturesInfo = async (urls: Array<string>) => {
   return responses.map(NatureExtractor).sort((a, b) => a.name.localeCompare(b.name))
 }
 
+const getNatureNames = async () => {
+  const response = await NatureApi.getAllNames()
+  return response
+}
+
+const getNaturesInformation = async (names: Array<string>) => {
+  const responses = await NatureApi.getByNames(names)
+  return responses.map(NatureExtractor)
+}
+
 const NatureList = async () => {
-  const natureUrls = (await getNatures()).results.map((nature) => nature.url)
-  const natureInformation = await getAllNaturesInfo(natureUrls)
+  const natureNames = await getNatureNames()
+  const natureInformation = await getNaturesInformation(natureNames)
 
   const headerNames = ['Nature', 'Increases', 'Decreases', 'Likes', 'Hates']
   const tableHeaders = (
