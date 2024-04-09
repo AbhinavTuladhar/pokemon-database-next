@@ -41,23 +41,12 @@ interface TypeChartProps {
 }
 
 // Fetches type data only for the one or two types of the Pokemon.
-const fetchTypesData = async (urls: Array<string>, replacements: Array<string>) => {
-  const properUrls = urls.map((url, number) => {
-    const typeName = replacements[number]
-    return stringifyUrl(url, typeName)
-  })
-  const typeData = await TypesApi.getSome(properUrls)
-
-  return typeData.map(TypeExtractor)
-}
-
 const getTypesData = async (names: Array<string>) => {
   const response = await TypesApi.getByNames(names.map((name) => name.toLowerCase()))
   return response.map(TypeExtractor)
 }
 
 const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
-  const typeUrls = types.map((type) => type.type.url)
   const typeNames = types.map((type) => formatName(type.type.name))
   const typeNamesString = typeNames.join('/')
 
