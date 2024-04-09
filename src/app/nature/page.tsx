@@ -13,16 +13,6 @@ export const metadata: Metadata = {
   title: 'Pokémon Nature List | Pokémon Database',
 }
 
-const getNatures = async () => {
-  const response = await NatureApi.get()
-  return response
-}
-
-const getAllNaturesInfo = async (urls: Array<string>) => {
-  const responses = await NatureApi.getByUrls(urls)
-  return responses.map(NatureExtractor).sort((a, b) => a.name.localeCompare(b.name))
-}
-
 const getNatureNames = async () => {
   const response = await NatureApi.getAllNames()
   return response
