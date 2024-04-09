@@ -10,7 +10,6 @@ import gameNameMap from '@/data/gameNameMap'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { MachineApi } from '@/services/MachineApi'
 import type { MachineVersionDetail } from '@/types'
-import formatName from '@/utils/formatName'
 import { getResourceId } from '@/utils/urlUtils'
 
 interface RecordProps {

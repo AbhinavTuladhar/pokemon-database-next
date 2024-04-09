@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import Image from 'next/image'
 
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'

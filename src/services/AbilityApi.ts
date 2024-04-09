@@ -1,9 +1,5 @@
-import { Ability, NamedApiResourceList } from '@/types'
-import stringifyUrl from '@/utils/stringifyUrl'
-import trimUrl from '@/utils/trimUrl'
+import { Ability } from '@/types'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
 import Api from './MainApi'
 
 export const AbilityApi = {

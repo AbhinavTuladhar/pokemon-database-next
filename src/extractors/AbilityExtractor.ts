@@ -30,15 +30,6 @@ const AbilityExtractor = (data: Ability) => {
   // The number of Pokemon that have the ability.
   const pokemonCount = pokemon.length
 
-  // Making the proper urls
-  const pokemonUrls = pokemon.map((pokemon) => {
-    const {
-      pokemon: { name, url },
-    } = pokemon
-    const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
-    return replacedUrl
-  })
-
   const pokemonList = pokemon.map((pokemon) => pokemon.pokemon.name)
 
   const [generationString, generationNumber] = generationIntroducedRaw.split('-')

@@ -1,4 +1,4 @@
-import { NamedApiResource, Pokemon, PokemonType, Type } from '@/types'
+import { NamedApiResource, Type } from '@/types'
 
 const TypeExtractor = (data: Type) => {
   const { damage_relations: damageRelations, moves: moveList, pokemon: pokemonList, name } = data

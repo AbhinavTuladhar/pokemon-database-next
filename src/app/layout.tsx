@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Fira_Sans, Inter } from 'next/font/google'
-import { AnimatePresence } from 'framer-motion'
+import { Fira_Sans } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
 import AnimatedPageWrapper from '@/components/containers/AnimatedPageWrapper'

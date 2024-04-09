@@ -10,7 +10,6 @@ import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
-import stringifyUrl from '@/utils/stringifyUrl'
 
 interface TypeRowProps {
   typeDefenceInfo: Array<{

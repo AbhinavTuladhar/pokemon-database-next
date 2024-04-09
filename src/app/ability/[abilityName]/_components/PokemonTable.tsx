@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'

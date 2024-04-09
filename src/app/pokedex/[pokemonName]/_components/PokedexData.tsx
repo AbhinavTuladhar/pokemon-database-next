@@ -7,10 +7,8 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TypeCard from '@/components/TypeCard'
 import pokedexToGameMap from '@/data/pokedexToGameMap'
-import fetchMultipleData from '@/services/fetchMultipleData'
-import { Pokedex, PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
+import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
-import trimUrl from '@/utils/trimUrl'
 
 const ignoredPokedexes = [
   'conquest-gallery',

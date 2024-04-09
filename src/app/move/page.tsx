@@ -45,17 +45,7 @@ const MoveList = async () => {
   )
 
   const moveDataRows = allMovesData.map((move, rowIndex) => {
-    const {
-      moveName,
-      moveType,
-      damageClass,
-      power,
-      accuracy,
-      PP,
-      shortEntry,
-      effect_chance,
-      machines,
-    } = move
+    const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
 
     return (
       <TableRow className="odd:bg-gray-900" key={rowIndex}>

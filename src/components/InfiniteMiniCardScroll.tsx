@@ -3,7 +3,6 @@
 import { FC, useState } from 'react'
 import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
-import { getPokemonByUrls } from '@/actions/fetchPokemon'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
 import { TransformedPokemon } from '@/types'

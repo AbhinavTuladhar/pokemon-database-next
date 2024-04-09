@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'

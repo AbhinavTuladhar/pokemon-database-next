@@ -5,7 +5,6 @@ import TypeCard from '@/components/TypeCard'
 import TypeChartFull from '@/components/TypeChartFull'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
 import typeList from '@/data/typeList'
-import { TypesApi } from '@/services/TypesApi'
 
 export const metadata: Metadata = {
   title: 'Pokémon Types | Pokémon Database',

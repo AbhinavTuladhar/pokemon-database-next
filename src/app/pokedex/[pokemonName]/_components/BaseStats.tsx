@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC } from 'react'
 
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCellHeader from '@/components/containers/TableCellHeader'

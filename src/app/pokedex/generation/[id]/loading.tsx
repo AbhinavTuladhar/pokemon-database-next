@@ -1,4 +1,3 @@
-import { FC } from 'react'
 
 import PokeCardSkeleton from '@/components/Suspense/PokeCardSkeleton'
 

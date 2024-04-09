@@ -1,9 +1,5 @@
-import { NamedApiResourceList } from '@/types'
 import { Berry } from '@/types'
-import trimUrl from '@/utils/trimUrl'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
 import Api from './MainApi'
 
 export const BerryApi = {

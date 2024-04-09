@@ -6,7 +6,6 @@ import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
-import { GenericNamedResource } from '@/types'
 
 import PokeCardContainer from './_components/PokeCardContainer'
 

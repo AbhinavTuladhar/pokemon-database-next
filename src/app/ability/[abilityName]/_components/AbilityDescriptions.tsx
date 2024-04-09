@@ -7,7 +7,6 @@ import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
-import formatName from '@/utils/formatName'
 
 interface DescriptionInterface {
   description: string

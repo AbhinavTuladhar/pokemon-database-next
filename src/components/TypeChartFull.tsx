@@ -2,9 +2,7 @@ import React, { Fragment } from 'react'
 
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import fetchMultipleData from '@/services/fetchMultipleData'
 import { TypesApi } from '@/services/TypesApi'
-import { Type } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 
@@ -104,7 +102,7 @@ const TypeChartFull = async () => {
     )
   })
 
-  const tooltips = typeData?.map((type, index) => {
+  const tooltips = typeData?.map((type) => {
     const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
 
     return defenceInfo?.map((defendingType, innerIndex) => {

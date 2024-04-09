@@ -3,7 +3,6 @@ import { FC } from 'react'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
 
-import SectionTitle from './containers/SectionTitle'
 import MiniPokeCard from './MiniPokeCard'
 
 interface MiniCardListProps {

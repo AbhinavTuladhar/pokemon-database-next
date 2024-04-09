@@ -1,13 +1,8 @@
 import { FC, ReactNode } from 'react'
-import Image from 'next/image'
 import { BsArrowDown, BsArrowDownRight,BsArrowRight, BsArrowUpRight } from 'react-icons/bs'
 
-import BlueLink from '@/components/BlueLink'
-import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
-import TypeCard from '@/components/TypeCard'
-import { EvolutionPokemon, PokemonType } from '@/types'
+import { EvolutionPokemon } from '@/types'
 import evolutionStringFinder from '@/utils/evolutionStringFinder'
-import formatName from '@/utils/formatName'
 
 interface EvolutionSectionProps {
   individualPokemon: Array<ReactNode>

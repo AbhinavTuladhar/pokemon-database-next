@@ -7,7 +7,7 @@ import { getPokemonByUrls } from '@/actions/fetchPokemon'
 import PokeCard from '@/components/PokeCard'
 import PokeCardSkeleton from '@/components/Suspense/PokeCardSkeleton'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { Pokemon, TransformedPokemon } from '@/types'
+import { TransformedPokemon } from '@/types'
 
 import PokeCardContainer from './PokeCardContainer'
 

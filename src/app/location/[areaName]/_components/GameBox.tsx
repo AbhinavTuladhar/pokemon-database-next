@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import classNames from 'classnames'
 
 interface IconColourMap {
   icon: string

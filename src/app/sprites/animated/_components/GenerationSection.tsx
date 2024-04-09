@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import generationData from '@/data/generationData'
 import type { NamedApiResource, Pokemon } from '@/types'
 
 import SpriteTable from './SpriteTable'

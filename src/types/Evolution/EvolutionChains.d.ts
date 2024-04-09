@@ -4,7 +4,6 @@ import { Move } from '../Moves/Moves'
 import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Type } from '../Pokemon/Types'
 import { NamedApiResource } from '../utils/NamedResource'
-import { TODO } from '../utils/TODO'
 
 import { EvolutionTrigger } from './EvolutionTriggers'
 
