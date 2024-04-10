@@ -6,7 +6,6 @@ import { MoveLearnMethods } from '../Moves/MoveLearnMethod'
 import { Move } from '../Moves/Moves'
 import { VersionGameIndex } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
-import { Resource } from '../utils/Resource'
 import { TODO } from '../utils/TODO'
 
 import { Ability } from './Abilities'

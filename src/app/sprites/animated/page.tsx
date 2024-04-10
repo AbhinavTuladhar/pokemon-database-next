@@ -1,6 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import generationData from '@/data/generationData'
 import { PokemonApi } from '@/services/PokemonApi'
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const getPokemonList = async () => {
-  const response = await PokemonApi.getByGeneration(0, 809)
+  const response = await PokemonApi.getByOffsetAndLimit(0, 809)
   // const response = await PokemonApi.getByGeneration(0, 10)
   return response.results
 }
@@ -24,7 +25,7 @@ const AnimatedSprites = async () => {
 
   return (
     <main className="space-y-4">
-      <h1 className="mt-4 text-center text-5xl font-bold">Animated Pokémon Sprite Collection</h1>
+      <PageTitle>Animated Pokémon Sprite Collection</PageTitle>
       <p>The table represents the regular and shiny sprites in generation 7, respectively. </p>
       <PageNavigation />
       {generations.map((generationNumber) => {

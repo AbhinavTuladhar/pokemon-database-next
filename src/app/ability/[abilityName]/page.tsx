@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: AbilityPageParams): Promise<M
 }
 
 const getAbilityData = async (name: string) => {
-  const response = await AbilityApi.get(name)
+  const response = await AbilityApi.getByName(name)
   return AbilityExtractor(response)
 }
 
@@ -34,19 +35,19 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
 
   return (
     <main>
-      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(abilityName)} (ability)</h1>
+      <PageTitle>{formatName(abilityName)} (ability)</PageTitle>
       <div className="grid grid-cols-1 gap-x-20 gap-y-4 lg:grid-cols-2">
         <div>
           <AbilityEffect entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
         </div>
-        <div className="w-full lg:w-auto">
+        <div>
           <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>
-          <div className="flex justify-center">
-            <Suspense fallback={<PokemonTableSkeleton />}>
+          <Suspense fallback={<PokemonTableSkeleton />}>
+            <div className="flex w-full justify-center lg:justify-stretch">
               <PokemonTable abilityName={name} pokemonList={pokemon} />
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
         </div>
       </div>
     </main>

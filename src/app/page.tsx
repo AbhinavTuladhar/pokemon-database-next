@@ -4,20 +4,6 @@ import type { Variants } from 'framer-motion'
 
 import { MotionDiv, MotionSpan } from '@/components/Motion'
 
-const fadeInVariant: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      staggerChildren: 0.4,
-      ease: 'easeOut',
-    },
-  },
-}
-
 const welcomeVariant: Variants = {
   initial: { y: '10rem', opacity: 0 },
   animate: {

@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, FC, Fragment, useEffect, useState } from 'react'
+import { ChangeEvent, FC, Fragment, useState } from 'react'
 
 import PokeCard from '@/components/PokeCard'
 import type { TransformedPokemon } from '@/types'

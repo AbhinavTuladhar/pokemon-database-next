@@ -1,10 +1,10 @@
 import { LocationAreaEncounter } from '@/types'
 
-import fetchData from './fetchData'
+import Api from './MainApi'
 
 export const EncountersApi = {
   getById: async function (id: number) {
-    const response = await fetchData<LocationAreaEncounter[]>(`/pokemon/${id}/encounters`)
-    return response
+    const response = await Api.pokemon.getPokemonLocationAreaById(id)
+    return response as LocationAreaEncounter[]
   },
 }

@@ -2,7 +2,6 @@ import { Region } from '../Locations/Regions'
 import { PokemonSpecies } from '../Pokemon/PokemonSpecies'
 import { Description, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
-import { TODO } from '../utils/TODO'
 
 import { VersionGroup } from './VersionGroups'
 

@@ -2,6 +2,7 @@ import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 // import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getTypeData = async (typeName: string) => {
-  const response = await TypesApi.get(typeName)
+  const response = await TypesApi.getByName(typeName)
   return TypeExtractor(response)
 }
 
@@ -87,12 +88,12 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)
 
-  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemonList, moveList } = typeInformation
+  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemon, moveList } = typeInformation
 
   const formattedType = formatName(type.charAt(0).toUpperCase() + type.slice(1))
 
   // Count the number of pokemon and moves for the type.
-  const pokemonCount = pokemonList.length
+  const pokemonCount = pokemon.length
   const moveCount = moveList.length
 
   // Now format the data for rendering purposes.
@@ -118,10 +119,10 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
 
   return (
     <main className="space-y-4">
-      <h1 className="my-4 text-center text-5xl font-bold">
+      <PageTitle>
         {formattedType}&nbsp;
         <span className="brightness-75"> (type) </span>
-      </h1>
+      </PageTitle>
       <section>
         <TypeSummaryRow
           moveCount={moveCount}
@@ -172,8 +173,8 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
       </div>
 
       <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
-      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonList.length} />}>
-        <MiniCardList pokemonUrls={pokemonList.map((pokemon) => pokemon.url)} />
+      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
+        <MiniCardList pokemonNames={pokemon} />
       </Suspense>
     </main>
   )

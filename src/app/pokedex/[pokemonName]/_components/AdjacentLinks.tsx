@@ -5,7 +5,7 @@ import { PokemonApi } from '@/services/PokemonApi'
 import formatName from '@/utils/formatName'
 
 const getAdjacentPokemonNames = async (offset: number) => {
-  const adjcentPokemonResponse = await PokemonApi.getByGeneration(offset, 3)
+  const adjcentPokemonResponse = await PokemonApi.getByOffsetAndLimit(offset, 3)
   return adjcentPokemonResponse
 }
 

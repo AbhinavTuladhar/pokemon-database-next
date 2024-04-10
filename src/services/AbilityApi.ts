@@ -1,27 +1,20 @@
-import { Ability, NamedApiResourceList } from '@/types'
-import stringifyUrl from '@/utils/stringifyUrl'
-import trimUrl from '@/utils/trimUrl'
+import { Ability } from '@/types'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
+import Api from './MainApi'
 
 export const AbilityApi = {
-  get: async function (name: string) {
-    const response = await fetchData<Ability>(`/ability/${name}`)
-    return response
+  getAllNames: async function () {
+    const response = await Api.pokemon.listAbilities(0, 233)
+    const namesList = response.results.map((ability) => ability.name)
+    return namesList
   },
-  getAllUrls: async function () {
-    const response = await fetchData<NamedApiResourceList<Ability>>('/ability?limit=233')
-    const { results } = response
-    const data = results.map((result) => {
-      const { name, url } = result
-      return stringifyUrl(url, name)
-    })
-    return data
+  getByName: async function (name: string) {
+    const response = await Api.pokemon.getAbilityByName(name)
+    return response as unknown as Ability
   },
-  getByUrls: async function (urls: Array<string>) {
-    const trimmedUrls = urls.map(trimUrl)
-    const response = await fetchMultipleData<Ability>(trimmedUrls)
-    return response
+  getByNames: async function (names: Array<string>) {
+    const requests = names.map((name) => Api.pokemon.getAbilityByName(name))
+    const responses = await Promise.all(requests)
+    return responses as Ability[]
   },
 }

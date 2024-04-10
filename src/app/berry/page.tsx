@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -17,26 +17,26 @@ export const metadata: Metadata = {
   title: 'Berry list | Pokémon Database',
 }
 
-const getBerryUrls = async () => {
-  const response = await BerryApi.getAll()
-  return response
+const getBerryNames = async () => {
+  const berryNames = await BerryApi.getAll()
+  return berryNames
 }
 
-const getBerryInformation = async (urls: Array<string>) => {
-  const responses = await BerryApi.getByUrls(urls)
+const getBerryInformationByNames = async (names: Array<string>) => {
+  const responses = await BerryApi.getByNames(names)
   return responses.map(BerryExtractor)
 }
 
-const getItemInformation = async (urls: Array<string>) => {
-  const responses = await ItemApi.getByUrls(urls)
+const getItemInformationByNames = async (names: Array<string>) => {
+  const responses = await ItemApi.getByNames(names)
   return responses.map(ItemExtractor)
 }
 
 const page = async () => {
-  const berryList = await getBerryUrls()
-  const berryInformation = await getBerryInformation(berryList.results.map((berry) => berry.url))
-  const itemUrls = berryInformation.map((berry) => berry.url)
-  const itemInformation = await getItemInformation(itemUrls)
+  const berryNames = await getBerryNames()
+  const berryInformation = await getBerryInformationByNames(berryNames)
+  const itemNames = berryInformation.map((berry) => berry.itemName)
+  const itemInformation = await getItemInformationByNames(itemNames)
 
   // Combine the two corresponding objects in the berry and item arrays
   const combinedInformation = berryInformation.map((berry) => {
@@ -119,7 +119,7 @@ const page = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> Berries </h1>
+      <PageTitle> Berries </PageTitle>
       <TableContainer>
         <thead>{tableHeader}</thead>
         <tbody>{tableRows}</tbody>

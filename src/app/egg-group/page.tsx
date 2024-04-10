@@ -1,6 +1,7 @@
 import React from 'react'
 
 import BlueLink from '@/components/BlueLink'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -14,22 +15,20 @@ const getGroupList = async () => {
   return response
 }
 
-const getAllGroupData = async (urls: string[]) => {
-  const response = await EggGroupApi.getByUrls(urls)
+const getAllGroupData = async (names: string[]) => {
+  const response = await EggGroupApi.getByNames(names)
 
   // We now filter out gen 8+ pokemon from the list
   return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
 }
 
 const EggGroupTable = async () => {
-  const groupList = await getGroupList()
+  const groupNames = await getGroupList()
 
-  const urlList = groupList.results.map((group) => group.url)
-
-  const eggGroupData = await getAllGroupData(urlList)
+  const eggGroupData = await getAllGroupData(groupNames)
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Pokémon Egg Groups</h1>
+      <PageTitle>Pokémon Egg Groups</PageTitle>
       <div className="flex w-full justify-center">
         <div className="w-60 max-w-full">
           <TableContainer>

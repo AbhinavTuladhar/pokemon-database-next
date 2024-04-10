@@ -1,7 +1,5 @@
 import { FC } from 'react'
 
-import SectionTitle from '../containers/SectionTitle'
-
 import MiniPokeCardSkeleton from './MiniPokeCardSkeleton'
 
 interface MiniCardListSkeletonProps {

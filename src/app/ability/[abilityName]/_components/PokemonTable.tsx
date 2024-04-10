@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -16,8 +15,8 @@ interface PokemonTableProps {
   abilityName: string
 }
 
-const getPokemonData = async (urls: Array<string>, abilityName: string) => {
-  const responses = await PokemonApi.getByUrls(urls)
+const getPokemonData = async (names: Array<string>, abilityName: string) => {
+  const responses = await PokemonApi.getByNames(names)
 
   // We now need to find the pokemon name, icons and other abilities.
   const simplifiedResponse = responses.map((response) => {
@@ -47,7 +46,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   const headerRow = (
     <TableRow className="bg-[#1a1a1a]">
       {headers.map((header) => (
-        <TableCellHeader className="min-w-24" key={header} type="column">
+        <TableCellHeader className="first:w-28" key={header} type="column">
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
       ))}
@@ -61,16 +60,16 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
 
     return (
       <TableRow key={rowIndex}>
-        <TableCell extraClassName="w-[1%] whitespace-nowrap !pr-4">
+        <TableCell variant="column" extraClassName="!pr-4">
           <div className="flex items-center">
             {gameSprite && <Image src={gameSprite} alt={name} width={60} height={56} />}
             <span> {properId} </span>
           </div>
         </TableCell>
-        <TableCell>
+        <TableCell variant="column">
           <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
         </TableCell>
-        <TableCell>
+        <TableCell variant="column">
           {otherAbilities.length > 0 ? (
             <ul>
               {otherAbilities.map((ability, index) => (
@@ -90,8 +89,8 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   })
 
   return (
-    <TableContainer>
-      <thead>{headerRow}</thead>
+    <TableContainer className="w-auto lg:w-full">
+      <thead className="table-header-group">{headerRow}</thead>
       <tbody>{pokemonRow}</tbody>
     </TableContainer>
   )

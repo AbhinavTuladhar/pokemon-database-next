@@ -1,4 +1,4 @@
-import { GroupedLocationArea, LocationArea, Name, TransformedEncounter } from '@/types'
+import { GroupedLocationArea, LocationArea, Name } from '@/types'
 
 import EncounterExtractor from './EncounterExtractor'
 

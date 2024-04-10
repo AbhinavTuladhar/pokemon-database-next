@@ -1,23 +1,24 @@
-import { NamedApiResourceList, Pokemon } from '@/types'
-import trimUrl from '@/utils/trimUrl'
+import { Pokemon } from '@/types'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
+import Api from './MainApi'
 
 export const PokemonApi = {
-  getByGeneration: async function (offset: number, limit: number) {
-    const response = await fetchData<NamedApiResourceList<Pokemon>>(
-      `/pokemon?offset=${offset}&limit=${limit}`,
-    )
-    return response
+  getByName: async function (name: string) {
+    const response = await Api.pokemon.getPokemonByName(name)
+    return response as unknown as Pokemon
   },
-  get: async function (name: string) {
-    const response = await fetchData<Pokemon>(`/pokemon/${name}`)
-    return response
+  getByNames: async function (names: Array<string>) {
+    const fetchRequests = names.map((pokemon) => Api.pokemon.getPokemonByName(pokemon))
+    const responses = await Promise.all(fetchRequests)
+    return responses as Pokemon[]
   },
-  getByUrls: async function (urls: Array<string>) {
-    const trimmedUrls = urls.map(trimUrl)
-    const response = await fetchMultipleData<Pokemon>(trimmedUrls)
+  getByIds: async function (ids: Array<number>) {
+    const fetchRequests = ids.map((id) => Api.pokemon.getPokemonById(id))
+    const responses = await Promise.all(fetchRequests)
+    return responses as Pokemon[]
+  },
+  getByOffsetAndLimit: async function (offset: number, limit: number) {
+    const response = await Api.pokemon.listPokemons(offset, limit)
     return response
   },
 }

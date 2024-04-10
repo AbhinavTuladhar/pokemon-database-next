@@ -1,10 +1,12 @@
 import React, { FC, Suspense } from 'react'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
 import formatName from '@/utils/formatName'
+import { getResourceId } from '@/utils/urlUtils'
 
 import GroupList from './_components/GroupList'
 import PokemonTable from './_components/PokemonTable'
@@ -16,21 +18,24 @@ interface PageProps {
 }
 
 const getEggGroupData = async (name: string) => {
-  const response = await EggGroupApi.get(name)
+  const response = await EggGroupApi.getByName(name)
   return EggGroupExtractor(response)
 }
 
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
   const data = await getEggGroupData(eggGroup)
 
-  const speciesUrls = data.pokemonSpecies.map((species) => species.url)
+  const speciesIds = data.pokemonSpecies.map((species) => {
+    const { url } = species
+    return Number(getResourceId(url))
+  })
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">
+      <PageTitle>
         <span> {formatName(eggGroup)} </span>
         <span className="text-gray-600"> (egg group) </span>
-      </h1>
+      </PageTitle>
       <div className="flex flex-wrap gap-x-8">
         <div className="w-full lg:w-1/3">
           <GroupList />
@@ -39,7 +44,7 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
           <Suspense fallback={<PokemonTableSkeleton />}>
             <SectionTitle> The Pokémon </SectionTitle>
             <div className="flex justify-center">
-              <PokemonTable speciesUrls={speciesUrls} eggGroup={eggGroup} />
+              <PokemonTable eggGroup={eggGroup} speciesIds={speciesIds} />
             </div>
           </Suspense>
         </div>

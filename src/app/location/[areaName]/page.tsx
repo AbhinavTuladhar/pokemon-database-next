@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -36,8 +37,8 @@ const getLocationData = async (name: string) => {
   return LocationExtractor(response)
 }
 
-const getSubLocationData = async (urls: string[]) => {
-  const responses = await LocationAreaApi.getByUrls(urls)
+const getSubLocationData = async (names: string[]) => {
+  const responses = await LocationAreaApi.getByNames(names)
   return responses.map(LocationAreaExtractor)
 }
 
@@ -59,8 +60,8 @@ interface LocationGroup {
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   const locationData = await getLocationData(areaName)
 
-  const subLocationUrls = locationData.subLocations.map((subLocation) => subLocation.url)
-  const subLocationData = await getSubLocationData(subLocationUrls)
+  const subLocationNames = locationData.subLocations.map((subLocation) => subLocation.name)
+  const subLocationData = await getSubLocationData(subLocationNames)
 
   // Inform the user if there is no encounter information.
   if (subLocationData?.length === 0) {
@@ -245,8 +246,7 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
   return (
     <main>
-      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(areaName)}</h1>
-
+      <PageTitle>{formatName(areaName)}</PageTitle>
       <>
         {tooltipData.map((row, index) => (
           <Tooltip anchorSelect={row.id} place="bottom" key={index}>

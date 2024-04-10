@@ -1,27 +1,19 @@
-import { Move, NamedApiResourceList } from '@/types'
-import stringifyUrl from '@/utils/stringifyUrl'
-import trimUrl from '@/utils/trimUrl'
+import { Move } from '@/types'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
+import Api from './MainApi'
 
 export const MovesApi = {
-  get: async function (name: string) {
-    const response = await fetchData<Move>(`/move/${name}`)
-    return response
+  getAllNames: async function () {
+    const response = await Api.move.listMoves(0, 721)
+    return response.results.map((move) => move.name)
   },
-  getAllUrls: async function () {
-    const response = await fetchData<NamedApiResourceList<Move>>('/move?limit=721')
-    const { results } = response
-    const data = results.map((result) => {
-      const { name, url } = result
-      return stringifyUrl(url, name)
-    })
-    return data
+  getByNames: async function (names: Array<string>) {
+    const requests = names.map((name) => Api.move.getMoveByName(name))
+    const responses = await Promise.all(requests)
+    return responses as unknown as Move[]
   },
-  getByUrls: async function (urls: Array<string>) {
-    const trimmedUrls = urls.map(trimUrl)
-    const response = await fetchMultipleData<Move>(trimmedUrls)
-    return response
+  getByName: async function (name: string) {
+    const response = await Api.move.getMoveByName(name)
+    return response as unknown as Move
   },
 }

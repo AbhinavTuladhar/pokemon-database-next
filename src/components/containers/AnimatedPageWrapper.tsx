@@ -1,11 +1,6 @@
 'use client'
 
-import { motion, Variants } from 'framer-motion'
-
-const variants: Variants = {
-  hidden: { opacity: 0 },
-  enter: { opacity: 1, transition: { duration: 0.2 } },
-}
+import { motion } from 'framer-motion'
 
 export default function AnimtedPageWrapper({ children }: { children: React.ReactNode }) {
   return (

@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 }
 
 const getMoveData = async (moveName: string) => {
-  const response = await MovesApi.get(moveName)
+  const response = await MovesApi.getByName(moveName)
   return MoveExtractor(response)
 }
 
@@ -50,15 +51,13 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     targetType,
     descriptions,
     names,
-    pokemonUrls,
     machines,
+    pokemon,
   } = moveData
-
-  const urlList = pokemonUrls.map((pokemon) => pokemon.url)
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold"> {formatName(moveName)}</h1>
+      <PageTitle>{formatName(moveName)}</PageTitle>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
           <MoveData
@@ -92,17 +91,24 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
       </div>
 
+      {/* <>
+        <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
+        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
+          <MiniCardList pokemonNames={pokemon} />
+        </Suspense>
+      </> */}
+
       {/* Use infinite scrolling if there are more than 100 urls. */}
-      {pokemonUrls.length >= 100 ? (
+      {pokemon.length >= 100 ? (
         <>
           <SectionTitle>Pokémon that can learn {formatName(moveName)}</SectionTitle>
-          <InfiniteMiniCardScroll increment={20} urlList={urlList} />
+          <InfiniteMiniCardScroll increment={50} nameList={pokemon} />
         </>
       ) : (
         <>
           <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
-          <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemonUrls.length} />}>
-            <MiniCardList pokemonUrls={urlList} />
+          <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
+            <MiniCardList pokemonNames={pokemon} />
           </Suspense>
         </>
       )}

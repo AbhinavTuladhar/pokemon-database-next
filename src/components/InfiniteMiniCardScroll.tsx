@@ -3,8 +3,8 @@
 import { FC, useState } from 'react'
 import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
-import { getPokemonByUrls } from '@/actions/fetchPokemon'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonApi } from '@/services/PokemonApi'
 import { TransformedPokemon } from '@/types'
 
 import MiniCardListSkeleton from './Suspense/MiniCardListSkeleton'
@@ -12,16 +12,16 @@ import MiniPokeCard from './MiniPokeCard'
 
 interface ScrollProps {
   increment: number
-  urlList: Array<string>
+  nameList: Array<string>
 }
 
-const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, urlList }) => {
+const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
   const [offset, setOffset] = useState(0)
   const [pokemonData, setPokemonData] = useState<TransformedPokemon[]>([])
   const [hasMore, setHasMore] = useState(true)
 
   const fetchMorePokemon = async () => {
-    const responses = await getPokemonByUrls(urlList.slice(offset, offset + increment))
+    const responses = await PokemonApi.getByNames(nameList.slice(offset, offset + increment))
     setPokemonData((prevPokemon) => {
       const extractedData = responses.map(PokemonExtractor)
       return [...prevPokemon, ...extractedData]

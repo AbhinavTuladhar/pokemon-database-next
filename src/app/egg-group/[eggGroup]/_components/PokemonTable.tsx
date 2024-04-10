@@ -11,16 +11,15 @@ import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
 import { SpeciesApi } from '@/services/SpeciesApi'
-import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
 interface TableProps {
-  speciesUrls: Array<string>
   eggGroup: string
+  speciesIds: Array<number>
 }
 
-const getSpeciesData = async (urls: string[], eggGroupName: string) => {
-  const responses = await SpeciesApi.getByUrls(urls)
+const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
+  const responses = await SpeciesApi.getByIds(ids)
   return responses.map((species) => {
     const { id, egg_groups } = SpeciesExtractor(species)
     const otherEggGroup = egg_groups
@@ -30,20 +29,18 @@ const getSpeciesData = async (urls: string[], eggGroupName: string) => {
   })
 }
 
-const getPokemonData = async (urls: string[]) => {
-  const responses = await PokemonApi.getByUrls(urls)
+const getPokemonDataNew = async (ids: Array<number>) => {
+  const responses = await PokemonApi.getByIds(ids)
   return responses.map((pokemon) => {
     const { id, nationalNumber, gameSprite, name, types } = PokemonExtractor(pokemon)
     return { id, nationalNumber, gameSprite, name, types }
   })
 }
 
-const PokemonTable: FC<TableProps> = async ({ speciesUrls, eggGroup }) => {
-  const pokemonUrls = speciesUrls.map((url) => url.replace('pokemon-species', 'pokemon'))
-
+const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
   const [speciesData, pokemonData] = await Promise.all([
-    getSpeciesData(speciesUrls, eggGroup),
-    getPokemonData(pokemonUrls),
+    getSpeciesDataNew(speciesIds, eggGroup),
+    getPokemonDataNew(speciesIds),
   ])
 
   // Joining the data

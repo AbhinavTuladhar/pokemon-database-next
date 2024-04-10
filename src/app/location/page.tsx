@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import RegionExtractor from '@/extractors/RegionExtractor'
 import { RegionApi } from '@/services/LocationApi'
 import { NamedApiResource } from '@/types'
@@ -10,8 +11,8 @@ export const metadata: Metadata = {
   title: 'Pokémon locations | Pokémon Database',
 }
 
-const getRegionData = async (urls: Array<string>) => {
-  const responses = await RegionApi.getAll(urls)
+const getRegionData = async (ids: Array<number>) => {
+  const responses = await RegionApi.getByIds(ids)
   return responses.map(RegionExtractor)
 }
 
@@ -38,17 +39,14 @@ const formatRegionResponse = (data: Awaited<ReturnType<typeof getRegionData>>) =
 }
 
 const LocationList = async () => {
-  const locationUrls = Array.from(
-    { length: 7 },
-    (_, index) => `https://pokeapi.co/api/v2/region/${index + 1}`,
-  )
+  const locationIds = Array.from({ length: 7 }, (_, index) => index + 1)
 
-  const data = await getRegionData(locationUrls)
+  const data = await getRegionData(locationIds)
   const regionData = formatRegionResponse(data)
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Pokémon Locations</h1>
+      <PageTitle>Pokémon Locations</PageTitle>
       <RegionTabs regionData={regionData} />
     </main>
   )

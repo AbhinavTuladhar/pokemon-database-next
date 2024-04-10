@@ -1,32 +1,26 @@
 import { Location, LocationArea, Region } from '@/types'
-import trimUrl from '@/utils/trimUrl'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
+import Api from './MainApi'
 
 export const LocationApi = {
   getByName: async function (name: string) {
-    const response = await fetchData<Location>(`/location/${name}`)
-    return response
+    const response = await Api.location.getLocationByName(name)
+    return response as Location
   },
 }
 
 export const RegionApi = {
-  get: async function (url: string) {
-    const response = await fetchData<Region>(trimUrl(url))
-    return response
-  },
-  getAll: async function (urls: Array<string>) {
-    const trimmedUrls = urls.map(trimUrl)
-    const responses = await fetchMultipleData<Region>(trimmedUrls)
-    return responses
+  getByIds: async function (ids: Array<number>) {
+    const requests = ids.map((id) => Api.location.getRegionById(id))
+    const responses = await Promise.all(requests)
+    return responses as unknown as Region[]
   },
 }
 
 export const LocationAreaApi = {
-  getByUrls: async function (urls: string[]) {
-    const trimmedUrls = urls.map(trimUrl)
-    const responses = await fetchMultipleData<LocationArea>(trimmedUrls)
-    return responses
+  getByNames: async function (names: Array<string>) {
+    const requests = names.map((name) => Api.location.getLocationAreaByName(name))
+    const responses = await Promise.all(requests)
+    return responses as unknown as LocationArea[]
   },
 }

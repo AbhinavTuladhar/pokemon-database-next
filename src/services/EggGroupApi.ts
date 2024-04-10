@@ -1,25 +1,19 @@
-import { EggGroup, NamedApiResourceList } from '@/types'
 import filterGens from '@/utils/filterGens'
-import trimUrl from '@/utils/trimUrl'
 
-import fetchData from './fetchData'
-import fetchMultipleData from './fetchMultipleData'
+import Api from './MainApi'
 
 export const EggGroupApi = {
   getAll: async function () {
-    const response = await fetchData<NamedApiResourceList<EggGroup>>('/egg-group')
+    const response = await Api.pokemon.listEggGroups(0, 64)
+    return response.results.map((group) => group.name)
+  },
+  getByName: async function (name: string) {
+    const response = await Api.pokemon.getEggGroupByName(name)
     return response
   },
-  get: async function (name: string) {
-    const response = await fetchData<EggGroup>(`/egg-group/${name}`)
-    return response
-  },
-  getByUrls: async function (urls: Array<string>) {
-    const trimmedUrls = urls.map(trimUrl)
-    const responses = await fetchMultipleData<EggGroup>(trimmedUrls)
-
-    // The pokemon species will have data of gen 8+ pokemon so we filter it out
-
+  getByNames: async function (names: Array<string>) {
+    const requests = names.map((name) => Api.pokemon.getEggGroupByName(name))
+    const responses = await Promise.all(requests)
     return responses.map((group) => {
       const { pokemon_species } = group
       const reducedSpecies = pokemon_species.filter((species) => {

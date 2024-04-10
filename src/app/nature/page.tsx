@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import PageTitle from '@/components/containers/PageTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -12,19 +13,19 @@ export const metadata: Metadata = {
   title: 'Pokémon Nature List | Pokémon Database',
 }
 
-const getNatures = async () => {
-  const response = await NatureApi.get()
+const getNatureNames = async () => {
+  const response = await NatureApi.getAllNames()
   return response
 }
 
-const getAllNaturesInfo = async (urls: Array<string>) => {
-  const responses = await NatureApi.getByUrls(urls)
-  return responses.map(NatureExtractor).sort((a, b) => a.name.localeCompare(b.name))
+const getNaturesInformation = async (names: Array<string>) => {
+  const responses = await NatureApi.getByNames(names)
+  return responses.map(NatureExtractor)
 }
 
 const NatureList = async () => {
-  const natureUrls = (await getNatures()).results.map((nature) => nature.url)
-  const natureInformation = await getAllNaturesInfo(natureUrls)
+  const natureNames = await getNatureNames()
+  const natureInformation = await getNaturesInformation(natureNames)
 
   const headerNames = ['Nature', 'Increases', 'Decreases', 'Likes', 'Hates']
   const tableHeaders = (
@@ -63,7 +64,7 @@ const NatureList = async () => {
 
   return (
     <main>
-      <h1 className="my-4 text-center text-5xl font-bold">Natures</h1>
+      <PageTitle>Natures</PageTitle>
       <TableContainer>
         {tableHeaders}
         {tableRows}
