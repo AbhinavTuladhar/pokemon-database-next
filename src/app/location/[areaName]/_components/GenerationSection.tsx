@@ -191,7 +191,7 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
           return (
             <div key={methodIndex}>
               <div className="my-4 flex flex-col gap-y-1">
-                <h1 className="text-2xl font-bold">{`${formatName(method)}`}</h1>
+                <h3 className="text-2xl font-bold">{`${formatName(method)}`}</h3>
                 {/* <span className="text-sm text-gray-400">{encounterDescription}</span> */}
               </div>
 

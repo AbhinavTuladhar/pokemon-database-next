@@ -7,6 +7,7 @@ import { LocationApi } from '@/services/LocationApi'
 import formatName from '@/utils/formatName'
 
 import GenerationSection from './_components/GenerationSection'
+import LocationPageSkeleton from './_components/LocationPageSkeleton'
 
 interface PageProps {
   params: {
@@ -32,7 +33,7 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   return (
     <main>
       <PageTitle>{formatName(areaName)}</PageTitle>
-      <Suspense fallback={<div> Loading... </div>}>
+      <Suspense fallback={<LocationPageSkeleton />}>
         <GenerationSection locationData={locationData} />
       </Suspense>
     </main>
