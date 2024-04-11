@@ -16,7 +16,7 @@ module.exports = {
         '475/1000': '47.5%',
       },
       gridTemplateColumns: {
-        flexible: 'repeat(auto-fit, minmax(170px, 1fr))',
+        'flexible': 'repeat(auto-fit, minmax(170px, 1fr))',
         'flexible-alola': 'repeat(auto-fit, minmax(230px, 1fr))',
         'pokemon-detail-grid': 'repeat(auto-fit, minmax(min(350px, 90%), 1fr))',
         'pokemon-move-grid': 'repeat(auto-fit, minmax(min(520px, 90%), 1fr))',
@@ -35,7 +35,7 @@ module.exports = {
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
-          'text-shadow': (value) => ({
+          'text-shadow': value => ({
             textShadow: value,
           }),
         },

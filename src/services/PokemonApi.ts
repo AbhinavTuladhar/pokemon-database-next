@@ -8,12 +8,12 @@ export const PokemonApi = {
     return response as unknown as Pokemon
   },
   getByNames: async function (names: Array<string>) {
-    const fetchRequests = names.map((pokemon) => Api.pokemon.getPokemonByName(pokemon))
+    const fetchRequests = names.map(pokemon => Api.pokemon.getPokemonByName(pokemon))
     const responses = await Promise.all(fetchRequests)
     return responses as Pokemon[]
   },
   getByIds: async function (ids: Array<number>) {
-    const fetchRequests = ids.map((id) => Api.pokemon.getPokemonById(id))
+    const fetchRequests = ids.map(id => Api.pokemon.getPokemonById(id))
     const responses = await Promise.all(fetchRequests)
     return responses as Pokemon[]
   },

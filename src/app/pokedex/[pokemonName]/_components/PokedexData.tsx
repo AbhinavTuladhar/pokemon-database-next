@@ -57,7 +57,7 @@ const PokeDexData: FC<DexDataProps> = ({
   const formattedWeight = `${(weight * 0.1).toFixed(2)} kg`
 
   // Change the types into visual form.
-  const typeNames = types.map((type) => type.type.name)
+  const typeNames = types.map(type => type.type.name)
 
   // Convert the types of the Pokemon into its corresponding component.
   const typeDiv = (
@@ -84,13 +84,13 @@ const PokeDexData: FC<DexDataProps> = ({
   const abilityListFinal = <ol className="list-inside list-none">{abilityList}</ol>
 
   const regionLevelData = pokedex_numbers
-    .filter((pokedex) => {
+    .filter(pokedex => {
       const {
         pokedex: { name: pokedexName },
       } = pokedex
       return !ignoredPokedexes.includes(pokedexName)
     })
-    .map((pokedex) => {
+    .map(pokedex => {
       const {
         entry_number,
         pokedex: { name: pokedexName },

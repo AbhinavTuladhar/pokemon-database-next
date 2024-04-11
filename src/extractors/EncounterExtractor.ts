@@ -20,7 +20,7 @@ const EncounterExtractor = (encounterData: PokemonEncounter) => {
   const idNumber = parseInt(pokemonUrl.match(/\/(\d+)\/$/)![1])
   const iconSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/ultra-sun-ultra-moon/${idNumber}.png`
 
-  const toReturn = version_details.map((row) => {
+  const toReturn = version_details.map(row => {
     const {
       version: { name: gameName },
       encounter_details,
@@ -75,7 +75,7 @@ const EncounterExtractor = (encounterData: PokemonEncounter) => {
   const reducedEncounterInformation = expandedDetails.reduce(
     (acc, obj) => {
       const existingObject = acc.find(
-        (item) =>
+        item =>
           obj.pokemonName === item.pokemonName &&
           obj.gameName === item.gameName &&
           obj.generation === item.generation,
@@ -95,7 +95,7 @@ const EncounterExtractor = (encounterData: PokemonEncounter) => {
   )
 
   // Further, combine min level and max level
-  return reducedEncounterInformation.map((pokemonEncounter) => {
+  return reducedEncounterInformation.map(pokemonEncounter => {
     const { min_level, max_level } = pokemonEncounter
     const levelRange = min_level === max_level ? min_level : `${min_level}-${max_level}`
     return { ...pokemonEncounter, levelRange }

@@ -20,18 +20,18 @@ interface TableProps {
 
 const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
   const responses = await SpeciesApi.getByIds(ids)
-  return responses.map((species) => {
+  return responses.map(species => {
     const { id, egg_groups } = SpeciesExtractor(species)
     const otherEggGroup = egg_groups
-      .map((group) => group.name)
-      .filter((group) => group !== eggGroupName)[0]
+      .map(group => group.name)
+      .filter(group => group !== eggGroupName)[0]
     return { id, otherEggGroup }
   })
 }
 
 const getPokemonDataNew = async (ids: Array<number>) => {
   const responses = await PokemonApi.getByIds(ids)
-  return responses.map((pokemon) => {
+  return responses.map(pokemon => {
     const { id, nationalNumber, gameSprite, name, types } = PokemonExtractor(pokemon)
     return { id, nationalNumber, gameSprite, name, types }
   })
@@ -45,18 +45,16 @@ const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
 
   // Joining the data
   const finalTableData = pokemonData
-    .map((obj1) => {
-      const obj2 = speciesData.find((obj2) => obj2.id === obj1.id)
+    .map(obj1 => {
+      const obj2 = speciesData.find(obj2 => obj2.id === obj1.id)
       return { ...obj1, ...obj2 }
     })
-    .filter(
-      (entry) => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157),
-    )
+    .filter(entry => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157))
 
   const headerNames = ['#', 'Name', 'Types', 'Other group']
   const tableHeaders = (
     <TableRow className="bg-[#1a1a1a]">
-      {headerNames.map((name) => (
+      {headerNames.map(name => (
         <TableCellHeader className="min-w-24" type="column" key={name}>
           {name}
         </TableCellHeader>
@@ -64,13 +62,13 @@ const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
     </TableRow>
   )
 
-  const pokmemonRows = finalTableData.map((pokemon) => {
+  const pokmemonRows = finalTableData.map(pokemon => {
     const { id, nationalNumber, gameSprite, name, types, otherEggGroup } = pokemon
     const properId = `${'00' + nationalNumber}`.slice(-3)
 
     const typeDiv = (
       <div className="flex flex-col gap-y-1">
-        {types.map((type) => (
+        {types.map(type => (
           <TypeCard typeName={type.type.name} key={type.type.name} />
         ))}
       </div>

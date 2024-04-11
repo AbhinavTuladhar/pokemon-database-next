@@ -32,12 +32,12 @@ const InfiniteScroll: FC<ScrollProps> = ({ increment, urlList }) => {
 
   const fetchMore = async () => {
     const responses = await getPokemonByUrls(urlList.slice(offset, offset + increment))
-    setPokemon((prevPokemon) => {
+    setPokemon(prevPokemon => {
       const extractedPokemon = responses.map(PokemonExtractor)
       return [...prevPokemon, ...extractedPokemon]
     })
     responses.length > 0 ? setHasMore(true) : setHasMore(false)
-    setOffset((prevOffset) => prevOffset + increment)
+    setOffset(prevOffset => prevOffset + increment)
   }
   return (
     <div className="mb-8 mt-4">
@@ -53,7 +53,7 @@ const InfiniteScroll: FC<ScrollProps> = ({ increment, urlList }) => {
         }
       >
         <PokeCardContainer>
-          {pokemon.map((pokemon) => {
+          {pokemon.map(pokemon => {
             const { id, name, types, front_default: defaultSprite } = pokemon
             return (
               <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />

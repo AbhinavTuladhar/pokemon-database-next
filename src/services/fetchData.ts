@@ -1,4 +1,3 @@
-
 import baseURL from './baseUrl'
 
 // const fetchData = async <T>(url: string, options?: AxiosRequestConfig) => {

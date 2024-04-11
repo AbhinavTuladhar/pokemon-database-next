@@ -19,11 +19,11 @@ const getPokemonData = async (names: Array<string>, abilityName: string) => {
   const responses = await PokemonApi.getByNames(names)
 
   // We now need to find the pokemon name, icons and other abilities.
-  const simplifiedResponse = responses.map((response) => {
+  const simplifiedResponse = responses.map(response => {
     const { abilities, ...rest } = PokemonExtractor(response)
     const otherAbilities = abilities
-      .filter((ability) => ability.ability.name !== abilityName)
-      .map((ability) => ability.ability.name)
+      .filter(ability => ability.ability.name !== abilityName)
+      .map(ability => ability.ability.name)
     return {
       ...rest,
       otherAbilities,
@@ -32,9 +32,7 @@ const getPokemonData = async (names: Array<string>, abilityName: string) => {
 
   // Omit gen 8+ pokemon and their forms from the list and sort them by their natonal number.
   return simplifiedResponse
-    .filter(
-      (entry) => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157),
-    )
+    .filter(entry => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157))
     .sort((prev, curr) => (prev.nationalNumber >= curr.nationalNumber ? 1 : -1))
 }
 
@@ -45,7 +43,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
 
   const headerRow = (
     <TableRow className="bg-[#1a1a1a]">
-      {headers.map((header) => (
+      {headers.map(header => (
         <TableCellHeader className="first:w-28" key={header} type="column">
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>

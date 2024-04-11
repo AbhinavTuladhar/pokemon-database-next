@@ -17,15 +17,15 @@ Here, we define a custom hook for returning an aray of objects containing:
 const getStatDetails = (stats: Array<PokemonStat>) => {
   const maxStatValue = 200
   const statMapping: Record<string, string> = {
-    hp: 'HP',
-    attack: 'Attack',
-    defense: 'Defence',
+    'hp': 'HP',
+    'attack': 'Attack',
+    'defense': 'Defence',
     'special-attack': 'Sp. Atk',
     'special-defense': 'Sp. Def',
-    speed: 'Speed',
+    'speed': 'Speed',
   }
 
-  const statValues = stats.map((stat) => {
+  const statValues = stats.map(stat => {
     let colour
     const {
       base_stat: statValue,
@@ -57,8 +57,8 @@ const getStatDetails = (stats: Array<PokemonStat>) => {
     The second object contains the name of the stat and the maximum and minimum values -> minMaxValues.
     These objects are joined using the stat name as the common key-value pair.
   */
-  const details = statValues.map((obj1) => {
-    const obj2 = minMaxValues.find((obj) => obj.name === obj1.name)
+  const details = statValues.map(obj1 => {
+    const obj2 = minMaxValues.find(obj => obj.name === obj1.name)
     return { ...obj1, ...obj2 }
   })
 

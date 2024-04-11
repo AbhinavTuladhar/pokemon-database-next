@@ -30,7 +30,7 @@ const findTypeEffectiveness = (typeInfo: Array<TransformedType>) => {
     return acc
   }, {} as MappingInterface)
 
-  typeInfo.forEach((type) => {
+  typeInfo.forEach(type => {
     const { doubleDamageFrom, halfDamageFrom, noDamageFrom } = type
 
     const multiplierMapping = [
@@ -39,8 +39,8 @@ const findTypeEffectiveness = (typeInfo: Array<TransformedType>) => {
       { typeList: noDamageFrom, multiplier: 0 },
     ]
 
-    multiplierMapping?.forEach((row) => {
-      row?.typeList?.forEach((type) => {
+    multiplierMapping?.forEach(row => {
+      row?.typeList?.forEach(type => {
         typeEffectivenessList[type] *= row.multiplier
       })
     })

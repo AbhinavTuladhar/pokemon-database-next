@@ -26,8 +26,8 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
   const toolTips: Array<JSX.Element> = []
 
   // Calculate all the dual-type combinations possible
-  const typeRows = typeList.flatMap((type) => {
-    return typeList.map((innerType) => {
+  const typeRows = typeList.flatMap(type => {
+    return typeList.map(innerType => {
       return [type, innerType]
     })
   })
@@ -46,7 +46,7 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
 
   const tableRows = typeList?.map((type, rowIndex) => {
     // For each row, we want only those subarrays in which the first item is equal to `type`
-    const cellData = typeRows?.filter((subarray) => subarray === null || subarray[0] === type)
+    const cellData = typeRows?.filter(subarray => subarray === null || subarray[0] === type)
 
     const cellDivs = [dummy, ...cellData]?.map((arr, cellIndex) => {
       const [firstType, secondType] = arr
@@ -55,7 +55,7 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
         halfDamageTo,
         noDamageTo,
       }
-      const combinedTypeString = arr.map((type) => formatName(type)).join('/')
+      const combinedTypeString = arr.map(type => formatName(type)).join('/')
       const multiplierValue =
         firstType !== '' || firstType !== null
           ? calculateOffensiveTypeEffectiveness(arr, attackingTypeInfo)

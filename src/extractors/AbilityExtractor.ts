@@ -14,14 +14,14 @@ const AbilityExtractor = (data: Ability) => {
 
   // Find the English long and short entries.
   const englishDescEntries = effect_entries.find(
-    (entry) => entry.language.name === 'en',
+    entry => entry.language.name === 'en',
   ) as VerboseEffect
   const { short_effect: shortEntry, effect: longEntry } = englishDescEntries
 
   // Find the version-wise descriptions
   const descriptions = flavor_text_entries
-    .filter((entry) => entry.language.name === 'en')
-    .map((entry) => ({
+    .filter(entry => entry.language.name === 'en')
+    .map(entry => ({
       description: entry.flavor_text,
       versionName: entry.version_group.name,
       generation: gameToGenerationMap[entry.version_group.name],
@@ -30,7 +30,7 @@ const AbilityExtractor = (data: Ability) => {
   // The number of Pokemon that have the ability.
   const pokemonCount = pokemon.length
 
-  const pokemonList = pokemon.map((pokemon) => pokemon.pokemon.name)
+  const pokemonList = pokemon.map(pokemon => pokemon.pokemon.name)
 
   const [generationString, generationNumber] = generationIntroducedRaw.split('-')
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)

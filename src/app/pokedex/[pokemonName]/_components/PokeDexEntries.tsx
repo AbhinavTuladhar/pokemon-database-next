@@ -21,7 +21,7 @@ interface GroupVersionDescriptions {
 const groupByDescription = (data: Array<VersionDescription>) => {
   return data?.reduce((acc, current) => {
     // First it's checked whehter the description already exists in the accumulator array.
-    const index = acc.findIndex((item) => item.description === current.description)
+    const index = acc.findIndex(item => item.description === current.description)
     // if it does, then append the version name.
     // Else, make a new entry in the accumulator array.
     if (index !== -1) {
@@ -43,7 +43,7 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   }
 
   // Let's find all the English entries first that are not in the blacklisted games.
-  const englishEntries = flavourTextEntries.filter((entry) => {
+  const englishEntries = flavourTextEntries.filter(entry => {
     const {
       language: { name: languageName },
       version: { name: versionName },
@@ -52,7 +52,7 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   })
 
   // Find an object containing the version anme and the Pokedex entry.
-  const englishInfo = englishEntries.map((entry) => {
+  const englishInfo = englishEntries.map(entry => {
     const rawText = entry.flavor_text as string
     // This 'removes' the escape characters in the Pokedex entry. However, the escape characters are placed in very inconsitent places, so the text looks weird.
     const cleanedStr = rawText.replace(/\f/g, ' ').replace(/\n/g, ' ')
@@ -67,7 +67,7 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   const englishInfoByDescription = groupByDescription(englishInfo)
 
   // Now making a list for each version
-  const finalEntry = englishInfoByDescription.map((entry) => {
+  const finalEntry = englishInfoByDescription.map(entry => {
     const gameListItems = entry.versionName.map((version, index) => {
       return <li key={index}> {version} </li>
     })

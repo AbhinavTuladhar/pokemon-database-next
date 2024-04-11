@@ -4,7 +4,7 @@ import Api from './MainApi'
 
 export const TypesApi = {
   getByNames: async function (names: Array<string>) {
-    const requests = names.map((name) => Api.pokemon.getTypeByName(name))
+    const requests = names.map(name => Api.pokemon.getTypeByName(name))
     const responses = await Promise.all(requests)
     return responses as Type[]
   },

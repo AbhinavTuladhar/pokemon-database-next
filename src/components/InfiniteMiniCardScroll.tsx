@@ -22,12 +22,12 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
 
   const fetchMorePokemon = async () => {
     const responses = await PokemonApi.getByNames(nameList.slice(offset, offset + increment))
-    setPokemonData((prevPokemon) => {
+    setPokemonData(prevPokemon => {
       const extractedData = responses.map(PokemonExtractor)
       return [...prevPokemon, ...extractedData]
     })
     responses.length > 0 ? setHasMore(true) : setHasMore(false)
-    setOffset((prevOffset) => prevOffset + increment)
+    setOffset(prevOffset => prevOffset + increment)
   }
 
   return (

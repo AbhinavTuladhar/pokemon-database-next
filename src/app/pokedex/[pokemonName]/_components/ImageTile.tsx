@@ -20,7 +20,7 @@ const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) => {
 
   // For toggling between normal and shiny versions.
   const handleClick = () => {
-    setSelectedImage((prevStatus) => {
+    setSelectedImage(prevStatus => {
       return prevStatus === 'normal' ? 'shiny' : 'normal'
     })
   }

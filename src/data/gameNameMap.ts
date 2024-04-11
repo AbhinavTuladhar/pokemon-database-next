@@ -3,14 +3,14 @@
  */
 const gameNameMap: Record<string, string> = {
   'red-blue': 'Red / Blue',
-  yellow: 'Yellow',
+  'yellow': 'Yellow',
   'gold-silver': 'Gold / Silver',
-  crystal: 'Crystal',
+  'crystal': 'Crystal',
   'ruby-sapphire': 'Ruby / Sapphire',
-  emerald: 'Emerald',
+  'emerald': 'Emerald',
   'firered-leafgreen': 'FireRed / Leafgreen',
   'diamond-pearl': 'Diamond / Pearl',
-  platinum: 'Platinum',
+  'platinum': 'Platinum',
   'heartgold-soulsilver': 'Heartgold / Soulsilver',
   'black-white': 'Black / White',
   'black-2-white-2': 'Black 2 / White 2',

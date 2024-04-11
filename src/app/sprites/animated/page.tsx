@@ -28,7 +28,7 @@ const AnimatedSprites = async () => {
       <PageTitle>Animated Pokémon Sprite Collection</PageTitle>
       <p>The table represents the regular and shiny sprites in generation 7, respectively. </p>
       <PageNavigation />
-      {generations.map((generationNumber) => {
+      {generations.map(generationNumber => {
         const genData = generationData[generationNumber - 1]
 
         const startIndex = genData.offset

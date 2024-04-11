@@ -41,7 +41,7 @@ const getSubLocationData = async (names: string[]) => {
 }
 
 const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
-  const subLocationNames = locationData.subLocations.map((subLocation) => subLocation.name)
+  const subLocationNames = locationData.subLocations.map(subLocation => subLocation.name)
   const subLocationData = await getSubLocationData(subLocationNames)
 
   // Inform the user if there is no encounter information.
@@ -58,19 +58,19 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
     .reduce((result, obj) => {
       const { encounterDetails, subLocationName } = obj
 
-      encounterDetails.forEach((encounter) => {
+      encounterDetails.forEach(encounter => {
         const { generation, method } = encounter
 
-        const existingGenerationGroup = result.find((group) => group.generation === generation)
+        const existingGenerationGroup = result.find(group => group.generation === generation)
 
         if (existingGenerationGroup) {
           const existingSubLocationGroup = existingGenerationGroup.subLocations.find(
-            (subLocation) => subLocation.subLocationName === subLocationName,
+            subLocation => subLocation.subLocationName === subLocationName,
           )
 
           if (existingSubLocationGroup) {
             const existingMethodGroup = existingSubLocationGroup.methods.find(
-              (methodObj) => methodObj.method === method.name,
+              methodObj => methodObj.method === method.name,
             )
 
             if (existingMethodGroup) {

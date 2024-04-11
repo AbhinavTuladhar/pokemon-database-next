@@ -25,7 +25,7 @@ const formatLocation = (location: NamedApiResource<Location>) => {
 }
 
 const formatRegionResponse = (data: Awaited<ReturnType<typeof getRegionData>>) => {
-  return data.map((region) => {
+  return data.map(region => {
     const { locations, regionName } = region
     const newLocations = locations.map(formatLocation).sort((prev, curr) =>
       prev.locationName.localeCompare(curr.locationName, undefined, {
