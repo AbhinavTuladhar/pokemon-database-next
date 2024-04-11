@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import BlueLink from '@/components/BlueLink'
@@ -21,16 +21,29 @@ interface PanelProps {
 
 const RegionTabs: FC<PanelProps> = ({ regionData }) => {
   const tabNames = regionData.map((region) => region.regionName)
+  const [tabIndex, setTabIndex] = useState(0)
+
+  useEffect(() => {
+    const storedIndex = localStorage.getItem('selectedRegionIndex')
+    const initialIndex = storedIndex ? parseInt(storedIndex) : 0
+    setTabIndex(initialIndex)
+  }, [])
+
+  const handleTabChange = (newIndex: number) => {
+    setTabIndex(newIndex)
+    localStorage.setItem('selectedRegionIndex', String(newIndex))
+  }
 
   // Alola has slightly long names, so we provide a special exception to it.
   return (
-    <Tabs>
+    <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabChange(index)}>
       <TabList className="flex flex-wrap">
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tabIndex}
             className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-gray-900 p-3 duration-300 hover:cursor-pointer hover:border-white hover:text-white hover:brightness-110"
             selectedClassName="!border-blue-500 text-blue-500"
+            // onClick={() => handleTabChange(tab)}
           >
             {formatName(tab)}
           </Tab>
