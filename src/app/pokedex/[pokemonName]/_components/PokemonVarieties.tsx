@@ -12,7 +12,7 @@ interface VarietiesProps {
 
 const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties }) => {
   // Filter out gen 8+ forms
-  const varietiesFiltered = varieties.filter((form) => {
+  const varietiesFiltered = varieties.filter(form => {
     const {
       pokemon: { url: pokemonUrl },
     } = form

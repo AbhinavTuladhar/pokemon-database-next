@@ -17,7 +17,7 @@ const calculateOffensiveTypeEffectiveness = (
   let totalEffectiveness = 1
 
   multiplierMapping.forEach(({ typeList, multiplier }) => {
-    defendingTypeCombination.forEach((defendingType) => {
+    defendingTypeCombination.forEach(defendingType => {
       if (typeList.includes(defendingType)) {
         totalEffectiveness *= multiplier
       }

@@ -28,7 +28,7 @@ interface DescriptionProps {
 
 const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
   const groupedData = descriptions
-    .filter((description) => !gameBlackLists.includes(description.versionName))
+    .filter(description => !gameBlackLists.includes(description.versionName))
     .reduce((acc, curr) => {
       const { description: rawDescription, generation, versionName } = curr
       // There are escape characters in the descriptions, which shall now be removed.
@@ -47,7 +47,7 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
 
   // Filter out undefined generations
   const properGroupedData = descriptions
-    ? Object?.values(groupedData).filter((row) => row.generation !== undefined)
+    ? Object?.values(groupedData).filter(row => row.generation !== undefined)
     : []
 
   // console.log(properGroupedData)
@@ -58,7 +58,7 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
       <TableRow key={rowIndex}>
         <TableCellHeader wrapFlag={true}>
           <ul>
-            {versionName.map((version) => {
+            {versionName.map(version => {
               return (
                 <li className="list-none" key={version}>
                   {gameNameMap[version]}

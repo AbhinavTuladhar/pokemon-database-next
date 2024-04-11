@@ -45,7 +45,7 @@ const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
         name,
       }
     })
-    .filter((pokemon) => pokemon.id <= 807) // For the last Pokemon, #807.
+    .filter(pokemon => pokemon.id <= 807) // For the last Pokemon, #807.
 
   // Put the link at the end for #001, separate evenly for the rest.
   const alignment = id !== 1 ? 'justify-between' : 'justify-end'

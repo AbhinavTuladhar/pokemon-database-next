@@ -1,4 +1,3 @@
-
 import PokeCardSkeleton from '@/components/Suspense/PokeCardSkeleton'
 
 import PokeCardContainer from './_components/PokeCardContainer'

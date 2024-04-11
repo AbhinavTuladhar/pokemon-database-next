@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { BsArrowDown, BsArrowDownRight,BsArrowRight, BsArrowUpRight } from 'react-icons/bs'
+import { BsArrowDown, BsArrowDownRight, BsArrowRight, BsArrowUpRight } from 'react-icons/bs'
 
 import { EvolutionPokemon } from '@/types'
 import evolutionStringFinder from '@/utils/evolutionStringFinder'

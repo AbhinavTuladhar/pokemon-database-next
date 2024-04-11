@@ -5,7 +5,7 @@ import Api from './MainApi'
 export const AbilityApi = {
   getAllNames: async function () {
     const response = await Api.pokemon.listAbilities(0, 233)
-    const namesList = response.results.map((ability) => ability.name)
+    const namesList = response.results.map(ability => ability.name)
     return namesList
   },
   getByName: async function (name: string) {
@@ -13,7 +13,7 @@ export const AbilityApi = {
     return response as unknown as Ability
   },
   getByNames: async function (names: Array<string>) {
-    const requests = names.map((name) => Api.pokemon.getAbilityByName(name))
+    const requests = names.map(name => Api.pokemon.getAbilityByName(name))
     const responses = await Promise.all(requests)
     return responses as Ability[]
   },

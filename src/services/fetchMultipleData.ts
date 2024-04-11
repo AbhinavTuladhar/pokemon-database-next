@@ -1,7 +1,7 @@
 import fetchData from './fetchData'
 
 const fetchMultipleData = async <T>(urls: string[]): Promise<T[]> => {
-  const fetchRequests = urls.map((url) => fetchData<T>(url))
+  const fetchRequests = urls.map(url => fetchData<T>(url))
 
   try {
     const responseData = await Promise.all(fetchRequests)

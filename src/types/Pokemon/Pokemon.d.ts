@@ -95,13 +95,13 @@ export interface PokemonSpritesVariant {
 }
 
 export interface PokemonSpritesOther {
-  dream_world: Pick<PokemonSpritesVariant, 'front_default' | 'front_female'>
-  home: Pick<
+  'dream_world': Pick<PokemonSpritesVariant, 'front_default' | 'front_female'>
+  'home': Pick<
     PokemonSpritesVariant,
     'front_default' | 'front_female' | 'front_shiny' | 'front_shiny_female'
   >
   'official-artwork': Pick<PokemonSpritesVariant, 'front_default' | 'front_shiny'>
-  showdown: Omit<PokemonSpritesVariant, 'back_gray' | 'front_gray'>
+  'showdown': Omit<PokemonSpritesVariant, 'back_gray' | 'front_gray'>
 }
 
 export interface PokemonStat {
@@ -149,7 +149,7 @@ export interface Generation1Sprites {
     | 'back_transparent'
     | 'front_transparent'
   >
-  yellow: Pick<
+  'yellow': Pick<
     PokemonSpritesVariant,
     | 'back_default'
     | 'back_gray'
@@ -183,7 +183,7 @@ export interface Generation2Sprites {
 }
 
 export interface Generation3Sprites {
-  emerald: Pick<PokemonSpritesVariant, 'front_default' | 'front_shiny'>
+  'emerald': Pick<PokemonSpritesVariant, 'front_default' | 'front_shiny'>
   'firered-leafgreen': Pick<
     PokemonSpritesVariant,
     'back_default' | 'back_shiny' | 'front_default' | 'front_shiny'
@@ -200,7 +200,7 @@ export interface Generation4Sprites {
     PokemonSpritesVariant,
     'back_shiny_transparent' | 'front_shiny_transparent'
   >
-  platinum: Omit<PokemonSpritesVariant, 'back_shiny_transparent' | 'front_shiny_transparent'>
+  'platinum': Omit<PokemonSpritesVariant, 'back_shiny_transparent' | 'front_shiny_transparent'>
 }
 
 export interface Generation5Sprites {
@@ -229,7 +229,7 @@ export interface Generation6Sprites {
 }
 
 export interface Generation7Sprites {
-  icons: {
+  'icons': {
     front_default: string | null
     front_female: string | null
   }

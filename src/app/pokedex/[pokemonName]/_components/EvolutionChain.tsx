@@ -28,7 +28,7 @@ const getEvolutionData = async (id: number) => {
 
 const getAllPokemonData = async (ids: Array<number>) => {
   const responses = await PokemonApi.getByIds(ids)
-  return responses.map((response) => {
+  return responses.map(response => {
     const { name, homeSprite, id, types } = PokemonExtractor(response)
     return { name, homeSprite, id, types }
   })
@@ -68,7 +68,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
       })
 
       if (evolvesTo.length > 0) {
-        evolvesTo.forEach((evolution) => {
+        evolvesTo.forEach(evolution => {
           traverseChain(evolution)
         })
       }
@@ -81,13 +81,13 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
 
   const evolutionChainData = getAllData()
 
-  const pokemonIds = evolutionChainData.map((pokemon) => pokemon.id)
+  const pokemonIds = evolutionChainData.map(pokemon => pokemon.id)
 
   const allPokemonData = await getAllPokemonData(pokemonIds)
 
   // Now perform a join operation on allPokemonData and evolutionChainData on the basis of the pokemon id.
-  const preFinalPokemonData = allPokemonData.map((pokemon) => {
-    const species = evolutionChainData?.find((species) => species?.id === pokemon?.id)
+  const preFinalPokemonData = allPokemonData.map(pokemon => {
+    const species = evolutionChainData?.find(species => species?.id === pokemon?.id)
     return { ...pokemon, ...species }
   })
 
@@ -97,7 +97,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   */
 
   let foundNextEvoSplit = false
-  const finalPokemonDataOld = preFinalPokemonData.map((obj) => {
+  const finalPokemonDataOld = preFinalPokemonData.map(obj => {
     const isSplitEvo = foundNextEvoSplit
     if (obj.nextEvoSplit) {
       foundNextEvoSplit = true
@@ -113,7 +113,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   // Meowth = 52, Persian = 53, Weavile = 461
   // Also filter out gen 8+ forms.
   const finalPokemonData: Array<EvolutionPokemon> = finalPokemonDataOld
-    ?.map((pokemon) => {
+    ?.map(pokemon => {
       let { isSplitEvo: splitEvoFlag, id, nextEvoSplit } = pokemon
       if (id === 267 || id === 269 || id === 212 || id === 53 || id === 461 || id === 195) {
         splitEvoFlag = false
@@ -123,7 +123,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
       }
       return { ...pokemon, isSplitEvo: splitEvoFlag, nextEvoSplit }
     })
-    ?.filter((pokemon) => {
+    ?.filter(pokemon => {
       const { id } = pokemon
       return (id >= 1 && id <= 809) || (id >= 10001 && id <= 10157)
     })
@@ -205,7 +205,7 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
     wurmpleDiv.push(<EvolutionDiv finalPokemonData={wormData} individualPokemon={wormDivs} />)
 
     // For beautifly
-    const wurmpleEvsData = finalPokemonData?.map((pokemon) => {
+    const wurmpleEvsData = finalPokemonData?.map(pokemon => {
       let { isSplitEvo: splitEvoFlag, id, nextEvoSplit } = pokemon
       if (id === 266 || id === 268) {
         splitEvoFlag = false

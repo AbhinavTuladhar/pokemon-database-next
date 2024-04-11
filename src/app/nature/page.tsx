@@ -39,7 +39,7 @@ const NatureList = async () => {
   )
 
   const tableRows = natureInformation
-    .filter((nature) => nature !== undefined)
+    .filter(nature => nature !== undefined)
     .map((nature, rowIndex) => {
       const { decreasedStat, hatesFlavour, increasedStat, likesFlavour, name } = nature
 

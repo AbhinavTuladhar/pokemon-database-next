@@ -38,7 +38,7 @@ const buildMoveTargetData = (targetType: string) => {
     case 'users-field':
       // eg. mist, reflect
       description = 'Targets all Pokémon on the user’s team.'
-      allyInformation.forEach((ally) => (ally.targeted = true))
+      allyInformation.forEach(ally => (ally.targeted = true))
       break
 
     case 'user-or-ally':
@@ -51,7 +51,7 @@ const buildMoveTargetData = (targetType: string) => {
     case 'opponents-field':
       // eg. spikes, stealth rock
       description = 'Targets all Pokémon on the opposing field.'
-      foeInformation.forEach((foe) => (foe.targeted = true))
+      foeInformation.forEach(foe => (foe.targeted = true))
       break
 
     case 'user':
@@ -63,27 +63,27 @@ const buildMoveTargetData = (targetType: string) => {
     case 'random-opponent':
       // eg. thrash, outrage
       description = 'Targets the user, but hits a random adjacent opponent.'
-      foeInformation.slice(0, 2).forEach((foe) => (foe.targeted = true))
+      foeInformation.slice(0, 2).forEach(foe => (foe.targeted = true))
       break
 
     case 'all-other-pokemon':
       // eg. surf, earthquake, explosion
       description = 'Targets all adjacent Pokémon'
       allyInformation[1].targeted = true
-      foeInformation.slice(0, 2).forEach((foe) => (foe.targeted = true))
+      foeInformation.slice(0, 2).forEach(foe => (foe.targeted = true))
       break
 
     case 'selected-pokemon':
       // eg. pound, scratch
       description = 'Targets a single adjacent Pokémon.'
       allyInformation[1].targeted = true
-      foeInformation.slice(0, 2).forEach((foe) => (foe.targeted = true))
+      foeInformation.slice(0, 2).forEach(foe => (foe.targeted = true))
       break
 
     case 'all-opponents':
       // eg. leer, growl
       description = 'Targets all adjacent foes.'
-      foeInformation.slice(0, 2).forEach((foe) => (foe.targeted = true))
+      foeInformation.slice(0, 2).forEach(foe => (foe.targeted = true))
       break
 
     case 'entire-field':
@@ -91,14 +91,14 @@ const buildMoveTargetData = (targetType: string) => {
       // example: sandstorm, haze
       // also perish song
       description = 'Targets the entire field'
-      allyInformation.forEach((ally) => (ally.targeted = true))
-      foeInformation.forEach((foe) => (foe.targeted = true))
+      allyInformation.forEach(ally => (ally.targeted = true))
+      foeInformation.forEach(foe => (foe.targeted = true))
       break
 
     case 'user-and-allies':
       // eg. heal bell, howl
       description = 'Targets all Pokémon on the user’s team.'
-      allyInformation.forEach((ally) => (ally.targeted = true))
+      allyInformation.forEach(ally => (ally.targeted = true))
       break
 
     default:

@@ -1,7 +1,7 @@
 const pokedexToGameMap: Record<string, string> = {
-  kanto: 'Yellow/Red/Blue',
+  'kanto': 'Yellow/Red/Blue',
   'original-johto': 'Gold/Silver/Crystal',
-  hoenn: 'Ruby/Sapphire/Emerald',
+  'hoenn': 'Ruby/Sapphire/Emerald',
   'original-sinnoh': 'Diamond/Pearl',
   'extended-sinnoh': 'Platinum',
   'updated-johto': 'HeartGold/SoulSilver',

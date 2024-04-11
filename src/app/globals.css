@@ -13,7 +13,7 @@
 }
 
 .fancy-link::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 1.25em;
   left: 0;

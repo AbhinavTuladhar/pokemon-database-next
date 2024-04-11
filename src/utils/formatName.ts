@@ -6,7 +6,7 @@ const capitaliseFirstLetter = (word: string) => {
 const formatName = (name: string) => {
   // Split the name by hyphen to and capitalise the first letter of each word.
   const wordList = name?.split('-')
-  let properWordList = wordList?.map((word) => capitaliseFirstLetter(word))
+  let properWordList = wordList?.map(word => capitaliseFirstLetter(word))
   // If it's a mega evolution, reverse the array, then join them with spaces.
   if (properWordList?.includes('Mega')) {
     if (properWordList?.length === 3) {

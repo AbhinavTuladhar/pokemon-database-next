@@ -20,7 +20,7 @@ interface PanelProps {
 }
 
 const RegionTabs: FC<PanelProps> = ({ regionData }) => {
-  const tabNames = regionData.map((region) => region.regionName)
+  const tabNames = regionData.map(region => region.regionName)
 
   // Alola has slightly long names, so we provide a special exception to it.
   return (

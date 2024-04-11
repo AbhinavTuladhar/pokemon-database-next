@@ -21,7 +21,7 @@ const getAllTypeData = async () => {
   // type name
   // Step 3: Properly format the type chart object.
   // Next we need to transform the data into a usable state.
-  const transformedTypeData = typeData.map((type) => {
+  const transformedTypeData = typeData.map(type => {
     const extractedInfo = TypeExtractor(type)
     const { name: typeName } = extractedInfo
     const typeChart = findTypeEffectiveness([extractedInfo])
@@ -102,7 +102,7 @@ const TypeChartFull = async () => {
     )
   })
 
-  const tooltips = typeData?.map((type) => {
+  const tooltips = typeData?.map(type => {
     const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
 
     return defenceInfo?.map((defendingType, innerIndex) => {

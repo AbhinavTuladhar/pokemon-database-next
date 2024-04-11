@@ -24,19 +24,19 @@ const formatFields = (data: string) => {
   // Omit the region if it occurs.
   const wordListNew = wordList.includes('route') ? wordList.slice(1) : wordList
   // Capitalise the first letter of each word.
-  const formattedWords = wordListNew.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  const formattedWords = wordListNew.map(word => word.charAt(0).toUpperCase() + word.slice(1))
   // Now join them with spaces.
   return formattedWords.join(' ')
 }
 
 // Getting the location and version names.
 const findLocationsAndVersions = (data: Array<LocationAreaEncounter>) => {
-  const information = data.flatMap((encounter) => {
+  const information = data.flatMap(encounter => {
     const {
       location_area: { name: locationName },
       version_details: encounterList,
     } = encounter
-    const encounterData = encounterList?.map((version) => {
+    const encounterData = encounterList?.map(version => {
       const {
         version: { name: versionName },
       } = version
@@ -61,7 +61,7 @@ Platinum - route 201, route 202
 const groupByGame = (data: Array<LocationAndVersion>) => {
   const info = data?.reduce((acc, current) => {
     const { versionName } = current
-    const index = acc.findIndex((item) => item.versionName === versionName)
+    const index = acc.findIndex(item => item.versionName === versionName)
     if (index !== -1) {
       acc[index].locationName += `, ${current.locationName}`
     } else {
@@ -78,7 +78,7 @@ const groupByGame = (data: Array<LocationAndVersion>) => {
 const groupByLocation = (data: Array<LocationAndVersion>) => {
   const info = data.reduce((acc, current) => {
     const { locationName } = current
-    const index = acc.findIndex((item) => item.locationName === locationName)
+    const index = acc.findIndex(item => item.locationName === locationName)
     if (index !== -1) {
       acc[index].versionName.push(current.versionName)
     } else {
@@ -109,7 +109,7 @@ const Locations: FC<LocationsProps> = async ({ id, name }) => {
   const locationData = await getLocationData(id)
 
   // some formatting of the data
-  const preFinalTable = locationData?.map((entry) => {
+  const preFinalTable = locationData?.map(entry => {
     const listItems = entry.versionName.map((version, index) => {
       return <li key={index}> {version} </li>
     })
