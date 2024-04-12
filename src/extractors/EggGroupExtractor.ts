@@ -3,7 +3,7 @@ import filterGens from '@/utils/filterGens'
 
 const EggGroupExtractor = (data: EggGroup) => {
   const { name, pokemon_species, id } = data
-  const filteredSpecies = pokemon_species.filter((species) => {
+  const filteredSpecies = pokemon_species.filter(species => {
     const { url } = species
     return filterGens(url)
   })

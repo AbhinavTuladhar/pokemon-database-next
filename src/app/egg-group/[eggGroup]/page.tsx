@@ -25,7 +25,7 @@ const getEggGroupData = async (name: string) => {
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
   const data = await getEggGroupData(eggGroup)
 
-  const speciesIds = data.pokemonSpecies.map((species) => {
+  const speciesIds = data.pokemonSpecies.map(species => {
     const { url } = species
     return Number(getResourceId(url))
   })

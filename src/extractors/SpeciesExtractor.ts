@@ -19,7 +19,7 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
   } = data
 
   // Find only the English genus name of the 'mon.
-  const englishGenus = genera.find((entry) => entry.language.name === 'en')
+  const englishGenus = genera.find(entry => entry.language.name === 'en')
   return {
     base_happiness,
     capture_rate,

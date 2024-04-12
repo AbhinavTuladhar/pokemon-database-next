@@ -13,7 +13,7 @@
 }
 
 .fancy-link::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 1.25em;
   left: 0;
@@ -54,20 +54,17 @@
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 2px;
+  width: 10px;
+  height: 8px;
   padding: 2px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: royalblue;
+  background-color: rgb(3, 7, 18);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: white;
+  background-color: royalblue;
   border-radius: 2px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, red, yellow);
+  transition: all 0.4s ease-in-out;
 }

@@ -11,7 +11,7 @@ export const LocationApi = {
 
 export const RegionApi = {
   getByIds: async function (ids: Array<number>) {
-    const requests = ids.map((id) => Api.location.getRegionById(id))
+    const requests = ids.map(id => Api.location.getRegionById(id))
     const responses = await Promise.all(requests)
     return responses as unknown as Region[]
   },
@@ -19,7 +19,7 @@ export const RegionApi = {
 
 export const LocationAreaApi = {
   getByNames: async function (names: Array<string>) {
-    const requests = names.map((name) => Api.location.getLocationAreaByName(name))
+    const requests = names.map(name => Api.location.getLocationAreaByName(name))
     const responses = await Promise.all(requests)
     return responses as unknown as LocationArea[]
   },

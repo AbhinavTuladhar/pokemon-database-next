@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-
 interface TableColumnProps {
   columnIndex: number
   images: Array<string | null>

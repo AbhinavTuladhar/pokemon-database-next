@@ -34,31 +34,29 @@ const MoveExtractor = (move: Move) => {
 
   // Find all the English etnries.
   const englishDescriptions = flavor_text_entries
-    .filter((entry) => entry.language.name === 'en')
-    .map((version) => ({
+    .filter(entry => entry.language.name === 'en')
+    .map(version => ({
       description: version.flavor_text,
       version: version.version_group.name,
       generation: gameToGenerationMap[version.version_group.name],
     }))
 
   // Find the English effect entry.
-  const englishEffect = effect_entries.find(
-    (entry) => entry.language.name === 'en',
-  ) as VerboseEffect
+  const englishEffect = effect_entries.find(entry => entry.language.name === 'en') as VerboseEffect
 
   // Separate the long and short entries.
   const longEntry = englishEffect.effect
   const shortEntry = englishEffect.short_effect
 
   // Find the URLs of all the Pokemon that can learn the move.
-  const pokemonUrls: Array<NamedApiResource<Move>> = learned_by_pokemon.map((pokemon) => {
+  const pokemonUrls: Array<NamedApiResource<Move>> = learned_by_pokemon.map(pokemon => {
     const { name, url } = pokemon
     const replacedUrl = url.replace(/\/pokemon\/\d+\//, `/pokemon/${name}/`)
     return { name, url: replacedUrl }
   })
 
   // Find the names of all the Pokemon that can learn the move
-  const pokemon = learned_by_pokemon.map((pokemon) => pokemon.name)
+  const pokemon = learned_by_pokemon.map(pokemon => pokemon.name)
 
   // Dealing with keys which might have null values.
   const realAccuracy = accuracy === null ? '-' : accuracy

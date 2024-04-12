@@ -16,13 +16,13 @@ interface MoveData {
 
 // This is for filtering out the moves on depending on how it is learnt - only for SM.
 const separateMoves = ({ data, learnMethod }: { data: Array<MoveData>; learnMethod: string }) => {
-  const movesLearnt = data.map((move) => {
+  const movesLearnt = data.map(move => {
     const {
       version_group_details,
       move: { name, url },
     } = move // this is an array
     const filteredMoves = version_group_details.filter(
-      (version) => version.move_learn_method.name === learnMethod,
+      version => version.move_learn_method.name === learnMethod,
     )
     const replacedUrl = stringifyUrl(url, name)
     return {
@@ -31,7 +31,7 @@ const separateMoves = ({ data, learnMethod }: { data: Array<MoveData>; learnMeth
       version_group_details: filteredMoves,
     }
   })
-  const finalFilteredMoves = movesLearnt.filter((move) => move.version_group_details.length > 0)
+  const finalFilteredMoves = movesLearnt.filter(move => move.version_group_details.length > 0)
   return finalFilteredMoves
 }
 
@@ -49,10 +49,10 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   const properPokemonName = formatName(pokemonName)
 
   // Consider that the latest gen is 7.
-  const SMData = moves.flatMap((move) => {
+  const SMData = moves.flatMap(move => {
     const { version_group_details } = move
     const SMInfo = version_group_details.filter(
-      (version) => version.version_group.name === 'ultra-sun-ultra-moon',
+      version => version.version_group.name === 'ultra-sun-ultra-moon',
     )
     return {
       ...move,
@@ -61,7 +61,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   })
 
   // Filter out the details in the version group details array is empty
-  const finalSMData = SMData.filter((move) => move.version_group_details.length > 0)
+  const finalSMData = SMData.filter(move => move.version_group_details.length > 0)
   const moveData = finalSMData
 
   // This is for separating out the moves learnt by level up, TM/HM and by breeding.
@@ -86,7 +86,7 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   })
 
   // Extract the move name and the level learnt for the moves learn by level up.
-  const levelLearntData = levelUpMoves?.map((move) => {
+  const levelLearntData = levelUpMoves?.map(move => {
     return {
       name: move.name,
       levelLearntAt:
@@ -95,10 +95,10 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   })
 
   const moveNames = {
-    level: sortedLevelMoves.map((move) => move.name),
-    machine: machineMoves.map((move) => move.name),
-    egg: eggMoves.map((move) => move.name),
-    tutor: tutorMoves.map((move) => move.name),
+    level: sortedLevelMoves.map(move => move.name),
+    machine: machineMoves.map(move => move.name),
+    egg: eggMoves.map(move => move.name),
+    tutor: tutorMoves.map(move => move.name),
   }
 
   const [levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails] =
@@ -109,8 +109,8 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
       getMovesInformation(moveNames.egg),
     ])
 
-  const combinedLevelDetails = levelLearntData.map((obj1) => {
-    const obj2 = levelMoveDetails.find((obj) => obj.moveName === obj1.name) as TransformedMove
+  const combinedLevelDetails = levelLearntData.map(obj1 => {
+    const obj2 = levelMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
     return { ...obj2, levelLearnedAt: obj1.levelLearntAt }
   })
 

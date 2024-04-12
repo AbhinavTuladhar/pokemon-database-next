@@ -17,8 +17,8 @@ const PokemonExtractor = (data: Pokemon) => {
     sprites: {
       other: {
         'official-artwork': { front_default, front_shiny },
-        home: { front_default: homeSprite },
-        showdown: { front_default: animatedSprite, front_shiny: animatedShinySprite },
+        'home': { front_default: homeSprite },
+        'showdown': { front_default: animatedSprite, front_shiny: animatedShinySprite },
       },
       versions: {
         'generation-i': {

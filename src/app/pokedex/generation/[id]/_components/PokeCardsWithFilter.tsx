@@ -21,7 +21,7 @@ const PokeCardsWithFilter: FC<FilterProps> = ({ pokemonData }) => {
     if (!searchString) {
       setFilteredData(pokemonData)
     } else {
-      const filteredSlice = pokemonData.filter((pokemon) => pokemon.name.includes(searchString))
+      const filteredSlice = pokemonData.filter(pokemon => pokemon.name.includes(searchString))
       setFilteredData(filteredSlice)
     }
   }
@@ -38,7 +38,7 @@ const PokeCardsWithFilter: FC<FilterProps> = ({ pokemonData }) => {
       </div>
       {filteredData.length ? (
         <PokeCardContainer>
-          {filteredData.map((pokemon) => {
+          {filteredData.map(pokemon => {
             const { id, name, types, front_default: defaultSprite = '' } = pokemon
             return (
               <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />

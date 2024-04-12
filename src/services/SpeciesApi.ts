@@ -8,7 +8,7 @@ export const SpeciesApi = {
     return response as unknown as PokemonSpecies
   },
   getByIds: async function (ids: Array<number>) {
-    const requests = ids.map((id) => Api.pokemon.getPokemonSpeciesById(id))
+    const requests = ids.map(id => Api.pokemon.getPokemonSpeciesById(id))
     const responses = await Promise.all(requests)
     return responses as unknown as PokemonSpecies[]
   },

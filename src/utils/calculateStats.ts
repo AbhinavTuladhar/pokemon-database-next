@@ -38,7 +38,7 @@ const calculateStat = ({ base, EV, IV, level, nature }: StatCalculateArgs) => {
 
 // statData is the array of objects as described above.
 const calculateStats = (statData: Array<StatTable>) => {
-  const minMaxValues = statData.map((stat) => {
+  const minMaxValues = statData.map(stat => {
     let minStat, maxStat
     const {} = stat
     // Make an exception for HP

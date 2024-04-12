@@ -20,7 +20,7 @@ interface PanelProps {
 }
 
 const RegionTabs: FC<PanelProps> = ({ regionData }) => {
-  const tabNames = regionData.map((region) => region.regionName)
+  const tabNames = regionData.map(region => region.regionName)
   const [tabIndex, setTabIndex] = useState(0)
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const RegionTabs: FC<PanelProps> = ({ regionData }) => {
 
   // Alola has slightly long names, so we provide a special exception to it.
   return (
-    <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabChange(index)}>
+    <Tabs selectedIndex={tabIndex} onSelect={index => handleTabChange(index)}>
       <TabList className="flex flex-wrap">
         {tabNames.map((tab, tabIndex) => (
           <Tab

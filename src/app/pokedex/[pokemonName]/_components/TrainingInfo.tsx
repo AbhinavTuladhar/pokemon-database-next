@@ -11,7 +11,7 @@ import { PokemonStat } from '@/types'
 const formatField = (field: string) => {
   if (!field) return ''
   const splitWords = field.split('-')
-  const properWords = splitWords.map((word) => {
+  const properWords = splitWords.map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   })
   return properWords.join(' ')
@@ -36,8 +36,8 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
   const growth = growth_rate === undefined ? '' : formatField(growth_rate.toString())
 
   // Find the stats that give EVs
-  const evStats = stats.filter((stat) => stat.effort > 0)
-  const evFormatted = evStats.map((stat) => {
+  const evStats = stats.filter(stat => stat.effort > 0)
+  const evFormatted = evStats.map(stat => {
     // First format the stat field. hp -> HP, rest => special-attack => Special Attack
     const statName = stat.stat.name
     const formattedStatName = statName === 'hp' ? 'HP' : formatField(stat.stat.name.toString())
@@ -45,7 +45,7 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
   })
 
   // Joining all the EV stats given by commas.
-  const evString = evFormatted.map((obj) => `${obj.value} ${obj.name}`).join(', ')
+  const evString = evFormatted.map(obj => `${obj.value} ${obj.name}`).join(', ')
 
   // Define all the things that is to be displayed.
   const tableData = [

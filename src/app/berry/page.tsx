@@ -35,12 +35,12 @@ const getItemInformationByNames = async (names: Array<string>) => {
 const page = async () => {
   const berryNames = await getBerryNames()
   const berryInformation = await getBerryInformationByNames(berryNames)
-  const itemNames = berryInformation.map((berry) => berry.itemName)
+  const itemNames = berryInformation.map(berry => berry.itemName)
   const itemInformation = await getItemInformationByNames(itemNames)
 
   // Combine the two corresponding objects in the berry and item arrays
-  const combinedInformation = berryInformation.map((berry) => {
-    const foundItem = itemInformation!.find((item) => item.name === berry.itemName)
+  const combinedInformation = berryInformation.map(berry => {
+    const foundItem = itemInformation!.find(item => item.name === berry.itemName)
     return { ...foundItem, ...berry }
   })
 

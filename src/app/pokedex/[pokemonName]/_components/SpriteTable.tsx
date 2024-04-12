@@ -18,9 +18,9 @@ const SpriteTable: FC<SpriteTableProps> = ({ pokemonName, spriteCollection }) =>
   Sprites for the generation below the generation the pokemon was introduced in are ommitted.
   Gen 6+ pokemon have gen 5-like sprites, as stated in the documentation.
   */
-  const properSpriteCollection = spriteCollection.filter((obj) => {
+  const properSpriteCollection = spriteCollection.filter(obj => {
     const nullUndefinedCount = Object.values(obj).filter(
-      (value) => value === null || value === undefined,
+      value => value === null || value === undefined,
     ).length
     return nullUndefinedCount <= 1
   })

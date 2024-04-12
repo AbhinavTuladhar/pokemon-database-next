@@ -22,7 +22,7 @@ const getMachineInfo = async (ids: Array<number>) => {
 }
 
 const getTmNumbers = (responses: Awaited<ReturnType<typeof getMachineInfo>>) => {
-  return responses.map((response) => {
+  return responses.map(response => {
     const {
       item: { name: TmNumber },
       version_group: { name: versionName },
@@ -47,7 +47,7 @@ interface GroupedMachines {
 
 const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
   const formattedData = responses.filter(
-    (machine) =>
+    machine =>
       machine.versionName !== 'colosseum' &&
       machine.versionName !== 'xd' &&
       !gameBlackLists.includes(machine.versionName),
@@ -73,7 +73,7 @@ const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
 }
 
 const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
-  const machineIds = machineList.map((machine) => {
+  const machineIds = machineList.map(machine => {
     const {
       machine: { url },
     } = machine

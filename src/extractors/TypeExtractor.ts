@@ -14,8 +14,8 @@ const TypeExtractor = (data: Type) => {
   // Use the actual pokemon name in the url instead of their id.
   // Also filter out gen 7+ forms.
   const pokemon = pokemonList
-    .map((pokemon) => pokemon.pokemon)
-    .filter((pokemon) => {
+    .map(pokemon => pokemon.pokemon)
+    .filter(pokemon => {
       const { url } = pokemon
       if (url === null) return
       // const idNumber = url?.match(/\/(\d+)\/$/)[1]
@@ -23,9 +23,9 @@ const TypeExtractor = (data: Type) => {
       const idNumber = parseInt(url!.match(/\/(\d+)\/$/)[1])
       return (idNumber >= 1 && idNumber <= 807) || (idNumber >= 10_000 && idNumber <= 10157)
     })
-    .map((pokemon) => pokemon.name)
+    .map(pokemon => pokemon.name)
 
-  const extractName = (arr: Array<NamedApiResource<Type>>) => arr.map((type) => type.name)
+  const extractName = (arr: Array<NamedApiResource<Type>>) => arr.map(type => type.name)
 
   return {
     doubleDamageFrom: extractName(doubleDamageFrom),

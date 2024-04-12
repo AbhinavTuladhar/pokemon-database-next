@@ -26,7 +26,7 @@ const GroupList = async () => {
     <section className="self-start rounded bg-[#19272d] px-4 pb-4 pt-px">
       <SectionTitle>Egg Groups</SectionTitle>
       <ul className="list-inside list-disc">
-        {eggGroupData.map((group) => {
+        {eggGroupData.map(group => {
           const { id, name, pokemonSpecies } = group
           const pokemonCount = pokemonSpecies.length
           return (

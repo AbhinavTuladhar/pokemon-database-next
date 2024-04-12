@@ -40,16 +40,14 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
 
   const generationResponse = await getPokemonDataByGeneration(offset, limit)
 
-  const pokemonData = await getPokemonData(
-    generationResponse.results.map((pokemon) => pokemon.name),
-  )
+  const pokemonData = await getPokemonData(generationResponse.results.map(pokemon => pokemon.name))
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
   return (
     <main>
       <PageTitle>Pokémon of generation {generationNumber}</PageTitle>
       <PokeCardContainer>
-        {extractedPokemonData.map((pokemon) => {
+        {extractedPokemonData.map(pokemon => {
           const { id, name, types, front_default: defaultSprite = '' } = pokemon
           return (
             <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />

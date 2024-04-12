@@ -30,7 +30,7 @@ const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
   const properName = formatName(name)
 
   // Get a list of all the types of the Pokemon.
-  let typeList = types?.map((type) => {
+  let typeList = types?.map(type => {
     return type.type.name
   })
 

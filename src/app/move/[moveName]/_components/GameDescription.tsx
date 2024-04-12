@@ -33,7 +33,7 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
   type GroupeDataInterface = Record<string, GroupedByGames>
 
   const groupedData = descriptions
-    .filter((description) => !gameBlackLists.includes(description.version))
+    .filter(description => !gameBlackLists.includes(description.version))
     .reduce((acc, curr) => {
       const { description: rawDescription, generation, version } = curr
       // There are escape characters in the descriptions, which shall now be removed.
@@ -60,7 +60,7 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
 
   // Filter out undefined generations
   const properGroupedData = descriptions
-    ? Object?.values(groupedData).filter((row) => row.generation !== undefined)
+    ? Object?.values(groupedData).filter(row => row.generation !== undefined)
     : []
 
   const tableRows = properGroupedData.map((row, rowIndex) => (
