@@ -40,14 +40,14 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
         <div className="w-full lg:w-1/3">
           <GroupList />
         </div>
-        <div className="mt-0 w-full overflow-x-auto lg:-mt-5 lg:w-auto">
-          <Suspense fallback={<PokemonTableSkeleton />}>
+        <Suspense fallback={<PokemonTableSkeleton />}>
+          <div className="mt-0 w-full overflow-x-auto lg:-mt-5 lg:w-auto">
             <SectionTitle> The Pokémon </SectionTitle>
             <div className="flex justify-center">
               <PokemonTable eggGroup={eggGroup} speciesIds={speciesIds} />
             </div>
-          </Suspense>
-        </div>
+          </div>
+        </Suspense>
       </div>
     </main>
   )
