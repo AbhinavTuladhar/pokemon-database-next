@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
-import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
 import MoveExtractor from '@/extractors/MoveExtractor'
@@ -91,15 +90,15 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
       </div>
 
-      {/* <>
+      <>
         <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
         <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
           <MiniCardList pokemonNames={pokemon} />
         </Suspense>
-      </> */}
+      </>
 
       {/* Use infinite scrolling if there are more than 100 urls. */}
-      {pokemon.length >= 100 ? (
+      {/* {pokemon.length >= 100 ? (
         <>
           <SectionTitle>Pokémon that can learn {formatName(moveName)}</SectionTitle>
           <InfiniteMiniCardScroll increment={50} nameList={pokemon} />
@@ -111,7 +110,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
             <MiniCardList pokemonNames={pokemon} />
           </Suspense>
         </>
-      )}
+      )} */}
     </main>
   )
 }
