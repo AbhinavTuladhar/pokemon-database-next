@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        '4xl': '2rem',
-        '5xl': '2.5rem',
+        '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
+        '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',
+        '6xl': 'clamp(3rem, 2.4rem + 1.5vw, 3.75rem)',
       },
       screens: {
         smmd: '1070px',

@@ -52,7 +52,7 @@ const TypeListing = () => {
               against each Pokémon type.
             </p>
             <div>
-              <h3 className="my-4 text-2xl font-bold">Chart Key</h3>
+              <h3 className="my-4 text-4xl font-bold">Chart Key</h3>
               {chartKeyInfo}
             </div>
           </div>

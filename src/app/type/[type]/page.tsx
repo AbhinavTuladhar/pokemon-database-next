@@ -53,7 +53,7 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
   title,
 }) => (
   <div className="flex flex-col flex-wrap">
-    <div className="text-3xl font-bold">
+    <div className="text-4xl font-bold">
       <span> {title} </span>
       <span className="italic text-gray-300"> pros & cons </span>
     </div>
@@ -157,7 +157,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         </div>
 
         <div className="mt-4 flex flex-col mdlg:mt-0">
-          <h2 className="text-3xl font-bold">Dual type attack pros & cons</h2>
+          <h2 className="text-4xl font-bold">Dual type attack pros & cons</h2>
           <p className="my-4">
             {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
           </p>

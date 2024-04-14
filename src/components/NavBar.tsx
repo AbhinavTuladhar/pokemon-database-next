@@ -108,7 +108,7 @@ const NavBar = () => {
 
   return (
     <header>
-      <div className="flex flex-wrap justify-center bg-gradient-to-t from-slate-900 to-slate-800 p-2 text-center text-5xl font-semibold tracking-tight lg:text-6xl lg:font-bold">
+      <div className="flex flex-wrap justify-center bg-gradient-to-t from-slate-900 to-slate-800 p-2 text-center text-6xl font-semibold leading-none tracking-tight lg:font-bold">
         <Link href="/" className="text-sky-500">
           Pokémon Database
         </Link>
