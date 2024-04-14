@@ -1,4 +1,4 @@
-import { Item, ItemPocket } from '@/types'
+import { Item, ItemCategory, ItemPocket } from '@/types'
 
 import Api from './MainApi'
 
@@ -16,9 +16,9 @@ export const ItemApi = {
     const response = await Api.item.getItemPocketByName(name)
     return response as ItemPocket
   },
-  getItemPocketByNames: async function (names: Array<string>) {
-    const requests = names.map(name => Api.item.getItemPocketByName(name))
-    const responses = await Promise.all(requests)
-    return responses
+  getItemCategoriesByNames: async function (names: Array<string>) {
+    const request = names.map(name => Api.item.getItemCategoryByName(name))
+    const response = await Promise.all(request)
+    return response as unknown as ItemCategory[]
   },
 }
