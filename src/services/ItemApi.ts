@@ -21,4 +21,8 @@ export const ItemApi = {
     const response = await Promise.all(request)
     return response as unknown as ItemCategory[]
   },
+  getAllItems: async function () {
+    const response = await Api.item.listItems(0, 1137)
+    return response.results.map(item => item.name)
+  },
 }

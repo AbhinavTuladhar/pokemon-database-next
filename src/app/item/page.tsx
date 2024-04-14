@@ -1,30 +1,29 @@
 import React from 'react'
 
-import BlueLink from '@/components/BlueLink'
 import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
+import ItemExtractor from '@/extractors/ItemExtractor'
 import { ItemApi } from '@/services/ItemApi'
-import formatName from '@/utils/formatName'
 
-const getItemPockets = async () => {
-  const response = await ItemApi.getAllItemPockets()
+import DynamicTable from './_components/DynamicTable'
+
+const getAllItemNames = async () => {
+  const response = await ItemApi.getAllItems()
   return response
 }
 
+const getAllItemData = async () => {
+  const itemNames = await getAllItemNames()
+  const itemData = await ItemApi.getByNames(itemNames)
+  return itemData.map(ItemExtractor).sort((a, b) => a.name.localeCompare(b.name))
+}
+
 const ItemPage = async () => {
-  const itemPocketsList = await getItemPockets()
+  const itemData = await getAllItemData()
   return (
     <main>
       <PageTitle>Pokémon Items List</PageTitle>
       <section>
-        <SectionTitle> Item categories </SectionTitle>
-        <ul className="list-disc">
-          {itemPocketsList.map(itemPocket => (
-            <li key={itemPocket}>
-              <BlueLink href={`/item/category/${itemPocket}`}>{formatName(itemPocket)}</BlueLink>
-            </li>
-          ))}
-        </ul>
+        <DynamicTable itemData={itemData} />
       </section>
     </main>
   )

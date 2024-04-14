@@ -24,7 +24,11 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
   const headerRow = (
     <TableRow>
       {headerNames.map(header => (
-        <TableCellHeader className="pr-4" type="column" key={header}>
+        <TableCellHeader
+          className="border-r border-slate-300 pr-4 last:border-r-0"
+          type="column"
+          key={header}
+        >
           <span className="font-bold">{header}</span>
         </TableCellHeader>
       ))}
