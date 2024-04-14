@@ -1,6 +1,6 @@
 // This is for capitalising the first letter of a word.
-const capitaliseFirstLetter = (word: string) => {
-  return word?.charAt(0).toUpperCase() + word?.slice(1)
+export const capitaliseFirstLetter = (word: string) => {
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
 const formatName = (name: string) => {
