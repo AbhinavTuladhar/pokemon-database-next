@@ -97,6 +97,7 @@ const NavBar = () => {
     { path: '/ability', name: 'Abilities' },
     { path: '/berry', name: 'Berries' },
     { path: '/egg-group', name: 'Egg groups' },
+    { path: '/item', name: 'Items' },
     { path: '/nature', name: 'Natures' },
     { path: '/sprites/animated', name: 'Animated sprites' },
   ]
