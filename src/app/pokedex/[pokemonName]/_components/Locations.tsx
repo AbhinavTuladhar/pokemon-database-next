@@ -3,6 +3,7 @@ import { FC } from 'react'
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
+import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { EncountersApi } from '@/services/EncountersApi'
 import { LocationAreaEncounter } from '@/types'
@@ -132,9 +133,9 @@ const Locations: FC<LocationsProps> = async ({ id, name }) => {
     <>
       <SectionTitle>{`Where to find ${formatName(name)}`}</SectionTitle>
       {finalTable.length > 0 ? (
-        <div className="table w-full border-b border-gray-200">
+        <TableContainer>
           <tbody>{finalTable}</tbody>
-        </div>
+        </TableContainer>
       ) : (
         <p> No locations were found. </p>
       )}
