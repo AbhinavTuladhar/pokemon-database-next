@@ -7,7 +7,7 @@ import TableRow from '@/components/containers/TableRow'
 import { PokemonStat } from '@/types'
 import calculateStats from '@/utils/calculateStats'
 /*
-Here, we define a custom hook for returning an aray of objects containing:
+Here, we define a function for returning an aray of objects containing:
 1. The name of the state,
 2. The base value,
 3. The maximum value,
@@ -103,7 +103,7 @@ const BaseStat: FC<BaseStatProps> = ({ stats }) => {
         <TableCellHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>
         </TableCellHeader>
-        <td className="mx-0 table-cell min-w-[9.375rem] border-t border-gray-200 px-0 align-middle">
+        <td className="border-table-border mx-0 table-cell min-w-[9.375rem] border-t px-0 align-middle">
           <div
             className="my-0 ml-2 h-3 rounded"
             style={{

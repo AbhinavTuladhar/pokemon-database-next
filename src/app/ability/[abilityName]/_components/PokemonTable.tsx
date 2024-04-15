@@ -42,9 +42,13 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
   const headers = ['#', 'Name', 'Other abilities']
 
   const headerRow = (
-    <TableRow className="bg-[#1a1a1a]">
+    <TableRow className="bg-table-header">
       {headers.map(header => (
-        <TableCellHeader className="first:w-28" key={header} type="column">
+        <TableCellHeader
+          className="border-table-border border-r pr-4 first:w-28 last:border-r-0"
+          key={header}
+          type="column"
+        >
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
       ))}

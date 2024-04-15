@@ -27,7 +27,7 @@ const TableCellHeader: FC<HeaderProps> = ({
   return (
     <th
       className={classNames(
-        'table-cell border-t border-gray-200 py-[10px] align-middle',
+        'border-table-border table-cell border-t py-[10px] align-middle',
         { 'px-2 text-right text-sm font-normal text-gray-200': type === 'row' },
         { 'w-min px-4 text-left': type === 'column' },
         { 'w-auto whitespace-break-spaces': wrapFlag },

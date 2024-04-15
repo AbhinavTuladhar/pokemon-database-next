@@ -33,9 +33,15 @@ const EggGroupTable = async () => {
         <div className="w-60 max-w-full">
           <TableContainer>
             <thead>
-              <TableRow className="bg-[#1a1a1a]">
-                <TableCellHeader type="column"> Name </TableCellHeader>
-                <TableCellHeader type="column" className="text-right">
+              <TableRow className="bg-table-header">
+                <TableCellHeader className="border-table-border border-r pr-4" type="column">
+                  {' '}
+                  Name{' '}
+                </TableCellHeader>
+                <TableCellHeader
+                  className="border-table-border border-r-0 pr-4 text-right"
+                  type="column"
+                >
                   Pokemon
                 </TableCellHeader>
               </TableRow>

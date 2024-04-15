@@ -27,9 +27,13 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
   return (
     <TableContainer>
       <thead>
-        <TableRow className="bg-[#1a1a1a] font-bold">
+        <TableRow className="bg-table-header font-bold">
           {firstRowLabels.map((label, index) => (
-            <TableCellHeader key={index} type="column">
+            <TableCellHeader
+              key={index}
+              type="column"
+              className="border-table-border border-r pr-4 last:border-r-0"
+            >
               {label}
             </TableCellHeader>
           ))}
