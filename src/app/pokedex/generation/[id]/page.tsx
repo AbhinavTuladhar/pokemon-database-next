@@ -2,11 +2,12 @@ import { FC } from 'react'
 import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
+import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
 
-import PokeCardsWithFilter from './_components/PokeCardsWithFilter'
+import PokeCardContainer from './_components/PokeCardContainer'
 
 interface PageProps {
   params: {
@@ -45,7 +46,14 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   return (
     <main>
       <PageTitle>Pokémon of generation {generationNumber}</PageTitle>
-      <PokeCardsWithFilter pokemonData={extractedPokemonData} />
+      <PokeCardContainer>
+        {extractedPokemonData.map(pokemon => {
+          const { id, name, types, front_default: defaultSprite = '' } = pokemon
+          return (
+            <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />
+          )
+        })}
+      </PokeCardContainer>
     </main>
   )
 }
