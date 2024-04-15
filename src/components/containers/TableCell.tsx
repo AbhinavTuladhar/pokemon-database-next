@@ -15,7 +15,7 @@ interface CellProps {
  * `variant` - Whether to use a 'columnar' or 'row-wise' table. Columnar tables are regular tables,
  *  whereas row-wise tables are those which have the table header at the left of the row.
  */
-const TableCell: FC<CellProps> = ({ children, extraClassName, variant }) => {
+const TableCell: FC<CellProps> = ({ children, extraClassName, variant = 'row' }) => {
   return (
     <td
       className={classNames(
@@ -28,10 +28,6 @@ const TableCell: FC<CellProps> = ({ children, extraClassName, variant }) => {
       {children}
     </td>
   )
-}
-
-TableCell.defaultProps = {
-  variant: 'row',
 }
 
 export default TableCell
