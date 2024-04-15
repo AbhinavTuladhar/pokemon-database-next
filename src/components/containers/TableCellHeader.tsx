@@ -18,7 +18,12 @@ interface HeaderProps {
  *
  * `wrapFlag` - Whether to wrap the cell contents or not.
  */
-const TableCellHeader: FC<HeaderProps> = ({ children, type, wrapFlag, className }) => {
+const TableCellHeader: FC<HeaderProps> = ({
+  children,
+  className,
+  type = 'row ',
+  wrapFlag = false,
+}) => {
   return (
     <th
       className={classNames(
@@ -33,11 +38,6 @@ const TableCellHeader: FC<HeaderProps> = ({ children, type, wrapFlag, className 
       {children}
     </th>
   )
-}
-
-TableCellHeader.defaultProps = {
-  wrapFlag: false,
-  type: 'row',
 }
 
 export default TableCellHeader
