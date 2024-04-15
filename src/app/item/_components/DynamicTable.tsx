@@ -1,10 +1,8 @@
 'use client'
 
 import React, { ChangeEvent, FC, useState } from 'react'
-import type { GroupBase } from 'react-select'
+import type { GroupBase, SingleValue } from 'react-select'
 import Select from 'react-select'
-
-import { capitaliseFirstLetter } from '@/utils/formatName'
 
 import ItemTable from './ItemTable'
 
@@ -18,13 +16,17 @@ interface ItemData {
 interface TableProps {
   itemData: Array<ItemData>
   categories: Array<string>
+  pocketData: Array<{
+    pocketName: string
+    categories: Array<string>
+  }>
 }
 
 interface SelectProps {
   label: string
 }
 
-const DynamicTable: FC<TableProps> = ({ itemData, categories }) => {
+const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData }) => {
   const [filteredData, setFilteredData] = useState(itemData)
   const [filterText, setFilterText] = useState('')
   const [selectedOption, setSelectedOption] = useState<SelectProps>()
@@ -35,8 +37,8 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories }) => {
     .sort((a, b) => (a > b ? 1 : -1))
     .map(category => ({
       value: category,
-      label: capitaliseFirstLetter(category),
-    })) as unknown as GroupBase<string>[]
+      label: category,
+    })) as unknown as (SelectProps | GroupBase<SelectProps>)[]
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchString = event.target.value.toLowerCase()
@@ -49,9 +51,18 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories }) => {
     }
   }
 
-  // const handleSelectChange = (option: SelectOptionActionMeta<Option) =>{
-  //   setSelectedOption(value.label || '')
-  // }
+  const handleSelectChange = (value: SingleValue<SelectProps>) => {
+    if (value?.label === '- All -') {
+      setFilteredData(itemData)
+      setSelectedOption({ label: '- All -' })
+      return
+    }
+    setSelectedOption({ label: value ? value.label : '- All -' })
+    const selectedPocketCategories =
+      pocketData.find(pocket => pocket.pocketName === value?.label)?.categories || []
+    const filteredSlice = itemData.filter(item => selectedPocketCategories.includes(item.category))
+    setFilteredData(filteredSlice)
+  }
 
   return (
     <>
@@ -67,7 +78,7 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories }) => {
           options={options}
           value={selectedOption}
           placeholder="- All -"
-          onChange={(value: any) => setSelectedOption({ label: value.label || '' })}
+          onChange={handleSelectChange}
         />
       </div>
       {filteredData.length ? (

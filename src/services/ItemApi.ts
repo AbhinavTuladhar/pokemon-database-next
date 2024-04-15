@@ -16,6 +16,11 @@ export const ItemApi = {
     const response = await Api.item.getItemPocketByName(name)
     return response as ItemPocket
   },
+  getItemPocketByNames: async function (names: string[]) {
+    const requests = names.map(name => Api.item.getItemPocketByName(name))
+    const responses = await Promise.all(requests)
+    return responses as ItemPocket[]
+  },
   getItemCategoriesByNames: async function (names: Array<string>) {
     const request = names.map(name => Api.item.getItemCategoryByName(name))
     const response = await Promise.all(request)
