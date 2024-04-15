@@ -59,7 +59,11 @@ const page = async () => {
   const tableHeader = (
     <TableRow className="bg-table-header font-bold">
       {tableHeaderNames.map((header, index) => (
-        <TableCellHeader type="column" key={index} className="border-x text-center">
+        <TableCellHeader
+          type="column"
+          key={index}
+          className="border-table-border border-x border-r pr-4 text-center last:border-r-0"
+        >
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
             {header.header}
           </span>

@@ -109,7 +109,11 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
   const headerRow = (
     <TableRow className="bg-table-header font-bold">
       {header.map((headerName, index) => (
-        <TableCellHeader type="column" className="!text-center" key={index}>
+        <TableCellHeader
+          type="column"
+          className={`${headerName === 'Games' ? '!px-0' : ''} border-table-border border-r pr-4 !text-center last:border-r-0`}
+          key={index}
+        >
           {headerName}
         </TableCellHeader>
       ))}
@@ -179,8 +183,12 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
             ]
             return (
               <TableRow key={rowIndex}>
-                {cellData.map(({ value }, index) => (
-                  <TableCell key={index} extraClassName="!py-0" variant="column">
+                {cellData.map(({ key, value }, index) => (
+                  <TableCell
+                    key={index}
+                    extraClassName={`${key === 'game' ? '!px-0' : ''} !py-0`}
+                    variant="column"
+                  >
                     {value}
                   </TableCell>
                 ))}

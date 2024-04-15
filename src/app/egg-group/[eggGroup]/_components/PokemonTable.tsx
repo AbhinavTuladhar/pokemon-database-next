@@ -55,7 +55,11 @@ const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
   const tableHeaders = (
     <TableRow className="bg-table-header">
       {headerNames.map(name => (
-        <TableCellHeader className="min-w-24" type="column" key={name}>
+        <TableCellHeader
+          className="border-table-border min-w-24 border-r pr-4 last:border-r-0"
+          type="column"
+          key={name}
+        >
           {name}
         </TableCellHeader>
       ))}

@@ -37,7 +37,11 @@ const MoveTable: FC<TableProps> = ({ moveData }) => {
   const headerRowCells = (
     <TableRow className="bg-table-header">
       {headers.map((header, index) => (
-        <TableCellHeader type="column" key={index}>
+        <TableCellHeader
+          type="column"
+          key={index}
+          className="border-table-border border-r pr-4 last:border-r-0"
+        >
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
       ))}

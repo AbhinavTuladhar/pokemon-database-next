@@ -15,7 +15,7 @@ const SpriteTableColumn: React.FC<TableColumnProps> = ({ columnIndex, images, ti
       <div className="flex w-24 flex-col">
         {labels.map((label, index) => (
           <div
-            className="grid h-40 place-items-center border border-slate-300 first:h-16 first:bg-gray-900"
+            className="border-table-border grid h-40 place-items-center border first:h-16 first:bg-gray-900"
             key={index}
           >
             {label}
@@ -27,13 +27,13 @@ const SpriteTableColumn: React.FC<TableColumnProps> = ({ columnIndex, images, ti
 
   return (
     <div className="flex w-40 flex-col">
-      <div className="grid h-16 w-40 place-items-center border border-slate-300 bg-gray-900 font-bold">
+      <div className="border-table-border grid h-16 w-40 place-items-center border bg-gray-900 font-bold">
         {title}
       </div>
       {images.map((image, imageIndex) => {
         return (
           <div
-            className="grid h-40 w-40 place-items-center border border-slate-300 object-center p-2"
+            className="border-table-border grid h-40 w-40 place-items-center border object-center p-2"
             key={imageIndex}
           >
             {image ? (
