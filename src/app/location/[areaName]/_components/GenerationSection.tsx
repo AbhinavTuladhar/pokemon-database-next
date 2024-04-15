@@ -10,7 +10,7 @@ import { Tooltip } from '@/components/ReactTooltip'
 import generationToGameListMap from '@/data/generationToGameListMap'
 import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
 import { LocationAreaApi } from '@/services/LocationApi'
-import { GroupedLocationArea, TransformedLocation } from '@/types'
+import { EncounterMethod, GroupedLocationArea, TransformedLocation } from '@/types'
 import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
 
@@ -18,6 +18,7 @@ import GameBox from './GameBox'
 
 interface SectionProps {
   locationData: TransformedLocation
+  methodData: Array<EncounterMethod>
 }
 
 interface MethodGroup {
@@ -40,7 +41,7 @@ const getSubLocationData = async (names: string[]) => {
   return responses.map(LocationAreaExtractor)
 }
 
-const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
+const GenerationSection: FC<SectionProps> = async ({ locationData, methodData }) => {
   const subLocationNames = locationData.subLocations.map(subLocation => subLocation.name)
   const subLocationData = await getSubLocationData(subLocationNames)
 
@@ -134,9 +135,14 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
         // Finally, the encounter methods.
         const encounterMethodDiv = methods?.map(({ method, encounterDetails }, methodIndex) => {
           // Find the name of the encounter method description
-          // const encounterDescription = encounterMethodDescriptions?.find(
-          //   (method) => method?.name === method,
+          // const encounterDescription = methodData?.find(
+          //   method => method.name === method,
           // )?.description
+          const encounterDescription = methodData
+            .find(innerMethod => innerMethod.name === method)
+            ?.names.find(({ language }) => {
+              return language.name === 'en'
+            })?.name as string
 
           const tableRows = encounterDetails.map((encounter, rowIndex) => {
             const { iconSprite, pokemonName, generationInternal, gameName, levelRange, chance } =
@@ -200,7 +206,7 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
             <div key={methodIndex}>
               <div className="my-4 flex flex-col gap-y-1">
                 <h3 className="text-2xl font-bold">{`${formatName(method)}`}</h3>
-                {/* <span className="text-sm text-gray-400">{encounterDescription}</span> */}
+                <span className="text-sm text-gray-300">{encounterDescription}</span>
               </div>
 
               <div className="flex justify-center">

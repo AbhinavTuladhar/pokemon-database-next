@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import LocationExtractor from '@/extractors/LocationExtractor'
+import { EncountersApi } from '@/services/EncountersApi'
 import { LocationApi } from '@/services/LocationApi'
 import formatName from '@/utils/formatName'
 
@@ -27,14 +28,20 @@ const getLocationData = async (name: string) => {
   return LocationExtractor(response)
 }
 
+const getMethodDescriptions = async () => {
+  const responses = await EncountersApi.getAllMethodDescriptions()
+  return responses
+}
+
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   const locationData = await getLocationData(areaName)
+  const methodData = await getMethodDescriptions()
 
   return (
     <main>
       <PageTitle>{formatName(areaName)}</PageTitle>
       <Suspense fallback={<LocationPageSkeleton />}>
-        <GenerationSection locationData={locationData} />
+        <GenerationSection locationData={locationData} methodData={methodData} />
       </Suspense>
     </main>
   )
