@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FC, Fragment, useState } from 'react'
 
+import Input from '@/components/Input'
 import PokeCard from '@/components/PokeCard'
 import type { TransformedPokemon } from '@/types'
 
@@ -29,12 +30,7 @@ const PokeCardsWithFilter: FC<FilterProps> = ({ pokemonData }) => {
   return (
     <>
       <div className="mb-8 flex w-full justify-center">
-        <input
-          className="w-64 max-w-full rounded-lg px-2 py-2 text-black placeholder-gray-300"
-          placeholder="Search for a Pokémon"
-          onChange={handleChange}
-          value={filterText}
-        />
+        <Input placeholder="Search for a Pokémon" onChange={handleChange} value={filterText} />
       </div>
       {filteredData.length ? (
         <PokeCardContainer>
