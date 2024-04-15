@@ -4,6 +4,8 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import type { GroupBase, SingleValue } from 'react-select'
 import Select from 'react-select'
 
+import formatName from '@/utils/formatName'
+
 import ItemTable from './ItemTable'
 
 interface ItemData {
@@ -37,7 +39,7 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData }) => {
     .sort((a, b) => (a > b ? 1 : -1))
     .map(category => ({
       value: category,
-      label: category,
+      label: formatName(category),
     })) as unknown as (SelectProps | GroupBase<SelectProps>)[]
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +63,8 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData }) => {
 
     if (selectedLabel && selectedLabel !== '- All -') {
       const selectedPocketCategories =
-        pocketData.find(pocket => pocket.pocketName === selectedLabel)?.categories || []
+        pocketData.find(pocket => pocket.pocketName === selectedLabel.toLowerCase())?.categories ||
+        []
       filteredSlice = filteredSlice.filter(item => selectedPocketCategories.includes(item.category))
     }
 
