@@ -22,7 +22,7 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
   const headerNames = ['Name', 'Category', 'Effect']
 
   const headerRow = (
-    <TableRow>
+    <TableRow className="bg-table-header">
       {headerNames.map(header => (
         <TableCellHeader
           className="border-r border-slate-300 pr-4 last:border-r-0"
@@ -49,7 +49,7 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
     )
 
     return (
-      <TableRow key={index}>
+      <TableRow key={index} className="odd:bg-gray-900">
         <TableCell variant="column" extraClassName="w-40 whitespace-nowrap">
           {nameDiv}
         </TableCell>

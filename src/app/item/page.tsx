@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import ItemExtractor from '@/extractors/ItemExtractor'
@@ -6,6 +7,10 @@ import { ItemPocketExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 
 import DynamicTable from './_components/DynamicTable'
+
+export const metadata: Metadata = {
+  title: 'List of Pokémon Items | Pokémon Database',
+}
 
 const getItemPockets = async () => {
   const response = await ItemApi.getAllItemPockets()

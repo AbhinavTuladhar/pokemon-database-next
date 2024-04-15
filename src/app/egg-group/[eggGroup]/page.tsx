@@ -1,4 +1,5 @@
 import React, { FC, Suspense } from 'react'
+import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
@@ -14,6 +15,13 @@ import PokemonTable from './_components/PokemonTable'
 interface PageProps {
   params: {
     eggGroup: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { eggGroup } = params
+  return {
+    title: `${formatName(eggGroup)} egg group | Pokémon Database`,
   }
 }
 
