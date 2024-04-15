@@ -4,6 +4,7 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import type { GroupBase, SingleValue } from 'react-select'
 import Select from 'react-select'
 
+import Input from '@/components/Input'
 import formatName from '@/utils/formatName'
 
 import ItemTable from './ItemTable'
@@ -74,7 +75,7 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData }) => {
   return (
     <>
       <div className="mb-8 flex w-full flex-wrap justify-center gap-4">
-        <input
+        <Input
           className="w-64 max-w-full rounded-lg px-2 py-2 text-black placeholder-gray-300"
           placeholder="Search for an item"
           onChange={handleChange}
