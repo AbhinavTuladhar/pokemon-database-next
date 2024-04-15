@@ -21,7 +21,7 @@ const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
       <thead>
         <th
           colSpan={2}
-          className="table-cell border border-gray-100 bg-[#1a1a1a] py-2 text-xl font-bold"
+          className="bg-table-header table-cell border border-gray-100 py-2 text-xl font-bold"
         >
           <BlueLink href={`/pokedex/${pokemonName}`}>{formatName(pokemonName)}</BlueLink>
         </th>

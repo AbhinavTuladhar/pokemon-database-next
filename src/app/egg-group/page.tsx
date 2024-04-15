@@ -33,7 +33,7 @@ const EggGroupTable = async () => {
         <div className="w-60 max-w-full">
           <TableContainer>
             <thead>
-              <TableRow className="bg-[#1a1a1a]">
+              <TableRow className="bg-table-header">
                 <TableCellHeader type="column"> Name </TableCellHeader>
                 <TableCellHeader type="column" className="text-right">
                   Pokemon

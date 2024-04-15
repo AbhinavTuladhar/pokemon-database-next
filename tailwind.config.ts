@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      colors: {
+        'table-header': '#1a1a1a',
+      },
       fontSize: {
         '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
         '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',

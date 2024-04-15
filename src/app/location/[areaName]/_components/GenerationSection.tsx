@@ -107,7 +107,7 @@ const GenerationSection: FC<SectionProps> = async ({ locationData }) => {
   const header = ['Pokémon', 'Games', 'Rarity', 'Levels']
 
   const headerRow = (
-    <TableRow className="bg-[#1a1a1a] font-bold">
+    <TableRow className="bg-table-header font-bold">
       {header.map((headerName, index) => (
         <TableCellHeader type="column" className="!text-center" key={index}>
           {headerName}
