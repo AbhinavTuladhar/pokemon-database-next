@@ -21,7 +21,7 @@ interface HeaderProps {
 const TableCellHeader: FC<HeaderProps> = ({
   children,
   className,
-  type = 'row ',
+  type = 'row',
   wrapFlag = false,
 }) => {
   return (
