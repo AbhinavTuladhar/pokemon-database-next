@@ -2,8 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
-import ItemExtractor from '@/extractors/ItemExtractor'
-import { ItemPocketExtractor } from '@/extractors/ItemExtractors'
+import { ItemExtractor, ItemPocketExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 
 import DynamicTable from './_components/DynamicTable'
