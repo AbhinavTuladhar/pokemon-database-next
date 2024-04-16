@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
+import BlueLink from '@/components/BlueLink'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
@@ -44,7 +45,9 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
         ) : (
           <div className="h-8 w-8" />
         )}
-        <span> {formatName(name)}</span>
+        <BlueLink boldFlag={true} href={`/item/${name}`}>
+          {formatName(name)}
+        </BlueLink>
       </div>
     )
 
