@@ -8,7 +8,7 @@ import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { Tooltip } from '@/components/ReactTooltip'
 import BerryExtractor from '@/extractors/BerryExtractor'
-import ItemExtractor from '@/extractors/ItemExtractor'
+import { ItemExtractor } from '@/extractors/ItemExtractors'
 import { BerryApi } from '@/services/BerryApi'
 import { ItemApi } from '@/services/ItemApi'
 import formatName from '@/utils/formatName'
@@ -62,7 +62,7 @@ const page = async () => {
         <TableCellHeader
           type="column"
           key={index}
-          className="border-table-border border-x border-r pr-4 text-center last:border-r-0"
+          className="border-x border-r border-table-border pr-4 text-center last:border-r-0"
         >
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
             {header.header}
