@@ -1,5 +1,6 @@
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import EncounterExtractor from '@/extractors/EncounterExtractor'
+import { ItemExtractor } from '@/extractors/ItemExtractors'
 import LocationExtractor from '@/extractors/LocationExtractor'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
@@ -16,6 +17,7 @@ type TransformedEncounter = ReturnType<typeof EncounterExtractor>
 type TransformedPokemon = ReturnType<typeof PokemonExtractor>
 type TransformedLocation = ReturnType<typeof LocationExtractor>
 type TransformedAbility = ReturnType<typeof AbilityExtractor>
+type TransformedItem = ReturnType<typeof ItemExtractor>
 
 // TransformedEncounter returns an array of objects.
 // We need to find the interface of the objects in the array
@@ -69,6 +71,7 @@ export type {
   StatTable,
   TransformedAbility,
   TransformedEncounter,
+  TransformedItem,
   TransformedLocation,
   TransformedMove,
   TransformedMoveLevel,

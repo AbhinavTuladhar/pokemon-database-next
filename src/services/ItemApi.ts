@@ -3,6 +3,10 @@ import { Item, ItemCategory, ItemPocket } from '@/types'
 import Api from './MainApi'
 
 export const ItemApi = {
+  getByName: async function (name: string) {
+    const response = await Api.item.getItemByName(name)
+    return response as unknown as Item
+  },
   getByNames: async function (names: Array<string>) {
     const requests = names.map(name => Api.item.getItemByName(name))
     const responses = await Promise.all(requests)

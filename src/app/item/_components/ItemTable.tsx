@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
+import BlueLink from '@/components/BlueLink'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import formatName from '@/utils/formatName'
+import formatName, { formatText } from '@/utils/formatName'
 
 interface ItemData {
   shortEntry: string
@@ -44,7 +45,9 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
         ) : (
           <div className="h-8 w-8" />
         )}
-        <span> {formatName(name)}</span>
+        <BlueLink boldFlag={true} href={`/item/${name}`}>
+          {formatName(name)}
+        </BlueLink>
       </div>
     )
 
@@ -54,7 +57,7 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
           {nameDiv}
         </TableCell>
         <TableCell variant="column" extraClassName="w-48 whitespace-nowrap">
-          {formatName(category)}
+          {formatText(category)}
         </TableCell>
         <TableCell variant="column" extraClassName="min-w-96">
           {shortEntry}

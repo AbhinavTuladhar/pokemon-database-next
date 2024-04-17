@@ -19,9 +19,9 @@ export interface Item {
   id: number
   name: string
   cost: number
-  fling_power: number
-  fling_effect: NamedApiResource<ItemFlingEffect>
-  attributes: NamedApiResource<ItemAttribute>
+  fling_power: number | null | undefined
+  fling_effect: NamedApiResource<ItemFlingEffect> | null | undefined
+  attributes: Array<NamedApiResource<ItemAttribute>>
   category: NamedApiResource<ItemCategory>
   effect_entries: Array<VerboseEffect>
   flavor_text_entries: Array<VersionGroupFlavorText>
