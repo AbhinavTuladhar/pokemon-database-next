@@ -5,6 +5,7 @@ import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
+import TypeSummarySkeleton from '@/components/Suspense/TypeSummarySkeleton'
 import TypeCard from '@/components/TypeCard'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services/TypesApi'
@@ -71,11 +72,14 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         <span className="text-gray-400"> (type) </span>
       </PageTitle>
       <section>
-        <TypeSummaryRow
-          moveCount={moveCount}
-          pokemonCount={pokemonCount}
-          typeName={formattedType}
-        />
+        <Suspense fallback={<TypeSummarySkeleton />}>
+          <TypeSummaryRow
+            moveCount={moveCount}
+            pokemonCount={pokemonCount}
+            typeName={formattedType}
+            pokemon={pokemon}
+          />
+        </Suspense>
       </section>
       <div className="grid grid-cols-1 justify-between gap-x-20 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
         <ProsAndConsSection
