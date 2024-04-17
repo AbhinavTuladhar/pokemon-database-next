@@ -72,8 +72,8 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
             power={power}
             priority={priority}
           />
-          <Suspense fallback={<div> Loading TM data... </div>}>
-            <MachineRecord machineList={machines} />
+          <Suspense fallback={<div className="my-10"> Loading TM data... </div>}>
+            {machines.length > 0 ? <MachineRecord machineList={machines} /> : null}
           </Suspense>
         </section>
         <section>

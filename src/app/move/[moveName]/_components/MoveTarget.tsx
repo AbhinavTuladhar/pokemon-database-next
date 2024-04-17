@@ -26,7 +26,7 @@ const PokemonTargetBox: FC<TargetBoxProps> = ({ text, flag, targeted }) => {
 
   return (
     <div
-      className={`flex h-14 w-24 flex-row items-center justify-center rounded-l-2xl rounded-r-2xl ${backgroundStyle} ${targetedStyle}`}
+      className={`flex h-14 w-24 flex-row items-center justify-center rounded-[20px_/_44px] ${backgroundStyle} ${targetedStyle}`}
     >
       {text}
     </div>
