@@ -59,7 +59,9 @@ const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData }) => {
     let filteredSlice = itemData
 
     if (searchString) {
-      filteredSlice = filteredSlice.filter(item => item.name.toLowerCase().includes(searchString))
+      filteredSlice = filteredSlice.filter(item =>
+        item.name.replace('-', ' ').includes(searchString.trim()),
+      )
     }
 
     if (selectedLabel && selectedLabel !== '- All -') {

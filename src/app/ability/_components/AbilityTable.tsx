@@ -25,7 +25,9 @@ const AbilityTable: FC<TableProps> = ({ abilityData }) => {
     if (!searchString) {
       setFilteredData(abilityData)
     } else {
-      const filteredSlice = abilityData.filter(ability => ability.name.includes(searchString))
+      const filteredSlice = abilityData.filter(ability =>
+        ability.name.replace('-', ' ').includes(searchString.trim()),
+      )
       setFilteredData(filteredSlice)
     }
   }
@@ -38,7 +40,7 @@ const AbilityTable: FC<TableProps> = ({ abilityData }) => {
         <TableCellHeader
           type="column"
           key={index}
-          className="border-table-border border-r pr-4 last:border-r-0"
+          className="border-r border-table-border pr-4 last:border-r-0"
         >
           <span className="font-bold text-white"> {header}</span>
         </TableCellHeader>

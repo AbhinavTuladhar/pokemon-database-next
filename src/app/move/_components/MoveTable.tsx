@@ -27,7 +27,9 @@ const MoveTable: FC<TableProps> = ({ moveData }) => {
     if (!searchString) {
       setFilteredData(moveData)
     } else {
-      const filteredSlice = moveData.filter(move => move.moveName.includes(searchString))
+      const filteredSlice = moveData.filter(move =>
+        move.moveName.replace('-', ' ').includes(searchString.trim()),
+      )
       setFilteredData(filteredSlice)
     }
   }
@@ -40,7 +42,7 @@ const MoveTable: FC<TableProps> = ({ moveData }) => {
         <TableCellHeader
           type="column"
           key={index}
-          className="border-table-border border-r pr-4 last:border-r-0"
+          className="border-r border-table-border pr-4 last:border-r-0"
         >
           <span className="font-bold text-white">{header}</span>
         </TableCellHeader>
