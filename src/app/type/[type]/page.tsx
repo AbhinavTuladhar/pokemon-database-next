@@ -1,18 +1,19 @@
-import React, { FC, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import { Metadata } from 'next'
-import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
-// import PokemonCardList from '@/components/PokemonCardList'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
+import TypeSummarySkeleton from '@/components/Suspense/TypeSummarySkeleton'
 import TypeCard from '@/components/TypeCard'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services/TypesApi'
 import formatName from '@/utils/formatName'
 
 import DualTypeChart from './_components/DualTypeChart'
+import ProsAndConsSection from './_components/ProsAndConsSection'
+import StatAverageRow from './_components/StatAverageRow'
 import TypeSummaryRow from './_components/TypeSummaryRow'
 
 interface PageProps {
@@ -32,58 +33,6 @@ const getTypeData = async (typeName: string) => {
   const response = await TypesApi.getByName(typeName)
   return TypeExtractor(response)
 }
-
-interface ProsAndConsProps {
-  title: string
-  doubeDamageList: React.JSX.Element[]
-  halfDamageList: React.JSX.Element[]
-  noDamageList: React.JSX.Element[]
-  doubleDamageMessage: string
-  halfDamageMessage: string
-  noDamageMessage: string
-}
-
-const ProsAndConsInfo: FC<ProsAndConsProps> = ({
-  doubeDamageList,
-  doubleDamageMessage,
-  halfDamageList,
-  halfDamageMessage,
-  noDamageList,
-  noDamageMessage,
-  title,
-}) => (
-  <div className="flex flex-col flex-wrap">
-    <div className="text-4xl font-bold">
-      <span> {title} </span>
-      <span className="italic text-gray-300"> pros & cons </span>
-    </div>
-    {doubeDamageList?.length > 0 && (
-      <>
-        <div className="my-2 flex flex-row items-start gap-2 py-2">
-          <AiFillCheckCircle className="text-green-400" />
-          <span className="-mt-1">{doubleDamageMessage}</span>
-        </div>
-        <div className="ml-5 flex flex-row flex-wrap gap-2">{doubeDamageList}</div>
-      </>
-    )}
-
-    <div className="my-2 flex flex-row items-start gap-2 py-2">
-      <AiFillCloseCircle className="text-red-400" />
-      <span className="-mt-1"> {halfDamageMessage}</span>
-    </div>
-    <div className="ml-5 flex flex-row flex-wrap gap-2">{halfDamageList}</div>
-
-    {noDamageList?.length > 0 && (
-      <>
-        <div className="my-2 flex flex-row items-start gap-2 py-2">
-          <AiFillCloseCircle className="text-red-400" />
-          <span className="-mt-1"> {noDamageMessage} </span>
-        </div>
-        <div className="ml-5 flex flex-row flex-wrap gap-2">{noDamageList}</div>
-      </>
-    )}
-  </div>
-)
 
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)
@@ -124,37 +73,25 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         <span className="text-gray-400"> (type) </span>
       </PageTitle>
       <section>
-        <TypeSummaryRow
-          moveCount={moveCount}
-          pokemonCount={pokemonCount}
-          typeName={formattedType}
-        />
+        <Suspense fallback={<TypeSummarySkeleton count={4} />}>
+          <TypeSummaryRow
+            moveCount={moveCount}
+            pokemonCount={pokemonCount}
+            typeName={formattedType}
+            pokemon={pokemon}
+          />
+        </Suspense>
       </section>
       <div className="grid grid-cols-1 justify-between gap-x-20 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
-        <div className="space-y-10">
-          <div>
-            <ProsAndConsInfo
-              title="Attack"
-              doubeDamageList={doubleDamageToList}
-              doubleDamageMessage={`${formattedType} moves are super-effective against`}
-              halfDamageList={halfDamageToList}
-              halfDamageMessage={`${formattedType} moves are not very effective against`}
-              noDamageList={noDamageToList}
-              noDamageMessage={`${formattedType} moves have no effect on`}
-            />
-          </div>
-          <div>
-            <ProsAndConsInfo
-              title="Defence"
-              doubeDamageList={doubleDamageFromList}
-              doubleDamageMessage={`These types are super-effective against ${formattedType} type Pokémon`}
-              halfDamageList={halfDamageFromList}
-              halfDamageMessage={`These types are not very effective against ${formattedType} type Pokémon`}
-              noDamageList={noDamageFromList}
-              noDamageMessage={`These types have no effect on ${formattedType} type Pokémon`}
-            />
-          </div>
-        </div>
+        <ProsAndConsSection
+          doubleDamageFromList={doubleDamageFromList}
+          doubleDamageToList={doubleDamageToList}
+          halfDamageFromList={halfDamageFromList}
+          halfDamageToList={halfDamageToList}
+          noDamageFromList={noDamageFromList}
+          noDamageToList={noDamageToList}
+          formattedType={formattedType}
+        />
 
         <div className="mt-4 flex flex-col mdlg:mt-0">
           <h2 className="text-4xl font-bold">Dual type attack pros & cons</h2>
@@ -171,6 +108,13 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           </div>
         </div>
       </div>
+
+      <section>
+        <SectionTitle> {`${formatName(type)}`} Pokémon stat averages </SectionTitle>
+        <Suspense fallback={<TypeSummarySkeleton count={6} />}>
+          <StatAverageRow pokemon={pokemon} />
+        </Suspense>
+      </section>
 
       <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
       <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
