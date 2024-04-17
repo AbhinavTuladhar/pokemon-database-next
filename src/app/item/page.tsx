@@ -38,7 +38,15 @@ const getAllItemNames = async () => {
 const getAllItemData = async () => {
   const itemNames = await getAllItemNames()
   const itemData = await ItemApi.getByNames(itemNames)
-  return itemData.map(ItemExtractor).sort((a, b) => a.name.localeCompare(b.name))
+
+  // Filter out unused items
+  return itemData
+    .map(ItemExtractor)
+    .filter(
+      ({ shortEntry, longEntry, category }) =>
+        shortEntry !== '' && longEntry !== '' && category !== 'unused',
+    )
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 const ItemPage = async () => {

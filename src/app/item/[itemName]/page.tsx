@@ -1,12 +1,15 @@
 import React, { FC } from 'react'
 
 import PageTitle from '@/components/containers/PageTitle'
+import { ItemExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 import formatName from '@/utils/formatName'
 
+import ItemEffect from './_components/ItemEffect'
+
 const getItemData = async (name: string) => {
   const response = await ItemApi.getByName(name)
-  return response
+  return ItemExtractor(response)
 }
 
 interface PageProps {
@@ -17,10 +20,22 @@ interface PageProps {
 
 const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
   const itemData = await getItemData(itemName)
+
+  const {
+    attributes,
+    longEntry,
+    shortEntry,
+    flavourTextEntries,
+    fling_effect,
+    fling_power,
+    cost,
+    generationIntroduced,
+    names,
+  } = itemData
   return (
     <main>
       <PageTitle> {formatName(itemName)}</PageTitle>
-      <div>{JSON.stringify(itemData, null, 4)}</div>
+      <ItemEffect entry={longEntry} />
     </main>
   )
 }
