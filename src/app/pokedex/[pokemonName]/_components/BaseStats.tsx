@@ -4,6 +4,7 @@ import SectionTitle from '@/components/containers/SectionTitle'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
+import statMapping from '@/data/statMapping'
 import { PokemonStat } from '@/types'
 import calculateStats from '@/utils/calculateStats'
 /*
@@ -16,14 +17,6 @@ Here, we define a function for returning an aray of objects containing:
 
 const getStatDetails = (stats: Array<PokemonStat>) => {
   const maxStatValue = 200
-  const statMapping: Record<string, string> = {
-    'hp': 'HP',
-    'attack': 'Attack',
-    'defense': 'Defence',
-    'special-attack': 'Sp. Atk',
-    'special-defense': 'Sp. Def',
-    'speed': 'Speed',
-  }
 
   const statValues = stats.map(stat => {
     let colour
@@ -103,7 +96,7 @@ const BaseStat: FC<BaseStatProps> = ({ stats }) => {
         <TableCellHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>
         </TableCellHeader>
-        <td className="border-table-border mx-0 table-cell min-w-[9.375rem] border-t px-0 align-middle">
+        <td className="mx-0 table-cell min-w-[9.375rem] border-t border-table-border px-0 align-middle">
           <div
             className="my-0 ml-2 h-3 rounded"
             style={{

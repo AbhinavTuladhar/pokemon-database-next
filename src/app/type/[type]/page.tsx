@@ -13,6 +13,7 @@ import formatName from '@/utils/formatName'
 
 import DualTypeChart from './_components/DualTypeChart'
 import ProsAndConsSection from './_components/ProsAndConsSection'
+import StatAverageRow from './_components/StatAverageRow'
 import TypeSummaryRow from './_components/TypeSummaryRow'
 
 interface PageProps {
@@ -72,7 +73,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         <span className="text-gray-400"> (type) </span>
       </PageTitle>
       <section>
-        <Suspense fallback={<TypeSummarySkeleton />}>
+        <Suspense fallback={<TypeSummarySkeleton count={4} />}>
           <TypeSummaryRow
             moveCount={moveCount}
             pokemonCount={pokemonCount}
@@ -107,6 +108,13 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           </div>
         </div>
       </div>
+
+      <section>
+        <SectionTitle> {`${formatName(type)}`} Pokémon stat averages </SectionTitle>
+        <Suspense fallback={<TypeSummarySkeleton count={6} />}>
+          <StatAverageRow pokemon={pokemon} />
+        </Suspense>
+      </section>
 
       <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
       <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
