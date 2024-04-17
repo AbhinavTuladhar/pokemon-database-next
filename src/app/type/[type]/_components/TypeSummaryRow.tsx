@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import TypeSummaryCard from '@/components/TypeSummaryCard'
+import TypeSummaryCard from './TypeSummaryCard'
 
 interface SummaryRowProps {
   typeName: string
