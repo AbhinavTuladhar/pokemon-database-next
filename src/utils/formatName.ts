@@ -18,4 +18,16 @@ const formatName = (name: string) => {
   return properWordList?.join(' ')
 }
 
+// Change to title text - first letter capitalised
+export const formatText = (text: string) => {
+  const wordList = text.split('-')
+  const properWordList = wordList.map((word, index) => {
+    if (index === 0) {
+      return capitaliseFirstLetter(word)
+    }
+    return word
+  })
+  return properWordList.join(' ')
+}
+
 export default formatName

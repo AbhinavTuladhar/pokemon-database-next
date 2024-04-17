@@ -59,8 +59,10 @@ export const ItemExtractor = (item: Item) => {
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)
   const generationIntroduced = `${newGenerationString} ${numberMapper[generationNumber]}`
 
+  const attributeNames = attributes.map(obj => obj.name)
+
   return {
-    attributes,
+    attributes: attributeNames,
     category,
     cost,
     shortEntry,

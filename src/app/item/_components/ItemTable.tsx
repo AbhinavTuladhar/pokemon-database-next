@@ -6,7 +6,7 @@ import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
-import formatName from '@/utils/formatName'
+import formatName, { formatText } from '@/utils/formatName'
 
 interface ItemData {
   shortEntry: string
@@ -57,7 +57,7 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
           {nameDiv}
         </TableCell>
         <TableCell variant="column" extraClassName="w-48 whitespace-nowrap">
-          {formatName(category)}
+          {formatText(category)}
         </TableCell>
         <TableCell variant="column" extraClassName="min-w-96">
           {shortEntry}
