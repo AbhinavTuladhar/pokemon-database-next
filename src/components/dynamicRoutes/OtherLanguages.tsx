@@ -6,7 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import languageNameMapping from '@/data/languageNameMapping'
-import { Genus, Name } from '@/types'
+import { Name } from '@/types'
 
 const customOrder: Record<string, number> = {
   'English': 1,
@@ -22,8 +22,7 @@ const customOrder: Record<string, number> = {
 
 interface LanguageProcessorProps {
   languageName: string
-  pokemonName?: string
-  genusName?: string
+  name: string
 }
 
 // For expanding the language name and then re-ordering the objects in the array in a very specific order as mentioned above.
@@ -38,59 +37,35 @@ const processLanuages = (arr: Array<LanguageProcessorProps>) => {
 
 interface OtherLanguageProps {
   names: Array<Name>
-  genera: Array<Genus>
+  hideTitle?: boolean
 }
 
-const OtherLanguages: FC<OtherLanguageProps> = ({ names, genera }) => {
-  const languagesList = names.map(obj => {
+const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => {
+  let languagesList = names.map(obj => {
     const {
       language: { name: languageName },
-      name: pokemonName,
+      name: name,
     } = obj
-    return { languageName, pokemonName }
-  })
-
-  const generaList = genera.map(obj => {
-    const {
-      language: { name: languageName },
-      genus: genusName,
-    } = obj
-    return { languageName, genusName }
+    return { languageName, name }
   })
 
   const languagesListNew = processLanuages(languagesList)
-  const generaListNew = processLanuages(generaList)
 
   const nameRows = languagesListNew.map((row, index) => {
     return (
       <TableRow key={index}>
         <TableCellHeader>{row.languageName}</TableCellHeader>
-        <TableCell>{row.pokemonName}</TableCell>
-      </TableRow>
-    )
-  })
-
-  const genusRows = generaListNew.map((row, index) => {
-    return (
-      <TableRow key={index}>
-        <TableCellHeader>{row.languageName}</TableCellHeader>
-        <TableCell>{row.genusName}</TableCell>
+        <TableCell>{row.name}</TableCell>
       </TableRow>
     )
   })
 
   return (
     <>
-      <SectionTitle>Other Languages</SectionTitle>
-      <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
-        <TableContainer>
-          <tbody>{nameRows}</tbody>
-        </TableContainer>
-
-        <TableContainer>
-          <tbody>{genusRows}</tbody>
-        </TableContainer>
-      </div>
+      {!hideTitle && <SectionTitle>Other Languages</SectionTitle>}
+      <TableContainer>
+        <tbody>{nameRows}</tbody>
+      </TableContainer>
     </>
   )
 }

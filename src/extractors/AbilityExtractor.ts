@@ -10,6 +10,7 @@ const AbilityExtractor = (data: Ability) => {
     id,
     name,
     pokemon,
+    names,
   } = data
 
   // Find the English long and short entries.
@@ -45,6 +46,7 @@ const AbilityExtractor = (data: Ability) => {
     name,
     pokemonCount,
     pokemon: pokemonList,
+    names,
   }
 }
 

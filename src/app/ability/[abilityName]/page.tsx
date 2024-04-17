@@ -3,13 +3,14 @@ import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
+import Description from '@/components/dynamicRoutes/Description'
+import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
 
 import AbilityDescription from './_components/AbilityDescriptions'
-import AbilityEffect from './_components/AbilityEffect'
 import PokemonTable from './_components/PokemonTable'
 
 interface AbilityPageParams {
@@ -31,7 +32,7 @@ const getAbilityData = async (name: string) => {
 }
 
 const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } }) => {
-  const { descriptions, longEntry, name, pokemon } = await getAbilityData(abilityName)
+  const { descriptions, longEntry, name, pokemon, names } = await getAbilityData(abilityName)
 
   return (
     <main>
@@ -41,8 +42,9 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
       </PageTitle>
       <div className="grid grid-cols-1 gap-x-20 gap-y-4 lg:grid-cols-2">
         <div>
-          <AbilityEffect entry={longEntry} />
+          <Description entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
+          <OtherLanguages names={names} />
         </div>
         <div>
           <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>

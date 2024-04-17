@@ -1,4 +1,4 @@
-import { PokemonSpecies } from '@/types'
+import { Genus, PokemonSpecies } from '@/types'
 
 const SpeciesExtractor = (data: PokemonSpecies) => {
   const {
@@ -19,7 +19,7 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
   } = data
 
   // Find only the English genus name of the 'mon.
-  const englishGenus = genera.find(entry => entry.language.name === 'en')
+  const englishGenus = genera.find(entry => entry.language.name === 'en') as Genus
   return {
     base_happiness,
     capture_rate,
