@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import Description from '@/components/dynamicRoutes/Description'
+import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
@@ -15,7 +16,6 @@ import GameDescription from './_components/GameDescription'
 import MachineRecord from './_components/MachineRecord'
 import MoveData from './_components/MoveData'
 import MoveTarget from './_components/MoveTarget'
-import OtherLanguages from './_components/OtherLanguages'
 
 interface MovePageProps {
   params: {

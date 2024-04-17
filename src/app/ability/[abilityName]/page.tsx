@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
 import Description from '@/components/dynamicRoutes/Description'
+import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
@@ -31,7 +32,7 @@ const getAbilityData = async (name: string) => {
 }
 
 const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } }) => {
-  const { descriptions, longEntry, name, pokemon } = await getAbilityData(abilityName)
+  const { descriptions, longEntry, name, pokemon, names } = await getAbilityData(abilityName)
 
   return (
     <main>
@@ -43,6 +44,7 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
         <div>
           <Description entry={longEntry} />
           <AbilityDescription descriptions={descriptions} />
+          <OtherLanguages names={names} />
         </div>
         <div>
           <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>

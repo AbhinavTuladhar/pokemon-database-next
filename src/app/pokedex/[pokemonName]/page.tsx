@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
@@ -15,7 +16,6 @@ import EvolutionChain from './_components/EvolutionChain'
 import ImageTile from './_components/ImageTile'
 import Locations from './_components/Locations'
 import MovesLearned from './_components/MovesLearned'
-import OtherLanguages from './_components/OtherLanguages'
 import PageNavigation from './_components/PageNavigation'
 import PokeDexData from './_components/PokedexData'
 import PokeDexEntries from './_components/PokeDexEntries'
@@ -88,6 +88,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     varieties,
   } = speciesData
 
+  const generaNames = genera.map(genus => ({
+    language: genus.language,
+    name: genus.genus,
+  }))
+
   return (
     <main>
       <h1 className="mt-4 text-center text-5xl font-bold">{formatName(name)}</h1>
@@ -156,7 +161,14 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <Locations id={id} name={pokemonName} />
       </section>
       <section id="languages">
-        <OtherLanguages genera={genera} names={names} />
+        <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
+          <div>
+            <OtherLanguages names={names} />
+          </div>
+          <div className="mt-0 min-[952px]:mt-20">
+            <OtherLanguages names={generaNames} hideTitle />
+          </div>
+        </div>
       </section>
       <section id="forms">
         <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />

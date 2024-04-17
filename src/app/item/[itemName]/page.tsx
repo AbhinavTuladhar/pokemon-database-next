@@ -3,13 +3,13 @@ import Image from 'next/image'
 
 import PageTitle from '@/components/containers/PageTitle'
 import Description from '@/components/dynamicRoutes/Description'
+import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 import formatName from '@/utils/formatName'
 
 import GameDescriptions from './_components/GameDescriptions'
 import ItemData from './_components/ItemData'
-import OtherLanguages from './_components/OtherLanguages'
 
 const getItemData = async (name: string) => {
   const response = await ItemApi.getByName(name)
