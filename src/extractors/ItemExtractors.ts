@@ -1,3 +1,4 @@
+import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
 import { Item, ItemCategory, ItemPocket } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
@@ -61,6 +62,14 @@ export const ItemExtractor = (item: Item) => {
 
   const attributeNames = attributes.map(obj => obj.name)
 
+  const descriptions = flavor_text_entries
+    .filter(entry => entry.language.name === 'en')
+    .map(entry => ({
+      description: entry.text,
+      versionName: entry.version_group.name,
+      generation: gameToGenerationMap[entry.version_group.name],
+    }))
+
   return {
     attributes: attributeNames,
     category,
@@ -75,5 +84,6 @@ export const ItemExtractor = (item: Item) => {
     names,
     fling_effect,
     fling_power,
+    descriptions,
   }
 }

@@ -5,8 +5,10 @@ import { ItemExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 import formatName from '@/utils/formatName'
 
+import GameDescriptions from './_components/GameDescriptions'
 import ItemData from './_components/ItemData'
 import ItemEffect from './_components/ItemEffect'
+import OtherLanguages from './_components/OtherLanguages'
 
 const getItemData = async (name: string) => {
   const response = await ItemApi.getByName(name)
@@ -22,16 +24,8 @@ interface PageProps {
 const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
   const itemData = await getItemData(itemName)
 
-  const {
-    attributes,
-    longEntry,
-    flavourTextEntries,
-    fling_effect,
-    fling_power,
-    cost,
-    names,
-    category,
-  } = itemData
+  const { attributes, longEntry, descriptions, fling_effect, fling_power, cost, names, category } =
+    itemData
   return (
     <main>
       <PageTitle> {formatName(itemName)}</PageTitle>
@@ -47,6 +41,15 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
         </section>
         <section>
           <ItemEffect entry={longEntry} />
+        </section>
+      </div>
+
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
+        <section>
+          <OtherLanguages names={names} />
+        </section>
+        <section>
+          <GameDescriptions descriptions={descriptions} />
         </section>
       </div>
     </main>
