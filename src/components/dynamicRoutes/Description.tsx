@@ -4,16 +4,17 @@ import SectionTitle from '@/components/containers/SectionTitle'
 
 interface EffectProps {
   entry: string
-  chance: string | number
+  chance?: string | number
 }
 
-const MoveEffect: FC<EffectProps> = ({ entry, chance }) => {
-  const updatedEntry = entry.replace('$effect_chance', `${chance}`)
-  const paragraphs = updatedEntry?.split('\n')
+const Description: FC<EffectProps> = ({ entry, chance }) => {
+  // The chance props is for move effects.
+  const updatedEntry = chance ? entry.replace('$effect_chance', `${chance}`) : entry
+  const paragraphs = updatedEntry.split('\n')
   return (
     <>
       <SectionTitle>Effect</SectionTitle>
-      {paragraphs?.map((paragraph, index) => (
+      {paragraphs.map((paragraph, index) => (
         <div key={index}>
           {/* Capitalse the first letter of each paragraph. */}
           {paragraph.charAt(0).toUpperCase() + paragraph.slice(1)}
@@ -23,4 +24,4 @@ const MoveEffect: FC<EffectProps> = ({ entry, chance }) => {
     </>
   )
 }
-export default MoveEffect
+export default Description

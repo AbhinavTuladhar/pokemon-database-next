@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
 import SectionTitle from '@/components/containers/SectionTitle'
+import Description from '@/components/dynamicRoutes/Description'
 import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
 import MiniCardList from '@/components/MiniCardList'
 import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
@@ -13,7 +14,6 @@ import formatName from '@/utils/formatName'
 import GameDescription from './_components/GameDescription'
 import MachineRecord from './_components/MachineRecord'
 import MoveData from './_components/MoveData'
-import MoveEffect from './_components/MoveEffect'
 import MoveTarget from './_components/MoveTarget'
 import OtherLanguages from './_components/OtherLanguages'
 
@@ -77,7 +77,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           </Suspense>
         </section>
         <section>
-          <MoveEffect chance={effect_chance} entry={longEntry} />
+          <Description entry={longEntry} chance={effect_chance} />
         </section>
       </div>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
