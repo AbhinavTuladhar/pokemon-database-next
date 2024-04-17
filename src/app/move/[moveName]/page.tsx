@@ -57,7 +57,10 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
 
   return (
     <main>
-      <PageTitle>{formatName(moveName)}</PageTitle>
+      <PageTitle>
+        <span>{formatName(moveName)}</span>
+        <span className="text-gray-400"> (move) </span>
+      </PageTitle>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
           <MoveData

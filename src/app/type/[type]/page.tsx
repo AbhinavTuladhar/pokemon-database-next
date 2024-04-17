@@ -121,7 +121,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
     <main className="space-y-4">
       <PageTitle>
         {formattedType}&nbsp;
-        <span className="brightness-75"> (type) </span>
+        <span className="text-gray-400"> (type) </span>
       </PageTitle>
       <section>
         <TypeSummaryRow

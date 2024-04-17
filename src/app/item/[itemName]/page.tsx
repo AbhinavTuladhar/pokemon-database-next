@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import Image from 'next/image'
 
 import PageTitle from '@/components/containers/PageTitle'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
@@ -24,11 +25,26 @@ interface PageProps {
 const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
   const itemData = await getItemData(itemName)
 
-  const { attributes, longEntry, descriptions, fling_effect, fling_power, cost, names, category } =
-    itemData
+  const {
+    attributes,
+    longEntry,
+    descriptions,
+    fling_effect,
+    fling_power,
+    cost,
+    names,
+    category,
+    sprite,
+  } = itemData
   return (
     <main>
-      <PageTitle> {formatName(itemName)}</PageTitle>
+      <div className="flex flex-wrap items-center justify-center">
+        <PageTitle>
+          <span> {formatName(itemName)}</span>
+          <span className="text-gray-400"> (item) </span>
+        </PageTitle>
+        <Image src={sprite} alt={itemName} width={64} height={64} />
+      </div>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
           <ItemData
