@@ -126,7 +126,7 @@ const PokeDexData: FC<DexDataProps> = ({
     { label: 'Colour', value: formatName(colour) },
     { label: 'Shape', value: formatName(shape) },
     { label: 'Abilities', value: abilityListFinal },
-    { label: 'Regional no.', value: regionNumberListFinal },
+    ...(regionLevelData.length > 0 ? [{ label: 'Regions', value: regionNumberListFinal }] : []),
   ]
 
   // Now define the JSX component for all the entries.
