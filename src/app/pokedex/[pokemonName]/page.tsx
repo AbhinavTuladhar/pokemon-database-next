@@ -86,6 +86,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     names,
     genera,
     varieties,
+    colour,
+    shape,
   } = speciesData
 
   const generaNames = genera.map(genus => ({
@@ -118,6 +120,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             pokedex_numbers={pokedex_numbers}
             types={types}
             weight={weight}
+            colour={colour}
+            shape={shape}
           />
         </div>
         <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">

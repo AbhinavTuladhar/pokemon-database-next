@@ -16,6 +16,8 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
     names,
     pokedex_numbers,
     varieties,
+    color: { name: colour },
+    shape: { name: shape },
   } = data
 
   // Find only the English genus name of the 'mon.
@@ -36,6 +38,8 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
     names,
     pokedex_numbers,
     varieties,
+    colour,
+    shape,
   }
 }
 
