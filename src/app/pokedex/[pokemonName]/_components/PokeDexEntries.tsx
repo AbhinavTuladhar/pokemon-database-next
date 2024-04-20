@@ -6,6 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { gameBlackLists } from '@/data/blacklists'
+import { individualGameMap } from '@/data/gameNameMap'
 import { FlavourText } from '@/types/utils/Common'
 
 interface VersionDescription {
@@ -57,9 +58,8 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     // This 'removes' the escape characters in the Pokedex entry. However, the escape characters are placed in very inconsitent places, so the text looks weird.
     const cleanedStr = rawText.replace(/\f/g, ' ').replace(/\n/g, ' ')
     const versionName = entry.version.name
-    const properVersionName = versionName.charAt(0).toUpperCase() + versionName.slice(1)
     return {
-      versionName: properVersionName,
+      versionName,
       description: cleanedStr,
     }
   })
@@ -69,7 +69,7 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   // Now making a list for each version
   const finalEntry = englishInfoByDescription.map(entry => {
     const gameListItems = entry.versionName.map((version, index) => {
-      return <li key={index}> {version} </li>
+      return <li key={index}>{individualGameMap[version]}</li>
     })
     const gameList = <ul className="list-inside list-none"> {gameListItems} </ul>
     return { versionName: gameList, description: entry.description }

@@ -20,6 +20,36 @@ const gameNameMap: Record<string, string> = {
   'ultra-sun-ultra-moon': 'U. Sun / U. Moon',
 }
 
+export const individualGameMap: Record<string, string> = {
+  'red': 'Red',
+  'blue': 'Blue',
+  'gold': 'Gold',
+  'silver': 'Silver',
+  'crystal': 'Crystal',
+  'ruby': 'Ruby',
+  'sapphire': 'Sapphire',
+  'emerald': 'Emerald',
+  'firered': 'FireRed',
+  'leafgreen': 'Leafgreen',
+  'diamond': 'Diamond',
+  'pearl': 'Pearl',
+  'platinum': 'Platinum',
+  'heartgold': 'Heartgold',
+  'soulsilver': 'Soulsilver',
+  'black': 'Black',
+  'white': 'White',
+  'black-2': 'Black 2',
+  'white-2': 'White 2',
+  'x': 'X',
+  'y': 'Y',
+  'omega-ruby': 'O. Ruby',
+  'alpha-sapphire': 'A. Sapphire',
+  'sun': 'Sun',
+  'moon': 'Moon',
+  'ultra-sun': 'U. Sun',
+  'ultra-moon': 'U. Moon',
+}
+
 // const gameNameMap: Record<string, string[]> = {
 //   'red-blue': ['Red', 'Blue'],
 //   yellow: ['Yellow'],
