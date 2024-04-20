@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import Description from '@/components/dynamicRoutes/Description'
 import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
@@ -88,6 +89,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     varieties,
     colour,
     shape,
+    formDescriptions,
   } = speciesData
 
   const generaNames = genera.map(genus => ({
@@ -111,6 +113,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
           <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={name} />
         </div>
+
         <div className="col-span-2 md:col-span-1">
           <PokeDexData
             abilities={abilities}
@@ -124,6 +127,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             shape={shape}
           />
         </div>
+
         <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">
           <TrainingInfo
             base_experience={base_experience}
@@ -139,6 +143,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           />
         </div>
       </section>
+
       <section id="base-stats" className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
         <section className="col-span-2">
           <BaseStat stats={stats} />
@@ -147,23 +152,35 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <TypeChart pokemonName={name} types={types} />
         </section>
       </section>
+
       <section id="evolution-chain">
         <EvolutionChain url={evolutionChainUrl} />
       </section>
+
+      {formDescriptions ? (
+        <section>
+          <Description entry={formDescriptions} title="Form descriptions" />
+        </section>
+      ) : null}
+
       <section id="pokedex-entries">
         <PokeDexEntries flavourTextEntries={flavor_text_entries} />
       </section>
+
       <Suspense fallback={<div> Loading moves data... </div>}>
         <section id="moves-learned">
           <MovesLearned moves={moves} pokemonName={pokemonName} />
         </section>
       </Suspense>
+
       <section id="sprites">
         <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
       </section>
+
       <section id="locations">
         <Locations id={id} name={pokemonName} />
       </section>
+
       <section id="languages">
         <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
           <div>
@@ -174,9 +191,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           </div>
         </div>
       </section>
+
       <section id="forms">
         <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
       </section>
+
       <AdjacentLinks id={id} />
     </main>
   )
