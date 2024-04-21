@@ -92,6 +92,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     colour,
     shape,
     formDescriptions,
+    habitat,
   } = speciesData
 
   const generaNames = genera.map(genus => ({
@@ -142,6 +143,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             egg_groups={egg_groups}
             gender_rate={gender_rate}
             hatch_counter={hatch_counter}
+            habitat={habitat}
           />
         </div>
       </section>

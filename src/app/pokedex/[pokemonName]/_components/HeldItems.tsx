@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import BlueLink from '@/components/BlueLink'
 import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
@@ -39,7 +40,9 @@ const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
     })
     return (
       <TableRow key={index}>
-        <TableCellHeader>{formatName(itemName)}</TableCellHeader>
+        <TableCellHeader>
+          <BlueLink href={`/item/${itemName}`}>{formatName(itemName)}</BlueLink>
+        </TableCellHeader>
         <TableCell>
           <span>{gamesAndRarity}</span>
         </TableCell>
