@@ -1,4 +1,4 @@
-import { Pokemon } from '@/types'
+import { Pokemon, PokemonForm } from '@/types'
 
 import Api from './MainApi'
 
@@ -20,5 +20,10 @@ export const PokemonApi = {
   getByOffsetAndLimit: async function (offset: number, limit: number) {
     const response = await Api.pokemon.listPokemons(offset, limit)
     return response
+  },
+  getFormsByIds: async function (numbers: Array<string>) {
+    const requests = numbers.map(id => Api.pokemon.getPokemonFormById(+id))
+    const responses = await Promise.all(requests)
+    return responses as PokemonForm[]
   },
 }

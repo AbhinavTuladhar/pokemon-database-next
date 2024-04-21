@@ -22,6 +22,7 @@ import PageNavigation from './_components/PageNavigation'
 import PokeDexData from './_components/PokedexData'
 import PokeDexEntries from './_components/PokeDexEntries'
 import PokemonCry from './_components/PokemonCry'
+import PokemonForms from './_components/PokemonForms'
 import PokemonVarieties from './_components/PokemonVarieties'
 import SpriteTable from './_components/SpriteTable'
 import TrainingInfo from './_components/TrainingInfo'
@@ -71,6 +72,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     moves,
     spriteCollection,
     held_items,
+    forms,
   } = pokemonData
 
   const speciesData = await getSpeciesData(+speciesId)
@@ -169,6 +171,10 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
       <section id="pokedex-entries">
         <PokeDexEntries flavourTextEntries={flavor_text_entries} />
+      </section>
+
+      <section>
+        <PokemonForms urls={forms.map(form => form.url)} />
       </section>
 
       <Suspense fallback={<div> Loading moves data... </div>}>
