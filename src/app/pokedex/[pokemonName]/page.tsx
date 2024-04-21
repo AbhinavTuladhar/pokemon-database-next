@@ -14,6 +14,7 @@ import BaseStat from './_components/BaseStats'
 import BasicIntro from './_components/BasicIntro'
 import BreedingInfo from './_components/BreedingInfo'
 import EvolutionChain from './_components/EvolutionChain'
+import HeldItems from './_components/HeldItems'
 import ImageTile from './_components/ImageTile'
 import Locations from './_components/Locations'
 import MovesLearned from './_components/MovesLearned'
@@ -69,6 +70,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     speciesId,
     moves,
     spriteCollection,
+    held_items,
   } = pokemonData
 
   const speciesData = await getSpeciesData(+speciesId)
@@ -179,6 +181,10 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
       <section id="locations">
         <Locations id={id} name={pokemonName} />
+      </section>
+
+      <section>
+        <HeldItems held_items={held_items} />
       </section>
 
       <section id="languages">

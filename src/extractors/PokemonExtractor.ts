@@ -9,6 +9,7 @@ const PokemonExtractor = (data: Pokemon) => {
     forms,
     game_indices,
     height,
+    held_items,
     id,
     moves,
     name,
@@ -112,6 +113,7 @@ const PokemonExtractor = (data: Pokemon) => {
     stats,
     types,
     weight,
+    held_items,
   }
 }
 
