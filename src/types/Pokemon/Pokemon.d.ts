@@ -122,7 +122,7 @@ export interface PokemonFormType {
 
 export interface PokemonHeldItem {
   item: NamedApiResource<Item>
-  version_details: Array<NamedApiResource<PokemonHeldItemVersion>>
+  version_details: Array<PokemonHeldItemVersion>
 }
 
 export interface PokemonHeldItemVersion {

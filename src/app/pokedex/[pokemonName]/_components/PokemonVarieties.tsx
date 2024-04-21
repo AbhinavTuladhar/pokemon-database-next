@@ -40,7 +40,7 @@ const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties }) => {
 
   return (
     <>
-      <SectionTitle>{`${formatName(pokemonName)} has some other forms:`}</SectionTitle>
+      <SectionTitle>{`${formatName(pokemonName)} has some other varieties:`}</SectionTitle>
       <ul className="list-inside list-disc">{formsArray}</ul>
     </>
   )

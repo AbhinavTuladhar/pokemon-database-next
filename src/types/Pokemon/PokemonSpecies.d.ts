@@ -33,7 +33,7 @@ export interface PokemonSpecies {
   shape: NamedApiResource<PokemonShape>
   evolves_from_species: NamedApiResource<PokemonSpecies>
   evolution_chain: APIResource<EvolutionChain>
-  habitat: NamedApiResource<PokemonHabitat>
+  habitat: NamedApiResource<PokemonHabitat> | null
   generation: NamedApiResource<Generation>
   names: Array<Name>
   pal_park_encounters: Array<PalParkEncounterArea>

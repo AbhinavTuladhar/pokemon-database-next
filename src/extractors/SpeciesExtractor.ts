@@ -11,15 +11,22 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
     genera,
     generation: { name: generationIntroduced },
     growth_rate: { name: growthRateType },
+    habitat,
     hatch_counter,
     id,
     names,
     pokedex_numbers,
     varieties,
+    color: { name: colour },
+    shape: { name: shape },
+    form_descriptions,
   } = data
 
   // Find only the English genus name of the 'mon.
   const englishGenus = genera.find(entry => entry.language.name === 'en') as Genus
+  const hatibatName = habitat?.name ?? ''
+
+  const formDescriptions = form_descriptions.length > 0 ? form_descriptions[0].description : ''
   return {
     base_happiness,
     capture_rate,
@@ -36,6 +43,10 @@ const SpeciesExtractor = (data: PokemonSpecies) => {
     names,
     pokedex_numbers,
     varieties,
+    colour,
+    shape,
+    formDescriptions,
+    habitat: hatibatName,
   }
 }
 

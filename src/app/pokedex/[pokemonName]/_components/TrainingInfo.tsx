@@ -6,6 +6,7 @@ import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
 import TableRow from '@/components/containers/TableRow'
 import { PokemonStat } from '@/types'
+import { getCatchRate } from '@/utils/pokemonUtils'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
 const formatField = (field: string) => {
@@ -47,10 +48,19 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
   // Joining all the EV stats given by commas.
   const evString = evFormatted.map(obj => `${obj.value} ${obj.name}`).join(', ')
 
+  const captureRateString = getCatchRate(capture_rate)
+
+  const captureRateRow = (
+    <span>
+      <span> {capture_rate} </span>
+      <span className="text-gray-300"> {`(${captureRateString} with Pokéball, full HP)`} </span>
+    </span>
+  )
+
   // Define all the things that is to be displayed.
   const tableData = [
     { label: 'EV Yield', value: evString },
-    { label: 'Capture Rate', value: capture_rate },
+    { label: 'Capture Rate', value: captureRateRow },
     { label: 'Base Friendship', value: base_happiness },
     { label: 'Base exp.', value: base_experience },
     { label: 'Growth rate', value: growth },

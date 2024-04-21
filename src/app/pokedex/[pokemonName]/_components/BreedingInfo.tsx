@@ -13,6 +13,7 @@ interface BreedingInfoProps {
   egg_groups: Array<NamedApiResource<EggGroup>>
   gender_rate: number
   hatch_counter: number
+  habitat: string
 }
 
 const generateGenderInfo = (genderRate: number) => {
@@ -24,7 +25,12 @@ const generateGenderInfo = (genderRate: number) => {
   return [`${maleRatio}% male`, `${femaleRatio}% female`]
 }
 
-const BreedingInfo: FC<BreedingInfoProps> = ({ egg_groups, gender_rate, hatch_counter }) => {
+const BreedingInfo: FC<BreedingInfoProps> = ({
+  egg_groups,
+  gender_rate,
+  hatch_counter,
+  habitat,
+}) => {
   // List the egg groups
   const eggGroupList = egg_groups?.map((group, index) => (
     <span key={index}>
@@ -57,6 +63,7 @@ const BreedingInfo: FC<BreedingInfoProps> = ({ egg_groups, gender_rate, hatch_co
     { label: 'Egg Groups', value: eggGroupList },
     { label: 'Gender Rate', value: genderRow },
     { label: 'Egg Cycles', value: eggCycleRow },
+    ...(habitat !== '' ? [{ label: 'Habitat', value: formatName(habitat) }] : []),
   ]
 
   const tableDiv = tableRows.map((row, rowIndex) => {

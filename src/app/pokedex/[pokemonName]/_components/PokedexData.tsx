@@ -5,6 +5,7 @@ import SectionTitle from '@/components/containers/SectionTitle'
 import TableCell from '@/components/containers/TableCell'
 import TableCellHeader from '@/components/containers/TableCellHeader'
 import TableContainer from '@/components/containers/TableContainer'
+import TableRow from '@/components/containers/TableRow'
 import TypeCard from '@/components/TypeCard'
 import pokedexToGameMap from '@/data/pokedexToGameMap'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
@@ -39,6 +40,8 @@ interface DexDataProps {
   abilities: Array<PokemonAbility>
   pokedex_numbers: Array<PokemonSpeciesDexEntry>
   nationalNumber: number
+  shape: string
+  colour: string
 }
 
 const PokeDexData: FC<DexDataProps> = ({
@@ -49,6 +52,8 @@ const PokeDexData: FC<DexDataProps> = ({
   abilities,
   pokedex_numbers,
   nationalNumber,
+  colour,
+  shape,
 }) => {
   const formattedNationalNumber = `${'00' + nationalNumber}`.slice(-3)
 
@@ -118,22 +123,23 @@ const PokeDexData: FC<DexDataProps> = ({
     { label: 'Species', value: genus },
     { label: 'Height', value: formattedHeight },
     { label: 'Weight', value: formattedWeight },
+    { label: 'Colour', value: formatName(colour) },
+    { label: 'Shape', value: formatName(shape) },
     { label: 'Abilities', value: abilityListFinal },
-    { label: 'Regional no.', value: regionNumberListFinal },
+    ...(regionLevelData.length > 0 ? [{ label: 'Regions', value: regionNumberListFinal }] : []),
   ]
 
   // Now define the JSX component for all the entries.
   const tableEntries = tableData.map((row, rowIndex) => {
-    const spacing = row.label === 'Abilities' || row.label === 'Regional no.' ? 'min-h-14' : 'h-12'
     return (
-      <tr className={`table-row border-t border-gray-200 py-2 ${spacing}`} key={rowIndex}>
+      <TableRow key={rowIndex}>
         <TableCellHeader>
           <span className="text-sm"> {row.label}</span>
         </TableCellHeader>
         <TableCell>
           <div className="flex">{row.value}</div>
         </TableCell>
-      </tr>
+      </TableRow>
     )
   })
 
