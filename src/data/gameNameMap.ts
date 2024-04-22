@@ -23,6 +23,7 @@ const gameNameMap: Record<string, string> = {
 export const individualGameMap: Record<string, string> = {
   'red': 'Red',
   'blue': 'Blue',
+  'yellow': 'Yellow',
   'gold': 'Gold',
   'silver': 'Silver',
   'crystal': 'Crystal',

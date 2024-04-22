@@ -20,7 +20,7 @@ interface GroupVersionDescriptions {
 }
 
 const groupByDescription = (data: Array<VersionDescription>) => {
-  return data?.reduce((acc, current) => {
+  return data.reduce((acc, current) => {
     // First it's checked whehter the description already exists in the accumulator array.
     const index = acc.findIndex(item => item.description === current.description)
     // if it does, then append the version name.
