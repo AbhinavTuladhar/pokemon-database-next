@@ -1,127 +1,106 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 import Link from 'next/link'
+import classNames from 'classnames'
+import { MdOutlineCatchingPokemon } from 'react-icons/md'
+import { RiFileListFill } from 'react-icons/ri'
 
-interface ListItemProps {
-  items: Array<{
-    path: string
-    name: string
-  }>
-  closeMenu?: () => void
-  subMenuFlag: boolean
+interface Path {
+  path: string
+  name: string
 }
 
-const ListItem: FC<ListItemProps> = ({ items, closeMenu, subMenuFlag }) => {
-  return items.map((data, index) => (
-    <li
-      className={`float-left min-h-full w-full flex-1 ${subMenuFlag && 'w-full'}`}
-      onClick={closeMenu}
-      key={index}
-    >
-      <Link href={data.path}>
-        <span
-          className={`block w-full bg-gray-800 px-2 text-center text-white duration-300 hover:brightness-125 ${subMenuFlag ? 'bg-black py-3' : 'py-4'}`}
-        >
-          {data.name}
-        </span>
+interface TopLevelProps {
+  menuData: Array<Path>
+  parentText: string
+  icon: ReactNode
+}
+
+const DropDownItem: FC<Path> = ({ path, name }) => {
+  return (
+    <li className="block w-screen bg-gray-900 px-4 py-1.5 text-left text-white duration-300 hover:brightness-125 md:w-full">
+      <Link href={path} className="flex w-full flex-1">
+        <span>{name}</span>
       </Link>
     </li>
-  ))
+  )
 }
 
-interface DropDownProps {
-  menuData: Array<{
-    path: string
-    name: string
-  }>
-  parentText: string
-}
+const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-const DropDownMenu: FC<DropDownProps> = ({ menuData, parentText }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    // setIsMenuOpen(prevState => !prevState)
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
-  const openMenu = () => {
-    setIsMenuOpen(true)
-  }
-
-  const navElements = <ListItem items={menuData} closeMenu={closeMenu} subMenuFlag={true} />
+  const closeMenu = () => setIsOpen(false)
+  const openMenu = () => setIsOpen(true)
+  const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
     <li
-      className="float-left flex-1"
+      className="z-10 float-left flex flex-1 justify-center bg-gray-800 px-2 py-3 text-center text-white duration-300 hover:brightness-125"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
     >
-      <div className="group relative">
-        <button className="block w-full whitespace-nowrap bg-gray-800 px-2 py-4 text-center text-white duration-300 hover:brightness-125">
-          <span> {parentText} </span>
-          <span className="text-yellow-400">▼</span>
-        </button>
-        <ul
-          className={`absolute z-10 ${
-            isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-          } w-full text-center text-white transition-opacity duration-300`}
-          onClick={closeMenu}
-        >
-          {navElements}
-        </ul>
-      </div>
+      <button className="flex flex-col items-center gap-x-4 gap-y-2 md:flex-row">
+        <>{icon}</>
+        <span> {parentText} </span>
+      </button>
+      <ul
+        className={classNames(
+          'absolute left-0 top-[4.5rem] z-50 w-full text-center text-white transition-opacity duration-300 md:top-12',
+          { 'opacity-100': isOpen },
+          { 'pointer-events-none opacity-0': !isOpen },
+        )}
+      >
+        {menuData.map(item => (
+          <DropDownItem key={item.path} path={item.path} name={item.name} />
+        ))}
+      </ul>
     </li>
   )
 }
 
 const NavBar = () => {
   const pokedexLinks = [
-    { path: '/pokedex/generation/1', name: 'Gen 1' },
-    { path: '/pokedex/generation/2', name: 'Gen 2' },
-    { path: '/pokedex/generation/3', name: 'Gen 3' },
-    { path: '/pokedex/generation/4', name: 'Gen 4' },
-    { path: '/pokedex/generation/5', name: 'Gen 5' },
-    { path: '/pokedex/generation/6', name: 'Gen 6' },
-    { path: '/pokedex/generation/7', name: 'Gen 7' },
+    { path: '/pokedex/generation/1', name: 'Gen 1 (Kanto)' },
+    { path: '/pokedex/generation/2', name: 'Gen 2 (Johto)' },
+    { path: '/pokedex/generation/3', name: 'Gen 3 (Hoenn)' },
+    { path: '/pokedex/generation/4', name: 'Gen 4 (Sinnoh)' },
+    { path: '/pokedex/generation/5', name: 'Gen 5 (Unova)' },
+    { path: '/pokedex/generation/6', name: 'Gen 6 (Kalos)' },
+    { path: '/pokedex/generation/7', name: 'Gen 7 (Alola)' },
   ]
 
-  const listLinks = [
+  const listData1 = [
     { path: '/move', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
     { path: '/berry', name: 'Berries' },
-    { path: '/egg-group', name: 'Egg groups' },
     { path: '/item', name: 'Items' },
     { path: '/nature', name: 'Natures' },
-    { path: '/sprites/animated', name: 'Animated sprites' },
   ]
 
-  const otherLinks = [
+  const listData2 = [
+    { path: '/egg-group', name: 'Egg groups' },
+    { path: '/sprites/animated', name: 'Animated sprites' },
     { path: '/type', name: 'Types' },
     { path: '/location', name: 'Locations' },
   ]
 
   return (
-    <header>
-      <div className="flex flex-wrap justify-center bg-gradient-to-t from-slate-900 to-slate-800 p-2 text-center text-6xl font-semibold leading-none tracking-tight lg:font-bold">
-        <Link href="/" className="text-sky-500">
-          Pokémon Database
-        </Link>
-      </div>
-      <nav>
-        <ul className="flex list-none flex-wrap">
-          <DropDownMenu parentText="Pokédex" menuData={pokedexLinks} />
-          <DropDownMenu parentText="Lists" menuData={listLinks} />
-          <ListItem items={otherLinks} subMenuFlag={false} />
-        </ul>
-      </nav>
-    </header>
+    <nav className="z-[999] -mt-6 rounded-md bg-slate-800 md:relative">
+      <ul className="flex list-none flex-wrap">
+        <TopLevelMenu
+          menuData={pokedexLinks}
+          parentText="Pokédex"
+          icon={<MdOutlineCatchingPokemon />}
+        />
+        <TopLevelMenu menuData={listData1} parentText="Lists 1" icon={<RiFileListFill />} />
+        <TopLevelMenu menuData={listData2} parentText="Lists 2" icon={<RiFileListFill />} />
+        <div className="p-2">
+          <input className="rounded-md bg-slate-500 px-2 py-1 text-white" placeholder="Search" />
+        </div>
+      </ul>
+    </nav>
   )
 }
 
