@@ -19,8 +19,8 @@ interface TopLevelProps {
 
 const DropDownItem: FC<Path> = ({ path, name }) => {
   return (
-    <li className="block w-screen bg-gray-900 px-4 py-1.5 text-left text-white duration-300 hover:brightness-125 md:w-full">
-      <Link href={path} className="flex w-full flex-1">
+    <li className="block bg-gray-900 px-4 py-1.5 text-left text-white duration-300 hover:brightness-125">
+      <Link href={path} className="flex w-full">
         <span>{name}</span>
       </Link>
     </li>
@@ -36,18 +36,18 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="z-10 float-left flex flex-1 justify-center bg-gray-800 px-2 py-3 text-center text-white duration-300 hover:brightness-125"
+      className="static z-10 flex flex-1 justify-center bg-gray-800 px-2 py-3 text-center text-white duration-300 first:rounded-bl-md first:rounded-tl-md hover:brightness-125 md:relative"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
     >
-      <button className="flex flex-col items-center gap-x-4 gap-y-2 md:flex-row">
+      <button className="flex w-full flex-col items-center justify-center gap-x-4 gap-y-2 md:flex-row">
         <>{icon}</>
         <span> {parentText} </span>
       </button>
       <ul
         className={classNames(
-          'absolute left-0 top-[4.5rem] z-50 w-full text-center text-white transition-opacity duration-300 md:top-12',
+          'fixed left-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-300 md:absolute md:left-0 md:right-0 md:top-12',
           { 'opacity-100': isOpen },
           { 'pointer-events-none opacity-0': !isOpen },
         )}
@@ -87,8 +87,8 @@ const NavBar = () => {
   ]
 
   return (
-    <nav className="z-[999] -mt-6 rounded-md bg-slate-800 md:relative">
-      <ul className="flex list-none flex-wrap">
+    <nav className="static z-[999] -mt-6 rounded-lg bg-slate-800 md:relative">
+      <ul className="static flex list-none flex-wrap md:relative">
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
@@ -96,8 +96,11 @@ const NavBar = () => {
         />
         <TopLevelMenu menuData={listData1} parentText="Lists 1" icon={<RiFileListFill />} />
         <TopLevelMenu menuData={listData2} parentText="Lists 2" icon={<RiFileListFill />} />
-        <div className="p-2">
-          <input className="rounded-md bg-slate-500 px-2 py-1 text-white" placeholder="Search" />
+        <div className="w-full p-2 md:w-auto">
+          <input
+            className="w-full rounded-md bg-slate-500 px-2 py-1 text-white"
+            placeholder="Search"
+          />
         </div>
       </ul>
     </nav>
