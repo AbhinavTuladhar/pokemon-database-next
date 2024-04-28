@@ -3,6 +3,7 @@ import { Fira_Sans } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
 import AnimatedPageWrapper from '@/components/containers/AnimatedPageWrapper'
+import Header from '@/components/Header'
 import NavBar from '@/components/NavBar'
 
 import './globals.css'
@@ -26,7 +27,10 @@ export default function RootLayout({
       <body className={FiraSans.className}>
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
           <div className="min-h-screen max-w-full bg-gray-950 text-white">
-            <NavBar />
+            <Header />
+            <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
+              <NavBar />
+            </div>
             <div className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto">
               <AnimatedPageWrapper>{children}</AnimatedPageWrapper>
             </div>
