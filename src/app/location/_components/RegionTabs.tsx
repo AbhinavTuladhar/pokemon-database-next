@@ -24,14 +24,14 @@ const RegionTabs: FC<PanelProps> = ({ regionData }) => {
   const [tabIndex, setTabIndex] = useState(0)
 
   useEffect(() => {
-    const storedIndex = localStorage.getItem('selectedRegionIndex')
+    const storedIndex = sessionStorage.getItem('selectedRegionIndex')
     const initialIndex = storedIndex ? parseInt(storedIndex) : 0
     setTabIndex(initialIndex)
   }, [])
 
   const handleTabChange = (newIndex: number) => {
     setTabIndex(newIndex)
-    localStorage.setItem('selectedRegionIndex', String(newIndex))
+    sessionStorage.setItem('selectedRegionIndex', String(newIndex))
   }
 
   // Alola has slightly long names, so we provide a special exception to it.
