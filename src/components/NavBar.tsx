@@ -16,7 +16,6 @@ interface TopLevelProps {
   parentText: string
   icon: ReactNode
 }
-
 const DropDownItem: FC<Path> = ({ path, name }) => {
   return (
     <li className="block bg-gray-900 px-4 py-1.5 text-left text-white duration-300 hover:brightness-125">
@@ -36,7 +35,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="navbar-list-item"
+      className="flex flex-1 justify-center bg-slate-800 px-2 py-3 text-center text-white duration-300 md:relative"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
@@ -47,7 +46,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
       </button>
       <ul
         className={classNames(
-          'navbar-dropdown',
+          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-300 md:top-12',
           { 'opacity-100': isOpen },
           { 'pointer-events-none opacity-0': !isOpen },
         )}
@@ -87,8 +86,8 @@ const NavBar = () => {
   ]
 
   return (
-    <nav className="main-navbar">
-      <ul>
+    <nav className="relative -mt-6 rounded-lg bg-slate-800 md:static">
+      <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
