@@ -3,8 +3,9 @@
 import { FC, ReactNode, useState } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
+import { BsGearFill } from 'react-icons/bs'
+import { FaDatabase } from 'react-icons/fa'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
-import { RiFileListFill } from 'react-icons/ri'
 
 interface Path {
   path: string
@@ -18,7 +19,7 @@ interface TopLevelProps {
 }
 const DropDownItem: FC<Path> = ({ path, name }) => {
   return (
-    <li className="block bg-gray-900 px-4 py-1.5 text-left text-white duration-300 hover:brightness-125">
+    <li className="block bg-gray-900 px-4 py-1.5 text-left text-white duration-500 hover:brightness-125">
       <Link href={path} className="flex w-full">
         <span>{name}</span>
       </Link>
@@ -35,18 +36,18 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="flex flex-1 justify-center bg-slate-800 px-2 py-3 text-center text-white duration-300 md:relative"
+      className="flex flex-1 justify-center bg-slate-800 px-2 py-3 text-center text-white duration-500 md:relative"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
     >
-      <button className="flex w-full flex-col items-center justify-center gap-x-4 gap-y-2 md:flex-row">
+      <span className="flex w-full flex-col items-center justify-center gap-x-2 gap-y-2 text-sm hover:cursor-default md:flex-row md:text-base md:font-bold">
         <>{icon}</>
         <span> {parentText} </span>
-      </button>
+      </span>
       <ul
         className={classNames(
-          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-300 md:top-12',
+          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-500 md:top-12',
           { 'opacity-100': isOpen },
           { 'pointer-events-none opacity-0': !isOpen },
         )}
@@ -70,20 +71,21 @@ const NavBar = () => {
     { path: '/pokedex/generation/7', name: 'Gen 7 (Alola)' },
   ]
 
-  const listData1 = [
+  const pokemonDataLinks = [
     { path: '/move', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
-    { path: '/berry', name: 'Berries' },
     { path: '/item', name: 'Items' },
-    { path: '/nature', name: 'Natures' },
+    { path: '/sprites/animated', name: 'Animated sprites' },
   ]
 
-  const listData2 = [
-    { path: '/egg-group', name: 'Egg groups' },
-    { path: '/sprites/animated', name: 'Animated sprites' },
+  const mechanicsLinks = [
+    { path: '/berry', name: 'Berries' },
+    { path: '/nature', name: 'Natures' },
     { path: '/type', name: 'Types' },
+    { path: '/egg-group', name: 'Egg groups' },
     { path: '/location', name: 'Locations' },
   ]
+  const iconClassName = 'w-5 h-5'
 
   return (
     <nav className="relative -mt-6 rounded-lg bg-slate-800 md:static">
@@ -91,10 +93,18 @@ const NavBar = () => {
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
-          icon={<MdOutlineCatchingPokemon />}
+          icon={<MdOutlineCatchingPokemon className={iconClassName} />}
         />
-        <TopLevelMenu menuData={listData1} parentText="Lists 1" icon={<RiFileListFill />} />
-        <TopLevelMenu menuData={listData2} parentText="Lists 2" icon={<RiFileListFill />} />
+        <TopLevelMenu
+          menuData={pokemonDataLinks}
+          parentText="Pokémon data"
+          icon={<FaDatabase className={iconClassName} />}
+        />
+        <TopLevelMenu
+          menuData={mechanicsLinks}
+          parentText="Game Mechanics"
+          icon={<BsGearFill className={iconClassName} />}
+        />
         <li className="w-full p-2 md:w-auto">
           <input
             className="w-full rounded-md bg-slate-500 px-2 py-1 text-white"
