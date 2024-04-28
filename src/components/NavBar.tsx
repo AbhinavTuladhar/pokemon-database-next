@@ -36,7 +36,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="static z-10 flex flex-1 justify-center bg-gray-800 px-2 py-3 text-center text-white duration-300 first:rounded-bl-md first:rounded-tl-md hover:brightness-125 md:relative"
+      className="z-10 flex flex-1 justify-center bg-gray-800 px-2 py-3 text-center text-white duration-300 first:rounded-bl-md first:rounded-tl-md hover:brightness-125"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
@@ -47,7 +47,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
       </button>
       <ul
         className={classNames(
-          'fixed left-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-300 md:absolute md:left-0 md:right-0 md:top-12',
+          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-300 md:top-12',
           { 'opacity-100': isOpen },
           { 'pointer-events-none opacity-0': !isOpen },
         )}
@@ -87,8 +87,8 @@ const NavBar = () => {
   ]
 
   return (
-    <nav className="static z-[999] -mt-6 rounded-lg bg-slate-800 md:relative">
-      <ul className="static flex list-none flex-wrap md:relative">
+    <nav className="z-[999] -mt-6 rounded-lg bg-slate-800">
+      <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
@@ -96,12 +96,12 @@ const NavBar = () => {
         />
         <TopLevelMenu menuData={listData1} parentText="Lists 1" icon={<RiFileListFill />} />
         <TopLevelMenu menuData={listData2} parentText="Lists 2" icon={<RiFileListFill />} />
-        <div className="w-full p-2 md:w-auto">
+        <li className="w-full p-2 md:w-auto">
           <input
             className="w-full rounded-md bg-slate-500 px-2 py-1 text-white"
             placeholder="Search"
           />
-        </div>
+        </li>
       </ul>
     </nav>
   )
