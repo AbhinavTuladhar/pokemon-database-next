@@ -30,7 +30,7 @@ const SearchbarWrapper = async () => {
   }
   const processedPokemon = {
     data: pokemonData,
-    resourceType: 'pokemon',
+    resourceType: 'pokedex',
   }
 
   const filterList = [processedAbility, processedItem, processedPokemon].flatMap(
