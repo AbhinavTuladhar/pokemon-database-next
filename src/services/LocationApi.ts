@@ -7,6 +7,10 @@ export const LocationApi = {
     const response = await Api.location.getLocationByName(name)
     return response as Location
   },
+  getAllNames: async function () {
+    const response = await Api.location.listLocations(0, 814)
+    return response.results.map(location => location.name)
+  },
 }
 
 export const RegionApi = {

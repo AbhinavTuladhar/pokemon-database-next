@@ -51,7 +51,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
         className="w-full rounded-md bg-slate-500 px-2 py-1 text-white"
         placeholder="Search"
       />
-      <div className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-slate-800">
+      <div className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black">
         {filteredData.length > 0
           ? filteredData.map(({ name, resourceType }) => (
               <Link
