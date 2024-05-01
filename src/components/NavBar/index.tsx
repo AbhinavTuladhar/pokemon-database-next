@@ -1,64 +1,10 @@
-'use client'
-
-import { FC, ReactNode, useState } from 'react'
-import Link from 'next/link'
-import classNames from 'classnames'
 import { BsGearFill } from 'react-icons/bs'
 import { FaDatabase } from 'react-icons/fa'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
-interface Path {
-  path: string
-  name: string
-}
+import SearchbarWrapper from '../SearchbarWrapper'
 
-interface TopLevelProps {
-  menuData: Array<Path>
-  parentText: string
-  icon: ReactNode
-}
-const DropDownItem: FC<Path> = ({ path, name }) => {
-  return (
-    <li className="block bg-gray-900 px-4 py-1.5 text-left text-white duration-500 hover:bg-gray-700">
-      <Link href={path} className="flex w-full">
-        <span>{name}</span>
-      </Link>
-    </li>
-  )
-}
-
-const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const closeMenu = () => setIsOpen(false)
-  const openMenu = () => setIsOpen(true)
-  const toggleMenu = () => setIsOpen(!isOpen)
-
-  return (
-    <li
-      className="flex flex-1 justify-center bg-slate-800 px-2 py-3 text-center text-white duration-500 md:relative"
-      onMouseOver={openMenu}
-      onMouseOut={closeMenu}
-      onClick={toggleMenu}
-    >
-      <span className="flex w-full flex-col items-center justify-center gap-x-2 gap-y-2 text-sm hover:cursor-default md:flex-row md:text-base md:font-bold">
-        <>{icon}</>
-        <span> {parentText} </span>
-      </span>
-      <ul
-        className={classNames(
-          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-500 md:top-12',
-          { 'opacity-100': isOpen },
-          { 'pointer-events-none opacity-0': !isOpen },
-        )}
-      >
-        {menuData.map(item => (
-          <DropDownItem key={item.path} path={item.path} name={item.name} />
-        ))}
-      </ul>
-    </li>
-  )
-}
+import TopLevelMenu from './TopLevelMenu'
 
 const NavBar = () => {
   const pokedexLinks = [
@@ -106,10 +52,7 @@ const NavBar = () => {
           icon={<BsGearFill className={iconClassName} />}
         />
         <li className="w-full p-2 md:w-auto">
-          <input
-            className="w-full rounded-md bg-slate-500 px-2 py-1 text-white"
-            placeholder="Search"
-          />
+          <SearchbarWrapper />
         </li>
       </ul>
     </nav>

@@ -12,4 +12,8 @@ export const TypesApi = {
     const response = await Api.pokemon.getTypeByName(name)
     return response as Type
   },
+  getAll: async function () {
+    const response = await Api.pokemon.listTypes(0, 15)
+    return response.results.map(type => type.name)
+  },
 }
