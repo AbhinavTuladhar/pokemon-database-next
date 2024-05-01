@@ -4,6 +4,8 @@ import { AbilityApi } from '@/services/AbilityApi'
 import { ItemApi } from '@/services/ItemApi'
 import { PokemonApi } from '@/services/PokemonApi'
 
+import SearchInput from './SearchInput'
+
 const getSearchResultData = async () => {
   const [abilityData, itemData, pokemonDataRaw] = await Promise.all([
     AbilityApi.getAllNames(),
@@ -17,9 +19,25 @@ const getSearchResultData = async () => {
 const SearchbarWrapper = async () => {
   const [abilityData, itemData, pokemonData] = await getSearchResultData()
 
-  console.log({ abilityData, itemData, pokemonData })
+  // Assign a label to identify each resource.
+  const processedAbility = {
+    data: abilityData,
+    resourceType: 'ability',
+  }
+  const processedItem = {
+    data: itemData,
+    resourceType: 'item',
+  }
+  const processedPokemon = {
+    data: pokemonData,
+    resourceType: 'pokemon',
+  }
 
-  return <div>SearchbarWrapper</div>
+  const filterList = [processedAbility, processedItem, processedPokemon].flatMap(
+    ({ data, resourceType }) => data.map(name => ({ name, resourceType })),
+  )
+
+  return <SearchInput searchList={filterList} />
 }
 
 export default SearchbarWrapper

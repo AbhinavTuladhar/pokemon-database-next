@@ -2,7 +2,7 @@ import { BsGearFill } from 'react-icons/bs'
 import { FaDatabase } from 'react-icons/fa'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
-import SearchbarWrapper from '../SearchbarWrapper'
+import SearchbarWrapper from '../searchbar/SearchbarWrapper'
 
 import TopLevelMenu from './TopLevelMenu'
 
@@ -51,7 +51,7 @@ const NavBar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="w-full p-2 md:w-auto">
+        <li className="w-full flex-1 p-2 md:w-auto">
           <SearchbarWrapper />
         </li>
       </ul>
