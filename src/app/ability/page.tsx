@@ -1,34 +1,22 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
 import PageTitle from '@/components/containers/PageTitle'
-import AbilityExtractor from '@/extractors/AbilityExtractor'
-import { AbilityApi } from '@/services/AbilityApi'
+import SearchablePageSkeleton from '@/components/Suspense/SearchablePageSkeleton'
 
-import AbilityTable from './_components/AbilityTable'
+import AbilityTableWrapper from './_components/AbilityTableWrapper'
 
 export const metadata: Metadata = {
   title: 'Pokémon Abilities | Pokémon Database',
 }
 
-const getAbilityList = async () => {
-  const response = await AbilityApi.getAllNames()
-  return response
-}
-
-const getAllAbilityData = async (names: Array<string>) => {
-  const abilityData = await AbilityApi.getByNames(names)
-  return abilityData.map(AbilityExtractor).sort((a, b) => (a.name > b.name ? 1 : -1))
-}
-
-const page = async () => {
-  const abilityNames = await getAbilityList()
-  const allAbilityData = await getAllAbilityData(abilityNames)
-
+const page = () => {
   return (
     <main>
       <PageTitle>Pokémon Abilities</PageTitle>
-      <AbilityTable abilityData={allAbilityData} />
+      <Suspense fallback={<SearchablePageSkeleton />}>
+        <AbilityTableWrapper />
+      </Suspense>
     </main>
   )
 }
