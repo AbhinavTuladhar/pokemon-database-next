@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { IoMdSearch } from 'react-icons/io'
@@ -20,6 +20,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   const pathName = usePathname()
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState<Array<ResourceData>>([])
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Reset the state whenever going to a different route.
   useEffect(() => {
@@ -28,9 +29,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   }, [pathName])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value },
-    } = event
+    const { value } = event.target
     setSearchText(value)
     handleFilter(value)
   }
@@ -45,7 +44,12 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   }
 
   return (
-    <div className="relative z-50">
+    <div
+      className="relative z-50"
+      ref={dropdownRef}
+      onBlur={() => setFilteredData([])}
+      onFocus={() => handleFilter(searchText)}
+    >
       <input
         value={searchText}
         onChange={handleChange}

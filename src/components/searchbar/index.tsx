@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SearchbarWrapper from './SearchbarWrapper'
 
 const index = () => {

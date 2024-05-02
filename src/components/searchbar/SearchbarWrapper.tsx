@@ -1,5 +1,6 @@
 import React from 'react'
 
+import unusedItems from '@/data/unusedItems'
 import { AbilityApi } from '@/services/AbilityApi'
 import { ItemApi } from '@/services/ItemApi'
 import { LocationApi } from '@/services/LocationApi'
@@ -23,13 +24,16 @@ const getSearchResultData = async () => {
 const SearchbarWrapper = async () => {
   const [abilityData, itemData, locationData, moveData, pokemonData] = await getSearchResultData()
 
+  // Remove the unused items
+  const filteredItems = itemData.filter(item => !unusedItems.includes(item))
+
   // Assign a label to identify each resource.
   const processedAbility = {
     data: abilityData,
     resourceType: 'ability',
   }
   const processedItem = {
-    data: itemData,
+    data: filteredItems,
     resourceType: 'item',
   }
   const processedPokemon = {
