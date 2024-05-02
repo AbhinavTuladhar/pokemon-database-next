@@ -3,6 +3,7 @@
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { AnimatePresence, motion } from 'framer-motion'
 import { IoMdSearch } from 'react-icons/io'
 
 import formatName from '@/utils/formatName'
@@ -57,9 +58,16 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
         placeholder="Search"
       />
       <IoMdSearch className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
-      <div className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black">
-        {filteredData.length > 0
-          ? filteredData.map(({ name, resourceType }) => (
+      <AnimatePresence>
+        {filteredData.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black"
+          >
+            {filteredData.map(({ name, resourceType }) => (
               <Link
                 className="flex justify-between border-b border-b-slate-500 px-2 py-1.5 last:border-b-0"
                 key={name}
@@ -68,9 +76,10 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
                 <span> {formatName(name)} </span>
                 <span> {formatName(resourceType)}</span>
               </Link>
-            ))
-          : null}
-      </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
