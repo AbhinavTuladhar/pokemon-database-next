@@ -4,7 +4,7 @@ import { SkeletonTheme } from 'react-loading-skeleton'
 
 import AnimatedPageWrapper from '@/components/containers/AnimatedPageWrapper'
 import Header from '@/components/Header'
-import NavBar from '@/components/NavBar'
+import NavBar from '@/components/navbar'
 
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
