@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -21,7 +21,6 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   const pathName = usePathname()
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState<Array<ResourceData>>([])
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Reset the state whenever going to a different route.
   useEffect(() => {
@@ -40,14 +39,13 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
       setFilteredData([])
       return
     }
-    const filteredList = searchList.filter(item => item.name.includes(value))
+    const filteredList = searchList.filter(item => item.name.replace('-', ' ').includes(value))
     setFilteredData(filteredList.slice(0, 10))
   }
 
   return (
     <div
       className="relative z-50"
-      ref={dropdownRef}
       onBlur={() => setFilteredData([])}
       onFocus={() => handleFilter(searchText)}
     >
