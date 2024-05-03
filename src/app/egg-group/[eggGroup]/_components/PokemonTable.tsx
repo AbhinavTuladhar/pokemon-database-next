@@ -2,10 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import TypeCard from '@/components/TypeCard'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
@@ -37,7 +34,7 @@ const getPokemonDataNew = async (ids: Array<number>) => {
   })
 }
 
-const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
+export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
   const [speciesData, pokemonData] = await Promise.all([
     getSpeciesDataNew(speciesIds, eggGroup),
     getPokemonDataNew(speciesIds),
@@ -56,7 +53,7 @@ const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
     <TableRow className="bg-table-header">
       {headerNames.map(name => (
         <TableCellHeader
-          className="border-table-border min-w-24 border-r pr-4 last:border-r-0"
+          className="min-w-24 border-r border-table-border pr-4 last:border-r-0"
           type="column"
           key={name}
         >
@@ -108,5 +105,3 @@ const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => {
     </TableContainer>
   )
 }
-
-export default PokemonTable
