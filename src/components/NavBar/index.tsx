@@ -34,7 +34,7 @@ const NavBar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative -mt-6 rounded-lg bg-slate-800 md:static">
+    <nav className="relative -mt-6 rounded-lg bg-blue-950 md:static">
       <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
@@ -51,7 +51,7 @@ const NavBar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="w-full flex-1 p-2 md:w-auto">
+        <li className="w-full flex-[0.75] p-2 sm:w-auto">
           <SearchbarWrapper />
         </li>
       </ul>

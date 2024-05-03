@@ -45,7 +45,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
 
   return (
     <div
-      className="relative z-50"
+      className="relative z-50 min-w-52"
       onBlur={() => setFilteredData([])}
       onFocus={() => handleFilter(searchText)}
     >
