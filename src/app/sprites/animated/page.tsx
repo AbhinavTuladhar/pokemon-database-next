@@ -1,12 +1,11 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
+import { PageTitle } from '@/components/containers'
 import generationData from '@/data/generationData'
 import { PokemonApi } from '@/services/PokemonApi'
 
-import GenerationSection from './_components/GenerationSection'
-import PageNavigation from './_components/PageNavigation'
+import { GenerationSection, PageNavigation } from './_components'
 
 export const metadata: Metadata = {
   title: 'Pokémon animated sprite gallery | Pokémon Database',

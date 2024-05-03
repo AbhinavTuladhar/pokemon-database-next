@@ -2,7 +2,7 @@ import React from 'react'
 
 import BlueLink from '@/components/BlueLink'
 
-const PageNavigation = () => {
+export const PageNavigation = () => {
   const linkData = [
     { ref: '#gen-1', text: 'Gen 1' },
     { ref: '#gen-2', text: 'Gen 2' },
@@ -26,5 +26,3 @@ const PageNavigation = () => {
     </div>
   )
 }
-
-export default PageNavigation
