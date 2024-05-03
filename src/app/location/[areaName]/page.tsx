@@ -1,14 +1,13 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
+import { PageTitle } from '@/components/containers'
 import LocationExtractor from '@/extractors/LocationExtractor'
 import { EncountersApi } from '@/services/EncountersApi'
 import { LocationApi } from '@/services/LocationApi'
 import formatName from '@/utils/formatName'
 
-import GenerationSection from './_components/GenerationSection'
-import LocationPageSkeleton from './_components/LocationPageSkeleton'
+import { GenerationSection, LocationPageSkeleton } from './_components'
 
 interface PageProps {
   params: {

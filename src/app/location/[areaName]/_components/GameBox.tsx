@@ -47,18 +47,16 @@ interface GameBoxProps {
   activeFlag: boolean
 }
 
-const GameBox: FC<GameBoxProps> = ({ gameName, activeFlag }) => {
+export const GameBox: FC<GameBoxProps> = ({ gameName, activeFlag }) => {
   const { icon, backgroundColour } = gameMapping[gameName]
 
   const activeClassName = `${backgroundColour} text-white`
 
   return (
     <div
-      className={`border-table-border flex h-[67px] w-14 items-center justify-center border-x text-lg font-bold ${activeFlag ? activeClassName : 'text-gray-500'}`}
+      className={`flex h-[67px] w-14 items-center justify-center border-x border-table-border text-lg font-bold ${activeFlag ? activeClassName : 'text-gray-500'}`}
     >
       {icon}
     </div>
   )
 }
-
-export default GameBox
