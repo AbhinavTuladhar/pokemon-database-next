@@ -3,10 +3,7 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 
 import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import Input from '@/components/Input'
 import { TransformedAbility } from '@/types'
 import formatName from '@/utils/formatName'
