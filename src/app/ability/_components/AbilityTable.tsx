@@ -12,7 +12,7 @@ interface TableProps {
   abilityData: Array<TransformedAbility>
 }
 
-const AbilityTable: FC<TableProps> = ({ abilityData }) => {
+export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const [filteredData, setFilteredData] = useState(abilityData)
   const [filterText, setFilterText] = useState('')
 
@@ -78,5 +78,3 @@ const AbilityTable: FC<TableProps> = ({ abilityData }) => {
     </>
   )
 }
-
-export default AbilityTable

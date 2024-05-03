@@ -1,8 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
+import { PageTitle, SectionTitle } from '@/components/containers'
 import Description from '@/components/dynamicRoutes/Description'
 import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
@@ -10,8 +9,7 @@ import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
 
-import AbilityDescription from './_components/AbilityDescriptions'
-import PokemonTable from './_components/PokemonTable'
+import { AbilityDescription, PokemonTable } from './_components'
 
 interface AbilityPageParams {
   params: {

@@ -2,10 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
 import formatName from '@/utils/formatName'
@@ -36,7 +33,7 @@ const getPokemonData = async (names: Array<string>, abilityName: string) => {
     .sort((prev, curr) => (prev.nationalNumber >= curr.nationalNumber ? 1 : -1))
 }
 
-const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList }) => {
+export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList }) => {
   const pokemonInformation = await getPokemonData(pokemonList, abilityName)
 
   const headers = ['#', 'Name', 'Other abilities']
@@ -45,7 +42,7 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
     <TableRow className="bg-table-header">
       {headers.map(header => (
         <TableCellHeader
-          className="border-table-border border-r pr-4 first:w-28 last:border-r-0"
+          className="border-r border-table-border pr-4 first:w-28 last:border-r-0"
           key={header}
           type="column"
         >
@@ -97,5 +94,3 @@ const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemonList })
     </TableContainer>
   )
 }
-
-export default PokemonTable
