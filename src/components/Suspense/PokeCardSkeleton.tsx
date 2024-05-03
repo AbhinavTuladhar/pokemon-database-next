@@ -5,7 +5,7 @@ interface CardSkeletonProps {
   cardCount: number
 }
 
-const PokeCardSkeleton: FC<CardSkeletonProps> = ({ cardCount }) => {
+export const PokeCardSkeleton: FC<CardSkeletonProps> = ({ cardCount }) => {
   return Array(cardCount)
     .fill(0)
     .map((_, index) => (
@@ -28,5 +28,3 @@ const PokeCardSkeleton: FC<CardSkeletonProps> = ({ cardCount }) => {
       </div>
     ))
 }
-
-export default PokeCardSkeleton

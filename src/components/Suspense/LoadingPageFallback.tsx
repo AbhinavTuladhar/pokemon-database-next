@@ -1,10 +1,10 @@
 import React from 'react'
 
-import PageTitle from '@/components/containers/PageTitle'
+import { PageTitle } from '@/components/containers/PageTitle'
 
-import PokemonTableSkeleton from './PokemonTableSkeleton'
+import { PokemonTableSkeleton } from './PokemonTableSkeleton'
 
-const LoadingPageFallback = () => {
+export const LoadingPageFallback = () => {
   return (
     <main>
       <PageTitle> Loading data... </PageTitle>
@@ -12,5 +12,3 @@ const LoadingPageFallback = () => {
     </main>
   )
 }
-
-export default LoadingPageFallback

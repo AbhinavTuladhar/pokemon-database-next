@@ -5,7 +5,7 @@ interface CardProps {
   count: number
 }
 
-const TypeSummarySkeleton: FC<CardProps> = ({ count }) => {
+export const TypeSummarySkeleton: FC<CardProps> = ({ count }) => {
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-8">
       {Array(count)
@@ -18,5 +18,3 @@ const TypeSummarySkeleton: FC<CardProps> = ({ count }) => {
     </div>
   )
 }
-
-export default TypeSummarySkeleton

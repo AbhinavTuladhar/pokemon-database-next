@@ -2,9 +2,9 @@ import React from 'react'
 
 import Input from '../Input'
 
-import PokemonTableSkeleton from './PokemonTableSkeleton'
+import { PokemonTableSkeleton } from './PokemonTableSkeleton'
 
-const SearchablePageSkeleton = () => {
+export const SearchablePageSkeleton = () => {
   return (
     <>
       <div className="mb-8 flex justify-center">
@@ -14,5 +14,3 @@ const SearchablePageSkeleton = () => {
     </>
   )
 }
-
-export default SearchablePageSkeleton

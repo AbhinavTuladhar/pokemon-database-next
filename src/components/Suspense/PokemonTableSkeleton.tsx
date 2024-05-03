@@ -1,11 +1,9 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import TableCell from '../containers/TableCell'
-import TableContainer from '../containers/TableContainer'
-import TableRow from '../containers/TableRow'
+import { TableCell, TableContainer, TableRow } from '@/components/containers'
 
-const PokemonTableSkeleton = () => {
+export const PokemonTableSkeleton = () => {
   return (
     <section className="min-w-64">
       {/* <SectionTitle>Loading Pokémon data...</SectionTitle> */}
@@ -25,5 +23,3 @@ const PokemonTableSkeleton = () => {
     </section>
   )
 }
-
-export default PokemonTableSkeleton

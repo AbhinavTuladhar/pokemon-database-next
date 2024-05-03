@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import MiniPokeCardSkeleton from './MiniPokeCardSkeleton'
+import { MiniPokeCardSkeleton } from './MiniPokeCardSkeleton'
 
 interface MiniCardListSkeletonProps {
   pokemonCount: number
 }
 
-const MiniCardListSkeleton: FC<MiniCardListSkeletonProps> = ({ pokemonCount }) => {
+export const MiniCardListSkeleton: FC<MiniCardListSkeletonProps> = ({ pokemonCount }) => {
   return (
     <div className="grid grid-cols-card-list gap-x-3 gap-y-8">
       {Array(pokemonCount)
@@ -17,5 +17,3 @@ const MiniCardListSkeleton: FC<MiniCardListSkeletonProps> = ({ pokemonCount }) =
     </div>
   )
 }
-
-export default MiniCardListSkeleton

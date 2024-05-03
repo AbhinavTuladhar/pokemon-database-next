@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
-import SearchablePageSkeleton from '@/components/Suspense/SearchablePageSkeleton'
+import { SearchablePageSkeleton } from '@/components/suspense'
 
 import { MoveTableWrapper } from './_components'
 

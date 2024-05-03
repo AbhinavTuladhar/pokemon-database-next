@@ -2,7 +2,7 @@ import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/containers'
-import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
+import { PokemonTableSkeleton } from '@/components/suspense'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import { EggGroupApi } from '@/services/EggGroupApi'
 import formatName from '@/utils/formatName'
