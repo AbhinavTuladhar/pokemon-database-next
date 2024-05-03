@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={FiraSans.className}>
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
           <div className="min-h-screen max-w-full bg-gray-800 text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
