@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'table-header': '#1a1a1a',
+        'table-header': '#172554',
         'table-border': '#444444',
       },
       fontSize: {

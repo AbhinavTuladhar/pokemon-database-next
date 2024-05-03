@@ -32,7 +32,7 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
             <TableCellHeader
               key={index}
               type="column"
-              className="border-table-border border-r pr-4 last:border-r-0"
+              className="border-r border-table-border pr-4 last:border-r-0"
             >
               {label}
             </TableCellHeader>
@@ -43,7 +43,7 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
         {movesData.map((move, rowIndex) => {
           const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
           return (
-            <TableRow key={rowIndex} className="odd:bg-gray-900">
+            <TableRow className="duration-300 hover:bg-[#2c303b]" key={rowIndex}>
               {levelLearnedAt && (
                 <TableCell variant="column" extraClassName="text-right">
                   {levelLearnedAt}
