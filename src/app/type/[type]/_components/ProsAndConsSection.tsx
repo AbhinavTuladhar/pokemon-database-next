@@ -1,6 +1,6 @@
 import { FC, JSX } from 'react'
 
-import ProsAndConsInfo from './ProsAndConsInfo'
+import { ProsAndConsInfo } from './ProsAndConsInfo'
 
 interface SectionProps {
   doubleDamageToList: JSX.Element[]
@@ -12,7 +12,7 @@ interface SectionProps {
   formattedType: string
 }
 
-const ProsAndConsSection: FC<SectionProps> = ({
+export const ProsAndConsSection: FC<SectionProps> = ({
   doubleDamageFromList,
   doubleDamageToList,
   halfDamageFromList,
@@ -48,5 +48,3 @@ const ProsAndConsSection: FC<SectionProps> = ({
     </div>
   )
 }
-
-export default ProsAndConsSection

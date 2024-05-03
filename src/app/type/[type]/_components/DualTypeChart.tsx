@@ -16,7 +16,7 @@ interface DualTypeChartProps {
   noDamageTo: Array<string>
 }
 
-const DualTypeChart: FC<DualTypeChartProps> = ({
+export const DualTypeChart: FC<DualTypeChartProps> = ({
   doubleDamageTo,
   halfDamageTo,
   noDamageTo,
@@ -102,5 +102,3 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
     </>
   )
 }
-
-export default DualTypeChart

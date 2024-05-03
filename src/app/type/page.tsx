@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
+import { PageTitle } from '@/components/containers'
 import TypeCard from '@/components/TypeCard'
 import TypeChartFull from '@/components/TypeChartFull'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
