@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 
 interface EffectProps {
   entry: string
@@ -8,7 +8,7 @@ interface EffectProps {
   title?: string
 }
 
-const Description: FC<EffectProps> = ({ entry, chance, title = 'Effect' }) => {
+export const Description: FC<EffectProps> = ({ entry, chance, title = 'Effect' }) => {
   // The chance props is for move effects.
   const updatedEntry = chance ? entry.replace('$effect_chance', `${chance}`) : entry
   const paragraphs = updatedEntry.split('\n')
@@ -25,4 +25,3 @@ const Description: FC<EffectProps> = ({ entry, chance, title = 'Effect' }) => {
     </>
   )
 }
-export default Description

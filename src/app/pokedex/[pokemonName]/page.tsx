@@ -1,8 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import Description from '@/components/dynamicRoutes/Description'
-import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
+import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
