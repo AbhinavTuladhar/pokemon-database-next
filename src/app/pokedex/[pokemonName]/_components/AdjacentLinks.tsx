@@ -13,7 +13,7 @@ interface LinksParams {
   id: number
 }
 
-const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
+export const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
   // Skip rendering for pokemon forms.
   if (id >= 10_000) {
     return
@@ -65,5 +65,3 @@ const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
     </div>
   )
 }
-
-export default AdjacentLinks

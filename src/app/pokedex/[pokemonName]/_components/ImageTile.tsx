@@ -8,7 +8,7 @@ interface ImageTileProps {
   shinySprite: string | null
 }
 
-const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) => {
+export const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) => {
   type PossibleStates = 'normal' | 'shiny'
 
   const [selectedImage, setSelectedImage] = useState<PossibleStates>('normal')
@@ -55,5 +55,3 @@ const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) => {
     </div>
   )
 }
-
-export default ImageTile

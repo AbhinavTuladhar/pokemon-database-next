@@ -12,7 +12,7 @@ interface IntroProps {
   genus: string | undefined
 }
 
-const BasicIntro: FC<IntroProps> = ({ id, name, types, genus }) => {
+export const BasicIntro: FC<IntroProps> = ({ id, name, types, genus }) => {
   // Don't display for the other Pokemon forms.
   if (id >= 10_000) return
 
@@ -48,5 +48,3 @@ const BasicIntro: FC<IntroProps> = ({ id, name, types, genus }) => {
     </div>
   )
 }
-
-export default BasicIntro

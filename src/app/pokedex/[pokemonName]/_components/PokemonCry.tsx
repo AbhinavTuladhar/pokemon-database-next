@@ -3,7 +3,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { HiSpeakerWave } from 'react-icons/hi2'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 import formatName from '@/utils/formatName'
 
 interface CryProps {
@@ -12,7 +12,7 @@ interface CryProps {
   legacy: string | undefined
 }
 
-const PokemonCry: FC<CryProps> = ({ pokemonName, latest, legacy }) => {
+export const PokemonCry: FC<CryProps> = ({ pokemonName, latest, legacy }) => {
   const [latestAudio, setLatestAudio] = useState<HTMLAudioElement>()
   const [legacyAudio, setLegacyAudio] = useState<HTMLAudioElement | null>()
 
@@ -53,5 +53,3 @@ const PokemonCry: FC<CryProps> = ({ pokemonName, latest, legacy }) => {
     </>
   )
 }
-
-export default PokemonCry

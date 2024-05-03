@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers/SectionTitle'
 import PokeFormCard from '@/components/PokeFormCard'
 import PokemonFormExtractor from '@/extractors/PokemonFormExtractor'
 import { PokemonApi } from '@/services/PokemonApi'
@@ -15,7 +15,7 @@ interface FormProps {
   urls: Array<string>
 }
 
-const PokemonForms: FC<FormProps> = async ({ urls }) => {
+export const PokemonForms: FC<FormProps> = async ({ urls }) => {
   if (urls.length === 1) {
     return
   }
@@ -44,5 +44,3 @@ const PokemonForms: FC<FormProps> = async ({ urls }) => {
     </>
   )
 }
-
-export default PokemonForms

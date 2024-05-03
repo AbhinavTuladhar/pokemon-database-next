@@ -9,24 +9,26 @@ import { PokemonApi } from '@/services/PokemonApi'
 import { SpeciesApi } from '@/services/SpeciesApi'
 import formatName from '@/utils/formatName'
 
-import AdjacentLinks from './_components/AdjacentLinks'
-import BaseStat from './_components/BaseStats'
-import BasicIntro from './_components/BasicIntro'
-import BreedingInfo from './_components/BreedingInfo'
-import EvolutionChain from './_components/EvolutionChain'
-import HeldItems from './_components/HeldItems'
-import ImageTile from './_components/ImageTile'
-import Locations from './_components/Locations'
-import MovesLearned from './_components/MovesLearned'
-import PageNavigation from './_components/PageNavigation'
-import PokeDexData from './_components/PokedexData'
-import PokeDexEntries from './_components/PokeDexEntries'
-import PokemonCry from './_components/PokemonCry'
-import PokemonForms from './_components/PokemonForms'
-import PokemonVarieties from './_components/PokemonVarieties'
-import SpriteTable from './_components/SpriteTable'
-import TrainingInfo from './_components/TrainingInfo'
-import TypeChart from './_components/TypeChart'
+import {
+  AdjacentLinks,
+  BaseStat,
+  BasicIntro,
+  BreedingInfo,
+  EvolutionChain,
+  HeldItems,
+  ImageTile,
+  Locations,
+  MovesLearned,
+  PageNavigation,
+  PokeDexData,
+  PokeDexEntries,
+  PokemonCry,
+  PokemonForms,
+  PokemonVarieties,
+  SpriteTable,
+  TrainingInfo,
+  TypeChart,
+} from './_components'
 
 interface PokemonPageProps {
   params: {

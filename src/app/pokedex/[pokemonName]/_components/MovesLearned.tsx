@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 import { Move, NamedApiResource, PokemonMove, PokemonMoveVersion, TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 import stringifyUrl from '@/utils/stringifyUrl'
 
-import MovesTable from './MovesTable'
+import { MovesTable } from './MovesTable'
 
 interface MoveData {
   version_group_details: PokemonMoveVersion[]
@@ -45,7 +45,7 @@ interface MovesLearnProps {
   moves: Array<PokemonMove>
 }
 
-const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
+export const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   const properPokemonName = formatName(pokemonName)
 
   // Consider that the latest gen is 7.
@@ -175,5 +175,3 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
     </div>
   )
 }
-
-export default MovesLearned

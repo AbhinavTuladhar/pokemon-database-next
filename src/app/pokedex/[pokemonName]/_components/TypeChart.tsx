@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 import MiniTypeCard from '@/components/MiniTypeCard'
 import { Tooltip } from '@/components/ReactTooltip'
 import TypeMultiplierBox from '@/components/TypeMultiplierBox'
@@ -45,7 +45,7 @@ const getTypesData = async (names: Array<string>) => {
   return response.map(TypeExtractor)
 }
 
-const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
+export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeNames = types.map(type => formatName(type.type.name))
   const typeNamesString = typeNames.join('/')
 
@@ -91,5 +91,3 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
     </section>
   )
 }
-
-export default TypeChart

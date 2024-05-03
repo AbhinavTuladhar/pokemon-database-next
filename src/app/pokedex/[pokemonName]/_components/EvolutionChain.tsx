@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers/SectionTitle'
 import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { EvolutionApi } from '@/services/EvolutionApi'
 import { PokemonApi } from '@/services/PokemonApi'
-import type { ChainLink, EvolutionChain, EvolutionDetail, EvolutionPokemon } from '@/types'
+import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 
 import EvolutionDiv from './EvolutionDiv'
@@ -34,7 +34,7 @@ const getAllPokemonData = async (ids: Array<number>) => {
   })
 }
 
-const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
+export const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
   const evolutionData = await getEvolutionData(+getResourceId(url))
 
   interface EvolutionInformation {
@@ -275,5 +275,3 @@ const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
     </>
   )
 }
-
-export default EvolutionChain

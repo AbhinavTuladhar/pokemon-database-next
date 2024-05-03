@@ -1,9 +1,6 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { SectionTitle, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import statMapping from '@/data/statMapping'
 import { PokemonStat } from '@/types'
 import calculateStats from '@/utils/calculateStats'
@@ -82,7 +79,7 @@ interface BaseStatProps {
   stats: Array<PokemonStat>
 }
 
-const BaseStat: FC<BaseStatProps> = ({ stats }) => {
+export const BaseStat: FC<BaseStatProps> = ({ stats }) => {
   // Fetch the ready-to-use array containing the objects of the stat details.
   const statDetail = getStatDetails(stats)
 
@@ -129,5 +126,3 @@ const BaseStat: FC<BaseStatProps> = ({ stats }) => {
     </>
   )
 }
-
-export default BaseStat
