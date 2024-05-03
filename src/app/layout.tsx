@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
-import AnimatedPageWrapper from '@/components/containers/AnimatedPageWrapper'
+import { AnimatedPageWrapper } from '@/components/containers'
 import Header from '@/components/Header'
 import Navbar from '@/components/navbar'
 

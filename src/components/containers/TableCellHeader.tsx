@@ -18,7 +18,7 @@ interface HeaderProps {
  *
  * `wrapFlag` - Whether to wrap the cell contents or not.
  */
-const TableCellHeader: FC<HeaderProps> = ({
+export const TableCellHeader: FC<HeaderProps> = ({
   children,
   className,
   type = 'row',
@@ -27,7 +27,7 @@ const TableCellHeader: FC<HeaderProps> = ({
   return (
     <th
       className={classNames(
-        'border-table-border table-cell border-t py-[10px] align-middle',
+        'table-cell border-t border-table-border py-[10px] align-middle',
         { 'px-2 text-right text-sm font-normal text-gray-200': type === 'row' },
         { 'w-min px-4 text-left': type === 'column' },
         { 'w-auto whitespace-break-spaces': wrapFlag },
@@ -39,5 +39,3 @@ const TableCellHeader: FC<HeaderProps> = ({
     </th>
   )
 }
-
-export default TableCellHeader
