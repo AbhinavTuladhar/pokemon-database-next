@@ -1,7 +1,7 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import { PokemonTableSkeleton } from '@/components/suspense'
+import { PokemonTableSkeleton } from '@/components/skeletons'
 
 export const LocationPageSkeleton = () => {
   return (

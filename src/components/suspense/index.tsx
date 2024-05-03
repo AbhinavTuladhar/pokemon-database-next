@@ -1,7 +1,0 @@
-export { LoadingPageFallback } from './LoadingPageFallback'
-export { MiniCardListSkeleton } from './MiniCardListSkeleton'
-export { MiniPokeCardSkeleton } from './MiniPokeCardSkeleton'
-export { PokeCardSkeleton } from './PokeCardSkeleton'
-export { PokemonTableSkeleton } from './PokemonTableSkeleton'
-export { SearchablePageSkeleton } from './SearchablePageSkeleton'
-export { TypeSummarySkeleton } from './TypeSummarySkeleton'

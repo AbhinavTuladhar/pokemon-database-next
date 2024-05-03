@@ -1,4 +1,4 @@
-import { PokeCardSkeleton } from '@/components/suspense'
+import { PokeCardSkeleton } from '@/components/skeletons'
 
 import PokeCardContainer from './_components/PokeCardContainer'
 

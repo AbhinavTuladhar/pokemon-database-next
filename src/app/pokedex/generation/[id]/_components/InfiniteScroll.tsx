@@ -5,7 +5,7 @@ import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
 import { getPokemonByUrls } from '@/actions/fetchPokemon'
 import PokeCard from '@/components/PokeCard'
-import { PokeCardSkeleton } from '@/components/suspense'
+import { PokeCardSkeleton } from '@/components/skeletons'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { TransformedPokemon } from '@/types'
 

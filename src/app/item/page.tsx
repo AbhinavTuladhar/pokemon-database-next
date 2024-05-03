@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
-import { LoadingPageFallback } from '@/components/suspense'
+import { LoadingPageFallback } from '@/components/skeletons'
 
 import { ItemTableWrapper } from './_components'
 

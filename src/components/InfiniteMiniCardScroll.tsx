@@ -8,7 +8,7 @@ import { PokemonApi } from '@/services/PokemonApi'
 import { TransformedPokemon } from '@/types'
 
 import MiniPokeCard from './MiniPokeCard'
-import { MiniCardListSkeleton } from './suspense'
+import { MiniCardListSkeleton } from './skeletons'
 
 interface ScrollProps {
   increment: number

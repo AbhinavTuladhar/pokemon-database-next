@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import { PokemonTableSkeleton } from '@/components/suspense'
+import { PokemonTableSkeleton } from '@/components/skeletons'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import { AbilityApi } from '@/services/AbilityApi'
 import formatName from '@/utils/formatName'
