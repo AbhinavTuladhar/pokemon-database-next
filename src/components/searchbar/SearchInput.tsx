@@ -1,12 +1,11 @@
 'use client'
 
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { IoMdSearch } from 'react-icons/io'
 
-import formatName from '@/utils/formatName'
+import SearchResultRow from './SearchResultRow'
 
 interface ResourceData {
   name: string
@@ -45,7 +44,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
 
   return (
     <div
-      className="relative z-50"
+      className="relative z-20"
       onBlur={() => setFilteredData([])}
       onFocus={() => handleFilter(searchText)}
     >
@@ -66,14 +65,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
             className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black"
           >
             {filteredData.map(({ name, resourceType }) => (
-              <Link
-                className="flex justify-between border-b border-b-slate-500 bg-[#05014a] px-2 py-1.5 duration-300 last:border-b-0 hover:bg-blue-900"
-                key={name}
-                href={`/${resourceType}/${name}`}
-              >
-                <span> {formatName(name)} </span>
-                <span> {formatName(resourceType)}</span>
-              </Link>
+              <SearchResultRow key={name} name={name} resourceType={resourceType} />
             ))}
           </motion.div>
         )}

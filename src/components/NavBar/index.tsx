@@ -34,7 +34,7 @@ const NavBar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative -mt-6 rounded-lg bg-blue-950 md:static">
+    <nav className="relative z-50 -mt-6 rounded-lg bg-blue-950 md:static">
       <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
