@@ -4,7 +4,7 @@ import { SkeletonTheme } from 'react-loading-skeleton'
 
 import AnimatedPageWrapper from '@/components/containers/AnimatedPageWrapper'
 import Header from '@/components/Header'
-import NavBar from '@/components/navbar'
+import Navbar from '@/components/navbar'
 
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -29,7 +29,7 @@ export default function RootLayout({
           <div className="min-h-screen max-w-full bg-gray-800 text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
-              <NavBar />
+              <Navbar />
             </div>
             <div className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto">
               <AnimatedPageWrapper>{children}</AnimatedPageWrapper>

@@ -1,7 +1,7 @@
-import SearchbarWrapper from './SearchbarWrapper'
+import SearchbarWrapper from './searchbar-wrapper'
 
-const index = () => {
+const SearchBar = () => {
   return <SearchbarWrapper />
 }
 
-export default index
+export default SearchBar

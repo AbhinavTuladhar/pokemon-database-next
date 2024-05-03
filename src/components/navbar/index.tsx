@@ -2,11 +2,11 @@ import { BsGearFill } from 'react-icons/bs'
 import { FaDatabase } from 'react-icons/fa'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
-import SearchbarWrapper from '../searchbar/SearchbarWrapper'
+import SearchBar from '@/components/searchbar'
 
-import TopLevelMenu from './TopLevelMenu'
+import TopLevelMenu from './top-level-menu'
 
-const NavBar = () => {
+const Navbar = () => {
   const pokedexLinks = [
     { path: '/pokedex/generation/1', name: 'Gen 1 (Kanto)' },
     { path: '/pokedex/generation/2', name: 'Gen 2 (Johto)' },
@@ -52,11 +52,11 @@ const NavBar = () => {
           icon={<BsGearFill className={iconClassName} />}
         />
         <li className="w-full min-w-48 p-2 min-[800px]:w-auto">
-          <SearchbarWrapper />
+          <SearchBar />
         </li>
       </ul>
     </nav>
   )
 }
 
-export default NavBar
+export default Navbar

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { IoMdSearch } from 'react-icons/io'
 
-import SearchResultRow from './SearchResultRow'
+import SearchResultRow from './search-result-row'
 
 interface ResourceData {
   name: string

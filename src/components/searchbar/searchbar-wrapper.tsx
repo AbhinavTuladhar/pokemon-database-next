@@ -7,7 +7,7 @@ import { LocationApi } from '@/services/LocationApi'
 import { MovesApi } from '@/services/MovesApi'
 import { PokemonApi } from '@/services/PokemonApi'
 
-import SearchInput from './SearchInput'
+import SearchInput from './search-input'
 
 const getSearchResultData = async () => {
   const [abilityData, itemData, locationData, moveData, pokemonDataRaw] = await Promise.all([

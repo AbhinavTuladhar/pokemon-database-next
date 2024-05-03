@@ -3,7 +3,7 @@
 import { FC, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 
-import DropDownItem from './DropDownItem'
+import DropDownItem from './drop-down-item'
 
 interface Path {
   path: string
