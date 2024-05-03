@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         'table-header': '#172554',
-        'table-border': '#444444',
+        'table-border': '#353535',
       },
       fontSize: {
         '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
