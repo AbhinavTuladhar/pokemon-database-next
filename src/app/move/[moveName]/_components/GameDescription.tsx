@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
 
@@ -24,7 +26,7 @@ interface GroupedByGames {
   version: Array<string>
 }
 
-const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
+export const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
   // The objective is to group by generation, but display the game names.
   /*
   { descritpion, version, generation } is the structure of the object.
@@ -87,5 +89,3 @@ const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
     </>
   )
 }
-
-export default GameDescription

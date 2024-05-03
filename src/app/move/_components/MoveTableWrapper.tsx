@@ -3,7 +3,7 @@ import React from 'react'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 
-import MoveTable from './MoveTable'
+import { MoveTable } from './MoveTable'
 
 const getMovesList = async () => {
   const response = await MovesApi.getAllNames()
@@ -15,10 +15,8 @@ const getAllMoveData = async (names: Array<string>) => {
   return movesData.map(MoveExtractor).sort((a, b) => (a.moveName > b.moveName ? 1 : -1))
 }
 
-const MoveTableWrapper = async () => {
+export const MoveTableWrapper = async () => {
   const moveList = await getMovesList()
   const allMovesData = await getAllMoveData(moveList)
   return <MoveTable moveData={allMovesData} />
 }
-
-export default MoveTableWrapper

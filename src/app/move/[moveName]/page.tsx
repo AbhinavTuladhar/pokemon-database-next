@@ -1,8 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
+import { PageTitle, SectionTitle } from '@/components/containers'
 import Description from '@/components/dynamicRoutes/Description'
 import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
 import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
@@ -12,10 +11,7 @@ import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services/MovesApi'
 import formatName from '@/utils/formatName'
 
-import GameDescription from './_components/GameDescription'
-import MachineRecord from './_components/MachineRecord'
-import MoveData from './_components/MoveData'
-import MoveTarget from './_components/MoveTarget'
+import { GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 
 interface MovePageProps {
   params: {

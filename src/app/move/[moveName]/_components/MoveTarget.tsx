@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 import buildMoveTargetData from '@/utils/buildMoveTargetData'
 
 interface TargetBoxProps {
@@ -37,7 +37,7 @@ interface TargetProps {
   targetType: string
 }
 
-const MoveTarget: FC<TargetProps> = ({ targetType }) => {
+export const MoveTarget: FC<TargetProps> = ({ targetType }) => {
   const targetInformation = buildMoveTargetData(targetType)
 
   const { allyInformation, description, foeInformation } = targetInformation
@@ -73,5 +73,3 @@ const MoveTarget: FC<TargetProps> = ({ targetType }) => {
     </>
   )
 }
-
-export default MoveTarget

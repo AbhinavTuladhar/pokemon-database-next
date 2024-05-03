@@ -3,10 +3,7 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 import Link from 'next/link'
 
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import Input from '@/components/Input'
 import MoveCategoryImage from '@/components/MoveCategoryImage'
 import TypeCard from '@/components/TypeCard'
@@ -17,7 +14,7 @@ interface TableProps {
   moveData: Array<TransformedMove>
 }
 
-const MoveTable: FC<TableProps> = ({ moveData }) => {
+export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const [filteredData, setFilteredData] = useState(moveData)
   const [filterText, setFilterText] = useState('')
 
@@ -96,5 +93,3 @@ const MoveTable: FC<TableProps> = ({ moveData }) => {
     </>
   )
 }
-
-export default MoveTable

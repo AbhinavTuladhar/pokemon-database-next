@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
@@ -72,7 +74,7 @@ const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
   return transformedData ? Object.values(transformedData) : []
 }
 
-const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
+export const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
   const machineIds = machineList.map(machine => {
     const {
       machine: { url },
@@ -109,5 +111,3 @@ const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
     </>
   )
 }
-
-export default MachineRecord
