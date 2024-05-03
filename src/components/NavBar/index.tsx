@@ -51,7 +51,7 @@ const NavBar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="w-full flex-[0.75] p-2 sm:w-auto">
+        <li className="w-full min-w-48 p-2 md:w-auto">
           <SearchbarWrapper />
         </li>
       </ul>

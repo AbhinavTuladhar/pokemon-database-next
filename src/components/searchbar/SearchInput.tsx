@@ -45,7 +45,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
 
   return (
     <div
-      className="relative z-50 min-w-52"
+      className="relative z-50"
       onBlur={() => setFilteredData([])}
       onFocus={() => handleFilter(searchText)}
     >
@@ -67,7 +67,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
           >
             {filteredData.map(({ name, resourceType }) => (
               <Link
-                className="flex justify-between border-b border-b-slate-500 px-2 py-1.5 last:border-b-0"
+                className="flex justify-between border-b border-b-slate-500 bg-[#05014a] px-2 py-1.5 duration-300 last:border-b-0 hover:bg-blue-900"
                 key={name}
                 href={`/${resourceType}/${name}`}
               >
