@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
+import { TypeCard } from '@/components/cards'
 import {
   SectionTitle,
   TableCell,
@@ -8,7 +8,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import TypeCard from '@/components/TypeCard'
+import BlueLink from '@/components/link'
 import pokedexToGameMap from '@/data/pokedexToGameMap'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
 import formatName from '@/utils/formatName'

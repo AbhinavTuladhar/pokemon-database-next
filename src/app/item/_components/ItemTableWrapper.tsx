@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ItemExtractor, ItemPocketExtractor } from '@/extractors/ItemExtractors'
-import { ItemApi } from '@/services/ItemApi'
+import { ItemApi } from '@/services'
 
 import { DynamicTable } from './DynamicTable'
 

@@ -2,9 +2,9 @@
 
 import React, { ChangeEvent, FC, useState } from 'react'
 
-import BlueLink from '@/components/BlueLink'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import Input from '@/components/Input'
+import Input from '@/components/input'
+import BlueLink from '@/components/link'
 import { TransformedAbility } from '@/types'
 import formatName from '@/utils/formatName'
 

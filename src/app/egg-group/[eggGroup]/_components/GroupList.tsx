@@ -1,9 +1,9 @@
 import React from 'react'
 
-import BlueLink from '@/components/BlueLink'
 import { SectionTitle } from '@/components/containers'
+import BlueLink from '@/components/link'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 const getGroupList = async () => {

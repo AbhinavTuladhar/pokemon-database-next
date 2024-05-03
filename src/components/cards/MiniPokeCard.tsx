@@ -4,8 +4,9 @@ import Image from 'next/image'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
-import BlueLink from './BlueLink'
-import TypeCard from './TypeCard'
+import BlueLink from '../link'
+
+import { TypeCard } from './TypeCard'
 
 interface MiniCardProps {
   name: string
@@ -15,7 +16,13 @@ interface MiniCardProps {
   nationalNumber: number
 }
 
-const MiniPokeCard: FC<MiniCardProps> = ({ name, id, gameSprite, types, nationalNumber }) => {
+export const MiniPokeCard: FC<MiniCardProps> = ({
+  name,
+  id,
+  gameSprite,
+  types,
+  nationalNumber,
+}) => {
   const properId = `${'00' + nationalNumber}`.slice(-3)
 
   if (gameSprite === null || id >= 10157) return
@@ -44,5 +51,3 @@ const MiniPokeCard: FC<MiniCardProps> = ({ name, id, gameSprite, types, national
     </article>
   )
 }
-
-export default MiniPokeCard

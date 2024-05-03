@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
+import { TypeCard } from '@/components/cards'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import MoveCategoryImage from '@/components/MoveCategoryImage'
-import TypeCard from '@/components/TypeCard'
+import BlueLink from '@/components/link'
+import MoveCategoryImage from '@/components/move-category-image'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 

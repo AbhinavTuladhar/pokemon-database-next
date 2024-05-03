@@ -3,10 +3,10 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 import Link from 'next/link'
 
+import { TypeCard } from '@/components/cards'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import Input from '@/components/Input'
-import MoveCategoryImage from '@/components/MoveCategoryImage'
-import TypeCard from '@/components/TypeCard'
+import Input from '@/components/input'
+import MoveCategoryImage from '@/components/move-category-image'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 

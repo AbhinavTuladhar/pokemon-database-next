@@ -21,7 +21,7 @@ interface BoxProps {
   className?: string
 }
 
-const TypeMultiplierBox: FC<BoxProps> = ({ multiplier, className }) => {
+export const TypeMultiplierBox: FC<BoxProps> = ({ multiplier, className }) => {
   const { icon, colour: multiplierColour } = effectivenessMapping[multiplier]
   // Provide a distinct background colours for each effectiveness value
   const backgroundColourMultiplier = `bg-${multiplierColour}`
@@ -34,5 +34,3 @@ const TypeMultiplierBox: FC<BoxProps> = ({ multiplier, className }) => {
     </div>
   )
 }
-
-export default TypeMultiplierBox

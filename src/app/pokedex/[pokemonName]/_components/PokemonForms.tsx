@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
+import { PokeFormCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import PokeFormCard from '@/components/PokeFormCard'
 import PokemonFormExtractor from '@/extractors/PokemonFormExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 import { getResourceId } from '@/utils/urlUtils'
 
 const getFormData = async (ids: Array<string>) => {

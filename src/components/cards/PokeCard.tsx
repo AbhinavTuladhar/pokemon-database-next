@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
-import typeMapping from '../utils/typeMapping'
+import typeMapping from '../../utils/typeMapping'
 
-import TypeCard from './TypeCard'
+import { TypeCard } from './TypeCard'
 
 const darkenColour = (colour: string) => {
   const colourName = colour.slice(0, -3)
@@ -25,7 +25,7 @@ interface PokeCardProps {
   defaultSprite: string | null
 }
 
-const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
+export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
   // For capitalising the first letter.
   const properName = formatName(name)
 
@@ -70,5 +70,3 @@ const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) => {
     </div>
   )
 }
-
-export default PokeCard

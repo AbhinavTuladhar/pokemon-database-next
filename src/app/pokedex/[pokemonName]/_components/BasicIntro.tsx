@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import TypeCard from '@/components/TypeCard'
+import { TypeCard } from '@/components/cards'
 import idToGenerationMap from '@/data/idToGenerationMap'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'

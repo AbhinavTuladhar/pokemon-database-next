@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import formatName from '@/utils/formatName'
 
-import TypeCard from './TypeCard'
+import { TypeCard } from '.'
 
 interface PokeFormCardProps {
   typeNames: Array<string>
@@ -12,7 +12,7 @@ interface PokeFormCardProps {
   pokemonName: string
 }
 
-const PokeFormCard: FC<PokeFormCardProps> = ({
+export const PokeFormCard: FC<PokeFormCardProps> = ({
   typeNames,
   defaultSprite,
   shinySprite,
@@ -39,5 +39,3 @@ const PokeFormCard: FC<PokeFormCardProps> = ({
     </article>
   )
 }
-
-export default PokeFormCard

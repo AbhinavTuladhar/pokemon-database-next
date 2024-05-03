@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
 import { TableContainer } from '@/components/containers'
+import BlueLink from '@/components/link'
 import formatName from '@/utils/formatName'
 
 interface TableProps {

@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { PokemonTableSkeleton } from '@/components/skeletons'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { getResourceId } from '@/utils/urlUtils'
 

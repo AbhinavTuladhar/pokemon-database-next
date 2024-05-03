@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import BlueLink from '@/components/link'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 interface PokemonTableProps {

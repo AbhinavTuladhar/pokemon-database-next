@@ -4,7 +4,7 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import type { GroupBase, SingleValue } from 'react-select'
 import Select from 'react-select'
 
-import Input from '@/components/Input'
+import Input from '@/components/input'
 import formatName from '@/utils/formatName'
 
 import { ItemTable } from './ItemTable'

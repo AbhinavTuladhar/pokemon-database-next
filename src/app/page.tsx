@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import type { Variants } from 'framer-motion'
 
-import { MotionDiv, MotionSpan } from '@/components/Motion'
+import { MotionDiv, MotionSpan } from '@/components/client-components'
 
 const welcomeVariant: Variants = {
   initial: { y: '10rem', opacity: 0 },

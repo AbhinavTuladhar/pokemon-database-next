@@ -7,7 +7,7 @@ interface CardProps {
   typeName: string
 }
 
-const MiniTypeCard: React.FC<CardProps> = ({ typeName }) => {
+export const MiniTypeCard: React.FC<CardProps> = ({ typeName }) => {
   // This background colour is for the type NAME.
   const backgroundColourType = `bg-${typeMapping[typeName]}`
 
@@ -21,5 +21,3 @@ const MiniTypeCard: React.FC<CardProps> = ({ typeName }) => {
     </Link>
   )
 }
-
-export default MiniTypeCard

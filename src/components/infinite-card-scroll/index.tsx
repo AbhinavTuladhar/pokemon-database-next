@@ -4,11 +4,11 @@ import { FC, useState } from 'react'
 import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
-import MiniPokeCard from './MiniPokeCard'
-import { MiniCardListSkeleton } from './skeletons'
+import { MiniPokeCard } from '../cards'
+import { MiniCardListSkeleton } from '../skeletons'
 
 interface ScrollProps {
   increment: number

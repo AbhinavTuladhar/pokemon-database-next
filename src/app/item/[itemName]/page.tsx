@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { PageTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
-import { ItemApi } from '@/services/ItemApi'
+import { ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { GameDescriptions, ItemData } from './_components'

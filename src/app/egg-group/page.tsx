@@ -1,7 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import BlueLink from '@/components/BlueLink'
 import {
   PageTitle,
   TableCell,
@@ -9,8 +8,9 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
+import BlueLink from '@/components/link'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {

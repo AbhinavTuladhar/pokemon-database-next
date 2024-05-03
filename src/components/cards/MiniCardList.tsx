@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 
-import MiniPokeCard from './MiniPokeCard'
+import { MiniPokeCard } from './MiniPokeCard'
 
 interface MiniCardListProps {
   pokemonNames: Array<string>
@@ -20,7 +20,7 @@ const fetchPokemonData = async (pokemonNames: Array<string>) => {
   return sortedResponses
 }
 
-const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
+export const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
   const pokemonData = await fetchPokemonData(pokemonNames)
 
   // We now map the Pokemon data into the respective cards.
@@ -40,5 +40,3 @@ const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
 
   return <div className="grid grid-cols-card-list gap-x-3 gap-y-8">{pokeCards}</div>
 }
-
-export default MiniCardList

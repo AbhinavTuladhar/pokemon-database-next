@@ -4,8 +4,7 @@ import { Metadata } from 'next'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
-import { SpeciesApi } from '@/services/SpeciesApi'
+import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import {

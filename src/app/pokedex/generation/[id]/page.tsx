@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
+import { PokeCard } from '@/components/cards'
 import { PageTitle } from '@/components/containers'
-import PokeCard from '@/components/PokeCard'
 import generationData from '@/data/generationData'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 
 import PokeCardContainer from './_components/PokeCardContainer'
 

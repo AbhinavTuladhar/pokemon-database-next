@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 
 import { TypeSummaryCard } from './TypeSummaryCard'
 
