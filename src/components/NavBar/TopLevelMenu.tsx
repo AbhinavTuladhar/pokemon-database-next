@@ -25,7 +25,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="flex flex-1 justify-center bg-slate-800 px-2 py-3 text-center text-white duration-500 md:relative"
+      className="flex flex-1 justify-center px-2 py-3 text-center text-white duration-500 md:relative"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}

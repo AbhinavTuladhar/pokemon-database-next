@@ -52,7 +52,7 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
     )
 
     return (
-      <TableRow key={index} className="odd:bg-gray-900">
+      <TableRow className="duration-300 hover:bg-[#2c303b]" key={index}>
         <TableCell variant="column" extraClassName="w-40 whitespace-nowrap">
           {nameDiv}
         </TableCell>

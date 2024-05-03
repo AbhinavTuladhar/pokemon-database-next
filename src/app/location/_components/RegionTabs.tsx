@@ -41,7 +41,7 @@ const RegionTabs: FC<PanelProps> = ({ regionData }) => {
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tabIndex}
-            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-gray-900 p-3 duration-300 hover:cursor-pointer hover:border-white hover:text-white hover:brightness-110"
+            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-table-header p-3 duration-300 hover:cursor-pointer hover:border-white hover:text-white hover:brightness-110"
             selectedClassName="!border-blue-500 text-blue-500"
             // onClick={() => handleTabChange(tab)}
           >

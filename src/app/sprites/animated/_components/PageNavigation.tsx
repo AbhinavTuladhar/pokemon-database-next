@@ -14,7 +14,7 @@ const PageNavigation = () => {
   ]
 
   return (
-    <div className="grid place-items-center rounded-lg bg-slate-800">
+    <div className="grid place-items-center rounded-lg bg-blue-950">
       <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-white py-4">
         <li className="px-4 font-bold text-white"> Jump to </li>
         {linkData.map(({ ref, text }, index) => (

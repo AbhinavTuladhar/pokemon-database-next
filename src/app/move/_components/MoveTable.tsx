@@ -54,7 +54,7 @@ const MoveTable: FC<TableProps> = ({ moveData }) => {
     const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
 
     return (
-      <TableRow className="odd:bg-gray-900" key={rowIndex}>
+      <TableRow className="duration-300 hover:bg-[#2c303b]" key={rowIndex}>
         <TableCell variant="column">
           <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
             {formatName(moveName)}
