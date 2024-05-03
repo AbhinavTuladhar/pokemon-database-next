@@ -2,10 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import formatName, { formatText } from '@/utils/formatName'
 
 interface ItemData {
@@ -19,7 +16,7 @@ interface TableProps {
   itemData: Array<ItemData>
 }
 
-const ItemTable: FC<TableProps> = ({ itemData }) => {
+export const ItemTable: FC<TableProps> = ({ itemData }) => {
   const headerNames = ['Name', 'Category', 'Effect']
 
   const headerRow = (
@@ -73,5 +70,3 @@ const ItemTable: FC<TableProps> = ({ itemData }) => {
     </TableContainer>
   )
 }
-
-export default ItemTable

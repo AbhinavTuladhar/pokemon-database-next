@@ -3,7 +3,7 @@ import React from 'react'
 import { ItemExtractor, ItemPocketExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services/ItemApi'
 
-import DynamicTable from './DynamicTable'
+import { DynamicTable } from './DynamicTable'
 
 const getItemPockets = async () => {
   const response = await ItemApi.getAllItemPockets()
@@ -43,7 +43,7 @@ const getAllItemData = async () => {
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
-const ItemTableWrapper = async () => {
+export const ItemTableWrapper = async () => {
   const categories = await getItemPockets()
   const itemData = await getAllItemData()
   const pocketCategoryData = await getItemPocketInformation()
@@ -52,5 +52,3 @@ const ItemTableWrapper = async () => {
     <DynamicTable itemData={itemData} categories={categories} pocketData={pocketCategoryData} />
   )
 }
-
-export default ItemTableWrapper

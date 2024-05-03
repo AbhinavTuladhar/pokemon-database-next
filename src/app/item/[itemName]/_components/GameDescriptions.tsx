@@ -1,11 +1,13 @@
 import React from 'react'
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
 import { TransformedItem } from '@/types'
@@ -45,7 +47,7 @@ const groupData = (descriptions: DescriptionInterface['descriptions']) => {
     }, {} as ItemByGeneration)
 }
 
-const GameDescriptions: FC<TableProps> = ({ descriptions }) => {
+export const GameDescriptions: FC<TableProps> = ({ descriptions }) => {
   const groupedData = groupData(descriptions)
 
   // Filter out undefined generations
@@ -76,5 +78,3 @@ const GameDescriptions: FC<TableProps> = ({ descriptions }) => {
     </>
   )
 }
-
-export default GameDescriptions
