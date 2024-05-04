@@ -1,13 +1,13 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
+import { MiniCardList } from '@/components/cards'
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import InfiniteMiniCardScroll from '@/components/InfiniteMiniCardScroll'
-import MiniCardList from '@/components/MiniCardList'
+import InfiniteMiniCardScroll from '@/components/infinite-card-scroll'
 import { MiniCardListSkeleton } from '@/components/skeletons'
 import MoveExtractor from '@/extractors/MoveExtractor'
-import { MovesApi } from '@/services/MovesApi'
+import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import MoveExtractor from '@/extractors/MoveExtractor'
-import { MovesApi } from '@/services/MovesApi'
+import { MovesApi } from '@/services'
 
 import { MoveTable } from './MoveTable'
 

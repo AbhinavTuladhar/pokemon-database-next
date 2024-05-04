@@ -1,6 +1,5 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
 import {
   SectionTitle,
   TableCell,
@@ -8,6 +7,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
+import BlueLink from '@/components/link'
 import { EggGroup, NamedApiResource } from '@/types'
 import formatName from '@/utils/formatName'
 

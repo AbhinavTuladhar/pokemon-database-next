@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { TypeCard } from '@/components/cards'
 import {
   SectionTitle,
   TableCell,
@@ -7,8 +8,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import MoveCategoryImage from '@/components/MoveCategoryImage'
-import TypeCard from '@/components/TypeCard'
+import MoveCategoryImage from '@/components/move-category-image'
 import formatName from '@/utils/formatName'
 
 interface MoveDataProps {

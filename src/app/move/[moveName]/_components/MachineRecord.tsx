@@ -10,7 +10,7 @@ import {
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
-import { MachineApi } from '@/services/MachineApi'
+import { MachineApi } from '@/services'
 import type { MachineVersionDetail } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 

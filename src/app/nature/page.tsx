@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/containers'
 import NatureExtractor from '@/extractors/NatureExtractor'
-import { NatureApi } from '@/services/NatureApi'
+import { NatureApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {

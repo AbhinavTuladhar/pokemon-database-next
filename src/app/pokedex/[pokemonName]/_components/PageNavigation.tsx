@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlueLink from '@/components/BlueLink'
+import BlueLink from '@/components/link'
 
 export const PageNavigation = () => {
   const linkData = [

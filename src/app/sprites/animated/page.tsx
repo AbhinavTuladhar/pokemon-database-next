@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import generationData from '@/data/generationData'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 
 import { GenerationSection, PageNavigation } from './_components'
 

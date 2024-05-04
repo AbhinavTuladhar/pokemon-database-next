@@ -1,13 +1,12 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
+import { TypeCard } from '@/components/cards'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import TypeCard from '@/components/TypeCard'
+import BlueLink from '@/components/link'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
-import { SpeciesApi } from '@/services/SpeciesApi'
+import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 interface TableProps {

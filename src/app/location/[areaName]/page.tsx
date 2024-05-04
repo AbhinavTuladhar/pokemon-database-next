@@ -3,8 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import LocationExtractor from '@/extractors/LocationExtractor'
-import { EncountersApi } from '@/services/EncountersApi'
-import { LocationApi } from '@/services/LocationApi'
+import { EncountersApi, LocationApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { GenerationSection, LocationPageSkeleton } from './_components'

@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react'
 
+import { EvolutionPokemonCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import EvolutionPokemonCard from '@/components/EvolutionPokemonCard'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { EvolutionApi } from '@/services/EvolutionApi'
-import { PokemonApi } from '@/services/PokemonApi'
+import { EvolutionApi, PokemonApi } from '@/services'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 

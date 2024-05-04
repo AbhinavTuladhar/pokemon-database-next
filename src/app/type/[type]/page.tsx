@@ -1,12 +1,11 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
+import { MiniCardList, TypeCard } from '@/components/cards'
 import { PageTitle, SectionTitle } from '@/components/containers'
-import MiniCardList from '@/components/MiniCardList'
 import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
-import TypeCard from '@/components/TypeCard'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import { TypesApi } from '@/services/TypesApi'
+import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { DualTypeChart, ProsAndConsSection, StatAverageRow, TypeSummaryRow } from './_components'

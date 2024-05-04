@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import BlueLink from '@/components/link'
 import formatName, { formatText } from '@/utils/formatName'
 
 interface ItemData {

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import { PokemonApi } from '@/services/PokemonApi'
+import BlueLink from '@/components/link'
+import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 const getAdjacentPokemonNames = async (offset: number) => {

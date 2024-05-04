@@ -9,7 +9,7 @@ interface TypeCardProps {
   variant?: 'small' | 'big' | 'text'
 }
 
-const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' }) => {
+export const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' }) => {
   const typeKey = typeName?.toLowerCase()
   const backgroundColour = 'bg-' + typeMapping[typeKey]
   const targetLink = `/type/${typeName}`
@@ -33,5 +33,3 @@ const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' })
     </Link>
   )
 }
-
-export default TypeCard

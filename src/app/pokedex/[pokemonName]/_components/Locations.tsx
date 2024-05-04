@@ -7,7 +7,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import { EncountersApi } from '@/services/EncountersApi'
+import { EncountersApi } from '@/services'
 import { LocationAreaEncounter } from '@/types'
 import formatName from '@/utils/formatName'
 

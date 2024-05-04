@@ -3,7 +3,7 @@ import { Fira_Sans } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
 import { AnimatedPageWrapper } from '@/components/containers'
-import Header from '@/components/Header'
+import Header from '@/components/header'
 import Navbar from '@/components/navbar'
 
 import './globals.css'

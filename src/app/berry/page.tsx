@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 
+import { Tooltip } from '@/components/client-components'
 import {
   PageTitle,
   TableCell,
@@ -8,11 +9,9 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import { Tooltip } from '@/components/ReactTooltip'
 import BerryExtractor from '@/extractors/BerryExtractor'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
-import { BerryApi } from '@/services/BerryApi'
-import { ItemApi } from '@/services/ItemApi'
+import { BerryApi, ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {

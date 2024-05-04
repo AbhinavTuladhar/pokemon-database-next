@@ -5,7 +5,7 @@ import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PokemonTableSkeleton } from '@/components/skeletons'
 import AbilityExtractor from '@/extractors/AbilityExtractor'
-import { AbilityApi } from '@/services/AbilityApi'
+import { AbilityApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { AbilityDescription, PokemonTable } from './_components'

@@ -1,17 +1,14 @@
 import React, { Fragment } from 'react'
 
+import { Tooltip } from '@/components/client-components'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import { TypesApi } from '@/services/TypesApi'
+import { TypesApi } from '@/services'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
+import multiplierToString from '@/utils/multiplierToString'
 
-import multiplierToString from '../utils/multiplierToString'
-
-import MiniTypeCard from './MiniTypeCard'
-import { Tooltip } from './ReactTooltip'
-import TypeCard from './TypeCard'
-import TypeMultiplierBox from './TypeMultiplierBox'
+import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '../../../components/cards'
 
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
@@ -35,7 +32,7 @@ const getAllTypeData = async () => {
   return transformedTypeData
 }
 
-const TypeChartFull = async () => {
+export const TypeChart = async () => {
   const typeData = await getAllTypeData()
 
   // To show the defending and attacking types.
@@ -135,5 +132,3 @@ const TypeChartFull = async () => {
     </>
   )
 }
-
-export default TypeChartFull
