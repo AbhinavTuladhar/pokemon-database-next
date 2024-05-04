@@ -54,6 +54,11 @@ export const ItemExtractor = (item: Item) => {
   // Strip away the 'Held: ' prefix in the short entry
   const shortEntry = shortEntryTemp.replace('Held: ', '')
   const longEntry = tempEntry ? tempEntry.effect : ''
+
+  // Long entries for vendor items are stupid compared to the short entries.
+  const finalLongEntry =
+    longEntry === 'Cult vendor trash.' || longEntry === 'Vendor trash.' ? shortEntry : longEntry
+
   const firstGen = game_indices.length > 0 ? game_indices[0].generation.name : 'unknown'
 
   const [generationString, generationNumber] = firstGen.split('-')
@@ -79,7 +84,7 @@ export const ItemExtractor = (item: Item) => {
     id,
     name,
     sprite,
-    longEntry,
+    longEntry: finalLongEntry,
     flavourTextEntries: flavor_text_entries,
     names,
     fling_effect,
