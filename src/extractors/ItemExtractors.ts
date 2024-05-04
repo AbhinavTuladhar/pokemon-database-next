@@ -34,7 +34,7 @@ export const ItemCategoryExtractor = (data: ItemCategory) => {
 export const ItemExtractor = (item: Item) => {
   const {
     attributes,
-    category: { name: category },
+    category: tempCategory,
     cost,
     effect_entries,
     flavor_text_entries,
@@ -44,7 +44,7 @@ export const ItemExtractor = (item: Item) => {
     id,
     name,
     names,
-    sprites: { default: sprite },
+    sprites: tempSprite,
   } = item
 
   const tempEntry = effect_entries.find(entry => entry.language.name === 'en')
@@ -74,6 +74,10 @@ export const ItemExtractor = (item: Item) => {
       versionName: entry.version_group.name,
       generation: gameToGenerationMap[entry.version_group.name],
     }))
+
+  const category = tempCategory.name ?? 'unknown'
+
+  const sprite = tempSprite.default ?? ''
 
   return {
     attributes: attributeNames,
