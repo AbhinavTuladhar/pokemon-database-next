@@ -1,8 +1,9 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
+import debounce from 'lodash.debounce'
 import { IoMdSearch } from 'react-icons/io'
 
 import SearchResultRow from './search-result-row'
@@ -27,19 +28,34 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
     setFilteredData([])
   }, [pathName])
 
+  const handleFilter = useCallback(
+    (value: string) => {
+      const searchQuery = value.trim().toLowerCase()
+
+      if (searchQuery.length < 2) {
+        setFilteredData([])
+        return
+      }
+      const filteredList = searchList.filter(item =>
+        item.name.replace('-', ' ').includes(searchQuery),
+      )
+      setFilteredData(filteredList.slice(0, 10))
+    },
+    [searchList],
+  )
+
+  const debouncedChange = useMemo(
+    () =>
+      debounce((value: string) => {
+        handleFilter(value)
+      }, 250),
+    [handleFilter],
+  )
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     setSearchText(value)
-    handleFilter(value)
-  }
-
-  const handleFilter = (value: string) => {
-    if (value.length < 2) {
-      setFilteredData([])
-      return
-    }
-    const filteredList = searchList.filter(item => item.name.replace('-', ' ').includes(value))
-    setFilteredData(filteredList.slice(0, 10))
+    debouncedChange(value)
   }
 
   return (

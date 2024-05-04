@@ -1,6 +1,7 @@
 'use client'
 
-import React, { ChangeEvent, FC, useState } from 'react'
+import React, { ChangeEvent, FC, useCallback, useMemo, useState } from 'react'
+import debounce from 'lodash.debounce'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import Input from '@/components/input'
@@ -16,17 +17,33 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const [filteredData, setFilteredData] = useState(abilityData)
   const [filterText, setFilterText] = useState('')
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchString = event.target.value.toLowerCase()
-    setFilterText(searchString)
-    if (!searchString) {
-      setFilteredData(abilityData)
-    } else {
+  const handleFilter = useCallback(
+    (value: string) => {
+      const searchString = value.trim().toLowerCase()
+      if (!searchString) {
+        setFilteredData(abilityData)
+        return
+      }
       const filteredSlice = abilityData.filter(ability =>
-        ability.name.replace('-', ' ').includes(searchString.trim()),
+        ability.name.replace('-', ' ').includes(searchString),
       )
       setFilteredData(filteredSlice)
-    }
+    },
+    [abilityData],
+  )
+
+  const debouncedChange = useMemo(
+    () =>
+      debounce((value: string) => {
+        handleFilter(value)
+      }, 250),
+    [handleFilter],
+  )
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const rawInput = event.target.value
+    setFilterText(rawInput)
+    debouncedChange(rawInput)
   }
 
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']

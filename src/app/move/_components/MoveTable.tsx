@@ -19,13 +19,14 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const [filterText, setFilterText] = useState('')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchString = event.target.value.toLowerCase()
-    setFilterText(searchString)
+    const rawInput = event.target.value
+    setFilterText(rawInput)
+    const searchString = rawInput.trim().toLowerCase()
     if (!searchString) {
       setFilteredData(moveData)
     } else {
       const filteredSlice = moveData.filter(move =>
-        move.moveName.replace('-', ' ').includes(searchString.trim()),
+        move.moveName.replace('-', ' ').includes(searchString),
       )
       setFilteredData(filteredSlice)
     }
