@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { PokemonStat } from '@/types'
 import { getCatchRate } from '@/utils/pokemonUtils'
 
@@ -26,7 +28,7 @@ interface TrainingInfoProps {
   stats: Array<PokemonStat>
 }
 
-const TrainingInfo: FC<TrainingInfoProps> = ({
+export const TrainingInfo: FC<TrainingInfoProps> = ({
   capture_rate,
   base_happiness,
   base_experience,
@@ -86,5 +88,3 @@ const TrainingInfo: FC<TrainingInfoProps> = ({
     </div>
   )
 }
-
-export default TrainingInfo

@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 
-import TypeSummaryCard from './TypeSummaryCard'
+import { TypeSummaryCard } from './TypeSummaryCard'
 
 interface SummaryRowProps {
   typeName: string
@@ -17,7 +17,7 @@ const getPokemonData = async (names: Array<string>) => {
   return response.map(PokemonExtractor)
 }
 
-const TypeSummaryRow: FC<SummaryRowProps> = async ({
+export const TypeSummaryRow: FC<SummaryRowProps> = async ({
   typeName,
   moveCount,
   pokemonCount,
@@ -43,5 +43,3 @@ const TypeSummaryRow: FC<SummaryRowProps> = async ({
     </div>
   )
 }
-
-export default TypeSummaryRow

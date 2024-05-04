@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import TypeCard from '@/components/TypeCard'
-import TypeChartFull from '@/components/TypeChartFull'
-import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import { TypeCard, TypeMultiplierBox } from '@/components/cards'
+import { PageTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
+
+import { TypeChart } from './_components'
 
 export const metadata: Metadata = {
   title: 'Pokémon Types | Pokémon Database',
@@ -57,7 +57,7 @@ const TypeListing = () => {
             </div>
           </div>
           <div className="mt-4 flex w-full justify-center lg:justify-end">
-            <TypeChartFull />
+            <TypeChart />
           </div>
         </section>
       </section>

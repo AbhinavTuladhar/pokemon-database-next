@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import languageNameMapping from '@/data/languageNameMapping'
 import { Name } from '@/types'
 
@@ -40,7 +42,7 @@ interface OtherLanguageProps {
   hideTitle?: boolean
 }
 
-const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => {
+export const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => {
   let languagesList = names.map(obj => {
     const {
       language: { name: languageName },
@@ -69,5 +71,3 @@ const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => {
     </>
   )
 }
-
-export default OtherLanguages

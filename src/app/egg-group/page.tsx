@@ -1,14 +1,16 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import BlueLink from '@/components/BlueLink'
-import PageTitle from '@/components/containers/PageTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  PageTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
+import BlueLink from '@/components/link'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {
@@ -39,12 +41,12 @@ const EggGroupTable = async () => {
           <TableContainer>
             <thead>
               <TableRow className="bg-table-header">
-                <TableCellHeader className="border-table-border border-r pr-4" type="column">
+                <TableCellHeader className="border-r border-table-border pr-4" type="column">
                   {' '}
                   Name{' '}
                 </TableCellHeader>
                 <TableCellHeader
-                  className="border-table-border border-r-0 pr-4 text-right"
+                  className="border-r-0 border-table-border pr-4 text-right"
                   type="column"
                 >
                   Pokemon

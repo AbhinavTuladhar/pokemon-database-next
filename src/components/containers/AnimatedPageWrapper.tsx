@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 
-export default function AnimtedPageWrapper({ children }: { children: React.ReactNode }) {
+export function AnimatedPageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}

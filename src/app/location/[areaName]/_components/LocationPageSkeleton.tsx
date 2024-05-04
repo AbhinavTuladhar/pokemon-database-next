@@ -1,9 +1,9 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
+import { PokemonTableSkeleton } from '@/components/skeletons'
 
-const LocationPageSkeleton = () => {
+export const LocationPageSkeleton = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <Skeleton
@@ -19,5 +19,3 @@ const LocationPageSkeleton = () => {
     </div>
   )
 }
-
-export default LocationPageSkeleton

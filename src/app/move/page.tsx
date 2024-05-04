@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import SearchablePageSkeleton from '@/components/Suspense/SearchablePageSkeleton'
+import { PageTitle } from '@/components/containers'
+import { SearchablePageSkeleton } from '@/components/skeletons'
 
-import MoveTableWrapper from './_components/MoveTableWrapper'
+import { MoveTableWrapper } from './_components'
 
 export const metadata: Metadata = {
   title: 'Pokémon move list | Pokémon Database',

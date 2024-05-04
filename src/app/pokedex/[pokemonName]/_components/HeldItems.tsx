@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
+import BlueLink from '@/components/link'
 import { individualGameMap } from '@/data/gameNameMap'
 import { PokemonHeldItem } from '@/types'
 import formatName from '@/utils/formatName'
@@ -16,7 +18,7 @@ interface HeldItemProps {
   held_items: Array<PokemonHeldItem>
 }
 
-const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
+export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
   if (held_items.length === 0) {
     return
   }
@@ -60,5 +62,3 @@ const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
     </>
   )
 }
-
-export default HeldItems

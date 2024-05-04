@@ -1,15 +1,13 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import PageTitle from '@/components/containers/PageTitle'
-import Description from '@/components/dynamicRoutes/Description'
-import OtherLanguages from '@/components/dynamicRoutes/OtherLanguages'
+import { PageTitle } from '@/components/containers'
+import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
-import { ItemApi } from '@/services/ItemApi'
+import { ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import GameDescriptions from './_components/GameDescriptions'
-import ItemData from './_components/ItemData'
+import { GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
   const response = await ItemApi.getByName(name)

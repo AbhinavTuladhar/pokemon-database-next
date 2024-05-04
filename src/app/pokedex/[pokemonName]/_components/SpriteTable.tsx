@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers/SectionTitle'
 import { GenerationSprite } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -11,7 +11,7 @@ interface SpriteTableProps {
   spriteCollection: Array<GenerationSprite>
 }
 
-const SpriteTable: FC<SpriteTableProps> = ({ pokemonName, spriteCollection }) => {
+export const SpriteTable: FC<SpriteTableProps> = ({ pokemonName, spriteCollection }) => {
   /* 
   Get only those objects which don't have two null values for the sprite Url
   Generation 1 has no shiny sprite, hence the threshold.
@@ -46,5 +46,3 @@ const SpriteTable: FC<SpriteTableProps> = ({ pokemonName, spriteCollection }) =>
     </>
   )
 }
-
-export default SpriteTable

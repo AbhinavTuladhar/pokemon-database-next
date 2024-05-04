@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
-import TableContainer from '@/components/containers/TableContainer'
+import { TableContainer } from '@/components/containers'
+import BlueLink from '@/components/link'
 import formatName from '@/utils/formatName'
 
 interface TableProps {
@@ -10,7 +10,7 @@ interface TableProps {
   pokemonName: string
 }
 
-const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
+export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
   const gifSources = [
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`,
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/shiny/${id}.gif`,
@@ -48,5 +48,3 @@ const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
     </TableContainer>
   )
 }
-
-export default SpriteTable

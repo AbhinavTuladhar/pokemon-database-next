@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import { PokemonApi } from '@/services/PokemonApi'
+import BlueLink from '@/components/link'
+import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 const getAdjacentPokemonNames = async (offset: number) => {
@@ -13,7 +13,7 @@ interface LinksParams {
   id: number
 }
 
-const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
+export const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
   // Skip rendering for pokemon forms.
   if (id >= 10_000) {
     return
@@ -65,5 +65,3 @@ const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
     </div>
   )
 }
-
-export default AdjacentLinks

@@ -2,14 +2,14 @@ import { FC } from 'react'
 
 import type { NamedApiResource, Pokemon } from '@/types'
 
-import SpriteTable from './SpriteTable'
+import { SpriteTable } from './SpriteTable'
 
 interface SectionProps {
   generationNumber: number
   pokemonData: Array<NamedApiResource<Pokemon>>
 }
 
-const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonData }) => {
+export const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonData }) => {
   return (
     <div className="space-y-4 border-b-2 border-gray-300 pb-8">
       <h2 className="text-4xl font-bold"> Generation {generationNumber} </h2>
@@ -23,5 +23,3 @@ const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonData }) 
     </div>
   )
 }
-
-export default GenerationSection

@@ -1,20 +1,14 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
-import MiniCardList from '@/components/MiniCardList'
-import MiniCardListSkeleton from '@/components/Suspense/MiniCardListSkeleton'
-import TypeSummarySkeleton from '@/components/Suspense/TypeSummarySkeleton'
-import TypeCard from '@/components/TypeCard'
+import { MiniCardList, TypeCard } from '@/components/cards'
+import { PageTitle, SectionTitle } from '@/components/containers'
+import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import { TypesApi } from '@/services/TypesApi'
+import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import DualTypeChart from './_components/DualTypeChart'
-import ProsAndConsSection from './_components/ProsAndConsSection'
-import StatAverageRow from './_components/StatAverageRow'
-import TypeSummaryRow from './_components/TypeSummaryRow'
+import { DualTypeChart, ProsAndConsSection, StatAverageRow, TypeSummaryRow } from './_components'
 
 interface PageProps {
   params: {

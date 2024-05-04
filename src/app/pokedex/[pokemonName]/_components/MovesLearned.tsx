@@ -1,13 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
 import MoveExtractor from '@/extractors/MoveExtractor'
-import { MovesApi } from '@/services/MovesApi'
+import { MovesApi } from '@/services'
 import { Move, NamedApiResource, PokemonMove, PokemonMoveVersion, TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
-import stringifyUrl from '@/utils/stringifyUrl'
 
-import MovesTable from './MovesTable'
+import { MovesTable } from './MovesTable'
 
 interface MoveData {
   version_group_details: PokemonMoveVersion[]
@@ -17,17 +16,12 @@ interface MoveData {
 // This is for filtering out the moves on depending on how it is learnt - only for SM.
 const separateMoves = ({ data, learnMethod }: { data: Array<MoveData>; learnMethod: string }) => {
   const movesLearnt = data.map(move => {
-    const {
-      version_group_details,
-      move: { name, url },
-    } = move // this is an array
+    const { version_group_details } = move // this is an array
     const filteredMoves = version_group_details.filter(
       version => version.move_learn_method.name === learnMethod,
     )
-    const replacedUrl = stringifyUrl(url, name)
     return {
       name: move.move.name,
-      moveURL: replacedUrl,
       version_group_details: filteredMoves,
     }
   })
@@ -45,7 +39,7 @@ interface MovesLearnProps {
   moves: Array<PokemonMove>
 }
 
-const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
+export const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   const properPokemonName = formatName(pokemonName)
 
   // Consider that the latest gen is 7.
@@ -175,5 +169,3 @@ const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
     </div>
   )
 }
-
-export default MovesLearned

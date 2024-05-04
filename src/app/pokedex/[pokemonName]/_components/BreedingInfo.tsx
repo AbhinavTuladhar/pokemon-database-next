@@ -1,11 +1,13 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
+import BlueLink from '@/components/link'
 import { EggGroup, NamedApiResource } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -25,7 +27,7 @@ const generateGenderInfo = (genderRate: number) => {
   return [`${maleRatio}% male`, `${femaleRatio}% female`]
 }
 
-const BreedingInfo: FC<BreedingInfoProps> = ({
+export const BreedingInfo: FC<BreedingInfoProps> = ({
   egg_groups,
   gender_rate,
   hatch_counter,
@@ -86,5 +88,3 @@ const BreedingInfo: FC<BreedingInfoProps> = ({
     </div>
   )
 }
-
-export default BreedingInfo

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
+import BlueLink from '@/components/link'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 const getGroupList = async () => {
@@ -18,7 +18,7 @@ const getAllGroupData = async (names: string[]) => {
   return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
 }
 
-const GroupList = async () => {
+export const GroupList = async () => {
   const groupList = await getGroupList()
 
   const eggGroupData = await getAllGroupData(groupList)
@@ -40,5 +40,3 @@ const GroupList = async () => {
     </section>
   )
 }
-
-export default GroupList

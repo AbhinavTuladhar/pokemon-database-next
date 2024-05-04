@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
 import gameNameMap from '@/data/gameNameMap'
 
@@ -26,7 +28,7 @@ interface DescriptionProps {
   descriptions: Array<DescriptionInterface>
 }
 
-const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
+export const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
   const groupedData = descriptions
     .filter(description => !gameBlackLists.includes(description.versionName))
     .reduce((acc, curr) => {
@@ -81,5 +83,3 @@ const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
     </>
   )
 }
-
-export default AbilityDescription

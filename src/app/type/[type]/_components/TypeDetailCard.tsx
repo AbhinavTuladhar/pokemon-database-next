@@ -8,7 +8,7 @@ interface TypeCardProps {
   typeName: string
 }
 
-const TypeDetailCard: FC<TypeCardProps> = ({ moveCount, pokemonCount, typeName }) => {
+export const TypeDetailCard: FC<TypeCardProps> = ({ moveCount, pokemonCount, typeName }) => {
   // Now include only the Pokemon + their forms up to generation 7 only.
   // const pokemonCount = pokemonList
   //   ?.map((url) => {
@@ -31,5 +31,3 @@ const TypeDetailCard: FC<TypeCardProps> = ({ moveCount, pokemonCount, typeName }
     </section>
   )
 }
-
-export default TypeDetailCard

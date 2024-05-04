@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import SectionTitle from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/containers'
+import BlueLink from '@/components/link'
 import { PokemonSpeciesVariety } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -10,7 +10,7 @@ interface VarietiesProps {
   varieties: Array<PokemonSpeciesVariety>
 }
 
-const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties }) => {
+export const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties }) => {
   // Filter out gen 8+ forms
   const varietiesFiltered = varieties.filter(form => {
     const {
@@ -45,5 +45,3 @@ const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties }) => {
     </>
   )
 }
-
-export default PokemonVarieties

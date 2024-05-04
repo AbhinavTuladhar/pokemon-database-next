@@ -1,11 +1,7 @@
 import React from 'react'
 
 import unusedItems from '@/data/unusedItems'
-import { AbilityApi } from '@/services/AbilityApi'
-import { ItemApi } from '@/services/ItemApi'
-import { LocationApi } from '@/services/LocationApi'
-import { MovesApi } from '@/services/MovesApi'
-import { PokemonApi } from '@/services/PokemonApi'
+import { AbilityApi, ItemApi, LocationApi, MovesApi, PokemonApi } from '@/services'
 
 import SearchInput from './search-input'
 

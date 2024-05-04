@@ -1,16 +1,14 @@
 import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import SectionTitle from '@/components/containers/SectionTitle'
-import PokemonTableSkeleton from '@/components/Suspense/PokemonTableSkeleton'
+import { PageTitle, SectionTitle } from '@/components/containers'
+import { PokemonTableSkeleton } from '@/components/skeletons'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import { EggGroupApi } from '@/services/EggGroupApi'
+import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { getResourceId } from '@/utils/urlUtils'
 
-import GroupList from './_components/GroupList'
-import PokemonTable from './_components/PokemonTable'
+import { GroupList, PokemonTable } from './_components'
 
 interface PageProps {
   params: {

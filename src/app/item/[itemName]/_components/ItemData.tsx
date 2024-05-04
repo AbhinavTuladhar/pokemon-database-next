@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { TransformedItem } from '@/types'
 import { formatText } from '@/utils/formatName'
 
@@ -13,7 +15,13 @@ type DataProps = Pick<
   'attributes' | 'category' | 'cost' | 'fling_effect' | 'fling_power'
 >
 
-const ItemData: FC<DataProps> = ({ attributes, category, cost, fling_effect, fling_power }) => {
+export const ItemData: FC<DataProps> = ({
+  attributes,
+  category,
+  cost,
+  fling_effect,
+  fling_power,
+}) => {
   const attributeDiv = (
     <ul>
       {attributes.map((attribute, index) => (
@@ -48,5 +56,3 @@ const ItemData: FC<DataProps> = ({ attributes, category, cost, fling_effect, fli
     </>
   )
 }
-
-export default ItemData

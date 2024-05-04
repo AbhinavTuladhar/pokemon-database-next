@@ -3,7 +3,7 @@
 import { FC, useEffect, useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
-import BlueLink from '@/components/BlueLink'
+import BlueLink from '@/components/link'
 import formatName from '@/utils/formatName'
 
 interface RegionData {

@@ -1,10 +1,12 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  SectionTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
 import { individualGameMap } from '@/data/gameNameMap'
 import { FlavourText } from '@/types/utils/Common'
@@ -38,7 +40,7 @@ interface DexEntriesProps {
   flavourTextEntries: Array<FlavourText>
 }
 
-const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
+export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   if (flavourTextEntries.length <= 0) {
     return null
   }
@@ -95,5 +97,3 @@ const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     </>
   )
 }
-
-export default PokeDexEntries

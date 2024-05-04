@@ -1,20 +1,17 @@
 import React, { FC, Fragment } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
-import { Tooltip } from '@/components/ReactTooltip'
+import { Tooltip } from '@/components/client-components'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import BlueLink from '@/components/link'
 import generationToGameListMap from '@/data/generationToGameListMap'
 import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
-import { LocationAreaApi } from '@/services/LocationApi'
+import { LocationAreaApi } from '@/services'
 import { EncounterMethod, GroupedLocationArea, TransformedLocation } from '@/types'
 import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
 
-import GameBox from './GameBox'
+import { GameBox } from './GameBox'
 
 interface SectionProps {
   locationData: TransformedLocation
@@ -41,7 +38,7 @@ const getSubLocationData = async (names: string[]) => {
   return responses.map(LocationAreaExtractor)
 }
 
-const GenerationSection: FC<SectionProps> = async ({ locationData, methodData }) => {
+export const GenerationSection: FC<SectionProps> = async ({ locationData, methodData }) => {
   const subLocationNames = locationData.subLocations.map(subLocation => subLocation.name)
   const subLocationData = await getSubLocationData(subLocationNames)
 
@@ -112,7 +109,7 @@ const GenerationSection: FC<SectionProps> = async ({ locationData, methodData })
       {header.map((headerName, index) => (
         <TableCellHeader
           type="column"
-          className={`${headerName === 'Games' ? '!px-0' : ''} border-table-border border-r pr-4 !text-center last:border-r-0`}
+          className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-table-border pr-4 !text-center last:border-r-0`}
           key={index}
         >
           {headerName}
@@ -259,5 +256,3 @@ const GenerationSection: FC<SectionProps> = async ({ locationData, methodData })
     </>
   )
 }
-
-export default GenerationSection

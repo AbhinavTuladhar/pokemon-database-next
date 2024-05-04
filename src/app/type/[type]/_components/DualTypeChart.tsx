@@ -1,9 +1,7 @@
 import { FC, JSX } from 'react'
 
-import MiniTypeCard from '@/components/MiniTypeCard'
-import { Tooltip } from '@/components/ReactTooltip'
-import TypeCard from '@/components/TypeCard'
-import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
+import { Tooltip } from '@/components/client-components/ReactTooltip'
 import typeList from '@/data/typeList'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
@@ -16,7 +14,7 @@ interface DualTypeChartProps {
   noDamageTo: Array<string>
 }
 
-const DualTypeChart: FC<DualTypeChartProps> = ({
+export const DualTypeChart: FC<DualTypeChartProps> = ({
   doubleDamageTo,
   halfDamageTo,
   noDamageTo,
@@ -102,5 +100,3 @@ const DualTypeChart: FC<DualTypeChartProps> = ({
     </>
   )
 }
-
-export default DualTypeChart

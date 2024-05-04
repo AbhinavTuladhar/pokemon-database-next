@@ -11,7 +11,7 @@ interface ProsAndConsProps {
   noDamageMessage: string
 }
 
-const ProsAndConsInfo: FC<ProsAndConsProps> = ({
+export const ProsAndConsInfo: FC<ProsAndConsProps> = ({
   doubeDamageList,
   doubleDamageMessage,
   halfDamageList,
@@ -52,5 +52,3 @@ const ProsAndConsInfo: FC<ProsAndConsProps> = ({
     )}
   </div>
 )
-
-export default ProsAndConsInfo

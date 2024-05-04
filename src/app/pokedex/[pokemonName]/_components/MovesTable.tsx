@@ -1,12 +1,9 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/BlueLink'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
-import MoveCategoryImage from '@/components/MoveCategoryImage'
-import TypeCard from '@/components/TypeCard'
+import { TypeCard } from '@/components/cards'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import BlueLink from '@/components/link'
+import MoveCategoryImage from '@/components/move-category-image'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -19,7 +16,7 @@ interface MovesTableProps {
   levelFlag?: boolean
 }
 
-const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
+export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
   const firstRow = ['Lv.', 'Name', 'Type', 'Class', 'PP', 'Power', 'Acc.']
 
   const firstRowLabels = levelFlag === true ? firstRow : firstRow.slice(1)
@@ -70,5 +67,3 @@ const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
     </TableContainer>
   )
 }
-
-export default MovesTable

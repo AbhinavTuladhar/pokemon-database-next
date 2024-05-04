@@ -1,11 +1,10 @@
 import { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import MiniTypeCard from '@/components/MiniTypeCard'
-import { Tooltip } from '@/components/ReactTooltip'
-import TypeMultiplierBox from '@/components/TypeMultiplierBox'
+import { MiniTypeCard, TypeMultiplierBox } from '@/components/cards'
+import { Tooltip } from '@/components/client-components'
+import { SectionTitle } from '@/components/containers'
 import TypeExtractor from '@/extractors/TypeExtractor'
-import { TypesApi } from '@/services/TypesApi'
+import { TypesApi } from '@/services'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
@@ -45,7 +44,7 @@ const getTypesData = async (names: Array<string>) => {
   return response.map(TypeExtractor)
 }
 
-const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
+export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeNames = types.map(type => formatName(type.type.name))
   const typeNamesString = typeNames.join('/')
 
@@ -91,5 +90,3 @@ const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
     </section>
   )
 }
-
-export default TypeChart

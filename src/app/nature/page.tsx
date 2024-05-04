@@ -1,12 +1,14 @@
 import { Metadata } from 'next'
 
-import PageTitle from '@/components/containers/PageTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
+import {
+  PageTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import NatureExtractor from '@/extractors/NatureExtractor'
-import { NatureApi } from '@/services/NatureApi'
+import { NatureApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {
@@ -32,7 +34,7 @@ const NatureList = async () => {
     <TableRow className="bg-table-header font-bold">
       {headerNames.map((header, index) => (
         <TableCellHeader
-          className="border-table-border !w-36 border-x border-r pr-4 text-center last:border-r-0"
+          className="!w-36 border-x border-r border-table-border pr-4 text-center last:border-r-0"
           type="column"
           key={index}
         >

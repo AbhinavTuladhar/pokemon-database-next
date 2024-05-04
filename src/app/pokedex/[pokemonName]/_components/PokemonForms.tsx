@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
-import SectionTitle from '@/components/containers/SectionTitle'
-import PokeFormCard from '@/components/PokeFormCard'
+import { PokeFormCard } from '@/components/cards'
+import { SectionTitle } from '@/components/containers/SectionTitle'
 import PokemonFormExtractor from '@/extractors/PokemonFormExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 import { getResourceId } from '@/utils/urlUtils'
 
 const getFormData = async (ids: Array<string>) => {
@@ -15,7 +15,7 @@ interface FormProps {
   urls: Array<string>
 }
 
-const PokemonForms: FC<FormProps> = async ({ urls }) => {
+export const PokemonForms: FC<FormProps> = async ({ urls }) => {
   if (urls.length === 1) {
     return
   }
@@ -44,5 +44,3 @@ const PokemonForms: FC<FormProps> = async ({ urls }) => {
     </>
   )
 }
-
-export default PokemonForms

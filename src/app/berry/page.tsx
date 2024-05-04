@@ -1,16 +1,17 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 
-import PageTitle from '@/components/containers/PageTitle'
-import TableCell from '@/components/containers/TableCell'
-import TableCellHeader from '@/components/containers/TableCellHeader'
-import TableContainer from '@/components/containers/TableContainer'
-import TableRow from '@/components/containers/TableRow'
-import { Tooltip } from '@/components/ReactTooltip'
+import { Tooltip } from '@/components/client-components'
+import {
+  PageTitle,
+  TableCell,
+  TableCellHeader,
+  TableContainer,
+  TableRow,
+} from '@/components/containers'
 import BerryExtractor from '@/extractors/BerryExtractor'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
-import { BerryApi } from '@/services/BerryApi'
-import { ItemApi } from '@/services/ItemApi'
+import { BerryApi, ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {

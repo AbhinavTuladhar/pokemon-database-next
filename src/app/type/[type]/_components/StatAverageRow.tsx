@@ -2,10 +2,10 @@ import React, { FC, Fragment } from 'react'
 
 import statMapping from '@/data/statMapping'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services/PokemonApi'
+import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
-import TypeSummaryCard from './TypeSummaryCard'
+import { TypeSummaryCard } from './TypeSummaryCard'
 
 const statNames = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed']
 
@@ -32,7 +32,7 @@ const getPokemonData = async (names: Array<string>) => {
   return response.map(PokemonExtractor)
 }
 
-const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
+export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
   const pokemonData = await getPokemonData(pokemon)
 
   const statAverages = statNames.map(statName =>
@@ -49,5 +49,3 @@ const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
     </div>
   )
 }
-
-export default StatAverageRow

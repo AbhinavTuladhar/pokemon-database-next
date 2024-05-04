@@ -2,8 +2,8 @@
 
 import { ChangeEvent, FC, Fragment, useState } from 'react'
 
-import Input from '@/components/Input'
-import PokeCard from '@/components/PokeCard'
+import { PokeCard } from '@/components/cards'
+import Input from '@/components/input'
 import type { TransformedPokemon } from '@/types'
 
 import PokeCardContainer from './PokeCardContainer'
