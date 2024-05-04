@@ -1,7 +1,6 @@
 'use client'
 
-import { ChangeEvent, FC, useCallback, useEffect, useMemo, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import debounce from 'lodash.debounce'
 import { IoMdSearch } from 'react-icons/io'
@@ -18,15 +17,13 @@ interface InputProps {
 }
 
 const SearchInput: FC<InputProps> = ({ searchList }) => {
-  const pathName = usePathname()
   const [searchText, setSearchText] = useState('')
   const [filteredData, setFilteredData] = useState<Array<ResourceData>>([])
 
-  // Reset the state whenever going to a different route.
-  useEffect(() => {
+  const closeMenu = () => {
     setSearchText('')
     setFilteredData([])
-  }, [pathName])
+  }
 
   const handleFilter = useCallback(
     (value: string) => {
@@ -81,7 +78,12 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
             className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black"
           >
             {filteredData.map(({ name, resourceType }) => (
-              <SearchResultRow key={name} name={name} resourceType={resourceType} />
+              <SearchResultRow
+                closeMenu={closeMenu}
+                key={name}
+                name={name}
+                resourceType={resourceType}
+              />
             ))}
           </motion.div>
         )}
