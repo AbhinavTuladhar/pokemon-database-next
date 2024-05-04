@@ -15,8 +15,8 @@ const SearchResultRow: FC<RowProps> = ({ name, resourceType }) => {
       key={name}
       href={`/${resourceType}/${name}`}
     >
-      <span> {formatName(name)} </span>
-      <span> {formatName(resourceType)}</span>
+      <span className="font-bold"> {formatName(name)} </span>
+      <span className="font-thin text-gray-300"> {formatName(resourceType)}</span>
     </Link>
   )
 }

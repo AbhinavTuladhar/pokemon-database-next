@@ -34,11 +34,15 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   }
 
   const handleFilter = (value: string) => {
-    if (value.length < 2) {
+    const searchQuery = value.trim().toLowerCase()
+
+    if (searchQuery.length < 2) {
       setFilteredData([])
       return
     }
-    const filteredList = searchList.filter(item => item.name.replace('-', ' ').includes(value))
+    const filteredList = searchList.filter(item =>
+      item.name.replace('-', ' ').includes(searchQuery),
+    )
     setFilteredData(filteredList.slice(0, 10))
   }
 

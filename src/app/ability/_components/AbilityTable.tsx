@@ -17,13 +17,14 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const [filterText, setFilterText] = useState('')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchString = event.target.value.toLowerCase()
-    setFilterText(searchString)
+    const rawInput = event.target.value
+    setFilterText(rawInput)
+    const searchString = rawInput.trim().toLowerCase()
     if (!searchString) {
       setFilteredData(abilityData)
     } else {
       const filteredSlice = abilityData.filter(ability =>
-        ability.name.replace('-', ' ').includes(searchString.trim()),
+        ability.name.replace('-', ' ').includes(searchString),
       )
       setFilteredData(filteredSlice)
     }
