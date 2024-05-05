@@ -1,7 +1,7 @@
-import { FC, JSX } from 'react'
+import { FC } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
-import { Tooltip } from '@/components/client-components/ReactTooltip'
+import { Tooltip } from '@/components/client-components'
 import typeList from '@/data/typeList'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
@@ -21,7 +21,6 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   typeName,
 }) => {
   const mainType = typeName
-  const toolTips: Array<JSX.Element> = []
 
   // Calculate all the dual-type combinations possible
   const typeRows = typeList.flatMap(type => {
@@ -60,13 +59,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
           : 1
       const multiplierString = multiplierToString(multiplierValue)
 
-      const tooltipKey = `${rowIndex}-${cellIndex}-tooltip`
-
-      toolTips.push(
-        <Tooltip anchorSelect={`#${firstType || 'a'}-${secondType || 'b'}`} key={tooltipKey}>
-          <span className="text-xs">{`${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`}</span>
-        </Tooltip>,
-      )
+      const tooltipContent = `${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`
 
       if (cellIndex === 0) {
         return <TypeCard typeName={type} variant="big" key={cellIndex} />
@@ -74,7 +67,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
         return <TypeMultiplierBox multiplier={1} className="bg-gray-700" key={cellIndex} />
       } else {
         return (
-          <div id={`${firstType}-${secondType}`} key={cellIndex}>
+          <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
             <TypeMultiplierBox multiplier={multiplierValue} />
           </div>
         )
@@ -94,7 +87,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
         <div className="inline-flex flex-col">
           <div className="flex flex-row gap-x-px">{firstRow}</div>
           <>{tableRows}</>
-          <>{toolTips}</>
+          <Tooltip id="my-tooltip" style={{ fontSize: '0.75rem' }} />
         </div>
       </div>
     </>
