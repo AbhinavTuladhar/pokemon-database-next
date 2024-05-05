@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
+import { SectionTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
 import { TransformedType } from '@/types'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
@@ -8,9 +9,14 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 interface DualTypeChartProps {
   baseType: string
   attackingTypeInfo: Array<Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>>
+  sectionTitleFlag: boolean
 }
 
-const DualTypeChart: FC<DualTypeChartProps> = ({ baseType, attackingTypeInfo }) => {
+export const DualTypeChart: FC<DualTypeChartProps> = ({
+  baseType,
+  attackingTypeInfo,
+  sectionTitleFlag,
+}) => {
   // Sorting like this brings the identical array ('fire', 'fire') to the top.
   const typeCombinations = typeList
     .map(type => [baseType, type])
@@ -71,16 +77,17 @@ const DualTypeChart: FC<DualTypeChartProps> = ({ baseType, attackingTypeInfo }) 
   )
 
   return (
-    <section className="overflow-auto">
-      <div className="flex gap-x-px">
-        <div className="flex flex-col gap-y-px">
-          {cornerDiv}
-          {firstColumnCards}
+    <section>
+      {sectionTitleFlag && <SectionTitle> Type Chart </SectionTitle>}
+      <div className="overflow-auto">
+        <div className="flex gap-x-px">
+          <div className="flex flex-col gap-y-px">
+            {cornerDiv}
+            {firstColumnCards}
+          </div>
+          <div className="flex flex-col gap-y-px">{talbeRows}</div>
         </div>
-        <div className="flex flex-col gap-y-px">{talbeRows}</div>
       </div>
     </section>
   )
 }
-
-export default DualTypeChart

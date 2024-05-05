@@ -1,11 +1,16 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services'
 
-import DualTypeChart from './_components/DualTypeChart'
+import { DualTypeChart, SideDescription } from './_components'
+
+export const metadata: Metadata = {
+  title: 'Pokémon dual-type charts | Pokémon Database',
+}
 
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
@@ -30,13 +35,21 @@ const DualTypePage = async () => {
   return (
     <main>
       <PageTitle> Pokémon dual-type charts </PageTitle>
-      {typeList.map(type => (
-        <DualTypeChart
-          key={type}
-          baseType={type}
-          attackingTypeInfo={typeData.map(data => data.attackingTypeInfo)}
-        />
-      ))}
+      <div className="grid grid-cols-12 justify-between gap-x-8 gap-y-6">
+        <div className="col-span-12 lg:col-span-3">
+          <SideDescription />
+        </div>
+        <div className="col-span-12 flex w-full flex-col lg:col-span-9 lg:items-end">
+          {typeList.map((type, index) => (
+            <DualTypeChart
+              key={type}
+              baseType={type}
+              attackingTypeInfo={typeData.map(data => data.attackingTypeInfo)}
+              sectionTitleFlag={index === 0}
+            />
+          ))}
+        </div>
+      </div>
     </main>
   )
 }
