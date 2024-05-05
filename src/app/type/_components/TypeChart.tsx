@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 
+import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { Tooltip } from '@/components/client-components'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
@@ -7,8 +8,6 @@ import { TypesApi } from '@/services'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
-
-import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '../../../components/cards'
 
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
@@ -74,18 +73,21 @@ export const TypeChart = async () => {
 
     const tableCells = defenceInfo?.map((defendingType, cellIndex) => {
       const { typeName: attackingTypeName, multiplier } = defendingType
+      const effectString = multiplierToString(multiplier)
+      const tooltipContent = `${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`
+
       if (cellIndex === 0) {
         return (
           <div key={`cell-${cellIndex}`}>
             <MiniTypeCard typeName={defendingTypeName} />
-            <div id={`${attackingTypeName}-${defendingTypeName}`}>
+            <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
               <TypeMultiplierBox multiplier={multiplier} />
             </div>
           </div>
         )
       } else {
         return (
-          <div id={`${attackingTypeName}-${defendingTypeName}`} key={`multiplier-${cellIndex}`}>
+          <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
             <TypeMultiplierBox multiplier={multiplier} />
           </div>
         )
@@ -99,26 +101,6 @@ export const TypeChart = async () => {
     )
   })
 
-  const tooltips = typeData?.map(type => {
-    const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
-
-    return defenceInfo?.map((defendingType, innerIndex) => {
-      const { typeName: attackingTypeName, multiplier } = defendingType
-      const effectString = multiplierToString(multiplier)
-      return (
-        <Tooltip
-          anchorSelect={`#${attackingTypeName}-${defendingTypeName}`}
-          key={`tooltip-${innerIndex}`}
-          place="bottom"
-        >
-          <span className="text-xs">
-            {`${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`}
-          </span>
-        </Tooltip>
-      )
-    })
-  })
-
   return (
     <>
       <div className="overflow-auto">
@@ -128,7 +110,7 @@ export const TypeChart = async () => {
         </div>
       </div>
 
-      <>{tooltips}</>
+      <Tooltip id="my-tooltip" className="text-lg" style={{ fontSize: '0.75rem' }} />
     </>
   )
 }
