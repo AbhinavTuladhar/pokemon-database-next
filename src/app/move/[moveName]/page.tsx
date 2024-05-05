@@ -78,7 +78,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
         <div className="space-y-8">
           <section>
-            <MoveTarget targetType={targetType} />
+            <MoveTarget targetType={targetType} moveName={moveName} />
           </section>
           <section>
             <OtherLanguages names={names} />

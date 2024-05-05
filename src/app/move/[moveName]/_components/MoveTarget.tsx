@@ -35,10 +35,11 @@ const PokemonTargetBox: FC<TargetBoxProps> = ({ text, flag, targeted }) => {
 
 interface TargetProps {
   targetType: string
+  moveName: string
 }
 
-export const MoveTarget: FC<TargetProps> = ({ targetType }) => {
-  const targetInformation = buildMoveTargetData(targetType)
+export const MoveTarget: FC<TargetProps> = ({ targetType, moveName }) => {
+  const targetInformation = buildMoveTargetData(targetType, moveName)
 
   const { allyInformation, description, foeInformation } = targetInformation
 

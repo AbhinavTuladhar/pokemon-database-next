@@ -4,8 +4,9 @@
  * The first and second contain information about which ally/allies and foe(s) is/are targeted.
  * The third key contains the text to display below the diagram.
  * @param {string} targetType
+ * @param {string} moveName
  */
-const buildMoveTargetData = (targetType: string) => {
+const buildMoveTargetData = (targetType: string, moveName: string) => {
   // First consider the base case, in which no one is the user and no one is targeted.
   const foeInformation = Array(3)
     .fill(0)
@@ -103,6 +104,23 @@ const buildMoveTargetData = (targetType: string) => {
 
     default:
       description = 'not programmed lmao'
+      break
+  }
+
+  // For the specific moves
+  switch (moveName) {
+    case 'counter':
+    case 'mirror-coat':
+    case 'curse':
+      description = 'Targets the user.'
+      allyInformation[0].targeted = true
+      break
+    case 'metal-burst':
+      description = 'Targets a single adjacent Pokémon.'
+      allyInformation[1].targeted = true
+      foeInformation.slice(0, 2).forEach(foe => (foe.targeted = true))
+      break
+    default:
       break
   }
 
