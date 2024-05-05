@@ -37,7 +37,7 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
         dataLength={pokemonData.length}
         next={fetchMorePokemon}
         hasMore={hasMore}
-        scrollThreshold="25vh"
+        scrollThreshold="50vh"
         loader={
           <div className="mt-4">
             <MiniCardListSkeleton pokemonCount={20} />
