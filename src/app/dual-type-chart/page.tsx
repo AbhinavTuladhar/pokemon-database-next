@@ -36,10 +36,10 @@ const DualTypePage = async () => {
     <main>
       <PageTitle> Pokémon dual-type charts </PageTitle>
       <div className="grid grid-cols-12 justify-between gap-x-8 gap-y-6">
-        <div className="col-span-12 lg:col-span-3">
+        <div className="col-span-12 lg:col-span-3 xl:col-span-4">
           <SideDescription />
         </div>
-        <div className="col-span-12 flex w-full flex-col lg:col-span-9 lg:items-end">
+        <div className="col-span-12 flex w-full flex-col lg:col-span-9 mdlg:items-end xl:col-span-8">
           {typeList.map((type, index) => (
             <DualTypeChart
               key={type}
