@@ -39,7 +39,13 @@ const DualTypeChart: FC<DualTypeChartProps> = ({ baseType, attackingTypeInfo }) 
     )
   })
 
-  const firstRow = typeList.map((type, index) => <MiniTypeCard typeName={type} key={index} />)
+  const firstRow = (
+    <div className="flex gap-x-px">
+      {typeList.map((type, index) => (
+        <MiniTypeCard typeName={type} key={index} />
+      ))}
+    </div>
+  )
 
   const otherRows = typeCombinations.map((typeCombo, rowIndex) => {
     const rowDiv = typeList.map((_, colIndex) => {
@@ -59,8 +65,8 @@ const DualTypeChart: FC<DualTypeChartProps> = ({ baseType, attackingTypeInfo }) 
 
   const talbeRows = (
     <div className="flex flex-col">
-      <div className="flex gap-x-px">{firstRow}</div>
-      <>{otherRows}</>
+      {firstRow}
+      {otherRows}
     </div>
   )
 
