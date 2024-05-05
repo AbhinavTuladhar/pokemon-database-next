@@ -22,6 +22,7 @@ const Navbar = () => {
     { path: '/ability', name: 'Abilities' },
     { path: '/item', name: 'Items' },
     { path: '/sprites/animated', name: 'Animated sprites' },
+    { path: '/location', name: 'Locations' },
   ]
 
   const mechanicsLinks = [
@@ -29,7 +30,6 @@ const Navbar = () => {
     { path: '/nature', name: 'Natures' },
     { path: '/type', name: 'Types' },
     { path: '/egg-group', name: 'Egg groups' },
-    { path: '/location', name: 'Locations' },
   ]
   const iconClassName = 'w-5 h-5'
 

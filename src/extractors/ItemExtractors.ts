@@ -34,7 +34,7 @@ export const ItemCategoryExtractor = (data: ItemCategory) => {
 export const ItemExtractor = (item: Item) => {
   const {
     attributes,
-    category: { name: category },
+    category: tempCategory,
     cost,
     effect_entries,
     flavor_text_entries,
@@ -44,7 +44,7 @@ export const ItemExtractor = (item: Item) => {
     id,
     name,
     names,
-    sprites: { default: sprite },
+    sprites: tempSprite,
   } = item
 
   const tempEntry = effect_entries.find(entry => entry.language.name === 'en')
@@ -54,6 +54,11 @@ export const ItemExtractor = (item: Item) => {
   // Strip away the 'Held: ' prefix in the short entry
   const shortEntry = shortEntryTemp.replace('Held: ', '')
   const longEntry = tempEntry ? tempEntry.effect : ''
+
+  // Long entries for vendor items are stupid compared to the short entries.
+  const finalLongEntry =
+    longEntry === 'Cult vendor trash.' || longEntry === 'Vendor trash.' ? shortEntry : longEntry
+
   const firstGen = game_indices.length > 0 ? game_indices[0].generation.name : 'unknown'
 
   const [generationString, generationNumber] = firstGen.split('-')
@@ -70,6 +75,10 @@ export const ItemExtractor = (item: Item) => {
       generation: gameToGenerationMap[entry.version_group.name],
     }))
 
+  const category = tempCategory.name ?? 'unknown'
+
+  const sprite = tempSprite.default ?? ''
+
   return {
     attributes: attributeNames,
     category,
@@ -79,7 +88,7 @@ export const ItemExtractor = (item: Item) => {
     id,
     name,
     sprite,
-    longEntry,
+    longEntry: finalLongEntry,
     flavourTextEntries: flavor_text_entries,
     names,
     fling_effect,
