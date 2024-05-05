@@ -5,6 +5,7 @@ import { SkeletonTheme } from 'react-loading-skeleton'
 import { AnimatedPageWrapper } from '@/components/containers'
 import Header from '@/components/header'
 import Navbar from '@/components/navbar'
+import Scroll from '@/components/scroll'
 
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={FiraSans.className}>
         <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
+          <Scroll />
           <div className="min-h-screen max-w-full bg-gray-800 text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
