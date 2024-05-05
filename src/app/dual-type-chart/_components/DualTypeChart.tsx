@@ -60,18 +60,20 @@ const DualTypeChart: FC<DualTypeChartProps> = ({ baseType, attackingTypeInfo }) 
   const talbeRows = (
     <div className="flex flex-col">
       <div className="flex gap-x-px">{firstRow}</div>
-      {otherRows}
+      <>{otherRows}</>
     </div>
   )
 
   return (
-    <div className="flex gap-x-px">
-      <div className="flex flex-col gap-y-px">
-        {cornerDiv}
-        {firstColumnCards}
+    <section className="overflow-auto">
+      <div className="flex gap-x-px">
+        <div className="flex flex-col gap-y-px">
+          {cornerDiv}
+          {firstColumnCards}
+        </div>
+        <div className="flex flex-col gap-y-px">{talbeRows}</div>
       </div>
-      <div className="flex flex-col gap-y-px">{talbeRows}</div>
-    </div>
+    </section>
   )
 }
 

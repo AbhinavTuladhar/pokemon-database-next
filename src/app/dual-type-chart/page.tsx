@@ -30,7 +30,7 @@ const DualTypePage = async () => {
   return (
     <main>
       <PageTitle> Pokémon dual-type charts </PageTitle>
-      {typeList.map((type, index) => (
+      {typeList.map(type => (
         <DualTypeChart
           key={type}
           baseType={type}
