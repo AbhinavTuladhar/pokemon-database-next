@@ -29,7 +29,7 @@ const generationSpriteColumns: SpriteColumnType = {
   },
   3: {
     columnNames: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
-    rowNames: ['Emerald', 'FireRed, LeafGreen', 'Ruby, Sapphire'],
+    rowNames: ['Emerald', 'Ruby, Sapphire', 'FireRed, LeafGreen'],
     keyName: 'generation3Sprites',
   },
   2: {
@@ -38,7 +38,7 @@ const generationSpriteColumns: SpriteColumnType = {
     keyName: 'generation2Sprites',
   },
   1: {
-    columnNames: ['Normal', 'Back'],
+    columnNames: ['Normal (colour)', 'Normal', 'Back (colour)', 'Back'],
     rowNames: ['Yellow', 'Red, Blue'],
     keyName: 'generation1Sprites',
   },

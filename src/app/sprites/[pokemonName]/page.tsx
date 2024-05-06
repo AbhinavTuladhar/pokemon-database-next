@@ -6,6 +6,7 @@ import generationSpriteColumns from '@/data/generationSpriteColumns'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpriteExtractor from '@/extractors/SpriteExtractor'
 import { PokemonApi } from '@/services'
+import { SpriteDataType } from '@/types'
 import formatName from '@/utils/formatName'
 
 import { GenerationSection, Intro } from './_components'
@@ -57,8 +58,17 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
             key={generation}
             columnNames={genData.columnNames}
             rowNames={genData.rowNames}
+            imageData={spriteData as SpriteDataType}
+            keyName={genData.keyName}
           />
         ))}
+        {/* <GenerationSection
+          imageData={spriteData as SpriteDataType}
+          generation={+sortedGenerationData[3][0]}
+          columnNames={sortedGenerationData[3][1].columnNames}
+          rowNames={sortedGenerationData[3][1].rowNames}
+          keyName={sortedGenerationData[3][1].keyName}
+        /> */}
       </section>
     </main>
   )

@@ -65,11 +65,23 @@ interface GenericNamedResource {
   url: string
 }
 
+// First - the generation
+// Second - the game name
+// Third - the actual sprite key
+interface SpriteDataType {
+  [key: string]: {
+    [key: string]: {
+      [key: string]: string | null
+    }
+  }
+}
+
 export type {
   EvolutionPokemon,
   GenerationSprite,
   GenericNamedResource,
   GroupedLocationArea,
+  SpriteDataType,
   StatTable,
   TransformedAbility,
   TransformedEncounter,

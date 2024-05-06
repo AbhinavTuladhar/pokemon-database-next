@@ -10,14 +10,14 @@ const SpriteExtractor = (data: Pokemon) => {
   const officialArtwork = other['official-artwork']
 
   // Dream world sprites
-  const { front_default: dreamWorldFrontDefault, front_female: dreamWorldFrontFemale } = dream_world
+  const { front_default: dreamWorldFrontDefault } = dream_world
 
   // Home spritess
   const {
     front_default: homeFrontDefault,
-    front_female: homeFrontFemale,
+    // // front_female: homeFrontFemale,
     front_shiny: homeFrontShiny,
-    front_shiny_female: homeFrontShinyFemale,
+    // // front_shiny_female: homeFrontShinyFemale,
   } = home
 
   // Official sprites
@@ -27,25 +27,25 @@ const SpriteExtractor = (data: Pokemon) => {
   // Animated showdown sprites
   const {
     front_default: showdownFrontDefault,
-    front_female: showdownFrontFemale,
+    // // front_female: showdownFrontFemale,
     front_shiny: showdownFrontShiny,
-    front_shiny_female: showdownFrontShinyFemale,
+    // // front_shiny_female: showdownFrontShinyFemale,
     back_default: showdownBackDefault,
-    back_female: showdownBackFemale,
+    // // back_female: showdownBackFemale,
     back_shiny: showdownBackShiny,
-    back_shiny_female: showdownBackShinyFemale,
+    // // back_shiny_female: showdownBackShinyFemale,
   } = showdown
 
   const dreamWorldSprites = {
     dreamWorldFrontDefault,
-    dreamWorldFrontFemale,
+    // dreamWorldFrontFemale,
   }
 
   const homeSprites = {
     homeFrontDefault,
-    homeFrontFemale,
+    // homeFrontFemale,
     homeFrontShiny,
-    homeFrontShinyFemale,
+    // homeFrontShinyFemale,
   }
 
   const officialArtworkSprites = {
@@ -55,13 +55,13 @@ const SpriteExtractor = (data: Pokemon) => {
 
   const showdownSprites = {
     showdownFrontDefault,
-    showdownFrontFemale,
+    // showdownFrontFemale,
     showdownFrontShiny,
-    showdownFrontShinyFemale,
+    // showdownFrontShinyFemale,
     showdownBackDefault,
-    showdownBackFemale,
+    // showdownBackFemale,
     showdownBackShiny,
-    showdownBackShinyFemale,
+    // showdownBackShinyFemale,
   }
 
   /**
@@ -85,42 +85,42 @@ const SpriteExtractor = (data: Pokemon) => {
   const {
     back_default: redBlueBackDefault,
     back_gray: redBlueBackGray,
-    back_transparent: redBlueBackTransparent,
+    // back_transparent: redBlueBackTransparent,
     front_default: redBlueFrontDefault,
     front_gray: redBlueFrontGray,
-    front_transparent: redBlueFrontTransparent,
+    // front_transparent: redBlueFrontTransparent,
   } = redBlue
 
   const {
     back_default: yellowBackDefault,
     back_gray: yellowBackGray,
-    back_transparent: yellowBackTransparent,
+    // back_transparent: yellowBackTransparent,
     front_default: yellowFrontDefault,
     front_gray: yellowFrontGray,
-    front_transparent: yellowFrontTransparent,
+    // front_transparent: yellowFrontTransparent,
   } = yellow
 
   const redBlueSprites = {
-    redBlueBackDefault,
-    redBlueBackGray,
-    redBlueBackTransparent,
     redBlueFrontDefault,
     redBlueFrontGray,
-    redBlueFrontTransparent,
+    redBlueBackDefault,
+    redBlueBackGray,
+    // redBlueBackTransparent,
+    // redBlueFrontTransparent,
   }
 
   const yellowSprites = {
-    yellowBackDefault,
-    yellowBackGray,
-    yellowBackTransparent,
     yellowFrontDefault,
     yellowFrontGray,
-    yellowFrontTransparent,
+    yellowBackGray,
+    yellowBackDefault,
+    // yellowBackTransparent,
+    // yellowFrontTransparent,
   }
 
   const generation1Sprites = {
-    redBlueSprites,
     yellowSprites,
+    redBlueSprites,
   }
 
   /**
@@ -129,30 +129,30 @@ const SpriteExtractor = (data: Pokemon) => {
   const { crystal, gold, silver } = generation2
 
   const crystalSprites = {
-    backDefaultCrystal: crystal.back_default,
-    backShinyCrystal: crystal.back_shiny,
-    backShinyTransparent: crystal.back_shiny_transparent,
-    backTransparentCrystal: crystal.back_transparent,
     frontDefaultCrystal: crystal.front_default,
     frontShinyCrystal: crystal.front_shiny,
-    frontShinyTransparentCrystal: crystal.front_shiny_transparent,
-    frontTransparentCrystal: crystal.front_transparent,
+    backDefaultCrystal: crystal.back_default,
+    backShinyCrystal: crystal.back_shiny,
+    // frontTransparentCrystal: crystal.front_transparent,
+    // frontShinyTransparentCrystal: crystal.front_shiny_transparent,
+    // backTransparentCrystal: crystal.back_transparent,
+    // backShinyTransparent: crystal.back_shiny_transparent,
   }
 
   const goldSprites = {
-    backDefaultGold: gold.back_default,
-    backShinyGold: gold.back_shiny,
     frontDefaultGold: gold.front_default,
     frontShinyGold: gold.front_shiny,
-    frontTransparentGold: gold.front_transparent,
+    backDefaultGold: gold.back_default,
+    backShinyGold: gold.back_shiny,
+    // frontTransparentGold: gold.front_transparent,
   }
 
   const silverSprites = {
-    backDefaultSilver: silver.back_default,
-    backShinySilver: silver.back_shiny,
     frontDefaultSilver: silver.front_default,
     frontShinySilver: silver.front_shiny,
-    frontTransparentSilver: silver.front_transparent,
+    backDefaultSilver: silver.back_default,
+    backShinySilver: silver.back_shiny,
+    // frontTransparentSilver: silver.front_transparent,
   }
 
   const generation2Sprites = {
@@ -205,42 +205,42 @@ const SpriteExtractor = (data: Pokemon) => {
   } = generation4
 
   const diamondPearlSprites = {
-    backDefaultDiamondPearl: diamondPearl.back_default,
-    backFemaleDiamondPearl: diamondPearl.back_female,
-    backShinyDiamondPearl: diamondPearl.back_shiny,
-    backShinyFemaleDiamondPearl: diamondPearl.back_shiny_female,
     frontDefaultDiamondPearl: diamondPearl.front_default,
-    frontFemaleDiamondPearl: diamondPearl.front_female,
     frontShinyDiamondPearl: diamondPearl.front_shiny,
-    frontShinyFemaleDiamondPearl: diamondPearl.front_shiny_female,
+    backDefaultDiamondPearl: diamondPearl.back_default,
+    backShinyDiamondPearl: diamondPearl.back_shiny,
+    // // backFemaleDiamondPearl: diamondPearl.back_female,
+    // // backShinyFemaleDiamondPearl: diamondPearl.back_shiny_female,
+    // // frontFemaleDiamondPearl: diamondPearl.front_female,
+    // // frontShinyFemaleDiamondPearl: diamondPearl.front_shiny_female,
   }
 
   const heartgoldSoulsilverSprites = {
-    backDefaultHeartgoldSoulsilver: heartgoldSoulsilver.back_default,
-    backFemaleHeartgoldSoulsilver: heartgoldSoulsilver.back_female,
-    backShinyHeartgoldSoulsilver: heartgoldSoulsilver.back_shiny,
-    backShinyFemaleHeartgoldSoulsilver: heartgoldSoulsilver.back_shiny_female,
     frontDefaultHeartgoldSoulsilver: heartgoldSoulsilver.front_default,
-    frontFemaleHeartgoldSoulsilver: heartgoldSoulsilver.front_female,
     frontShinyHeartgoldSoulsilver: heartgoldSoulsilver.front_shiny,
-    frontShinyFemaleHeartgoldSoulsilver: heartgoldSoulsilver.front_shiny_female,
+    backDefaultHeartgoldSoulsilver: heartgoldSoulsilver.back_default,
+    backShinyHeartgoldSoulsilver: heartgoldSoulsilver.back_shiny,
+    // // backFemaleHeartgoldSoulsilver: heartgoldSoulsilver.back_female,
+    // // backShinyFemaleHeartgoldSoulsilver: heartgoldSoulsilver.back_shiny_female,
+    // // frontFemaleHeartgoldSoulsilver: heartgoldSoulsilver.front_female,
+    // // frontShinyFemaleHeartgoldSoulsilver: heartgoldSoulsilver.front_shiny_female,
   }
 
   const platinumSprites = {
-    backDefaultPlatinum: platinum.back_default,
-    backFemalePlatinum: platinum.back_female,
-    backShinyPlatinum: platinum.back_shiny,
-    backShinyFemalePlatinum: platinum.back_shiny_female,
     frontDefaultPlatinum: platinum.front_default,
-    frontFemalePlatinum: platinum.front_female,
     frontShinyPlatinum: platinum.front_shiny,
-    frontShinyFemalePlatinum: platinum.front_shiny_female,
+    backDefaultPlatinum: platinum.back_default,
+    backShinyPlatinum: platinum.back_shiny,
+    // // backFemalePlatinum: platinum.back_female,
+    // // backShinyFemalePlatinum: platinum.back_shiny_female,
+    // // frontFemalePlatinum: platinum.front_female,
+    // // frontShinyFemalePlatinum: platinum.front_shiny_female,
   }
 
   const generation4Sprites = {
-    diamondPearlSprites,
     heartgoldSoulsilverSprites,
     platinumSprites,
+    diamondPearlSprites,
   }
 
   /**
@@ -250,26 +250,30 @@ const SpriteExtractor = (data: Pokemon) => {
   const { 'black-white': blackWhite } = generation5
 
   const blackWhiteSprites = {
-    animatedBackDefault: blackWhite.animated.back_default,
-    animatedBackFemale: blackWhite.animated.back_female,
-    animatedBackShiny: blackWhite.animated.back_shiny,
-    animatedBackShinyFemale: blackWhite.animated.back_shiny_female,
-    animatedFrontDefault: blackWhite.animated.front_default,
-    animatedFrontFemale: blackWhite.animated.front_female,
-    animatedFrontShiny: blackWhite.animated.front_shiny,
-    animatedFrontShinyFemale: blackWhite.animated.front_shiny_female,
-    backDefault: blackWhite.back_default,
-    backFemale: blackWhite.back_female,
-    backShiny: blackWhite.back_shiny,
-    backShinyFemale: blackWhite.back_shiny_female,
     frontDefault: blackWhite.front_default,
-    frontFemale: blackWhite.front_female,
     frontShiny: blackWhite.front_shiny,
-    frontShinyFemale: blackWhite.front_shiny_female,
+    backDefault: blackWhite.back_default,
+    backShiny: blackWhite.back_shiny,
+    // // animatedBackFemale: blackWhite.animated.back_female,
+    // // animatedBackShinyFemale: blackWhite.animated.back_shiny_female,
+    // // animatedFrontFemale: blackWhite.animated.front_female,
+    // // animatedFrontShinyFemale: blackWhite.animated.front_shiny_female,
+    // // backFemale: blackWhite.back_female,
+    // // backShinyFemale: blackWhite.back_shiny_female,
+    // // frontFemale: blackWhite.front_female,
+    // // frontShinyFemale: blackWhite.front_shiny_female,
+  }
+
+  const blackWhiteAnimatedSprites = {
+    animatedFrontDefault: blackWhite.animated.front_default,
+    animatedFrontShiny: blackWhite.animated.front_shiny,
+    animatedBackDefault: blackWhite.animated.back_default,
+    animatedBackShiny: blackWhite.animated.back_shiny,
   }
 
   const generation5Sprites = {
     blackWhiteSprites,
+    blackWhiteAnimatedSprites,
   }
 
   /**
@@ -280,15 +284,15 @@ const SpriteExtractor = (data: Pokemon) => {
   const ORAS_Sprites = {
     frontDefaultORAS: ORAS.front_default,
     frontShinyORAS: ORAS.front_shiny,
-    frontFemaleORAS: ORAS.front_female,
-    frontShinyFemaleORAS: ORAS.front_shiny_female,
+    // // frontFemaleORAS: ORAS.front_female,
+    // // frontShinyFemaleORAS: ORAS.front_shiny_female,
   }
 
   const XY_Sprites = {
     frontDefaultXY: XY.front_default,
     frontShinyXY: XY.front_shiny,
-    frontFemaleXY: XY.front_female,
-    frontShinyFemaleXY: XY.front_shiny_female,
+    // // frontFemaleXY: XY.front_female,
+    // // frontShinyFemaleXY: XY.front_shiny_female,
   }
 
   const generation6Sprites = {
@@ -300,22 +304,23 @@ const SpriteExtractor = (data: Pokemon) => {
 
   const generation7Sprites = {
     sunMoonSprites: {
+      frontDefaultIcons: icons.front_default,
       frontDefaultSunMoon: sunMoon.front_default,
       frontShinySunMoon: sunMoon.front_shiny,
-      frontFemaleSunMoon: sunMoon.front_female,
-      frontShinyFemaleSunMoon: sunMoon.front_shiny_female,
-    },
-    iconsSprites: {
-      frontDefaultIcons: icons.front_default,
-      frontFemaleIcons: icons.front_female,
+      // // frontFemaleSunMoon: sunMoon.front_female,
+      // // frontShinyFemaleSunMoon: sunMoon.front_shiny_female,
     },
   }
 
-  return {
+  const otherSprites = {
     dreamWorldSprites,
     homeSprites,
     officialArtworkSprites,
     showdownSprites,
+  }
+
+  return {
+    otherSprites,
     generation1Sprites,
     generation2Sprites,
     generation3Sprites,
