@@ -4,6 +4,8 @@ import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
 import SearchBar from '@/components/searchbar'
 
+import DarkModeSwitch from '../dark-mode'
+
 import TopLevelMenu from './top-level-menu'
 
 const Navbar = () => {
@@ -53,8 +55,9 @@ const Navbar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="w-full min-w-48 p-2 min-[800px]:w-auto">
+        <li className="flex w-full min-w-48 gap-x-2 p-2 min-[800px]:w-auto">
           <SearchBar />
+          <DarkModeSwitch />
         </li>
       </ul>
     </nav>

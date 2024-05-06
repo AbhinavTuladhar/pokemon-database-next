@@ -49,6 +49,7 @@ module.exports = {
       )
     }),
   ],
+  darkMode: 'class',
   safelist: [
     'bg-greyYellow',
     'bg-gray-400',
