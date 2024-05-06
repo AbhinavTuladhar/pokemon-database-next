@@ -1,11 +1,47 @@
-const generationSpriteColumns: Record<number, Array<string>> = {
-  7: ['Icon', 'Normal', 'Shiny'],
-  6: ['Normal', 'Shiny'],
-  5: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
-  4: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
-  3: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
-  2: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
-  1: ['Normal', 'Back'],
+interface SpriteColumnType {
+  [key: number | string]: {
+    columnNames: Array<string>
+    rowNames: Array<string>
+    keyName: string
+  }
+}
+
+const generationSpriteColumns: SpriteColumnType = {
+  7: {
+    columnNames: ['Icon', 'Normal', 'Shiny'],
+    rowNames: ['Sun, Moon'],
+    keyName: 'generation7Sprites',
+  },
+  6: {
+    columnNames: ['Normal', 'Shiny'],
+    rowNames: ['Omega Ruby, Alpha Sapphire', 'X, Y'],
+    keyName: 'generation6Sprites',
+  },
+  5: {
+    columnNames: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
+    rowNames: ['Black, White', 'Black, White, Animated'],
+    keyName: 'generation5Sprites',
+  },
+  4: {
+    columnNames: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
+    rowNames: ['HeartGold, Soulsilver', 'Platinum', 'Diamond, Pearl'],
+    keyName: 'generation4Sprites',
+  },
+  3: {
+    columnNames: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
+    rowNames: ['Emerald', 'FireRed, LeafGreen', 'Ruby, Sapphire'],
+    keyName: 'generation3Sprites',
+  },
+  2: {
+    columnNames: ['Normal', 'Shiny', 'Back', 'Back, Shiny'],
+    rowNames: ['Crystal', 'Gold', 'Silver'],
+    keyName: 'generation2Sprites',
+  },
+  1: {
+    columnNames: ['Normal', 'Back'],
+    rowNames: ['Yellow', 'Red, Blue'],
+    keyName: 'generation1Sprites',
+  },
 }
 
 export default generationSpriteColumns

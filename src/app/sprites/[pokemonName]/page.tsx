@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { PageTitle, SectionTitle, TableContainer } from '@/components/containers'
+import { PageTitle, SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
 import generationSpriteColumns from '@/data/generationSpriteColumns'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
@@ -8,7 +8,7 @@ import SpriteExtractor from '@/extractors/SpriteExtractor'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import { Intro, SpriteTableHeader } from './_components'
+import { GenerationSection, Intro } from './_components'
 
 const getPokemonData = async (name: string) => {
   const pokemonData = await PokemonApi.getByName(name)
@@ -30,7 +30,7 @@ interface SpritePageProps {
 const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
 
-  const { id, spriteCollection } = pokemonData
+  const { id, spriteCollection, ...spriteData } = pokemonData
 
   const sortedGenerationData = Object.entries(generationSpriteColumns).sort((a, b) =>
     a[0] < b[0] ? 1 : -1,
@@ -51,13 +51,13 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
         <SpriteTable spriteCollection={spriteCollection} />
       </section>
       <section>
-        {sortedGenerationData.map(([generation, columns]) => (
-          <section key={generation}>
-            <SectionTitle> Generation {generation} </SectionTitle>
-            <TableContainer>
-              <SpriteTableHeader key={generation} columns={columns} />
-            </TableContainer>
-          </section>
+        {sortedGenerationData.map(([generation, genData]) => (
+          <GenerationSection
+            generation={+generation}
+            key={generation}
+            columnNames={genData.columnNames}
+            rowNames={genData.rowNames}
+          />
         ))}
       </section>
     </main>
