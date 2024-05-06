@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { SectionTitle } from '@/components/containers'
 import type { NamedApiResource, Pokemon } from '@/types'
 
 import { SpriteTable } from './SpriteTable'
@@ -11,8 +12,8 @@ interface SectionProps {
 
 export const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonData }) => {
   return (
-    <div className="space-y-4 border-b-2 border-gray-300 pb-8">
-      <h2 className="text-4xl font-bold"> Generation {generationNumber} </h2>
+    <section className="border-b-2 border-gray-300 pb-8">
+      <SectionTitle>Generation {generationNumber}</SectionTitle>
       <div className="grid grid-cols-sprite-table gap-10">
         {pokemonData.map((row, index) => {
           // Get the id number for the gif
@@ -20,6 +21,6 @@ export const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonD
           return <SpriteTable id={idNumber} pokemonName={row.name} key={index} />
         })}
       </div>
-    </div>
+    </section>
   )
 }
