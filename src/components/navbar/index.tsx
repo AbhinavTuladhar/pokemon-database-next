@@ -21,6 +21,7 @@ const Navbar = () => {
     { path: '/move', name: 'Moves' },
     { path: '/ability', name: 'Abilities' },
     { path: '/item', name: 'Items' },
+    { path: '/sprites', name: 'Sprite gallery' },
     { path: '/sprites/animated', name: 'Animated sprites' },
     { path: '/location', name: 'Locations' },
   ]

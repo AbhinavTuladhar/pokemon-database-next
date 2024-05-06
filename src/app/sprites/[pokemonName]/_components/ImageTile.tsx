@@ -12,7 +12,13 @@ export const ImageTile: FC<TileProps> = ({ imageSource }) => {
 
   return (
     <div className="grid place-items-center gap-y-2">
-      <Image src={imageSource} alt={'sprite'} width={120} height={120} />
+      <Image
+        src={imageSource}
+        alt={'sprite'}
+        width={120}
+        height={120}
+        style={{ width: '120px', height: 'auto' }}
+      />
     </div>
   )
 }

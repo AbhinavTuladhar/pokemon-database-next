@@ -28,6 +28,7 @@ module.exports = {
         '2-flexible': 'repeat(auto-fit, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fit, minmax(min(210px, 90%), 1fr))',
         'sprite-table': 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))',
+        'mini-sprite-table': 'repeat(auto-fit, minmax(90px, 1fr))',
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',

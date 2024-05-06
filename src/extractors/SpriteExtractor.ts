@@ -10,14 +10,14 @@ const SpriteExtractor = (data: Pokemon) => {
   const officialArtwork = other['official-artwork']
 
   // Dream world sprites
-  const { front_default: dreamWorldFrontDefault } = dream_world
+  const { front_default: dreamWorldFrontDefault, front_female: dreamWorldFrontFemale } = dream_world
 
   // Home spritess
   const {
     front_default: homeFrontDefault,
-    // // front_female: homeFrontFemale,
+    front_female: homeFrontFemale,
     front_shiny: homeFrontShiny,
-    // // front_shiny_female: homeFrontShinyFemale,
+    front_shiny_female: homeFrontShinyFemale,
   } = home
 
   // Official sprites
@@ -27,25 +27,25 @@ const SpriteExtractor = (data: Pokemon) => {
   // Animated showdown sprites
   const {
     front_default: showdownFrontDefault,
-    // // front_female: showdownFrontFemale,
+    front_female: showdownFrontFemale,
     front_shiny: showdownFrontShiny,
-    // // front_shiny_female: showdownFrontShinyFemale,
+    front_shiny_female: showdownFrontShinyFemale,
     back_default: showdownBackDefault,
-    // // back_female: showdownBackFemale,
+    back_female: showdownBackFemale,
     back_shiny: showdownBackShiny,
-    // // back_shiny_female: showdownBackShinyFemale,
+    back_shiny_female: showdownBackShinyFemale,
   } = showdown
 
   const dreamWorldSprites = {
     dreamWorldFrontDefault,
-    // dreamWorldFrontFemale,
+    dreamWorldFrontFemale,
   }
 
   const homeSprites = {
     homeFrontDefault,
-    // homeFrontFemale,
+    homeFrontFemale,
     homeFrontShiny,
-    // homeFrontShinyFemale,
+    homeFrontShinyFemale,
   }
 
   const officialArtworkSprites = {
@@ -55,13 +55,13 @@ const SpriteExtractor = (data: Pokemon) => {
 
   const showdownSprites = {
     showdownFrontDefault,
-    // showdownFrontFemale,
+    showdownFrontFemale,
     showdownFrontShiny,
-    // showdownFrontShinyFemale,
+    showdownFrontShinyFemale,
     showdownBackDefault,
-    // showdownBackFemale,
+    showdownBackFemale,
     showdownBackShiny,
-    // showdownBackShinyFemale,
+    showdownBackShinyFemale,
   }
 
   /**
