@@ -1,0 +1,1 @@
+export { SpriteTable } from './SpriteTable'

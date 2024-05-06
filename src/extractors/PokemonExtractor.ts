@@ -23,10 +23,13 @@ const PokemonExtractor = (data: Pokemon) => {
       },
       versions: {
         'generation-i': {
-          yellow: { front_default: firstGenDefaultSprite },
+          yellow: { front_transparent: firstGenDefaultSprite },
         },
         'generation-ii': {
-          crystal: { front_default: secondGenDefaultSprite, front_shiny: secondGenShinySprite },
+          crystal: {
+            front_transparent: secondGenDefaultSprite,
+            front_shiny_transparent: secondGenShinySprite,
+          },
         },
         'generation-iii': {
           emerald: { front_default: thirdGenDefaultSprite, front_shiny: thirdGenShinySprite },

@@ -23,7 +23,7 @@ import {
   PokemonCry,
   PokemonForms,
   PokemonVarieties,
-  SpriteTable,
+  SpriteSection,
   TrainingInfo,
   TypeChart,
 } from './_components'
@@ -183,8 +183,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         </section>
       </Suspense>
 
-      <section id="sprites">
-        <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
+      <section className="space-y-4" id="sprites">
+        <SpriteSection pokemonName={pokemonName} spriteCollection={spriteCollection} />
       </section>
 
       <section id="locations">
