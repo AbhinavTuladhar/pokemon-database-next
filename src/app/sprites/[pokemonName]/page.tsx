@@ -9,7 +9,7 @@ import { PokemonApi } from '@/services'
 import { SpriteDataType } from '@/types'
 import formatName from '@/utils/formatName'
 
-import { GenerationSection, Intro } from './_components'
+import { AnimatedSpriteTable, GenerationSection, Intro, OtherSprites } from './_components'
 
 const getPokemonData = async (name: string) => {
   const pokemonData = await PokemonApi.getByName(name)
@@ -32,6 +32,8 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
 
   const { id, spriteCollection, ...spriteData } = pokemonData
+  const { otherSprites } = spriteData
+  const { showdownSprites } = otherSprites
 
   const sortedGenerationData = Object.entries(generationSpriteColumns).sort((a, b) =>
     a[0] < b[0] ? 1 : -1,
@@ -52,6 +54,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
         <SpriteTable spriteCollection={spriteCollection} />
       </section>
       <section>
+        <AnimatedSpriteTable imageData={showdownSprites} />
         {sortedGenerationData.map(([generation, genData]) => (
           <GenerationSection
             generation={+generation}
@@ -62,6 +65,9 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
             extraColumns={genData.extraColumns}
           />
         ))}
+      </section>
+      <section>
+        <OtherSprites imageData={{ otherSprites }} />
       </section>
     </main>
   )

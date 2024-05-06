@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import { TableHeaderWrapper } from './TableWrappers'
+
 interface HeaderProps {
   columns: Array<string>
   extraColumns: Array<string>
@@ -9,14 +11,9 @@ interface HeaderProps {
 export const SpriteTableHeader: FC<HeaderProps> = ({ columns, extraColumns, femaleFlag }) => {
   const tableColumns = femaleFlag ? ['', ...columns, ...extraColumns] : ['', ...columns]
   return (
-    <tr>
+    <tr className="table-row">
       {tableColumns.map((column, index) => (
-        <th
-          key={index}
-          className="table-cell border border-table-border bg-table-header py-2 pr-4 text-center font-bold"
-        >
-          {column}
-        </th>
+        <TableHeaderWrapper key={index}>{column}</TableHeaderWrapper>
       ))}
     </tr>
   )

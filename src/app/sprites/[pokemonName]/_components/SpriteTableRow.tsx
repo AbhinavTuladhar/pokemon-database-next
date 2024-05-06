@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { ImageTile } from './ImageTile'
+import { TableCellWrapper } from './TableWrappers'
 
 interface RowProps {
   rowHeader: string
@@ -29,8 +30,8 @@ export const SpriteTableRow: FC<RowProps> = ({ rowHeader, imageStrings }) => {
   const rowHeaders = rowHeader.split(', ')
 
   return (
-    <tr>
-      <td className="table-cell w-36 border border-table-border p-2 text-left font-bold">
+    <tr className="table-row">
+      <td className="table-cell w-36 border border-table-border p-2 font-bold">
         <div>
           {rowHeaders.map((header, index) => (
             <div className="text-center" key={index}>
@@ -40,9 +41,9 @@ export const SpriteTableRow: FC<RowProps> = ({ rowHeader, imageStrings }) => {
         </div>
       </td>
       {Object.values(newImageData).map((image, index) => (
-        <td key={index} className="table-cell min-w-36 border border-table-border py-6 text-center">
+        <TableCellWrapper key={index}>
           <ImageTile imageSource={image} />
-        </td>
+        </TableCellWrapper>
       ))}
     </tr>
   )
