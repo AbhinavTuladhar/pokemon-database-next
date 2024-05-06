@@ -18,7 +18,7 @@ export const ImageTile: FC<TileProps> = ({ imageSource }) => {
         width={120}
         height={120}
         className="object-contain"
-        style={{ width: '120px', height: 'auto' }}
+        style={{ width: '140px', height: 'auto' }}
       />
     </div>
   )

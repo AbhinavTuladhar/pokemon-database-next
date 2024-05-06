@@ -4,6 +4,7 @@ import { SectionTitle, TableContainer } from '@/components/containers'
 import { TransformedSprites } from '@/types'
 
 import { ImageTile } from './ImageTile'
+import { TableHeaderWrapper } from './TableWrappers'
 
 interface AnimatedSpriteProps {
   imageData: Pick<TransformedSprites, 'otherSprites'>['otherSprites']['showdownSprites']
@@ -44,14 +45,9 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
   const finalColumns = femaleFlag ? [...baseColumnNames, ...extraColumnNames] : baseColumnNames
 
   const firstRow = (
-    <tr>
+    <tr className="table-row">
       {finalColumns.map((column, index) => (
-        <td
-          key={index}
-          className="table-cell border border-table-border bg-table-header py-2 pr-4 text-center font-bold"
-        >
-          {column}
-        </td>
+        <TableHeaderWrapper key={index}>{column}</TableHeaderWrapper>
       ))}
     </tr>
   )
