@@ -59,6 +59,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
             columnNames={genData.columnNames}
             rowNames={genData.rowNames}
             imageData={spriteData as SpriteDataType}
+            extraColumns={genData.extraColumns}
           />
         ))}
       </section>
