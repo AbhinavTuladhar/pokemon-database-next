@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={FiraSans.className}>
         <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
           <Scroll />
-          <div className="min-h-screen max-w-full bg-neutral-200 text-black duration-300 dark:bg-gray-800 dark:text-white">
+          <div className="min-h-screen max-w-full bg-neutral-50 text-black duration-300 dark:bg-gray-800 dark:text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
               <Navbar />

@@ -15,8 +15,10 @@ export const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) =>
 
   // These are for detecting and hence styling the selected and unselected buttons.
   const imageSrc = selectedImage === 'normal' ? defaultSprite : shinySprite
-  const selectedButtonStyle = 'text-black bg-white w-24 py-0 px-4 rounded-3xl border duration-300'
-  const unselectedButtonStyle = 'text-white bg-black w-24 py-0 px-4 rounded-3xl border duration-300'
+  const selectedButtonStyle =
+    'text-white bg-black dark:text-black dark:bg-white w-24 py-0 px-4 rounded-3xl border duration-300'
+  const unselectedButtonStyle =
+    'text-black bg-white dark:text-white dark:bg-black w-24 py-0 px-4 rounded-3xl border duration-300'
 
   // For toggling between normal and shiny versions.
   const handleClick = () => {
