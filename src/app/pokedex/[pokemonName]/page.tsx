@@ -1,10 +1,7 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import BlueLink from '@/components/link'
-import { SpriteTable } from '@/components/sprite-table'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi, SpeciesApi } from '@/services'
@@ -26,6 +23,7 @@ import {
   PokemonCry,
   PokemonForms,
   PokemonVarieties,
+  SpriteSection,
   TrainingInfo,
   TypeChart,
 } from './_components'
@@ -186,13 +184,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       </Suspense>
 
       <section className="space-y-4" id="sprites">
-        <SectionTitle> {formatName(pokemonName)} Sprites </SectionTitle>
-        <SpriteTable spriteCollection={spriteCollection} />
-        <div>
-          <BlueLink boldFlag href={`/sprites/${pokemonName}/`}>
-            &gt; View all {formatName(pokemonName)} sprites
-          </BlueLink>
-        </div>
+        <SpriteSection pokemonName={pokemonName} spriteCollection={spriteCollection} />
       </section>
 
       <section id="locations">
