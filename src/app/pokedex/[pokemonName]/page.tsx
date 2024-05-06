@@ -2,6 +2,7 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
+import BlueLink from '@/components/link'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi, SpeciesApi } from '@/services'
@@ -183,8 +184,13 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         </section>
       </Suspense>
 
-      <section id="sprites">
+      <section className="space-y-4" id="sprites">
         <SpriteTable pokemonName={pokemonName} spriteCollection={spriteCollection} />
+        <div>
+          <BlueLink boldFlag href={`/sprites/${pokemonName}/`}>
+            &gt; View all {formatName(pokemonName)} sprites
+          </BlueLink>
+        </div>
       </section>
 
       <section id="locations">
