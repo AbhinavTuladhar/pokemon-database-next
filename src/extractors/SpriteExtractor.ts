@@ -112,8 +112,8 @@ const SpriteExtractor = (data: Pokemon) => {
   const yellowSprites = {
     yellowFrontDefault,
     yellowFrontGray,
-    yellowBackGray,
     yellowBackDefault,
+    yellowBackGray,
     // yellowBackTransparent,
     // yellowFrontTransparent,
   }
@@ -173,6 +173,8 @@ const SpriteExtractor = (data: Pokemon) => {
   const emeraldSprites = {
     frontDefaultEmerald: emerald.front_default,
     frontShinyEmerald: emerald.front_shiny,
+    backDefaultEmerald: rubySapphire.back_default,
+    backShinyEmerald: rubySapphire.back_shiny,
   }
 
   const rubySapphireSprites = {

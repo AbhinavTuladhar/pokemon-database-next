@@ -10,7 +10,7 @@ export const SpriteTableHeader: FC<HeaderProps> = ({ columns }) => {
       {['', ...columns].map((column, index) => (
         <th
           key={index}
-          className="table-cell border border-table-border bg-table-header py-2 pr-4 text-left font-bold"
+          className="table-cell border border-table-border bg-table-header py-2 pr-4 text-center font-bold"
         >
           {column}
         </th>

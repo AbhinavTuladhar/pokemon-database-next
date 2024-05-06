@@ -14,7 +14,7 @@ export const ImageTile: FC<TileProps> = ({ caption, imageSource }) => {
   }
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="grid place-items-center gap-y-2">
       <Image src={imageSource} alt={caption || 'sprite'} width={120} height={120} />
       {caption ? <span className="text-sm">{formatName(caption)}</span> : null}
     </div>
