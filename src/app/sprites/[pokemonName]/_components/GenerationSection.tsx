@@ -6,18 +6,11 @@ import { SpriteDataType } from '@/types'
 import { SpriteTableHeader } from './SpriteTableHeader'
 import { SpriteTableRow } from './SpriteTableRow'
 
-interface SpriteType {
-  [key: string]: {
-    [key: string]: string | null
-  }
-}
-
 interface SectionProps {
   generation: number
   columnNames: Array<string>
   rowNames: Array<string>
   imageData: SpriteDataType
-  keyName: string
 }
 
 export const GenerationSection: FC<SectionProps> = ({
@@ -25,13 +18,19 @@ export const GenerationSection: FC<SectionProps> = ({
   columnNames,
   rowNames,
   imageData,
-  keyName,
 }) => {
   // Get the sprite object of the current generation.
   const generationSprites = Object.values(imageData)[generation]
 
   // Get the sprite objects of the current generation - the object for each game sprite.
   const gameSprites = Object.values(generationSprites)
+
+  // Skip rendering if there is no image data for that generation.
+  const allKeysNull = gameSprites.every(obj => Object.values(obj).every(value => value === null))
+
+  if (allKeysNull) {
+    return null
+  }
 
   return (
     <section>
