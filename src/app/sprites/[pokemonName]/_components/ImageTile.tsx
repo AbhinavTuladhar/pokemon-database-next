@@ -17,6 +17,7 @@ export const ImageTile: FC<TileProps> = ({ imageSource }) => {
         alt={'sprite'}
         width={120}
         height={120}
+        className="object-contain"
         style={{ width: '120px', height: 'auto' }}
       />
     </div>
