@@ -29,8 +29,8 @@ export const SpriteTableRow: FC<RowProps> = ({ rowHeader, imageStrings }) => {
   const rowHeaders = rowHeader.split(', ')
 
   return (
-    <tr>
-      <td className="table-cell w-36 border border-table-border p-2 text-left font-bold">
+    <tr className="table-row">
+      <td className="table-cell w-36 border border-table-border p-2 font-bold">
         <div>
           {rowHeaders.map((header, index) => (
             <div className="text-center" key={index}>

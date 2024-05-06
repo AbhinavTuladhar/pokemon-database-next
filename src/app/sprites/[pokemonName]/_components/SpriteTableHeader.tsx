@@ -9,7 +9,7 @@ interface HeaderProps {
 export const SpriteTableHeader: FC<HeaderProps> = ({ columns, extraColumns, femaleFlag }) => {
   const tableColumns = femaleFlag ? ['', ...columns, ...extraColumns] : ['', ...columns]
   return (
-    <tr>
+    <tr className="table-row">
       {tableColumns.map((column, index) => (
         <th
           key={index}
