@@ -41,7 +41,7 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
           const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
           return (
             <TableRow
-              className="duration-300 hover:bg-amber-100 dark:hover:bg-[#2c303b]"
+              className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
               key={rowIndex}
             >
               {levelLearnedAt && (

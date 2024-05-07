@@ -65,7 +65,10 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const abilityDataRows = filteredData.map((ability, rowIndex) => {
     const { name, pokemonCount, shortEntry, generationIntroduced } = ability
     return (
-      <TableRow className="duration-300 hover:bg-amber-50 dark:hover:bg-[#2c303b]" key={rowIndex}>
+      <TableRow
+        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        key={rowIndex}
+      >
         <TableCell variant="column">
           <BlueLink href={`/ability/${name}`} boldFlag={true}>
             {formatName(name)}

@@ -20,14 +20,14 @@ export const ItemTable: FC<TableProps> = ({ itemData }) => {
   const headerNames = ['Name', 'Category', 'Effect']
 
   const headerRow = (
-    <TableRow className="bg-table-header">
+    <TableRow className="bg-neutral-200 dark:bg-table-header">
       {headerNames.map(header => (
         <TableCellHeader
-          className="border-r border-slate-300 pr-4 last:border-r-0"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
           type="column"
           key={header}
         >
-          <span className="font-bold">{header}</span>
+          {header}
         </TableCellHeader>
       ))}
     </TableRow>
@@ -49,7 +49,10 @@ export const ItemTable: FC<TableProps> = ({ itemData }) => {
     )
 
     return (
-      <TableRow className="duration-300 hover:bg-[#2c303b]" key={index}>
+      <TableRow
+        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        key={index}
+      >
         <TableCell variant="column" extraClassName="w-40 whitespace-nowrap">
           {nameDiv}
         </TableCell>
