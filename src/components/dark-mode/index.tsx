@@ -15,7 +15,11 @@ const DarkModeSwitch = () => {
   }
   return (
     <button onClick={toggleTheme}>
-      {theme === 'dark' ? <FaSun className="text-white" /> : <FaMoon className="text-white" />}
+      {theme === 'dark' ? (
+        <FaSun className="h-5 w-5 text-white" />
+      ) : (
+        <FaMoon className="h-5 w-5 text-white" />
+      )}
     </button>
   )
 }

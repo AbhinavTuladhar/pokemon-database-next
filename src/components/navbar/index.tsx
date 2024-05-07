@@ -38,7 +38,7 @@ const Navbar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative z-50 -mt-6 rounded-lg bg-blue-950 md:static">
+    <nav className="relative z-50 -mt-6 rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-950 dark:to-indigo-950 md:static">
       <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
@@ -56,7 +56,9 @@ const Navbar = () => {
           icon={<BsGearFill className={iconClassName} />}
         />
         <li className="flex w-full min-w-48 gap-x-2 p-2 min-[800px]:w-auto">
-          <SearchBar />
+          <div className="flex-1">
+            <SearchBar />
+          </div>
           <DarkModeSwitch />
         </li>
       </ul>
