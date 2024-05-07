@@ -36,7 +36,7 @@ export const TypeChart = async () => {
 
   // To show the defending and attacking types.
   const cornerDiv = (
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-[#292e38] text-[10px]">
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>

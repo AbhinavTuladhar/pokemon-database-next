@@ -32,7 +32,12 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   // This is for the first row.
   const firstRow = ['', ...typeList]?.map((type, index) => {
     if (index === 0) {
-      return <div className="h-[37px] w-16 border border-[#292e38]" key={index} />
+      return (
+        <div
+          className="h-[37px] w-16 border border-gray-200 dark:border-table-border"
+          key={index}
+        />
+      )
     } else {
       return <MiniTypeCard typeName={type} key={index} />
     }
