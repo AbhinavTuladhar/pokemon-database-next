@@ -105,11 +105,11 @@ export const GenerationSection: FC<SectionProps> = async ({ locationData, method
   const header = ['Pokémon', 'Games', 'Rarity', 'Levels']
 
   const headerRow = (
-    <TableRow className="bg-table-header font-bold">
+    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
       {header.map((headerName, index) => (
         <TableCellHeader
           type="column"
-          className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-table-border pr-4 !text-center last:border-r-0`}
+          className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border`}
           key={index}
         >
           {headerName}
@@ -203,7 +203,9 @@ export const GenerationSection: FC<SectionProps> = async ({ locationData, method
             <div key={methodIndex}>
               <div className="my-4 flex flex-col gap-y-1">
                 <h3 className="text-2xl font-bold">{`${formatName(method)}`}</h3>
-                <span className="text-sm text-gray-300">{encounterDescription}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-200">
+                  {encounterDescription}
+                </span>
               </div>
 
               <div className="flex justify-center">

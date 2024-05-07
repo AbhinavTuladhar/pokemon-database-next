@@ -46,7 +46,7 @@ export const ItemData: FC<DataProps> = ({
           {tableData.map((row, rowIndex) => (
             <TableRow key={rowIndex}>
               <TableCellHeader>
-                <span className="text-sm font-normal text-gray-300"> {row.header} </span>
+                <span className="text-sm font-normal"> {row.header} </span>
               </TableCellHeader>
               <TableCell> {row.children} </TableCell>
             </TableRow>
