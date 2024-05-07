@@ -70,9 +70,7 @@ export const GameDescription: FC<DescriptionProps> = ({ descriptions }) => {
       <TableCellHeader wrapFlag={true}>
         {row.version.map((version, index) => (
           <ul key={index}>
-            <li className="inline break-words text-sm font-normal text-white">
-              {gameNameMap[version]}
-            </li>
+            <li className="inline break-words text-sm font-normal">{gameNameMap[version]}</li>
           </ul>
         ))}
       </TableCellHeader>
