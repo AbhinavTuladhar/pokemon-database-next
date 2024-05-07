@@ -2,11 +2,14 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
+import { LoadingPageFallback } from '@/components/skeletons'
+import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
 import LocationExtractor from '@/extractors/LocationExtractor'
-import { EncountersApi, LocationApi } from '@/services'
+import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
+import { GroupedLocationArea } from '@/types'
 import formatName from '@/utils/formatName'
 
-import { GenerationSection, LocationPageSkeleton } from './_components'
+import { GenerationEncounters } from './_components/GenerationEncounters'
 
 interface PageProps {
   params: {
@@ -21,6 +24,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+interface MethodGroup {
+  method: string
+  encounterDetails: Array<GroupedLocationArea>
+}
+
+interface SubLocationGroup {
+  subLocationName: string
+  methods: Array<MethodGroup>
+}
+
+interface LocationGroup {
+  generation: string
+  subLocations: Array<SubLocationGroup>
+}
+
 const getLocationData = async (name: string) => {
   const response = await LocationApi.getByName(name)
   return LocationExtractor(response)
@@ -31,17 +49,93 @@ const getMethodDescriptions = async () => {
   return responses
 }
 
+const getSubLocationData = async (names: string[]) => {
+  const responses = await LocationAreaApi.getByNames(names)
+  return responses.map(LocationAreaExtractor)
+}
+
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   const locationData = await getLocationData(areaName)
   const methodData = await getMethodDescriptions()
 
+  const subLocationNames = locationData.subLocations.map(subLocation => subLocation.name)
+  const subLocationData = await getSubLocationData(subLocationNames)
+
+  // Inform the user if there is no encounter information.
+  if (subLocationData?.length === 0) {
+    return (
+      <h2 className="text-center text-2xl font-bold">
+        Could not find any encounter information for this location.
+      </h2>
+    )
+  }
+
+  // First group by generation, then by sublocation and then by encounter method.
+  const groupedByGenerationSubLocationAndMethod = subLocationData
+    .reduce((result, obj) => {
+      const { encounterDetails, subLocationName } = obj
+
+      encounterDetails.forEach(encounter => {
+        const { generation, method } = encounter
+
+        const existingGenerationGroup = result.find(group => group.generation === generation)
+
+        if (existingGenerationGroup) {
+          const existingSubLocationGroup = existingGenerationGroup.subLocations.find(
+            subLocation => subLocation.subLocationName === subLocationName,
+          )
+
+          if (existingSubLocationGroup) {
+            const existingMethodGroup = existingSubLocationGroup.methods.find(
+              methodObj => methodObj.method === method.name,
+            )
+
+            if (existingMethodGroup) {
+              existingMethodGroup.encounterDetails.push(encounter)
+            } else {
+              existingSubLocationGroup.methods.push({
+                encounterDetails: [encounter],
+                method: method.name,
+              })
+            }
+          } else {
+            existingGenerationGroup.subLocations.push({
+              subLocationName,
+              methods: [{ method: method.name, encounterDetails: [encounter] }],
+            })
+          }
+        } else {
+          result.push({
+            generation,
+            subLocations: [
+              {
+                subLocationName,
+                methods: [{ method: method.name, encounterDetails: [encounter] }],
+              },
+            ],
+          })
+        }
+      })
+      return result
+    }, [] as LocationGroup[])
+    .sort((prev, curr) => (prev.generation <= curr.generation ? 1 : -1)) // Next sort by the generation.
+
   return (
-    <main>
-      <PageTitle>{formatName(areaName)}</PageTitle>
-      <Suspense fallback={<LocationPageSkeleton />}>
-        <GenerationSection locationData={locationData} methodData={methodData} />
-      </Suspense>
-    </main>
+    <Suspense fallback={<LoadingPageFallback />}>
+      <main>
+        <PageTitle>{formatName(areaName)}</PageTitle>
+
+        {groupedByGenerationSubLocationAndMethod.map((locationGroup, index) => {
+          return (
+            <GenerationEncounters
+              key={index}
+              locationData={locationGroup}
+              methodData={methodData}
+            />
+          )
+        })}
+      </main>
+    </Suspense>
   )
 }
 
