@@ -69,7 +69,13 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
       if (cellIndex === 0) {
         return <TypeCard typeName={type} variant="big" key={cellIndex} />
       } else if (firstType === secondType) {
-        return <TypeMultiplierBox multiplier={1} className="bg-gray-700" key={cellIndex} />
+        return (
+          <TypeMultiplierBox
+            multiplier={1}
+            className="bg-zinc-200 dark:bg-gray-700"
+            key={cellIndex}
+          />
+        )
       } else {
         return (
           <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
