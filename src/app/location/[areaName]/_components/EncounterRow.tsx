@@ -5,6 +5,7 @@ import { TableCell, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
 import generationToGameListMap from '@/data/generationToGameListMap'
 import { GroupedLocationArea } from '@/types'
+import buildConditionArray from '@/utils/buildConditionArray'
 import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
 import getFullTimeImage from '@/utils/getTimeImage'
@@ -34,7 +35,9 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
   const idDiv = (
     <div className="flex flex-row items-center pr-12 md:pr-4">
       <Image src={iconSprite} alt={pokemonName} width={66} height={66} />
-      <BlueLink href={`/pokedex/${pokemonName}`}>{formatName(pokemonName)}</BlueLink>
+      <BlueLink boldFlag href={`/pokedex/${pokemonName}`}>
+        {formatName(pokemonName)}
+      </BlueLink>
     </div>
   )
 
@@ -59,20 +62,30 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
     />
   )
 
-  // For the encounter conditions, if any.
-  const conditionImages = hasEncounterCondition
+  const conditionImageData = buildConditionArray('time', condition_values)
+
+  const conditionImagesNew = hasEncounterCondition
     ? condition_values.length > 0
-      ? condition_values.map(condition => {
+      ? conditionImageData.map((condition, index) => {
+          if (condition === '') {
+            return (
+              <div key={index} className="grid h-8 w-8 place-items-center">
+                <div className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+              </div>
+            )
+          }
           const imageFile = getFullTimeImage(condition)
-          return <Image key={condition} alt={condition} src={imageFile} width={20} height={20} />
+          return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
         })
       : ['time-morning', 'time-day', 'time-night'].map(condition => {
           const imageFile = getFullTimeImage(condition)
-          return <Image key={condition} alt={condition} src={imageFile} width={20} height={20} />
+          return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
         })
     : null
 
-  const conditionDiv = <div className="flex gap-x-4">{conditionImages}</div>
+  const conditionDiv = (
+    <div className="flex items-center justify-between gap-x-4">{conditionImagesNew}</div>
+  )
 
   const cellData = [
     { key: 'pokemon', value: idDiv },
@@ -81,6 +94,7 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
     { key: 'chance', value: rarityImage },
     { key: 'level range', value: levelRange },
   ]
+
   return (
     <TableRow>
       {cellData.map(({ key, value }, index) => (

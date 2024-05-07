@@ -2,14 +2,13 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
-import { LoadingPageFallback } from '@/components/skeletons'
 import LocationAreaExtractor from '@/extractors/LocationAreaExtractor'
 import LocationExtractor from '@/extractors/LocationExtractor'
 import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
 import { GroupedLocationArea } from '@/types'
 import formatName from '@/utils/formatName'
 
-import { GenerationEncounters } from './_components/GenerationEncounters'
+import { GenerationEncounters, LocationPageSkeleton } from './_components'
 
 interface PageProps {
   params: {
@@ -64,9 +63,12 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
   // Inform the user if there is no encounter information.
   if (subLocationData?.length === 0) {
     return (
-      <h2 className="text-center text-2xl font-bold">
-        Could not find any encounter information for this location.
-      </h2>
+      <main>
+        <PageTitle>{formatName(areaName)}</PageTitle>
+        <h2 className="text-center text-2xl font-bold">
+          Could not find any encounter information for this location.
+        </h2>
+      </main>
     )
   }
 
@@ -121,7 +123,7 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
     .sort((prev, curr) => (prev.generation <= curr.generation ? 1 : -1)) // Next sort by the generation.
 
   return (
-    <Suspense fallback={<LoadingPageFallback />}>
+    <Suspense fallback={<LocationPageSkeleton />}>
       <main>
         <PageTitle>{formatName(areaName)}</PageTitle>
 
