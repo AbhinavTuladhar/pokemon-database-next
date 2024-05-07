@@ -55,7 +55,9 @@ export const TrainingInfo: FC<TrainingInfoProps> = ({
   const captureRateRow = (
     <span>
       <span> {capture_rate} </span>
-      <span className="text-gray-300"> {`(${captureRateString} with Pokéball, full HP)`} </span>
+      <span className="text-gray-500 dark:text-gray-300">
+        {`(${captureRateString} with Pokéball, full HP)`}
+      </span>
     </span>
   )
 

@@ -27,7 +27,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     })
 
   const cornerDiv = (
-    <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-table-border text-[10px]">
+    <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-gray-200 text-[10px] dark:border-table-border">
       <span> ATTACK → </span>
       <span> DEFENCE ↴ </span>
     </div>

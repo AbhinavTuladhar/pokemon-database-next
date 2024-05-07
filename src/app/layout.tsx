@@ -25,10 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={FiraSans.className}>
+      <body className={`${FiraSans.className} dark`}>
         <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
           <Scroll />
-          <div className="min-h-screen max-w-full bg-gray-800 text-white">
+          <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">
               <Navbar />

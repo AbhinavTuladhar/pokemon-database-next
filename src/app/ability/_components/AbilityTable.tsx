@@ -49,14 +49,14 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
 
   const headerRows = (
-    <TableRow className="bg-table-header">
+    <TableRow className="bg-neutral-200  dark:bg-table-header">
       {headers.map((header, index) => (
         <TableCellHeader
           type="column"
           key={index}
-          className="border-r border-table-border pr-4 last:border-r-0"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
         >
-          <span className="font-bold text-white"> {header}</span>
+          {header}
         </TableCellHeader>
       ))}
     </TableRow>
@@ -65,7 +65,10 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const abilityDataRows = filteredData.map((ability, rowIndex) => {
     const { name, pokemonCount, shortEntry, generationIntroduced } = ability
     return (
-      <TableRow className="duration-300 hover:bg-[#2c303b]" key={rowIndex}>
+      <TableRow
+        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        key={rowIndex}
+      >
         <TableCell variant="column">
           <BlueLink href={`/ability/${name}`} boldFlag={true}>
             {formatName(name)}

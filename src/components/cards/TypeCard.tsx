@@ -24,7 +24,7 @@ export const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'sm
     )
   }
   return (
-    <Link className="shadow-black/70 text-shadow" href={targetLink}>
+    <Link className="text-white shadow-black/70 text-shadow" href={targetLink}>
       <div
         className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} flex w-16 flex-col items-center justify-center rounded text-xs duration-200 hover:brightness-110`}
       >

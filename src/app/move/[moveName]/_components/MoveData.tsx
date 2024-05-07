@@ -60,7 +60,7 @@ export const MoveData: FC<MoveDataProps> = ({
           {tableData.map((row, rowIndex) => (
             <TableRow key={rowIndex}>
               <TableCellHeader>
-                <span className="text-sm font-normal text-white"> {row.header} </span>
+                <span className="text-sm font-normal"> {row.header} </span>
               </TableCellHeader>
               <TableCell> {row.children} </TableCell>
             </TableRow>

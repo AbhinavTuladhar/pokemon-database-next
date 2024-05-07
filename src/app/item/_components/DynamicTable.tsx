@@ -77,12 +77,7 @@ export const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData 
   return (
     <>
       <div className="mb-8 flex w-full flex-wrap justify-center gap-4">
-        <Input
-          className="w-64 max-w-full rounded-lg px-2 py-2 text-black placeholder-gray-300"
-          placeholder="Search for an item"
-          onChange={handleChange}
-          value={filterText}
-        />
+        <Input placeholder="Search for an item" onChange={handleChange} value={filterText} />
         <Select
           className="w-36 whitespace-normal text-black"
           options={options}

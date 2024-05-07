@@ -35,14 +35,14 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const headers = ['Name', 'Type', 'Cat.', 'Power', 'Acc', 'PP', 'Effect', 'Prob (%)']
 
   const headerRowCells = (
-    <TableRow className="bg-table-header">
+    <TableRow className="bg-neutral-200  dark:bg-table-header">
       {headers.map((header, index) => (
         <TableCellHeader
           type="column"
           key={index}
-          className="border-r border-table-border pr-4 last:border-r-0"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
         >
-          <span className="font-bold text-white">{header}</span>
+          {header}
         </TableCellHeader>
       ))}
     </TableRow>
@@ -52,7 +52,10 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
     const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
 
     return (
-      <TableRow className="duration-300 hover:bg-[#2c303b]" key={rowIndex}>
+      <TableRow
+        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        key={rowIndex}
+      >
         <TableCell variant="column">
           <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
             {formatName(moveName)}

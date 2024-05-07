@@ -23,7 +23,7 @@ export const GroupList = async () => {
 
   const eggGroupData = await getAllGroupData(groupList)
   return (
-    <section className="self-start rounded bg-blue-950 px-4 pb-4 pt-px">
+    <section className="self-start rounded bg-sky-100 px-4 pb-4 pt-px dark:bg-table-header">
       <SectionTitle>Egg Groups</SectionTitle>
       <ul className="list-inside list-disc">
         {eggGroupData.map(group => {

@@ -21,7 +21,7 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
       <thead>
         <th
           colSpan={2}
-          className="table-cell border border-table-border bg-table-header py-2 pr-4 text-xl font-bold"
+          className="table-cell border border-gray-200 bg-neutral-200 py-2 pr-4 text-xl font-bold dark:border-table-border dark:bg-table-header"
         >
           <BlueLink href={`/pokedex/${pokemonName}`}>{formatName(pokemonName)}</BlueLink>
         </th>
@@ -30,7 +30,7 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
         <tr className="table-row ">
           {gifSources.map((image, index) => (
             <td
-              className="table-cell h-40 w-40 items-center border border-table-border object-center px-2 py-6 pr-4"
+              className="table-cell h-40 w-40 items-center border border-gray-200 object-center px-2 py-6 pr-4 dark:border-table-border"
               key={index}
             >
               <Image

@@ -15,9 +15,9 @@ export const PageNavigation = () => {
     { ref: '#languages', text: 'Languages' },
   ]
   return (
-    <div className="grid place-items-center rounded-lg bg-blue-950">
-      <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-white py-4">
-        <li className="px-4 font-bold text-white"> Contents </li>
+    <div className="grid place-items-center rounded-lg bg-sky-100 dark:bg-blue-950">
+      <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-gray-400 py-4 dark:divide-white">
+        <li className="px-4 font-bold text-black dark:text-white"> Contents </li>
         {linkData.map((row, index) => {
           const { ref, text } = row
           return (

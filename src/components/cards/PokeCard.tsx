@@ -57,7 +57,7 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
 
   return (
     <div
-      className={`${gradientStyle} flex w-48 flex-col items-center justify-center rounded-xl p-2 duration-200 hover:scale-105 hover:shadow-xl hover:shadow-blue-400 hover:drop-shadow-lg sm:w-56`}
+      className={`${gradientStyle} flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-blue-400 hover:drop-shadow-lg sm:w-56`}
     >
       <div className="font-bold">#{id}</div>
       <Link href={targetLink} className="text-center text-xl font-extrabold">

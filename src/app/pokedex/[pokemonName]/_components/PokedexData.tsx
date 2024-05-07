@@ -112,7 +112,7 @@ export const PokeDexData: FC<DexDataProps> = ({
     return (
       <div className="table-row" key={index}>
         <div className="table-cell px-1">{entry.number}</div>
-        <div className="table-cell px-1 text-sm text-gray-300">{`(${entry.games})`}</div>
+        <div className="table-cell px-1 text-sm text-gray-500 dark:text-gray-300">{`(${entry.games})`}</div>
       </div>
     )
   })

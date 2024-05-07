@@ -4,6 +4,8 @@ import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
 import SearchBar from '@/components/searchbar'
 
+import DarkModeSwitch from '../dark-mode'
+
 import TopLevelMenu from './top-level-menu'
 
 const Navbar = () => {
@@ -36,7 +38,7 @@ const Navbar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative z-50 -mt-6 rounded-lg bg-blue-950 md:static">
+    <nav className="relative z-50 -mt-6 rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-950 dark:to-indigo-950 md:static">
       <ul className="flex list-none flex-wrap">
         <TopLevelMenu
           menuData={pokedexLinks}
@@ -53,8 +55,11 @@ const Navbar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="w-full min-w-48 p-2 min-[800px]:w-auto">
-          <SearchBar />
+        <li className="flex w-full min-w-48 items-center gap-x-2 p-2 min-[800px]:w-auto">
+          <div className="flex-1">
+            <SearchBar />
+          </div>
+          <DarkModeSwitch />
         </li>
       </ul>
     </nav>
