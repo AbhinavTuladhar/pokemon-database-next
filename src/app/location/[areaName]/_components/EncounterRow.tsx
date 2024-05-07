@@ -58,7 +58,8 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
       width={30}
       height={30}
       className="hover:cursor-help"
-      id={rarityString}
+      data-tooltip-id="my-tooltip"
+      data-tooltip-content={rarityString}
     />
   )
 

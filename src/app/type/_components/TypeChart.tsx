@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
-import { Tooltip } from '@/components/client-components'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services'
@@ -102,15 +101,11 @@ export const TypeChart = async () => {
   })
 
   return (
-    <>
-      <div className="overflow-auto">
-        <div className="inline-flex">
-          <div className="flex flex-col items-start justify-start gap-y-px">{finalTypeCards}</div>
-          <div className="flex flex-row items-start justify-center">{tableColumns}</div>
-        </div>
+    <div className="overflow-auto">
+      <div className="inline-flex">
+        <div className="flex flex-col items-start justify-start gap-y-px">{finalTypeCards}</div>
+        <div className="flex flex-row items-start justify-center">{tableColumns}</div>
       </div>
-
-      <Tooltip id="my-tooltip" className="text-lg" style={{ fontSize: '0.75rem' }} />
-    </>
+    </div>
   )
 }

@@ -31,7 +31,7 @@ export const GenerationEncounters: FC<GenerationSectionProps> = async ({
   const { generation, subLocations } = locationData
 
   return (
-    <section className="mt-4 first:mt-0">
+    <section>
       {subLocations.map((subLocation, index) => {
         return (
           <SubLocationDiv
