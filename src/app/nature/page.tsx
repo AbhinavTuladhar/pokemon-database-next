@@ -31,10 +31,10 @@ const NatureList = async () => {
 
   const headerNames = ['Nature', 'Increases', 'Decreases', 'Likes', 'Hates']
   const tableHeaders = (
-    <TableRow className="bg-table-header font-bold">
+    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
       {headerNames.map((header, index) => (
         <TableCellHeader
-          className="!w-36 border-x border-r border-table-border pr-4 text-center last:border-r-0"
+          className="!w-36 border-r border-r-gray-300 pr-4 text-center last:border-r-0 dark:border-r-table-border"
           type="column"
           key={index}
         >
@@ -58,7 +58,10 @@ const NatureList = async () => {
       ]
 
       return (
-        <TableRow key={rowIndex}>
+        <TableRow
+          key={rowIndex}
+          className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        >
           {cellData.map((cell, cellIndex) => (
             <TableCell variant="column" key={cellIndex} extraClassName=" border-x">
               {cell.value}
