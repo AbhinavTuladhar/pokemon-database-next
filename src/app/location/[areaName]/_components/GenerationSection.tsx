@@ -10,6 +10,7 @@ import { LocationAreaApi } from '@/services'
 import { EncounterMethod, GroupedLocationArea, TransformedLocation } from '@/types'
 import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
+import getFullTimeImage from '@/utils/getTimeImage'
 
 import { GameBox } from './GameBox'
 
@@ -32,6 +33,10 @@ interface LocationGroup {
   generation: string
   subLocations: Array<SubLocationGroup>
 }
+
+// Check if the string contains substrings that are in an array
+const containsSubString = (testString: string, searchStrings: Array<string>) =>
+  searchStrings.some(searchString => testString.includes(searchString))
 
 const getSubLocationData = async (names: string[]) => {
   const responses = await LocationAreaApi.getByNames(names)
@@ -102,21 +107,22 @@ export const GenerationSection: FC<SectionProps> = async ({ locationData, method
     .sort((prev, curr) => (prev.generation <= curr.generation ? 1 : -1)) // Next sort by the generation.
 
   // Table headers
-  const header = ['Pokémon', 'Games', 'Rarity', 'Levels']
+  // const header = ['Pokémon', 'Games', 'Rarity', 'Levels']
 
-  const headerRow = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
-      {header.map((headerName, index) => (
-        <TableCellHeader
-          type="column"
-          className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border`}
-          key={index}
-        >
-          {headerName}
-        </TableCellHeader>
-      ))}
-    </TableRow>
-  )
+  // const headerRow = (
+  //   <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+  //     {header.map((headerName, index) => (
+  //       <TableCellHeader
+  //         type="column"
+  //         className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border`}
+  //         key={index}
+  //       >
+  //         {headerName}
+  //       </TableCellHeader>
+  //     ))}
+  //   </TableRow>
+  // )
+
   /*
   This is for creating a more sophisticated version of the tables
   IN the highest level, we have the generation.
@@ -141,9 +147,47 @@ export const GenerationSection: FC<SectionProps> = async ({ locationData, method
               return language.name === 'en'
             })?.name as string
 
+          // Check if any encounter has a condition
+          const hasEncounterCondition = encounterDetails.some(encounter => {
+            const { condition_values } = encounter
+            // Check if condition values has a substring of either time or season.
+            return condition_values.some(condition =>
+              containsSubString(condition, ['time', 'season']),
+            )
+          })
+
+          const header = [
+            'Pokémon',
+            'Games',
+            ...(hasEncounterCondition ? ['Conditions'] : []),
+            'Rarity',
+            'Levels',
+          ]
+
+          const headerRow = (
+            <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+              {header.map((headerName, index) => (
+                <TableCellHeader
+                  type="column"
+                  className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border`}
+                  key={index}
+                >
+                  {headerName}
+                </TableCellHeader>
+              ))}
+            </TableRow>
+          )
+
           const tableRows = encounterDetails.map((encounter, rowIndex) => {
-            const { iconSprite, pokemonName, generationInternal, gameName, levelRange, chance } =
-              encounter
+            const {
+              iconSprite,
+              pokemonName,
+              generationInternal,
+              gameName,
+              levelRange,
+              chance,
+              condition_values,
+            } = encounter
             // const trueChance = chance > 100 ? 100 : chance
             // const chanceImage = getRarityImage(chance, method)
             const rarityImagePath = getFullRarityImage(chance, method)
@@ -178,9 +222,41 @@ export const GenerationSection: FC<SectionProps> = async ({ locationData, method
               />
             )
 
+            // For the encounter conditions, if any.
+            const conditionImages = hasEncounterCondition
+              ? condition_values.length > 0
+                ? condition_values.map(condition => {
+                    const imageFile = getFullTimeImage(condition)
+                    return (
+                      <Image
+                        key={condition}
+                        alt={condition}
+                        src={imageFile}
+                        width={20}
+                        height={20}
+                      />
+                    )
+                  })
+                : ['time-morning', 'time-day', 'time-night'].map(condition => {
+                    const imageFile = getFullTimeImage(condition)
+                    return (
+                      <Image
+                        key={condition}
+                        alt={condition}
+                        src={imageFile}
+                        width={20}
+                        height={20}
+                      />
+                    )
+                  })
+              : null
+
+            const conditionDiv = <div className="flex gap-x-4">{conditionImages}</div>
+
             const cellData = [
               { key: 'pokemon', value: idDiv },
               { key: 'game', value: gameBoxDiv },
+              ...(hasEncounterCondition ? [{ key: 'condition', value: conditionDiv }] : []),
               { key: 'chance', value: rarityImage },
               { key: 'level range', value: levelRange },
             ]
