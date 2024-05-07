@@ -18,7 +18,7 @@ const DarkModeSwitch = () => {
   const [theme, setTheme] = useState<Theme>('dark')
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
     document.body.classList.toggle('dark')
   }
   return (
