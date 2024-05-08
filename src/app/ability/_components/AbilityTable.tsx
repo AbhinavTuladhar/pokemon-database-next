@@ -25,7 +25,7 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
         return
       }
       const filteredSlice = abilityData.filter(ability =>
-        ability.name.replace('-', ' ').includes(searchString),
+        ability.name.replaceAll('-', ' ').includes(searchString),
       )
       setFilteredData(filteredSlice)
     },
@@ -66,7 +66,7 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
     const { name, pokemonCount, shortEntry, generationIntroduced } = ability
     return (
       <TableRow
-        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
         key={rowIndex}
       >
         <TableCell variant="column">

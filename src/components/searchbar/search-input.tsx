@@ -27,14 +27,14 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
 
   const handleFilter = useCallback(
     (value: string) => {
-      const searchQuery = value.trim().toLowerCase()
+      const searchQuery = value.trim().toLowerCase() // Convert search query to lowercase
 
       if (searchQuery.length < 2) {
         setFilteredData([])
         return
       }
-      const filteredList = searchList.filter(item =>
-        item.name.replace('-', ' ').includes(searchQuery),
+      const filteredList = searchList.filter(
+        item => item.name.replaceAll('-', ' ').toLowerCase().includes(searchQuery), // Convert item name to lowercase
       )
       setFilteredData(filteredList.slice(0, 10))
     },
