@@ -12,12 +12,10 @@ import getFullSeasonImage from '@/utils/getSeasonImage'
 import getFullTimeImage from '@/utils/getTimeImage'
 
 import { GameBox } from './GameBox'
-import { EncounterConditionName } from './types'
-
-type ConditionArray = [string, string, string] | [string, string, string, string]
+import { ConditionArray, EncounterConditionName } from './types'
 
 interface ImageRowProps {
-  conditions: [string, string, string] | [string, string, string, string]
+  conditions: ConditionArray
   encounterConditionName: EncounterConditionName
 }
 

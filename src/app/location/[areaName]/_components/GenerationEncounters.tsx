@@ -1,23 +1,9 @@
 import React, { FC } from 'react'
 
-import { EncounterMethod, GroupedLocationArea } from '@/types'
+import { EncounterMethod } from '@/types'
 
 import { SubLocationDiv } from './SubLocationDiv'
-
-interface MethodGroup {
-  method: string
-  encounterDetails: Array<GroupedLocationArea>
-}
-
-interface SubLocationGroup {
-  subLocationName: string
-  methods: Array<MethodGroup>
-}
-
-interface LocationGroup {
-  generation: string
-  subLocations: Array<SubLocationGroup>
-}
+import { LocationGroup } from './types'
 
 interface GenerationSectionProps {
   locationData: LocationGroup

@@ -1,15 +1,11 @@
 import React, { FC } from 'react'
 
 import { TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import { EncounterMethod, GroupedLocationArea } from '@/types'
+import { EncounterMethod } from '@/types'
 import formatName from '@/utils/formatName'
 
 import { EncounterRow } from './EncounterRow'
-
-interface MethodGroup {
-  method: string
-  encounterDetails: Array<GroupedLocationArea>
-}
+import { MethodGroup } from './types'
 
 interface TableProps {
   methods: MethodGroup

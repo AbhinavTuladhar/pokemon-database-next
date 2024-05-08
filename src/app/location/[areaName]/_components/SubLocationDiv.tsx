@@ -1,19 +1,10 @@
 import React, { FC } from 'react'
 
-import { EncounterMethod, GroupedLocationArea } from '@/types'
+import { EncounterMethod } from '@/types'
 import formatName from '@/utils/formatName'
 
 import { EncounterTable } from './EncounterTable'
-
-interface MethodGroup {
-  method: string
-  encounterDetails: Array<GroupedLocationArea>
-}
-
-interface SubLocationGroup {
-  subLocationName: string
-  methods: Array<MethodGroup>
-}
+import { SubLocationGroup } from './types'
 
 interface DivProps {
   generation: string
