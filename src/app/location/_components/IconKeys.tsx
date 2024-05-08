@@ -18,46 +18,18 @@ const sectionData: Array<ColumnData> = [
   {
     title: 'Times',
     rowData: [
-      {
-        caption: 'Morning',
-        tooltipContent: 'Morning',
-        imageSource: '/time-of-day/morning.png',
-      },
-      {
-        caption: 'Day',
-        tooltipContent: 'Day',
-        imageSource: '/time-of-day/day.png',
-      },
-      {
-        caption: 'Night',
-        tooltipContent: 'Night',
-        imageSource: '/time-of-day/night.png',
-      },
+      { caption: 'Morning', tooltipContent: 'Morning', imageSource: '/time-of-day/morning.png' },
+      { caption: 'Day', tooltipContent: 'Day', imageSource: '/time-of-day/day.png' },
+      { caption: 'Night', tooltipContent: 'Night', imageSource: '/time-of-day/night.png' },
     ],
   },
   {
     title: 'Seasons',
     rowData: [
-      {
-        caption: 'Spring',
-        tooltipContent: 'Spring',
-        imageSource: '/seasons/spring.png',
-      },
-      {
-        caption: 'Summer',
-        tooltipContent: 'Summer',
-        imageSource: '/seasons/summer.png',
-      },
-      {
-        caption: 'Autumn',
-        tooltipContent: 'Autumn',
-        imageSource: '/seasons/autumn.png',
-      },
-      {
-        caption: 'Winter',
-        tooltipContent: 'Winter',
-        imageSource: '/seasons/winter.png',
-      },
+      { caption: 'Spring', tooltipContent: 'Spring', imageSource: '/seasons/spring.png' },
+      { caption: 'Summer', tooltipContent: 'Summer', imageSource: '/seasons/summer.png' },
+      { caption: 'Autumn', tooltipContent: 'Autumn', imageSource: '/seasons/autumn.png' },
+      { caption: 'Winter', tooltipContent: 'Winter', imageSource: '/seasons/winter.png' },
     ],
   },
   {
@@ -89,7 +61,7 @@ const sectionData: Array<ColumnData> = [
 
 const KeyColumn: FC<ColumnData> = ({ title, rowData }) => {
   return (
-    <div>
+    <div className="w-64">
       <h3 className="-mt-2 mb-4 text-2xl font-bold">{title}</h3>
       <div className="space-y-2">
         {rowData.map((row, index) => {
@@ -116,9 +88,9 @@ const KeyColumn: FC<ColumnData> = ({ title, rowData }) => {
 
 export const IconKeys = () => {
   return (
-    <section>
+    <section className="pt-4">
       <SectionTitle> Keys to Icons </SectionTitle>
-      <div className="grid grid-cols-3">
+      <div className="flex flex-wrap">
         {sectionData.map((data, index) => (
           <KeyColumn rowData={data.rowData} title={data.title} key={index} />
         ))}
