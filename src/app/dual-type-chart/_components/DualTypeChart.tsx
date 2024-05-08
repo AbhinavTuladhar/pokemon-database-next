@@ -101,11 +101,9 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     </div>
   )
 
-  const otherRows = typeCombinations.map((typeCombo, rowIndex) => {
-    return (
-      <TableRow key={rowIndex} attackingTypeInfo={attackingTypeInfo} typeCombination={typeCombo} />
-    )
-  })
+  const otherRows = typeCombinations.map((typeCombo, rowIndex) => (
+    <TableRow key={rowIndex} attackingTypeInfo={attackingTypeInfo} typeCombination={typeCombo} />
+  ))
 
   const tableRows = (
     <div className="flex flex-col">
