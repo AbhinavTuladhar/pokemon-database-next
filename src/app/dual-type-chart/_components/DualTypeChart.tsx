@@ -51,9 +51,7 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
   )
   return (
     <div className="flex">
-      <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
-        {score}
-      </div>
+      <ScoreCell>{score}</ScoreCell>
       {multiplierValues.map((multiplier, index) => (
         <TypeMultiplierBox multiplier={multiplier} key={index} />
       ))}
@@ -96,9 +94,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
 
   const firstRow = (
     <div className="flex gap-x-px">
-      <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
-        Score
-      </div>
+      <ScoreCell>Score</ScoreCell>
       {typeList.map((type, index) => (
         <MiniTypeCard typeName={type} key={index} />
       ))}
@@ -109,33 +105,9 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     return (
       <TableRow key={rowIndex} attackingTypeInfo={attackingTypeInfo} typeCombination={typeCombo} />
     )
-    // let score = 0
-    // let multiplierValues: Array<number> = []
-
-    // const test = calculateScoresAndMultipliers(typeCombo, attackingTypeInfo[rowIndex])
-    // console.log(test)
-
-    // typeList.forEach((_, colIndex) => {
-    //   const [firstType, secondType] = typeCombo
-    //   const multiplierValue = calculateOffensiveTypeEffectiveness(
-    //     firstType === secondType ? [firstType] : typeCombo,
-    //     attackingTypeInfo[colIndex],
-    //   )
-    //   score += multiplierValue
-    //   multiplierValues.push(multiplierValue)
-    // })
-
-    // const rowDiv = typeList.map((_, colIndex) => {
-    //   const [firstType, secondType] = typeCombo
-    //   const multiplierValue = calculateOffensiveTypeEffectiveness(
-    //     firstType === secondType ? [firstType] : typeCombo,
-    //     attackingTypeInfo[colIndex],
-    //   )
-    //   return <TypeMultiplierBox multiplier={multiplierValue} key={colIndex} />
-    // })
   })
 
-  const talbeRows = (
+  const tableRows = (
     <div className="flex flex-col">
       {firstRow}
       {otherRows}
@@ -151,7 +123,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
             {cornerDiv}
             {firstColumnCards}
           </div>
-          <div className="flex flex-col gap-y-px">{talbeRows}</div>
+          <div className="flex flex-col gap-y-px">{tableRows}</div>
         </div>
       </div>
     </section>
