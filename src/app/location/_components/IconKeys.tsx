@@ -61,13 +61,13 @@ const sectionData: Array<ColumnData> = [
 
 const KeyColumn: FC<ColumnData> = ({ title, rowData }) => {
   return (
-    <div className="w-64">
+    <div>
       <h3 className="-mt-2 mb-4 text-2xl font-bold">{title}</h3>
       <div className="space-y-2">
         {rowData.map((row, index) => {
           const { caption, imageSource, tooltipContent } = row
           return (
-            <div className="flex items-center gap-x-1" key={index}>
+            <div className="flex items-center gap-x-2" key={index}>
               <Image
                 src={imageSource}
                 alt={caption}
@@ -90,7 +90,7 @@ export const IconKeys = () => {
   return (
     <section className="pt-4">
       <SectionTitle> Keys to Icons </SectionTitle>
-      <div className="flex flex-wrap">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         {sectionData.map((data, index) => (
           <KeyColumn rowData={data.rowData} title={data.title} key={index} />
         ))}
