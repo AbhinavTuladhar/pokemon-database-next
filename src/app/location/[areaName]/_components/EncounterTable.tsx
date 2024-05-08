@@ -69,22 +69,20 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
         <span className="text-sm text-gray-500 dark:text-gray-200">{encounterDescription}</span>
       </div>
 
-      <div className="flex justify-center">
-        <TableContainer>
-          <thead>{headerRow}</thead>
-          <tbody>
-            {encounterDetails.map((encounter, index) => (
-              <EncounterRow
-                encounter={encounter}
-                hasEncounterCondition={hasEncounterCondition}
-                method={encounter.method.name}
-                encounterConditionName={encounterConditionName}
-                key={index}
-              />
-            ))}
-          </tbody>
-        </TableContainer>
-      </div>
+      <TableContainer useFullWidth={false}>
+        <thead>{headerRow}</thead>
+        <tbody>
+          {encounterDetails.map((encounter, index) => (
+            <EncounterRow
+              encounter={encounter}
+              hasEncounterCondition={hasEncounterCondition}
+              method={encounter.method.name}
+              encounterConditionName={encounterConditionName}
+              key={index}
+            />
+          ))}
+        </tbody>
+      </TableContainer>
     </div>
   )
 }

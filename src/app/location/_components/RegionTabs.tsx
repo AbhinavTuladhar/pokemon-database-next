@@ -19,7 +19,7 @@ interface PanelProps {
   regionData: Array<RegionData>
 }
 
-const RegionTabs: FC<PanelProps> = ({ regionData }) => {
+export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
   const tabNames = regionData.map(region => region.regionName)
   const [tabIndex, setTabIndex] = useState(0)
 
@@ -69,5 +69,3 @@ const RegionTabs: FC<PanelProps> = ({ regionData }) => {
     </Tabs>
   )
 }
-
-export default RegionTabs
