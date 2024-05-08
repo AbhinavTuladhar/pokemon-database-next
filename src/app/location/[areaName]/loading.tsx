@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Loader from '@/components/loader'
+import { LocationPageSkeleton } from './_components'
 
 const loading = () => {
-  return <Loader />
+  return <LocationPageSkeleton />
 }
 
 export default loading

@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react'
+import { FC } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
@@ -8,7 +8,7 @@ import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
 import { GroupedLocationArea } from '@/types'
 import formatName from '@/utils/formatName'
 
-import { GenerationEncounters, LocationPageSkeleton } from './_components'
+import { GenerationEncounters } from './_components'
 
 interface PageProps {
   params: {
@@ -123,21 +123,15 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
     .sort((prev, curr) => (prev.generation <= curr.generation ? 1 : -1)) // Next sort by the generation.
 
   return (
-    <Suspense fallback={<LocationPageSkeleton />}>
-      <main>
-        <PageTitle>{formatName(areaName)}</PageTitle>
+    <main>
+      <PageTitle>{formatName(areaName)}</PageTitle>
 
-        {groupedByGenerationSubLocationAndMethod.map((locationGroup, index) => {
-          return (
-            <GenerationEncounters
-              key={index}
-              locationData={locationGroup}
-              methodData={methodData}
-            />
-          )
-        })}
-      </main>
-    </Suspense>
+      {groupedByGenerationSubLocationAndMethod.map((locationGroup, index) => {
+        return (
+          <GenerationEncounters key={index} locationData={locationGroup} methodData={methodData} />
+        )
+      })}
+    </main>
   )
 }
 
