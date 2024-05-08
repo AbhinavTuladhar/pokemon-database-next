@@ -55,7 +55,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
   return (
     <section>
       <SectionTitle> Animated Sprites </SectionTitle>
-      <TableContainer>
+      <TableContainer useFullWidth={false}>
         <thead>{firstRow}</thead>
         <tbody>
           <tr>

@@ -47,7 +47,7 @@ export const GenerationSection: FC<SectionProps> = ({
   return (
     <section>
       <SectionTitle> Generation {generation} </SectionTitle>
-      <TableContainer>
+      <TableContainer useFullWidth={false}>
         <SpriteTableHeader
           key={generation}
           columns={columnNames}
