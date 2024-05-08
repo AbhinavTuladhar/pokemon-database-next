@@ -8,17 +8,25 @@ import { GroupedLocationArea } from '@/types'
 import buildConditionArray from '@/utils/buildConditionArray'
 import formatName from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
+import getFullSeasonImage from '@/utils/getSeasonImage'
 import getFullTimeImage from '@/utils/getTimeImage'
 
 import { GameBox } from './GameBox'
+import { EncounterConditionName } from './types'
 
 interface RowProps {
   encounter: GroupedLocationArea
   method: string
   hasEncounterCondition: boolean
+  encounterConditionName: EncounterConditionName
 }
 
-export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCondition }) => {
+export const EncounterRow: FC<RowProps> = ({
+  encounter,
+  method,
+  hasEncounterCondition,
+  encounterConditionName,
+}) => {
   const {
     iconSprite,
     pokemonName,
@@ -28,7 +36,6 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
     chance,
     condition_values,
   } = encounter
-
   const rarityImagePath = getFullRarityImage(chance, method)
   const rarityString = getRarityString(chance, method)
 
@@ -68,11 +75,14 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
     condition => condition.includes('time') || condition.includes('season'),
   )
 
-  const conditionImageData = buildConditionArray('time', conditionValuesFiltered)
+  const conditionImagesData =
+    encounterConditionName === 'time'
+      ? buildConditionArray('time', conditionValuesFiltered)
+      : buildConditionArray('season', conditionValuesFiltered)
 
-  const conditionImagesNew = hasEncounterCondition
+  const conditionImages = hasEncounterCondition
     ? conditionValuesFiltered.length > 0
-      ? conditionImageData.map((condition, index) => {
+      ? conditionImagesData.map((condition, index) => {
           if (condition === '') {
             return (
               <div key={index} className="grid h-8 w-8 place-items-center">
@@ -80,17 +90,25 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
               </div>
             )
           }
-          const imageFile = getFullTimeImage(condition)
+          const imageFile =
+            encounterConditionName === 'time'
+              ? getFullTimeImage(condition)
+              : getFullSeasonImage(condition)
           return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
         })
-      : ['time-morning', 'time-day', 'time-night'].map(condition => {
-          const imageFile = getFullTimeImage(condition)
-          return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
-        })
+      : encounterConditionName === 'time'
+        ? ['time-morning', 'time-day', 'time-night'].map(condition => {
+            const imageFile = getFullTimeImage(condition)
+            return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
+          })
+        : ['season-spring', 'season-summer', 'season-autumn', 'season-winter'].map(condition => {
+            const imageFile = getFullSeasonImage(condition)
+            return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
+          })
     : null
 
   const conditionDiv = (
-    <div className="flex items-center justify-between gap-x-4">{conditionImagesNew}</div>
+    <div className="flex items-center justify-between gap-x-4">{conditionImages}</div>
   )
 
   const cellData = [

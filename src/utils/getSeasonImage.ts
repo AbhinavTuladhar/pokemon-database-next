@@ -1,13 +1,12 @@
 const getSeasonImage = (season: string) => {
-  const [_, seasonName] = season.split('-')
-  switch (seasonName) {
-    case 'spring':
+  switch (season) {
+    case 'season-spring':
       return 'spring.png'
-    case 'summer':
+    case 'season-summer':
       return 'summer.png'
-    case 'autumn':
+    case 'season-autumn':
       return 'autumn.png'
-    case 'winter':
+    case 'season-winter':
       return 'winter.png'
     default:
       return 's.png'

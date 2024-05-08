@@ -34,6 +34,16 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
     return condition_values.some(condition => containsSubString(condition, ['time', 'season']))
   })
 
+  // For dealing with seasonal and time of day encounters.
+  const hasSeason = encounterDetails.some(encounter =>
+    encounter.condition_values.some(value => value.includes('season')),
+  )
+  const hasTime = encounterDetails.some(encounter =>
+    encounter.condition_values.some(value => value.includes('time')),
+  )
+
+  const encounterConditionName = hasSeason ? 'season' : hasTime ? 'time' : null
+
   const header = [
     'Pokémon',
     'Games',
@@ -72,6 +82,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
                 encounter={encounter}
                 hasEncounterCondition={hasEncounterCondition}
                 method={encounter.method.name}
+                encounterConditionName={encounterConditionName}
                 key={index}
               />
             ))}
