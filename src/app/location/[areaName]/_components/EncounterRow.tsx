@@ -63,10 +63,15 @@ export const EncounterRow: FC<RowProps> = ({ encounter, method, hasEncounterCond
     />
   )
 
-  const conditionImageData = buildConditionArray('time', condition_values)
+  // We are concerned only with encounters dependent on the time of day and the season.
+  const conditionValuesFiltered = condition_values.filter(
+    condition => condition.includes('time') || condition.includes('season'),
+  )
+
+  const conditionImageData = buildConditionArray('time', conditionValuesFiltered)
 
   const conditionImagesNew = hasEncounterCondition
-    ? condition_values.length > 0
+    ? conditionValuesFiltered.length > 0
       ? conditionImageData.map((condition, index) => {
           if (condition === '') {
             return (
