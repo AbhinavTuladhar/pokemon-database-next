@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
-import { Tooltip } from '@/components/client-components'
 import typeList from '@/data/typeList'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
@@ -93,14 +92,11 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   })
 
   return (
-    <>
-      <div className="overflow-auto">
-        <div className="inline-flex flex-col">
-          <div className="flex flex-row gap-x-px">{firstRow}</div>
-          <>{tableRows}</>
-          <Tooltip id="my-tooltip" style={{ fontSize: '0.75rem' }} />
-        </div>
+    <div className="overflow-auto">
+      <div className="inline-flex flex-col">
+        <div className="flex flex-row gap-x-px">{firstRow}</div>
+        <>{tableRows}</>
       </div>
-    </>
+    </div>
   )
 }

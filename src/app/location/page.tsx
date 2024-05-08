@@ -5,7 +5,7 @@ import RegionExtractor from '@/extractors/RegionExtractor'
 import { RegionApi } from '@/services'
 import { NamedApiResource } from '@/types'
 
-import RegionTabs from './_components/RegionTabs'
+import { IconKeys, RegionTabs } from './_components'
 
 export const metadata: Metadata = {
   title: 'Pokémon locations | Pokémon Database',
@@ -48,6 +48,7 @@ const LocationList = async () => {
     <main>
       <PageTitle>Pokémon Locations</PageTitle>
       <RegionTabs regionData={regionData} />
+      <IconKeys />
     </main>
   )
 }

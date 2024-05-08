@@ -1,14 +1,14 @@
 export const getRarityString = (chance: number, method: string) => {
   if (method === 'only-one') {
-    return 'limited'
+    return 'Limited'
   }
 
   if (chance >= 50) {
-    return 'common'
+    return 'Common'
   } else if (chance >= 20 && chance < 50) {
-    return 'uncommon'
+    return 'Uncommon'
   } else {
-    return 'rare'
+    return 'Rare'
   }
 }
 

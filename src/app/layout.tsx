@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
+import { Tooltip } from '@/components/client-components'
 import { AnimatedPageWrapper } from '@/components/containers'
 import Header from '@/components/header'
 import Navbar from '@/components/navbar'
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={`${FiraSans.className} dark`}>
         <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
           <Scroll />
+          <Tooltip id="my-tooltip" />
           <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto">

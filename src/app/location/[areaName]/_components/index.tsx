@@ -1,3 +1,3 @@
 export { GameBox } from './GameBox'
-export { GenerationSection } from './GenerationSection'
+export { GenerationEncounters } from './GenerationEncounters'
 export { LocationPageSkeleton } from './LocationPageSkeleton'
