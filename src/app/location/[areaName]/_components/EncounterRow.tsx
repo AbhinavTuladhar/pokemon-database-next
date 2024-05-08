@@ -3,10 +3,11 @@ import Image from 'next/image'
 
 import { TableCell, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
+import encounterConditionData from '@/data/encounterConditionData'
 import generationToGameListMap from '@/data/generationToGameListMap'
 import { GroupedLocationArea } from '@/types'
 import buildConditionArray from '@/utils/buildConditionArray'
-import formatName from '@/utils/formatName'
+import formatName, { capitaliseFirstLetter } from '@/utils/formatName'
 import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
 import getFullSeasonImage from '@/utils/getSeasonImage'
 import getFullTimeImage from '@/utils/getTimeImage'
@@ -27,11 +28,33 @@ const getFallBackCondition = (encounterConditionName: EncounterConditionName): C
     : ['time-morning', 'time-day', 'time-night']
 }
 
+// Used for dealing with the index position of the tooltip
+const getFallBackTooltip = (encounterConditionName: EncounterConditionName, index: number) => {
+  const baseString = 'Not in the'
+
+  switch (encounterConditionName) {
+    case 'season':
+      const seasonValue = encounterConditionData['season'][index]
+      return `${baseString} ${seasonValue}`
+    case 'time':
+      const timeValue = encounterConditionData['time'][index]
+      return `${baseString} ${timeValue}`
+    default:
+      return ''
+  }
+}
+
 const ConditionImages: FC<ImageRowProps> = ({ conditions, encounterConditionName }) => {
   return conditions.map((condition, index) => {
+    const tooltipContent = getFallBackTooltip(encounterConditionName, index)
     if (condition === '') {
       return (
-        <div key={index} className="grid h-8 w-8 place-items-center">
+        <div
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={tooltipContent}
+          key={index}
+          className="grid h-8 w-8 cursor-help place-items-center"
+        >
           <div className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
         </div>
       )
@@ -40,7 +63,20 @@ const ConditionImages: FC<ImageRowProps> = ({ conditions, encounterConditionName
       encounterConditionName === 'time'
         ? getFullTimeImage(condition)
         : getFullSeasonImage(condition)
-    return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
+    const [_, conditionName] = condition.split('-')
+    const conditionTooltipContent = capitaliseFirstLetter(conditionName)
+    return (
+      <Image
+        data-tooltip-id="my-tooltip"
+        data-tooltip-content={conditionTooltipContent}
+        className="cursor-help"
+        key={condition}
+        alt={condition}
+        src={imageFile}
+        width={32}
+        height={32}
+      />
+    )
   })
 }
 
