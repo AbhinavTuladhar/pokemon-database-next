@@ -14,6 +14,38 @@ import getFullTimeImage from '@/utils/getTimeImage'
 import { GameBox } from './GameBox'
 import { EncounterConditionName } from './types'
 
+type ConditionArray = [string, string, string] | [string, string, string, string]
+
+interface ImageRowProps {
+  conditions: [string, string, string] | [string, string, string, string]
+  encounterConditionName: EncounterConditionName
+}
+
+// Used when there are other time or season-based encounters in the other rows of the same table,
+// but not in the current row.
+const getFallBackCondition = (encounterConditionName: EncounterConditionName): ConditionArray => {
+  return encounterConditionName === 'season'
+    ? ['season-spring', 'season-summer', 'season-autumn', 'season-winter']
+    : ['time-morning', 'time-day', 'time-night']
+}
+
+const ConditionImages: FC<ImageRowProps> = ({ conditions, encounterConditionName }) => {
+  return conditions.map((condition, index) => {
+    if (condition === '') {
+      return (
+        <div key={index} className="grid h-8 w-8 place-items-center">
+          <div className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
+        </div>
+      )
+    }
+    const imageFile =
+      encounterConditionName === 'time'
+        ? getFullTimeImage(condition)
+        : getFullSeasonImage(condition)
+    return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
+  })
+}
+
 interface RowProps {
   encounter: GroupedLocationArea
   method: string
@@ -80,32 +112,19 @@ export const EncounterRow: FC<RowProps> = ({
       ? buildConditionArray('time', conditionValuesFiltered)
       : buildConditionArray('season', conditionValuesFiltered)
 
-  const conditionImages = hasEncounterCondition
-    ? conditionValuesFiltered.length > 0
-      ? conditionImagesData.map((condition, index) => {
-          if (condition === '') {
-            return (
-              <div key={index} className="grid h-8 w-8 place-items-center">
-                <div className="h-1.5 w-1.5 rounded-full bg-zinc-400" />
-              </div>
-            )
-          }
-          const imageFile =
-            encounterConditionName === 'time'
-              ? getFullTimeImage(condition)
-              : getFullSeasonImage(condition)
-          return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
-        })
-      : encounterConditionName === 'time'
-        ? ['time-morning', 'time-day', 'time-night'].map(condition => {
-            const imageFile = getFullTimeImage(condition)
-            return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
-          })
-        : ['season-spring', 'season-summer', 'season-autumn', 'season-winter'].map(condition => {
-            const imageFile = getFullSeasonImage(condition)
-            return <Image key={condition} alt={''} src={imageFile} width={32} height={32} />
-          })
-    : null
+  const conditionImages = hasEncounterCondition ? (
+    conditionValuesFiltered.length > 0 ? (
+      <ConditionImages
+        conditions={conditionImagesData}
+        encounterConditionName={encounterConditionName}
+      />
+    ) : (
+      <ConditionImages
+        conditions={getFallBackCondition(encounterConditionName)}
+        encounterConditionName={encounterConditionName}
+      />
+    )
+  ) : null
 
   const conditionDiv = (
     <div className="flex items-center justify-between gap-x-4">{conditionImages}</div>
