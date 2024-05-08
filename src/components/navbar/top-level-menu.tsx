@@ -32,7 +32,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
     >
       <span className="flex w-full flex-col items-center justify-center gap-x-2 gap-y-2 text-sm hover:cursor-default md:flex-row md:text-base md:font-bold">
         <>{icon}</>
-        <span> {parentText} </span>
+        <span className="text-sm lg:text-base"> {parentText} </span>
       </span>
       <ul
         className={classNames(

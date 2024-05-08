@@ -9,6 +9,7 @@ module.exports = {
         'table-border': '#353535',
         'dark-highlighted': '#2c303b',
       },
+
       fontSize: {
         '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
         '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',
