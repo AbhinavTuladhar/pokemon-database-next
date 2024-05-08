@@ -60,7 +60,7 @@ export const DynamicTable: FC<TableProps> = ({ itemData, categories, pocketData 
 
     if (searchString) {
       filteredSlice = filteredSlice.filter(item =>
-        item.name.replace('-', ' ').includes(searchString.trim()),
+        item.name.replaceAll('-', ' ').includes(searchString.trim()),
       )
     }
 

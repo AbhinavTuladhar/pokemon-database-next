@@ -26,7 +26,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
       setFilteredData(moveData)
     } else {
       const filteredSlice = moveData.filter(move =>
-        move.moveName.replace('-', ' ').includes(searchString),
+        move.moveName.replaceAll('-', ' ').includes(searchString),
       )
       setFilteredData(filteredSlice)
     }
@@ -53,7 +53,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
 
     return (
       <TableRow
-        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+        className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
         key={rowIndex}
       >
         <TableCell variant="column">
