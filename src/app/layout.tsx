@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${FiraSans.className} dark`}>
         <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
           <Scroll />
-          <Tooltip id="my-tooltip" />
+          <Tooltip id="my-tooltip" style={{ fontSize: '0.75rem' }} />
           <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">
             <Header />
             <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto xl:px-8">
