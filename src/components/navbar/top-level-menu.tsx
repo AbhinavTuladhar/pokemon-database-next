@@ -36,7 +36,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
       </span>
       <ul
         className={classNames(
-          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-500 md:top-12',
+          'absolute left-0 right-0 top-[4.5rem] z-50 text-center text-white transition-opacity duration-500 md:top-[3.5rem]',
           { 'opacity-100': isOpen },
           { 'pointer-events-none opacity-0': !isOpen },
         )}
