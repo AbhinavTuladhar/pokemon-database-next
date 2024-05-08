@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
@@ -25,6 +26,13 @@ const getPokemonData = async (name: string) => {
 interface SpritePageProps {
   params: {
     pokemonName: string
+  }
+}
+
+export async function generateMetadata({ params }: SpritePageProps): Promise<Metadata> {
+  const { pokemonName } = params
+  return {
+    title: `${formatName(pokemonName)} sprites and artwork gallery | Pokémon Database`,
   }
 }
 
