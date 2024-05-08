@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
@@ -6,10 +6,59 @@ import typeList from '@/data/typeList'
 import { TransformedType } from '@/types'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
+type AttackingType = Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>
+
 interface DualTypeChartProps {
   baseType: string
-  attackingTypeInfo: Array<Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>>
+  attackingTypeInfo: Array<AttackingType>
   sectionTitleFlag: boolean
+}
+
+interface RowProps {
+  typeCombination: Array<string>
+  attackingTypeInfo: Array<AttackingType>
+}
+
+const calculateScoresAndMultipliers = (
+  typeCombo: Array<string>,
+  attackingTypeInfo: Array<AttackingType>,
+) => {
+  let score = 0
+  let multiplierValues: Array<number> = []
+
+  typeList.forEach((_, index) => {
+    const [firstType, secondType] = typeCombo
+    const multiplierValue = calculateOffensiveTypeEffectiveness(
+      firstType === secondType ? [firstType] : typeCombo,
+      attackingTypeInfo[index],
+    )
+    score += multiplierValue
+    multiplierValues.push(multiplierValue)
+  })
+  return { score, multiplierValues }
+}
+
+const ScoreCell: FC<PropsWithChildren> = ({ children }) => (
+  <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
+    {children}
+  </div>
+)
+
+const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
+  const { score, multiplierValues } = calculateScoresAndMultipliers(
+    typeCombination,
+    attackingTypeInfo,
+  )
+  return (
+    <div className="flex">
+      <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
+        {score}
+      </div>
+      {multiplierValues.map((multiplier, index) => (
+        <TypeMultiplierBox multiplier={multiplier} key={index} />
+      ))}
+    </div>
+  )
 }
 
 export const DualTypeChart: FC<DualTypeChartProps> = ({
@@ -57,36 +106,33 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   )
 
   const otherRows = typeCombinations.map((typeCombo, rowIndex) => {
-    let score = 0
-    let multiplierValues: Array<number> = []
-
-    typeList.forEach((_, colIndex) => {
-      const [firstType, secondType] = typeCombo
-      const multiplierValue = calculateOffensiveTypeEffectiveness(
-        firstType === secondType ? [firstType] : typeCombo,
-        attackingTypeInfo[colIndex],
-      )
-      score += multiplierValue
-      multiplierValues.push(multiplierValue)
-    })
-
-    const rowDiv = typeList.map((_, colIndex) => {
-      const [firstType, secondType] = typeCombo
-      const multiplierValue = calculateOffensiveTypeEffectiveness(
-        firstType === secondType ? [firstType] : typeCombo,
-        attackingTypeInfo[colIndex],
-      )
-      return <TypeMultiplierBox multiplier={multiplierValue} key={colIndex} />
-    })
-
     return (
-      <div className="flex" key={rowIndex}>
-        <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
-          {score}
-        </div>
-        {rowDiv}
-      </div>
+      <TableRow key={rowIndex} attackingTypeInfo={attackingTypeInfo} typeCombination={typeCombo} />
     )
+    // let score = 0
+    // let multiplierValues: Array<number> = []
+
+    // const test = calculateScoresAndMultipliers(typeCombo, attackingTypeInfo[rowIndex])
+    // console.log(test)
+
+    // typeList.forEach((_, colIndex) => {
+    //   const [firstType, secondType] = typeCombo
+    //   const multiplierValue = calculateOffensiveTypeEffectiveness(
+    //     firstType === secondType ? [firstType] : typeCombo,
+    //     attackingTypeInfo[colIndex],
+    //   )
+    //   score += multiplierValue
+    //   multiplierValues.push(multiplierValue)
+    // })
+
+    // const rowDiv = typeList.map((_, colIndex) => {
+    //   const [firstType, secondType] = typeCombo
+    //   const multiplierValue = calculateOffensiveTypeEffectiveness(
+    //     firstType === secondType ? [firstType] : typeCombo,
+    //     attackingTypeInfo[colIndex],
+    //   )
+    //   return <TypeMultiplierBox multiplier={multiplierValue} key={colIndex} />
+    // })
   })
 
   const talbeRows = (
