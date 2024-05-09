@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import classNames from 'classnames'
 
 import { TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import { EncounterMethod } from '@/types'
@@ -53,7 +54,12 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
       {header.map((headerName, index) => (
         <TableCellHeader
           type="column"
-          className={`${headerName === 'Games' ? '!px-0' : ''} border-r border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border`}
+          className={classNames(
+            'border border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border',
+            { '!px-0': headerName === 'Games' },
+            { 'min-w-48': headerName === 'Pokémon' },
+            { '!min-w-40': headerName === 'Conditions' },
+          )}
           key={index}
         >
           {headerName}

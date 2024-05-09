@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
+import classNames from 'classnames'
 
 import { TableCell, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
@@ -161,7 +162,15 @@ export const EncounterRow: FC<RowProps> = ({
   ) : null
 
   const conditionDiv = (
-    <div className="flex items-center justify-between gap-x-4">{conditionImages}</div>
+    <div
+      className={classNames(
+        'grid items-center justify-between gap-x-4',
+        { 'grid-cols-[repeat(3,_32px)]': encounterConditionName === 'time' },
+        { 'grid-cols-[repeat(4,_32px)]': encounterConditionName === 'season' },
+      )}
+    >
+      {conditionImages}
+    </div>
   )
 
   const cellData = [
@@ -172,12 +181,22 @@ export const EncounterRow: FC<RowProps> = ({
     { key: 'level range', value: levelRange },
   ]
 
+  // const newStyles = classNames(
+  //   { '!px-0': key === 'game'}
+  // )
+
   return (
     <TableRow>
       {cellData.map(({ key, value }, index) => (
         <TableCell
           key={index}
-          extraClassName={`${key === 'game' ? '!px-0' : ''} !py-0`}
+          extraClassName={classNames(
+            '!py-0',
+            { '!px-0': key === 'game' },
+            { '!pr-8 md:!pr-0': key === 'pokemon' },
+            { '!pr-4': key === 'condition' },
+          )}
+          // extraClassName={`${key === 'game' ? '!px-0' : ''} !py-0`}
           variant="column"
         >
           {value}
