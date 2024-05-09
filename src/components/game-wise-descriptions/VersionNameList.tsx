@@ -24,7 +24,7 @@ const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
       return (
         <React.Fragment key={index}>
           <GameName gameName={properName} colour={colour} />
-          {!isLast && '/'}
+          {!isLast && ' / '}
         </React.Fragment>
       )
     })}

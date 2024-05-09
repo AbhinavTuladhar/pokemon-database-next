@@ -8,7 +8,7 @@ import VersionNameList from './VersionNameList'
 const DescriptionRow: FC<RowProps> = ({ description, versionGroupNames }) => {
   return (
     <TableRow>
-      <TableCellHeader>
+      <TableCellHeader wrapFlag>
         <VersionNameList versionNames={versionGroupNames} />
       </TableCellHeader>
       <TableCell>{description}</TableCell>
