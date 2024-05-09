@@ -4,6 +4,8 @@ import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
 import { TransformedType } from '@/types'
+import formatName from '@/utils/formatName'
+import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
 type AttackingType = Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>
@@ -24,16 +26,16 @@ const calculateScoresAndMultipliers = (
   attackingTypeInfo: Array<AttackingType>,
 ) => {
   let score = 0
-  let multiplierValues: Array<number> = []
+  let multiplierValues: Array<{ multiplier: number; type: string }> = []
 
-  typeList.forEach((_, index) => {
+  typeList.forEach((type, index) => {
     const [firstType, secondType] = typeCombo
     const multiplierValue = calculateOffensiveTypeEffectiveness(
       firstType === secondType ? [firstType] : typeCombo,
       attackingTypeInfo[index],
     )
     score += multiplierValue
-    multiplierValues.push(multiplierValue)
+    multiplierValues.push({ multiplier: multiplierValue, type: type })
   })
   return { score, multiplierValues }
 }
@@ -49,12 +51,21 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
     typeCombination,
     attackingTypeInfo,
   )
+
+  const typeComboString = typeCombination.map(formatName).join('/')
+
   return (
     <div className="flex">
       <ScoreCell>{score}</ScoreCell>
-      {multiplierValues.map((multiplier, index) => (
-        <TypeMultiplierBox multiplier={multiplier} key={index} />
-      ))}
+      {multiplierValues.map(({ multiplier, type }, index) => {
+        const multiplierString = multiplierToString(multiplier)
+        const tooltipContent = `${formatName(type)} → ${typeComboString} = ${multiplierString}`
+        return (
+          <div key={index} data-tooltip-content={tooltipContent} data-tooltip-id="my-tooltip">
+            <TypeMultiplierBox multiplier={multiplier} key={index} />
+          </div>
+        )
+      })}
     </div>
   )
 }
