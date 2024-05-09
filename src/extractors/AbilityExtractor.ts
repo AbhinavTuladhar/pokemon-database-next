@@ -24,7 +24,7 @@ const AbilityExtractor = (data: Ability) => {
     .filter(entry => entry.language.name === 'en')
     .map(entry => ({
       description: entry.flavor_text,
-      versionName: entry.version_group.name,
+      versionGroupName: entry.version_group.name,
       generation: gameToGenerationMap[entry.version_group.name],
     }))
 

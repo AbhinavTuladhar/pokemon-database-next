@@ -71,7 +71,7 @@ export const ItemExtractor = (item: Item) => {
     .filter(entry => entry.language.name === 'en')
     .map(entry => ({
       description: entry.text,
-      versionName: entry.version_group.name,
+      versionGroupName: entry.version_group.name,
       generation: gameToGenerationMap[entry.version_group.name],
     }))
 
