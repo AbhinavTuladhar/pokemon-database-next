@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import {
   SectionTitle,
@@ -8,7 +8,8 @@ import {
   TableRow,
 } from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
-import gameNameMap from '@/data/gameNameMap'
+import { newGameNameMap } from '@/data/gameNameMap'
+import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 
 interface DescriptionInterface {
   description: string
@@ -52,8 +53,6 @@ export const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
     ? Object?.values(groupedData).filter(row => row.generation !== undefined)
     : []
 
-  // console.log(properGroupedData)
-
   const tableRows = properGroupedData.map((generationKey, rowIndex) => {
     const { description, versionName } = generationKey
     return (
@@ -61,9 +60,18 @@ export const AbilityDescription: FC<DescriptionProps> = ({ descriptions }) => {
         <TableCellHeader wrapFlag={true}>
           <ul>
             {versionName.map(version => {
+              const gameList = newGameNameMap[version]
               return (
                 <li className="list-none" key={version}>
-                  {gameNameMap[version]}
+                  {gameList.map((game, gameIndex) => {
+                    const { colour, properName } = gameToColourAndNameMap[game]
+                    return (
+                      <Fragment key={gameIndex}>
+                        <span className={colour}>{properName}</span>
+                        {gameIndex !== gameList.length - 1 ? ' / ' : ''}
+                      </Fragment>
+                    )
+                  })}
                 </li>
               )
             })}
