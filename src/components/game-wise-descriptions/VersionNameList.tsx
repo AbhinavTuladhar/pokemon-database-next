@@ -1,32 +1,51 @@
 import React, { FC } from 'react'
 
 import { newGameNameMap } from '@/data/gameNameMap'
+import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 
-interface ListProps {
-  versionNames: Array<string>
-}
-
-interface NameProps {
+interface GameNameProps {
   gameName: string
   colour: string
-  index: number
-  listLength: number
 }
 
-const GameName: FC<NameProps> = ({ gameName, colour, index, listLength }) => {
-  return (
-    <>
-      <span className={colour}>{gameName}</span>
-      {index !== listLength - 1 && ' / '}
-    </>
-  )
+const GameName: FC<GameNameProps> = ({ gameName, colour }) => (
+  <span className={colour}>{gameName}</span>
+)
+
+interface GameNameRowProps {
+  names: string[]
 }
 
-const VersionNameList: FC<ListProps> = ({ versionNames }) => {
-  return versionNames.map((version, index) => {
-    const gameList = newGameNameMap[version]
-    return <li className="list-none" key={version}></li>
-  })
+const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
+  <>
+    {names.map((name, index) => {
+      const { colour, properName } = gameToColourAndNameMap[name]
+      const isLast = index === names.length - 1
+      return (
+        <React.Fragment key={index}>
+          <GameName gameName={properName} colour={colour} />
+          {!isLast && '/'}
+        </React.Fragment>
+      )
+    })}
+  </>
+)
+
+interface VersionNameListProps {
+  versionNames: string[]
 }
+
+const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => (
+  <ul>
+    {versionNames.map((version, index) => {
+      const gameList = newGameNameMap[version]
+      return (
+        <li key={index}>
+          <GameNameRow names={gameList} />
+        </li>
+      )
+    })}
+  </ul>
+)
 
 export default VersionNameList

@@ -3,18 +3,9 @@ import React, { FC } from 'react'
 import { TableContainer } from '../containers'
 
 import DescriptionRow from './DescriptionRow'
+import { DescriptionProps } from './types'
 
-interface RowProps {
-  description: string
-  generation: string
-  versionGroupNames: Array<string>
-}
-
-interface DescriptionProps {
-  descriptionData: Array<RowProps>
-}
-
-const GameWiseDescription: FC<DescriptionProps> = ({ descriptionData }) => {
+const GameWiseDescriptions: FC<DescriptionProps> = ({ descriptionData }) => {
   return (
     <TableContainer>
       {descriptionData.map(({ description, generation, versionGroupNames }) => {
@@ -31,4 +22,4 @@ const GameWiseDescription: FC<DescriptionProps> = ({ descriptionData }) => {
   )
 }
 
-export default GameWiseDescription
+export default GameWiseDescriptions
