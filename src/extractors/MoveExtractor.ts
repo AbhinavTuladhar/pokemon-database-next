@@ -37,7 +37,7 @@ const MoveExtractor = (move: Move) => {
     .filter(entry => entry.language.name === 'en')
     .map(version => ({
       description: version.flavor_text,
-      version: version.version_group.name,
+      versionGroupName: version.version_group.name,
       generation: gameToGenerationMap[version.version_group.name],
     }))
 
