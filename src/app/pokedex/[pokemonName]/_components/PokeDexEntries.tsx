@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/containers'
 import { gameBlackLists } from '@/data/blacklists'
-import { individualGameMap } from '@/data/gameNameMap'
+import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 import { FlavourText } from '@/types/utils/Common'
 
 interface VersionDescription {
@@ -71,7 +71,12 @@ export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
   // Now making a list for each version
   const finalEntry = englishInfoByDescription.map(entry => {
     const gameListItems = entry.versionName.map((version, index) => {
-      return <li key={index}>{individualGameMap[version]}</li>
+      const { colour, properName } = gameToColourAndNameMap[version]
+      return (
+        <li key={index} className={colour}>
+          {properName}
+        </li>
+      )
     })
     const gameList = <ul className="list-inside list-none"> {gameListItems} </ul>
     return { versionName: gameList, description: entry.description }
