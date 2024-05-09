@@ -107,7 +107,7 @@ export const EncounterRow: FC<RowProps> = ({
   const rarityString = getRarityString(chance, method)
 
   const idDiv = (
-    <div className="flex flex-row items-center pr-12 md:pr-4">
+    <div className="flex items-center pr-12 md:pr-4">
       <Image src={iconSprite} alt={pokemonName} width={66} height={66} />
       <BlueLink boldFlag href={`/pokedex/${pokemonName}`}>
         {formatName(pokemonName)}
@@ -181,22 +181,17 @@ export const EncounterRow: FC<RowProps> = ({
     { key: 'level range', value: levelRange },
   ]
 
-  // const newStyles = classNames(
-  //   { '!px-0': key === 'game'}
-  // )
-
   return (
-    <TableRow>
+    <TableRow className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted">
       {cellData.map(({ key, value }, index) => (
         <TableCell
           key={index}
           extraClassName={classNames(
             '!py-0',
             { '!px-0': key === 'game' },
-            { '!pr-8 md:!pr-0': key === 'pokemon' },
+            { 'min-w-40': key === 'pokemon' },
             { '!pr-4': key === 'condition' },
           )}
-          // extraClassName={`${key === 'game' ? '!px-0' : ''} !py-0`}
           variant="column"
         >
           {value}

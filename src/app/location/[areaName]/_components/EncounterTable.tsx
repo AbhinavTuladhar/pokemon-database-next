@@ -58,7 +58,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
             'border border-r-gray-300 pr-4 !text-center last:border-r-0 dark:border-r-table-border',
             { '!px-0': headerName === 'Games' },
             { 'min-w-48': headerName === 'Pokémon' },
-            { '!min-w-40': headerName === 'Conditions' },
+            { 'min-w-40': headerName === 'Conditions' },
           )}
           key={index}
         >
