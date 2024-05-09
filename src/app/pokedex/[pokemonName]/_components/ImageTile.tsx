@@ -20,25 +20,18 @@ export const ImageTile: FC<ImageTileProps> = ({ defaultSprite, shinySprite }) =>
   const unselectedButtonStyle =
     'text-black bg-white dark:text-white dark:bg-black w-24 py-0 px-4 rounded-3xl border duration-300'
 
-  // For toggling between normal and shiny versions.
-  const handleClick = () => {
-    setSelectedImage(prevStatus => {
-      return prevStatus === 'normal' ? 'shiny' : 'normal'
-    })
-  }
-
   return (
     <div className="mt-5 flex flex-col">
       <div className="my-2 flex flex-row justify-center gap-x-4">
         <button
           className={selectedImage === 'normal' ? selectedButtonStyle : unselectedButtonStyle}
-          onClick={handleClick}
+          onClick={() => setSelectedImage('normal')}
         >
           Normal
         </button>
         <button
           className={selectedImage === 'normal' ? unselectedButtonStyle : selectedButtonStyle}
-          onClick={handleClick}
+          onClick={() => setSelectedImage('shiny')}
         >
           Shiny
         </button>
