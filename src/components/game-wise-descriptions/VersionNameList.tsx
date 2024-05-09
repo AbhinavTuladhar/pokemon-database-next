@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { newGameNameMap } from '@/data/gameNameMap'
+import { versionNameBreakMap } from '@/data/gameNameMap'
 import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 
 interface GameNameProps {
@@ -38,7 +38,7 @@ interface VersionNameListProps {
 const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => (
   <ul>
     {versionNames.map((version, index) => {
-      const gameList = newGameNameMap[version]
+      const gameList = versionNameBreakMap[version]
       return (
         <li key={index}>
           <GameNameRow names={gameList} />

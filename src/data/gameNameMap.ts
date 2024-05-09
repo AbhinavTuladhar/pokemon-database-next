@@ -20,7 +20,7 @@ const gameNameMap: Record<string, string> = {
   'ultra-sun-ultra-moon': 'U. Sun / U. Moon',
 }
 
-export const newGameNameMap: Record<string, Array<string>> = {
+export const versionNameBreakMap: Record<string, Array<string>> = {
   'red-blue': ['red', 'blue'],
   'yellow': ['yellow'],
   'gold-silver': ['gold', 'silver'],
