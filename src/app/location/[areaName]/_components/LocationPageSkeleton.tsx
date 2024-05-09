@@ -12,9 +12,9 @@ export const LocationPageSkeleton = () => {
         height="2.25rem"
         containerClassName="flex-1 w-full text-center"
       />
-      <Skeleton width="8rem" height="2.875rem" containerClassName="flex-1 w-full" />
-      <Skeleton width="6rem" height="1.5rem" containerClassName="flex-1 w-full" />
-      <Skeleton width="6rem" height="1.25rem" containerClassName="flex-1 w-full" />
+      <Skeleton width="16rem" height="2.875rem" containerClassName="flex-1 w-full" />
+      <Skeleton width="8rem" height="1.5rem" containerClassName="flex-1 w-full" />
+      <Skeleton width="12rem" height="1.25rem" containerClassName="flex-1 w-full" />
       <div className="w-72">
         <PokemonTableSkeleton />
       </div>
