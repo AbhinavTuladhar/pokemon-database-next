@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${FiraSans.className} dark`}>
-        <SkeletonTheme baseColor="#2f333c" highlightColor="#444">
+        <SkeletonTheme baseColor="#bababa" highlightColor="#9f9f9f">
           <Scroll />
           <Tooltip id="my-tooltip" style={{ fontSize: '0.75rem' }} />
           <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">

@@ -68,3 +68,10 @@
   border-radius: 2px;
   transition: all 0.4s ease-in-out;
 }
+
+body.dark .react-loading-skeleton {
+  /* --base-color: #2f333c !important;
+  --highlight-color: #444 !important; */
+  --base-color: #314158 !important;
+  --highlight-color: #435979 !important;
+}
