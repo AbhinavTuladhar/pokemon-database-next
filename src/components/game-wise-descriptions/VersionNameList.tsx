@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { versionNameBreakMap } from '@/data/gameNameMap'
+import { individualRawGameMap, versionNameBreakMap } from '@/data/gameNameMap'
 import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 
 interface GameNameProps {
@@ -18,7 +18,7 @@ interface GameNameRowProps {
 
 const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
   <>
-    {names.map((name, index) => {
+    {names?.map((name, index) => {
       const { colour, properName } = gameToColourAndNameMap[name]
       const isLast = index === names.length - 1
       return (
@@ -39,6 +39,15 @@ const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => (
   <ul>
     {versionNames.map((version, index) => {
       const gameList = versionNameBreakMap[version]
+      // If gamelist is undefined, it means we're using individual game names.
+      if (!gameList) {
+        const formattedGameNames = [individualRawGameMap[version]]
+        return (
+          <li key={index}>
+            <GameNameRow names={formattedGameNames} />
+          </li>
+        )
+      }
       return (
         <li key={index}>
           <GameNameRow names={gameList} />

@@ -1,6 +1,5 @@
 export interface RowProps {
   description: string
-  generation: string
   versionGroupNames: Array<string>
 }
 
