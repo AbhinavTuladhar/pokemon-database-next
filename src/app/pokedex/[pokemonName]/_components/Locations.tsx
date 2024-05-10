@@ -1,12 +1,7 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { EncountersApi } from '@/services'
 import { LocationAreaEncounter } from '@/types'
 import formatName from '@/utils/formatName'
@@ -45,7 +40,7 @@ const findLocationsAndVersions = (data: Array<LocationAreaEncounter>) => {
       } = version
       return {
         locationName: formatFields(locationName).trim(),
-        versionName: formatFields(versionName),
+        versionName,
       }
     })
     return encounterData
@@ -111,33 +106,17 @@ interface LocationsProps {
 export const Locations: FC<LocationsProps> = async ({ id, name }) => {
   const locationData = await getLocationData(id)
 
-  // some formatting of the data
-  const preFinalTable = locationData?.map(entry => {
-    const listItems = entry.versionName.map((version, index) => {
-      return <li key={index}> {version} </li>
-    })
-    const gameList = <ul className="list-inside list-none"> {listItems} </ul>
-    return { versionName: gameList, locationName: entry.locationName }
-  })
-
-  // Now render the final data.
-  const finalTable = preFinalTable?.map((row, rowIndex) => {
-    return (
-      <TableRow key={rowIndex}>
-        <TableCellHeader type="row">{row.versionName}</TableCellHeader>
-        <TableCell>{row.locationName}</TableCell>
-      </TableRow>
-    )
+  const finalLocationData = locationData.map(entry => {
+    const { locationName, versionName } = entry
+    return { description: locationName, versionGroupNames: versionName }
   })
 
   // If there is no encounter data, then nothing is rendered.
   return (
     <>
       <SectionTitle>{`Where to find ${formatName(name)}`}</SectionTitle>
-      {finalTable.length > 0 ? (
-        <TableContainer>
-          <tbody>{finalTable}</tbody>
-        </TableContainer>
+      {locationData.length > 0 ? (
+        <GameWiseDescriptions descriptionData={finalLocationData} />
       ) : (
         <p> No locations were found. </p>
       )}
