@@ -2,18 +2,39 @@ import { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
-import { gameBlackLists } from '@/data/blacklists'
-import { FlavourText } from '@/types/utils/Common'
+import { PokedexEntry } from '@/types'
 
 interface VersionDescription {
   versionName: string
   description: string
 }
 
+interface VersionDescriptionNew {
+  versionName: string
+  description: string
+  generationInternal: string
+}
+
 interface GroupVersionDescriptions {
   versionName: Array<string>
   description: string
 }
+
+interface GroupedByGeneration {
+  [key: string]: Array<VersionDescriptionNew>
+}
+
+const groupByGeneration = (data: Array<VersionDescriptionNew>) =>
+  data.reduce((acc, current) => {
+    const { generationInternal } = current
+
+    if (!acc[generationInternal]) {
+      acc[generationInternal] = []
+    }
+
+    acc[generationInternal].push(current)
+    return acc
+  }, {} as GroupedByGeneration)
 
 const groupByDescription = (data: Array<VersionDescription>) => {
   return data.reduce((acc, current) => {
@@ -31,7 +52,7 @@ const groupByDescription = (data: Array<VersionDescription>) => {
 }
 
 interface DexEntriesProps {
-  flavourTextEntries: Array<FlavourText>
+  flavourTextEntries: Array<PokedexEntry>
 }
 
 export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
@@ -39,29 +60,10 @@ export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     return null
   }
 
-  // Let's find all the English entries first that are not in the blacklisted games.
-  const englishEntries = flavourTextEntries.filter(entry => {
-    const {
-      language: { name: languageName },
-      version: { name: versionName },
-    } = entry
-    return languageName === 'en' && !gameBlackLists.includes(versionName)
-  })
-
-  // Find an object containing the version anme and the Pokedex entry.
-  const englishInfo = englishEntries.map(entry => {
-    const rawText = entry.flavor_text as string
-    // This 'removes' the escape characters in the Pokedex entry. However, the escape characters are placed in very inconsitent places, so the text looks weird.
-    const cleanedStr = rawText.replace(/\f/g, ' ').replace(/\n/g, ' ')
-    const versionName = entry.version.name
-    return {
-      versionName,
-      description: cleanedStr,
-    }
-  })
+  console.log(flavourTextEntries)
 
   // Replace the 'versionName' of englishInfoDescription object with 'versioNGroupName'
-  const englishInfoByDescription = groupByDescription(englishInfo).map(obj => {
+  const englishInfoByDescription = groupByDescription(flavourTextEntries).map(obj => {
     const { description, versionName } = obj
     return { description, versionGroupNames: versionName }
   })

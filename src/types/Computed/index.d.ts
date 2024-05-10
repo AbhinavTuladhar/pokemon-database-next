@@ -76,11 +76,19 @@ interface SpriteDataType {
   }
 }
 
+// For pokedex entries
+interface PokedexEntry {
+  versionName: string
+  description: string
+  generationInternal: string
+}
+
 export type {
   EvolutionPokemon,
   GenerationSprite,
   GenericNamedResource,
   GroupedLocationArea,
+  PokedexEntry,
   SpriteDataType,
   StatTable,
   TransformedAbility,
