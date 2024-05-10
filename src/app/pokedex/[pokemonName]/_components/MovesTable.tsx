@@ -22,51 +22,61 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
   const firstRowLabels = levelFlag === true ? firstRow : firstRow.slice(1)
 
   return (
-    <TableContainer>
-      <thead>
-        <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
-          {firstRowLabels.map((label, index) => (
-            <TableCellHeader
-              key={index}
-              type="column"
-              className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
-            >
-              {label}
-            </TableCellHeader>
-          ))}
-        </TableRow>
-      </thead>
-      <tbody>
-        {movesData.map((move, rowIndex) => {
-          const { moveName, levelLearnedAt = '', moveType, damageClass, PP, power, accuracy } = move
-          return (
-            <TableRow
-              className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
-              key={rowIndex}
-            >
-              {levelLearnedAt && (
-                <TableCell variant="column" extraClassName="text-right">
-                  {levelLearnedAt}
+    <div className="flex justify-center mdlg:block">
+      <TableContainer>
+        <thead>
+          <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+            {firstRowLabels.map((label, index) => (
+              <TableCellHeader
+                key={index}
+                type="column"
+                className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+              >
+                {label}
+              </TableCellHeader>
+            ))}
+          </TableRow>
+        </thead>
+        <tbody>
+          {movesData.map((move, rowIndex) => {
+            const {
+              moveName,
+              levelLearnedAt = '',
+              moveType,
+              damageClass,
+              PP,
+              power,
+              accuracy,
+            } = move
+            return (
+              <TableRow
+                className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
+                key={rowIndex}
+              >
+                {levelLearnedAt && (
+                  <TableCell variant="column" extraClassName="text-right">
+                    {levelLearnedAt}
+                  </TableCell>
+                )}
+                <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
+                  <BlueLink href={`/move/${moveName}`} boldFlag={true}>
+                    {formatName(moveName)}
+                  </BlueLink>
                 </TableCell>
-              )}
-              <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
-                <BlueLink href={`/move/${moveName}`} boldFlag={true}>
-                  {formatName(moveName)}
-                </BlueLink>
-              </TableCell>
-              <TableCell variant="column">
-                <TypeCard typeName={moveType} />
-              </TableCell>
-              <TableCell variant="column">
-                <MoveCategoryImage category={damageClass} />
-              </TableCell>
-              <TableCell variant="column">{PP}</TableCell>
-              <TableCell variant="column">{power}</TableCell>
-              <TableCell variant="column">{accuracy}</TableCell>
-            </TableRow>
-          )
-        })}
-      </tbody>
-    </TableContainer>
+                <TableCell variant="column">
+                  <TypeCard typeName={moveType} />
+                </TableCell>
+                <TableCell variant="column">
+                  <MoveCategoryImage category={damageClass} />
+                </TableCell>
+                <TableCell variant="column">{PP}</TableCell>
+                <TableCell variant="column">{power}</TableCell>
+                <TableCell variant="column">{accuracy}</TableCell>
+              </TableRow>
+            )
+          })}
+        </tbody>
+      </TableContainer>
+    </div>
   )
 }
