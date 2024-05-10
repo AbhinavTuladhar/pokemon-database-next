@@ -35,26 +35,28 @@ interface VersionNameListProps {
   versionNames: string[]
 }
 
-const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => (
-  <ul>
-    {versionNames.map((version, index) => {
-      const gameList = versionNameBreakMap[version]
-      // If gamelist is undefined, it means we're using individual game names.
-      if (!gameList) {
-        const formattedGameNames = [individualRawGameMap[version]]
+const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => {
+  return (
+    <ul>
+      {versionNames.map((version, index) => {
+        const gameList = versionNameBreakMap[version]
+        // If gamelist is undefined, it means we're using individual game names.
+        if (!gameList) {
+          const formattedGameNames = [individualRawGameMap[version]]
+          return (
+            <li key={index}>
+              <GameNameRow names={formattedGameNames} />
+            </li>
+          )
+        }
         return (
           <li key={index}>
-            <GameNameRow names={formattedGameNames} />
+            <GameNameRow names={gameList} />
           </li>
         )
-      }
-      return (
-        <li key={index}>
-          <GameNameRow names={gameList} />
-        </li>
-      )
-    })}
-  </ul>
-)
+      })}
+    </ul>
+  )
+}
 
 export default VersionNameList
