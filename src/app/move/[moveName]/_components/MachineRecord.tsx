@@ -1,14 +1,8 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { gameBlackLists } from '@/data/blacklists'
-import gameNameMap from '@/data/gameNameMap'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { MachineApi } from '@/services'
 import type { MachineVersionDetail } from '@/types'
@@ -84,30 +78,19 @@ export const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
 
   const machineInfo = await getMachineInfo(machineIds)
 
-  const finalMachineData = groupByGenerations(getTmNumbers(machineInfo))
-
-  const tableRows = finalMachineData.map((machine, rowIndex) => {
-    const { machine: machineName, versionName } = machine
-    return (
-      <TableRow key={rowIndex}>
-        <TableCellHeader wrapFlag={true}>
-          <ul>
-            {versionName.map((version, index) => (
-              <li key={index}>{gameNameMap[version]}</li>
-            ))}
-          </ul>
-        </TableCellHeader>
-        <TableCell>{machineName}</TableCell>
-      </TableRow>
-    )
+  // Mapping to get the object keys to align with the component props.
+  const finalMachineData = groupByGenerations(getTmNumbers(machineInfo)).map(machine => {
+    const { machine: description, versionName: versionGroupNames } = machine
+    return {
+      description,
+      versionGroupNames,
+    }
   })
 
   return (
     <>
       <SectionTitle>Machine/Record</SectionTitle>
-      <TableContainer>
-        <tbody>{tableRows}</tbody>
-      </TableContainer>
+      <GameWiseDescriptions descriptionData={finalMachineData} />
     </>
   )
 }
