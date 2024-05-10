@@ -7,49 +7,59 @@ import { PokedexEntry } from '@/types'
 interface VersionDescription {
   versionName: string
   description: string
-}
-
-interface VersionDescriptionNew {
-  versionName: string
-  description: string
   generationInternal: string
 }
 
-interface GroupVersionDescriptions {
-  versionName: Array<string>
-  description: string
-}
-
 interface GroupedByGeneration {
-  [key: string]: Array<VersionDescriptionNew>
+  generationInternal: string
+  descriptions: Array<Pick<VersionDescription, 'description' | 'versionName'>>
 }
 
-const groupByGeneration = (data: Array<VersionDescriptionNew>) =>
-  data.reduce((acc, current) => {
-    const { generationInternal } = current
+interface GroupedByGenerationAndDescription {
+  generationInternal: string
+  description: string
+  versionNames: Array<string>
+}
 
-    if (!acc[generationInternal]) {
-      acc[generationInternal] = []
-    }
+const groupByGeneration = (data: Array<VersionDescription>) =>
+  data.reduce((acc, obj) => {
+    const { generationInternal, description, versionName } = obj
 
-    acc[generationInternal].push(current)
-    return acc
-  }, {} as GroupedByGeneration)
-
-const groupByDescription = (data: Array<VersionDescription>) => {
-  return data.reduce((acc, current) => {
-    // First it's checked whehter the description already exists in the accumulator array.
-    const index = acc.findIndex(item => item.description === current.description)
-    // if it does, then append the version name.
-    // Else, make a new entry in the accumulator array.
-    if (index !== -1) {
-      acc[index].versionName.push(current.versionName)
+    // Check if there is already a group for the current generationInternalvalue
+    const foundGenObject = acc.find(item => item.generationInternal === generationInternal)
+    if (!foundGenObject) {
+      acc.push({ generationInternal, descriptions: [{ description, versionName }] })
     } else {
-      acc.push({ versionName: [current.versionName], description: current.description })
+      foundGenObject.descriptions.push({ description, versionName })
     }
+
     return acc
-  }, [] as Array<GroupVersionDescriptions>)
-}
+  }, [] as Array<GroupedByGeneration>)
+
+const groupByGenerationAndDescription = (data: Array<GroupedByGeneration>) =>
+  data.reduce((acc, obj) => {
+    const { descriptions, generationInternal } = obj
+
+    // Loop over the descriptions array to check a matching description and generationInternal in
+    // the accumulator array
+    for (const { description, versionName } of descriptions) {
+      const foundObject = acc.find(
+        item => item.description === description && item.generationInternal === generationInternal,
+      )
+
+      if (!foundObject) {
+        acc.push({
+          generationInternal,
+          description,
+          versionNames: [versionName],
+        })
+      } else {
+        foundObject.versionNames.push(versionName)
+      }
+    }
+
+    return acc
+  }, [] as Array<GroupedByGenerationAndDescription>)
 
 interface DexEntriesProps {
   flavourTextEntries: Array<PokedexEntry>
@@ -60,18 +70,22 @@ export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     return null
   }
 
-  console.log(flavourTextEntries)
+  // Group by the internal generation first, then by the description
+  const generationGrouped = groupByGeneration(flavourTextEntries)
+  const descriptionGrouped = groupByGenerationAndDescription(generationGrouped)
 
-  // Replace the 'versionName' of englishInfoDescription object with 'versioNGroupName'
-  const englishInfoByDescription = groupByDescription(flavourTextEntries).map(obj => {
-    const { description, versionName } = obj
-    return { description, versionGroupNames: versionName }
+  const finalData = descriptionGrouped.map(obj => {
+    const { description, versionNames } = obj
+    return {
+      description,
+      versionGroupNames: versionNames,
+    }
   })
 
   return (
     <>
       <SectionTitle>Pokédex Entries</SectionTitle>
-      <GameWiseDescriptions descriptionData={englishInfoByDescription} />
+      <GameWiseDescriptions descriptionData={finalData} />
     </>
   )
 }
