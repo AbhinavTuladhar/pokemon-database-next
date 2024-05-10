@@ -60,10 +60,10 @@ const NatureList = async () => {
       return (
         <TableRow
           key={rowIndex}
-          className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
+          className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
         >
           {cellData.map((cell, cellIndex) => (
-            <TableCell variant="column" key={cellIndex} extraClassName=" border-x">
+            <TableCell variant="column" key={cellIndex} extraClassName="border-x min-w-40">
               {cell.value}
             </TableCell>
           ))}
@@ -74,7 +74,7 @@ const NatureList = async () => {
   return (
     <main>
       <PageTitle>Natures</PageTitle>
-      <TableContainer>
+      <TableContainer useFullWidth={false}>
         {tableHeaders}
         {tableRows}
       </TableContainer>

@@ -59,16 +59,16 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
 
     return (
       <TableRow key={rowIndex}>
-        <TableCell variant="column" extraClassName="!pr-4">
+        <TableCell extraClassName="min-w-32 !pr-4" variant="column">
           <div className="flex items-center">
             {gameSprite && <Image src={gameSprite} alt={name} width={60} height={56} />}
             <span> {properId} </span>
           </div>
         </TableCell>
-        <TableCell variant="column">
+        <TableCell extraClassName="min-w-40 " variant="column">
           <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
         </TableCell>
-        <TableCell variant="column">
+        <TableCell extraClassName="min-w-32 " variant="column">
           {otherAbilities.length > 0 ? (
             <ul>
               {otherAbilities.map((ability, index) => (
