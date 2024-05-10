@@ -2,36 +2,67 @@ import { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
-import { gameBlackLists } from '@/data/blacklists'
-import { FlavourText } from '@/types/utils/Common'
+import { PokedexEntry } from '@/types'
 
 interface VersionDescription {
   versionName: string
   description: string
+  generationInternal: string
 }
 
-interface GroupVersionDescriptions {
-  versionName: Array<string>
+interface GroupedByGeneration {
+  generationInternal: string
+  descriptions: Array<Pick<VersionDescription, 'description' | 'versionName'>>
+}
+
+interface GroupedByGenerationAndDescription {
+  generationInternal: string
   description: string
+  versionNames: Array<string>
 }
 
-const groupByDescription = (data: Array<VersionDescription>) => {
-  return data.reduce((acc, current) => {
-    // First it's checked whehter the description already exists in the accumulator array.
-    const index = acc.findIndex(item => item.description === current.description)
-    // if it does, then append the version name.
-    // Else, make a new entry in the accumulator array.
-    if (index !== -1) {
-      acc[index].versionName.push(current.versionName)
+const groupByGeneration = (data: Array<VersionDescription>) =>
+  data.reduce((acc, obj) => {
+    const { generationInternal, description, versionName } = obj
+
+    // Check if there is already a group for the current generationInternalvalue
+    const foundGenObject = acc.find(item => item.generationInternal === generationInternal)
+    if (!foundGenObject) {
+      acc.push({ generationInternal, descriptions: [{ description, versionName }] })
     } else {
-      acc.push({ versionName: [current.versionName], description: current.description })
+      foundGenObject.descriptions.push({ description, versionName })
     }
+
     return acc
-  }, [] as Array<GroupVersionDescriptions>)
-}
+  }, [] as Array<GroupedByGeneration>)
+
+const groupByGenerationAndDescription = (data: Array<GroupedByGeneration>) =>
+  data.reduce((acc, obj) => {
+    const { descriptions, generationInternal } = obj
+
+    // Loop over the descriptions array to check a matching description and generationInternal in
+    // the accumulator array
+    for (const { description, versionName } of descriptions) {
+      const foundObject = acc.find(
+        item => item.description === description && item.generationInternal === generationInternal,
+      )
+
+      if (!foundObject) {
+        acc.push({
+          generationInternal,
+          description,
+          versionNames: [versionName],
+        })
+      } else {
+        foundObject.versionNames.push(versionName)
+      }
+    }
+
+    return acc
+  }, [] as Array<GroupedByGenerationAndDescription>)
 
 interface DexEntriesProps {
-  flavourTextEntries: Array<FlavourText>
+  flavourTextEntries: Array<PokedexEntry>
 }
 
 export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
@@ -39,37 +70,22 @@ export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     return null
   }
 
-  // Let's find all the English entries first that are not in the blacklisted games.
-  const englishEntries = flavourTextEntries.filter(entry => {
-    const {
-      language: { name: languageName },
-      version: { name: versionName },
-    } = entry
-    return languageName === 'en' && !gameBlackLists.includes(versionName)
-  })
+  // Group by the internal generation first, then by the description
+  const generationGrouped = groupByGeneration(flavourTextEntries)
+  const descriptionGrouped = groupByGenerationAndDescription(generationGrouped)
 
-  // Find an object containing the version anme and the Pokedex entry.
-  const englishInfo = englishEntries.map(entry => {
-    const rawText = entry.flavor_text as string
-    // This 'removes' the escape characters in the Pokedex entry. However, the escape characters are placed in very inconsitent places, so the text looks weird.
-    const cleanedStr = rawText.replace(/\f/g, ' ').replace(/\n/g, ' ')
-    const versionName = entry.version.name
+  const finalData = descriptionGrouped.map(obj => {
+    const { description, versionNames } = obj
     return {
-      versionName,
-      description: cleanedStr,
+      description,
+      versionGroupNames: versionNames,
     }
-  })
-
-  // Replace the 'versionName' of englishInfoDescription object with 'versioNGroupName'
-  const englishInfoByDescription = groupByDescription(englishInfo).map(obj => {
-    const { description, versionName } = obj
-    return { description, versionGroupNames: versionName }
   })
 
   return (
     <>
       <SectionTitle>Pokédex Entries</SectionTitle>
-      <GameWiseDescriptions descriptionData={englishInfoByDescription} />
+      <GameWiseDescriptions descriptionData={finalData} />
     </>
   )
 }

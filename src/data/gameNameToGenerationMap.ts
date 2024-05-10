@@ -41,17 +41,20 @@ export const gameNameToGenerationMap: Record<string, string> = {
 
 export const gameNameToGenerationMapInternal: Record<string, string> = {
   ...gameNameToGenerationMap,
-  sapphire: 'Generation 3 Hoenn',
-  ruby: 'Generation 3 Hoenn',
-  emerald: 'Generation 3 Hoenn',
+  'sapphire': 'Generation 3 Hoenn',
+  'ruby': 'Generation 3 Hoenn',
+  'emerald': 'Generation 3 Hoenn',
 
-  leafgreen: 'Generation 3 remake',
-  firered: 'Generation 3 remake',
+  'leafgreen': 'Generation 3 remake',
+  'firered': 'Generation 3 remake',
 
-  diamond: 'Generation 4 Sinnoh',
-  pearl: 'Generation 4 Sinnoh',
-  platinum: 'Generation 4 Sinnoh',
+  'diamond': 'Generation 4 Sinnoh',
+  'pearl': 'Generation 4 Sinnoh',
+  'platinum': 'Generation 4 Sinnoh',
 
-  heartgold: 'Generation 4 remake',
-  soulsilver: 'Generation 4 remake',
+  'heartgold': 'Generation 4 remake',
+  'soulsilver': 'Generation 4 remake',
+
+  'omega-ruby': 'Generation 6 remake',
+  'alpha-sapphire': 'Generation 6 remake',
 }
