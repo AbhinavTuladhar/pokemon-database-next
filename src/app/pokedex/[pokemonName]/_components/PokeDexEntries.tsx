@@ -1,14 +1,8 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { gameBlackLists } from '@/data/blacklists'
-import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
 import { FlavourText } from '@/types/utils/Common'
 
 interface VersionDescription {
@@ -66,39 +60,16 @@ export const PokeDexEntries: FC<DexEntriesProps> = ({ flavourTextEntries }) => {
     }
   })
 
-  const englishInfoByDescription = groupByDescription(englishInfo)
-
-  // Now making a list for each version
-  const finalEntry = englishInfoByDescription.map(entry => {
-    const gameListItems = entry.versionName.map((version, index) => {
-      const { colour, properName } = gameToColourAndNameMap[version]
-      return (
-        <li key={index} className={colour}>
-          {properName}
-        </li>
-      )
-    })
-    const gameList = <ul className="list-inside list-none"> {gameListItems} </ul>
-    return { versionName: gameList, description: entry.description }
-  })
-
-  const entryRows = finalEntry.map((entry, i) => {
-    return (
-      <TableRow key={i}>
-        <TableCellHeader>
-          <span className="text-sm">{entry.versionName}</span>
-        </TableCellHeader>
-        <TableCell>{entry.description}</TableCell>
-      </TableRow>
-    )
+  // Replace the 'versionName' of englishInfoDescription object with 'versioNGroupName'
+  const englishInfoByDescription = groupByDescription(englishInfo).map(obj => {
+    const { description, versionName } = obj
+    return { description, versionGroupNames: versionName }
   })
 
   return (
     <>
       <SectionTitle>Pokédex Entries</SectionTitle>
-      <TableContainer>
-        <tbody>{entryRows}</tbody>
-      </TableContainer>
+      <GameWiseDescriptions descriptionData={englishInfoByDescription} />
     </>
   )
 }

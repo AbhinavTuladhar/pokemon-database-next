@@ -70,23 +70,17 @@ export const individualGameMap: Record<string, string> = {
   'ultra-moon': 'U. Moon',
 }
 
-// const gameNameMap: Record<string, string[]> = {
-//   'red-blue': ['Red', 'Blue'],
-//   yellow: ['Yellow'],
-//   'gold-silver': ['Gold', 'Silver'],
-//   crystal: ['Crystal'],
-//   'ruby-sapphire': ['Ruby', 'Sapphire'],
-//   emerald: ['Emerald'],
-//   'firered-leafgreen': ['FireRed', 'Leafgreen'],
-//   'diamond-pearl': ['Diamond', 'Pearl'],
-//   platinum: ['Platinum'],
-//   'heartgold-soulsilver': ['Heartgold', 'Soulsilver'],
-//   'black-white': ['Black', 'White'],
-//   'black-2-white-2': ['Black 2', 'White 2'],
-//   'x-y': ['X', 'Y'],
-//   'omega-ruby-alpha-sapphire': ['O. Ruby', 'A. Sapphire'],
-//   'sun-moon': ['Sun', 'Moon'],
-//   'ultra-sun-ultra-moon': ['U. Sun', 'U. Moon'],
-// }
+// For non-grouped games, we need to lowercase the name.
+export const individualRawGameMap: Record<string, string> = {
+  ...Object.fromEntries(
+    Object.entries(individualGameMap).map(([key, value]) => [key, value.toLowerCase()]),
+  ),
+  'black-2': 'black-2',
+  'white-2': 'white-2',
+  'omega-ruby': 'omega-ruby',
+  'alpha-sapphire': 'alpha-sapphire',
+  'ultra-sun': 'ultra-sun',
+  'ultra-moon': 'ultra-moon',
+}
 
 export default gameNameMap
