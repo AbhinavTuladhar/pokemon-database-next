@@ -76,9 +76,9 @@ const handleThickFat = (typeChart: TypeChart): TypeChart => {
 }
 
 const handleWonderGuard = (typeChart: TypeChart): TypeChart => {
-  const { multiplier } = typeChart
+  const { multiplier, type } = typeChart
   if (multiplier < 2) {
-    return { type: 'normal', multiplier: 0 }
+    return { type, multiplier: 0 }
   }
   return typeChart
 }
