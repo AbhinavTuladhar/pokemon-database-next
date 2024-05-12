@@ -29,11 +29,11 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts }) => {
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={(index: number) => handleTabChange(index)}>
-      <TabList className="flex flex-wrap">
+      <TabList className="flex flex-wrap gap-x-1 ">
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tabIndex}
-            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-3 text-xs duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-table-header dark:hover:border-white dark:hover:text-white dark:hover:brightness-110"
+            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-1.5 text-sm duration-300 last:w-full last:flex-none hover:cursor-pointer hover:bg-neutral-300 dark:bg-table-header dark:hover:border-white dark:hover:text-white dark:hover:brightness-110"
             selectedClassName="!border-blue-500 text-blue-500"
           >
             {tab}

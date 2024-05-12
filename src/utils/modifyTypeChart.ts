@@ -54,7 +54,7 @@ const handleElectricAbsorb = (typeChart: TypeChart): TypeChart => {
 const handlePoweredDownMoves = (typeChart: TypeChart): TypeChart => {
   const { type, multiplier } = typeChart
   if (multiplier > 1) {
-    return { type, multiplier: multiplier * 0.25 }
+    return { type, multiplier: multiplier * 0.75 }
   }
   return typeChart
 }
