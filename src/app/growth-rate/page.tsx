@@ -17,14 +17,16 @@ const page = async () => {
   return (
     <main>
       <PageTitle> Pokémon growth rates </PageTitle>
-      {data.map(entry => (
-        <GrowthRateSection
-          formula={entry.formula}
-          name={entry.name}
-          pokemonNames={entry.pokemonSpecies}
-          key={entry.name}
-        />
-      ))}
+      <div className="space-y-4">
+        {data.map(entry => (
+          <GrowthRateSection
+            formula={entry.formula}
+            name={entry.name}
+            pokemonNames={entry.pokemonSpecies}
+            key={entry.name}
+          />
+        ))}
+      </div>
     </main>
   )
 }

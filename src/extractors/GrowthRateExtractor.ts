@@ -18,7 +18,7 @@ const GrowthRateExtractor = (data: GrowthRate) => {
     .map(({ name }) => name)
 
   return {
-    formula,
+    formula: `EXP = ${formula}`,
     levels,
     name,
     levelsCumulative,
