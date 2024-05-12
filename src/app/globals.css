@@ -95,6 +95,7 @@ body.dark .apexcharts-legend-text {
   color: #fff !important;
   border: none !important;
 }
-body.dark .apexcharts-title-text {
+body.dark .apexcharts-title-text,
+body.dark .apexcharts-subtitle-text {
   fill: #fff !important;
 }

@@ -1,16 +1,15 @@
-import { GrowthRate } from '@/types'
+import { GrowthRate, GrowthRateExperienceLevel } from '@/types'
 import filterGens from '@/utils/filterGens'
 
 const GrowthRateExtractor = (data: GrowthRate) => {
   const { formula, levels, name, pokemon_species } = data
 
-  // For storing the cumulative sum of the experience value
-  let cumulativeSum = 0
-
-  const levelsCumulative = levels.map(({ level, experience }) => {
-    cumulativeSum += experience
-    return { level, experience: cumulativeSum }
-  })
+  // For finding out the experience required to gain that level
+  const experienceDifferences: GrowthRateExperienceLevel[] = []
+  for (let i = 0; i < levels.length - 1; i++) {
+    const difference = levels[i + 1].experience - levels[i].experience
+    experienceDifferences.push({ level: levels[i + 1].level, experience: difference })
+  }
 
   // Filter out pokemon after generation 7.
   const filteredPokemonSpecies = pokemon_species
@@ -21,7 +20,7 @@ const GrowthRateExtractor = (data: GrowthRate) => {
     formula: `EXP = ${formula}`,
     levels,
     name,
-    levelsCumulative,
+    individualLevels: experienceDifferences,
     pokemonSpecies: filteredPokemonSpecies,
   }
 }

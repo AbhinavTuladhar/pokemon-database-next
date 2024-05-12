@@ -19,17 +19,25 @@ const page = async () => {
     levelData: levels,
   }))
 
-  const cumulativeLevelData = data.map(({ name, levelsCumulative }) => ({
+  const cumulativeLevelData = data.map(({ name, individualLevels }) => ({
     growthRate: name,
-    levelData: levelsCumulative,
+    levelData: individualLevels,
   }))
 
   return (
     <main>
       <PageTitle> Pokémon growth rates </PageTitle>
       <div>
-        <ComparisonChart data={levelData} title="Experience required for each level" />
-        <ComparisonChart data={cumulativeLevelData} title="Experience required for each level" />
+        <ComparisonChart
+          data={levelData}
+          title="Experience required to reach each level"
+          subTitle="A graph of the experience required for a Pokémon to be a certain level, colour-coded by experience types. "
+        />
+        <ComparisonChart
+          data={cumulativeLevelData}
+          title="Experience required for each level"
+          subTitle="Graph showing experience needed to gain a single level, for each level up to 100."
+        />
       </div>
       <div className="space-y-4">
         {data.map(entry => (

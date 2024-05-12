@@ -13,12 +13,12 @@ interface ChartProps {
     levelData: Array<GrowthRateExperienceLevel>
   }>
   title: string
+  subTitle: string
 }
 
 const ApexCharts = dynamic(() => import('react-apexcharts'), { ssr: false })
 
-export const ComparisonChart: FC<ChartProps> = ({ data, title }) => {
-  // const labels = data.map(item => item.levelData.map(level => level.level))
+export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
   const labels = Array.from({ length: 101 }, (_, i) => i)
   const options: ApexOptions = {
     chart: {
@@ -43,7 +43,7 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title }) => {
       },
     },
     stroke: {
-      curve: 'straight',
+      curve: 'monotoneCubic',
       width: 2,
     },
     title: {
@@ -53,6 +53,12 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title }) => {
       style: {
         fontFamily: '__Fira_Sans_d5c5f4',
         fontSize: '1.125rem',
+      },
+    },
+    subtitle: {
+      text: subTitle,
+      style: {
+        fontFamily: '__Fira_Sans_d5c5f4',
       },
     },
     legend: {
