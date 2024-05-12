@@ -75,3 +75,7 @@ body.dark .react-loading-skeleton {
   --base-color: #314158 !important;
   --highlight-color: #435979 !important;
 }
+
+[data-testid="react-katex"] {
+  font-size: clamp(0.75rem, 0.529rem + 0.98vw, 1rem);
+}
