@@ -4,7 +4,7 @@ import specialAbilityList from '@/data/specialAbilityList'
 import modifyTypeChart from '@/utils/modifyTypeChart'
 
 import TabbedCharts from './TabbedCharts'
-import TypeRow from './TypeRow'
+import TypeTable from './TypeTable'
 
 interface TypeChart {
   type: string
@@ -81,26 +81,17 @@ const DynamicChart: FC<ChartProps> = ({ typeDefenceInfo, defendingType, abilityN
    */
 
   return (
-    <div className="flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row mdlg:flex-col">
+    <>
       {areAllSame ? (
-        <>
-          <TypeRow
-            typeDefenceInfo={typeCharts[0].defenceInfo.slice(0, 9)}
-            extraClassName="mt-6"
-            defendingType={defendingType}
-            abilityName={typeCharts[0].abilityName}
-          />
-          <TypeRow
-            typeDefenceInfo={typeCharts[0].defenceInfo.slice(9)}
-            extraClassName="mt-2 md:mt-6 sm:mt-6"
-            defendingType={defendingType}
-            abilityName={typeCharts[0].abilityName}
-          />
-        </>
+        <TypeTable
+          defenceInfo={typeCharts[0].defenceInfo}
+          defendingType={defendingType}
+          abilityName={typeCharts[0].abilityName}
+        />
       ) : (
         <TabbedCharts typeCharts={typeCharts} defendingType={defendingType} />
       )}
-    </div>
+    </>
   )
 }
 
