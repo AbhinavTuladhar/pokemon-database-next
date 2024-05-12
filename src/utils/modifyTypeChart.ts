@@ -59,6 +59,14 @@ const handlePoweredDownMoves = (typeChart: TypeChart): TypeChart => {
   return typeChart
 }
 
+const handleGrassAbsorb = (typeChart: TypeChart): TypeChart => {
+  const { type } = typeChart
+  if (type === 'grass') {
+    return { type, multiplier: 0 }
+  }
+  return typeChart
+}
+
 const handleWaterAbsorb = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'water') {
@@ -101,6 +109,9 @@ const modifyTypeChart = (typeChart: Array<TypeChart>, ability: string) => {
     case 'volt-absorb':
     case 'motor-drive':
       return typeChart.map(handleElectricAbsorb)
+    // Abosrb grass moves
+    case 'sap-sipper':
+      return typeChart.map(handleGrassAbsorb)
     // Power down super-effective moves
     case 'filter':
     case 'solid-rock':

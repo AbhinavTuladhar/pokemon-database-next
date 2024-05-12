@@ -11,6 +11,7 @@ const specialAbilityList = [
   'motor-drive',
   'normalize',
   'solid-rock',
+  'sap-sipper',
   'thick-fat',
   'volt-absorb',
   'water-absorb',

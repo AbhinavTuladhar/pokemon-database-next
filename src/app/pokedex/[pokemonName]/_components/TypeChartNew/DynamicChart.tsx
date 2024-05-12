@@ -88,11 +88,13 @@ const DynamicChart: FC<ChartProps> = ({ typeDefenceInfo, defendingType, abilityN
             typeDefenceInfo={typeCharts[0].defenceInfo.slice(0, 9)}
             extraClassName="mt-6"
             defendingType={defendingType}
+            abilityName={typeCharts[0].abilityName}
           />
           <TypeRow
             typeDefenceInfo={typeCharts[0].defenceInfo.slice(9)}
             extraClassName="mt-2 md:mt-6 sm:mt-6"
             defendingType={defendingType}
+            abilityName={typeCharts[0].abilityName}
           />
         </>
       ) : (
