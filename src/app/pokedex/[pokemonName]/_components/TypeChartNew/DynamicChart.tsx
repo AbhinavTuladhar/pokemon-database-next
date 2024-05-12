@@ -75,11 +75,6 @@ interface ChartProps {
 const DynamicChart: FC<ChartProps> = ({ typeDefenceInfo, defendingType, abilityNames }) => {
   const { areAllSame, typeCharts } = handleAbilityAgain(typeDefenceInfo, abilityNames)
 
-  /**
-   * TODO: If all are the same, then render only one chart.
-   * TODO: If not, render tabs along with the corresponding charts.
-   */
-
   return (
     <>
       {areAllSame ? (

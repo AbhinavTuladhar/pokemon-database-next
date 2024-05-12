@@ -10,6 +10,7 @@ interface MappingInteface {
 const effectivenessMapping: MappingInteface = {
   1: { icon: '', colour: 'transparent' },
   2: { icon: '2', colour: 'lime-600' },
+  1.25: { icon: '1¼', colour: 'lime-600' },
   1.5: { icon: '1½', colour: 'lime-600' },
   4: { icon: '4', colour: 'lime-500' },
   5: { icon: '5', colour: 'lime-500' },

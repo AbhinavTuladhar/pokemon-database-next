@@ -6,6 +6,7 @@ const multiplierToString = (value: number) => {
     case 0.5:
       return 'not very effective'
     case 1.5:
+    case 1.25:
     case 2:
     case 4:
     case 5:
