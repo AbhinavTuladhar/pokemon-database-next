@@ -73,6 +73,19 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
           },
         },
       },
+      {
+        breakpoint: 768,
+        options: {
+          xaxis: {
+            tickAmount: 10,
+          },
+          title: {
+            style: {
+              fontSize: '0.875rem',
+            },
+          },
+        },
+      },
     ],
   }
 
