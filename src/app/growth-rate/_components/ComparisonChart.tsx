@@ -35,6 +35,13 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
       },
       show: true,
     },
+    tooltip: {
+      x: {
+        formatter(val) {
+          return `Level ${val}`
+        },
+      },
+    },
     xaxis: {
       categories: labels,
       tickAmount: 20,
