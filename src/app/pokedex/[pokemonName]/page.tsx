@@ -102,6 +102,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     name: genus.genus,
   }))
 
+  const abilityNames = abilities.map(ability => ability.ability.name)
+
   return (
     <main>
       <h1 className="mt-4 text-center text-5xl font-bold">{formatName(name)}</h1>
@@ -155,7 +157,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <BaseStat stats={stats} />
         </section>
         <section className="col-span-2 mdlg:col-span-1">
-          <TypeChart pokemonName={name} types={types} />
+          <TypeChart pokemonName={name} types={types} abilityNames={abilityNames} />
         </section>
       </section>
 
