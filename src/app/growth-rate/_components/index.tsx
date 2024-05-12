@@ -1,0 +1,1 @@
+export { GrowthRateSection } from './GrowthRateSection'

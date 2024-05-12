@@ -10,6 +10,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
+    "@types/react-katex": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "axios": "^1.6.8",
@@ -23,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-katex": "^3.0.1",
     "react-loading-skeleton": "^3.4.0",
     "react-select": "^5.8.0",
     "react-tabs": "^6.0.2",
