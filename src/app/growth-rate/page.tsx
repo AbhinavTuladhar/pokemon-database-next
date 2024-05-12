@@ -1,10 +1,15 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
 import { GrowthRateApi } from '@/services'
 
 import { ComparisonChart, GrowthRateSection } from './_components'
+
+export const metadata: Metadata = {
+  title: 'Pokémon Growth Rates | Pokémon Database',
+}
 
 const getGrowthRateData = async () => {
   const response = await GrowthRateApi.getAllData()
