@@ -6,10 +6,10 @@ import { PokemonSpecies } from './PokemonSpecies'
 export interface GrowthRate {
   id: number
   name: string
-  formua: string
+  formula: string
   descriptions: Array<Description>
   levels: Array<GrowthRateExperienceLevel>
-  pokemon_species: NamedApiResource<PokemonSpecies>
+  pokemon_species: Array<NamedApiResource<PokemonSpecies>>
 }
 
 interface GrowthRateExperienceLevel {

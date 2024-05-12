@@ -32,8 +32,9 @@ const Navbar = () => {
     { path: '/berry', name: 'Berries' },
     { path: '/nature', name: 'Natures' },
     { path: '/type', name: 'Types' },
-    { path: '/dual-type-chart', name: 'Dual-type charts' },
+    { path: '/dual-type-chart', name: 'Dual type charts' },
     { path: '/egg-group', name: 'Egg groups' },
+    { path: '/growth-rate', name: 'Growth rates' },
   ]
   const iconClassName = 'w-5 h-5'
 
