@@ -17,9 +17,10 @@ interface TabProps {
     abilityName: string
     defenceInfo: Array<TypeChart>
   }>
+  defendingType: string
 }
 
-const TabbedCharts: FC<TabProps> = ({ typeCharts }) => {
+const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
   const tabNames = typeCharts.map(({ abilityName }) => `${formatName(abilityName)} ability`)
   const [tabIndex, setTabIndex] = useState(0)
 
@@ -47,12 +48,14 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts }) => {
             <TypeRow
               typeDefenceInfo={defenceInfo.slice(0, 9)}
               extraClassName="mt-6"
-              defendingType={'defendingType'}
+              defendingType={defendingType}
+              abilityName={abilityName}
             />
             <TypeRow
               typeDefenceInfo={defenceInfo.slice(9)}
               extraClassName="mt-2 md:mt-6 sm:mt-6"
-              defendingType={'defendingType'}
+              defendingType={defendingType}
+              abilityName={abilityName}
             />
           </div>
         </TabPanel>

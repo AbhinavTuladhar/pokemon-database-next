@@ -11,16 +11,22 @@ interface TypeRowProps {
   }>
   extraClassName: string
   defendingType: string
+  abilityName?: string
 }
 
-const TypeRow: FC<TypeRowProps> = ({ typeDefenceInfo, extraClassName, defendingType }) => (
+const TypeRow: FC<TypeRowProps> = ({
+  typeDefenceInfo,
+  extraClassName,
+  defendingType,
+  abilityName,
+}) => (
   <div
     className={`mx-auto flex flex-row justify-center gap-x-px overflow-x-hidden overflow-y-hidden sm:mx-0 ${extraClassName}`}
   >
     {typeDefenceInfo.map((row, rowIndex) => {
       const { multiplier, type } = row
       const effectivenessString = multiplierToString(multiplier)
-      const tooltipContent = `${formatName(type)} → ${defendingType} = ${effectivenessString}`
+      const tooltipContent = `${formatName(type)} → ${defendingType} ${abilityName ? `(${abilityName})` : ''} = ${effectivenessString}`
       return (
         <div className="flex w-9 flex-col text-center" key={rowIndex}>
           <MiniTypeCard typeName={row.type} />
