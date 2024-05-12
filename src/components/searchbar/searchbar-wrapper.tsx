@@ -19,6 +19,8 @@ const getSearchResultData = async () => {
   return [abilityData, itemData, locationData, moveData, pokemonData, typesData]
 }
 
+const sortByName = (data: string[]) => data.sort((a, b) => a.localeCompare(b))
+
 const SearchbarWrapper = async () => {
   const [abilityData, itemData, locationData, moveData, pokemonData, typesData] =
     await getSearchResultData()
@@ -28,12 +30,12 @@ const SearchbarWrapper = async () => {
 
   // Order: pokedex - move - ability - item - location
   const processedData = [
-    { data: pokemonData, resourceType: 'pokedex' },
-    { data: moveData, resourceType: 'move' },
-    { data: abilityData, resourceType: 'ability' },
-    { data: filteredItems, resourceType: 'item' },
-    { data: locationData, resourceType: 'location' },
-    { data: typesData, resourceType: 'type' },
+    { data: sortByName(pokemonData), resourceType: 'pokedex' },
+    { data: sortByName(moveData), resourceType: 'move' },
+    { data: sortByName(abilityData), resourceType: 'ability' },
+    { data: sortByName(filteredItems), resourceType: 'item' },
+    { data: sortByName(locationData), resourceType: 'location' },
+    { data: sortByName(typesData), resourceType: 'type' },
   ]
 
   const filterList = processedData.flatMap(({ data, resourceType }) =>
