@@ -7,6 +7,7 @@ const multiplierToString = (value: number) => {
       return 'not very effective'
     case 2:
     case 4:
+    case 5:
       return 'super-effective'
     case 0:
       return 'no effect'
