@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import dynamic from 'next/dynamic'
 import type { ApexOptions } from 'apexcharts'
 
@@ -18,17 +18,14 @@ interface ChartProps {
 const ApexCharts = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 export const ComparisonChart: FC<ChartProps> = ({ data, title }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  useEffect(() => {
-    setIsDarkMode(document.body.classList.contains('dark'))
-  }, [])
-
   // const labels = data.map(item => item.levelData.map(level => level.level))
   const labels = Array.from({ length: 101 }, (_, i) => i)
   const options: ApexOptions = {
     chart: {
       type: 'line',
+      zoom: {
+        autoScaleYaxis: true,
+      },
     },
     grid: {
       yaxis: {
@@ -51,13 +48,15 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title }) => {
     },
     title: {
       align: 'center',
+      offsetY: 10,
       text: title,
+      style: {
+        fontFamily: '__Fira_Sans_d5c5f4',
+        fontSize: '1.125rem',
+      },
     },
     legend: {
       position: 'right',
-    },
-    theme: {
-      mode: 'dark',
     },
     responsive: [
       {
