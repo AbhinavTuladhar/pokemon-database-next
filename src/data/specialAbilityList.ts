@@ -6,7 +6,7 @@ const specialAbilityList = [
   'dry-skin',
   'filter',
   'flash-fire',
-  'heat-proof',
+  'heatproof',
   'levitate',
   'motor-drive',
   'normalize',
