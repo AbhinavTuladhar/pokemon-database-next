@@ -8,6 +8,7 @@ const multiplierToString = (value: number) => {
     case 1.5:
     case 1.25:
     case 2:
+    case 2.5:
     case 4:
     case 5:
       return 'super-effective'
