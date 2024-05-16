@@ -8,15 +8,16 @@ interface MappingInteface {
 }
 
 const effectivenessMapping: MappingInteface = {
+  0: { icon: '0', colour: 'black' },
+  0.25: { icon: '¼', colour: 'red-900' },
+  0.5: { icon: '½', colour: 'red-800' },
   1: { icon: '', colour: 'transparent' },
-  2: { icon: '2', colour: 'lime-600' },
   1.25: { icon: '1¼', colour: 'lime-600' },
   1.5: { icon: '1½', colour: 'lime-600' },
+  2: { icon: '2', colour: 'lime-600' },
+  2.5: { icon: '2½', colour: 'lime-600' },
   4: { icon: '4', colour: 'lime-500' },
   5: { icon: '5', colour: 'lime-500' },
-  0.5: { icon: '½', colour: 'red-800' },
-  0.25: { icon: '¼', colour: 'red-900' },
-  0: { icon: '0', colour: 'black' },
 }
 
 interface BoxProps {
