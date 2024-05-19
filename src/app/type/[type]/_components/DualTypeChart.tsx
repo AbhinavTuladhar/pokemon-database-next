@@ -1,10 +1,19 @@
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+
+const FirstRow = () => (
+  <>
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border" />
+    {typeList.map(type => (
+      <MiniTypeCard typeName={type} key={type} />
+    ))}
+  </>
+)
 
 interface DualTypeChartProps {
   typeName: string
@@ -28,74 +37,48 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     })
   })
 
-  // This is for the first row.
-  const firstRow = ['', ...typeList]?.map((type, index) => {
-    if (index === 0) {
-      return (
-        <div
-          className="h-[37px] w-16 border border-gray-200 dark:border-table-border"
-          key={index}
-        />
-      )
-    } else {
-      return <MiniTypeCard typeName={type} key={index} />
-    }
-  })
-
-  // To take into account the row header.
-  const dummy = ['', '']
-
-  const tableRows = typeList?.map((type, rowIndex) => {
-    // For each row, we want only those subarrays in which the first item is equal to `type`
-    const cellData = typeRows?.filter(subarray => subarray === null || subarray[0] === type)
-
-    const cellDivs = [dummy, ...cellData]?.map((arr, cellIndex) => {
-      const [firstType, secondType] = arr
-      const attackingTypeInfo = {
-        doubleDamageTo,
-        halfDamageTo,
-        noDamageTo,
-      }
-      const combinedTypeString = arr.map(type => formatName(type)).join('/')
+  const newRowsAgain = typeList.map(typeRow => {
+    const test = typeRows.filter(row => row[0] === typeRow)
+    const cellData = test.map(typeCombo => {
+      const [firstType, secondType] = typeCombo
+      const combinedTypeString = typeCombo.map(combo => formatName(combo)).join('/')
       const multiplierValue =
-        firstType !== '' || firstType !== null
-          ? calculateOffensiveTypeEffectiveness(arr, attackingTypeInfo)
-          : 1
+        firstType === secondType
+          ? 1
+          : calculateOffensiveTypeEffectiveness([firstType, secondType], {
+              doubleDamageTo,
+              halfDamageTo,
+              noDamageTo,
+            })
       const multiplierString = multiplierToString(multiplierValue)
-
       const tooltipContent = `${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`
 
-      if (cellIndex === 0) {
-        return <TypeCard typeName={type} variant="big" key={cellIndex} />
-      } else if (firstType === secondType) {
-        return (
-          <TypeMultiplierBox
-            multiplier={1}
-            className="bg-zinc-200 dark:bg-gray-700"
-            key={cellIndex}
-          />
-        )
-      } else {
-        return (
-          <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
-            <TypeMultiplierBox multiplier={multiplierValue} />
-          </div>
-        )
+      if (firstType === secondType) {
+        return <TypeMultiplierBox multiplier={1} className="bg-zinc-200 dark:bg-gray-700" key={2} />
       }
+
+      return (
+        <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={3}>
+          <TypeMultiplierBox multiplier={multiplierValue} />
+        </div>
+      )
     })
 
     return (
-      <div className="gap-x flex flex-row items-end" key={rowIndex}>
-        {cellDivs}
-      </div>
+      <Fragment key={typeRow}>
+        <TypeCard variant="big" key={typeRow} typeName={typeRow} />
+        {cellData}
+      </Fragment>
     )
   })
 
   return (
     <div className="overflow-auto">
-      <div className="inline-flex flex-col">
-        <div className="flex flex-row gap-x-px">{firstRow}</div>
-        <>{tableRows}</>
+      <div className="inline-flex">
+        <div className="grid grid-cols-type-chart">
+          <FirstRow />
+          {newRowsAgain}
+        </div>
       </div>
     </div>
   )

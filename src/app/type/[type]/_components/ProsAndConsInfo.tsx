@@ -23,7 +23,7 @@ export const ProsAndConsInfo: FC<ProsAndConsProps> = ({
   <div className="flex flex-col flex-wrap">
     <div className="text-4xl font-bold">
       <span> {title} </span>
-      <span className="italic text-gray-300"> pros & cons </span>
+      <span className="italic text-gray-500 dark:text-gray-300"> pros & cons </span>
     </div>
     {doubeDamageList?.length > 0 && (
       <>
