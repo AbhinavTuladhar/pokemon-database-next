@@ -32,6 +32,7 @@ module.exports = {
         'sprite-table': 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))',
         'mini-sprite-table': 'repeat(auto-fit, minmax(90px, 1fr))',
         'pokemon-list': 'repeat(auto-fit, minmax(120px, 1fr))',
+        'type-chart': 'auto repeat(18, 37px)',
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',

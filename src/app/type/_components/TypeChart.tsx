@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
@@ -9,24 +9,18 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
 
-  // Step 1: Extract type information
-  // Step 2: Calculate the type chart, and return an object containing the type chart with the defending
-  // type name
-  // Step 3: Properly format the type chart object.
-  // Next we need to transform the data into a usable state.
-
   /**
    * Iterate over the fetched type data.
    * Then extract the information for each type.
-   *
+   * For each type in the type list, calculate the effectiveness of each type against that type
    */
   const transformedData = typeData.map(outerType => {
     const extractedData = TypeExtractor(outerType)
-    const test3 = typeList.map(innerType => {
+    const attackInfo = typeList.map(innerType => {
       const newValue = calculateOffensiveTypeEffectiveness([innerType], extractedData)
       return { name: innerType, multiplier: newValue }
     })
-    return { type: outerType.name, attackInfo: test3 }
+    return { type: outerType.name, attackInfo: attackInfo }
   })
 
   return transformedData
@@ -39,37 +33,35 @@ export const TypeChart = async () => {
 
   return (
     <div className="overflow-auto">
-      <div className="grid grid-flow-row gap-y-px">
-        <div className="grid grid-flow-col gap-x-px">
-          {/* Corner div */}
+      <div className="inline-flex">
+        <div className="grid-cols-type-chart grid grid-flow-row">
+          {/* First row */}
           <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
             <span> DEFENCE → </span>
             <span> ATTACK ↴ </span>
           </div>
-          {/* First row */}
           {typeList.map(type => (
             <MiniTypeCard typeName={type} key={type} />
           ))}
-        </div>
 
-        {typeData.map(attackingType => {
-          const { type, attackInfo } = attackingType
-          return (
-            <div className="grid grid-flow-col gap-x-px" key={type}>
-              <TypeCard typeName={type} variant="big" key={type} />
-              {typeList.map(defendingType => {
-                return (
+          {/* Rest of the rows */}
+          {typeData.map(attackingType => {
+            const { type, attackInfo } = attackingType
+            return (
+              <Fragment key={type}>
+                <TypeCard typeName={type} variant="big" key={type} />
+                {typeList.map(defendingType => (
                   <TypeMultiplierBox
                     multiplier={
                       attackInfo.find(info => info.name === defendingType)?.multiplier as number
                     }
                     key={defendingType}
                   />
-                )
-              })}
-            </div>
-          )
-        })}
+                ))}
+              </Fragment>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
