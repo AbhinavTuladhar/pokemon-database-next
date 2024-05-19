@@ -1,110 +1,84 @@
-import React, { Fragment } from 'react'
+import React, { FC, Fragment } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services'
-import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
+import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+
+const FirstRow = () => (
+  <>
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
+      <span> DEFENCE → </span>
+      <span> ATTACK ↴ </span>
+    </div>
+    {typeList.map(type => (
+      <MiniTypeCard typeName={type} key={type} />
+    ))}
+  </>
+)
+
+interface AttackingInfo {
+  name: string
+  multiplier: number
+}
+
+interface RowProps {
+  type: string
+  attackInfo: Array<AttackingInfo>
+}
+
+const TypeChartRow: FC<RowProps> = ({ type, attackInfo }) => (
+  <Fragment key={type}>
+    <TypeCard typeName={type} variant="big" key={type} />
+    {typeList.map(defendingType => {
+      const multiplierValue = attackInfo.find(info => info.name === defendingType)
+        ?.multiplier as number
+      const tooltipContent = `${formatName(type)} → ${formatName(defendingType)} = ${multiplierToString(multiplierValue)}`
+      return (
+        <div key={defendingType} data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent}>
+          <TypeMultiplierBox multiplier={multiplierValue} />
+        </div>
+      )
+    })}
+  </Fragment>
+)
 
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
 
-  // Step 1: Extract type information
-  // Step 2: Calculate the type chart, and return an object containing the type chart with the defending
-  // type name
-  // Step 3: Properly format the type chart object.
-  // Next we need to transform the data into a usable state.
-  const transformedTypeData = typeData.map(type => {
-    const extractedInfo = TypeExtractor(type)
-    const { name: typeName } = extractedInfo
-    const typeChart = findTypeEffectiveness([extractedInfo])
-    const typeDefenceInfo = Object.entries(typeChart).map(([typeName, multiplier]) => ({
-      typeName,
-      multiplier,
-    }))
-    return { typeName, typeDefenceInfo }
+  /**
+   * Iterate over the fetched type data.
+   * Then extract the information for each type.
+   * For each type in the type list, calculate the effectiveness of each type against that type
+   */
+  const transformedData = typeData.map(outerType => {
+    const extractedData = TypeExtractor(outerType)
+    const attackInfo = typeList.map(innerType => {
+      const newValue = calculateOffensiveTypeEffectiveness([innerType], extractedData)
+      return { name: innerType, multiplier: newValue }
+    })
+    return { type: outerType.name, attackInfo: attackInfo }
   })
 
-  return transformedTypeData
+  return transformedData
 }
 
 export const TypeChart = async () => {
   const typeData = await getAllTypeData()
 
-  // To show the defending and attacking types.
-  const cornerDiv = (
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
-      <span> DEFENCE → </span>
-      <span> ATTACK ↴ </span>
-    </div>
-  )
-
-  const firstTypeCardData: typeof typeData = [
-    {
-      typeName: '',
-      typeDefenceInfo: [{ typeName: '', multiplier: 1 }],
-    },
-  ]
-
-  // An empty array at the beginning for a div containing info about the axes.
-  const fullTypeCards = [...firstTypeCardData, ...typeData].map((type, index) => {
-    if (index === 0) {
-      return cornerDiv
-    } else {
-      return (
-        <Fragment key={index}>
-          <TypeCard typeName={type?.typeName} variant="big" />
-        </Fragment>
-      )
-    }
-  })
-
-  const finalTypeCards = fullTypeCards.map((typeCard, index) => (
-    <div className="flex items-center justify-center" key={`card-${index}`}>
-      {typeCard}
-    </div>
-  ))
-
-  const tableColumns = typeData.map((type, index) => {
-    const { typeName: defendingTypeName, typeDefenceInfo: defenceInfo } = type
-
-    const tableCells = defenceInfo?.map((defendingType, cellIndex) => {
-      const { typeName: attackingTypeName, multiplier } = defendingType
-      const effectString = multiplierToString(multiplier)
-      const tooltipContent = `${formatName(attackingTypeName)} → ${formatName(defendingTypeName)} = ${effectString}`
-
-      if (cellIndex === 0) {
-        return (
-          <div key={`cell-${cellIndex}`}>
-            <MiniTypeCard typeName={defendingTypeName} />
-            <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
-              <TypeMultiplierBox multiplier={multiplier} />
-            </div>
-          </div>
-        )
-      } else {
-        return (
-          <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={cellIndex}>
-            <TypeMultiplierBox multiplier={multiplier} />
-          </div>
-        )
-      }
-    })
-
-    return (
-      <div className="flex flex-col" key={`table-cell-${index}`}>
-        {tableCells}
-      </div>
-    )
-  })
-
   return (
     <div className="overflow-auto">
       <div className="inline-flex">
-        <div className="flex flex-col items-start justify-start gap-y-px">{finalTypeCards}</div>
-        <div className="flex flex-row items-start justify-center">{tableColumns}</div>
+        <div className="grid-cols-type-chart grid grid-flow-row">
+          <FirstRow />
+          {typeData.map(attackingType => {
+            const { type, attackInfo } = attackingType
+            return <TypeChartRow key={type} type={type} attackInfo={attackInfo} />
+          })}
+        </div>
       </div>
     </div>
   )
