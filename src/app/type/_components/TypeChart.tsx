@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { FC, Fragment } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
@@ -7,6 +7,44 @@ import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+
+const FirstRow = () => (
+  <>
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
+      <span> DEFENCE → </span>
+      <span> ATTACK ↴ </span>
+    </div>
+    {typeList.map(type => (
+      <MiniTypeCard typeName={type} key={type} />
+    ))}
+  </>
+)
+
+interface AttackingInfo {
+  name: string
+  multiplier: number
+}
+
+interface RowProps {
+  type: string
+  attackInfo: Array<AttackingInfo>
+}
+
+const TypeChartRow: FC<RowProps> = ({ type, attackInfo }) => (
+  <Fragment key={type}>
+    <TypeCard typeName={type} variant="big" key={type} />
+    {typeList.map(defendingType => {
+      const multiplierValue = attackInfo.find(info => info.name === defendingType)
+        ?.multiplier as number
+      const tooltipContent = `${formatName(type)} → ${formatName(defendingType)} = ${multiplierToString(multiplierValue)}`
+      return (
+        <div key={defendingType} data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent}>
+          <TypeMultiplierBox multiplier={multiplierValue} />
+        </div>
+      )
+    })}
+  </Fragment>
+)
 
 const getAllTypeData = async () => {
   const typeData = await TypesApi.getByNames(typeList)
@@ -26,8 +64,6 @@ const getAllTypeData = async () => {
   })
 
   return transformedData
-
-  // return newDataTransformedData
 }
 
 export const TypeChart = async () => {
@@ -37,37 +73,10 @@ export const TypeChart = async () => {
     <div className="overflow-auto">
       <div className="inline-flex">
         <div className="grid-cols-type-chart grid grid-flow-row">
-          {/* First row */}
-          <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
-            <span> DEFENCE → </span>
-            <span> ATTACK ↴ </span>
-          </div>
-          {typeList.map(type => (
-            <MiniTypeCard typeName={type} key={type} />
-          ))}
-
-          {/* Rest of the rows */}
+          <FirstRow />
           {typeData.map(attackingType => {
             const { type, attackInfo } = attackingType
-            return (
-              <Fragment key={type}>
-                <TypeCard typeName={type} variant="big" key={type} />
-                {typeList.map(defendingType => {
-                  const multiplierValue = attackInfo.find(info => info.name === defendingType)
-                    ?.multiplier as number
-                  const tooltipContent = `${formatName(type)} → ${formatName(defendingType)} = ${multiplierToString(multiplierValue)}`
-                  return (
-                    <div
-                      key={defendingType}
-                      data-tooltip-id="my-tooltip"
-                      data-tooltip-content={tooltipContent}
-                    >
-                      <TypeMultiplierBox multiplier={multiplierValue} />
-                    </div>
-                  )
-                })}
-              </Fragment>
-            )
+            return <TypeChartRow key={type} type={type} attackInfo={attackInfo} />
           })}
         </div>
       </div>
