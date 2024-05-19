@@ -6,7 +6,8 @@ import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
-const FirstRow = () => (
+// FirstRow component to display the first row with type cards
+const FirstRow: FC = () => (
   <>
     <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border" />
     {typeList.map(type => (
@@ -15,69 +16,96 @@ const FirstRow = () => (
   </>
 )
 
-interface DualTypeChartProps {
-  typeName: string
-  doubleDamageTo: Array<string>
-  halfDamageTo: Array<string>
-  noDamageTo: Array<string>
+// TypeEffectivenessCell component to display a cell with type effectiveness data
+const TypeEffectivenessCell: FC<{
+  mainType: string
+  typeCombo: [string, string]
+  doubleDamageTo: string[]
+  halfDamageTo: string[]
+  noDamageTo: string[]
+}> = ({ mainType, typeCombo, doubleDamageTo, halfDamageTo, noDamageTo }) => {
+  const [firstType, secondType] = typeCombo
+  const combinedTypeString = typeCombo.map(combo => formatName(combo)).join('/')
+  const multiplierValue =
+    firstType === secondType
+      ? 1
+      : calculateOffensiveTypeEffectiveness([firstType, secondType], {
+          doubleDamageTo,
+          halfDamageTo,
+          noDamageTo,
+        })
+  const multiplierString = multiplierToString(multiplierValue)
+  const tooltipContent = `${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`
+
+  return firstType === secondType ? (
+    <TypeMultiplierBox multiplier={1} className="bg-zinc-200 dark:bg-gray-700" key={firstType} />
+  ) : (
+    <div
+      data-tooltip-id="my-tooltip"
+      data-tooltip-content={tooltipContent}
+      key={`${firstType}-${secondType}`}
+    >
+      <TypeMultiplierBox multiplier={multiplierValue} />
+    </div>
+  )
 }
 
+// TypeRow component to display a row of type effectiveness data
+const TypeRow: FC<{
+  mainType: string
+  typeRow: string
+  doubleDamageTo: string[]
+  halfDamageTo: string[]
+  noDamageTo: string[]
+}> = ({ mainType, typeRow, doubleDamageTo, halfDamageTo, noDamageTo }) => {
+  const typeCombos = typeList.map(innerType => [typeRow, innerType] as [string, string])
+
+  return (
+    <>
+      <TypeCard variant="big" key={typeRow} typeName={typeRow} />
+      {typeCombos.map(typeCombo => (
+        <TypeEffectivenessCell
+          mainType={mainType}
+          typeCombo={typeCombo}
+          doubleDamageTo={doubleDamageTo}
+          halfDamageTo={halfDamageTo}
+          noDamageTo={noDamageTo}
+          key={typeCombo.join('-')}
+        />
+      ))}
+    </>
+  )
+}
+
+interface DualTypeChartProps {
+  typeName: string
+  doubleDamageTo: string[]
+  halfDamageTo: string[]
+  noDamageTo: string[]
+}
+
+// DualTypeChart component to display the entire dual-type chart
 export const DualTypeChart: FC<DualTypeChartProps> = ({
+  typeName,
   doubleDamageTo,
   halfDamageTo,
   noDamageTo,
-  typeName,
 }) => {
-  const mainType = typeName
-
-  // Calculate all the dual-type combinations possible
-  const typeRows = typeList.flatMap(type => {
-    return typeList.map(innerType => {
-      return [type, innerType]
-    })
-  })
-
-  const newRowsAgain = typeList.map(typeRow => {
-    const test = typeRows.filter(row => row[0] === typeRow)
-    const cellData = test.map(typeCombo => {
-      const [firstType, secondType] = typeCombo
-      const combinedTypeString = typeCombo.map(combo => formatName(combo)).join('/')
-      const multiplierValue =
-        firstType === secondType
-          ? 1
-          : calculateOffensiveTypeEffectiveness([firstType, secondType], {
-              doubleDamageTo,
-              halfDamageTo,
-              noDamageTo,
-            })
-      const multiplierString = multiplierToString(multiplierValue)
-      const tooltipContent = `${formatName(mainType)} → ${combinedTypeString} = ${multiplierString}`
-
-      if (firstType === secondType) {
-        return <TypeMultiplierBox multiplier={1} className="bg-zinc-200 dark:bg-gray-700" key={2} />
-      }
-
-      return (
-        <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} key={3}>
-          <TypeMultiplierBox multiplier={multiplierValue} />
-        </div>
-      )
-    })
-
-    return (
-      <Fragment key={typeRow}>
-        <TypeCard variant="big" key={typeRow} typeName={typeRow} />
-        {cellData}
-      </Fragment>
-    )
-  })
-
   return (
     <div className="overflow-auto">
       <div className="inline-flex">
         <div className="grid grid-cols-type-chart">
           <FirstRow />
-          {newRowsAgain}
+          {typeList.map(typeRow => (
+            <TypeRow
+              key={typeRow}
+              mainType={typeName}
+              typeRow={typeRow}
+              doubleDamageTo={doubleDamageTo}
+              halfDamageTo={halfDamageTo}
+              noDamageTo={noDamageTo}
+            />
+          ))}
         </div>
       </div>
     </div>
