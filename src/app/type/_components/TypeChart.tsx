@@ -4,6 +4,8 @@ import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
 import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services'
+import formatName from '@/utils/formatName'
+import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
 
 const getAllTypeData = async () => {
@@ -50,14 +52,20 @@ export const TypeChart = async () => {
             return (
               <Fragment key={type}>
                 <TypeCard typeName={type} variant="big" key={type} />
-                {typeList.map(defendingType => (
-                  <TypeMultiplierBox
-                    multiplier={
-                      attackInfo.find(info => info.name === defendingType)?.multiplier as number
-                    }
-                    key={defendingType}
-                  />
-                ))}
+                {typeList.map(defendingType => {
+                  const multiplierValue = attackInfo.find(info => info.name === defendingType)
+                    ?.multiplier as number
+                  const tooltipContent = `${formatName(type)} → ${formatName(defendingType)} = ${multiplierToString(multiplierValue)}`
+                  return (
+                    <div
+                      key={defendingType}
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content={tooltipContent}
+                    >
+                      <TypeMultiplierBox multiplier={multiplierValue} />
+                    </div>
+                  )
+                })}
               </Fragment>
             )
           })}
