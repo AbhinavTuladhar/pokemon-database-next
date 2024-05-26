@@ -27,6 +27,7 @@ module.exports = {
         'flexible': 'repeat(auto-fit, minmax(170px, 1fr))',
         'flexible-alola': 'repeat(auto-fit, minmax(230px, 1fr))',
         'pokemon-detail-grid': 'repeat(auto-fit, minmax(min(350px, 90%), 1fr))',
+        'random-pokemon-grid': 'repeat(auto-fit, minmax(min(256px, 100%), 1fr))',
         'pokemon-move-grid': 'repeat(auto-fit, minmax(min(520px, 90%), 1fr))',
         '2-flexible': 'repeat(auto-fit, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fit, minmax(min(210px, 90%), 1fr))',
