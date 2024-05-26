@@ -5,6 +5,13 @@
 :root {
   --link-colour: #3b82f6;
   --link-hover-colour: #ef4444;
+  --header-height: 188px;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: calc(100dvh - 188px);
+  }
 }
 
 .fancy-link {

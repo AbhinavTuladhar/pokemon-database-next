@@ -105,17 +105,16 @@ const InformativeText = () => {
 
 const NewPage = () => {
   return (
-    <main className="py-4 lg:py-14">
-      <div className="grid grid-cols-12 items-center gap-y-8 lg:gap-x-8">
+    <main className="py-4 lg:py-8">
+      <section className="hero-section grid grid-cols-12 items-center gap-y-8 lg:gap-x-8">
         <div className="col-span-12 space-y-4 lg:col-span-5">
           <h1 className="text-main-title/tight text-center font-bold lg:text-left">
             Explore the World of Pokémon!
           </h1>
           <div className="space-y-3">
-            <span className="text-lg">
+            <span className="text-xl">
               Get all sorts of information about your favourite Pokémon!
             </span>
-            {/* <SearchBar /> */}
           </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
@@ -126,7 +125,7 @@ const NewPage = () => {
             className="w-full max-w-full"
           />
         </div>
-      </div>
+      </section>
       <RandomPokemon />
     </main>
   )
