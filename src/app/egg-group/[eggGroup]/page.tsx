@@ -39,7 +39,7 @@ const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
   return (
     <main>
       <PageTitle>
-        <span> {formatName(eggGroup)} </span>
+        <span> {formatName(data.name)} </span>
         <span className="text-gray-400"> (egg group) </span>
       </PageTitle>
       <div className="flex flex-wrap gap-x-8">

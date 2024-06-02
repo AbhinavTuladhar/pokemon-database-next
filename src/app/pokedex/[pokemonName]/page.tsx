@@ -62,7 +62,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
     weight,
     nationalNumber,
     abilities,
-    name,
+    name: actualName,
     front_default: defaultSprite,
     front_shiny: shinySprite,
     types,
@@ -106,19 +106,19 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
   return (
     <main>
-      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(name)}</h1>
+      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(actualName)}</h1>
       <AdjacentLinks id={id} />
 
       <PageNavigation />
 
-      <BasicIntro genus={genus} id={id} name={pokemonName} types={types} />
+      <BasicIntro genus={genus} id={id} name={actualName} types={types} />
       <section
         id="info"
         className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
       >
         <div className="col-span-2 md:col-span-1">
           <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
-          <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={name} />
+          <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={actualName} />
         </div>
 
         <div className="col-span-2 md:col-span-1">
@@ -157,7 +157,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <BaseStat stats={stats} />
         </section>
         <section className="col-span-2 mdlg:col-span-1">
-          <TypeChart pokemonName={name} types={types} abilityNames={abilityNames} />
+          <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
         </section>
       </section>
 
@@ -181,16 +181,16 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
       <Suspense fallback={<div> Loading moves data... </div>}>
         <section id="moves-learned">
-          <MovesLearned moves={moves} pokemonName={pokemonName} />
+          <MovesLearned moves={moves} pokemonName={actualName} />
         </section>
       </Suspense>
 
       <section className="space-y-4" id="sprites">
-        <SpriteSection pokemonName={pokemonName} spriteCollection={spriteCollection} />
+        <SpriteSection pokemonName={actualName} spriteCollection={spriteCollection} />
       </section>
 
       <section id="locations">
-        <Locations id={id} name={pokemonName} />
+        <Locations id={id} name={actualName} />
       </section>
 
       <section>
@@ -209,7 +209,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
       </section>
 
       <section id="forms">
-        <PokemonVarieties pokemonName={pokemonName} varieties={varieties} />
+        <PokemonVarieties pokemonName={actualName} varieties={varieties} />
       </section>
 
       <AdjacentLinks id={id} />

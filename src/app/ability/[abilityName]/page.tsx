@@ -29,12 +29,18 @@ const getAbilityData = async (name: string) => {
 }
 
 const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } }) => {
-  const { descriptions, longEntry, name, pokemon, names } = await getAbilityData(abilityName)
+  const {
+    descriptions,
+    longEntry,
+    name: abilityNameActual,
+    pokemon,
+    names,
+  } = await getAbilityData(abilityName)
 
   return (
     <main>
       <PageTitle>
-        <span>{formatName(abilityName)}</span>
+        <span>{formatName(abilityNameActual)}</span>
         <span className="text-gray-400"> (ability) </span>
       </PageTitle>
       <div className="grid grid-cols-1 gap-x-20 gap-y-4 lg:grid-cols-2">
@@ -44,10 +50,10 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } })
           <OtherLanguages names={names} />
         </div>
         <div>
-          <SectionTitle> Pokémon with {formatName(abilityName)} </SectionTitle>
+          <SectionTitle> Pokémon with {formatName(abilityNameActual)} </SectionTitle>
           <Suspense fallback={<PokemonTableSkeleton />}>
             <div className="flex w-full justify-center lg:justify-stretch">
-              <PokemonTable abilityName={name} pokemonList={pokemon} />
+              <PokemonTable abilityName={abilityNameActual} pokemonList={pokemon} />
             </div>
           </Suspense>
         </div>
