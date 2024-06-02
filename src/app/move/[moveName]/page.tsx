@@ -48,12 +48,13 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     names,
     machines,
     pokemon,
+    moveName: actualMoveName,
   } = moveData
 
   return (
     <main>
       <PageTitle>
-        <span>{formatName(moveName)}</span>
+        <span>{formatName(actualMoveName)}</span>
         <span className="text-gray-400"> (move) </span>
       </PageTitle>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
@@ -89,22 +90,15 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         </section>
       </div>
 
-      {/* <>
-        <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
-        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
-          <MiniCardList pokemonNames={pokemon} />
-        </Suspense>
-      </> */}
-
       {/* Use infinite scrolling if there are more than 100 urls. */}
       {pokemon.length >= 100 ? (
         <>
-          <SectionTitle>Pokémon that can learn {formatName(moveName)}</SectionTitle>
+          <SectionTitle>Pokémon that can learn {formatName(actualMoveName)}</SectionTitle>
           <InfiniteMiniCardScroll increment={50} nameList={pokemon} />
         </>
       ) : (
         <>
-          <SectionTitle>Pokémon that can learn {`${formatName(moveName)}`}</SectionTitle>
+          <SectionTitle>Pokémon that can learn {`${formatName(actualMoveName)}`}</SectionTitle>
           <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
             <MiniCardList pokemonNames={pokemon} />
           </Suspense>

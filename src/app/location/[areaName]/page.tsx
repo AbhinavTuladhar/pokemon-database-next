@@ -124,7 +124,10 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
   return (
     <main>
-      <PageTitle>{formatName(areaName)}</PageTitle>
+      <PageTitle>
+        <span>{formatName(locationData.locationName)}</span>
+        <span className="text-gray-400"> (location) </span>
+      </PageTitle>
 
       {groupedByGenerationSubLocationAndMethod.map((locationGroup, index) => {
         return (

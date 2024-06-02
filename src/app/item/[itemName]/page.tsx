@@ -33,15 +33,16 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
     names,
     category,
     sprite,
+    name: actualItemName,
   } = itemData
   return (
     <main>
       <div className="flex flex-wrap items-center justify-center">
         <PageTitle>
-          <span> {formatName(itemName)}</span>
+          <span> {formatName(actualItemName)}</span>
           <span className="text-gray-400"> (item) </span>
         </PageTitle>
-        <Image src={sprite} alt={itemName} width={64} height={64} />
+        <Image src={sprite} alt={actualItemName} width={64} height={64} />
       </div>
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
         <section>
