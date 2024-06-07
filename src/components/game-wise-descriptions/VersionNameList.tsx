@@ -18,16 +18,18 @@ interface GameNameRowProps {
 
 const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
   <>
-    {names?.map((name, index) => {
-      const { colour, properName } = gameToColourAndNameMap[name]
-      const isLast = index === names.length - 1
-      return (
-        <React.Fragment key={index}>
-          <GameName gameName={properName} colour={colour} />
-          {!isLast && ' / '}
-        </React.Fragment>
-      )
-    })}
+    {names
+      .filter(name => name !== undefined)
+      .map((name, index) => {
+        const { colour, properName } = gameToColourAndNameMap[name]
+        const isLast = index === names.length - 1
+        return (
+          <React.Fragment key={index}>
+            <GameName gameName={properName} colour={colour} />
+            {!isLast && ' / '}
+          </React.Fragment>
+        )
+      })}
   </>
 )
 
