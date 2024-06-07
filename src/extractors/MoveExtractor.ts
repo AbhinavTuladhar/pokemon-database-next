@@ -67,6 +67,11 @@ const MoveExtractor = (move: Move) => {
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)
   const generationIntroduced = `${newGenerationString} ${numberMapper[generationNumber]}`
 
+  // Filter out scarlet and violet tms from the machine list
+  const filteredMachines = machines.filter(
+    machine => machine.version_group.name !== 'scarlet-violet',
+  )
+
   return {
     accuracy: realAccuracy,
     damageClass,
@@ -90,7 +95,7 @@ const MoveExtractor = (move: Move) => {
     longEntry,
     shortEntry,
     id,
-    machines,
+    machines: filteredMachines,
     pokemonUrls,
     pokemon,
   }
