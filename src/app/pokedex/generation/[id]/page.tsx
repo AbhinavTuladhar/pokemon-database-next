@@ -15,6 +15,10 @@ interface PageProps {
   }
 }
 
+export async function generateStaticParams() {
+  return Array.from({ length: 7 }, (_, index) => ({ id: (index + 1).toString() }))
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = params
   return {
