@@ -42,7 +42,7 @@ const handleAbilityAgain = (
    * If there's more than one ability and none are in the special ability array, return as normal.
    */
   if (
-    abilityNames.length > 1 &&
+    abilityNames.length >= 1 &&
     !specialAbilityList.some(ability => abilityNames.includes(ability))
   ) {
     return {

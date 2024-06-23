@@ -44,7 +44,10 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
             key={tabIndex}
             className={classNames(
               'flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-1.5 text-sm duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-table-header dark:hover:border-white dark:hover:text-white dark:hover:brightness-110',
-              { 'last:w-full last:flex-none': tabNames.length > 2 },
+              {
+                'last:w-full last:flex-none last:border-t last:!border-t-slate-300 dark:last:!border-t-slate-700':
+                  tabNames.length > 2,
+              },
             )}
             selectedClassName="!border-blue-500 text-blue-500"
           >
