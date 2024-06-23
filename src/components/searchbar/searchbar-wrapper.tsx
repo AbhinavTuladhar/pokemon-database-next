@@ -30,12 +30,12 @@ const SearchbarWrapper = async () => {
 
   // Order: pokedex - move - ability - item - location
   const processedData = [
+    { data: sortByName(typesData), resourceType: 'type' },
     { data: sortByName(pokemonData), resourceType: 'pokedex' },
     { data: sortByName(moveData), resourceType: 'move' },
     { data: sortByName(abilityData), resourceType: 'ability' },
     { data: sortByName(filteredItems), resourceType: 'item' },
     { data: sortByName(locationData), resourceType: 'location' },
-    { data: sortByName(typesData), resourceType: 'type' },
   ]
 
   const filterList = processedData.flatMap(({ data, resourceType }) =>
