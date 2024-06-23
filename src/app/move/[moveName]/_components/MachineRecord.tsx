@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
-import { gameBlackLists } from '@/data/blacklists'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
+import { versionNames } from '@/data/whiteLists'
 import { MachineApi } from '@/services'
 import type { MachineVersionDetail } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
@@ -42,12 +42,15 @@ interface GroupedMachines {
 }
 
 const groupByGenerations = (responses: ReturnType<typeof getTmNumbers>) => {
-  const formattedData = responses.filter(
-    machine =>
-      machine.versionName !== 'colosseum' &&
-      machine.versionName !== 'xd' &&
-      !gameBlackLists.includes(machine.versionName),
-  )
+  // const formattedData = responses.filter(
+  //   machine =>
+  //     machine.versionName !== 'colosseum' &&
+  //     machine.versionName !== 'xd' &&
+  //     !gameBlackLists.includes(machine.versionName),
+  // )
+
+  const formattedData = responses.filter(machine => versionNames.includes(machine.versionName))
+
   const transformedData = formattedData.reduce(
     (acc, item) => {
       const { machine, generation, versionName } = item
@@ -89,8 +92,12 @@ export const MachineRecord: FC<RecordProps> = async ({ machineList }) => {
 
   return (
     <>
-      <SectionTitle>Machine/Record</SectionTitle>
-      <GameWiseDescriptions descriptionData={finalMachineData} />
+      {finalMachineData.length > 1 ? (
+        <>
+          <SectionTitle>Machine/Record</SectionTitle>
+          <GameWiseDescriptions descriptionData={finalMachineData} />
+        </>
+      ) : null}
     </>
   )
 }
