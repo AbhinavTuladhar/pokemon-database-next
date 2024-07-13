@@ -47,11 +47,13 @@ const ErrorContainer: FC<ContainerProps> = ({ param, pageUrl, resourceType }) =>
             <span className="bg-gray-600 px-1 font-serif"> {pageUrl} </span>
             <span> could not be found. Please check that you typed the url correctly. </span>
           </div>
-          <SimilarMatches
-            param={param}
-            resourceType={resourceType}
-            resourcesList={filteredResources}
-          />
+          {resourceType === 'generation' ? null : (
+            <SimilarMatches
+              param={param}
+              resourceType={resourceType}
+              resourcesList={filteredResources}
+            />
+          )}
           <div className="mt-4">
             <span>
               <span> Or, return to the </span>

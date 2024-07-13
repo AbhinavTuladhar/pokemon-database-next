@@ -7,6 +7,7 @@ export type ResourceTypes =
   | 'type'
   | 'egg-group'
   | 'sprites'
+  | 'generation'
 
 export interface ResourceList {
   data: string[]
