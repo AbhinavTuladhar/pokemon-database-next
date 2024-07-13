@@ -5,11 +5,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import debounce from 'lodash.debounce'
 import { IoMdSearch } from 'react-icons/io'
 
+import { ResourceTypes } from '@/types'
+
 import SearchResultRow from './search-result-row'
 
 interface ResourceData {
   name: string
-  resourceType: string
+  resourceType: ResourceTypes
 }
 
 interface InputProps {
