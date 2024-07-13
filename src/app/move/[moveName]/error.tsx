@@ -20,5 +20,5 @@ export default function Error({
     console.error(error)
   }, [error])
 
-  return <ErrorContainer pageUrl={pageUrl} />
+  return <ErrorContainer pageUrl={pageUrl} param={moveName} resourceType="move" />
 }
