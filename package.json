@@ -14,7 +14,7 @@
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "apexcharts": "^3.49.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "axios-cache-interceptor": "^1.5.1",
     "classnames": "^2.5.1",
     "framer-motion": "^11.0.8",
