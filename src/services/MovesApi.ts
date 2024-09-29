@@ -16,4 +16,8 @@ export const MovesApi = {
     const response = await Api.move.getMoveByName(name)
     return response as unknown as Move
   },
+  getByOffsetAndLimit: async function (offset: number, limit: number) {
+    const response = await Api.move.listMoves(offset, limit)
+    return response.results.map(move => move.name)
+  },
 }
