@@ -12,7 +12,7 @@ interface PageProps {
   }
 }
 
-export async function generateMetaData({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { number } = params
   return {
     title: `Generation ${number} moves | Pokémon Database`,
@@ -20,7 +20,7 @@ export async function generateMetaData({ params }: PageProps): Promise<Metadata>
 }
 
 const MoveList: FC<PageProps> = async ({ params: { number } }) => {
-  const generationNumber = parseInt(number)
+  const generationNumber = parseInt(number) || Infinity
 
   return (
     <main>
