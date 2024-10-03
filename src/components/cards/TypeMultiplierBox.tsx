@@ -16,6 +16,7 @@ const effectivenessMapping: MappingInteface = {
   1.5: { icon: '1½', colour: 'lime-600' },
   2: { icon: '2', colour: 'lime-600' },
   2.5: { icon: '2½', colour: 'lime-600' },
+  3: { icon: '3', colour: 'lime-600' },
   4: { icon: '4', colour: 'lime-500' },
   5: { icon: '5', colour: 'lime-500' },
 }
