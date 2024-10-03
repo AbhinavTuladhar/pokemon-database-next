@@ -24,7 +24,11 @@ export async function generateStaticParams() {
 }
 
 const MoveList: FC<PageProps> = async ({ params: { number } }) => {
-  const generationNumber = parseInt(number) || Infinity
+  const generationNumber = parseInt(number)
+
+  if (!generationNumber || generationNumber < 1 || generationNumber > 7) {
+    throw new Error('Invalid generation number')
+  }
 
   return (
     <main>

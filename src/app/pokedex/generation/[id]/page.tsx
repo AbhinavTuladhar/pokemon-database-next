@@ -40,6 +40,11 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const generationNumber = parseInt(id)
   // Getting the corresponding object from external file
   const routeData = generationData[generationNumber - 1]
+
+  if (!routeData) {
+    throw new Error('Invalid generation number')
+  }
+
   const { limit, offset } = routeData
 
   const generationResponse = await getPokemonDataByGeneration(offset, limit)

@@ -21,9 +21,13 @@ interface WrapperProps {
 }
 
 export const MoveTableWrapper: FC<WrapperProps> = async ({ generationNumber }) => {
-  const { limit, offset } = generationWiseMoveData[generationNumber - 1]
-
-  const moveList = await getMovesList(offset, limit)
-  const allMovesData = await getAllMoveData(moveList)
-  return <MoveTable moveData={allMovesData} />
+  try {
+    const { limit, offset } = generationWiseMoveData[generationNumber - 1]
+    const moveList = await getMovesList(offset, limit)
+    const allMovesData = await getAllMoveData(moveList)
+    return <MoveTable moveData={allMovesData} />
+  } catch (error) {
+    console.log('this is a test')
+    throw new Error('Invalid generation number')
+  }
 }

@@ -32,8 +32,6 @@ const ErrorContainer: FC<ContainerProps> = ({ param, pageUrl, resourceType }) =>
     return resource.resourceType === resourceType
   })
 
-  console.log(resourceType)
-
   return (
     <>
       <title> Error 404: Page not found | Pokémon Database </title>
