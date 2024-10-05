@@ -16,12 +16,12 @@ export const ItemPocketExtractor = (data: ItemPocket) => {
 export const ItemCategoryExtractor = (data: ItemCategory) => {
   const { items, ...rest } = data
 
-  // ids with > 1137 are generation 8+
+  // ids with > 1005 are generation 8+
   const itemNames = items
     .filter(item => {
       const { url } = item
       const itemId = getResourceId(url)
-      return parseInt(itemId) <= 1137
+      return parseInt(itemId) <= 1005
     })
     .map(item => item.name)
 
