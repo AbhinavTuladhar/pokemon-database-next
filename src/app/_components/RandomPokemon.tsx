@@ -12,13 +12,13 @@ const getRandomNumber = (min: number, max: number) => {
 
 const getRandomPokemonData = async () => {
   // Generate four random numbers between 1 and 809 for the Pokemon ids, one for each generation.
-  const generationids = generationData.map(generation => {
+  const generationIds = generationData.map(generation => {
     const { limit, offset } = generation
     const lowerLimit = offset
     const upperLimit = offset + limit
     return getRandomNumber(lowerLimit, upperLimit)
   })
-  const responses = await PokemonApi.getByIds(generationids)
+  const responses = await PokemonApi.getByIds(generationIds)
   return responses.map(PokemonExtractor)
 }
 
@@ -27,7 +27,7 @@ const RandomPokemon = async () => {
 
   return (
     <section>
-      <SectionTitle> Check out some random Pokémon! </SectionTitle>
+      <SectionTitle> Featured Pokémon </SectionTitle>
       <div className="flex flex-wrap justify-center gap-8">
         {pokemonData.map(({ types, front_default, name, id }, index) => (
           <PokeCard defaultSprite={front_default} id={id} name={name} types={types} key={index} />

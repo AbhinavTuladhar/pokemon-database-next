@@ -44,7 +44,7 @@ const Navbar = () => {
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
-          icon={<MdOutlineCatchingPokemon className={iconClassName} />}
+          icon={<MdOutlineCatchingPokemon className={`${iconClassName} rotate-180`} />}
         />
         <TopLevelMenu
           menuData={pokemonDataLinks}

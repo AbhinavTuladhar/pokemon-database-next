@@ -131,8 +131,24 @@ const NewPage = () => {
   )
 }
 
+const LatestBanner = () => (
+  <main>
+    <section className="hero-banner isolate text-white">
+      <div className="relative z-10 space-y-2 text-center">
+        <h1 className="text-main-title/none text-center font-bold">Explore the world of Pokémon</h1>
+        <div className="text-xl font-medium">
+          Get all sorts of information about your favourite Pokémon!
+        </div>
+      </div>
+    </section>
+    <section className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto xl:px-8">
+      <RandomPokemon />
+    </section>
+  </main>
+)
+
 const WelcomePage = () => {
-  return <NewPage />
+  return <LatestBanner />
   // return (
   //   <MotionDiv
   //     variants={welcomeVariant}
