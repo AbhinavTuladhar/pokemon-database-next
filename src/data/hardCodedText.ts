@@ -5,3 +5,9 @@ Moves that do not directly inflict damage are known as status moves. The damagin
 
 When multiple Pokémon attempt to use a move in the same turn, priority and Speed determine the order in which the moves are used. Accuracy affects whether the move misses. The damage dealt by a damaging move is determined by its power, as well as many other variables. Some damaging moves have additional effects. The number of times they can use each move is restricted by the move's PP. The only move that is not affected by Power Points is Struggle. Most moves can target only one adjacent Pokémon, but some moves instead can target the user, more than one Pokémon, or non-adjacent Pokémon.
 `
+
+export const ITEM_LIST_TEXT = `
+An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or accessing new areas.
+
+Items are obtained in several different ways. They can be given to the player by characters within the game, be bought at a Poké Mart for money, or found by the player throughout the Pokémon world. The latter form of items are officially referred to as item balls spherical containers resembling a Poké Ball. To obtain the item, players move next to it and press A while facing it. Another method introduced in Generation II is picking Berries off a Berry tree. Join Avenue was introduced in Pokémon Black 2 and White 2, allowing players to buy certain items in bulk, as well as Berries and some rare items. Pokémon encountered in the wild will sometimes be holding items, which can be obtained by catching them using a Poké Ball or by using either Trick, Thief, Switcheroo, or Covet. Also, in certain areas in Generation VI, various scenery will appear in the background during some battles.
+`
