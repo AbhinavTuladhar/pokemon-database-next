@@ -115,15 +115,14 @@ body.dark .apexcharts-subtitle-text {
 }
 
 .main-layout:has(.hero-banner) > * {
+  @apply -mt-20 sm-md:-mt-8;
   position: relative;
-  margin-top: -2rem;
   z-index: 0;
 }
 
 .hero-banner {
   position: relative;
   height: calc(100dvh - 80px);
-  /* min-height: 100vh; */
   background-image: url("/hero-background.webp");
   background-repeat: no-repeat;
   background-position: center 25%;

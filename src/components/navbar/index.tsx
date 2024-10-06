@@ -39,8 +39,8 @@ const Navbar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative z-50 -mt-6 rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-950 dark:to-slate-900 md:static">
-      <ul className="flex list-none flex-wrap">
+    <nav className="relative z-50 -mt-7 rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-950 dark:to-slate-900 md:static">
+      <ul className="sm-md:grid-cols-4 grid list-none grid-cols-3">
         <TopLevelMenu
           menuData={pokedexLinks}
           parentText="Pokédex"
@@ -56,7 +56,7 @@ const Navbar = () => {
           parentText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="flex w-full min-w-48 items-center gap-x-2 p-2 min-[800px]:w-auto">
+        <li className="sm-md:col-span-1 col-span-3 flex min-w-48 items-center gap-x-2 p-2 ">
           <div className="flex-1">
             <SearchBar />
           </div>
