@@ -12,11 +12,12 @@ interface Path {
 
 interface TopLevelProps {
   menuData: Array<Path>
-  parentText: string
+  mobileText: string
   icon: ReactNode
+  desktopText?: string
 }
 
-const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
+const TopLevelMenu: FC<TopLevelProps> = ({ menuData, mobileText, icon, desktopText }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const closeMenu = () => setIsOpen(false)
@@ -25,14 +26,23 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, parentText, icon }) => {
 
   return (
     <li
-      className="flex flex-1 justify-center px-2 py-3 text-center text-white duration-500 md:relative"
+      className="flex flex-1 justify-center px-2 py-2 text-center text-white duration-500 md:relative md:py-3"
       onMouseOver={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
     >
-      <span className="flex w-full flex-col items-center justify-center gap-x-2 gap-y-2 text-sm hover:cursor-default md:flex-row md:text-base md:font-bold">
+      <span className="flex w-full flex-col items-center justify-center gap-1 text-sm hover:cursor-default md:flex-row md:gap-2 md:text-base md:font-bold">
         <>{icon}</>
-        <span className="text-sm lg:text-base"> {parentText} </span>
+        {desktopText && (
+          <span className="hidden text-sm md:block lg:text-base"> {desktopText} </span>
+        )}
+        <span
+          className={classNames('text-sm lg:text-base', {
+            'block md:hidden': desktopText,
+          })}
+        >
+          {mobileText}
+        </span>
       </span>
       <ul
         className={classNames(

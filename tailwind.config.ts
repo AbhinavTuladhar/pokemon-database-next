@@ -13,8 +13,8 @@ module.exports = {
       fontSize: {
         '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
         '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',
-        '6xl': 'clamp(3rem, 2.4rem + 1.5vw, 3.75rem)',
-        'main-title': 'clamp(2.75rem, 2.536rem + 1.071vw, 3.5rem)',
+        '6xl': 'clamp(2.5rem, 2.143rem + 1.786vw, 3.75rem)',
+        'main-title': 'clamp(2rem, 1.571rem + 2.143vw, 3.5rem)',
       },
       screens: {
         'sm-md': '820px',

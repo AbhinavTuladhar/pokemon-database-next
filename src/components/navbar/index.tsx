@@ -40,23 +40,25 @@ const Navbar = () => {
 
   return (
     <nav className="relative z-50 -mt-7 rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-950 dark:to-slate-900 md:static">
-      <ul className="sm-md:grid-cols-4 grid list-none grid-cols-3">
+      <ul className="grid list-none grid-cols-3 md:grid-cols-4">
         <TopLevelMenu
           menuData={pokedexLinks}
-          parentText="Pokédex"
+          mobileText="Pokédex"
           icon={<MdOutlineCatchingPokemon className={`${iconClassName} rotate-180`} />}
         />
         <TopLevelMenu
           menuData={pokemonDataLinks}
-          parentText="Pokémon data"
+          mobileText="Data"
+          desktopText="Pokémon data"
           icon={<FaDatabase className={iconClassName} />}
         />
         <TopLevelMenu
           menuData={mechanicsLinks}
-          parentText="Game Mechanics"
+          mobileText="Mechanics"
+          desktopText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="sm-md:col-span-1 col-span-3 flex min-w-48 items-center gap-x-2 p-2 ">
+        <li className="col-span-3 flex min-w-48 items-center gap-x-2 px-2 pb-2 md:col-span-1 md:py-2 ">
           <div className="flex-1">
             <SearchBar />
           </div>

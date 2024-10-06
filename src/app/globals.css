@@ -115,7 +115,7 @@ body.dark .apexcharts-subtitle-text {
 }
 
 .main-layout:has(.hero-banner) > * {
-  @apply -mt-20 sm-md:-mt-8;
+  @apply -mt-20 md:-mt-7;
   position: relative;
   z-index: 0;
 }

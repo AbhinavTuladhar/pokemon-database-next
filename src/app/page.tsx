@@ -108,7 +108,7 @@ const NewPage = () => {
     <main className="py-4 lg:py-8">
       <section className="hero-section grid grid-cols-12 items-center gap-y-8 lg:gap-x-8">
         <div className="col-span-12 space-y-4 lg:col-span-5">
-          <h1 className="text-main-title/tight text-center font-bold lg:text-left">
+          <h1 className="text-center text-main-title/tight font-bold lg:text-left">
             Explore the World of Pokémon!
           </h1>
           <div className="space-y-3">
@@ -135,8 +135,8 @@ const LatestBanner = () => (
   <main>
     <section className="hero-banner isolate text-white">
       <div className="relative z-10 space-y-2 text-center">
-        <h1 className="text-main-title/none text-center font-bold">Explore the world of Pokémon</h1>
-        <div className="text-xl font-medium">
+        <h1 className="text-center text-main-title/none font-bold">Explore the world of Pokémon</h1>
+        <div className="text-sm font-medium lg:text-xl">
           Get all sorts of information about your favourite Pokémon!
         </div>
       </div>
