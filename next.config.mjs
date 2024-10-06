@@ -13,6 +13,12 @@ const nextConfig = {
         port: '',
         // pathname: ''
       },
+      {
+        protocol: 'https',
+        hostname: 'images7.alphacoders.com',
+        port: '',
+        // pathname: ''
+      },
     ],
   },
   webpack: config => {

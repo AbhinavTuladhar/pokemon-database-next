@@ -1,8 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Image from 'next/image'
 import type { Variants } from 'framer-motion'
 
 import { MotionDiv, MotionSpan } from '@/components/client-components'
+
+import RandomPokemon from './_components/RandomPokemon'
 
 const welcomeVariant: Variants = {
   initial: { y: '10rem', opacity: 0 },
@@ -75,6 +78,7 @@ const TitleText = () => {
 }
 
 const InformativeText = () => {
+  console.log('This is the informative text.')
   return (
     <>
       <MotionSpan variants={entryVariantLeft}>
@@ -99,23 +103,68 @@ const InformativeText = () => {
   )
 }
 
-const WelcomePage = () => {
+const NewPage = () => {
   return (
-    <MotionDiv
-      variants={welcomeVariant}
-      initial="initial"
-      animate="animate"
-      className="flex flex-row flex-wrap items-center justify-center gap-4 overflow-x-hidden py-4 md:flex-row"
-    >
-      <MotionDiv variants={entryVariantLeft}>
-        <TitleText />
-        <MotionDiv variants={entryVariantLeft} className="flex flex-col space-y-4 py-4">
-          <InformativeText />
-        </MotionDiv>
-      </MotionDiv>
-      <ImageColumn />
-    </MotionDiv>
+    <main className="py-4 lg:py-8">
+      <section className="hero-section grid grid-cols-12 items-center gap-y-8 lg:gap-x-8">
+        <div className="col-span-12 space-y-4 lg:col-span-5">
+          <h1 className="text-center text-main-title/tight font-bold lg:text-left">
+            Explore the World of Pokémon!
+          </h1>
+          <div className="space-y-3">
+            <span className="text-xl">
+              Get all sorts of information about your favourite Pokémon!
+            </span>
+          </div>
+        </div>
+        <div className="col-span-12 lg:col-span-7">
+          <img
+            src="https://images7.alphacoders.com/592/592678.jpg"
+            style={{ height: 'auto' }}
+            alt="hero banner"
+            className="w-full max-w-full"
+          />
+        </div>
+      </section>
+      <RandomPokemon />
+    </main>
   )
+}
+
+const LatestBanner = () => (
+  <main>
+    <section className="hero-banner isolate text-white">
+      <div className="relative z-10 space-y-2 text-center">
+        <h1 className="text-center text-main-title/none font-bold">Explore the world of Pokémon</h1>
+        <div className="text-sm font-medium lg:text-xl">
+          Get all sorts of information about your favourite Pokémon!
+        </div>
+      </div>
+    </section>
+    <section className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto xl:px-8">
+      <RandomPokemon />
+    </section>
+  </main>
+)
+
+const WelcomePage = () => {
+  return <LatestBanner />
+  // return (
+  //   <MotionDiv
+  //     variants={welcomeVariant}
+  //     initial="initial"
+  //     animate="animate"
+  //     className="flex flex-row flex-wrap items-center justify-center gap-4 overflow-x-hidden py-4 md:flex-row"
+  //   >
+  //     <MotionDiv variants={entryVariantLeft}>
+  //       <TitleText />
+  //       <MotionDiv variants={entryVariantLeft} className="flex flex-col space-y-4 py-4">
+  //         <InformativeText />
+  //       </MotionDiv>
+  //     </MotionDiv>
+  //     <ImageColumn />
+  //   </MotionDiv>
+  // )
 }
 
 export default WelcomePage

@@ -5,6 +5,13 @@
 :root {
   --link-colour: #3b82f6;
   --link-hover-colour: #ef4444;
+  --header-height: 188px;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: calc(100dvh - 188px);
+  }
 }
 
 .fancy-link {
@@ -98,4 +105,36 @@ body.dark .apexcharts-legend-text {
 body.dark .apexcharts-title-text,
 body.dark .apexcharts-subtitle-text {
   fill: #fff !important;
+}
+
+.main-layout:has(.hero-banner) {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+}
+
+.main-layout:has(.hero-banner) > * {
+  @apply -mt-20 md:-mt-7;
+  position: relative;
+  z-index: 0;
+}
+
+.hero-banner {
+  position: relative;
+  height: calc(100dvh - 80px);
+  background-image: url("/hero-background.webp");
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #1e2029a6;
+  z-index: 0;
 }

@@ -32,10 +32,10 @@ export default function RootLayout({
           <Tooltip id="my-tooltip" style={{ fontSize: '0.75rem' }} />
           <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">
             <Header />
-            <div className="mx-0 max-w-screen-xl md:mx-8 xl:mx-auto xl:px-8">
+            <div className="relative z-50 mx-0 max-w-screen-xl lg:mx-8 xl:mx-auto xl:px-8">
               <Navbar />
             </div>
-            <div className="mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto xl:px-8">
+            <div className="main-layout mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto xl:px-8">
               <AnimatedPageWrapper>{children}</AnimatedPageWrapper>
             </div>
           </div>

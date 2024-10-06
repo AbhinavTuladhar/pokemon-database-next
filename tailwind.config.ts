@@ -13,11 +13,12 @@ module.exports = {
       fontSize: {
         '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
         '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',
-        '6xl': 'clamp(3rem, 2.4rem + 1.5vw, 3.75rem)',
+        '6xl': 'clamp(2.5rem, 2.143rem + 1.786vw, 3.75rem)',
+        'main-title': 'clamp(2rem, 1.571rem + 2.143vw, 3.5rem)',
       },
       screens: {
-        smmd: '1070px',
-        mdlg: '1170px',
+        'sm-md': '820px',
+        'mdlg': '1170px',
       },
       width: {
         '475/1000': '47.5%',
@@ -26,6 +27,7 @@ module.exports = {
         'flexible': 'repeat(auto-fit, minmax(170px, 1fr))',
         'flexible-alola': 'repeat(auto-fit, minmax(230px, 1fr))',
         'pokemon-detail-grid': 'repeat(auto-fit, minmax(min(350px, 90%), 1fr))',
+        'random-pokemon-grid': 'repeat(auto-fit, minmax(min(256px, 100%), 1fr))',
         'pokemon-move-grid': 'repeat(auto-fit, minmax(min(520px, 90%), 1fr))',
         '2-flexible': 'repeat(auto-fit, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fit, minmax(min(210px, 90%), 1fr))',
