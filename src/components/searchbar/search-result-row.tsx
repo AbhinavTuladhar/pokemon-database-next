@@ -1,7 +1,7 @@
 'use client'
 
 import React, { FC } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 
 import formatName from '@/utils/formatName'
 

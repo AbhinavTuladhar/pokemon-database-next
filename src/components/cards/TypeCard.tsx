@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 
 import typeMapping from '@/utils/typeMapping'
 
