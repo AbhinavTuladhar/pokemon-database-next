@@ -5,7 +5,7 @@ import type { Variants } from 'framer-motion'
 
 import { MotionDiv, MotionSpan } from '@/components/client-components'
 
-import RandomPokemon from './_components/RandomPokemon'
+import { RandomPokemon } from './_components'
 
 const welcomeVariant: Variants = {
   initial: { y: '10rem', opacity: 0 },

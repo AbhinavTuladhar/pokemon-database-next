@@ -1,34 +1,24 @@
+'use client'
+
 import React from 'react'
 
 import { PokeCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
-import generationData from '@/data/generationData'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import { PokemonApi } from '@/services'
+import { PokeCardSkeleton } from '@/components/skeletons'
+import useFeaturedPokemon from '@/hooks/useFeaturedPokemon'
 
-const getRandomNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
+const RandomPokemon = () => {
+  const { pokemonData, error, isLoading } = useFeaturedPokemon()
 
-const getRandomPokemonData = async () => {
-  // Generate four random numbers between 1 and 809 for the Pokemon ids, one for each generation.
-  const generationIds = generationData.map(generation => {
-    const { limit, offset } = generation
-    const lowerLimit = offset
-    const upperLimit = offset + limit
-    return getRandomNumber(lowerLimit, upperLimit)
-  })
-  const responses = await PokemonApi.getByIds(generationIds)
-  return responses.map(PokemonExtractor)
-}
-
-const RandomPokemon = async () => {
-  const pokemonData = await getRandomPokemonData()
+  if (error) {
+    return <SectionTitle>{error.message}</SectionTitle>
+  }
 
   return (
     <section>
       <SectionTitle> Featured Pokémon </SectionTitle>
       <div className="flex flex-wrap justify-center gap-8">
+        {isLoading || pokemonData.length === 0 ? <PokeCardSkeleton cardCount={7} /> : null}
         {pokemonData.map(({ types, front_default, name, id }, index) => (
           <PokeCard defaultSprite={front_default} id={id} name={name} types={types} key={index} />
         ))}
@@ -37,4 +27,4 @@ const RandomPokemon = async () => {
   )
 }
 
-export default RandomPokemon
+export { RandomPokemon }
