@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
-import { SkeletonTheme } from 'react-loading-skeleton'
 import { ViewTransitions } from 'next-view-transitions'
+import { SkeletonTheme } from 'react-loading-skeleton'
 
 import { Tooltip } from '@/components/client-components'
 import { AnimatedPageWrapper } from '@/components/containers'
