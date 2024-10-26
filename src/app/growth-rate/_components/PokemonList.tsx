@@ -27,7 +27,7 @@ const PokemonList: FC<ListProps> = ({ pokemonNames }) => {
         <span className="text-xl font-bold">List of Pokémon</span>
       </div>
       <Accordion visible={isOpen}>
-        <div className="grid-cols-pokemon-list mt-4 grid gap-x-4">
+        <div className="mt-4 grid grid-cols-pokemon-list gap-x-4">
           {pokemonNames.map(name => (
             <span key={name}>
               <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>

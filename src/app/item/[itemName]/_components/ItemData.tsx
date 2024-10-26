@@ -24,8 +24,8 @@ export const ItemData: FC<DataProps> = ({
 }) => {
   const attributeDiv = (
     <ul>
-      {attributes.map((attribute, index) => (
-        <li key={index}> {formatText(attribute)} </li>
+      {attributes.map(attribute => (
+        <li key={attribute}> {formatText(attribute)} </li>
       ))}
     </ul>
   )
@@ -43,8 +43,8 @@ export const ItemData: FC<DataProps> = ({
       <SectionTitle> Item Data </SectionTitle>
       <TableContainer>
         <tbody>
-          {tableData.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
+          {tableData.map(row => (
+            <TableRow key={row.header}>
               <TableCellHeader>
                 <span className="text-sm font-normal"> {row.header} </span>
               </TableCellHeader>
