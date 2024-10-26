@@ -42,7 +42,7 @@ export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-8">
       {statNames.map((statName, index) => (
-        <Fragment key={index}>
+        <Fragment key={statName + index}>
           <TypeSummaryCard number={statAverages[index]} text={statMapping[statName]} />
         </Fragment>
       ))}

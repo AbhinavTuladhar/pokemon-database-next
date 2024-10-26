@@ -41,23 +41,23 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
 
   // Now format the data for rendering purposes.
   // Prepare the type effectiveness list
-  const doubleDamageFromList = typeInformation?.doubleDamageFrom?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+  const doubleDamageFromList = typeInformation?.doubleDamageFrom.map((type, index) => (
+    <TypeCard typeName={type} key={'double-from' + type + index} />
   ))
   const doubleDamageToList = typeInformation?.doubleDamageTo?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+    <TypeCard typeName={type} key={'double-to' + type + index} />
   ))
   const halfDamageFromList = typeInformation?.halfDamageFrom?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+    <TypeCard typeName={type} key={'half-from' + type + index} />
   ))
   const halfDamageToList = typeInformation?.halfDamageTo?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+    <TypeCard typeName={type} key={'half-to' + type + index} />
   ))
   const noDamageFromList = typeInformation?.noDamageFrom?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+    <TypeCard typeName={type} key={'no-from' + type + index} />
   ))
   const noDamageToList = typeInformation?.noDamageTo?.map((type, index) => (
-    <TypeCard typeName={type} key={index} />
+    <TypeCard typeName={type} key={'no-to' + type + index} />
   ))
 
   return (

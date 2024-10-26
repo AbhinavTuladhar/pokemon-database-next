@@ -18,7 +18,7 @@ export const PageNavigation = () => {
       <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-gray-400 py-4 dark:divide-white">
         <li className="px-4 font-bold text-black dark:text-white"> Jump to </li>
         {linkData.map(({ ref, text }, index) => (
-          <li className="inline-flex w-max justify-center px-4" key={index}>
+          <li className="inline-flex w-max justify-center px-4" key={ref + index}>
             <BlueLink href={ref}>{text}</BlueLink>
           </li>
         ))}

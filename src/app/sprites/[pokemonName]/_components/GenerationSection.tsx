@@ -55,7 +55,11 @@ export const GenerationSection: FC<SectionProps> = ({
           extraColumns={extraColumns}
         />
         {rowNames.map((rowName, index) => (
-          <SpriteTableRow key={index} rowHeader={rowName} imageStrings={gameSprites[index]} />
+          <SpriteTableRow
+            key={rowName + index}
+            rowHeader={rowName}
+            imageStrings={gameSprites[index]}
+          />
         ))}
       </TableContainer>
     </section>

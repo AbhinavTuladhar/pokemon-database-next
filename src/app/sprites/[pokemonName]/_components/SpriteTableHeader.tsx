@@ -13,7 +13,7 @@ export const SpriteTableHeader: FC<HeaderProps> = ({ columns, extraColumns, fema
   return (
     <tr className="table-row">
       {tableColumns.map((column, index) => (
-        <TableHeaderWrapper key={index}>{column}</TableHeaderWrapper>
+        <TableHeaderWrapper key={column + index}>{column}</TableHeaderWrapper>
       ))}
     </tr>
   )
