@@ -69,7 +69,7 @@ export const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) 
 
   // Now sort the moves by some conditions.
   // sort level up moves by the level learnt.
-  const sortedLevelMoves = levelUpMoves.toSorted((curr, next) => {
+  const sortedLevelMoves = levelUpMoves.sort((curr, next) => {
     const levelLearntCurrent =
       curr.version_group_details[curr.version_group_details.length - 1].level_learned_at
     const levelLearntNext =
