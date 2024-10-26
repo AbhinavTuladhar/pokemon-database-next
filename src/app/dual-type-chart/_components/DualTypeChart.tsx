@@ -57,12 +57,12 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
   return (
     <div className="flex">
       <ScoreCell>{score}</ScoreCell>
-      {multiplierValues.map(({ multiplier, type }, index) => {
+      {multiplierValues.map(({ multiplier, type }) => {
         const multiplierString = multiplierToString(multiplier)
         const tooltipContent = `${formatName(type)} → ${typeComboString} = ${multiplierString}`
         return (
-          <div key={index} data-tooltip-content={tooltipContent} data-tooltip-id="my-tooltip">
-            <TypeMultiplierBox multiplier={multiplier} key={index} />
+          <div key={type} data-tooltip-content={tooltipContent} data-tooltip-id="my-tooltip">
+            <TypeMultiplierBox multiplier={multiplier} key={type} />
           </div>
         )
       })}
@@ -91,13 +91,13 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     </div>
   )
 
-  const firstColumnCards = typeCombinations.map((type, index) => {
+  const firstColumnCards = typeCombinations.map(type => {
     const [firstType, secondType] = type
     return (
-      <div className="flex gap-x-px" key={index}>
-        <TypeCard key={index} typeName={firstType} variant="big" />
+      <div className="flex gap-x-px" key={`${firstType} ${secondType}`}>
+        <TypeCard key={`${firstType} ${secondType}`} typeName={firstType} variant="big" />
         {firstType !== secondType ? (
-          <TypeCard key={index} typeName={secondType} variant="big" />
+          <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
         ) : null}
       </div>
     )
@@ -106,14 +106,18 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   const firstRow = (
     <div className="flex gap-x-px">
       <ScoreCell>Score</ScoreCell>
-      {typeList.map((type, index) => (
-        <MiniTypeCard typeName={type} key={index} />
+      {typeList.map(type => (
+        <MiniTypeCard typeName={type} key={type} />
       ))}
     </div>
   )
 
-  const otherRows = typeCombinations.map((typeCombo, rowIndex) => (
-    <TableRow key={rowIndex} attackingTypeInfo={attackingTypeInfo} typeCombination={typeCombo} />
+  const otherRows = typeCombinations.map(typeCombo => (
+    <TableRow
+      key={`${typeCombo[0]} ${typeCombo[1]}`}
+      attackingTypeInfo={attackingTypeInfo}
+      typeCombination={typeCombo}
+    />
   ))
 
   const tableRows = (
