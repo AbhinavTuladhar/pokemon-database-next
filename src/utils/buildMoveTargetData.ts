@@ -37,7 +37,9 @@ const buildMoveTargetData = (targetType: string, moveName: string) => {
       break
 
     case 'users-field':
+    case 'user-and-allies':
       // eg. mist, reflect
+      // eg heal-bell
       description = 'Targets all Pokémon on the user’s team.'
       allyInformation.forEach(ally => (ally.targeted = true))
       break
@@ -94,12 +96,6 @@ const buildMoveTargetData = (targetType: string, moveName: string) => {
       description = 'Targets the entire field'
       allyInformation.forEach(ally => (ally.targeted = true))
       foeInformation.forEach(foe => (foe.targeted = true))
-      break
-
-    case 'user-and-allies':
-      // eg. heal bell, howl
-      description = 'Targets all Pokémon on the user’s team.'
-      allyInformation.forEach(ally => (ally.targeted = true))
       break
 
     default:

@@ -17,7 +17,7 @@ const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>>
   const triggerName = trigger?.name ?? ''
 
   switch (triggerName) {
-    case 'level-up':
+    case 'level-up': {
       const {
         min_level,
         min_happiness,
@@ -92,8 +92,9 @@ const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>>
         return `with ${formatName(partyPokemon)} in party`
       }
       return `level ${min_level}`
+    }
 
-    case 'trade':
+    case 'trade': {
       const { held_item: held_item_nested, trade_species } = evolutionStep
 
       const heldItemTrade = held_item_nested?.name
@@ -105,8 +106,9 @@ const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>>
         return `trade with ${formatName(tradeSpecies)}`
       }
       return 'trade'
+    }
 
-    case 'use-item':
+    case 'use-item': {
       const { item, gender: genderForItem = undefined } = evolutionStep
       const itemName = item?.name ?? ''
       const genderNameForItem = genderForItem === 2 ? 'Male' : 'Female'
@@ -116,6 +118,7 @@ const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>>
       }
 
       return `use ${formatName(itemName)}`
+    }
 
     case 'shed':
       return 'Level 20, empty spot in party, Pokéball in bag'

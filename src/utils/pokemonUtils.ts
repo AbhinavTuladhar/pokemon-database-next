@@ -16,8 +16,8 @@ export const getCatchRate = (catchRate: number) => {
   // A random number between 0 and 65535 (inclusive) is rolled four times - for a successful
   // capture, the number generated should be less than beta four times in a row.
   // sp by simple probability the capture rate is a successful event four times.
-  const captureProability = Math.pow(beta / 65536, 4)
+  const captureProbability = Math.pow(beta / 65536, 4)
 
   // Return a string form
-  return `${(100 * captureProability).toFixed(1)}%`
+  return `${(100 * captureProbability).toFixed(1)}%`
 }
