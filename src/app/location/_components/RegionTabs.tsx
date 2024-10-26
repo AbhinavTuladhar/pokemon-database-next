@@ -40,7 +40,7 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
       <TabList className="flex flex-wrap">
         {tabNames.map((tab, tabIndex) => (
           <Tab
-            key={tabIndex}
+            key={tab + tabIndex}
             className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-3 duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-table-header dark:hover:border-white dark:hover:text-white dark:hover:brightness-110"
             selectedClassName="!border-blue-500 text-blue-500"
             // onClick={() => handleTabChange(tab)}
@@ -53,12 +53,12 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
       {regionData.map((region, regionIndex) => {
         const { locations, regionName } = region
         return (
-          <TabPanel key={regionIndex}>
+          <TabPanel key={region.regionName + regionIndex}>
             <section
               className={`grid ${regionName === 'alola' ? 'grid-cols-flexible-alola' : 'grid-cols-flexible'} gap-x-4 pt-4`}
             >
               {locations.map((location, locationIndex) => (
-                <span key={locationIndex}>
+                <span key={location.locationName + locationIndex}>
                   <BlueLink href={location.localUrl}>{formatName(location.locationName)}</BlueLink>
                 </span>
               ))}
