@@ -134,6 +134,14 @@ const NewPage = () => {
 const LatestBanner = () => (
   <main>
     <section className="hero-banner isolate text-white">
+      <Image
+        src="/hero-background.webp"
+        width={0}
+        height={0}
+        alt="banner"
+        className="image"
+        priority={true}
+      />
       <div className="relative z-10 space-y-2 text-center">
         <h1 className="text-center text-main-title/none font-bold">Explore the world of Pokémon</h1>
         <div className="text-sm font-medium lg:text-xl">
