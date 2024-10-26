@@ -21,7 +21,7 @@ export const PageNavigation = () => {
         {linkData.map((row, index) => {
           const { ref, text } = row
           return (
-            <li className="inline-flex w-max justify-center px-4" key={index}>
+            <li className="inline-flex w-max justify-center px-4" key={row.ref + index}>
               <BlueLink href={ref}>{text}</BlueLink>
             </li>
           )

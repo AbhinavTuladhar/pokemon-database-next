@@ -34,14 +34,14 @@ export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
         version: { name: versionName },
       } = version
       return (
-        <span key={innerIndex}>
+        <span key={version.version.name + innerIndex}>
           {individualGameMap[versionName]} - {rarity}
           {innerIndex !== version_details.length - 1 ? ', ' : ''}
         </span>
       )
     })
     return (
-      <TableRow key={index}>
+      <TableRow key={item.item.name + index}>
         <TableCellHeader>
           <BlueLink href={`/item/${itemName}`}>{formatName(itemName)}</BlueLink>
         </TableCellHeader>

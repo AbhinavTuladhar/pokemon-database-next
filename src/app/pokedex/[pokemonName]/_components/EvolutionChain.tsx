@@ -128,7 +128,7 @@ export const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
     })
 
   // Define divs for each pokemon in the evolution chain.
-  const individualPokemon = finalPokemonData?.map((pokemon, index) => {
+  const individualPokemon = finalPokemonData?.map(pokemon => {
     const { homeSprite, name, id, types } = pokemon
     return (
       <EvolutionPokemonCard
@@ -137,7 +137,7 @@ export const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
         id={id}
         types={types}
         splitEvoFlag={pokemon.isSplitEvo}
-        key={index}
+        key={id}
       />
     )
   })
@@ -220,7 +220,7 @@ export const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
           id={id}
           types={types}
           splitEvoFlag={pokemon.isSplitEvo}
-          key={index}
+          key={id}
         />
       )
     })

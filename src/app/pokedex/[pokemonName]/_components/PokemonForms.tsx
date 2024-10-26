@@ -32,7 +32,7 @@ export const PokemonForms: FC<FormProps> = async ({ urls }) => {
           const { defaultSprite, shinySprite, name, types } = data
           return (
             <PokeFormCard
-              key={index}
+              key={data.name + index}
               typeNames={types}
               defaultSprite={defaultSprite}
               shinySprite={shinySprite}

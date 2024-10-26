@@ -122,7 +122,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             defaultSprite={defaultSprite}
             shinySprite={shinySprite}
           />
-          <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={actualName} />
+          <PokemonCry latest={latestCry} legacy={legacyCry ?? undefined} pokemonName={actualName} />
         </div>
 
         <div className="col-span-2 md:col-span-1">

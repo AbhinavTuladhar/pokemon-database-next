@@ -72,7 +72,7 @@ export const TrainingInfo: FC<TrainingInfoProps> = ({
 
   const tableDiv = tableData.map((row, rowIndex) => {
     return (
-      <TableRow key={rowIndex}>
+      <TableRow key={row.label + rowIndex}>
         <TableCellHeader>
           <span className="text-sm">{row.label}</span>
         </TableCellHeader>

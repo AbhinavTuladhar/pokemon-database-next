@@ -32,7 +32,7 @@ export const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties })
     } = form
     const localUrl = `/pokedex/${formName}/`
     return (
-      <li key={index}>
+      <li key={form.pokemon.name + index}>
         <BlueLink href={localUrl}>{formatName(formName)}</BlueLink>
       </li>
     )
