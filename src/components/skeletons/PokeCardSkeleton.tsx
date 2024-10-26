@@ -8,10 +8,10 @@ interface CardSkeletonProps {
 export const PokeCardSkeleton: FC<CardSkeletonProps> = ({ cardCount }) => {
   return Array(cardCount)
     .fill(0)
-    .map((_, index) => (
+    .map(value => (
       <div
         className="flex w-48 flex-col items-center justify-center rounded-xl border border-slate-200 p-2 duration-200 sm:w-56"
-        key={index}
+        key={value}
       >
         <div className="w-full flex-1">
           <Skeleton width="100%" />

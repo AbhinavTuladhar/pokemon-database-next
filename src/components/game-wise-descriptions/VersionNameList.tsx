@@ -24,7 +24,7 @@ const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
         const { colour, properName } = gameToColourAndNameMap[name]
         const isLast = index === names.length - 1
         return (
-          <React.Fragment key={index}>
+          <React.Fragment key={name + index}>
             <GameName gameName={properName} colour={colour} />
             {!isLast && ' / '}
           </React.Fragment>
@@ -46,13 +46,13 @@ const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => {
         if (!gameList) {
           const formattedGameNames = [individualRawGameMap[version]]
           return (
-            <li key={index}>
+            <li key={version + index}>
               <GameNameRow names={formattedGameNames} />
             </li>
           )
         }
         return (
-          <li key={index}>
+          <li key={version + index}>
             <GameNameRow names={gameList} />
           </li>
         )

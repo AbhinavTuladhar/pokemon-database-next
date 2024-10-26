@@ -16,7 +16,7 @@ export const Description: FC<EffectProps> = ({ entry, chance, title = 'Effect' }
     <>
       <SectionTitle>{title}</SectionTitle>
       {paragraphs.map((paragraph, index) => (
-        <div key={index}>
+        <div key={paragraph + index}>
           {/* Capitalse the first letter of each paragraph. */}
           {paragraph.charAt(0).toUpperCase() + paragraph.slice(1)}
           {index !== paragraphs?.length - 1 && <br />}

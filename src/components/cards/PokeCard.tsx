@@ -35,9 +35,9 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
   })
 
   // Now map each type to its corresponding type card.
-  const typeDivs = typeList?.map((type, index) => {
+  const typeDivs = typeList.map((type, index) => {
     return (
-      <div className="shadow shadow-black/20" key={index}>
+      <div className="shadow shadow-black/20" key={type + index}>
         <TypeCard typeName={type} variant="big" />
       </div>
     )

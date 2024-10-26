@@ -1,8 +1,7 @@
 'use client'
 
 import React, { FC, PropsWithChildren, useState } from 'react'
-import { FaSun } from 'react-icons/fa'
-import { FaMoon } from 'react-icons/fa'
+import { FaMoon, FaSun } from 'react-icons/fa'
 
 type Theme = 'light' | 'dark'
 

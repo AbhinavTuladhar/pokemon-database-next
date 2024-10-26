@@ -54,7 +54,7 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
                 name={name}
                 nationalNumber={nationalNumber}
                 types={types}
-                key={index}
+                key={id}
               />
             )
           })}

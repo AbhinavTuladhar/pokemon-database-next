@@ -20,7 +20,7 @@ export const PokeFormCard: FC<PokeFormCardProps> = ({
 }) => {
   const typeDiv = typeNames.map((type, index) => {
     return (
-      <span key={index}>
+      <span key={type + index}>
         <TypeCard typeName={type} variant="text" />
         {index !== typeNames.length - 1 && <span> · </span>}
       </span>
