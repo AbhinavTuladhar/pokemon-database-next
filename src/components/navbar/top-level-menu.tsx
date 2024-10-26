@@ -28,8 +28,10 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, mobileText, icon, desktopTe
     <li
       className="flex flex-1 justify-center px-2 py-2 text-center text-white duration-500 md:relative md:py-3"
       onMouseOver={openMenu}
+      onFocus={openMenu}
       onMouseOut={closeMenu}
       onClick={toggleMenu}
+      onBlur={closeMenu}
     >
       <span className="flex w-full flex-col items-center justify-center gap-1 text-sm hover:cursor-default md:flex-row md:gap-2 md:text-base md:font-bold">
         <>{icon}</>
