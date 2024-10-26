@@ -34,14 +34,14 @@ export const SpriteTableRow: FC<RowProps> = ({ rowHeader, imageStrings }) => {
       <td className="table-cell w-36 border border-gray-300 p-2 font-bold dark:border-table-border">
         <div>
           {rowHeaders.map((header, index) => (
-            <div className="text-center" key={index}>
+            <div className="text-center" key={header + index}>
               {header}
             </div>
           ))}
         </div>
       </td>
       {Object.values(newImageData).map((image, index) => (
-        <TableCellWrapper key={index}>
+        <TableCellWrapper key={(image ?? '') + index}>
           <ImageTile imageSource={image} />
         </TableCellWrapper>
       ))}

@@ -11,8 +11,8 @@ export const MiniCardListSkeleton: FC<MiniCardListSkeletonProps> = ({ pokemonCou
     <div className="grid grid-cols-card-list gap-x-3 gap-y-8">
       {Array(pokemonCount)
         .fill(0)
-        .map((_, index) => (
-          <MiniPokeCardSkeleton key={index} />
+        .map(value => (
+          <MiniPokeCardSkeleton key={value} />
         ))}
     </div>
   )

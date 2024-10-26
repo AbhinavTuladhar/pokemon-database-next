@@ -30,7 +30,7 @@ export const MiniPokeCard: FC<MiniCardProps> = ({
   const typeDiv = types.map((type, index) => {
     const typeName = type.type.name
     return (
-      <div key={index}>
+      <div key={typeName + index}>
         <TypeCard typeName={typeName} variant="text" />
         {index !== types.length - 1 && <span>&nbsp;·&nbsp;</span>}
       </div>

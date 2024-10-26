@@ -31,7 +31,7 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
           {gifSources.map((image, index) => (
             <td
               className="table-cell h-40 w-40 items-center border border-gray-200 object-center px-2 py-6 pr-4 dark:border-table-border"
-              key={index}
+              key={image + index}
             >
               <Image
                 src={image}

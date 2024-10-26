@@ -40,7 +40,6 @@ const calculateStat = ({ base, EV, IV, level, nature }: StatCalculateArgs) => {
 const calculateStats = (statData: Array<StatTable>) => {
   const minMaxValues = statData.map(stat => {
     let minStat, maxStat
-    const {} = stat
     // Make an exception for HP
     if (stat.name === 'HP' && stat.value === 1) {
       minStat = 1

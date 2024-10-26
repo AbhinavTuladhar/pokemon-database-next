@@ -8,15 +8,17 @@ import { DescriptionProps } from './types'
 const GameWiseDescriptions: FC<DescriptionProps> = ({ descriptionData }) => {
   return (
     <TableContainer>
-      {descriptionData.map(({ description, versionGroupNames }) => {
-        return (
-          <DescriptionRow
-            key={description}
-            description={description}
-            versionGroupNames={versionGroupNames}
-          />
-        )
-      })}
+      <tbody>
+        {descriptionData.map(({ description, versionGroupNames }) => {
+          return (
+            <DescriptionRow
+              key={description}
+              description={description}
+              versionGroupNames={versionGroupNames}
+            />
+          )
+        })}
+      </tbody>
     </TableContainer>
   )
 }

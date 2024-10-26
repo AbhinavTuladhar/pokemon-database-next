@@ -70,7 +70,7 @@ export const PokeDexData: FC<DexDataProps> = ({
   const typeDiv = (
     <div className="flex items-center gap-x-1.5">
       {typeNames.map((typeName, index) => (
-        <TypeCard typeName={typeName} key={index} variant="small" />
+        <TypeCard typeName={typeName} key={typeName + index} variant="small" />
       ))}
     </div>
   )
@@ -81,10 +81,10 @@ export const PokeDexData: FC<DexDataProps> = ({
     const prefix = ability.is_hidden === true ? '' : `${index + 1}. `
     const hiddenExtraText = ability.is_hidden === true ? ' (hidden ability)' : ''
     return (
-      <li key={index}>
-        <> {prefix} </>
+      <li key={ability.ability.name}>
+        {prefix}
         <BlueLink href={`/ability/${name}`}>{formatName(name)}</BlueLink>
-        <> {hiddenExtraText} </>
+        {hiddenExtraText}
       </li>
     )
   })
@@ -110,7 +110,7 @@ export const PokeDexData: FC<DexDataProps> = ({
 
   const regionNumberList = regionLevelData.map((entry, index) => {
     return (
-      <div className="table-row" key={index}>
+      <div className="table-row" key={entry.number + index}>
         <div className="table-cell px-1">{entry.number}</div>
         <div className="table-cell px-1 text-sm text-gray-500 dark:text-gray-300">{`(${entry.games})`}</div>
       </div>
@@ -134,7 +134,7 @@ export const PokeDexData: FC<DexDataProps> = ({
   // Now define the JSX component for all the entries.
   const tableEntries = tableData.map((row, rowIndex) => {
     return (
-      <TableRow key={rowIndex}>
+      <TableRow key={row.label + rowIndex}>
         <TableCellHeader>
           <span className="text-sm"> {row.label}</span>
         </TableCellHeader>

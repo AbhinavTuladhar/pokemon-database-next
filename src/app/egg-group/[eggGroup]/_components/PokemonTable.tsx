@@ -62,7 +62,7 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
     </TableRow>
   )
 
-  const pokmemonRows = finalTableData.map(pokemon => {
+  const pokemonRows = finalTableData.map(pokemon => {
     const { id, nationalNumber, gameSprite, name, types, otherEggGroup } = pokemon
     const properId = `${'00' + nationalNumber}`.slice(-3)
 
@@ -100,7 +100,7 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
   return (
     <TableContainer>
       <thead>{tableHeaders}</thead>
-      <tbody>{pokmemonRows}</tbody>
+      <tbody>{pokemonRows}</tbody>
     </TableContainer>
   )
 }

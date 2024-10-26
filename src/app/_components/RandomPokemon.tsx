@@ -19,8 +19,8 @@ const RandomPokemon = () => {
       <SectionTitle> Featured Pokémon </SectionTitle>
       <div className="flex flex-wrap justify-center gap-8">
         {isLoading || pokemonData.length === 0 ? <PokeCardSkeleton cardCount={7} /> : null}
-        {pokemonData.map(({ types, front_default, name, id }, index) => (
-          <PokeCard defaultSprite={front_default} id={id} name={name} types={types} key={index} />
+        {pokemonData.map(({ types, front_default, name, id }) => (
+          <PokeCard defaultSprite={front_default} id={id} name={name} types={types} key={id} />
         ))}
       </div>
     </section>

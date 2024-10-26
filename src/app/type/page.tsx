@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const TypeListing = () => {
   const typeCardList = typeList.map((type, index) => (
-    <div key={index}>
+    <div key={type + index}>
       <TypeCard typeName={type} variant="small" />
     </div>
   ))
@@ -28,7 +28,7 @@ const TypeListing = () => {
   const chartKeyInfo = chartKeyData.map((row, rowIndex) => {
     const { multiplier, text } = row
     return (
-      <div className="flex flex-row items-center gap-x-4" key={rowIndex}>
+      <div className="flex flex-row items-center gap-x-4" key={text + rowIndex}>
         <TypeMultiplierBox multiplier={multiplier} />
         <p> {text} </p>
       </div>

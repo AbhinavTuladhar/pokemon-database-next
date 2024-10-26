@@ -41,7 +41,7 @@ const page = async () => {
 
   // Combine the two corresponding objects in the berry and item arrays
   const combinedInformation = berryInformation.map(berry => {
-    const foundItem = itemInformation!.find(item => item.name === berry.itemName)
+    const foundItem = itemInformation.find(item => item.name === berry.itemName)
     return { ...foundItem, ...berry }
   })
 
@@ -62,7 +62,7 @@ const page = async () => {
       {tableHeaderNames.map((header, index) => (
         <TableCellHeader
           type="column"
-          key={index}
+          key={header.id}
           className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
         >
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
@@ -73,7 +73,7 @@ const page = async () => {
     </TableRow>
   )
 
-  const tableRows = combinedInformation.map((berry, index) => {
+  const tableRows = combinedInformation.map(berry => {
     const {
       generationIntroduced,
       id,
@@ -102,12 +102,12 @@ const page = async () => {
 
     return (
       <TableRow
-        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
-        key={index}
+        className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
+        key={berry.id}
       >
-        {cellData.map((cell, cellIndex) => (
+        {cellData.map(cell => (
           <TableCell
-            key={cellIndex}
+            key={`${cell.key} ${cell.value}`}
             variant="column"
             extraClassName={`${cell?.extraStyle} border-x`}
           >
@@ -132,18 +132,16 @@ const page = async () => {
         <thead>{tableHeader}</thead>
         <tbody>{tableRows}</tbody>
       </TableContainer>
-      <>
-        {tooltipData.map((tip, index) => (
-          <Tooltip
-            anchorSelect={`#${tip.id}`}
-            place="bottom"
-            key={index}
-            style={{ backgroundColor: 'black', padding: '0.5rem' }}
-          >
-            <span className="text-xs"> {tip.text} </span>
-          </Tooltip>
-        ))}
-      </>
+      {tooltipData.map(tip => (
+        <Tooltip
+          anchorSelect={`#${tip.id}`}
+          place="bottom"
+          key={tip.id}
+          style={{ backgroundColor: 'black', padding: '0.5rem' }}
+        >
+          <span className="text-xs"> {tip.text} </span>
+        </Tooltip>
+      ))}
     </main>
   )
 }

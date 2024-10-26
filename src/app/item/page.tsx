@@ -37,7 +37,7 @@ const MainDescription: FC = () => {
     <>
       <h2 className="text-4xl font-bold"> About Items </h2>
       {paragraphs.map((paragraph, index) => (
-        <div key={index}>
+        <div key={paragraph + index}>
           {/* Capitalse the first letter of each paragraph. */}
           {paragraph.charAt(0).toUpperCase() + paragraph.slice(1)}
           {index !== paragraphs?.length - 1 && <br />}

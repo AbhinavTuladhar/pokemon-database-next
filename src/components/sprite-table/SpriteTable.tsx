@@ -23,22 +23,20 @@ export const SpriteTable: FC<SpriteTableProps> = ({ spriteCollection }) => {
   })
 
   return (
-    <>
-      <div className="flex justify-center">
-        <div className="overflow-x-auto">
-          <div className="inline-flex">
-            <SpriteTableColumn title="Type" columnIndex={0} images={['', '']} />
-            {properSpriteCollection.map((data, index) => (
-              <SpriteTableColumn
-                columnIndex={index + 1}
-                images={[data.frontSprite, data.shinySprite]}
-                title={data.generation}
-                key={index}
-              />
-            ))}
-          </div>
+    <div className="flex justify-center">
+      <div className="overflow-x-auto">
+        <div className="inline-flex">
+          <SpriteTableColumn title="Type" columnIndex={0} images={['', '']} />
+          {properSpriteCollection.map((data, index) => (
+            <SpriteTableColumn
+              columnIndex={index + 1}
+              images={[data.frontSprite, data.shinySprite]}
+              title={data.generation}
+              key={data.generation + index}
+            />
+          ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }

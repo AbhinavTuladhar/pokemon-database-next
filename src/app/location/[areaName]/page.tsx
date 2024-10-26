@@ -131,7 +131,11 @@ const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
 
       {groupedByGenerationSubLocationAndMethod.map((locationGroup, index) => {
         return (
-          <GenerationEncounters key={index} locationData={locationGroup} methodData={methodData} />
+          <GenerationEncounters
+            key={locationGroup.generation + index}
+            locationData={locationGroup}
+            methodData={methodData}
+          />
         )
       })}
     </main>

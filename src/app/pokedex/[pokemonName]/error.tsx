@@ -5,12 +5,7 @@ import { useParams } from 'next/navigation'
 
 import ErrorContainer from '@/components/error-handling'
 
-export default function Error({
-  error,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+export default function ErrorPage({ error }: Readonly<{ error: Error & { digest?: string } }>) {
   const params = useParams<{ pokemonName: string }>()
   const pokemonName = params.pokemonName
 

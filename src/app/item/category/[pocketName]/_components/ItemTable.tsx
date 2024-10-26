@@ -50,8 +50,8 @@ export const ItemTable: FC<TableProps> = ({ itemData }) => {
 
     return (
       <TableRow
-        className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50"
-        key={index}
+        className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
+        key={item.name + index}
       >
         <TableCell variant="column" extraClassName="w-40 whitespace-nowrap">
           {nameDiv}

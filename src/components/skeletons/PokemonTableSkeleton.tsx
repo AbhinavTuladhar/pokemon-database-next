@@ -11,10 +11,10 @@ export const PokemonTableSkeleton = () => {
         <tbody>
           {Array(10)
             .fill(0)
-            .map((_, index) => (
-              <TableRow key={index}>
+            .map((value, index) => (
+              <TableRow key={value}>
                 <TableCell>
-                  <Skeleton containerClassName="flex-1 w-full" key={index} />
+                  <Skeleton containerClassName="flex-1 w-full" key={value + index} />
                 </TableCell>
               </TableRow>
             ))}

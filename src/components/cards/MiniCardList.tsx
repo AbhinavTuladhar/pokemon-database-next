@@ -14,7 +14,7 @@ const fetchPokemonData = async (pokemonNames: Array<string>) => {
   const extractedInfo = responses.map(PokemonExtractor)
 
   // Sort the pokemon by their national number
-  const sortedResponses = extractedInfo.sort((first, second) =>
+  const sortedResponses = extractedInfo.toSorted((first, second) =>
     first.nationalNumber >= second.nationalNumber ? 1 : -1,
   )
   return sortedResponses
@@ -24,7 +24,7 @@ export const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
   const pokemonData = await fetchPokemonData(pokemonNames)
 
   // We now map the Pokemon data into the respective cards.
-  const pokeCards = pokemonData?.map((pokemon, index) => {
+  const pokeCards = pokemonData?.map(pokemon => {
     const { id, name, nationalNumber, types, gameSprite } = pokemon
     return (
       <MiniPokeCard
@@ -33,7 +33,7 @@ export const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
         name={name}
         nationalNumber={nationalNumber}
         types={types}
-        key={index}
+        key={id}
       />
     )
   })

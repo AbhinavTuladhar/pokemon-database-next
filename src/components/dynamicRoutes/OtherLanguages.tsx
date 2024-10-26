@@ -28,7 +28,7 @@ interface LanguageProcessorProps {
 }
 
 // For expanding the language name and then re-ordering the objects in the array in a very specific order as mentioned above.
-const processLanuages = (arr: Array<LanguageProcessorProps>) => {
+const processLanguages = (arr: Array<LanguageProcessorProps>) => {
   const validLanguages = Object.keys(languageNameMapping)
   const filteredLanguages = arr.filter(obj => validLanguages.includes(obj.languageName))
   const properLanguages = filteredLanguages.map(obj => {
@@ -46,16 +46,16 @@ export const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => 
   let languagesList = names.map(obj => {
     const {
       language: { name: languageName },
-      name: name,
+      name,
     } = obj
     return { languageName, name }
   })
 
-  const languagesListNew = processLanuages(languagesList)
+  const languagesListNew = processLanguages(languagesList)
 
   const nameRows = languagesListNew.map((row, index) => {
     return (
-      <TableRow key={index}>
+      <TableRow key={row.languageName + index}>
         <TableCellHeader>{row.languageName}</TableCellHeader>
         <TableCell>{row.name}</TableCell>
       </TableRow>

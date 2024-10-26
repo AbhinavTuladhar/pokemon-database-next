@@ -18,7 +18,7 @@ export const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonD
         {pokemonData.map((row, index) => {
           // Get the id number for the gif
           const idNumber = parseInt(row.url.match(/\/(\d+)\/$/)![1])
-          return <SpriteTable id={idNumber} pokemonName={row.name} key={index} />
+          return <SpriteTable id={idNumber} pokemonName={row.name} key={row.name + index} />
         })}
       </div>
     </section>

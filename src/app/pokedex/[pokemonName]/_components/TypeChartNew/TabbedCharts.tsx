@@ -41,7 +41,7 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
       <TabList className="flex flex-wrap gap-x-1 ">
         {tabNames.map((tab, tabIndex) => (
           <Tab
-            key={tabIndex}
+            key={tab + tabIndex}
             className={classNames(
               'flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-1.5 text-sm duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-table-header dark:hover:border-white dark:hover:text-white dark:hover:brightness-110',
               {
@@ -57,7 +57,7 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
       </TabList>
 
       {typeCharts.map(({ abilityName, defenceInfo }, index) => (
-        <TabPanel key={index}>
+        <TabPanel key={abilityName + index}>
           <TypeTable
             defenceInfo={defenceInfo}
             defendingType={defendingType}

@@ -27,7 +27,7 @@ const TypeDefenceRow: FC<TypeRowProps> = ({ typeDefenceInfo, extraClassName, def
       const effectivenessString = multiplierToString(multiplier)
       const tooltipContent = `${formatName(type)} → ${defendingType} = ${effectivenessString}`
       return (
-        <div className="flex w-9 flex-col text-center" key={rowIndex}>
+        <div className="flex w-9 flex-col text-center" key={row.type + rowIndex}>
           <MiniTypeCard typeName={row.type} />
           <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} id={row.type}>
             <TypeMultiplierBox multiplier={row.multiplier} />

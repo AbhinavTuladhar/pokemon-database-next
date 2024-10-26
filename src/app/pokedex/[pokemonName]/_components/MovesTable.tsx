@@ -28,7 +28,7 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
           <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
             {firstRowLabels.map((label, index) => (
               <TableCellHeader
-                key={index}
+                key={label + index}
                 type="column"
                 className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
               >
@@ -51,7 +51,7 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
             return (
               <TableRow
                 className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
-                key={rowIndex}
+                key={move.id + rowIndex}
               >
                 {levelLearnedAt && (
                   <TableCell variant="column" extraClassName="text-right">

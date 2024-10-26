@@ -67,7 +67,7 @@ const KeyColumn: FC<ColumnData> = ({ title, rowData }) => {
         {rowData.map((row, index) => {
           const { caption, imageSource, tooltipContent } = row
           return (
-            <div className="flex items-center gap-x-2" key={index}>
+            <div className="flex items-center gap-x-2" key={row.caption + index}>
               <Image
                 src={imageSource}
                 alt={caption}
@@ -91,8 +91,8 @@ export const IconKeys = () => {
     <section className="pt-4">
       <SectionTitle> Keys to Icons </SectionTitle>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-        {sectionData.map((data, index) => (
-          <KeyColumn rowData={data.rowData} title={data.title} key={index} />
+        {sectionData.map((data) => (
+          <KeyColumn rowData={data.rowData} title={data.title} key={data.title} />
         ))}
       </div>
     </section>

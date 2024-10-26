@@ -34,8 +34,8 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
   habitat,
 }) => {
   // List the egg groups
-  const eggGroupList = egg_groups?.map((group, index) => (
-    <span key={index}>
+  const eggGroupList = egg_groups.map((group, index) => (
+    <span key={group.name + index}>
       <BlueLink href={`/egg-group/${group.name}`}>{formatName(group.name)}</BlueLink>
       {index < egg_groups.length - 1 && ', '}
     </span>
@@ -48,7 +48,7 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
       <span className={maleRatio !== 'Genderless' ? 'text-blue-500' : ''}>{maleRatio}</span>
       {femaleRatio && (
         <>
-          ,&nbsp;
+          <span>,&nbsp;</span>
           <span className="text-pink-400">{femaleRatio}</span>
         </>
       )}
@@ -70,7 +70,7 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
 
   const tableDiv = tableRows.map((row, rowIndex) => {
     return (
-      <TableRow key={rowIndex}>
+      <TableRow key={row.label + rowIndex}>
         <TableCellHeader>
           <span className="text-sm">{row.label}</span>
         </TableCellHeader>

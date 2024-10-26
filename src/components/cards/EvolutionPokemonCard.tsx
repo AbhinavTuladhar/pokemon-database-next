@@ -25,7 +25,7 @@ export const EvolutionPokemonCard: FC<CardProps> = ({
   const typeDiv = types.map((type, index) => {
     const typeName = type.type.name
     return (
-      <span key={index}>
+      <span key={typeName + index}>
         <TypeCard typeName={typeName} variant="text" />
         {index !== types.length - 1 && <span> · </span>}
       </span>

@@ -26,7 +26,7 @@ const getAllGroupData = async (names: string[]) => {
   const response = await EggGroupApi.getByNames(names)
 
   // We now filter out gen 8+ pokemon from the list
-  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
+  return response.toSorted((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
 }
 
 const EggGroupTable = async () => {
@@ -56,11 +56,11 @@ const EggGroupTable = async () => {
               </TableRow>
             </thead>
             <tbody>
-              {eggGroupData.map((group, index) => {
+              {eggGroupData.map(group => {
                 const { name, pokemonSpecies } = group
                 const pokemonCount = pokemonSpecies.length
                 return (
-                  <TableRow key={index}>
+                  <TableRow key={group.id}>
                     <TableCell variant="column">
                       <BlueLink href={`/egg-group/${name}`} boldFlag>
                         {formatName(name)}

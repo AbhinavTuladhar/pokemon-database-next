@@ -50,10 +50,10 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
 
   const headerRows = (
     <TableRow className="bg-neutral-200  dark:bg-table-header">
-      {headers.map((header, index) => (
+      {headers.map(header => (
         <TableCellHeader
           type="column"
-          key={index}
+          key={header}
           className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
         >
           {header}
@@ -62,12 +62,12 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
     </TableRow>
   )
 
-  const abilityDataRows = filteredData.map((ability, rowIndex) => {
+  const abilityDataRows = filteredData.map(ability => {
     const { name, pokemonCount, shortEntry, generationIntroduced } = ability
     return (
       <TableRow
         className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
-        key={rowIndex}
+        key={name}
       >
         <TableCell variant="column">
           <BlueLink href={`/ability/${name}`} boldFlag={true}>

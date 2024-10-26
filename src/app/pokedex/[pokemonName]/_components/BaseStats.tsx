@@ -88,7 +88,7 @@ export const BaseStat: FC<BaseStatProps> = ({ stats }) => {
     const stringDecoration = index === statDetail.length - 1 ? 'font-bold' : ''
 
     return (
-      <TableRow key={index}>
+      <TableRow key={stat.name + index}>
         <TableCellHeader>{stat.name}</TableCellHeader>
         <TableCellHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>

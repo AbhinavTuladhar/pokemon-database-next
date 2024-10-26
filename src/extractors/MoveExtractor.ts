@@ -59,9 +59,9 @@ const MoveExtractor = (move: Move) => {
   const pokemon = learned_by_pokemon.map(pokemon => pokemon.name)
 
   // Dealing with keys which might have null values.
-  const realAccuracy = accuracy === null ? '-' : accuracy
-  const realPower = power === null ? '-' : power
-  const realEffectChance = effect_chance === null ? '-' : effect_chance
+  const realAccuracy = accuracy ?? '-'
+  const realPower = power ?? '-'
+  const realEffectChance = effect_chance ?? '-'
 
   const [generationString, generationNumber] = generation.split('-')
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)

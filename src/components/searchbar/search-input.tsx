@@ -58,13 +58,11 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
   }
 
   return (
-    <div
-      className="relative z-20"
-      onBlur={() => setFilteredData([])}
-      onFocus={() => handleFilter(searchText)}
-    >
+    <div className="relative z-20">
       <input
         value={searchText}
+        onBlur={() => setFilteredData([])}
+        onFocus={() => handleFilter(searchText)}
         onChange={handleChange}
         className="w-full rounded-md bg-slate-500 py-1 pl-2 pr-8 text-white"
         placeholder="Search"

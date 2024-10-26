@@ -47,7 +47,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
   const firstRow = (
     <tr className="table-row">
       {finalColumns.map((column, index) => (
-        <TableHeaderWrapper key={index}>{column}</TableHeaderWrapper>
+        <TableHeaderWrapper key={column + index}>{column}</TableHeaderWrapper>
       ))}
     </tr>
   )
@@ -64,7 +64,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
             </td>
             {ordinarySprites.map((image, index) => (
               <td
-                key={index}
+                key={(image ?? '') + index}
                 className="table-cell min-w-36 border border-gray-200 py-6 text-center dark:border-table-border"
               >
                 <ImageTile imageSource={image} />
@@ -73,7 +73,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
             {femaleFlag
               ? femaleSprites.map((image, index) => (
                   <td
-                    key={index}
+                    key={(image ?? '') + index}
                     className="table-cell min-w-36 border border-gray-200 py-6 text-center dark:border-table-border"
                   >
                     <ImageTile imageSource={image} />

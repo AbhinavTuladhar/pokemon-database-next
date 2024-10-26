@@ -37,9 +37,11 @@ const TypeRow: FC<TypeRowProps> = ({
       {typeDefenceInfo.map((row, rowIndex) => {
         const { multiplier, type } = row
         const effectivenessString = multiplierToString(multiplier)
-        const tooltipContent = `${formatName(type)} → ${defendingType} ${abilityToShow ? `(${formatName(abilityToShow)})` : ''} = ${effectivenessString}`
+        const abilityToShowText = abilityToShow ? `(${formatName(abilityToShow)})` : ''
+        const tooltipContent = `${formatName(type)} → ${defendingType} ${abilityToShowText} = ${effectivenessString}`
+
         return (
-          <div className="flex w-9 flex-col text-center" key={rowIndex}>
+          <div className="flex w-9 flex-col text-center" key={row.type + rowIndex}>
             <MiniTypeCard typeName={row.type} />
             <div data-tooltip-id="my-tooltip" data-tooltip-content={tooltipContent} id={row.type}>
               <TypeMultiplierBox multiplier={row.multiplier} />
