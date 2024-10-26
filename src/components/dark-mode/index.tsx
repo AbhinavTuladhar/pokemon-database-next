@@ -21,7 +21,7 @@ const DarkModeSwitch = () => {
     document.body.classList.toggle('dark')
   }
   return (
-    <button onClick={toggleTheme}>
+    <button aria-label="Toggle Dark Mode" onClick={toggleTheme}>
       <IconContainer>
         {theme === 'dark' ? (
           <FaSun className="h-5 w-5 text-white" />
