@@ -14,12 +14,12 @@ import {
   BreedingInfo,
   EvolutionChain,
   HeldItems,
-  ImageTile,
   Locations,
   MovesLearned,
   PageNavigation,
   PokeDexData,
   PokeDexEntries,
+  PokemonArtwork,
   PokemonCry,
   PokemonForms,
   PokemonVarieties,
@@ -117,7 +117,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
       >
         <div className="col-span-2 md:col-span-1">
-          <ImageTile defaultSprite={defaultSprite} shinySprite={shinySprite} />
+          <PokemonArtwork
+            pokemonName={pokemonName}
+            defaultSprite={defaultSprite}
+            shinySprite={shinySprite}
+          />
           <PokemonCry latest={latestCry} legacy={legacyCry || undefined} pokemonName={actualName} />
         </div>
 
