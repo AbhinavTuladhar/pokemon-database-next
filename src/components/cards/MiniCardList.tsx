@@ -14,7 +14,7 @@ const fetchPokemonData = async (pokemonNames: Array<string>) => {
   const extractedInfo = responses.map(PokemonExtractor)
 
   // Sort the pokemon by their national number
-  const sortedResponses = extractedInfo.toSorted((first, second) =>
+  const sortedResponses = extractedInfo.sort((first, second) =>
     first.nationalNumber >= second.nationalNumber ? 1 : -1,
   )
   return sortedResponses
