@@ -58,7 +58,7 @@ export const MoveData: FC<MoveDataProps> = ({
       <TableContainer>
         <tbody>
           {tableData.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
+            <TableRow key={row.header + rowIndex}>
               <TableCellHeader>
                 <span className="text-sm font-normal"> {row.header} </span>
               </TableCellHeader>

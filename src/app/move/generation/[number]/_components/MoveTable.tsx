@@ -39,7 +39,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
       {headers.map((header, index) => (
         <TableCellHeader
           type="column"
-          key={index}
+          key={header + index}
           className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
         >
           {header}
@@ -48,13 +48,13 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
     </TableRow>
   )
 
-  const moveDataRows = filteredData.map((move, rowIndex) => {
+  const moveDataRows = filteredData.map(move => {
     const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
 
     return (
       <TableRow
         className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
-        key={rowIndex}
+        key={move.id}
       >
         <TableCell variant="column">
           <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">

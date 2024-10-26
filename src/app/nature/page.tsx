@@ -36,7 +36,7 @@ const NatureList = async () => {
         <TableCellHeader
           className="!w-36 border-r border-r-gray-300 pr-4 text-center last:border-r-0 dark:border-r-table-border"
           type="column"
-          key={index}
+          key={header + index}
         >
           {header}
         </TableCellHeader>
@@ -46,7 +46,7 @@ const NatureList = async () => {
 
   const tableRows = natureInformation
     .filter(nature => nature !== undefined)
-    .map((nature, rowIndex) => {
+    .map(nature => {
       const { decreasedStat, hatesFlavour, increasedStat, likesFlavour, name } = nature
 
       const cellData = [
@@ -59,11 +59,15 @@ const NatureList = async () => {
 
       return (
         <TableRow
-          key={rowIndex}
+          key={nature.id}
           className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
         >
           {cellData.map((cell, cellIndex) => (
-            <TableCell variant="column" key={cellIndex} extraClassName="border-x min-w-40">
+            <TableCell
+              variant="column"
+              key={cell.key + cellIndex}
+              extraClassName="border-x min-w-40"
+            >
               {cell.value}
             </TableCell>
           ))}

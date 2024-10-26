@@ -54,7 +54,7 @@ export const MoveTarget: FC<TargetProps> = ({ targetType, moveName }) => {
                 flag={box.flag}
                 text={box.text}
                 targeted={box.targeted}
-                key={index}
+                key={box.flag + index}
               />
             ))}
           </div>
@@ -64,7 +64,7 @@ export const MoveTarget: FC<TargetProps> = ({ targetType, moveName }) => {
                 flag={box.flag}
                 text={box.text}
                 targeted={box.targeted}
-                key={index}
+                key={box.flag + index}
               />
             ))}
           </div>
