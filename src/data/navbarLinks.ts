@@ -24,4 +24,5 @@ export const mechanicsLinks = [
   { path: '/dual-type-chart', name: 'Dual type charts' },
   { path: '/egg-group', name: 'Egg groups' },
   { path: '/growth-rate', name: 'Growth rates' },
+  { path: '/contests', name: 'Contests' },
 ]
