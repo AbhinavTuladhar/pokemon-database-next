@@ -6,7 +6,6 @@ import { VersionGroup } from '../Games/VersionGroups'
 
 import { Language } from './Language'
 import { NamedApiResource } from './NamedResource'
-import { TODO } from './TODO'
 
 export interface APIResource {
   url: string
@@ -71,5 +70,5 @@ export interface VersionGameIndex {
 export interface VersionGroupFlavorText {
   text: string
   language: NamedApiResource<Language>
-  version_group: NamedApiResource<TODO>
+  version_group: NamedApiResource<VersionGroup>
 }

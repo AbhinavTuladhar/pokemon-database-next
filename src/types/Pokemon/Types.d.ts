@@ -1,4 +1,5 @@
 import { Generation } from '../Games/Generations'
+import { MoveDamageClass } from '../Moves/MoveDamageClasses'
 import { Move } from '../Moves/Moves'
 import { GenerationGameIndex, Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
@@ -12,7 +13,7 @@ export interface Type {
   past_damage_relations: Array<TypeRelationsPast>
   game_indices: Array<GenerationGameIndex>
   generation: NamedApiResource<Generation>
-  move_damage_class: NamedApiResource<TODO> // MoveDamageClass
+  move_damage_class: NamedApiResource<MoveDamageClass>
   names: Array<Name>
   pokemon: Array<TypePokemon>
   moves: Array<NamedApiResource<Move>>

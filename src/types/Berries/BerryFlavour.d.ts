@@ -1,6 +1,6 @@
+import { ContestType } from '../Contests/ContestType'
 import { Name } from '../utils/Common'
 import { NamedApiResource } from '../utils/NamedResource'
-import { TODO } from '../utils/TODO'
 
 import { Berry } from './Berry'
 
@@ -8,7 +8,7 @@ export interface BerryFlavour {
   id: number
   name: string
   berries: Array<FlavourBerryMap>
-  contest_type: NamedApiResource<TODO>
+  contest_type: NamedApiResource<ContestType>
   names: Array<Name>
 }
 
