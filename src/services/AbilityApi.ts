@@ -15,6 +15,6 @@ export const AbilityApi = {
   getByNames: async function (names: Array<string>) {
     const requests = names.map(name => Api.pokemon.getAbilityByName(name))
     const responses = await Promise.all(requests)
-    return responses as Ability[]
+    return responses as unknown as Ability[]
   },
 }

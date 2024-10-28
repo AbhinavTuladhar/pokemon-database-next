@@ -13,7 +13,7 @@ import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 // const inter = Inter({ subsets: ['latin'] })
-const FiraSans = Fira_Sans({ subsets: ['latin'], weight: '400' })
+const FiraSans = Fira_Sans({ subsets: ['latin'], weight: '400', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'Pokémon Database clone',

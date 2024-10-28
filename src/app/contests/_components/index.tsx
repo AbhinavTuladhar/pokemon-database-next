@@ -1,0 +1,1 @@
+export { EffectTable } from './EffectTable'

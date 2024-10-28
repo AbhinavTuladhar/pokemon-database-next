@@ -6,6 +6,8 @@ import { VerboseEffect } from '@/types/utils/Common'
 const MoveExtractor = (move: Move) => {
   const {
     accuracy,
+    contest_effect: { url: contestEffectUrl },
+    contest_type: { name: contestTypeName },
     damage_class: { name: damageClass },
     effect_chance,
     effect_entries,
@@ -31,6 +33,8 @@ const MoveExtractor = (move: Move) => {
     target: { name: targetType },
     type: { name: moveType },
   } = move
+
+  const contestEffectId = parseInt(contestEffectUrl.match(/\/(\d+)\/$/)![1])
 
   // Find all the English etnries.
   const englishDescriptions = flavor_text_entries
@@ -98,6 +102,8 @@ const MoveExtractor = (move: Move) => {
     machines: filteredMachines,
     pokemonUrls,
     pokemon,
+    contestTypeName,
+    contestEffectId,
   }
 }
 

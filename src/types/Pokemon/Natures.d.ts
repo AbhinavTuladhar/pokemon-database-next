@@ -1,3 +1,4 @@
+import { BerryFlavour } from '../Berries/BerryFlavour'
 import { NamedApiResource } from '../utils/NamedResource'
 import { TODO } from '../utils/TODO'
 
@@ -8,8 +9,8 @@ export interface Nature {
   name: string
   decreased_stat: NamedApiResource<Stats>
   increased_stat: NamedApiResource<Stats>
-  hates_flavor: NamedApiResource<TODO> // Berry flavour
-  likes_flavor: NamedApiResource<TODO> // Berry flavour
+  hates_flavor: NamedApiResource<BerryFlavour>
+  likes_flavor: NamedApiResource<BerryFlavour>
   pokeathlon_stat_changes: Array<NatureStatChange>
   move_battle_style_preferences: Array<MoveBattleStylePreference>
   names: Array<name>

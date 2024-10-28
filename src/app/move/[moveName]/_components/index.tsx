@@ -1,3 +1,4 @@
+export { ContestInfo } from './ContestInfo'
 export { GameDescription } from './GameDescription'
 export { MachineRecord } from './MachineRecord'
 export { MoveData } from './MoveData'

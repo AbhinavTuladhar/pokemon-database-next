@@ -10,6 +10,7 @@ import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
+import { ContestInfo } from './_components/ContestInfo'
 import { GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 
 interface MovePageProps {
@@ -49,6 +50,8 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
     machines,
     pokemon,
     moveName: actualMoveName,
+    contestEffectId,
+    contestTypeName,
   } = moveData
 
   return (
@@ -80,6 +83,9 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
         <div className="space-y-8">
           <section>
             <MoveTarget targetType={targetType} moveName={moveName} />
+          </section>
+          <section>
+            <ContestInfo effectId={contestEffectId} typeName={contestTypeName} />
           </section>
           <section>
             <OtherLanguages names={names} />

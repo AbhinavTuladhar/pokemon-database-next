@@ -1,3 +1,5 @@
+import { ContestEffect } from '../Contests/ContestEffects'
+import { ContestType } from '../Contests/ContestType'
 import { Generation } from '../Games/Generations'
 import { VersionGroup } from '../Games/VersionGroups'
 import { AbilityEffectChange } from '../Pokemon/Abilities'
@@ -7,7 +9,6 @@ import { Type } from '../Pokemon/Types'
 import { APIResource, MachineVersionDetail, Name, VerboseEffect } from '../utils/Common'
 import { Language } from '../utils/Language'
 import { NamedApiResource } from '../utils/NamedResource'
-import { TODO } from '../utils/TODO'
 
 import { MoveAilment } from './MoveAilments'
 import { MoveCategory } from './MoveCategories'
@@ -22,9 +23,9 @@ export interface Move {
   pp: number
   priority: number
   power: number
-  contest_combos: TODO
-  contest_type: TODO
-  contest_Effect: APIResource<TODO>
+  contest_combos: ContestComboSets
+  contest_type: NamedApiResource<ContestType>
+  contest_effect: APIResource<ContestEffect>
   damage_class: NamedApiResource<MoveDamageClass>
   effect_entries: Array<VerboseEffect>
   effect_changes: Array<AbilityEffectChange>
@@ -36,9 +37,19 @@ export interface Move {
   names: Array<Name>
   past_values: Array<PastMoveStatValues>
   stat_changes: Array<MoveStatChange>
-  super_contest_effect: TODO
+  super_contest_effect: APIResource<SuperContestEffect>
   target: NamedApiResource<MoveTarget>
   type: NamedApiResource<Type>
+}
+
+interface ContestComboSets {
+  normal: ContestComboDetail
+  super: ContestComboDetail
+}
+
+interface ContestComboDetail {
+  use_before: Array<NamedApiResource<Move>>
+  use_after: Array<NamedApiResource<Move>>
 }
 
 interface MoveFlavourText {
