@@ -84,9 +84,11 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <section>
             <MoveTarget targetType={targetType} moveName={moveName} />
           </section>
-          <section>
-            <ContestInfo effectId={contestEffectId} typeName={contestTypeName} />
-          </section>
+          {contestEffectId && contestTypeName ? (
+            <section>
+              <ContestInfo effectId={contestEffectId} typeName={contestTypeName} />
+            </section>
+          ) : null}
           <section>
             <OtherLanguages names={names} />
           </section>
