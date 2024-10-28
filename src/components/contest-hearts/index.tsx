@@ -5,21 +5,24 @@ import { TbHeart, TbHeartFilled } from 'react-icons/tb'
 interface ContestHearts {
   type: 'appeal' | 'jam'
   value: number
+  wrapFlag?: boolean
 }
 
 /**
  * Renders the hearts for a contest move. For both appealing and jamming moves.
  */
-const ContestHearts: FC<ContestHearts> = ({ type = 'appeal', value }) => {
+const ContestHearts: FC<ContestHearts> = ({ type = 'appeal', wrapFlag = 'true', value }) => {
   const maxValue = type === 'appeal' ? 8 : 4
   const filledHearts = Array(value).fill(0)
   const emptyHearts = Array(maxValue - value).fill(0)
 
   return (
     <div
-      className={classNames('grid grid-rows-2', {
-        'grid-cols-4': type === 'appeal',
-        'grid-cols-2': type === 'jam',
+      className={classNames('grid w-fit', {
+        'grid-cols-8': type === 'appeal' && !wrapFlag,
+        'grid-cols-4 grid-rows-2': type === 'appeal' && wrapFlag,
+        'grid-cols-4': type === 'jam' && !wrapFlag,
+        'grid-cols-2 grid-rows-2': type === 'jam' && wrapFlag,
       })}
     >
       {filledHearts.map((_, index) => (

@@ -7,7 +7,7 @@ import { VersionGroup } from '../Games/VersionGroups'
 import { Language } from './Language'
 import { NamedApiResource } from './NamedResource'
 
-export interface APIResource {
+export interface APIResource<T> {
   url: string
 }
 

@@ -10,4 +10,9 @@ export const ContestApi = {
     const responses = (await Promise.all(requests)) as unknown as ContestEffect[]
     return responses
   },
+
+  getEffectById: async function (id: number) {
+    const response = await Api.contest.getContestEffectById(id)
+    return response as unknown as ContestEffect
+  },
 }
