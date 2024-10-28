@@ -1,10 +1,8 @@
 import React, { FC } from 'react'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import ContestHearts from '@/components/contest-hearts'
 import { ContestEffect } from '@/types'
-
-import { AppealHearts } from './AppealHearts'
-import { JamHearts } from './JamHearts'
 
 interface EffectTableProps {
   contestData: Array<ContestEffect>
@@ -35,8 +33,8 @@ export const EffectTable: FC<EffectTableProps> = ({ contestData }) => {
     const { appeal, jam, id, effect_entries } = effect
 
     const cellData = [
-      { key: 'appeal', value: <AppealHearts appeal={appeal} /> },
-      { key: 'jam', value: <JamHearts jam={jam} /> },
+      { key: 'appeal', value: <ContestHearts type="appeal" value={appeal} /> },
+      { key: 'jam', value: <ContestHearts type="jam" value={jam} /> },
       { key: 'description', value: effect_entries[0].effect },
     ]
 
