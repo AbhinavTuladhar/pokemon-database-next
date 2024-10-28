@@ -1,3 +1,4 @@
+export { ContestTypeCard } from './ContestTypeCard'
 export { EvolutionPokemonCard } from './EvolutionPokemonCard'
 export { MiniCardList } from './MiniCardList'
 export { MiniPokeCard } from './MiniPokeCard'

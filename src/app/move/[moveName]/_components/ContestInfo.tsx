@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 
+import { ContestTypeCard } from '@/components/cards'
 import {
   SectionTitle,
   TableCell,
@@ -26,7 +27,7 @@ export const ContestInfo: FC<ContestInfoProps> = async ({ effectId, typeName }) 
   const effectEntry = effect_entries[0].effect
 
   const tableData = [
-    { header: 'Condition', children: typeName },
+    { header: 'Condition', children: <ContestTypeCard type={typeName} /> },
     { header: 'Appeal', children: <ContestHearts type="appeal" value={appeal} wrapFlag={false} /> },
     { header: 'Jam', children: <ContestHearts type="jam" value={jam} wrapFlag={false} /> },
     { header: 'Details', children: effectEntry },
