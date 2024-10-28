@@ -23,9 +23,9 @@ export interface Move {
   pp: number
   priority: number
   power: number
-  contest_combos: ContestComboSets
-  contest_type: NamedApiResource<ContestType>
-  contest_effect: APIResource<ContestEffect>
+  contest_combos: ContestComboSets | null
+  contest_type: NamedApiResource<ContestType> | null
+  contest_effect: APIResource<ContestEffect> | null
   damage_class: NamedApiResource<MoveDamageClass>
   effect_entries: Array<VerboseEffect>
   effect_changes: Array<AbilityEffectChange>
