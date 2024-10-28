@@ -10,8 +10,7 @@ import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import { ContestInfo } from './_components/ContestInfo'
-import { GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
+import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 
 interface MovePageProps {
   params: {
