@@ -23,7 +23,7 @@ interface MovePageProps {
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
 
-  const { front_default: defaultSprite } = pokemonData
+  const { front_default: defaultSprite, id } = pokemonData
 
   return (
     <main>
@@ -35,7 +35,7 @@ const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemon
         pokemonName={pokemonName}
         generationNumber={generationNumber}
       />
-      <MoveGenerationLinks />
+      <MoveGenerationLinks id={id} />
     </main>
   )
 }

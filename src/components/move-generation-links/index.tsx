@@ -3,7 +3,19 @@
 import React, { FC } from 'react'
 import { useParams } from 'next/navigation'
 
+import idToGenerationMap from '@/data/idToGenerationMap'
+
 import BlueLink from '../link'
+
+const generateArray = (start: number) => {
+  const end = 7
+  const result: number[] = []
+
+  for (let i = start; i <= end; i++) {
+    result.push(i)
+  }
+  return result
+}
 
 interface ListItemProps {
   pokemonName: string
@@ -25,13 +37,20 @@ const ListItem: FC<ListItemProps> = ({ pokemonName, currentGenerationNumber, num
   )
 }
 
-const MoveGenerationLinks = () => {
+interface MoveGenerationLinksProps {
+  id: number
+}
+
+const MoveGenerationLinks: FC<MoveGenerationLinksProps> = ({ id }) => {
   const { generationNumber, pokemonName } = useParams<{
     pokemonName: string
     generationNumber: string
   }>()
 
-  const numbers = Array.from({ length: 7 }, (_, index) => index + 1)
+  // Get the generation of the Pokemon on the bassis of the id
+  const generation = parseInt(idToGenerationMap(id))
+
+  const numbers = generateArray(generation)
 
   return (
     <div className="my-4 grid place-items-center rounded-lg bg-sky-100 dark:bg-blue-950">
