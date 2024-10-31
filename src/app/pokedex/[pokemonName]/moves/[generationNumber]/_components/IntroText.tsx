@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import BlueLink from '@/components/link'
-import generationToGameListMap from '@/data/generationToGameListMap'
+import { generationToGameListMapV2 } from '@/data/generationToGameListMap'
 import formatName from '@/utils/formatName'
 
 interface IntroTextProps {
@@ -12,7 +12,7 @@ interface IntroTextProps {
 }
 
 export const IntroText: FC<IntroTextProps> = ({ image, pokemonName, generationNumber }) => {
-  const gameNames = generationToGameListMap[`Generation ${generationNumber}`]
+  const gameNames = generationToGameListMapV2[`Generation ${generationNumber}`]
   const formattedName = formatName(pokemonName)
 
   return (
