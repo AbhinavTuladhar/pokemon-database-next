@@ -2,7 +2,6 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import MovesLearned from '@/components/learned-moves'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi, SpeciesApi } from '@/services'
@@ -22,6 +21,7 @@ import {
   PokemonArtwork,
   PokemonCry,
   PokemonForms,
+  PokemonMovesLearned,
   PokemonVarieties,
   SpriteSection,
   TrainingInfo,
@@ -185,7 +185,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
       <Suspense fallback={<div> Loading moves data... </div>}>
         <section id="moves-learned">
-          <MovesLearned moves={moves} pokemonName={actualName} />
+          <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
         </section>
       </Suspense>
 
