@@ -41,7 +41,7 @@ To see changes in the website as you make changes in the code, run the following
 npm run dev
 ```
 
-The app will be accessible at http:localhost:5173.
+The app will be accessible at http://localhost:5173.
 
 Changing pages in development mode will be slow.
 
@@ -59,7 +59,7 @@ Then run it:
 npm run start
 ```
 
-The app will be accessible at http:localhost:5173.
+The app will be accessible at http://localhost:5173.
 
 ## Other libraries used
 
