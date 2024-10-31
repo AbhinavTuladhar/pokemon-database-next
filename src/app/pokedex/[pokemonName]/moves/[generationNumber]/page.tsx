@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { PageTitle } from '@/components/containers'
+import MoveGenerationLinks from '@/components/move-generation-links'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -29,7 +30,12 @@ const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemon
       <PageTitle>
         {formatName(pokemonName)} - Generation {generationNumber} learnset
       </PageTitle>
-      <IntroText image={defaultSprite} />
+      <IntroText
+        image={defaultSprite}
+        pokemonName={pokemonName}
+        generationNumber={generationNumber}
+      />
+      <MoveGenerationLinks />
     </main>
   )
 }

@@ -1,0 +1,53 @@
+'use client'
+
+import React, { FC } from 'react'
+import { useParams } from 'next/navigation'
+
+import BlueLink from '../link'
+
+interface ListItemProps {
+  pokemonName: string
+  currentGenerationNumber: string
+  number: string
+}
+
+const ListItem: FC<ListItemProps> = ({ pokemonName, currentGenerationNumber, number }) => {
+  if (currentGenerationNumber === number) {
+    return (
+      <li className="inline-flex w-max justify-center px-4 text-black dark:text-white">{number}</li>
+    )
+  }
+
+  return (
+    <li className="inline-flex w-max justify-center px-4">
+      <BlueLink href={`/pokedex/${pokemonName}/moves/${number}`}>{number}</BlueLink>
+    </li>
+  )
+}
+
+const MoveGenerationLinks = () => {
+  const { generationNumber, pokemonName } = useParams<{
+    pokemonName: string
+    generationNumber: string
+  }>()
+
+  const numbers = Array.from({ length: 7 }, (_, index) => index + 1)
+
+  return (
+    <div className="my-4 grid place-items-center rounded-lg bg-sky-100 dark:bg-blue-950">
+      <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-gray-400 py-4 dark:divide-white">
+        <li className="px-4 font-bold text-black dark:text-white">In other generations</li>
+        {numbers.map((number, index) => (
+          <ListItem
+            key={index}
+            pokemonName={pokemonName}
+            currentGenerationNumber={generationNumber}
+            number={number.toString()}
+          />
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default MoveGenerationLinks
