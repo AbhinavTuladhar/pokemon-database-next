@@ -39,7 +39,7 @@ interface MovesLearnProps {
   moves: Array<PokemonMove>
 }
 
-export const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
+const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) => {
   const properPokemonName = formatName(pokemonName)
 
   // Consider that the latest gen is 7.
@@ -169,3 +169,5 @@ export const MovesLearned: FC<MovesLearnProps> = async ({ moves, pokemonName }) 
     </div>
   )
 }
+
+export default MovesLearned
