@@ -1,3 +1,8 @@
+/**
+ * Types that are derived from extractor functions and those that are used in intermediate values
+ * during complex computations on array of objects
+ */
+
 import AbilityExtractor from '@/extractors/AbilityExtractor'
 import EncounterExtractor from '@/extractors/EncounterExtractor'
 import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
@@ -53,7 +58,8 @@ interface EvolutionPokemon {
 }
 
 interface TransformedMoveLevel extends TransformedMove {
-  levelLearnedAt: number
+  levelLearnedAt?: number
+  versionGroupNames: Array<string>
 }
 
 interface GenerationSprite {

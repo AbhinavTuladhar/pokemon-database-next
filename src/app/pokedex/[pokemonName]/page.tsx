@@ -15,13 +15,13 @@ import {
   EvolutionChain,
   HeldItems,
   Locations,
-  MovesLearned,
   PageNavigation,
   PokeDexData,
   PokeDexEntries,
   PokemonArtwork,
   PokemonCry,
   PokemonForms,
+  PokemonMovesLearned,
   PokemonVarieties,
   SpriteSection,
   TrainingInfo,
@@ -185,7 +185,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
 
       <Suspense fallback={<div> Loading moves data... </div>}>
         <section id="moves-learned">
-          <MovesLearned moves={moves} pokemonName={actualName} />
+          <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
         </section>
       </Suspense>
 
