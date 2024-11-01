@@ -7,15 +7,20 @@ interface MoveData {
   move: NamedApiResource<Move>
 }
 
+/**
+ * Omit move and replace it with the name key
+ */
+interface MoveDataWithVersionGroupNames extends Omit<MoveData, 'move'> {
+  versionGroupNames: Array<string>
+  name: string
+}
+
 const getMovesInformation = async (names: Array<string>) => {
   const responses = await MovesApi.getByNames(names)
   return responses.map(MoveExtractor)
 }
 
-export const processMoveData = async (
-  moves: Array<PokemonMove>,
-  versionGroupNames: Array<string>,
-) => {
+const filterByVersionGroup = (moves: Array<PokemonMove>, versionGroupNames: Array<string>) => {
   const versionsMoveData = moves.flatMap(move => {
     const { version_group_details } = move
     const SMInfo = version_group_details.filter(version =>
@@ -28,126 +33,18 @@ export const processMoveData = async (
   })
 
   // Filter out the details in the version group details array is empty
-  const finalVersionsMoveData = versionsMoveData.filter(
-    move => move.version_group_details.length > 0,
-  )
-  const moveData = finalVersionsMoveData
-
-  // This is for separating out the moves learnt by level up, TM/HM and by breeding.
-  const levelUpMoves = separateMoves({
-    data: moveData,
-    learnMethod: 'level-up',
-  })
-  const machineMoves = separateMoves({ data: moveData, learnMethod: 'machine' })
-  const eggMoves = separateMoves({ data: moveData, learnMethod: 'egg' })
-  const tutorMoves = separateMoves({ data: moveData, learnMethod: 'tutor' })
-
-  // Now sort the moves by some conditions.
-  // sort level up moves by the level learnt.
-  const sortedLevelMoves = levelUpMoves.sort((curr, next) => {
-    const levelLearntCurrent =
-      curr.version_group_details[curr.version_group_details.length - 1].level_learned_at
-    const levelLearntNext =
-      next.version_group_details[next.version_group_details.length - 1].level_learned_at
-    if (levelLearntCurrent < levelLearntNext) return -1
-    else if (levelLearntCurrent > levelLearntNext) return 1
-    else return curr.name < next.name ? -1 : 1
-  })
-
-  // Extract the move name, the level learnt for the moves learnt by level up.
-  const levelLearntData = levelUpMoves.map(move => {
-    return {
-      name: move.name,
-      versionGroupNames: move.versionGroupNames,
-      levelLearntAt:
-        move.version_group_details[move.version_group_details.length - 1].level_learned_at,
-    }
-  })
-
-  const tutorData = tutorMoves.map(move => {
-    return {
-      name: move.name,
-      versionGroupNames: move.versionGroupNames,
-    }
-  })
-
-  const machineData = machineMoves.map(move => {
-    return {
-      name: move.name,
-      versionGroupNames: move.versionGroupNames,
-    }
-  })
-
-  const eggData = eggMoves.map(move => {
-    return {
-      name: move.name,
-      versionGroupNames: move.versionGroupNames,
-    }
-  })
-
-  const moveNames = {
-    level: sortedLevelMoves.map(move => move.name),
-    machine: machineMoves.map(move => move.name),
-    egg: eggMoves.map(move => move.name),
-    tutor: tutorMoves.map(move => move.name),
-  }
-
-  const [levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails] =
-    await Promise.all([
-      getMovesInformation(moveNames.level),
-      getMovesInformation(moveNames.tutor),
-      getMovesInformation(moveNames.machine),
-      getMovesInformation(moveNames.egg),
-    ])
-
-  const combinedLevelDetails = levelLearntData.map(obj1 => {
-    const obj2 = levelMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
-    return {
-      ...obj2,
-      levelLearnedAt: obj1.levelLearntAt,
-      versionGroupNames: obj1.versionGroupNames,
-    }
-  })
-
-  const combinedTutorDetails = tutorData.map(obj1 => {
-    const obj2 = tutorMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
-    return {
-      ...obj2,
-      versionGroupNames: obj1.versionGroupNames,
-    }
-  })
-
-  const combinedMachineDetails = machineData.map(obj1 => {
-    const obj2 = machineMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
-    return {
-      ...obj2,
-      versionGroupNames: obj1.versionGroupNames,
-    }
-  })
-
-  const combinedEggDetails = eggData.map(obj1 => {
-    const obj2 = eggMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
-    return {
-      ...obj2,
-      versionGroupNames: obj1.versionGroupNames,
-    }
-  })
-
-  return {
-    level: combinedLevelDetails,
-    tutor: combinedTutorDetails,
-    machine: combinedMachineDetails,
-    egg: combinedEggDetails,
-  }
+  return versionsMoveData.filter(move => move.version_group_details.length > 0)
 }
 
-// This is for filtering out the moves on depending on how it is learnt - only for SM.
-export const separateMoves = ({
+/**
+ * This is for filtering out the moves on depending on how it is learnt
+ */
+const separateMoves = ({
   data,
   learnMethod,
 }: {
   data: Array<MoveData>
-  learnMethod: string
+  learnMethod: 'level-up' | 'machine' | 'egg' | 'tutor'
 }) => {
   const movesLearnt = data.map(move => {
     const { version_group_details } = move // this is an array
@@ -163,4 +60,121 @@ export const separateMoves = ({
   const finalFilteredMoves = movesLearnt.filter(move => move.version_group_details.length > 0)
 
   return finalFilteredMoves
+}
+
+/**
+ * This is for categorising the moves learnt by level up, TM/HM and by breeding
+ */
+const categoriseMoves = (data: Array<MoveData>) => {
+  return [
+    separateMoves({ data, learnMethod: 'level-up' }),
+    separateMoves({ data, learnMethod: 'machine' }),
+    separateMoves({ data, learnMethod: 'egg' }),
+    separateMoves({ data, learnMethod: 'tutor' }),
+  ]
+}
+
+/**
+ * Sorting the level-up moves on the basis on the level learnt.
+ */
+const sortLevelUpMoves = (moves: Array<MoveDataWithVersionGroupNames>) => {
+  return moves.sort((curr, next) => {
+    const levelLearntCurrent =
+      curr.version_group_details[curr.version_group_details.length - 1].level_learned_at
+    const levelLearntNext =
+      next.version_group_details[next.version_group_details.length - 1].level_learned_at
+    if (levelLearntCurrent < levelLearntNext) return -1
+    else if (levelLearntCurrent > levelLearntNext) return 1
+    else return curr.name < next.name ? -1 : 1
+  })
+}
+
+interface FetchDetailProps {
+  levelUpMoves: Array<MoveDataWithVersionGroupNames>
+  machineMoves: Array<MoveDataWithVersionGroupNames>
+  eggMoves: Array<MoveDataWithVersionGroupNames>
+  tutorMoves: Array<MoveDataWithVersionGroupNames>
+}
+
+/**
+ * Fetching the information of all the moves
+ */
+const fetchMoveDetails = async ({
+  levelUpMoves,
+  machineMoves,
+  eggMoves,
+  tutorMoves,
+}: FetchDetailProps) => {
+  const levelUpMoveNames = levelUpMoves.map(move => move.name)
+  const machineMoveNames = machineMoves.map(move => move.name)
+  const eggMoveNames = eggMoves.map(move => move.name)
+  const tutorMoveNames = tutorMoves.map(move => move.name)
+
+  const [levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails] =
+    await Promise.all([
+      getMovesInformation(levelUpMoveNames),
+      getMovesInformation(tutorMoveNames),
+      getMovesInformation(machineMoveNames),
+      getMovesInformation(eggMoveNames),
+    ])
+
+  return { levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails }
+}
+
+/**
+ * Combine the base move data with fetched move details
+ * If level flag is set to true, then the level learnt at is added
+ * Regardless, the versionGroupNames are amended to the original object.
+ */
+const combineMoveDetails = (
+  baseMoves: Array<MoveDataWithVersionGroupNames>,
+  fetchedData: Array<TransformedMove>,
+  levelFlag = false,
+) =>
+  baseMoves.map(obj1 => {
+    const obj2 = fetchedData.find(obj => obj.moveName === obj1.name) as TransformedMove
+    return levelFlag
+      ? {
+          ...obj2,
+          levelLearnedAt: obj1.version_group_details[0].level_learned_at,
+          versionGroupNames: obj1.versionGroupNames,
+        }
+      : { ...obj2, versionGroupNames: obj1.versionGroupNames }
+  })
+
+export const processMoveData = async (
+  moves: Array<PokemonMove>,
+  versionGroupNames: Array<string>,
+) => {
+  const moveData = filterByVersionGroup(moves, versionGroupNames)
+
+  // This is for separating out the moves learnt by level up, TM/HM and by breeding.
+  const [levelUpMoves, machineMoves, eggMoves, tutorMoves] = categoriseMoves(moveData)
+
+  // Sort level up moves by the level learnt.
+  const sortedLevelMoves = sortLevelUpMoves(levelUpMoves)
+
+  // Getting the actual move details
+  const { levelMoveDetails, tutorMoveDetails, machineMoveDetails, eggMoveDetails } =
+    await fetchMoveDetails({
+      levelUpMoves: sortedLevelMoves,
+      machineMoves,
+      eggMoves,
+      tutorMoves,
+    })
+
+  // Amend the level learned at and version group names information.
+  const [finalLevelDetails, finalTutorDetails, finalMachineDetails, finalEggDetails] = [
+    combineMoveDetails(levelUpMoves, levelMoveDetails, true),
+    combineMoveDetails(tutorMoves, tutorMoveDetails, false),
+    combineMoveDetails(machineMoves, machineMoveDetails, false),
+    combineMoveDetails(eggMoves, eggMoveDetails, false),
+  ]
+
+  return {
+    level: finalLevelDetails,
+    tutor: finalTutorDetails,
+    machine: finalMachineDetails,
+    egg: finalEggDetails,
+  }
 }

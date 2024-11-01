@@ -39,12 +39,7 @@ const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemon
         generationNumber={generationNumber}
       />
       <MoveGenerationLinks id={id} />
-      <MovesLearned
-        versionNames={versionGroupNames}
-        versionGroupName={versionGroupNames[0]}
-        moves={moves}
-        pokemonName={pokemonName}
-      />
+      <MovesLearned versionNames={versionGroupNames} moves={moves} pokemonName={pokemonName} />
     </main>
   )
 }

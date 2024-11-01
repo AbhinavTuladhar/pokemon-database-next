@@ -8,16 +8,10 @@ import TableTabs from './TableTabs'
 interface MoveData {
   pokemonName: string
   moves: Array<PokemonMove>
-  versionGroupName: string
   versionNames: Array<string>
 }
 
-const MovesLearned: FC<MoveData> = async ({
-  pokemonName,
-  versionGroupName,
-  moves,
-  versionNames,
-}) => {
+const MovesLearned: FC<MoveData> = async ({ pokemonName, moves, versionNames }) => {
   const finalMoveDetails = await processMoveData(moves, versionNames)
 
   return (
