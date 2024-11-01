@@ -18,8 +18,8 @@ export const PokemonMovesLearned: FC<MovesLearnedProps> = async ({ id, moves, po
       <SectionTitle>Moves learned by {formatName(pokemonName)}</SectionTitle>
       <MoveGenerationLinks id={id} />
       <MovesLearned
-        versionNames={['red-blue', 'yellow']}
-        versionGroupName="yellow"
+        versionNames={['sun-moon', 'ultra-sun-ultra-moon']}
+        versionGroupName="sun-moon"
         moves={moves}
         pokemonName={pokemonName}
       />
