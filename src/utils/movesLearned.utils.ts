@@ -54,12 +54,34 @@ export const processMoveData = async (
     else return curr.name < next.name ? -1 : 1
   })
 
-  // Extract the move name and the level learnt for the moves learn by level up.
+  // Extract the move name, the level learnt for the moves learnt by level up.
   const levelLearntData = levelUpMoves.map(move => {
     return {
       name: move.name,
+      versionGroupNames: move.versionGroupNames,
       levelLearntAt:
         move.version_group_details[move.version_group_details.length - 1].level_learned_at,
+    }
+  })
+
+  const tutorData = tutorMoves.map(move => {
+    return {
+      name: move.name,
+      versionGroupNames: move.versionGroupNames,
+    }
+  })
+
+  const machineData = machineMoves.map(move => {
+    return {
+      name: move.name,
+      versionGroupNames: move.versionGroupNames,
+    }
+  })
+
+  const eggData = eggMoves.map(move => {
+    return {
+      name: move.name,
+      versionGroupNames: move.versionGroupNames,
     }
   })
 
@@ -80,14 +102,42 @@ export const processMoveData = async (
 
   const combinedLevelDetails = levelLearntData.map(obj1 => {
     const obj2 = levelMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
-    return { ...obj2, levelLearnedAt: obj1.levelLearntAt }
+    return {
+      ...obj2,
+      levelLearnedAt: obj1.levelLearntAt,
+      versionGroupNames: obj1.versionGroupNames,
+    }
+  })
+
+  const combinedTutorDetails = tutorData.map(obj1 => {
+    const obj2 = tutorMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
+    return {
+      ...obj2,
+      versionGroupNames: obj1.versionGroupNames,
+    }
+  })
+
+  const combinedMachineDetails = machineData.map(obj1 => {
+    const obj2 = machineMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
+    return {
+      ...obj2,
+      versionGroupNames: obj1.versionGroupNames,
+    }
+  })
+
+  const combinedEggDetails = eggData.map(obj1 => {
+    const obj2 = eggMoveDetails.find(obj => obj.moveName === obj1.name) as TransformedMove
+    return {
+      ...obj2,
+      versionGroupNames: obj1.versionGroupNames,
+    }
   })
 
   return {
     level: combinedLevelDetails,
-    tutor: tutorMoveDetails,
-    machine: machineMoveDetails,
-    egg: eggMoveDetails,
+    tutor: combinedTutorDetails,
+    machine: combinedMachineDetails,
+    egg: combinedEggDetails,
   }
 }
 
@@ -107,8 +157,10 @@ export const separateMoves = ({
     return {
       name: move.move.name,
       version_group_details: filteredMoves,
+      versionGroupNames: version_group_details.map(version => version.version_group.name),
     }
   })
   const finalFilteredMoves = movesLearnt.filter(move => move.version_group_details.length > 0)
+
   return finalFilteredMoves
 }

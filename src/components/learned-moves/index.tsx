@@ -20,12 +20,6 @@ const MovesLearned: FC<MoveData> = async ({
 }) => {
   const finalMoveDetails = await processMoveData(moves, versionNames)
 
-  // writeFile('./moveData.json', JSON.stringify(finalMoveDetails, null, 2), 'utf-8', error => {
-  //   if (error) {
-  //     console.log(error)
-  //   }
-  // })
-
   return (
     <TableTabs
       pokemonName={pokemonName}

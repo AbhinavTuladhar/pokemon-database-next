@@ -1,8 +1,8 @@
-import { TransformedMove, TransformedMoveLevel } from '@/types'
+import { TransformedMoveLevel } from '@/types'
 
 export interface FinalMoveData {
   level: Array<TransformedMoveLevel>
-  tutor: Array<TransformedMove>
-  egg: Array<TransformedMove>
-  machine: Array<TransformedMove>
+  tutor: Array<TransformedMoveLevel>
+  egg: Array<TransformedMoveLevel>
+  machine: Array<TransformedMoveLevel>
 }

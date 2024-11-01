@@ -59,6 +59,7 @@ interface EvolutionPokemon {
 
 interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt?: number
+  versionGroupNames: Array<string>
 }
 
 interface GenerationSprite {
