@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 import { PageTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
+import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -23,6 +24,7 @@ interface MovePageProps {
 
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
+  const versionGroupNames = generationToGameListMapV3[generationNumber]
 
   const { front_default: defaultSprite, id, moves } = pokemonData
 
@@ -38,8 +40,8 @@ const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemon
       />
       <MoveGenerationLinks id={id} />
       <MovesLearned
-        versionNames={['sun-moon', 'ultra-sun-ultra-moon']}
-        versionGroupName="ultra-sun-ultra-moon"
+        versionNames={versionGroupNames}
+        versionGroupName={versionGroupNames[0]}
         moves={moves}
         pokemonName={pokemonName}
       />
