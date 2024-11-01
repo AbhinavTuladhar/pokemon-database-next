@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { PageTitle } from '@/components/containers'
+import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services'
@@ -23,7 +24,7 @@ interface MovePageProps {
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
 
-  const { front_default: defaultSprite, id } = pokemonData
+  const { front_default: defaultSprite, id, moves } = pokemonData
 
   return (
     <main>
@@ -36,6 +37,11 @@ const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemon
         generationNumber={generationNumber}
       />
       <MoveGenerationLinks id={id} />
+      <MovesLearned
+        versionGroupName="ultra-sun-ultra-moon"
+        moves={moves}
+        pokemonName={pokemonName}
+      />
     </main>
   )
 }

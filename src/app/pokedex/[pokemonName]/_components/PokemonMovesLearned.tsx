@@ -12,12 +12,17 @@ interface MovesLearnedProps {
   moves: Array<PokemonMove>
 }
 
-export const PokemonMovesLearned: FC<MovesLearnedProps> = ({ id, moves, pokemonName }) => {
+export const PokemonMovesLearned: FC<MovesLearnedProps> = async ({ id, moves, pokemonName }) => {
   return (
     <>
       <SectionTitle>Moves learned by {formatName(pokemonName)}</SectionTitle>
       <MoveGenerationLinks id={id} />
-      <MovesLearned moves={moves} pokemonName={pokemonName} />
+      <MovesLearned
+        versionNames={['sun-moon', 'ultra-sun-ultra-moon']}
+        versionGroupName="ultra-sun-ultra-moon"
+        moves={moves}
+        pokemonName={pokemonName}
+      />
     </>
   )
 }
