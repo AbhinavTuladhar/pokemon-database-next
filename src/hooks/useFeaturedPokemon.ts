@@ -15,6 +15,13 @@ const useFeaturedPokemon = () => {
   }
 
   useEffect(() => {
+    // Check if data exists in the session storage
+    const sessionData = sessionStorage.getItem('pokemonData')
+    if (sessionData) {
+      setPokemonData(JSON.parse(sessionData))
+      return
+    }
+
     const getRandomPokemonData = async () => {
       // Generate four random numbers between 1 and 809 for the Pokemon ids, one for each generation.
       const generationIds = generationData.map(generation => {
@@ -26,6 +33,7 @@ const useFeaturedPokemon = () => {
       const responses = await PokemonApi.getByIds(generationIds)
       const extractedData = responses.map(PokemonExtractor)
       setPokemonData(extractedData)
+      sessionStorage.setItem('pokemonData', JSON.stringify(extractedData))
     }
 
     try {
