@@ -14,6 +14,7 @@ import {
   BreedingInfo,
   EvolutionChain,
   HeldItems,
+  LoadingPage,
   Locations,
   PageNavigation,
   PokeDexData,
@@ -105,119 +106,125 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
   const abilityNames = abilities.map(ability => ability.ability.name)
 
   return (
-    <main>
-      <h1 className="mt-4 text-center text-5xl font-bold">{formatName(actualName)}</h1>
-      <AdjacentLinks id={id} />
+    <Suspense fallback={<LoadingPage />}>
+      <main>
+        <h1 className="mt-4 text-center text-5xl font-bold">{formatName(actualName)}</h1>
+        <AdjacentLinks id={id} />
 
-      <PageNavigation />
+        <PageNavigation />
 
-      <BasicIntro genus={genus} id={id} name={actualName} types={types} />
-      <section
-        id="info"
-        className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
-      >
-        <div className="col-span-2 md:col-span-1">
-          <PokemonArtwork
-            pokemonName={pokemonName}
-            defaultSprite={defaultSprite}
-            shinySprite={shinySprite}
-          />
-          <PokemonCry latest={latestCry} legacy={legacyCry ?? undefined} pokemonName={actualName} />
-        </div>
+        <BasicIntro genus={genus} id={id} name={actualName} types={types} />
+        <section
+          id="info"
+          className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
+        >
+          <div className="col-span-2 md:col-span-1">
+            <PokemonArtwork
+              pokemonName={pokemonName}
+              defaultSprite={defaultSprite}
+              shinySprite={shinySprite}
+            />
+            <PokemonCry
+              latest={latestCry}
+              legacy={legacyCry ?? undefined}
+              pokemonName={actualName}
+            />
+          </div>
 
-        <div className="col-span-2 md:col-span-1">
-          <PokeDexData
-            abilities={abilities}
-            genus={genus}
-            height={height}
-            nationalNumber={nationalNumber}
-            pokedex_numbers={pokedex_numbers}
-            types={types}
-            weight={weight}
-            colour={colour}
-            shape={shape}
-          />
-        </div>
+          <div className="col-span-2 md:col-span-1">
+            <PokeDexData
+              abilities={abilities}
+              genus={genus}
+              height={height}
+              nationalNumber={nationalNumber}
+              pokedex_numbers={pokedex_numbers}
+              types={types}
+              weight={weight}
+              colour={colour}
+              shape={shape}
+            />
+          </div>
 
-        <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">
-          <TrainingInfo
-            base_experience={base_experience}
-            base_happiness={base_happiness}
-            capture_rate={capture_rate}
-            growth_rate={growth_rate}
-            stats={stats}
-          />
-          <BreedingInfo
-            egg_groups={egg_groups}
-            gender_rate={gender_rate}
-            hatch_counter={hatch_counter}
-            habitat={habitat}
-          />
-        </div>
-      </section>
-
-      <section id="base-stats" className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
-        <section className="col-span-2">
-          <BaseStat stats={stats} />
+          <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">
+            <TrainingInfo
+              base_experience={base_experience}
+              base_happiness={base_happiness}
+              capture_rate={capture_rate}
+              growth_rate={growth_rate}
+              stats={stats}
+            />
+            <BreedingInfo
+              egg_groups={egg_groups}
+              gender_rate={gender_rate}
+              hatch_counter={hatch_counter}
+              habitat={habitat}
+            />
+          </div>
         </section>
-        <section className="col-span-2 mdlg:col-span-1">
-          <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
+
+        <section id="base-stats" className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
+          <section className="col-span-2">
+            <BaseStat stats={stats} />
+          </section>
+          <section className="col-span-2 mdlg:col-span-1">
+            <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
+          </section>
         </section>
-      </section>
 
-      <section id="evolution-chain">
-        <EvolutionChain url={evolutionChainUrl} />
-      </section>
+        <section id="evolution-chain">
+          <EvolutionChain url={evolutionChainUrl} />
+        </section>
 
-      {formDescriptions ? (
+        {formDescriptions ? (
+          <section>
+            <Description entry={formDescriptions} title="Form descriptions" />
+          </section>
+        ) : null}
+
+        <section id="pokedex-entries">
+          <PokeDexEntries flavourTextEntries={flavor_text_entries} />
+        </section>
+
         <section>
-          <Description entry={formDescriptions} title="Form descriptions" />
+          <PokemonForms urls={forms.map(form => form.url)} />
         </section>
-      ) : null}
 
-      <section id="pokedex-entries">
-        <PokeDexEntries flavourTextEntries={flavor_text_entries} />
-      </section>
+        <Suspense fallback={<div> Loading moves data... </div>}>
+          <section id="moves-learned">
+            <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
+          </section>
+        </Suspense>
 
-      <section>
-        <PokemonForms urls={forms.map(form => form.url)} />
-      </section>
-
-      <Suspense fallback={<div> Loading moves data... </div>}>
-        <section id="moves-learned">
-          <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
+        <section className="space-y-4" id="sprites">
+          <SpriteSection pokemonName={actualName} spriteCollection={spriteCollection} />
         </section>
-      </Suspense>
 
-      <section className="space-y-4" id="sprites">
-        <SpriteSection pokemonName={actualName} spriteCollection={spriteCollection} />
-      </section>
+        <section id="locations">
+          <Locations id={id} name={actualName} />
+        </section>
 
-      <section id="locations">
-        <Locations id={id} name={actualName} />
-      </section>
+        <section>
+          <HeldItems held_items={held_items} />
+        </section>
 
-      <section>
-        <HeldItems held_items={held_items} />
-      </section>
-
-      <section id="languages">
-        <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
-          <div>
-            <OtherLanguages names={names} />
+        <section id="languages">
+          <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
+            <div>
+              <OtherLanguages names={names} />
+            </div>
+            <div className="mt-0 min-[952px]:mt-20">
+              <OtherLanguages names={generaNames} hideTitle />
+            </div>
           </div>
-          <div className="mt-0 min-[952px]:mt-20">
-            <OtherLanguages names={generaNames} hideTitle />
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="forms">
-        <PokemonVarieties pokemonName={actualName} varieties={varieties} />
-      </section>
+        <section id="forms">
+          <PokemonVarieties pokemonName={actualName} varieties={varieties} />
+        </section>
 
-      <AdjacentLinks id={id} />
-    </main>
+        <AdjacentLinks id={id} />
+      </main>
+    </Suspense>
   )
 }
 

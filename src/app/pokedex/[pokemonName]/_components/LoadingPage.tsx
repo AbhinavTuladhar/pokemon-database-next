@@ -1,7 +1,7 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-const loading = () => {
+export const LoadingPage = () => {
   return (
     <div className="flex flex-col items-center gap-y-4">
       <Skeleton
@@ -20,5 +20,3 @@ const loading = () => {
     </div>
   )
 }
-
-export default loading
