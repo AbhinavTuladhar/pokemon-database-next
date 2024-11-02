@@ -10,7 +10,7 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 
 const FirstRow = () => (
   <>
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border">
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-bd-dark">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>
@@ -72,7 +72,7 @@ export const TypeChart = async () => {
   return (
     <div className="overflow-auto">
       <div className="inline-flex">
-        <div className="grid-cols-type-chart grid grid-flow-row">
+        <div className="grid grid-flow-row grid-cols-type-chart">
           <FirstRow />
           {typeData.map(attackingType => {
             const { type, attackInfo } = attackingType

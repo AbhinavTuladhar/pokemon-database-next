@@ -20,7 +20,7 @@
 }
 
 .fancy-link::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 1.25em;
   left: 0;
@@ -83,7 +83,7 @@ html.dark .react-loading-skeleton {
   --highlight-color: #435979 !important;
 }
 
-[data-testid="react-katex"] {
+[data-testid='react-katex'] {
   font-size: clamp(0.75rem, 0.529rem + 0.98vw, 1rem);
 }
 
@@ -137,7 +137,7 @@ html.dark .apexcharts-subtitle-text {
 }
 
 .hero-banner::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background-color: #1e2029a6;

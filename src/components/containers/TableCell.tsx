@@ -19,7 +19,7 @@ export const TableCell: FC<CellProps> = ({ children, extraClassName, variant = '
   return (
     <td
       className={classNames(
-        'table-cell border-t border-gray-200 py-2 align-middle dark:border-table-border',
+        'dark:border-table-border table-cell border-t border-gray-300 py-2 align-middle',
         { 'px-2': variant === 'row' },
         { 'px-4': variant === 'column' },
         `${extraClassName ? extraClassName : ''}`,

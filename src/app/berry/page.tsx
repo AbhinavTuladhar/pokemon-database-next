@@ -58,12 +58,12 @@ const page = async () => {
   ]
 
   const tableHeader = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
       {tableHeaderNames.map((header, index) => (
         <TableCellHeader
           type="column"
           key={header.id}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
             {header.header}

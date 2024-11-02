@@ -49,12 +49,12 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
 
   const headerRows = (
-    <TableRow className="bg-neutral-200  dark:bg-table-header">
+    <TableRow className="bg-neutral-200  dark:bg-hdr-dark">
       {headers.map(header => (
         <TableCellHeader
           type="column"
           key={header}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           {header}
         </TableCellHeader>

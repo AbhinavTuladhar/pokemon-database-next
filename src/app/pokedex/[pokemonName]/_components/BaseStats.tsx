@@ -93,7 +93,7 @@ export const BaseStat: FC<BaseStatProps> = ({ stats }) => {
         <TableCellHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>
         </TableCellHeader>
-        <td className="mx-0 table-cell min-w-[9.375rem] border-t border-gray-200 px-0 align-middle dark:border-table-border">
+        <td className="mx-0 table-cell min-w-[9.375rem] border-t border-gray-200 px-0 align-middle dark:border-bd-dark">
           <div
             className="my-0 ml-2 h-3 rounded"
             style={{

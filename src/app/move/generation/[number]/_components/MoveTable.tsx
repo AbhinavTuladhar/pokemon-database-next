@@ -35,12 +35,12 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const headers = ['Name', 'Type', 'Cat.', 'Power', 'Acc', 'PP', 'Effect', 'Prob (%)']
 
   const headerRowCells = (
-    <TableRow className="bg-neutral-200  dark:bg-table-header">
+    <TableRow className="bg-neutral-200  dark:bg-hdr-dark">
       {headers.map((header, index) => (
         <TableCellHeader
           type="column"
           key={header + index}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           {header}
         </TableCellHeader>

@@ -91,7 +91,7 @@ export const IconKeys = () => {
     <section className="pt-4">
       <SectionTitle> Keys to Icons </SectionTitle>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-        {sectionData.map((data) => (
+        {sectionData.map(data => (
           <KeyColumn rowData={data.rowData} title={data.title} key={data.title} />
         ))}
       </div>

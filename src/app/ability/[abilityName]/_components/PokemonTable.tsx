@@ -39,10 +39,10 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
   const headers = ['#', 'Name', 'Other abilities']
 
   const headerRow = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
       {headers.map(header => (
         <TableCellHeader
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
           key={header}
           type="column"
         >
@@ -89,7 +89,7 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
 
   return (
     <TableContainer className="w-auto lg:w-full">
-      <thead className="table-header-group">{headerRow}</thead>
+      <thead className="hdr-dark-group">{headerRow}</thead>
       <tbody>{pokemonRow}</tbody>
     </TableContainer>
   )
