@@ -76,7 +76,7 @@
   transition: all 0.4s ease-in-out;
 }
 
-body.dark .react-loading-skeleton {
+html.dark .react-loading-skeleton {
   /* --base-color: #2f333c !important;
   --highlight-color: #444 !important; */
   --base-color: #314158 !important;
@@ -87,23 +87,23 @@ body.dark .react-loading-skeleton {
   font-size: clamp(0.75rem, 0.529rem + 0.98vw, 1rem);
 }
 
-body.dark .apexcharts-text {
+html.dark .apexcharts-text {
   fill: #fff !important;
 }
 
-body.dark .apexcharts-tooltip,
-body.dark .apexcharts-tooltip-title {
+html.dark .apexcharts-tooltip,
+html.dark .apexcharts-tooltip-title {
   background-color: #333 !important;
   color: #fff !important;
   border: 1px solid #555 !important;
 }
 
-body.dark .apexcharts-legend-text {
+html.dark .apexcharts-legend-text {
   color: #fff !important;
   border: none !important;
 }
-body.dark .apexcharts-title-text,
-body.dark .apexcharts-subtitle-text {
+html.dark .apexcharts-title-text,
+html.dark .apexcharts-subtitle-text {
   fill: #fff !important;
 }
 

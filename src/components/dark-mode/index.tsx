@@ -1,9 +1,8 @@
 'use client'
 
-import React, { FC, PropsWithChildren, useState } from 'react'
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 import { FaMoon, FaSun } from 'react-icons/fa'
-
-type Theme = 'light' | 'dark'
 
 const IconContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -14,19 +13,33 @@ const IconContainer: FC<PropsWithChildren> = ({ children }) => {
 }
 
 const DarkModeSwitch = () => {
-  const [theme, setTheme] = useState<Theme>('dark')
+  const [isMounted, setIsMounted] = useState(false)
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
-    document.body.classList.toggle('dark')
+    setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
   }
+
+  /**
+   * Used to display the correct icon upon first load.
+   */
+  useEffect(() => setIsMounted(true), [])
+
+  if (!isMounted) {
+    return (
+      <IconContainer>
+        <FaSun className="size-5 text-white" />
+      </IconContainer>
+    )
+  }
+
   return (
     <button aria-label="Toggle Dark Mode" onClick={toggleTheme}>
       <IconContainer>
         {theme === 'dark' ? (
-          <FaSun className="h-5 w-5 text-white" />
+          <FaSun className="size-5 text-white" />
         ) : (
-          <FaMoon className="h-5 w-5 text-white" />
+          <FaMoon className="size-5 text-white" />
         )}
       </IconContainer>
     </button>
