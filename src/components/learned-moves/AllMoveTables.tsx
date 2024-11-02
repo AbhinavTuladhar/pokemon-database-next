@@ -45,26 +45,26 @@ const AllMoveTables: FC<MovesLearnProps> = ({ movesData, pokemonName, versionGro
       data: tutorMoves,
       subTitle: `${properPokemonName} can be taught the following moves in Pokémon ${formatVersionGroupNames(versionGroupName)} by move tutors.`,
       levelFlag: false,
-      errorText: `${properPokemonName} does not learn any moves by tutor.`,
+      errorText: `${properPokemonName} does not learn any moves by move tutors in Pokémon ${formatVersionGroupNames(versionGroupName)}.`,
     },
     {
       title: 'Moves learnt by breeding',
       data: eggMoves,
       subTitle: `${properPokemonName} learns the following moves in Pokémon ${formatVersionGroupNames(versionGroupName)} by breeding.`,
       levelFlag: false,
-      errorText: `${properPokemonName} does not learn any moves by breeding.`,
+      errorText: `${properPokemonName} does not learn any moves by breeding in Pokémon ${formatVersionGroupNames(versionGroupName)}.`,
     },
     {
       title: 'Moves learnt by TM/HM',
       data: machineMoves,
       subTitle: `${properPokemonName} is compatible with these Technical Machines in Pokémon ${formatVersionGroupNames(versionGroupName)}.`,
       levelFlag: false,
-      errorText: `${properPokemonName} does not learn any moves by TM or HM.`,
+      errorText: `${properPokemonName} does not learn any moves by TM or HM in Pokémon ${formatVersionGroupNames(versionGroupName)}.`,
     },
   ]
 
   return (
-    <div className="grid grid-cols-pokemon-move-grid gap-x-8 gap-y-6">
+    <div className="grid grid-cols-pokemon-move-grid gap-x-8">
       <div className="flex flex-col">
         {sectionsData.slice(0, -1).map(({ title, data, subTitle, levelFlag, errorText }) => (
           <MoveSection

@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
@@ -10,16 +11,23 @@ import formatName from '@/utils/formatName'
 
 import { IntroText } from './_components'
 
-const getPokemonData = async (pokemonName: string) => {
-  const response = await PokemonApi.getByName(pokemonName)
-  return PokemonExtractor(response)
-}
-
 interface MovePageProps {
   params: {
     generationNumber: string
     pokemonName: string
   }
+}
+
+export async function generateMetadata({ params }: MovePageProps): Promise<Metadata> {
+  const { pokemonName, generationNumber } = params
+  return {
+    title: `${formatName(pokemonName)} generation ${generationNumber} move learnset | Pokémon Database`,
+  }
+}
+
+const getPokemonData = async (pokemonName: string) => {
+  const response = await PokemonApi.getByName(pokemonName)
+  return PokemonExtractor(response)
 }
 
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {

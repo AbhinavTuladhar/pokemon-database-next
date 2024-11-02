@@ -16,11 +16,11 @@ export const IntroText: FC<IntroTextProps> = ({ image, pokemonName, generationNu
   const formattedName = formatName(pokemonName)
 
   return (
-    <section className="grid grid-cols-12">
+    <section className="grid grid-cols-12 pb-4">
       <div className="col-span-12 sm:col-span-7 lg:col-span-8">
         <div className="space-y-4">
           <span>
-            This page lists all the moves that {formattedName} can learn in Generation{' '}
+            This page lists all the moves that {formattedName} can learn in Generation
             {generationNumber}, which consists of these games:
           </span>
           <ul className="list-inside list-disc">
