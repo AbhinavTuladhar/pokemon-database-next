@@ -54,7 +54,7 @@ export const GameBox: FC<GameBoxProps> = ({ gameName, activeFlag }) => {
 
   return (
     <div
-      className={`flex h-[67px] w-14 items-center justify-center border-x border-gray-300 text-lg font-bold dark:border-bd-dark ${activeFlag ? activeClassName : 'text-gray-500'}`}
+      className={`flex h-[67px] w-14 items-center justify-center border-x border-bd-light text-lg font-bold dark:border-bd-dark ${activeFlag ? activeClassName : 'text-gray-500'}`}
     >
       {icon}
     </div>

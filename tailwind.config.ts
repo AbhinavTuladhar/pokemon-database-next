@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         'hdr-dark': '#1f3270', // Colour of table header (and others) in dark mode
+        'bd-light': '#e2e5e9', // Border colour in light mode
         'bd-dark': '#585858', // Border colour in dark mode
         'dark-highlighted': '#2c303b',
       },

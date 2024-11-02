@@ -42,7 +42,7 @@ const EggGroupTable = async () => {
             <thead>
               <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
                 <TableCellHeader
-                  className="border-r border-r-gray-300 pr-4 dark:border-r-bd-dark"
+                  className="border-r border-r-bd-light pr-4 dark:border-r-bd-dark"
                   type="column"
                 >
                   Name

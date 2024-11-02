@@ -63,7 +63,7 @@ const page = async () => {
         <TableCellHeader
           type="column"
           key={header.id}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
+          className="border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           <span id={header.id} className={`${index >= 5 ? 'hover:cursor-help' : ''}`}>
             {header.header}

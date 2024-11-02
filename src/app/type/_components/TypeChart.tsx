@@ -10,7 +10,7 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 
 const FirstRow = () => (
   <>
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-bd-dark">
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark">
       <span> DEFENCE → </span>
       <span> ATTACK ↴ </span>
     </div>

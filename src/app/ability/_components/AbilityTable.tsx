@@ -54,7 +54,7 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
         <TableCellHeader
           type="column"
           key={header}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
+          className="border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           {header}
         </TableCellHeader>

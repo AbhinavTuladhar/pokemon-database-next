@@ -40,7 +40,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         <TableCellHeader
           type="column"
           key={header + index}
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
+          className="border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
         >
           {header}
         </TableCellHeader>
