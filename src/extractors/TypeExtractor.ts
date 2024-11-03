@@ -2,7 +2,13 @@ import { NamedApiResource, Type } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 
 const TypeExtractor = (data: Type) => {
-  const { damage_relations: damageRelations, moves: moveList, pokemon: pokemonList, name } = data
+  const {
+    damage_relations: damageRelations,
+    moves: moveList,
+    pokemon: pokemonList,
+    name,
+    sprites,
+  } = data
   const {
     double_damage_from: doubleDamageFrom,
     double_damage_to: doubleDamageTo,
@@ -35,6 +41,31 @@ const TypeExtractor = (data: Type) => {
 
   const extractName = (arr: Array<NamedApiResource<Type>>) => arr.map(type => type.name)
 
+  const {
+    'generation-iii': {
+      'firered-leafgreen': { name_icon: fireredLeafgreenSprite },
+      'ruby-saphire': { name_icon: rubySapphireSprite },
+      'emerald': { name_icon: emeraldSprite },
+    },
+    'generation-iv': {
+      'diamond-pearl': { name_icon: diamondPearlSprite },
+      'heartgold-soulsilver': { name_icon: heartgoldSoulsilverSprite },
+      'platinum': { name_icon: platinumSprite },
+    },
+    'generation-v': {
+      'black-white': { name_icon: blackWhiteSprite },
+      'black-2-white-2': { name_icon: black2White2Sprite },
+    },
+    'generation-vi': {
+      'x-y': { name_icon: xySprite },
+      'omega-ruby-alpha-sapphire': { name_icon: omegaRubyAlphaSapphireSprite },
+    },
+    'generation-vii': {
+      'ultra-sun-ultra-moon': { name_icon: ultraSunUltraMoonSprite },
+      'sun-moon': { name_icon: sunMoonSprite },
+    },
+  } = sprites
+
   return {
     doubleDamageFrom: extractName(doubleDamageFrom),
     doubleDamageTo: extractName(doubleDamageTo),
@@ -45,6 +76,20 @@ const TypeExtractor = (data: Type) => {
     moveList: moveListFiltered,
     pokemon,
     name,
+    spriteCollection: {
+      fireredLeafgreenSprite,
+      rubySapphireSprite,
+      emeraldSprite,
+      diamondPearlSprite,
+      heartgoldSoulsilverSprite,
+      platinumSprite,
+      blackWhiteSprite,
+      black2White2Sprite,
+      xySprite,
+      omegaRubyAlphaSapphireSprite,
+      ultraSunUltraMoonSprite,
+      sunMoonSprite,
+    },
   }
 }
 

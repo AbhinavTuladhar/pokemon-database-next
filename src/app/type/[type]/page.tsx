@@ -11,6 +11,7 @@ import formatName from '@/utils/formatName'
 import {
   DualTypeChart,
   ProsAndConsSection,
+  SpriteCollection,
   StatAverageRow,
   TypeMoveTable,
   TypeSummaryRow,
@@ -37,7 +38,8 @@ const getTypeData = async (typeName: string) => {
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   const typeInformation = await getTypeData(type)
 
-  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemon, moveList } = typeInformation
+  const { doubleDamageTo, halfDamageTo, noDamageTo, pokemon, moveList, spriteCollection } =
+    typeInformation
 
   const formattedType = formatName(type.charAt(0).toUpperCase() + type.slice(1))
 
@@ -130,6 +132,11 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         <Suspense fallback="Loading moves">
           <TypeMoveTable moveNames={moveNames} />
         </Suspense>
+      </section>
+
+      <section>
+        <SectionTitle>{`${formatName(type)}`} Type Sprites </SectionTitle>
+        <SpriteCollection spriteCollection={spriteCollection} />
       </section>
     </main>
   )

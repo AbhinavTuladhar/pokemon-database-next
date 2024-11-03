@@ -1,5 +1,6 @@
 export { DualTypeChart } from './DualTypeChart'
 export { ProsAndConsSection } from './ProsAndConsSection'
+export { SpriteCollection } from './SpriteCollection'
 export { StatAverageRow } from './StatAverageRow'
 export { TypeMoveTable } from './TypeMoveTable'
 export { TypeSummaryRow } from './TypeSummaryRow'
