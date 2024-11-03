@@ -57,8 +57,8 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{ts, tsx}": [
-      "prettier --write"
+    "**/*.{ts,tsx}": [
+      "npm run format"
     ]
   }
 }

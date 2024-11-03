@@ -34,7 +34,7 @@ const NatureList = async () => {
     <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
       {headerNames.map((header, index) => (
         <TableCellHeader
-          className="!w-36 border-r border-r-bd-light pr-4 text-center last:border-r-0 dark:border-r-bd-dark"
+          className="!w-36 border-r border-r-gray-300 pr-4 text-center last:border-r-0 dark:border-r-bd-dark"
           type="column"
           key={header + index}
         >
