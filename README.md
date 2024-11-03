@@ -2,7 +2,7 @@
 
 ## About the Project
 
-This is 'inspired clone' of the website [pokemondb.net](https://pokemondb.net/) made with the help of the [PokéAPI](https://pokeapi.co/) to display various technical information about Pokémon.
+An 'inspired clone' of the website [pokemondb.net](https://pokemondb.net/) made with the help of the [PokéAPI](https://pokeapi.co/) to display various technical information about Pokémon.
 
 This project was initially written using React and vanilla JavaScript, then written in TypeScript and NextJS.
 
@@ -63,12 +63,13 @@ The app will be accessible at http:localhost:5173.
 
 ## Other libraries used
 
-- [Pokenode-ts](https://github.com/Gabb-c/pokenode-ts)
-- [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
-- [React Tooltip](https://github.com/ReactTooltip/react-tooltip)
-- [React Icons](https://github.com/react-icons/react-icons)
-- [React Tabs](https://github.com/reactjs/react-tabs)
 - [Apex Charts](https://github.com/apexcharts/apexcharts.js)
+- [Framer Motion](https://github.com/framer/motion)
+- [Pokenode-ts](https://github.com/Gabb-c/pokenode-ts)
+- [React Icons](https://github.com/react-icons/react-icons)
+- [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
+- [React Tabs](https://github.com/reactjs/react-tabs)
+- [React Tooltip](https://github.com/ReactTooltip/react-tooltip)
 
 ## List of the pages
 
