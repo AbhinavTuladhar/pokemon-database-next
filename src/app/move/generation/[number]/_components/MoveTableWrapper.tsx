@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
 
+import { MoveTable } from '@/components/moves-table'
 import generationWiseMoveData from '@/data/moveData'
 import MoveExtractor from '@/extractors/MoveExtractor'
 import { MovesApi } from '@/services'
-
-import { MoveTable } from './MoveTable'
 
 const getMovesList = async (offset: number, limit: number) => {
   const response = await MovesApi.getByOffsetAndLimit(offset, limit)

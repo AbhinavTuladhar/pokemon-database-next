@@ -8,7 +8,13 @@ import TypeExtractor from '@/extractors/TypeExtractor'
 import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import { DualTypeChart, ProsAndConsSection, StatAverageRow, TypeSummaryRow } from './_components'
+import {
+  DualTypeChart,
+  ProsAndConsSection,
+  StatAverageRow,
+  TypeMoveTable,
+  TypeSummaryRow,
+} from './_components'
 
 interface PageProps {
   params: {
@@ -38,6 +44,8 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
   // Count the number of pokemon and moves for the type.
   const pokemonCount = pokemon.length
   const moveCount = moveList.length
+
+  const moveNames = moveList.map(move => move.name)
 
   // Now format the data for rendering purposes.
   // Prepare the type effectiveness list
@@ -110,10 +118,19 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
         </Suspense>
       </section>
 
-      <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
-      <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
-        <MiniCardList pokemonNames={pokemon} />
-      </Suspense>
+      <section>
+        <SectionTitle>{`${formatName(type)}`} Pokémon</SectionTitle>
+        <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
+          <MiniCardList pokemonNames={pokemon} />
+        </Suspense>
+      </section>
+
+      <section>
+        <SectionTitle> {`${formatName(type)}`} type moves </SectionTitle>
+        <Suspense fallback="Loading moves">
+          <TypeMoveTable moveNames={moveNames} />
+        </Suspense>
+      </section>
     </main>
   )
 }
