@@ -51,37 +51,55 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const moveDataRows = filteredData.map(move => {
     const { moveName, moveType, damageClass, power, accuracy, PP, shortEntry, effect_chance } = move
 
+    const rowData = [
+      {
+        children: (
+          <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
+            {formatName(moveName)}
+          </Link>
+        ),
+      },
+      {
+        children: <TypeCard typeName={moveType} variant="small" />,
+      },
+      {
+        children: (
+          <div className="flex w-full justify-end">
+            <MoveCategoryImage category={damageClass} />
+          </div>
+        ),
+      },
+      {
+        children: power,
+        className: 'text-right',
+      },
+      {
+        children: accuracy,
+        className: 'text-right',
+      },
+      {
+        children: PP,
+        className: 'text-right',
+      },
+      {
+        children: shortEntry.replace('$effect_chance% ', ''),
+        className: 'min-w-[25rem]',
+      },
+      {
+        children: effect_chance,
+      },
+    ]
+
     return (
       <TableRow
         className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
         key={move.id}
       >
-        <TableCell variant="column">
-          <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
-            {formatName(moveName)}
-          </Link>
-        </TableCell>
-        <TableCell variant="column">
-          <TypeCard typeName={moveType} variant="small" />
-        </TableCell>
-        <TableCell variant="column">
-          <div className="flex w-full justify-end">
-            <MoveCategoryImage category={damageClass} />
-          </div>
-        </TableCell>
-        <TableCell variant="column" extraClassName="text-right">
-          {power}
-        </TableCell>
-        <TableCell variant="column" extraClassName="text-right">
-          {accuracy}
-        </TableCell>
-        <TableCell variant="column" extraClassName="text-right">
-          {PP}
-        </TableCell>
-        <TableCell variant="column" extraClassName="min-w-[25rem]">
-          {shortEntry.replace('$effect_chance% ', '')}
-        </TableCell>
-        <TableCell variant="column">{effect_chance}</TableCell>
+        {rowData.map((row, index) => (
+          <TableCell variant="column" key={index} extraClassName={row?.className}>
+            {row.children}
+          </TableCell>
+        ))}
       </TableRow>
     )
   })

@@ -54,8 +54,8 @@ const MoveExtractor = (move: Move) => {
   const englishEffect = effect_entries.find(entry => entry.language.name === 'en') as VerboseEffect
 
   // Separate the long and short entries.
-  const longEntry = englishEffect.effect
-  const shortEntry = englishEffect.short_effect
+  const longEntry = englishEffect?.effect
+  const shortEntry = englishEffect?.short_effect
 
   // Find the URLs of all the Pokemon that can learn the move.
   const pokemonUrls: Array<NamedApiResource<Move>> = learned_by_pokemon.map(pokemon => {

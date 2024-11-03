@@ -1,4 +1,5 @@
 import { NamedApiResource, Type } from '@/types'
+import { getResourceId } from '@/utils/urlUtils'
 
 const TypeExtractor = (data: Type) => {
   const { damage_relations: damageRelations, moves: moveList, pokemon: pokemonList, name } = data
@@ -25,6 +26,13 @@ const TypeExtractor = (data: Type) => {
     })
     .map(pokemon => pokemon.name)
 
+  // Remove gen 7+ moves.
+  const moveListFiltered = moveList.filter(move => {
+    const { url } = move
+    const moveId = parseInt(getResourceId(url))
+    return moveId <= 742
+  })
+
   const extractName = (arr: Array<NamedApiResource<Type>>) => arr.map(type => type.name)
 
   return {
@@ -34,7 +42,7 @@ const TypeExtractor = (data: Type) => {
     halfDamageTo: extractName(halfDamageTo),
     noDamageFrom: extractName(noDamageFrom),
     noDamageTo: extractName(noDamageTo),
-    moveList: moveList,
+    moveList: moveListFiltered,
     pokemon,
     name,
   }
