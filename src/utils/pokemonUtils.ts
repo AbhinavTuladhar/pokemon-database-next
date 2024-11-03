@@ -28,3 +28,7 @@ export const getCatchRate = (catchRate: number) => {
 export const isGen1to7 = (id: number) => {
   return (id >= 1 && id <= 807) || (id >= 10_000 && id <= 10_157)
 }
+
+export const isLatestGeneration = (id: number) => {
+  return id >= 722 && id <= 807
+}

@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 import { useParams } from 'next/navigation'
 
 import idToGenerationMap from '@/data/idToGenerationMap'
+import { isLatestGeneration } from '@/utils/pokemonUtils'
 
 import BlueLink from '../link'
 
@@ -49,6 +50,12 @@ const MoveGenerationLinks: FC<MoveGenerationLinksProps> = ({ id }) => {
 
   // Get the generation of the Pokemon on the bassis of the id
   const generation = parseInt(idToGenerationMap(id))
+
+  // If the Pokemon is in the latest generation, don't show anything as there is previous generation
+  // moveset to show
+  if (isLatestGeneration(id)) {
+    return null
+  }
 
   const numbers = generateArray(generation)
 
