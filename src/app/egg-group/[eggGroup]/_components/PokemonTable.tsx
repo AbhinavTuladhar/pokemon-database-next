@@ -8,6 +8,7 @@ import PokemonExtractor from '@/extractors/PokemonExtractor'
 import SpeciesExtractor from '@/extractors/SpeciesExtractor'
 import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
+import { isGen1to7 } from '@/utils/pokemonUtils'
 
 interface TableProps {
   eggGroup: string
@@ -45,7 +46,7 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
       const obj2 = speciesData.find(obj2 => obj2.id === obj1.id)
       return { ...obj1, ...obj2 }
     })
-    .filter(entry => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157))
+    .filter(entry => isGen1to7(entry.id))
 
   const headerNames = ['#', 'Name', 'Types', 'Other group']
   const tableHeaders = (

@@ -6,6 +6,7 @@ import BlueLink from '@/components/link'
 import PokemonExtractor from '@/extractors/PokemonExtractor'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
+import { isGen1to7 } from '@/utils/pokemonUtils'
 
 interface PokemonTableProps {
   pokemonList: Array<string>
@@ -29,7 +30,7 @@ const getPokemonData = async (names: Array<string>, abilityName: string) => {
 
   // Omit gen 8+ pokemon and their forms from the list and sort them by their natonal number.
   return simplifiedResponse
-    .filter(entry => (entry.id >= 1 && entry.id <= 807) || (entry.id >= 10001 && entry.id <= 10157))
+    .filter(entry => isGen1to7(entry.id))
     .sort((prev, curr) => (prev.nationalNumber >= curr.nationalNumber ? 1 : -1))
 }
 
