@@ -103,15 +103,20 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
       </TableRow>
     )
   })
+
   return (
     <>
       <div className="mb-8 flex justify-center">
         <Input placeholder="Search for a move" onChange={handleChange} value={filterText} />
       </div>
-      <TableContainer>
-        <thead>{headerRowCells}</thead>
-        <tbody>{moveDataRows}</tbody>
-      </TableContainer>
+      {filteredData.length > 0 ? (
+        <TableContainer>
+          <thead>{headerRowCells}</thead>
+          <tbody>{moveDataRows}</tbody>
+        </TableContainer>
+      ) : (
+        <div className="w-full text-center text-2xl"> No moves found.</div>
+      )}
     </>
   )
 }
