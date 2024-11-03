@@ -53,7 +53,7 @@ const MoveGenerationLinks: FC<MoveGenerationLinksProps> = ({ id }) => {
   const numbers = generateArray(generation)
 
   return (
-    <div className="grid place-items-center rounded-lg bg-sky-100 dark:bg-hdr-dark">
+    <div className="dark:bg-muted-blue grid place-items-center rounded-lg bg-sky-100">
       <ul className="flex flex-row flex-wrap items-center justify-center gap-y-2 divide-x divide-gray-400 py-4 dark:divide-white">
         <li className="px-4 font-bold text-black dark:text-white">In other generations</li>
         {numbers.map((number, index) => (
