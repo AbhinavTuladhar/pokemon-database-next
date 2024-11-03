@@ -16,7 +16,7 @@ export const EffectTable: FC<EffectTableProps> = ({ contestData }) => {
   ]
 
   const tableHeaderRow = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
       {tableHeaders.map((header, index) => (
         <TableCellHeader
           type="column"

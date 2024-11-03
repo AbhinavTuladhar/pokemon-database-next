@@ -20,10 +20,10 @@ export const ItemTable: FC<TableProps> = ({ itemData }) => {
   const headerNames = ['Name', 'Category', 'Effect']
 
   const headerRow = (
-    <TableRow className="bg-neutral-200 dark:bg-table-header">
+    <TableRow className="bg-neutral-200 dark:bg-hdr-dark">
       {headerNames.map(header => (
         <TableCellHeader
-          className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+          className="border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
           type="column"
           key={header}
         >

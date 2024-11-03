@@ -25,12 +25,12 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
     <div className="flex justify-center mdlg:block">
       <TableContainer>
         <thead>
-          <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+          <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
             {firstRowLabels.map((label, index) => (
               <TableCellHeader
                 key={label + index}
                 type="column"
-                className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-table-border"
+                className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
               >
                 {label}
               </TableCellHeader>

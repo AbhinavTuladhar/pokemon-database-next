@@ -41,7 +41,7 @@ const calculateScoresAndMultipliers = (
 }
 
 const ScoreCell: FC<PropsWithChildren> = ({ children }) => (
-  <div className="h-[37px] w-[46px] border border-gray-200 p-2 text-center text-xs dark:border-table-border">
+  <div className="h-[37px] w-[46px] border border-bd-light p-2 text-center text-xs dark:border-bd-dark">
     {children}
   </div>
 )
@@ -85,7 +85,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
     })
 
   const cornerDiv = (
-    <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-gray-200 text-[10px] dark:border-table-border">
+    <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark">
       <span> ATTACK → </span>
       <span> DEFENCE ↴ </span>
     </div>

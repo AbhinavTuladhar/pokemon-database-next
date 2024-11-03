@@ -13,7 +13,7 @@ const SideBar: FC = () => {
   const numbers = Array.from({ length: 7 }, (_, index) => index + 1)
 
   return (
-    <aside className="self-start rounded bg-sky-100 px-4 pb-4 pt-px dark:bg-table-header">
+    <aside className="self-start rounded bg-sky-100 px-4 pb-4 pt-px dark:bg-muted-blue">
       <SectionTitle> Moves by Generation </SectionTitle>
       <ul className="list-inside list-disc space-y-2">
         {numbers.map(number => (

@@ -40,15 +40,15 @@ const EggGroupTable = async () => {
         <div className="w-60 max-w-full">
           <TableContainer>
             <thead>
-              <TableRow className="bg-neutral-200 font-bold dark:bg-table-header">
+              <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
                 <TableCellHeader
-                  className="border-r border-r-gray-300 pr-4 dark:border-r-table-border"
+                  className="border-r border-r-bd-light pr-4 dark:border-r-bd-dark"
                   type="column"
                 >
                   Name
                 </TableCellHeader>
                 <TableCellHeader
-                  className="border-r-0 pr-4 text-right dark:border-r-table-border"
+                  className="border-r-0 pr-4 text-right dark:border-r-bd-dark"
                   type="column"
                 >
                   Pokemon

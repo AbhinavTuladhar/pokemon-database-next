@@ -9,7 +9,7 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 // FirstRow component to display the first row with type cards
 const FirstRow: FC = () => (
   <>
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-gray-100 text-[10px] dark:border-table-border" />
+    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark" />
     {typeList.map(type => (
       <MiniTypeCard typeName={type} key={type} />
     ))}

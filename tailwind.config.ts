@@ -5,8 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'table-header': '#1f3270',
-        'table-border': '#353535',
+        'hdr-dark': '#213578', // Colour of table header (and others) in dark mode
+        'bd-light': '#e2e5e9', // Border colour in light mode
+        'bd-dark': '#585858', // Border colour in dark mode
+        'muted-blue': '#334155', // Colour used in sections with links
         'dark-highlighted': '#2c303b',
       },
 
