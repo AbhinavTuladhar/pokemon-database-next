@@ -90,7 +90,7 @@ export const IconKeys = () => {
   return (
     <section className="pt-4">
       <SectionTitle> Keys to Icons </SectionTitle>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+      <div className="grid gap-y-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         {sectionData.map(data => (
           <KeyColumn rowData={data.rowData} title={data.title} key={data.title} />
         ))}
