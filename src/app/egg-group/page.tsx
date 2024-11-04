@@ -32,7 +32,7 @@ const EggGroupPage = async () => {
       <PageTitle>Pokémon Egg Groups</PageTitle>
 
       <div className="flex w-full justify-center">
-        <div className="w-60 max-w-full">
+        <div className="w-72 max-w-full">
           <EggGroupTable eggGroupData={eggGroupData} />
         </div>
       </div>
