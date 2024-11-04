@@ -1,8 +1,16 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import classNames from 'classnames'
 
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
+  useReactTable,
+} from '@tanstack/react-table'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '../containers'
 
@@ -12,10 +20,17 @@ interface TableProps<T> {
 }
 
 const TanStackTable = <T extends object>({ data, columns }: TableProps<T>) => {
+  const [sorting, setSorting] = useState<SortingState>([])
+
   const { getHeaderGroups, getRowModel } = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
   })
 
   const headers = getHeaderGroups()[0]
@@ -28,8 +43,11 @@ const TanStackTable = <T extends object>({ data, columns }: TableProps<T>) => {
           {headers.headers.map(header => (
             <TableCellHeader
               type="column"
-              className={header.column.columnDef.meta?.headerStyle}
+              className={classNames(`${header.column.columnDef.meta?.headerStyle}`, {
+                'cursor-pointer select-none': header.column.getCanSort(),
+              })}
               key={header.id}
+              onClick={header.column.getToggleSortingHandler()}
             >
               {header.isPlaceholder
                 ? null

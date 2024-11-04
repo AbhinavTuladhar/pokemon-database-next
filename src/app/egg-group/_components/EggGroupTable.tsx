@@ -16,6 +16,7 @@ export const EggGroupTable: FC<{ eggGroupData: Array<TransformedEggGroup> }> = (
   const columns = useMemo(
     () => [
       helper.accessor('name', {
+        header: () => 'Name',
         cell: info => {
           const groupName = info.getValue()
           return (
@@ -24,11 +25,11 @@ export const EggGroupTable: FC<{ eggGroupData: Array<TransformedEggGroup> }> = (
             </BlueLink>
           )
         },
-        header: () => 'Name',
         meta: {
           headerStyle: 'border-r border-r-bd-light pr-4 dark:border-r-bd-dark',
           cellStyle: 'pl-4',
         },
+        sortingFn: 'alphanumeric',
       }),
       helper.accessor('pokemonSpecies', {
         cell: info => info.getValue().length,
@@ -37,6 +38,7 @@ export const EggGroupTable: FC<{ eggGroupData: Array<TransformedEggGroup> }> = (
           headerStyle: 'border-r border-r-bd-light pr-4 dark:border-r-bd-dark',
           cellStyle: 'text-right pr-4',
         },
+        sortingFn: 'auto',
       }),
     ],
     [helper],
