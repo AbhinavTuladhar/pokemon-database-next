@@ -1,6 +1,7 @@
 'use client'
 
 import { FC, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import BlueLink from '@/components/link'
@@ -55,12 +56,14 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
         return (
           <TabPanel key={region.regionName + regionIndex}>
             <section
-              className={`grid ${regionName === 'alola' ? 'grid-cols-flexible-alola' : 'grid-cols-flexible'} gap-x-4 pt-4`}
+              className={classNames(
+                'columns-1 pt-4 min-[420px]:columns-2 min-[640px]:columns-3 lg:columns-4 xl:columns-5',
+              )}
             >
               {locations.map((location, locationIndex) => (
-                <span key={location.locationName + locationIndex}>
+                <div key={location.locationName + locationIndex}>
                   <BlueLink href={location.localUrl}>{formatName(location.locationName)}</BlueLink>
-                </span>
+                </div>
               ))}
             </section>
           </TabPanel>
