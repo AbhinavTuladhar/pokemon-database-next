@@ -4,6 +4,7 @@
  */
 
 import AbilityExtractor from '@/extractors/AbilityExtractor'
+import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import EncounterExtractor from '@/extractors/EncounterExtractor'
 import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
 import { ItemExtractor } from '@/extractors/ItemExtractors'
@@ -27,6 +28,7 @@ type TransformedAbility = ReturnType<typeof AbilityExtractor>
 type TransformedItem = ReturnType<typeof ItemExtractor>
 type TransformedSprites = ReturnType<typeof SpriteExtractor>
 type TransformedGrowthRate = ReturnType<typeof GrowthRateExtractor>
+type TransformedEggGroup = ReturnType<typeof EggGroupExtractor>
 
 // TransformedEncounter returns an array of objects.
 // We need to find the interface of the objects in the array
@@ -100,6 +102,7 @@ export type {
   SpriteDataType,
   StatTable,
   TransformedAbility,
+  TransformedEggGroup,
   TransformedEncounter,
   TransformedGrowthRate,
   TransformedItem,
