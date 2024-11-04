@@ -1,10 +1,10 @@
 'use client'
 
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 
-import { TableCellHeader, TableContainer, TableRow } from '../containers'
+import { TableCell, TableCellHeader, TableContainer, TableRow } from '../containers'
 
 interface TableProps<T> {
   data: Array<T>
@@ -24,9 +24,13 @@ const TanStackTable = <T extends object>({ data, columns }: TableProps<T>) => {
   return (
     <TableContainer>
       <thead>
-        <TableRow>
+        <TableRow className="bg-gray-300 font-bold dark:bg-hdr-dark">
           {headers.headers.map(header => (
-            <TableCellHeader key={header.id}>
+            <TableCellHeader
+              type="column"
+              className={header.column.columnDef.meta?.headerStyle}
+              key={header.id}
+            >
               {header.isPlaceholder
                 ? null
                 : flexRender(header.column.columnDef.header, header.getContext())}
@@ -38,9 +42,9 @@ const TanStackTable = <T extends object>({ data, columns }: TableProps<T>) => {
         {rows.map(row => (
           <TableRow key={row.id}>
             {row.getVisibleCells().map(cell => (
-              <Fragment key={cell.id}>
+              <TableCell extraClassName={cell.column.columnDef.meta?.cellStyle} key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </Fragment>
+              </TableCell>
             ))}
           </TableRow>
         ))}
