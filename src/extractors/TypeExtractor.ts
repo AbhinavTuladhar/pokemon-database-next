@@ -1,4 +1,5 @@
 import { NamedApiResource, Type } from '@/types'
+import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'
 
 const TypeExtractor = (data: Type) => {
@@ -28,7 +29,7 @@ const TypeExtractor = (data: Type) => {
       // const idNumber = url?.match(/\/(\d+)\/$/)[1]
       // @ts-ignore: Object is possibly 'null'.
       const idNumber = parseInt(url!.match(/\/(\d+)\/$/)[1])
-      return (idNumber >= 1 && idNumber <= 807) || (idNumber >= 10_000 && idNumber <= 10157)
+      return isGen1to7(idNumber)
     })
     .map(pokemon => pokemon.name)
 

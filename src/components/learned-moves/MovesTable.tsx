@@ -48,16 +48,24 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
               power,
               accuracy,
             } = move
+            let moveLearnLevel = levelLearnedAt
+
+            // Some level-up moves are learned at 0, if so set them to 1.
+            const levelLearnedConditional = typeof levelLearnedAt === 'number'
+
+            if (levelLearnedConditional && levelLearnedAt === 0) {
+              moveLearnLevel = 1
+            }
             return (
               <TableRow
                 className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
                 key={move.id + rowIndex}
               >
-                {levelLearnedAt && (
+                {levelLearnedConditional ? (
                   <TableCell variant="column" extraClassName="text-right">
-                    {levelLearnedAt}
+                    {moveLearnLevel}
                   </TableCell>
-                )}
+                ) : null}
                 <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
                   <BlueLink href={`/move/${moveName}`} boldFlag={true}>
                     {formatName(moveName)}
