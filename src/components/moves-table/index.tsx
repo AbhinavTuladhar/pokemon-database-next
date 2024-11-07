@@ -1,7 +1,6 @@
 'use client'
 
 import React, { ChangeEvent, FC, useMemo, useState } from 'react'
-import { Link } from 'next-view-transitions'
 
 import { TypeCard } from '@/components/cards'
 import Input from '@/components/input'
@@ -10,6 +9,7 @@ import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 
+import BlueLink from '../link'
 import TanStackTable from '../tanstack-table'
 
 interface TableProps {
@@ -55,11 +55,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         header: () => <span> Name </span>,
         cell: info => {
           const moveName = info.getValue()
-          return (
-            <Link href={`/move/${moveName}`} className="less-fancy-link font-bold">
-              {formatName(moveName)}
-            </Link>
-          )
+          return <BlueLink href={`/move/${moveName}`}>{formatName(moveName)}</BlueLink>
         },
         meta: {
           headerStyle,
