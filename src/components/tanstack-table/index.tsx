@@ -74,11 +74,13 @@ const TanStackTable = <T extends object>({ data, columns, firstColumn }: TablePr
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-x-1">
                 {header.isPlaceholder
                   ? null
                   : flexRender(header.column.columnDef.header, header.getContext())}
-                <SortingArrows state={header.column.getIsSorted()} />
+                {header.column.getCanSort() ? (
+                  <SortingArrows state={header.column.getIsSorted()} />
+                ) : null}
               </div>
             </TableCellHeader>
           ))}

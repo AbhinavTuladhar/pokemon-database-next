@@ -29,7 +29,20 @@ type MoveTableColumns = Pick<
 >
 
 export const MoveTable: FC<TableProps> = ({ moveData }) => {
-  const [filteredData, setFilteredData] = useState(moveData)
+  const tableMoveData = moveData.map(
+    ({ moveName, moveType, damageClass, power, accuracy, PP, effect_chance, shortEntry }) => ({
+      moveName,
+      moveType,
+      damageClass,
+      power,
+      accuracy,
+      PP,
+      effect_chance,
+      shortEntry,
+    }),
+  )
+
+  const [filteredData, setFilteredData] = useState(tableMoveData)
   const [filterText, setFilterText] = useState('')
 
   const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
@@ -76,16 +89,31 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
       }),
       helper.accessor('power', {
         header: () => <span> Power </span>,
-        cell: info => info.getValue(),
+        cell: info => {
+          const powerValue = info.getValue()
+          if (powerValue === 0) {
+            return '-'
+          }
+          return powerValue
+        },
         meta: {
           headerStyle,
           cellStyle: 'text-right',
         },
-        sortingFn: 'basic',
+        sortingFn: 'alphanumeric',
       }),
       helper.accessor('accuracy', {
         header: () => <span> Acc </span>,
-        cell: info => info.getValue(),
+        cell: info => {
+          const accuracyValue = info.getValue()
+          if (accuracyValue === 0) {
+            return '-'
+          }
+          if (accuracyValue === Infinity) {
+            return '∞'
+          }
+          return accuracyValue
+        },
         meta: {
           headerStyle,
           cellStyle: 'text-right',
