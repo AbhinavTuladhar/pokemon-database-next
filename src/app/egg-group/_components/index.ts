@@ -1,0 +1,1 @@
+export { EggGroupTable } from './EggGroupTable'

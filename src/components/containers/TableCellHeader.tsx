@@ -1,7 +1,7 @@
-import { FC, ReactNode } from 'react'
+import { FC, HTMLAttributes, ReactNode } from 'react'
 import classNames from 'classnames'
 
-interface HeaderProps {
+interface HeaderProps extends HTMLAttributes<HTMLTableCellElement> {
   children: ReactNode
   className?: string
   type?: 'column' | 'row'
@@ -23,9 +23,11 @@ export const TableCellHeader: FC<HeaderProps> = ({
   className,
   type = 'row',
   wrapFlag = false,
+  ...props
 }) => {
   return (
     <th
+      {...props}
       className={classNames(
         'table-cell border-t border-gray-300 py-[10px] align-middle dark:border-bd-dark',
         { 'px-2 text-right text-sm font-normal text-gray-500 dark:text-gray-200': type === 'row' },

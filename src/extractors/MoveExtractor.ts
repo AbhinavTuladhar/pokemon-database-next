@@ -68,8 +68,8 @@ const MoveExtractor = (move: Move) => {
   const pokemon = learned_by_pokemon.map(pokemon => pokemon.name)
 
   // Dealing with keys which might have null values.
-  const realAccuracy = accuracy ?? '-'
-  const realPower = power ?? '-'
+  const realAccuracy = shortEntry.includes('Never miss') ? Infinity : accuracy ?? 0
+  const realPower = power ?? 0
   const realEffectChance = effect_chance ?? '-'
 
   const [generationString, generationNumber] = generation.split('-')

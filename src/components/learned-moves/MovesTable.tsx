@@ -1,11 +1,15 @@
-import { FC } from 'react'
+'use client'
+
+import { FC, useMemo } from 'react'
 
 import { TypeCard } from '@/components/cards'
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
 import MoveCategoryImage from '@/components/move-category-image'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
+import { createColumnHelper } from '@tanstack/react-table'
+
+import TanStackTable from '../tanstack-table'
 
 interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt?: number
@@ -16,75 +20,121 @@ interface MovesTableProps {
   levelFlag?: boolean
 }
 
-export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
-  const firstRow = ['Lv.', 'Name', 'Type', 'Class', 'PP', 'Power', 'Acc.']
+type TableMoveData = Pick<
+  TransformedMoveLevel,
+  'moveName' | 'levelLearnedAt' | 'moveType' | 'damageClass' | 'power' | 'accuracy'
+>
 
-  const firstRowLabels = levelFlag === true ? firstRow : firstRow.slice(1)
+export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
+  const smallerMoveData = movesData.map(
+    ({ moveName, levelLearnedAt, moveType, damageClass, power, accuracy }) => ({
+      moveName,
+      levelLearnedAt,
+      moveType,
+      damageClass,
+      power,
+      accuracy,
+    }),
+  )
+
+  const helper = createColumnHelper<TableMoveData>()
+
+  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
+
+  const columns = useMemo(() => {
+    const baseColumns = [
+      helper.accessor('moveName', {
+        header: () => <span> Name </span>,
+        cell: info => {
+          const moveName = info.getValue()
+          return <BlueLink href={`/move/${moveName}`}>{formatName(moveName)}</BlueLink>
+        },
+        meta: {
+          headerStyle,
+        },
+        sortingFn: 'basic',
+        enableGlobalFilter: true,
+      }),
+      helper.accessor('moveType', {
+        header: () => <span> Type </span>,
+        cell: info => <TypeCard typeName={info.getValue()} />,
+        meta: {
+          headerStyle,
+        },
+        sortingFn: 'basic',
+      }),
+      helper.accessor('damageClass', {
+        header: () => <span> Cat. </span>,
+        cell: info => (
+          <div className="flex w-full justify-end">
+            <MoveCategoryImage category={info.getValue()} />
+          </div>
+        ),
+        meta: {
+          headerStyle,
+        },
+        sortingFn: 'basic',
+      }),
+      helper.accessor('power', {
+        header: () => <span> Power </span>,
+        cell: info => {
+          const powerValue = info.getValue()
+          if (powerValue === 0) {
+            return '-'
+          }
+          return powerValue
+        },
+        meta: {
+          headerStyle,
+          cellStyle: 'text-right',
+        },
+        sortingFn: 'alphanumeric',
+      }),
+      helper.accessor('accuracy', {
+        header: () => <span> Acc </span>,
+        cell: info => {
+          const accuracyValue = info.getValue()
+          if (accuracyValue === 0) {
+            return '-'
+          }
+          if (accuracyValue === Infinity) {
+            return '∞'
+          }
+          return accuracyValue
+        },
+        meta: {
+          headerStyle,
+          cellStyle: 'text-right',
+        },
+        sortingFn: 'basic',
+      }),
+    ]
+
+    return [
+      ...(levelFlag
+        ? [
+            helper.accessor('levelLearnedAt', {
+              header: () => <span> Lv. </span>,
+              cell: info => info.getValue(),
+              meta: {
+                headerStyle,
+                cellStyle: 'text-right',
+              },
+              sortingFn: 'basic',
+            }),
+          ]
+        : []),
+      ...baseColumns,
+    ]
+  }, [helper, levelFlag])
 
   return (
     <div className="flex justify-center mdlg:block">
-      <TableContainer>
-        <thead>
-          <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
-            {firstRowLabels.map((label, index) => (
-              <TableCellHeader
-                key={label + index}
-                type="column"
-                className="border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark"
-              >
-                {label}
-              </TableCellHeader>
-            ))}
-          </TableRow>
-        </thead>
-        <tbody>
-          {movesData.map((move, rowIndex) => {
-            const {
-              moveName,
-              levelLearnedAt = '',
-              moveType,
-              damageClass,
-              PP,
-              power,
-              accuracy,
-            } = move
-            let moveLearnLevel = levelLearnedAt
-
-            // Some level-up moves are learned at 0, if so set them to 1.
-            const levelLearnedConditional = typeof levelLearnedAt === 'number'
-
-            if (levelLearnedConditional && levelLearnedAt === 0) {
-              moveLearnLevel = 1
-            }
-            return (
-              <TableRow
-                className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
-                key={move.id + rowIndex}
-              >
-                {levelLearnedConditional ? (
-                  <TableCell variant="column" extraClassName="text-right">
-                    {moveLearnLevel}
-                  </TableCell>
-                ) : null}
-                <TableCell variant="column" extraClassName="whitespace-nowrap pr-4">
-                  <BlueLink href={`/move/${moveName}`} boldFlag={true}>
-                    {formatName(moveName)}
-                  </BlueLink>
-                </TableCell>
-                <TableCell variant="column">
-                  <TypeCard typeName={moveType} />
-                </TableCell>
-                <TableCell variant="column">
-                  <MoveCategoryImage category={damageClass} />
-                </TableCell>
-                <TableCell variant="column">{PP}</TableCell>
-                <TableCell variant="column">{power}</TableCell>
-                <TableCell variant="column">{accuracy}</TableCell>
-              </TableRow>
-            )
-          })}
-        </tbody>
-      </TableContainer>
+      <TanStackTable
+        data={smallerMoveData}
+        columns={columns}
+        firstColumn={levelFlag ? 'levelLearnedAt' : 'moveName'}
+      />
     </div>
   )
 }

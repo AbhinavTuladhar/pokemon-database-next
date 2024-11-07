@@ -3,19 +3,86 @@
 import React, { ChangeEvent, FC, useCallback, useMemo, useState } from 'react'
 import debounce from 'lodash.debounce'
 
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import Input from '@/components/input'
 import BlueLink from '@/components/link'
+import TanStackTable from '@/components/tanstack-table'
 import { TransformedAbility } from '@/types'
 import formatName from '@/utils/formatName'
+import { createColumnHelper } from '@tanstack/react-table'
 
 interface TableProps {
   abilityData: Array<TransformedAbility>
 }
 
+type TableAbilityData = Pick<
+  TransformedAbility,
+  'name' | 'pokemonCount' | 'shortEntry' | 'generationIntroduced'
+>
+
 export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
-  const [filteredData, setFilteredData] = useState(abilityData)
+  const tableAbilityData = abilityData.map(
+    ({ name, pokemonCount, shortEntry, generationIntroduced }) => ({
+      name,
+      pokemonCount,
+      shortEntry,
+      generationIntroduced,
+    }),
+  )
+
+  const [filteredData, setFilteredData] = useState(tableAbilityData)
   const [filterText, setFilterText] = useState('')
+
+  const helper = createColumnHelper<TableAbilityData>()
+
+  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
+
+  const columns = useMemo(
+    () => [
+      helper.accessor('name', {
+        header: () => <span> Name </span>,
+        cell: info => {
+          const abilityName = info.getValue()
+          return (
+            <BlueLink href={`/ability/${abilityName}`} boldFlag={true}>
+              {formatName(abilityName)}
+            </BlueLink>
+          )
+        },
+        meta: {
+          headerStyle,
+        },
+      }),
+      helper.accessor('pokemonCount', {
+        header: () => <span> Pokémon </span>,
+        cell: info => info.getValue(),
+        meta: {
+          headerStyle,
+          cellStyle: 'w-6',
+        },
+      }),
+      helper.accessor('shortEntry', {
+        header: () => <span> Description </span>,
+        cell: info => info.getValue(),
+        meta: {
+          headerStyle,
+          cellStyle: 'min-w-[40rem]',
+        },
+        enableSorting: false,
+      }),
+      helper.accessor('generationIntroduced', {
+        header: () => <span> Gen.</span>,
+        cell: info => {
+          const gen = info.getValue()
+          return gen[gen.length - 1]
+        },
+        meta: {
+          headerStyle,
+          cellStyle: 'w-1',
+        },
+      }),
+    ],
+    [helper],
+  )
 
   const handleFilter = useCallback(
     (value: string) => {
@@ -46,55 +113,16 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
     debouncedChange(rawInput)
   }
 
-  const headers = ['Name', 'Pokemon', 'Description', 'Gen.']
-
-  const headerRows = (
-    <TableRow className="bg-neutral-200  dark:bg-hdr-dark">
-      {headers.map(header => (
-        <TableCellHeader
-          type="column"
-          key={header}
-          className="border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
-        >
-          {header}
-        </TableCellHeader>
-      ))}
-    </TableRow>
-  )
-
-  const abilityDataRows = filteredData.map(ability => {
-    const { name, pokemonCount, shortEntry, generationIntroduced } = ability
-    return (
-      <TableRow
-        className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted"
-        key={name}
-      >
-        <TableCell variant="column">
-          <BlueLink href={`/ability/${name}`} boldFlag={true}>
-            {formatName(name)}
-          </BlueLink>
-        </TableCell>
-        <TableCell variant="column" extraClassName="w-6">
-          {pokemonCount}
-        </TableCell>
-        <TableCell variant="column" extraClassName="min-w-[40rem]">
-          {shortEntry}
-        </TableCell>
-        <TableCell variant="column" extraClassName="w-1">
-          {generationIntroduced[generationIntroduced.length - 1]}
-        </TableCell>
-      </TableRow>
-    )
-  })
   return (
     <>
       <div className="mb-8 flex justify-center">
         <Input placeholder="Search for an ability" onChange={handleChange} value={filterText} />
       </div>
-      <TableContainer>
-        <thead>{headerRows}</thead>
-        <tbody>{abilityDataRows}</tbody>
-      </TableContainer>
+      {filteredData.length ? (
+        <TanStackTable data={filteredData} columns={columns} firstColumn="name" />
+      ) : (
+        <div className="text-center text-4xl font-bold">No such ability was found.</div>
+      )}
     </>
   )
 }
