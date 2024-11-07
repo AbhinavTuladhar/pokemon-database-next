@@ -90,7 +90,11 @@ const TanStackTable = <T extends object>({ data, columns, firstColumn }: TablePr
         {rows.map(row => (
           <TableRow key={row.id}>
             {row.getVisibleCells().map(cell => (
-              <TableCell extraClassName={cell.column.columnDef.meta?.cellStyle} key={cell.id}>
+              <TableCell
+                variant="column"
+                extraClassName={cell.column.columnDef.meta?.cellStyle}
+                key={cell.id}
+              >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableCell>
             ))}
