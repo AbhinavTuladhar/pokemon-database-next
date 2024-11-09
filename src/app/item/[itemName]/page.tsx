@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import { PageTitle } from '@/components/containers'
@@ -17,6 +18,13 @@ const getItemData = async (name: string) => {
 interface PageProps {
   params: {
     itemName: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { itemName } = params
+  return {
+    title: `${formatName(itemName)} | Pokémon Items | Pokémon Database`,
   }
 }
 

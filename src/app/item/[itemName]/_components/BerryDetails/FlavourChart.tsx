@@ -54,7 +54,7 @@ const FlavourChart: FC<FlavourChartProps> = ({ flavourData }) => {
         ]}
         type="bar"
         options={options}
-        // height="450"
+        height="450"
         width="100%"
       />
     </div>
