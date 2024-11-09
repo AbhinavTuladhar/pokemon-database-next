@@ -12,4 +12,8 @@ export const BerryApi = {
     const responses = await Promise.all(requests)
     return responses as Berry[]
   },
+  getByName: async function (name: string) {
+    const response = await Api.berry.getBerryByName(name)
+    return response as Berry
+  },
 }
