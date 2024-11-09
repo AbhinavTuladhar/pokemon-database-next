@@ -4,6 +4,7 @@
  */
 
 import AbilityExtractor from '@/extractors/AbilityExtractor'
+import BerryExtractor from '@/extractors/BerryExtractor'
 import EggGroupExtractor from '@/extractors/EggGroupExtractor'
 import EncounterExtractor from '@/extractors/EncounterExtractor'
 import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
@@ -29,6 +30,7 @@ type TransformedItem = ReturnType<typeof ItemExtractor>
 type TransformedSprites = ReturnType<typeof SpriteExtractor>
 type TransformedGrowthRate = ReturnType<typeof GrowthRateExtractor>
 type TransformedEggGroup = ReturnType<typeof EggGroupExtractor>
+type TransformedBerry = ReturnType<typeof BerryExtractor>
 
 // TransformedEncounter returns an array of objects.
 // We need to find the interface of the objects in the array
@@ -93,7 +95,11 @@ interface PokedexEntry {
   generationInternal: string
 }
 
+// For combined berry and item information
+type CombinedBerryItem = TransformedBerry & TransformedItem
+
 export type {
+  CombinedBerryItem,
   EvolutionPokemon,
   GenerationSprite,
   GenericNamedResource,
@@ -102,6 +108,7 @@ export type {
   SpriteDataType,
   StatTable,
   TransformedAbility,
+  TransformedBerry,
   TransformedEggGroup,
   TransformedEncounter,
   TransformedGrowthRate,
