@@ -2,7 +2,6 @@
 
 import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
-import { Tooltip } from 'react-tooltip'
 
 import TanStackTable from '@/components/tanstack-table'
 import { CombinedBerryItem } from '@/types'
@@ -16,7 +15,6 @@ interface BerryTableProps {
 type TableBerryData = Pick<
   CombinedBerryItem,
   | 'generationIntroduced'
-  | 'id'
   | 'sprite'
   | 'name'
   | 'shortEntry'
@@ -24,13 +22,13 @@ type TableBerryData = Pick<
   | 'firmness'
   | 'size'
   | 'maxHarvest'
+  | 'smoothness'
 >
 
 export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
   const tableBerryData = berryData.map(
     ({
       generationIntroduced,
-      id,
       sprite,
       name,
       shortEntry,
@@ -38,9 +36,9 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
       firmness,
       size,
       maxHarvest,
+      smoothness,
     }) => ({
       generationIntroduced,
-      id,
       sprite,
       name,
       shortEntry,
@@ -48,6 +46,7 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
       firmness,
       size,
       maxHarvest,
+      smoothness,
     }),
   )
 
@@ -56,13 +55,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
 
   const columns = useMemo(
     () => [
-      helper.accessor('id', {
-        header: () => <span> ID </span>,
-        cell: info => info.getValue(),
-        meta: {
-          headerStyle,
-        },
-      }),
       helper.accessor('generationIntroduced', {
         header: () => <span> Gen </span>,
         cell: info => {
@@ -78,8 +70,8 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         cell: info => {
           const { name, sprite } = info.row.original
           return (
-            <div className="flex items-center gap-x-1">
-              <Image src={sprite} alt={name} width={40} height={40} />
+            <div className="flex items-center">
+              <Image src={sprite} alt={name} width={30} height={30} />
               <span>{formatName(name)}</span>
             </div>
           )
@@ -98,14 +90,28 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         enableSorting: false,
       }),
       helper.accessor('growthTime', {
-        header: () => <span id="growthTime"> Growth Time </span>,
+        header: () => (
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Time it takes the tree to grow one stage, in hours. Berry trees go through four of these growth stages before they can be picked."
+          >
+            Growth Time
+          </span>
+        ),
         cell: info => info.getValue(),
         meta: {
           headerStyle,
         },
       }),
       helper.accessor('firmness', {
-        header: () => <span id="firmness"> Firmness </span>,
+        header: () => (
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="The firmness of this berry, used in making Pokéblocks or Poffins."
+          >
+            Firmness
+          </span>
+        ),
         cell: info => formatName(info.getValue()),
         meta: {
           headerStyle,
@@ -121,7 +127,28 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         },
       }),
       helper.accessor('maxHarvest', {
-        header: () => <span id="maxHarvest"> Max Harvest </span>,
+        header: () => (
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="The maximum number of these berries that can grow on one tree in Generation IV."
+          >
+            Max Harvest
+          </span>
+        ),
+        cell: info => info.getValue(),
+        meta: {
+          headerStyle,
+        },
+      }),
+      helper.accessor('smoothness', {
+        header: () => (
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="The smoothness of this Berry, used in making Pokéblocks or Poffins."
+          >
+            Smoothness
+          </span>
+        ),
         cell: info => info.getValue(),
         meta: {
           headerStyle,
@@ -131,25 +158,7 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
     [helper],
   )
 
-  const tooltipData = [
-    { id: 'growthTime', text: 'Time it takes the tree to grow one stage, in hours.' },
-    { id: 'firmness', text: 'The firmness of this berry, used in making Pokéblocks or Poffins.' },
-    { id: 'maxHarvest', text: 'The maximum number of these berries that can grow on one tree.' },
-  ]
-
   return (
-    <>
-      <TanStackTable columns={columns} data={tableBerryData} firstColumn="id" />
-      {tooltipData.map(tip => (
-        <Tooltip
-          anchorSelect={`#${tip.id}`}
-          place="top"
-          key={tip.id}
-          style={{ backgroundColor: 'black', padding: '0.5rem', maxWidth: '15rem' }}
-        >
-          <span className="text-xs"> {tip.text} </span>
-        </Tooltip>
-      ))}
-    </>
+    <TanStackTable columns={columns} data={tableBerryData} firstColumn="generationIntroduced" />
   )
 }
