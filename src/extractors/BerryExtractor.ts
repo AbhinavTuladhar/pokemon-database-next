@@ -14,9 +14,20 @@ const BerryExtractor = (data: Berry) => {
     soil_dryness: soilDryness,
   } = data
 
+  const flavourInfo = flavors.map(flavour => {
+    const {
+      flavor: { name },
+      potency,
+    } = flavour
+    return {
+      name,
+      potency,
+    }
+  })
+
   return {
     firmness,
-    flavors,
+    flavours: flavourInfo,
     growthTime,
     id,
     itemName,

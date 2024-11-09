@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import contestTypeMapping from '@/utils/contestTypeMapping'
+import contestTypeMapping from '@/data/contestTypeMapping'
 import formatName from '@/utils/formatName'
 
 interface ContestCardProps {

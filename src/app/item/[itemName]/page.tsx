@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import { PageTitle } from '@/components/containers'
@@ -7,7 +8,7 @@ import { ItemExtractor } from '@/extractors/ItemExtractors'
 import { ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
 
-import { GameDescriptions, ItemData } from './_components'
+import { BerryDetails, GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
   const response = await ItemApi.getByName(name)
@@ -17,6 +18,13 @@ const getItemData = async (name: string) => {
 interface PageProps {
   params: {
     itemName: string
+  }
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { itemName } = params
+  return {
+    title: `${formatName(itemName)} | Pokémon Items | Pokémon Database`,
   }
 }
 
@@ -35,6 +43,9 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
     sprite,
     name: actualItemName,
   } = itemData
+
+  const isBerry = fling_effect?.name.includes('berry') || actualItemName.includes('berry')
+
   return (
     <main>
       <div className="flex flex-wrap items-center justify-center">
@@ -67,6 +78,8 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
           <GameDescriptions descriptions={descriptions} />
         </section>
       </div>
+
+      {isBerry ? <BerryDetails itemName={actualItemName} /> : null}
     </main>
   )
 }
