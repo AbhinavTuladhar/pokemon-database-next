@@ -3,6 +3,7 @@
 import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
+import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
 import { CombinedBerryItem } from '@/types'
 import formatName from '@/utils/formatName'
@@ -69,10 +70,13 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         header: () => <span> Name </span>,
         cell: info => {
           const { name, sprite } = info.row.original
+          const itemName = `${name}-berry`
           return (
             <div className="flex items-center">
               <Image src={sprite} alt={name} width={30} height={30} />
-              <span>{formatName(name)}</span>
+              <BlueLink boldFlag href={`/item/${itemName}`}>
+                {formatName(name)}
+              </BlueLink>
             </div>
           )
         },
