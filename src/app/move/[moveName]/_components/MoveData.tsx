@@ -34,6 +34,31 @@ export const MoveData: FC<MoveDataProps> = ({
   const PPValue = `${PP} (max. ${Math.floor(PP * 1.6)})`
   const priorityValue = Number(priority) > 0 ? `+${priority}` : priority
 
+  let actualPower: string | number
+  let actualAccuracy: string | number
+
+  switch (power) {
+    case Infinity:
+      actualPower = '∞'
+      break
+    case 0:
+      actualPower = '—'
+      break
+    default:
+      actualPower = power
+  }
+
+  switch (accuracy) {
+    case Infinity:
+      actualAccuracy = '∞'
+      break
+    case 0:
+      actualAccuracy = '—'
+      break
+    default:
+      actualAccuracy = power
+  }
+
   const damageClassValue = (
     <div className="flex flex-row gap-x-4">
       <MoveCategoryImage category={damageClass} />
@@ -44,8 +69,8 @@ export const MoveData: FC<MoveDataProps> = ({
   const tableData = [
     { header: 'Type', children: moveTypeCard },
     { header: 'Category', children: damageClassValue },
-    { header: 'Power', children: power },
-    { header: 'Accuracy', children: accuracy },
+    { header: 'Power', children: actualPower },
+    { header: 'Accuracy', children: actualAccuracy },
     // Optionally add the "Priority" row if the priority value is not 0
     ...(priority !== 0 ? [{ header: 'Priority', children: priorityValue }] : []),
     { header: 'PP', children: PPValue },

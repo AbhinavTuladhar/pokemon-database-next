@@ -47,7 +47,11 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
         header: () => <span> Name </span>,
         cell: info => {
           const moveName = info.getValue()
-          return <BlueLink href={`/move/${moveName}`}>{formatName(moveName)}</BlueLink>
+          return (
+            <BlueLink boldFlag href={`/move/${moveName}`}>
+              {formatName(moveName)}
+            </BlueLink>
+          )
         },
         meta: {
           headerStyle,
