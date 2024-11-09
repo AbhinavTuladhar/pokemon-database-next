@@ -58,7 +58,7 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
       offsetY: 10,
       text: title,
       style: {
-        fontFamily: '__Fira_Sans_d5c5f4',
+        fontFamily: 'Tahoma',
         fontSize: '1.125rem',
       },
     },
@@ -66,7 +66,7 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
     subtitle: {
       text: subTitle,
       style: {
-        fontFamily: '__Fira_Sans_d5c5f4',
+        fontFamily: 'Tahoma',
       },
     },
     legend: {

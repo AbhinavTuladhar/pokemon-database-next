@@ -4,6 +4,7 @@ import BerryExtractor from '@/extractors/BerryExtractor'
 import { BerryApi } from '@/services'
 
 import BerryData from './BerryData'
+import FlavourChart from './FlavourChart'
 
 interface BerryDetailsProps {
   itemName: string
@@ -23,7 +24,7 @@ export const BerryDetails: FC<BerryDetailsProps> = async ({ itemName }) => {
   const { firmness, flavours, growthTime, maxHarvest, size, smoothness, soilDryness } = berryData
 
   return (
-    <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
+    <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm-md:grid-cols-[1fr,_2fr]">
       <BerryData
         firmness={firmness}
         growthTime={growthTime}
@@ -32,6 +33,7 @@ export const BerryDetails: FC<BerryDetailsProps> = async ({ itemName }) => {
         smoothness={smoothness}
         soilDryness={soilDryness}
       />
+      <FlavourChart flavourData={flavours} />
     </div>
   )
 }
