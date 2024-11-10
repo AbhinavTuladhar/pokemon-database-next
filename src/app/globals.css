@@ -15,49 +15,25 @@
 }
 
 .fancy-link {
-  position: relative;
-  color: var(--link-colour);
-}
-
-.fancy-link::after {
-  content: "";
-  position: absolute;
-  top: 1.25em;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--link-colour);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.fancy-link:hover {
-  cursor: pointer;
-  color: var(--link-hover-colour);
-}
-
-.fancy-link:hover::after {
-  background-color: var(--link-hover-colour);
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-.less-fancy-link {
   background: linear-gradient(to bottom, var(--link-colour), var(--link-colour));
   background-size: 0% 2px;
   background-repeat: no-repeat;
-  background-position: left 1.1em;
+  background-position: right 1.1em;
+  padding-bottom: 2px;
+  line-height: 1.25;
   color: var(--link-colour);
-  transition: all 0.4s ease-in-out;
+  transition:
+    background-size 0.4s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
-.less-fancy-link:hover {
+.fancy-link:is(:hover, :focus) {
   background: linear-gradient(to bottom, var(--link-hover-colour), var(--link-hover-colour));
   background-size: 100% 2px;
   background-repeat: no-repeat;
   background-position: left 1.1em;
   color: var(--link-hover-colour);
+  outline: none;
 }
 
 ::-webkit-scrollbar {
@@ -95,7 +71,7 @@ html.dark .apexcharts-tooltip,
 html.dark .apexcharts-tooltip-title {
   background-color: #333 !important;
   color: #fff !important;
-  border: 1px solid #555 !important;
+  border: 1px solid #555555 !important;
 }
 
 html.dark .apexcharts-legend-text {
@@ -110,7 +86,7 @@ html.dark .apexcharts-subtitle-text {
 
 html.dark .apexcharts-menu {
   background: black;
-  color: white;
+  color: #ffffff;
 }
 
 .apexcharts-menu-item {

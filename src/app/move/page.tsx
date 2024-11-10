@@ -49,7 +49,7 @@ const MoveList = async () => {
   return (
     <main>
       <PageTitle> Pokémon Moves</PageTitle>
-      <div className="grid gap-x-8 lg:grid-cols-3">
+      <div className="grid gap-x-8 gap-y-4 lg:grid-cols-3">
         <SideBar />
         <div className="lg:col-span-2">
           <MainDescription />
