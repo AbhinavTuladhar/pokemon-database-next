@@ -44,7 +44,7 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
     name: actualItemName,
   } = itemData
 
-  const isBerry = fling_effect?.name.includes('berry') || actualItemName.includes('berry')
+  const isBerry = fling_effect?.name.includes('berry') && actualItemName.includes('berry')
 
   return (
     <main>
