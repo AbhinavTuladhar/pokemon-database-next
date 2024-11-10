@@ -63,7 +63,7 @@ const TanStackTable = <T extends object>({ data, columns, firstColumn }: TablePr
   return (
     <TableContainer>
       <thead>
-        <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
+        <TableRow className="bg-neutral-200 font-bold duration-300 dark:bg-hdr-dark">
           {headers.headers.map(header => (
             <TableCellHeader
               type="column"
@@ -88,7 +88,10 @@ const TanStackTable = <T extends object>({ data, columns, firstColumn }: TablePr
       </thead>
       <tbody>
         {rows.map(row => (
-          <TableRow key={row.id}>
+          <TableRow
+            className="duration-300 even:bg-gray-100 hover:bg-gray-200 dark:even:bg-[#222f44] dark:hover:bg-[#2b3a55]"
+            key={row.id}
+          >
             {row.getVisibleCells().map(cell => (
               <TableCell
                 variant="column"
