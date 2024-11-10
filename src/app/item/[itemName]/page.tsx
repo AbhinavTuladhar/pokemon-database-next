@@ -44,7 +44,12 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
     name: actualItemName,
   } = itemData
 
-  const isBerry = fling_effect?.name.includes('berry') && actualItemName.includes('berry')
+  /*
+   * Third conditions is because there are berries which have no berry effect and are used only for baking
+   */
+  const isBerry =
+    actualItemName.includes('berry') &&
+    (fling_effect?.name.includes('berry') || category.includes('baking'))
 
   return (
     <main>
