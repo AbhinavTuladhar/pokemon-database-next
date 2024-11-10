@@ -9,7 +9,7 @@ interface BlueLinkProps extends LinkProps {
 
 const BlueLink: FC<BlueLinkProps> = ({ children, boldFlag, ...props }) => {
   return (
-    <Link {...props} className={`${boldFlag ? 'font-bold' : ''} fancy-link inline`}>
+    <Link {...props} className={`${boldFlag ? 'font-bold' : ''} fancy-link`}>
       {children}
     </Link>
   )

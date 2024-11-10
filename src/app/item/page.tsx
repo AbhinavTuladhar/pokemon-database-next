@@ -51,7 +51,7 @@ const ItemPage = async () => {
   return (
     <main>
       <PageTitle> Pokémon Items List</PageTitle>
-      <div className="grid gap-x-8 lg:grid-cols-3">
+      <div className="grid gap-x-8 gap-y-4 lg:grid-cols-3">
         <Sidebar />
         <div className="lg:col-span-2">
           <MainDescription />
