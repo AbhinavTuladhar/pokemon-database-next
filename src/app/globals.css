@@ -20,7 +20,7 @@
 }
 
 .fancy-link::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 1.25em;
   left: 0;
@@ -83,7 +83,7 @@ html.dark .react-loading-skeleton {
   --highlight-color: #435979 !important;
 }
 
-[data-testid='react-katex'] {
+[data-testid="react-katex"] {
   font-size: clamp(0.75rem, 0.529rem + 0.98vw, 1rem);
 }
 
@@ -102,9 +102,24 @@ html.dark .apexcharts-legend-text {
   color: #fff !important;
   border: none !important;
 }
+
 html.dark .apexcharts-title-text,
 html.dark .apexcharts-subtitle-text {
   fill: #fff !important;
+}
+
+html.dark .apexcharts-menu {
+  background: black;
+  color: white;
+}
+
+.apexcharts-menu-item {
+  transition: all 0.3s ease-out;
+}
+
+html.dark .apexcharts-menu-item:hover {
+  background: hsl(0, 0%, 20%);
+  color: white;
 }
 
 .main-layout:has(.hero-banner) {
@@ -137,7 +152,7 @@ html.dark .apexcharts-subtitle-text {
 }
 
 .hero-banner::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: #1e2029a6;
