@@ -1,4 +1,5 @@
 export { AnimatedPageWrapper } from './AnimatedPageWrapper'
+export { ErrorContainerPage } from './ErrorContainerPage'
 export { PageTitle } from './PageTitle'
 export { SectionTitle } from './SectionTitle'
 export { TableCell } from './TableCell'
