@@ -103,7 +103,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
           <SectionTitle>Pokémon that can learn {formatName(actualMoveName)}</SectionTitle>
           <InfiniteMiniCardScroll increment={50} nameList={pokemon} />
         </>
-      ) : (
+      ) : pokemon.length === 0 ? null : (
         <>
           <SectionTitle>Pokémon that can learn {`${formatName(actualMoveName)}`}</SectionTitle>
           <Suspense fallback={<MiniCardListSkeleton pokemonCount={pokemon.length} />}>
