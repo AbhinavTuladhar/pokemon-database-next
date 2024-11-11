@@ -3,7 +3,8 @@
 import { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 
-import ErrorContainer from '@/components/error-handling'
+import { NotFoundPage, ServerErrorPage } from '@/components/error-handling'
+import { isNotFound } from '@/utils/error.utils'
 
 export default function ErrorPage({ error }: Readonly<{ error: Error & { digest?: string } }>) {
   const params = useParams<{ pokemonName: string }>()
@@ -15,5 +16,11 @@ export default function ErrorPage({ error }: Readonly<{ error: Error & { digest?
     console.error(error)
   }, [error])
 
-  return <ErrorContainer pageUrl={pageUrl} param={pokemonName} resourceType="sprites" />
+  const is404 = isNotFound(error.message)
+
+  if (is404) {
+    return <NotFoundPage pageUrl={pageUrl} param={pokemonName} resourceType="sprites" />
+  }
+
+  return <ServerErrorPage />
 }

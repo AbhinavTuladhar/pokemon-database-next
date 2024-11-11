@@ -3,7 +3,8 @@
 import { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 
-import ErrorContainer from '@/components/error-handling'
+import { NotFoundPage, ServerErrorPage } from '@/components/error-handling'
+import { isNotFound } from '@/utils/error.utils'
 
 export default function Error({
   error,
@@ -20,5 +21,11 @@ export default function Error({
     console.error(error)
   }, [error])
 
-  return <ErrorContainer pageUrl={pageUrl} param={number} resourceType="generation" />
+  const is404 = isNotFound(error.message)
+
+  if (is404) {
+    return <NotFoundPage pageUrl={pageUrl} param={number} resourceType="generation" />
+  }
+
+  return <ServerErrorPage />
 }
