@@ -9,7 +9,7 @@ import { isLatestGeneration } from '@/utils/pokemonUtils'
 import BlueLink from '../link'
 
 const generateArray = (start: number) => {
-  const end = 7
+  const end = 6
   const result: number[] = []
 
   for (let i = start; i <= end; i++) {

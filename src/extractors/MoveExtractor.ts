@@ -2,6 +2,9 @@ import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
 import { Move, NamedApiResource } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
+import { getResourceId } from '@/utils/urlUtils'
+
+import { isGen1to7 } from '../utils/pokemonUtils'
 
 const MoveExtractor = (move: Move) => {
   const {
@@ -64,8 +67,14 @@ const MoveExtractor = (move: Move) => {
     return { name, url: replacedUrl }
   })
 
-  // Find the names of all the Pokemon that can learn the move
-  const pokemon = learned_by_pokemon.map(pokemon => pokemon.name)
+  // Find the names of all the Pokemon that can learn the move fom gen 1 to 7 only.
+  const pokemon = learned_by_pokemon
+    .filter(pokemon => {
+      const { url } = pokemon
+      const resourceId = parseInt(getResourceId(url))
+      return isGen1to7(resourceId)
+    })
+    .map(({ name }) => name)
 
   // Dealing with keys which might have null values.
   const realAccuracy = shortEntry.includes('Never miss') ? Infinity : accuracy ?? 0
