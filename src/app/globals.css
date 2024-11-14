@@ -16,10 +16,10 @@
 
 .fancy-link {
   background: linear-gradient(to bottom, var(--link-colour), var(--link-colour));
-  background-size: 0% 2px;
+  background-size: 0% 1.5px;
   background-repeat: no-repeat;
   background-position: right 1.1em;
-  padding-bottom: 2px;
+  padding-bottom: 1.5px;
   line-height: 1.25;
   color: var(--link-colour);
   transition:
@@ -29,7 +29,7 @@
 
 .fancy-link:is(:hover, :focus) {
   background: linear-gradient(to bottom, var(--link-hover-colour), var(--link-hover-colour));
-  background-size: 100% 2px;
+  background-size: 100% 1.5px;
   background-repeat: no-repeat;
   background-position: left 1.1em;
   color: var(--link-hover-colour);

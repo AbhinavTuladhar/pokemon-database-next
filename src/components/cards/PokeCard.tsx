@@ -37,7 +37,7 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
   // Now map each type to its corresponding type card.
   const typeDivs = typeList.map((type, index) => {
     return (
-      <div className="shadow shadow-black/20" key={type + index}>
+      <div className="relative z-50 shadow shadow-black/20" key={type + index}>
         <TypeCard typeName={type} variant="big" />
       </div>
     )
@@ -56,16 +56,16 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
   const gradientStyle = `bg-gradient-to-tr from-10% to-90% ${startingColour} ${endingColour}`
 
   return (
-    <Link
-      href={targetLink}
-      className={`${gradientStyle} flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-blue-400 hover:drop-shadow-lg sm:w-56`}
+    <div
+      className={`${gradientStyle} relative flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-gray-400 hover:drop-shadow-lg dark:hover:shadow-gray-600 sm:w-56`}
     >
+      <Link href={targetLink} className="absolute inset-0" />
       <div className="font-bold">#{id}</div>
       <span className="text-center text-xl font-extrabold">{properName}</span>
       <div>
         {defaultSprite && <Image src={defaultSprite} height={100} width={100} alt={name} />}
       </div>
-      <div className="mb-2 mt-4 flex flex-row gap-x-2">{typeDivs}</div>
-    </Link>
+      <div className="relative z-50 mb-2 mt-4 flex flex-row gap-x-2">{typeDivs}</div>
+    </div>
   )
 }
