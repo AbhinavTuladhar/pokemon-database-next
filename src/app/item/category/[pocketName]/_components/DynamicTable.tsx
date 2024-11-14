@@ -33,8 +33,6 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
 
   const helper = createColumnHelper<ItemData>()
 
-  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
-
   const columns = useMemo(
     () => [
       helper.accessor('name', {
@@ -55,24 +53,22 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
           )
         },
         meta: {
-          headerStyle,
-          cellStyle: 'min-w-40 whitespace-nowrap',
+          headerStyle: 'min-w-40',
+          cellStyle: 'whitespace-nowrap',
         },
       }),
       helper.accessor('category', {
         header: () => <span> Category </span>,
         cell: info => formatName(info.getValue()),
         meta: {
-          headerStyle,
-          cellStyle: 'w-40 whitespace-nowrap',
+          cellStyle: 'whitespace-nowrap',
         },
       }),
       helper.accessor('shortEntry', {
         header: () => <span> Effect </span>,
         cell: info => formatName(info.getValue()),
         meta: {
-          headerStyle,
-          cellStyle: 'min-w-96',
+          headerStyle: 'min-w-96',
         },
         enableSorting: false,
       }),

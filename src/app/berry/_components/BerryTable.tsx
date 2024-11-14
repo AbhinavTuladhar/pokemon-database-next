@@ -52,7 +52,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
   )
 
   const helper = createColumnHelper<TableBerryData>()
-  const headerStyle = 'border-r border-r-gray-300 pr-4 last:border-r-0 dark:border-r-bd-dark'
 
   const columns = useMemo(
     () => [
@@ -61,9 +60,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         cell: info => {
           const generationIntroduced = info.getValue()
           return generationIntroduced.slice(generationIntroduced.length - 1)
-        },
-        meta: {
-          headerStyle,
         },
       }),
       helper.accessor('name', {
@@ -80,16 +76,12 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
             </div>
           )
         },
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('shortEntry', {
         header: () => <span> Description </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
-          cellStyle: 'min-w-[23rem]',
+          headerStyle: 'min-w-[23rem]',
         },
         enableSorting: false,
       }),
@@ -103,9 +95,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
           </span>
         ),
         cell: info => info.getValue(),
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('firmness', {
         header: () => (
@@ -118,7 +107,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         ),
         cell: info => formatName(info.getValue()),
         meta: {
-          headerStyle,
           cellStyle: 'whitespace-nowrap',
         },
       }),
@@ -126,7 +114,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
         header: () => <span> Size </span>,
         cell: info => `${info.getValue() / 10} cm`,
         meta: {
-          headerStyle,
           cellStyle: 'whitespace-nowrap',
         },
       }),
@@ -140,9 +127,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
           </span>
         ),
         cell: info => info.getValue(),
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('smoothness', {
         header: () => (
@@ -154,9 +138,6 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
           </span>
         ),
         cell: info => info.getValue(),
-        meta: {
-          headerStyle,
-        },
       }),
     ],
     [helper],

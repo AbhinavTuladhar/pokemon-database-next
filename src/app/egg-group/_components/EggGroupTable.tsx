@@ -25,18 +25,13 @@ export const EggGroupTable: FC<{ eggGroupData: Array<TransformedEggGroup> }> = (
             </BlueLink>
           )
         },
-        meta: {
-          headerStyle: 'border-r border-r-bd-light pr-4 dark:border-r-bd-dark',
-          cellStyle: 'pl-4',
-        },
         sortingFn: 'alphanumeric',
       }),
       helper.accessor('pokemonSpecies', {
         cell: info => info.getValue().length,
         header: () => <span> Pokémon </span>,
         meta: {
-          headerStyle: 'border-r border-r-bd-light pr-4 dark:border-r-bd-dark',
-          cellStyle: 'text-right pr-4',
+          cellStyle: 'text-right',
         },
         sortingFn: 'auto',
       }),

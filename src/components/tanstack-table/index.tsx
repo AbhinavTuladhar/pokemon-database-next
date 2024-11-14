@@ -73,10 +73,15 @@ const TanStackTable = <T extends object>({
           {headers.headers.map(header => (
             <TableCellHeader
               type="column"
-              className={classNames(`${header.column.columnDef.meta?.headerStyle}`, {
-                'cursor-pointer select-none': header.column.getCanSort(),
-                'bg-gray-300 dark:bg-[hsl(226,_57%,_36%)]': header.column.getIsSorted(),
-              })}
+              className={classNames(
+                `border-r border-r-bd-light last:border-r-0 dark:border-r-bd-dark`,
+                header.column.columnDef.meta?.headerStyle &&
+                  `${header.column.columnDef.meta.headerStyle}`,
+                {
+                  'cursor-pointer': header.column.getCanSort(),
+                  'bg-gray-300 dark:bg-[hsl(226,_57%,_36%)]': header.column.getIsSorted(),
+                },
+              )}
               key={header.id}
               onClick={header.column.getToggleSortingHandler()}
             >
@@ -101,7 +106,9 @@ const TanStackTable = <T extends object>({
             {row.getVisibleCells().map(cell => (
               <TableCell
                 variant="column"
-                extraClassName={cell.column.columnDef.meta?.cellStyle}
+                extraClassName={
+                  cell.column.columnDef.meta?.cellStyle && cell.column.columnDef.meta.cellStyle
+                }
                 key={cell.id}
               >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
