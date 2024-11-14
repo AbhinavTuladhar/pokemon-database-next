@@ -40,9 +40,15 @@ interface TableProps<T> {
   data: Array<T>
   columns: ColumnDef<T, any>[]
   firstColumn: keyof T
+  useFullWidth?: boolean
 }
 
-const TanStackTable = <T extends object>({ data, columns, firstColumn }: TableProps<T>) => {
+const TanStackTable = <T extends object>({
+  data,
+  columns,
+  firstColumn,
+  useFullWidth = true,
+}: TableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([{ id: firstColumn as string, desc: false }])
 
   const { getHeaderGroups, getRowModel } = useReactTable({
@@ -61,7 +67,7 @@ const TanStackTable = <T extends object>({ data, columns, firstColumn }: TablePr
   const rows = getRowModel().rows
 
   return (
-    <TableContainer>
+    <TableContainer useFullWidth={useFullWidth}>
       <thead>
         <TableRow className="bg-neutral-200 font-bold duration-300 dark:bg-hdr-dark">
           {headers.headers.map(header => (
