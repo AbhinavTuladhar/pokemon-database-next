@@ -1,58 +1,68 @@
-import React, { FC } from 'react'
+'use client'
 
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import React, { FC, useMemo } from 'react'
+
 import ContestHearts from '@/components/contest-hearts'
+import TanStackTable from '@/components/tanstack-table'
 import { ContestEffect } from '@/types'
+import { createColumnHelper } from '@tanstack/react-table'
+
+interface ContestData {
+  appeal: number
+  jam: number
+  description: string
+}
 
 interface EffectTableProps {
   contestData: Array<ContestEffect>
 }
 
 export const EffectTable: FC<EffectTableProps> = ({ contestData }) => {
-  const tableHeaders = [
-    { id: 'appeal', header: 'Appeal' },
-    { id: 'jam', header: 'Jam' },
-    { id: 'description', header: 'Description', className: 'min-w-[500px]' },
-  ]
+  const tableContestData = contestData.map(({ appeal, jam, effect_entries }) => ({
+    appeal,
+    jam,
+    description: effect_entries[0].effect,
+  }))
 
-  const tableHeaderRow = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
-      {tableHeaders.map((header, index) => (
-        <TableCellHeader
-          type="column"
-          className={`${header?.className} text-center`}
-          key={header.id + index}
-        >
-          {header.header}
-        </TableCellHeader>
-      ))}
-    </TableRow>
+  const helper = createColumnHelper<ContestData>()
+
+  const headerStyle = 'border-r border-r-bd-light last:border-r-0 dark:border-r-bd-dark'
+
+  const columns = useMemo(
+    () => [
+      helper.accessor('appeal', {
+        header: () => <span> Appeal </span>,
+        cell: info => <ContestHearts type="appeal" value={info.getValue()} />,
+        meta: {
+          headerStyle,
+        },
+      }),
+      helper.accessor('jam', {
+        header: () => <span> Jam </span>,
+        cell: info => <ContestHearts type="jam" value={info.getValue()} />,
+        meta: {
+          headerStyle,
+        },
+      }),
+      helper.accessor('description', {
+        header: () => <span> Description </span>,
+        cell: info => info.getValue(),
+        meta: {
+          headerStyle,
+          cellStyle: 'max-w-[540px]',
+        },
+        enableSorting: false,
+      }),
+    ],
+    [helper],
   )
 
-  const tableRows = contestData.map(effect => {
-    const { appeal, jam, id, effect_entries } = effect
-
-    const cellData = [
-      { key: 'appeal', value: <ContestHearts type="appeal" value={appeal} /> },
-      { key: 'jam', value: <ContestHearts type="jam" value={jam} /> },
-      { key: 'description', value: effect_entries[0].effect },
-    ]
-
-    return (
-      <TableRow key={id}>
-        {cellData.map((data, index) => (
-          <TableCell key={data.key + index} variant="column" extraClassName="max-w-[600px]">
-            {data.value}
-          </TableCell>
-        ))}
-      </TableRow>
-    )
-  })
-
   return (
-    <TableContainer useFullWidth={false}>
-      <thead>{tableHeaderRow}</thead>
-      <tbody>{tableRows}</tbody>
-    </TableContainer>
+    <TanStackTable
+      data={tableContestData}
+      columns={columns}
+      firstColumn="appeal"
+      useFullWidth={false}
+    />
   )
 }
