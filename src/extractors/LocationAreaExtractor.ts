@@ -2,7 +2,7 @@ import { GroupedLocationArea, LocationArea, Name } from '@/types'
 
 import EncounterExtractor from './EncounterExtractor'
 
-const LocationAreaExtractor = (locationAreaData: LocationArea) => {
+export const LocationAreaExtractor = (locationAreaData: LocationArea) => {
   const { names, pokemon_encounters, name } = locationAreaData
   // For getting the 'proper' sub location name. Some locations don't have a proper English name,
   // so we use the raw name as a fallback.

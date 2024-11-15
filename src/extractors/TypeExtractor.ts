@@ -2,7 +2,7 @@ import { NamedApiResource, Type } from '@/types'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'
 
-const TypeExtractor = (data: Type) => {
+export const TypeExtractor = (data: Type) => {
   const {
     damage_relations: damageRelations,
     moves: moveList,

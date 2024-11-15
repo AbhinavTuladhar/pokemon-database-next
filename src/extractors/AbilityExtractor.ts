@@ -2,7 +2,7 @@ import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
 import { Ability, VerboseEffect } from '@/types'
 
-const AbilityExtractor = (data: Ability) => {
+export const AbilityExtractor = (data: Ability) => {
   const {
     effect_entries,
     flavor_text_entries,
