@@ -2,7 +2,7 @@ import { gameBlackLists } from '@/data/blacklists'
 import { gameNameToGenerationMapInternal } from '@/data/gameNameToGenerationMap'
 import { Genus, PokemonSpecies } from '@/types'
 
-const SpeciesExtractor = (data: PokemonSpecies) => {
+export const SpeciesExtractor = (data: PokemonSpecies) => {
   const {
     base_happiness,
     capture_rate,

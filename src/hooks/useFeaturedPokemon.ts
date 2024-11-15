@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import generationData from '@/data/generationData'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 

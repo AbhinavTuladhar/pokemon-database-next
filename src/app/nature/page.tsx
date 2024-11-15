@@ -7,7 +7,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import NatureExtractor from '@/extractors/NatureExtractor'
+import { NatureExtractor } from '@/extractors'
 import { NatureApi } from '@/services'
 import formatName from '@/utils/formatName'
 

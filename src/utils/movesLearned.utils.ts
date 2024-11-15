@@ -1,4 +1,4 @@
-import MoveExtractor from '@/extractors/MoveExtractor'
+import { MoveExtractor } from '@/extractors'
 import { MovesApi } from '@/services'
 import { Move, NamedApiResource, PokemonMove, PokemonMoveVersion, TransformedMove } from '@/types'
 

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { PokeFormCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import PokemonFormExtractor from '@/extractors/PokemonFormExtractor'
+import { PokemonFormExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import { getResourceId } from '@/utils/urlUtils'
 

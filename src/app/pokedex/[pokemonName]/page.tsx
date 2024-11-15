@@ -2,8 +2,7 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import SpeciesExtractor from '@/extractors/SpeciesExtractor'
+import { PokemonExtractor, SpeciesExtractor } from '@/extractors'
 import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 

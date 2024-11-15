@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { ItemExtractor } from '@/extractors/ItemExtractors'
+import { ItemExtractor } from '@/extractors'
 import { ItemApi } from '@/services'
 
 import { DynamicTable } from './DynamicTable'

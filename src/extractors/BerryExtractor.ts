@@ -1,6 +1,6 @@
 import { Berry } from '@/types'
 
-const BerryExtractor = (data: Berry) => {
+export const BerryExtractor = (data: Berry) => {
   const {
     firmness: { name: firmness },
     flavors,

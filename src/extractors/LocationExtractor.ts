@@ -1,6 +1,6 @@
 import { Location } from '@/types'
 
-const LocationExtractor = (locationData: Location) => {
+export const LocationExtractor = (locationData: Location) => {
   const { areas, name: locationName } = locationData
   return { subLocations: areas, locationName }
 }

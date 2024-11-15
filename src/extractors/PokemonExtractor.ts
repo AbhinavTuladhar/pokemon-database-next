@@ -1,7 +1,7 @@
 import { Pokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 
-const PokemonExtractor = (data: Pokemon) => {
+export const PokemonExtractor = (data: Pokemon) => {
   const {
     abilities,
     base_experience,

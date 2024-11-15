@@ -1,6 +1,6 @@
 import { Pokemon } from '@/types'
 
-const SpriteExtractor = (data: Pokemon) => {
+export const SpriteExtractor = (data: Pokemon) => {
   const {
     sprites: { other, versions },
   } = data

@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PokemonTableSkeleton } from '@/components/skeletons'
-import AbilityExtractor from '@/extractors/AbilityExtractor'
+import { AbilityExtractor } from '@/extractors'
 import { AbilityApi } from '@/services'
 import formatName from '@/utils/formatName'
 

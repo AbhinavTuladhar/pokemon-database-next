@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { MoveTable } from '@/components/moves-table'
 import generationWiseMoveData from '@/data/moveData'
-import MoveExtractor from '@/extractors/MoveExtractor'
+import { MoveExtractor } from '@/extractors'
 import { MovesApi } from '@/services'
 
 const getMovesList = async (offset: number, limit: number) => {

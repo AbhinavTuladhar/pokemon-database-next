@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import BerryExtractor from '@/extractors/BerryExtractor'
+import { BerryExtractor } from '@/extractors'
 import { BerryApi } from '@/services'
 
 import BerryData from './BerryData'

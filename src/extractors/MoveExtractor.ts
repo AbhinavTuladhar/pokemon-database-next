@@ -6,7 +6,7 @@ import { getResourceId } from '@/utils/urlUtils'
 
 import { isGen1to7 } from '../utils/pokemonUtils'
 
-const MoveExtractor = (move: Move) => {
+export const MoveExtractor = (move: Move) => {
   const {
     accuracy,
     contest_effect,

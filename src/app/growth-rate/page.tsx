@@ -2,7 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
-import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
+import { GrowthRateExtractor } from '@/extractors'
 import { GrowthRateApi } from '@/services'
 
 import { ComparisonChart, GrowthRateSection } from './_components'

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { MoveTable } from '@/components/moves-table'
-import MoveExtractor from '@/extractors/MoveExtractor'
+import { MoveExtractor } from '@/extractors'
 import { MovesApi } from '@/services'
 
 interface MovesTableProps {

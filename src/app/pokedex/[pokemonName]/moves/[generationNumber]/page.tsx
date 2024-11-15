@@ -5,7 +5,7 @@ import { PageTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
 import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 

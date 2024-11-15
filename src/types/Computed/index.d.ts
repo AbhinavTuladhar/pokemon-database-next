@@ -3,18 +3,20 @@
  * during complex computations on array of objects
  */
 
-import AbilityExtractor from '@/extractors/AbilityExtractor'
-import BerryExtractor from '@/extractors/BerryExtractor'
-import EggGroupExtractor from '@/extractors/EggGroupExtractor'
-import EncounterExtractor from '@/extractors/EncounterExtractor'
-import GrowthRateExtractor from '@/extractors/GrowthRateExtractor'
-import { ItemExtractor } from '@/extractors/ItemExtractors'
-import LocationExtractor from '@/extractors/LocationExtractor'
-import MoveExtractor from '@/extractors/MoveExtractor'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
-import SpeciesExtractor from '@/extractors/SpeciesExtractor'
-import SpriteExtractor from '@/extractors/SpriteExtractor'
-import TypeExtractor from '@/extractors/TypeExtractor'
+import {
+  AbilityExtractor,
+  BerryExtractor,
+  EggGroupExtractor,
+  EncounterExtractor,
+  GrowthRateExtractor,
+  ItemExtractor,
+  LocationExtractor,
+  MoveExtractor,
+  PokemonExtractor,
+  SpeciesExtractor,
+  SpriteExtractor,
+  TypeExtractor,
+} from '@/extractors'
 
 import { EvolutionDetail } from '../Evolution/EvolutionChains'
 import type { PokemonType } from '../Pokemon/Pokemon'

@@ -6,7 +6,7 @@ import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import InfiniteMiniCardScroll from '@/components/infinite-card-scroll'
 import { MiniCardListSkeleton } from '@/components/skeletons'
-import MoveExtractor from '@/extractors/MoveExtractor'
+import { MoveExtractor } from '@/extractors'
 import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 

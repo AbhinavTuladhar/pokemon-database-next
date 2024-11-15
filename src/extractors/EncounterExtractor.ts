@@ -24,7 +24,7 @@ interface ModifiedEncounter extends Omit<Encounter, 'condition_values'> {
 }
 interface ReducedEncounterInterface extends ModifiedEncounter, AdditionalEncounterInfo {}
 
-const EncounterExtractor = (encounterData: PokemonEncounter) => {
+export const EncounterExtractor = (encounterData: PokemonEncounter) => {
   const {
     pokemon: { name: pokemonName, url: pokemonUrl },
     version_details,

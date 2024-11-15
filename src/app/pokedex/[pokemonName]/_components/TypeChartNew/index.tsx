@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers'
-import TypeExtractor from '@/extractors/TypeExtractor'
+import { TypeExtractor } from '@/extractors'
 import { TypesApi } from '@/services'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
