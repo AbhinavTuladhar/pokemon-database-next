@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AbilityExtractor from '@/extractors/AbilityExtractor'
+import { AbilityExtractor } from '@/extractors'
 import { AbilityApi } from '@/services'
 
 import { AbilityTable } from './AbilityTable'

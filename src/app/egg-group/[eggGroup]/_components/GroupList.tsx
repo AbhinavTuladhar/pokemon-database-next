@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SectionTitle } from '@/components/containers'
 import BlueLink from '@/components/link'
-import EggGroupExtractor from '@/extractors/EggGroupExtractor'
+import { EggGroupExtractor } from '@/extractors'
 import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'
 

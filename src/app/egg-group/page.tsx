@@ -2,7 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
-import EggGroupExtractor from '@/extractors/EggGroupExtractor'
+import { EggGroupExtractor } from '@/extractors'
 import { EggGroupApi } from '@/services'
 
 import { EggGroupTable } from './_components'
