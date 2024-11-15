@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
-import TypeExtractor from '@/extractors/TypeExtractor'
+import { TypeExtractor } from '@/extractors'
 import { TypesApi } from '@/services'
 
 import { DualTypeChart, SideDescription } from './_components'

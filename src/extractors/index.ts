@@ -7,6 +7,7 @@ export { ItemCategoryExtractor, ItemExtractor, ItemPocketExtractor } from './Ite
 export { LocationAreaExtractor } from './LocationAreaExtractor'
 export { LocationExtractor } from './LocationExtractor'
 export { MoveExtractor } from './MoveExtractor'
+export { NatureExtractor } from './NatureExtractor'
 export { PokemonExtractor } from './PokemonExtractor'
 export { PokemonFormExtractor } from './PokemonFormExtractor'
 export { RegionExtractor } from './RegionExtractor'

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { isGen1to7 } from '@/utils/pokemonUtils'

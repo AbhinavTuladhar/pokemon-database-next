@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 
 import statMapping from '@/data/statMapping'
-import PokemonExtractor from '@/extractors/PokemonExtractor'
+import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
