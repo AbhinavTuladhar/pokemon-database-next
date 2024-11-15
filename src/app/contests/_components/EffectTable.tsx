@@ -26,30 +26,21 @@ export const EffectTable: FC<EffectTableProps> = ({ contestData }) => {
 
   const helper = createColumnHelper<ContestData>()
 
-  const headerStyle = 'border-r border-r-bd-light last:border-r-0 dark:border-r-bd-dark'
-
   const columns = useMemo(
     () => [
       helper.accessor('appeal', {
         header: () => <span> Appeal </span>,
         cell: info => <ContestHearts type="appeal" value={info.getValue()} />,
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('jam', {
         header: () => <span> Jam </span>,
         cell: info => <ContestHearts type="jam" value={info.getValue()} />,
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('description', {
         header: () => <span> Description </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
-          cellStyle: 'max-w-[540px]',
+          headerStyle: 'max-w-[540px]',
         },
         enableSorting: false,
       }),

@@ -45,8 +45,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
   const [filteredData, setFilteredData] = useState(tableMoveData)
   const [filterText, setFilterText] = useState('')
 
-  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
-
   const helper = createColumnHelper<MoveTableColumns>()
 
   const columns = useMemo(
@@ -61,18 +59,12 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
             </BlueLink>
           )
         },
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
         enableGlobalFilter: true,
       }),
       helper.accessor('moveType', {
         header: () => <span> Type </span>,
         cell: info => <TypeCard typeName={info.getValue()} />,
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
       }),
       helper.accessor('damageClass', {
@@ -82,9 +74,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
             <MoveCategoryImage category={info.getValue()} />
           </div>
         ),
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
       }),
       helper.accessor('power', {
@@ -97,7 +86,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
           return powerValue
         },
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'alphanumeric',
@@ -115,7 +103,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
           return accuracyValue
         },
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'basic',
@@ -124,7 +111,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         header: () => <span> PP </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'basic',
@@ -133,8 +119,7 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         header: () => <span> Effect </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
-          cellStyle: 'min-w-[25rem]',
+          headerStyle: 'min-w-[25rem]',
         },
         enableSorting: false,
       }),
@@ -142,7 +127,6 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         header: () => <span> Prob (%) </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'alphanumeric',

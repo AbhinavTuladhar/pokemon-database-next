@@ -34,8 +34,6 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
 
   const helper = createColumnHelper<TableAbilityData>()
 
-  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
-
   const columns = useMemo(
     () => [
       helper.accessor('name', {
@@ -48,24 +46,19 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
             </BlueLink>
           )
         },
-        meta: {
-          headerStyle,
-        },
       }),
       helper.accessor('pokemonCount', {
         header: () => <span> Pokémon </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
-          cellStyle: 'w-6',
+          headerStyle: 'w-6',
         },
       }),
       helper.accessor('shortEntry', {
         header: () => <span> Description </span>,
         cell: info => info.getValue(),
         meta: {
-          headerStyle,
-          cellStyle: 'min-w-[40rem]',
+          headerStyle: 'min-w-[40rem]',
         },
         enableSorting: false,
       }),
@@ -76,8 +69,7 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
           return gen[gen.length - 1]
         },
         meta: {
-          headerStyle,
-          cellStyle: 'w-1',
+          headerStyle: 'w-1',
         },
       }),
     ],

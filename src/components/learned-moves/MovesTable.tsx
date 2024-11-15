@@ -39,8 +39,6 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
 
   const helper = createColumnHelper<TableMoveData>()
 
-  const headerStyle = 'border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark'
-
   const columns = useMemo(() => {
     const baseColumns = [
       helper.accessor('moveName', {
@@ -53,18 +51,12 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
             </BlueLink>
           )
         },
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
         enableGlobalFilter: true,
       }),
       helper.accessor('moveType', {
         header: () => <span> Type </span>,
         cell: info => <TypeCard typeName={info.getValue()} />,
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
       }),
       helper.accessor('damageClass', {
@@ -74,9 +66,6 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
             <MoveCategoryImage category={info.getValue()} />
           </div>
         ),
-        meta: {
-          headerStyle,
-        },
         sortingFn: 'basic',
       }),
       helper.accessor('power', {
@@ -89,7 +78,6 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
           return powerValue
         },
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'alphanumeric',
@@ -107,7 +95,6 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
           return accuracyValue
         },
         meta: {
-          headerStyle,
           cellStyle: 'text-right',
         },
         sortingFn: 'basic',
@@ -121,7 +108,6 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
               header: () => <span> Lv. </span>,
               cell: info => info.getValue(),
               meta: {
-                headerStyle,
                 cellStyle: 'text-right',
               },
               sortingFn: 'basic',
