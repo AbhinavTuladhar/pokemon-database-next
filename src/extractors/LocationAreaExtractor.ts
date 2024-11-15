@@ -1,6 +1,6 @@
 import { GroupedLocationArea, LocationArea, Name } from '@/types'
 
-import EncounterExtractor from './EncounterExtractor'
+import { EncounterExtractor } from './EncounterExtractor'
 
 export const LocationAreaExtractor = (locationAreaData: LocationArea) => {
   const { names, pokemon_encounters, name } = locationAreaData
