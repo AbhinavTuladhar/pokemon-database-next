@@ -69,7 +69,7 @@ const TanStackTable = <T extends object>({
   return (
     <TableContainer useFullWidth={useFullWidth}>
       <thead>
-        <TableRow className="bg-neutral-200 font-bold duration-300 dark:bg-hdr-dark">
+        <TableRow className="bg-neutral-200 font-bold duration-75 dark:bg-hdr-dark">
           {headers.headers.map(header => (
             <TableCellHeader
               type="column"

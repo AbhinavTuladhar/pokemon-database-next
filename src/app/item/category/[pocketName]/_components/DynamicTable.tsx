@@ -14,6 +14,7 @@ interface ItemData {
   sprite: string
   category: string
   name: string
+  cost: number
 }
 
 interface TableProps {
@@ -21,11 +22,12 @@ interface TableProps {
 }
 
 export const DynamicTable: FC<TableProps> = ({ itemData }) => {
-  const tableItemData = itemData.map(({ name, sprite, category, shortEntry }) => ({
+  const tableItemData = itemData.map(({ name, sprite, category, shortEntry, cost }) => ({
     name,
     sprite,
     category,
     shortEntry,
+    cost,
   }))
 
   const [filteredData, setFilteredData] = useState(tableItemData)
@@ -71,6 +73,13 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
           headerStyle: 'min-w-96',
         },
         enableSorting: false,
+      }),
+      helper.accessor('cost', {
+        header: () => <span> Cost </span>,
+        cell: info => `₽${info.getValue().toLocaleString()}`,
+        meta: {
+          cellStyle: 'whitespace-nowrap',
+        },
       }),
     ],
     [helper],
