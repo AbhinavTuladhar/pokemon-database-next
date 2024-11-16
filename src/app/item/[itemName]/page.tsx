@@ -28,6 +28,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
+/**
+ * Check whether an item is a berry or not on the basis of its name, fling effect and category.
+ */
+const checkBerry = (itemName: string, flingEffect: string | undefined, category: string) => {
+  const allowedCategories = ['baking', 'type-protection', 'effort-drop', 'in-a-pinch', 'other']
+
+  return (
+    itemName.includes('berry') &&
+    flingEffect?.includes('berry') &&
+    allowedCategories.includes(category)
+  )
+}
+
 const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
   const itemData = await getItemData(itemName)
 
@@ -44,12 +57,7 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
     name: actualItemName,
   } = itemData
 
-  /*
-   * Third conditions is because there are berries which have no berry effect and are used only for baking
-   */
-  const isBerry =
-    actualItemName.includes('berry') &&
-    (fling_effect?.name.includes('berry') || category.includes('baking'))
+  const isBerry = checkBerry(itemName, fling_effect?.name, category)
 
   return (
     <main>
