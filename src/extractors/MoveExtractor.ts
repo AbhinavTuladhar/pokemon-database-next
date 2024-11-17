@@ -77,7 +77,7 @@ export const MoveExtractor = (move: Move) => {
     .map(({ name }) => name)
 
   // Dealing with keys which might have null values.
-  const realAccuracy = shortEntry.includes('Never miss') ? Infinity : accuracy ?? 0
+  const realAccuracy = shortEntry.includes('Never miss') ? Infinity : (accuracy ?? 0)
   const realPower = power ?? 0
   const realEffectChance = effect_chance ?? '-'
 
