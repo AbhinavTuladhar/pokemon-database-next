@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p 5173",
     "lint": "next lint",
-    "format": "npx prettier --write .",
+    "format": "npx prettier --write . && git add .",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },
