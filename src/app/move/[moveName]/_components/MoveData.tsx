@@ -56,7 +56,7 @@ export const MoveData: FC<MoveDataProps> = ({
       actualAccuracy = '—'
       break
     default:
-      actualAccuracy = power
+      actualAccuracy = accuracy
   }
 
   const damageClassValue = (
