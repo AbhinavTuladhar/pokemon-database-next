@@ -32,12 +32,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
  * Check whether an item is a berry or not on the basis of its name, fling effect and category.
  */
 const checkBerry = (itemName: string, flingEffect: string | undefined, category: string) => {
-  const allowedCategories = ['baking', 'type-protection', 'effort-drop', 'in-a-pinch', 'other']
+  const allowedCategories = ['baking-only', 'type-protection', 'effort-drop', 'in-a-pinch', 'other']
 
   return (
     itemName.includes('berry') &&
-    flingEffect?.includes('berry') &&
-    allowedCategories.includes(category)
+    (flingEffect?.includes('berry') || allowedCategories.includes(category))
   )
 }
 
