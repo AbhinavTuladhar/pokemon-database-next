@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import { PageTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
+import { berryBlackLists } from '@/data/blacklists'
 import { ItemExtractor } from '@/extractors'
 import { ItemApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -36,6 +37,7 @@ const checkBerry = (itemName: string, flingEffect: string | undefined, category:
 
   return (
     itemName.includes('berry') &&
+    !berryBlackLists.includes(itemName) &&
     (flingEffect?.includes('berry') || allowedCategories.includes(category))
   )
 }
