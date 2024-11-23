@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react'
+import React, { FC, Fragment, PropsWithChildren } from 'react'
 
 import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
@@ -26,17 +26,16 @@ const calculateScoresAndMultipliers = (
   attackingTypeInfo: Array<AttackingType>,
 ) => {
   let score = 0
-  let multiplierValues: Array<{ multiplier: number; type: string }> = []
-
-  typeList.forEach((type, index) => {
+  const multiplierValues = typeList.map((type, index) => {
     const [firstType, secondType] = typeCombo
     const multiplierValue = calculateOffensiveTypeEffectiveness(
       firstType === secondType ? [firstType] : typeCombo,
       attackingTypeInfo[index],
     )
     score += multiplierValue
-    multiplierValues.push({ multiplier: multiplierValue, type: type })
+    return { multiplier: multiplierValue, type: type }
   })
+
   return { score, multiplierValues }
 }
 
@@ -53,9 +52,16 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
   )
 
   const typeComboString = typeCombination.map(formatName).join('/')
+  const [firstType, secondType] = typeCombination
 
   return (
-    <div className="flex">
+    <Fragment key={`${firstType} ${secondType}`}>
+      <div className="flex flex-row gap-x-px">
+        <TypeCard key={`${firstType} ${secondType}`} typeName={firstType} variant="big" />
+        {firstType !== secondType ? (
+          <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
+        ) : null}
+      </div>
       <ScoreCell>{score}</ScoreCell>
       {multiplierValues.map(({ multiplier, type }) => {
         const multiplierString = multiplierToString(multiplier)
@@ -66,7 +72,7 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
           </div>
         )
       })}
-    </div>
+    </Fragment>
   )
 }
 
@@ -84,59 +90,33 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
       return 0
     })
 
-  const cornerDiv = (
-    <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark">
-      <span> ATTACK → </span>
-      <span> DEFENCE ↴ </span>
-    </div>
-  )
-
-  const firstColumnCards = typeCombinations.map(type => {
-    const [firstType, secondType] = type
-    return (
-      <div className="flex gap-x-px" key={`${firstType} ${secondType}`}>
-        <TypeCard key={`${firstType} ${secondType}`} typeName={firstType} variant="big" />
-        {firstType !== secondType ? (
-          <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
-        ) : null}
-      </div>
-    )
-  })
-
-  const firstRow = (
-    <div className="flex gap-x-px">
-      <ScoreCell>Score</ScoreCell>
-      {typeList.map(type => (
-        <MiniTypeCard typeName={type} key={type} />
-      ))}
-    </div>
-  )
-
-  const otherRows = typeCombinations.map(typeCombo => (
-    <TableRow
-      key={`${typeCombo[0]} ${typeCombo[1]}`}
-      attackingTypeInfo={attackingTypeInfo}
-      typeCombination={typeCombo}
-    />
-  ))
-
-  const tableRows = (
-    <div className="flex flex-col">
-      {firstRow}
-      {otherRows}
-    </div>
-  )
-
   return (
     <section>
       {sectionTitleFlag && <SectionTitle> Type Chart </SectionTitle>}
-      <div className="overflow-auto">
-        <div className="flex gap-x-px">
-          <div className="flex flex-col gap-y-px">
-            {cornerDiv}
-            {firstColumnCards}
+      <div className="flex justify-center">
+        <div className="overflow-auto">
+          <div className="grid grid-cols-dual-type-chart">
+            {/* Corner cell */}
+            <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark">
+              <span> ATTACK → </span>
+              <span> DEFENCE ↴ </span>
+            </div>
+
+            {/* First row */}
+            <ScoreCell>Score</ScoreCell>
+            {typeList.map(type => (
+              <MiniTypeCard typeName={type} key={type} />
+            ))}
+
+            {/* Other cells */}
+            {typeCombinations.map(typeCombo => (
+              <TableRow
+                key={`${typeCombo[0]} ${typeCombo[1]}`}
+                attackingTypeInfo={attackingTypeInfo}
+                typeCombination={typeCombo}
+              />
+            ))}
           </div>
-          <div className="flex flex-col gap-y-px">{tableRows}</div>
         </div>
       </div>
     </section>

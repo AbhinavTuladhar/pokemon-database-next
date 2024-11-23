@@ -39,7 +39,7 @@ const DualTypePage = async () => {
         <div className="col-span-12 mdlg:col-span-3">
           <SideDescription />
         </div>
-        <div className="col-span-12 flex w-full flex-col mdlg:col-span-9 mdlg:items-end">
+        <div className="col-span-12 flex w-full flex-col gap-y-4 mdlg:col-span-9 mdlg:items-end">
           {typeList.map((type, index) => (
             <DualTypeChart
               key={type}
