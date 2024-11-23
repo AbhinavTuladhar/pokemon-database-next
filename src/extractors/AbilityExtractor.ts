@@ -50,6 +50,7 @@ export const AbilityExtractor = (data: Ability) => {
     id,
     name,
     pokemon: pokemonList,
+    pokemonCount: pokemonList.length,
     names,
   }
 }

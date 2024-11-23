@@ -149,3 +149,10 @@ html.dark .apexcharts-menu-item:hover {
   background-color: #1e2029a6;
   z-index: 0;
 }
+
+.no-transition * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
