@@ -1,6 +1,8 @@
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
 import { Ability, VerboseEffect } from '@/types'
+import { isGen1to7 } from '@/utils/pokemonUtils'
+import { getResourceId } from '@/utils/urlUtils'
 
 export const AbilityExtractor = (data: Ability) => {
   const {
@@ -28,10 +30,13 @@ export const AbilityExtractor = (data: Ability) => {
       generation: gameToGenerationMap[entry.version_group.name],
     }))
 
-  // The number of Pokemon that have the ability.
-  const pokemonCount = pokemon.length
-
-  const pokemonList = pokemon.map(pokemon => pokemon.pokemon.name)
+  const pokemonList = pokemon
+    .filter(pokemon => {
+      const { url } = pokemon.pokemon
+      const pokemonId = getResourceId(url)
+      return isGen1to7(parseInt(pokemonId))
+    })
+    .map(pokemon => pokemon.pokemon.name)
 
   const [generationString, generationNumber] = generationIntroducedRaw.split('-')
   const newGenerationString = generationString.charAt(0).toUpperCase() + generationString.slice(1)
@@ -44,8 +49,8 @@ export const AbilityExtractor = (data: Ability) => {
     generationIntroduced: generationIntroduced,
     id,
     name,
-    pokemonCount,
     pokemon: pokemonList,
+    pokemonCount: pokemonList.length,
     names,
   }
 }

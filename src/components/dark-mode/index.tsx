@@ -17,7 +17,12 @@ const DarkModeSwitch = () => {
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   const toggleTheme = () => {
+    // Disable transitions temporarily
+    document.body.classList.add('no-transition')
     setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+    setTimeout(() => {
+      document.body.classList.remove('no-transition')
+    }, 0)
   }
 
   /**
