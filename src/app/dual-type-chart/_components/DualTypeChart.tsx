@@ -60,7 +60,11 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
         <TypeCard key={`${firstType} ${secondType}`} typeName={firstType} variant="big" />
         {firstType !== secondType ? (
           <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
-        ) : null}
+        ) : (
+          <div className="grid w-16 place-items-center rounded border border-bd-light bg-zinc-400 text-white dark:border-bd-dark">
+            -
+          </div>
+        )}
       </div>
       <ScoreCell>{score}</ScoreCell>
       {multiplierValues.map(({ multiplier, type }) => {
