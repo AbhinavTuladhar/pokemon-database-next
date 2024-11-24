@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 
+import useIsInitialRender from '@/hooks/useIsInitialRender'
 import {
   ColumnDef,
   flexRender,
@@ -50,6 +51,7 @@ const TanStackTable = <T extends object>({
     pageSize: 25,
   })
   const tableRef = useRef<HTMLDivElement>(null)
+  const { isInitialRender } = useIsInitialRender()
 
   const {
     getHeaderGroups,
@@ -94,12 +96,12 @@ const TanStackTable = <T extends object>({
     })
   }
 
-  // Scroll to top of the table whenever a pagination button is clicked
+  // Scroll to top of the table whenever a pagination button is clicked. Do not scroll on first render
   useEffect(() => {
-    if (tableRef.current) {
+    if (tableRef.current && !isInitialRender) {
       tableRef.current.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [pagination])
+  }, [pagination, isInitialRender])
 
   return (
     <div className="space-y-4" ref={tableRef}>
