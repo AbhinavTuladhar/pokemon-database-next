@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, useState } from 'react'
 import classNames from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import DropDownItem from './drop-down-item'
 
@@ -46,17 +47,23 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, mobileText, icon, desktopTe
           {mobileText}
         </span>
       </span>
-      <ul
-        className={classNames(
-          'absolute left-0 right-0 top-16 z-50 text-center text-white transition-opacity duration-500 md:top-14',
-          { 'opacity-100': isOpen },
-          { 'pointer-events-none opacity-0': !isOpen },
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
+            exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className={classNames(
+              'absolute left-0 right-0 top-16 z-50 text-center text-white transition-opacity duration-500 md:top-14',
+            )}
+          >
+            {menuData.map(item => (
+              <DropDownItem key={item.path} path={item.path} name={item.name} />
+            ))}
+          </motion.ul>
         )}
-      >
-        {menuData.map(item => (
-          <DropDownItem key={item.path} path={item.path} name={item.name} />
-        ))}
-      </ul>
+      </AnimatePresence>
     </li>
   )
 }
