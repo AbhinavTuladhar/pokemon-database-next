@@ -43,9 +43,9 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }
       <AnimatePresence>
         {isOpen && (
           <motion.ul
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            exit={{ opacity: 0, scaleY: 0 }}
+            initial={{ opacity: 0, clipPath: 'inset(100% 0% 0% 0%)' }}
+            animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+            exit={{ opacity: 0, clipPath: 'inset(100% 0% 0% 0%)' }}
             transition={{ duration: 0.3 }}
             className="absolute bottom-full left-0 right-0 z-20 origin-bottom border border-bd-light bg-neutral-50 dark:border-bd-dark dark:bg-slate-700"
           >
