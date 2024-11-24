@@ -99,7 +99,7 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
         <Input placeholder="Search for an item" onChange={handleChange} value={filterText} />
       </div>
       {filteredData.length ? (
-        <TanStackTable data={filteredData} columns={columns} firstColumn="name" />
+        <TanStackTable data={filteredData} columns={columns} firstColumn="name" usePagination />
       ) : (
         <div className="text-center text-4xl font-bold">No such item was found.</div>
       )}

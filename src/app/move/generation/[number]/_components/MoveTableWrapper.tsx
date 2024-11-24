@@ -24,5 +24,5 @@ export const MoveTableWrapper: FC<WrapperProps> = async ({ generationNumber }) =
 
   const moveList = await getMovesList(offset, limit)
   const allMovesData = await getAllMoveData(moveList)
-  return <MoveTable moveData={allMovesData} />
+  return <MoveTable moveData={allMovesData} usePagination />
 }
