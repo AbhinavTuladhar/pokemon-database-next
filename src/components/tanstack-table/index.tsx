@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 
-import useIsInitialRender from '@/hooks/useIsInitialRender'
 import {
   ColumnDef,
   flexRender,
@@ -53,7 +52,6 @@ const TanStackTable = <T extends object>({
     pageSize: DEFAULT_ROW_COUNT,
   })
   const tableRef = useRef<HTMLDivElement>(null)
-  const { isInitialRender } = useIsInitialRender()
 
   const {
     getHeaderGroups,
@@ -91,19 +89,24 @@ const TanStackTable = <T extends object>({
 
   const rowOptions = [25, 50, 100, 250, 500]
 
+  const handlePageChange = (callback: () => void) => {
+    // Scroll to top of the table whenever a pagination button is clicked.
+    if (tableRef.current) {
+      tableRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+    callback()
+  }
+
   const handlePageSizeChange = (pageSize: number) => {
+    // Scroll to top of the table
+    if (tableRef.current) {
+      tableRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
     setPagination({
       pageIndex: 0,
       pageSize,
     })
   }
-
-  // Scroll to top of the table whenever a pagination button is clicked. Do not scroll on first render
-  useEffect(() => {
-    if (tableRef.current && !isInitialRender) {
-      tableRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [pagination, isInitialRender])
 
   return (
     <div className="space-y-4" ref={tableRef}>
@@ -169,17 +172,29 @@ const TanStackTable = <T extends object>({
             />
           </div>
           <div className="flex items-center gap-x-2">
-            <PageChangeButton onClick={() => firstPage()} disabled={!getCanPreviousPage()}>
+            <PageChangeButton
+              onClick={() => handlePageChange(firstPage)}
+              disabled={!getCanPreviousPage()}
+            >
               {'<<'}
             </PageChangeButton>
-            <PageChangeButton onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
+            <PageChangeButton
+              onClick={() => handlePageChange(previousPage)}
+              disabled={!getCanPreviousPage()}
+            >
               {'<'}
             </PageChangeButton>
             <div className="text-sm">{paginationString}</div>
-            <PageChangeButton onClick={() => nextPage()} disabled={!getCanNextPage()}>
+            <PageChangeButton
+              onClick={() => handlePageChange(nextPage)}
+              disabled={!getCanNextPage()}
+            >
               {'>'}
             </PageChangeButton>
-            <PageChangeButton onClick={() => lastPage()} disabled={!getCanNextPage()}>
+            <PageChangeButton
+              onClick={() => handlePageChange(lastPage)}
+              disabled={!getCanNextPage()}
+            >
               {'>>'}
             </PageChangeButton>
           </div>
