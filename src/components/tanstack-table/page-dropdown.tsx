@@ -5,6 +5,8 @@ import classNames from 'classnames'
 import { AnimatePresence, motion } from 'framer-motion'
 import { RxCaretDown } from 'react-icons/rx'
 
+import useClickOutside from '@/hooks/useClickOutside'
+
 interface PageDropdownProps {
   options: Array<number>
   onChange: (value: number) => void
@@ -16,8 +18,9 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }
   const [isOpen, setIsOpen] = useState(false)
 
   const closeMenu = () => setIsOpen(false)
-
   const toggleMenu = () => setIsOpen(!isOpen)
+
+  const divRef = useClickOutside<HTMLDivElement>(closeMenu)
 
   const handleSelect = (value: string | number) => {
     setSelectedItem(Number(value))
@@ -26,7 +29,7 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }
   }
 
   return (
-    <div className="relative">
+    <div className="relative" ref={divRef}>
       <button
         onClick={toggleMenu}
         className="flex w-16 items-center justify-between gap-2 rounded border border-bd-light p-2 dark:border-bd-dark dark:bg-slate-700"
