@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import {
@@ -17,6 +17,7 @@ import {
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '../containers'
 
 import PageChangeButton from './page-change-button'
+import PageDropdown from './page-dropdown'
 import SortingArrows from './sorting-arrows'
 
 const getPaginationStrings = (pageIndex: number, pageSize: number, rowCount: number) => {
@@ -48,6 +49,7 @@ const TanStackTable = <T extends object>({
     pageIndex: 0,
     pageSize: 25,
   })
+  const tableRef = useRef<HTMLDivElement>(null)
 
   const {
     getHeaderGroups,
@@ -83,8 +85,24 @@ const TanStackTable = <T extends object>({
     getRowCount(),
   )
 
+  const rowOptions = [10, 25, 50, 100, 250, 500]
+
+  const handlePageSizeChange = (pageSize: number) => {
+    setPagination({
+      pageIndex: 0,
+      pageSize,
+    })
+  }
+
+  // Scroll to top of the table whenever a pagination button is clicked
+  useEffect(() => {
+    if (tableRef.current) {
+      tableRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [pagination])
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" ref={tableRef}>
       <TableContainer useFullWidth={useFullWidth}>
         <thead>
           <TableRow className="bg-neutral-200 font-bold duration-75 dark:bg-hdr-dark">
@@ -137,20 +155,26 @@ const TanStackTable = <T extends object>({
         </tbody>
       </TableContainer>
       {usePagination && (
-        <div className="flex items-center justify-end gap-1">
-          <PageChangeButton onClick={() => firstPage()} disabled={!getCanPreviousPage()}>
-            {'<<'}
-          </PageChangeButton>
-          <PageChangeButton onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
-            {'<'}
-          </PageChangeButton>
-          <div className="text-sm">{paginationString}</div>
-          <PageChangeButton onClick={() => nextPage()} disabled={!getCanNextPage()}>
-            {'>'}
-          </PageChangeButton>
-          <PageChangeButton onClick={() => lastPage()} disabled={!getCanNextPage()}>
-            {'>>'}
-          </PageChangeButton>
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:justify-end">
+          <div className="flex items-center gap-x-2">
+            <span className="text-sm">Row per page:</span>
+            <PageDropdown onChange={handlePageSizeChange} options={rowOptions} />
+          </div>
+          <div className="flex items-center gap-x-2">
+            <PageChangeButton onClick={() => firstPage()} disabled={!getCanPreviousPage()}>
+              {'<<'}
+            </PageChangeButton>
+            <PageChangeButton onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
+              {'<'}
+            </PageChangeButton>
+            <div className="text-sm">{paginationString}</div>
+            <PageChangeButton onClick={() => nextPage()} disabled={!getCanNextPage()}>
+              {'>'}
+            </PageChangeButton>
+            <PageChangeButton onClick={() => lastPage()} disabled={!getCanNextPage()}>
+              {'>>'}
+            </PageChangeButton>
+          </div>
         </div>
       )}
     </div>
