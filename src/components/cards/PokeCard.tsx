@@ -34,15 +34,6 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
     return type.type.name
   })
 
-  // Now map each type to its corresponding type card.
-  const typeDivs = typeList.map((type, index) => {
-    return (
-      <div className="relative z-50 shadow shadow-black/20" key={type + index}>
-        <TypeCard typeName={type} variant="big" />
-      </div>
-    )
-  })
-
   // When the user clicks on the Pokemon name, they are brought to the detail page.
   const targetLink = `/pokedex/${name}`
 
@@ -73,7 +64,15 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
       <div>
         {defaultSprite && <Image src={defaultSprite} height={100} width={100} alt={name} />}
       </div>
-      <div className="relative z-50 mb-2 mt-4 flex flex-row gap-x-2">{typeDivs}</div>
+      <div className="z-10 mb-2 mt-4 flex flex-row gap-x-2">
+        {typeList.map((type, index) => {
+          return (
+            <div className="shadow shadow-black/20" key={type + index}>
+              <TypeCard typeName={type} variant="big" />
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
