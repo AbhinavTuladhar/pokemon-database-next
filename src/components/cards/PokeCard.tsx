@@ -55,11 +55,19 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
   const endingColour = secondType === undefined ? darkenColour(firstColour) : `to-${secondColour}`
   const gradientStyle = `bg-gradient-to-tr from-10% to-90% ${startingColour} ${endingColour}`
 
+  // For accessibility purposes
+  const linkTitle = `View details about ${properName}`
+
   return (
     <div
       className={`${gradientStyle} relative flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-gray-400 hover:drop-shadow-lg dark:hover:shadow-gray-600 sm:w-56`}
     >
-      <Link href={targetLink} className="absolute inset-0" />
+      <Link
+        href={targetLink}
+        className="absolute inset-0"
+        aria-label={linkTitle}
+        title={linkTitle}
+      />
       <div className="font-bold">#{id}</div>
       <span className="text-center text-xl font-extrabold">{properName}</span>
       <div>
