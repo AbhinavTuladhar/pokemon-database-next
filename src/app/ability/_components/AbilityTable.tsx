@@ -111,7 +111,7 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
         <Input placeholder="Search for an ability" onChange={handleChange} value={filterText} />
       </div>
       {filteredData.length ? (
-        <TanStackTable data={filteredData} columns={columns} firstColumn="name" />
+        <TanStackTable data={filteredData} columns={columns} firstColumn="name" usePagination />
       ) : (
         <div className="text-center text-4xl font-bold">No such ability was found.</div>
       )}

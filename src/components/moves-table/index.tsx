@@ -14,6 +14,7 @@ import TanStackTable from '../tanstack-table'
 
 interface TableProps {
   moveData: Array<TransformedMove>
+  usePagination?: boolean
 }
 
 type MoveTableColumns = Pick<
@@ -28,7 +29,7 @@ type MoveTableColumns = Pick<
   | 'shortEntry'
 >
 
-export const MoveTable: FC<TableProps> = ({ moveData }) => {
+export const MoveTable: FC<TableProps> = ({ moveData, usePagination = false }) => {
   const tableMoveData = moveData.map(
     ({ moveName, moveType, damageClass, power, accuracy, PP, effect_chance, shortEntry }) => ({
       moveName,
@@ -155,7 +156,12 @@ export const MoveTable: FC<TableProps> = ({ moveData }) => {
         <Input placeholder="Search for a move" onChange={handleChange} value={filterText} />
       </div>
       {filteredData.length > 0 ? (
-        <TanStackTable data={filteredData} columns={columns} firstColumn="moveName" />
+        <TanStackTable
+          usePagination={usePagination}
+          data={filteredData}
+          columns={columns}
+          firstColumn="moveName"
+        />
       ) : (
         <div className="w-full text-center text-2xl"> No moves found.</div>
       )}
