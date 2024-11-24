@@ -22,9 +22,12 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }
 
   const divRef = useClickOutside<HTMLDivElement>(closeMenu)
 
-  const handleSelect = (value: string | number) => {
-    setSelectedItem(Number(value))
-    onChange(Number(value))
+  const handleSelect = (value: number) => {
+    if (value === selectedItem) {
+      return
+    }
+    setSelectedItem(value)
+    onChange(value)
     closeMenu()
   }
 
@@ -44,11 +47,16 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }
             animate={{ opacity: 1, scaleY: 1 }}
             exit={{ opacity: 0, scaleY: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-full left-0 right-0 z-20 origin-bottom border border-bd-light dark:border-bd-dark"
+            className="absolute bottom-full left-0 right-0 z-20 origin-bottom border border-bd-light bg-neutral-50 dark:border-bd-dark dark:bg-slate-700"
           >
             {options.map((option, index) => (
               <li
-                className="cursor-pointer p-2 duration-300 hover:bg-blue-400 dark:bg-slate-700 dark:hover:bg-blue-600"
+                className={classNames(
+                  'cursor-pointer p-2 duration-300 hover:bg-gray-200 dark:hover:bg-blue-600',
+                  {
+                    'cursor-default bg-gray-200 dark:bg-blue-600': option === selectedItem,
+                  },
+                )}
                 key={index}
                 onClick={() => handleSelect(option)}
               >
