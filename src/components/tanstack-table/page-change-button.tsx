@@ -5,8 +5,7 @@ interface PageButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Props
 const PageChangeButton: FC<PageButtonProps> = ({ children, ...props }) => (
   <button
     {...props}
-    disabled={false}
-    className="size-8 cursor-pointer rounded-full duration-300 hover:bg-gray-200 dark:hover:bg-gray-600"
+    className="size-8 cursor-pointer rounded-full duration-300 hover:bg-gray-200 disabled:cursor-not-allowed dark:hover:bg-gray-600"
   >
     {children}
   </button>

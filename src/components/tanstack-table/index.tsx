@@ -19,6 +19,15 @@ import { TableCell, TableCellHeader, TableContainer, TableRow } from '../contain
 import PageChangeButton from './page-change-button'
 import SortingArrows from './sorting-arrows'
 
+const getPaginationStrings = (pageIndex: number, pageSize: number, rowCount: number) => {
+  const startingRow = pageIndex * pageSize + 1
+  const endingRow = pageIndex * pageSize + pageSize
+
+  const realEndingRow = Math.min(endingRow, rowCount)
+
+  return `${startingRow} - ${realEndingRow} of ${rowCount}`
+}
+
 interface TableProps<T> {
   data: Array<T>
   columns: ColumnDef<T, any>[]
@@ -49,6 +58,7 @@ const TanStackTable = <T extends object>({
     lastPage,
     getCanNextPage,
     getCanPreviousPage,
+    getRowCount,
   } = useReactTable({
     data,
     columns,
@@ -66,6 +76,12 @@ const TanStackTable = <T extends object>({
 
   const headers = getHeaderGroups()[0]
   const rows = getRowModel().rows
+
+  const paginationString = getPaginationStrings(
+    pagination.pageIndex,
+    pagination.pageSize,
+    getRowCount(),
+  )
 
   return (
     <div className="space-y-4">
@@ -121,13 +137,14 @@ const TanStackTable = <T extends object>({
         </tbody>
       </TableContainer>
       {usePagination && (
-        <div className="flex justify-end gap-2">
+        <div className="flex items-center justify-end gap-1">
           <PageChangeButton onClick={() => firstPage()} disabled={!getCanPreviousPage()}>
             {'<<'}
           </PageChangeButton>
           <PageChangeButton onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
             {'<'}
           </PageChangeButton>
+          <div className="text-sm">{paginationString}</div>
           <PageChangeButton onClick={() => nextPage()} disabled={!getCanNextPage()}>
             {'>'}
           </PageChangeButton>
