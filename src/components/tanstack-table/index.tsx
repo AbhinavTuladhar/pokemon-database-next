@@ -21,6 +21,8 @@ import PageChangeButton from './page-change-button'
 import PageDropdown from './page-dropdown'
 import SortingArrows from './sorting-arrows'
 
+const DEFAULT_ROW_COUNT = 25
+
 const getPaginationStrings = (pageIndex: number, pageSize: number, rowCount: number) => {
   const startingRow = pageIndex * pageSize + 1
   const endingRow = pageIndex * pageSize + pageSize
@@ -48,7 +50,7 @@ const TanStackTable = <T extends object>({
   const [sorting, setSorting] = useState<SortingState>([{ id: firstColumn as string, desc: false }])
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 25,
+    pageSize: DEFAULT_ROW_COUNT,
   })
   const tableRef = useRef<HTMLDivElement>(null)
   const { isInitialRender } = useIsInitialRender()
@@ -87,7 +89,7 @@ const TanStackTable = <T extends object>({
     getRowCount(),
   )
 
-  const rowOptions = [10, 25, 50, 100, 250, 500]
+  const rowOptions = [25, 50, 100, 250, 500]
 
   const handlePageSizeChange = (pageSize: number) => {
     setPagination({
@@ -159,8 +161,12 @@ const TanStackTable = <T extends object>({
       {usePagination && (
         <div className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:justify-end">
           <div className="flex items-center gap-x-2">
-            <span className="text-sm">Row per page:</span>
-            <PageDropdown onChange={handlePageSizeChange} options={rowOptions} />
+            <span className="text-sm">Rows per page:</span>
+            <PageDropdown
+              initialValue={DEFAULT_ROW_COUNT}
+              onChange={handlePageSizeChange}
+              options={rowOptions}
+            />
           </div>
           <div className="flex items-center gap-x-2">
             <PageChangeButton onClick={() => firstPage()} disabled={!getCanPreviousPage()}>

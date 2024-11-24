@@ -8,10 +8,11 @@ import { RxCaretDown } from 'react-icons/rx'
 interface PageDropdownProps {
   options: Array<number>
   onChange: (value: number) => void
+  initialValue: number
 }
 
-const PageDropdown: FC<PageDropdownProps> = ({ options, onChange }) => {
-  const [selectedItem, setSelectedItem] = useState(options[0])
+const PageDropdown: FC<PageDropdownProps> = ({ options, onChange, initialValue }) => {
+  const [selectedItem, setSelectedItem] = useState(initialValue)
   const [isOpen, setIsOpen] = useState(false)
 
   const closeMenu = () => setIsOpen(false)
@@ -28,7 +29,7 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange }) => {
     <div className="relative">
       <button
         onClick={toggleMenu}
-        className="flex w-16 items-center justify-between gap-2 rounded border border-bd-light bg-slate-700 p-2 dark:border-bd-dark"
+        className="flex w-16 items-center justify-between gap-2 rounded border border-bd-light p-2 dark:border-bd-dark dark:bg-slate-700"
       >
         <span> {selectedItem}</span>
         <RxCaretDown className={classNames('duration-300', { 'rotate-180': isOpen })} />
@@ -44,7 +45,7 @@ const PageDropdown: FC<PageDropdownProps> = ({ options, onChange }) => {
           >
             {options.map((option, index) => (
               <li
-                className="cursor-pointer bg-slate-700 p-2 duration-300 hover:bg-blue-600"
+                className="cursor-pointer p-2 duration-300 hover:bg-blue-400 dark:bg-slate-700 dark:hover:bg-blue-600"
                 key={index}
                 onClick={() => handleSelect(option)}
               >
