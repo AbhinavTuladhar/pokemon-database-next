@@ -17,5 +17,5 @@ const getMovesData = async (names: Array<string>) => {
 export const TypeMoveTable: FC<MovesTableProps> = async ({ moveNames }) => {
   const movesData = await getMovesData(moveNames)
 
-  return <MoveTable moveData={movesData} />
+  return <MoveTable moveData={movesData} usePagination />
 }
