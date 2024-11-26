@@ -38,12 +38,12 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
   // Alola has slightly long names, so we provide a special exception to it.
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => handleTabChange(index)}>
-      <TabList className="flex flex-wrap">
+      <TabList className="dark:border-b-table-border flex flex-wrap gap-x-2 border-b border-b-bd-light pl-0 dark:border-b-bd-dark sm:pl-4">
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tab + tabIndex}
-            className="flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-3 duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-hdr-dark dark:hover:border-white dark:hover:text-white dark:hover:brightness-110"
-            selectedClassName="!border-blue-500 text-blue-500"
+            className="grid translate-y-px cursor-pointer place-items-center whitespace-break-spaces rounded-tl-lg rounded-tr-lg border-x border-t border-gray-300 bg-neutral-200 px-4 py-2 duration-300 hover:text-red-600  hover:underline dark:border-gray-500 dark:bg-hdr-dark dark:hover:text-red-400 dark:hover:brightness-110 max-lg:flex-1"
+            selectedClassName="text-blue-500 hover:bg-neutral-50 dark:hover:bg-hdr-dark dark:!bg-gray-800 bg-neutral-50 hover:!text-blue-500"
             // onClick={() => handleTabChange(tab)}
           >
             {formatName(tab)}
@@ -52,12 +52,12 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
       </TabList>
 
       {regionData.map((region, regionIndex) => {
-        const { locations, regionName } = region
+        const { locations } = region
         return (
           <TabPanel key={region.regionName + regionIndex}>
             <section
               className={classNames(
-                'columns-1 pt-4 min-[420px]:columns-2 min-[640px]:columns-3 lg:columns-4 xl:columns-5',
+                'columns-1 pt-4 min-[420px]:columns-2 min-[640px]:columns-3 md:columns-4 lg:columns-5 xl:columns-6',
               )}
             >
               {locations.map((location, locationIndex) => (
