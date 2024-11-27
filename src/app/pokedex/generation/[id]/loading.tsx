@@ -1,6 +1,6 @@
 import { PokeCardSkeleton } from '@/components/skeletons'
 
-import PokeCardContainer from './_components/PokeCardContainer'
+import { PokeCardContainer } from './_components/PokeCardContainer'
 
 const Loading = () => {
   return (
