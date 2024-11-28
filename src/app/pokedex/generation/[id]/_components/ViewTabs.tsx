@@ -7,6 +7,7 @@ import { PokeCard } from '@/components/cards'
 import { TransformedPokemon } from '@/types'
 
 import { PokeCardContainer } from './PokeCardContainer'
+import { PokemonTable } from './PokemonTable'
 
 interface ViewTabsProps {
   pokemonData: Array<TransformedPokemon>
@@ -56,20 +57,7 @@ export const ViewTabs: FC<ViewTabsProps> = ({ pokemonData }) => {
       </TabPanel>
       <TabPanel>
         <div className="mt-4">
-          <PokeCardContainer>
-            {pokemonData.map(pokemon => {
-              const { id, name, types, front_default: defaultSprite = '' } = pokemon
-              return (
-                <PokeCard
-                  key={id}
-                  id={id}
-                  name={name}
-                  types={types}
-                  defaultSprite={defaultSprite}
-                />
-              )
-            })}
-          </PokeCardContainer>
+          <PokemonTable pokemonData={pokemonData} />
         </div>
       </TabPanel>
     </Tabs>
