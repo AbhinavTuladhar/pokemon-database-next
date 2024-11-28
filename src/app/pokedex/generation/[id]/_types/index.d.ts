@@ -8,6 +8,7 @@ export interface TableProps
 
 export interface TableData extends Pick<TransformedPokemon, 'id' | 'name' | 'gameSprite'> {
   types: Array<string>
+  totalStats: number
   stats: [
     {
       name: 'HP'

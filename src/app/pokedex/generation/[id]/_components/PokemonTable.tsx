@@ -4,46 +4,16 @@ import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
 import { TypeCard } from '@/components/cards'
+import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
 import statMapping from '@/data/statMapping'
-import { TransformedPokemon } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 
-import { TableProps } from '../_types'
+import { TableData, TableProps } from '../_types'
 
 interface PokemonTableProps {
   tableData: Array<TableProps>
-}
-
-interface TableData extends Pick<TransformedPokemon, 'id' | 'name' | 'gameSprite'> {
-  types: Array<string>
-  stats: [
-    {
-      name: 'HP'
-      value: number
-    },
-    {
-      name: 'Attack'
-      value: number
-    },
-    {
-      name: 'Defence'
-      value: number
-    },
-    {
-      name: 'Sp. Atk'
-      value: number
-    },
-    {
-      name: 'Sp. Def'
-      value: number
-    },
-    {
-      name: 'Speed'
-      value: number
-    },
-  ]
 }
 
 export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
@@ -63,12 +33,15 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
       }
     })
 
+    const totalStats = statValues.reduce((acc, stat) => acc + stat.value, 0)
+
     return {
       id,
       name,
       gameSprite,
       stats: statValues,
       types: types.map(type => type.type.name),
+      totalStats,
     }
   }) as Array<TableData>
 
@@ -92,7 +65,11 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
       }),
       helper.accessor('name', {
         header: () => <span> Name </span>,
-        cell: info => formatName(info.getValue()),
+        cell: info => (
+          <BlueLink boldFlag href={`/pokemon/${info.getValue()}`}>
+            {formatName(info.getValue())}
+          </BlueLink>
+        ),
       }),
       helper.accessor('types', {
         header: () => <span> Types </span>,
@@ -104,13 +81,9 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
           </div>
         ),
       }),
-      helper.accessor('stats', {
+      helper.accessor('totalStats', {
         header: () => <span> Total </span>,
-        cell: info => {
-          const { stats } = info.row.original
-          const totalStats = stats.reduce((acc, stat) => acc + stat.value, 0)
-          return <span className="font-bold"> {totalStats} </span>
-        },
+        cell: info => info.getValue(),
       }),
       helper.accessor('stats.0.value', {
         header: () => <span> HP </span>,

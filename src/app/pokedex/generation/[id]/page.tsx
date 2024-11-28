@@ -46,6 +46,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const pokemonData = await getPokemonData(generationResponse.results.map(pokemon => pokemon.name))
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
+  // Minify the data to be passed into the components. This avoids build errors of excessive ISR
   const cardData = extractedPokemonData.map(({ id, name, types, front_default }) => ({
     id,
     name,
