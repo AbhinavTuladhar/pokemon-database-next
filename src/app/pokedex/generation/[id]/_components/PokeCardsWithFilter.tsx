@@ -6,7 +6,7 @@ import { PokeCard } from '@/components/cards'
 import Input from '@/components/input'
 import type { TransformedPokemon } from '@/types'
 
-import PokeCardContainer from './PokeCardContainer'
+import { PokeCardContainer } from './PokeCardContainer'
 
 interface FilterProps {
   pokemonData: Array<TransformedPokemon>

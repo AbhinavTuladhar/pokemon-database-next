@@ -1,13 +1,12 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PokeCard } from '@/components/cards'
 import { PageTitle } from '@/components/containers'
 import generationData from '@/data/generationData'
 import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 
-import PokeCardContainer from './_components/PokeCardContainer'
+import { ViewTabs } from './_components'
 
 interface PageProps {
   params: {
@@ -47,17 +46,26 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const pokemonData = await getPokemonData(generationResponse.results.map(pokemon => pokemon.name))
   const extractedPokemonData = pokemonData.map(PokemonExtractor)
 
+  // Minify the data to be passed into the components. This avoids build errors of excessive ISR
+  const cardData = extractedPokemonData.map(({ id, name, types, front_default }) => ({
+    id,
+    name,
+    types,
+    front_default,
+  }))
+
+  const tableData = extractedPokemonData.map(({ id, name, types, gameSprite, stats }) => ({
+    id,
+    name,
+    gameSprite,
+    stats,
+    types,
+  }))
+
   return (
     <main>
       <PageTitle>Pokémon of generation {generationNumber}</PageTitle>
-      <PokeCardContainer>
-        {extractedPokemonData.map(pokemon => {
-          const { id, name, types, front_default: defaultSprite = '' } = pokemon
-          return (
-            <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />
-          )
-        })}
-      </PokeCardContainer>
+      <ViewTabs cardData={cardData} tableData={tableData} />
     </main>
   )
 }
