@@ -4,16 +4,18 @@ import React, { FC, useState } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import { PokeCard } from '@/components/cards'
-import { TransformedPokemon } from '@/types'
+
+import { CardProps, TableProps } from '../_types'
 
 import { PokeCardContainer } from './PokeCardContainer'
 import { PokemonTable } from './PokemonTable'
 
 interface ViewTabsProps {
-  pokemonData: Array<TransformedPokemon>
+  cardData: Array<CardProps>
+  tableData: Array<TableProps>
 }
 
-export const ViewTabs: FC<ViewTabsProps> = ({ pokemonData }) => {
+export const ViewTabs: FC<ViewTabsProps> = ({ cardData, tableData }) => {
   const [tabIndex, setTabIndex] = useState(0)
 
   const tabNames = ['Cards', 'Table']
@@ -40,7 +42,7 @@ export const ViewTabs: FC<ViewTabsProps> = ({ pokemonData }) => {
       <TabPanel>
         <div className="mt-4">
           <PokeCardContainer>
-            {pokemonData.map(pokemon => {
+            {cardData.map(pokemon => {
               const { id, name, types, front_default: defaultSprite = '' } = pokemon
               return (
                 <PokeCard
@@ -57,7 +59,7 @@ export const ViewTabs: FC<ViewTabsProps> = ({ pokemonData }) => {
       </TabPanel>
       <TabPanel>
         <div className="mt-4">
-          <PokemonTable pokemonData={pokemonData} />
+          <PokemonTable tableData={tableData} />
         </div>
       </TabPanel>
     </Tabs>

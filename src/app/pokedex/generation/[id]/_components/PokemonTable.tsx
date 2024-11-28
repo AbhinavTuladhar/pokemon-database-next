@@ -10,8 +10,10 @@ import { TransformedPokemon } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 
-interface TableProps {
-  pokemonData: Array<TransformedPokemon>
+import { TableProps } from '../_types'
+
+interface PokemonTableProps {
+  tableData: Array<TableProps>
 }
 
 interface TableData extends Pick<TransformedPokemon, 'id' | 'name' | 'gameSprite'> {
@@ -44,8 +46,8 @@ interface TableData extends Pick<TransformedPokemon, 'id' | 'name' | 'gameSprite
   ]
 }
 
-export const PokemonTable: FC<TableProps> = ({ pokemonData }) => {
-  const tablePokemonData = pokemonData.map(pokemon => {
+export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
+  const tablePokemonData = tableData.map(pokemon => {
     const { id, name, gameSprite, stats, types } = pokemon
 
     const statValues = stats.map(stat => {
