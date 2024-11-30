@@ -3,6 +3,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import type { ReactTabsFunctionComponent, TabListProps } from 'react-tabs'
+import { TabList as ReactTabList } from 'react-tabs'
 
 interface CustomTabListProps extends TabListProps {
   extraClassName?: string
@@ -16,14 +17,16 @@ export const TabList: ReactTabsFunctionComponent<CustomTabListProps> = ({
   const finalClassName = classNames(
     'dark:border-b-table-border flex flex-wrap gap-x-2 border-b border-b-bd-light pl-0 dark:border-b-bd-dark sm:pl-4',
     {
-      extraClassName: extraClassName,
+      ...(extraClassName && {
+        [extraClassName]: Boolean(extraClassName),
+      }),
     },
   )
 
   return (
-    <ul {...props} className={finalClassName}>
+    <ReactTabList {...props} className={finalClassName}>
       {children}
-    </ul>
+    </ReactTabList>
   )
 }
 

@@ -2,8 +2,8 @@
 
 import { FC, useState } from 'react'
 import classNames from 'classnames'
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
+import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 import formatName from '@/utils/formatName'
 
 import TypeTable from './TypeTable'
@@ -38,18 +38,14 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
       selectedIndex={tabIndex}
       onSelect={(index: number) => handleTabChange(index)}
     >
-      <TabList className="flex flex-wrap gap-x-1 ">
+      <TabList extraClassName="flex flex-wrap gap-x-1 sm:pl-2">
         {tabNames.map((tab, tabIndex) => (
           <Tab
             key={tab + tabIndex}
-            className={classNames(
-              'flex w-20 flex-1 justify-center border-b-2 border-transparent bg-neutral-200 p-1.5 text-sm duration-300 hover:cursor-pointer hover:bg-neutral-300 dark:bg-hdr-dark dark:hover:border-white dark:hover:text-white dark:hover:brightness-110',
-              {
-                'last:w-full last:flex-none last:border-t last:!border-t-slate-300 dark:last:!border-t-slate-700':
-                  tabNames.length > 2,
-              },
-            )}
-            selectedClassName="!border-blue-500 text-blue-500"
+            extraClassName={classNames('flex min-w-40 flex-1 justify-center p-1.5 text-sm', {
+              'last:mdlg::w-full last:mdlg:flex-none last:border-t last:!border-t-gray-300 dark:last:!border-t-gray-500':
+                tabNames.length > 2,
+            })}
           >
             {tab}
           </Tab>
