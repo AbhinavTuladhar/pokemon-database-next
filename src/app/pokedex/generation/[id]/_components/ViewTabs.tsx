@@ -1,9 +1,9 @@
 'use client'
 
 import React, { FC, useState } from 'react'
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import { PokeCard } from '@/components/cards'
+import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 
 import { CardProps, TableProps } from '../_types'
 
@@ -26,41 +26,24 @@ export const ViewTabs: FC<ViewTabsProps> = ({ cardData, tableData }) => {
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => handleTabChange(index)}>
-      <TabList className="dark:border-b-table-border flex flex-wrap gap-x-2 border-b border-b-bd-light pl-0 dark:border-b-bd-dark sm:pl-4">
+      <TabList>
         {tabNames.map((tab, tabIndex) => (
-          <Tab
-            key={tab + tabIndex}
-            className="grid translate-y-px cursor-pointer place-items-center whitespace-break-spaces rounded-tl-lg rounded-tr-lg border-x border-t border-gray-300 bg-neutral-200 px-4 py-2 duration-300 hover:text-red-600  hover:underline dark:border-gray-500 dark:bg-hdr-dark dark:hover:text-red-400 dark:hover:brightness-110 max-lg:flex-1"
-            selectedClassName="text-blue-500 hover:bg-neutral-50 dark:hover:bg-hdr-dark dark:!bg-gray-800 bg-neutral-50 hover:!text-blue-500"
-            // onClick={() => handleTabChange(tab)}
-          >
-            {tab}
-          </Tab>
+          <Tab key={tab + tabIndex}>{tab}</Tab>
         ))}
       </TabList>
 
       <TabPanel>
-        <div className="mt-4">
-          <PokeCardContainer>
-            {cardData.map(pokemon => {
-              const { id, name, types, front_default: defaultSprite = '' } = pokemon
-              return (
-                <PokeCard
-                  key={id}
-                  id={id}
-                  name={name}
-                  types={types}
-                  defaultSprite={defaultSprite}
-                />
-              )
-            })}
-          </PokeCardContainer>
-        </div>
+        <PokeCardContainer>
+          {cardData.map(pokemon => {
+            const { id, name, types, front_default: defaultSprite = '' } = pokemon
+            return (
+              <PokeCard key={id} id={id} name={name} types={types} defaultSprite={defaultSprite} />
+            )
+          })}
+        </PokeCardContainer>
       </TabPanel>
       <TabPanel>
-        <div className="mt-4">
-          <PokemonTable tableData={tableData} />
-        </div>
+        <PokemonTable tableData={tableData} />
       </TabPanel>
     </Tabs>
   )

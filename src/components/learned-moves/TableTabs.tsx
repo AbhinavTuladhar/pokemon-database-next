@@ -1,8 +1,8 @@
 'use client'
 
 import React, { FC, useState } from 'react'
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
+import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 import { versionNameBreakMap } from '@/data/gameNameMap'
 import formatName from '@/utils/formatName'
 
@@ -30,15 +30,9 @@ const TableTabs: FC<TableTabProps> = ({ pokemonName, movesData, versionGroupName
 
   return (
     <Tabs className="mt-4" selectedIndex={tabIndex} onSelect={index => handleTabChange(index)}>
-      <TabList className="dark:border-b-table-border flex gap-x-2 border-b border-b-bd-light pl-0 dark:border-b-bd-dark sm:pl-4">
+      <TabList>
         {tabNames.map((tab, tabIndex) => (
-          <Tab
-            className="grid translate-y-px cursor-pointer place-items-center whitespace-break-spaces rounded-tl-lg rounded-tr-lg border-x border-t border-gray-300 bg-neutral-200 p-3 duration-300  hover:text-red-600 hover:underline dark:border-gray-500 dark:bg-hdr-dark dark:hover:text-red-400 dark:hover:brightness-110"
-            selectedClassName="text-blue-500 hover:bg-neutral-50 dark:hover:bg-hdr-dark dark:!bg-gray-800 bg-neutral-50 hover:!text-blue-500"
-            key={tab + tabIndex}
-          >
-            {tab}
-          </Tab>
+          <Tab key={tab + tabIndex}>{tab}</Tab>
         ))}
       </TabList>
       {versionGroupNames.map(versionName => (
