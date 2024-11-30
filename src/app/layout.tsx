@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
-import { ThemeProvider } from 'next-themes'
 import { ViewTransitions } from 'next-view-transitions'
-import { SkeletonTheme } from 'react-loading-skeleton'
 
-import { Tooltip } from '@/components/client-components'
-import { AnimatedPageWrapper } from '@/components/containers'
-import Header from '@/components/header'
-import Navbar from '@/components/navbar'
-import ScreenSize from '@/components/screen-size'
-import Scroll from '@/components/scroll'
+import {
+  GlobalProviders,
+  HeaderSection,
+  Helpers,
+  MainLayout,
+  PageLayout,
+  ToolTip,
+} from '@/components/layout-components'
 
 import './globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -31,25 +31,14 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en" className="scroll-smooth">
         <body className={`${FiraSans.className}`}>
-          <ThemeProvider attribute="class" enableSystem={true} defaultTheme="system">
-            <SkeletonTheme baseColor="#bababa" highlightColor="#9f9f9f">
-              <Scroll />
-              <Tooltip
-                id="my-tooltip"
-                style={{ fontSize: '0.825rem', maxWidth: '20rem', backgroundColor: 'black' }}
-              />
-              <div className="min-h-screen max-w-full bg-neutral-50 text-black dark:bg-gray-800 dark:text-white">
-                <Header />
-                <div className="relative z-50 mx-0 max-w-screen-xl lg:mx-8 xl:mx-auto xl:px-8">
-                  <Navbar />
-                </div>
-                <div className="main-layout mx-4 max-w-screen-xl pb-4 md:mx-8 xl:mx-auto xl:px-8">
-                  <AnimatedPageWrapper>{children}</AnimatedPageWrapper>
-                </div>
-              </div>
-            </SkeletonTheme>
-          </ThemeProvider>
-          {['development', 'preview'].includes(process.env.ENVIRONMENT) && <ScreenSize />}
+          <GlobalProviders>
+            <PageLayout>
+              <HeaderSection />
+              <MainLayout>{children}</MainLayout>
+              <Helpers />
+              <ToolTip />
+            </PageLayout>
+          </GlobalProviders>
         </body>
       </html>
     </ViewTransitions>
