@@ -19,8 +19,8 @@ module.exports = {
         'main-title': 'clamp(2rem, 1.571rem + 2.143vw, 3.5rem)',
       },
       screens: {
-        'sm-md': '820px',
-        'mdlg': '1170px',
+        'md-lg': '820px',
+        'lg-xl': '1170px',
       },
       width: {
         '475/1000': '47.5%',

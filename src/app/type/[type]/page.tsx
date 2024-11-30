@@ -86,7 +86,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           />
         </Suspense>
       </section>
-      <div className="grid grid-cols-1 justify-between gap-x-20 gap-y-4 mdlg:grid-cols-[1fr,_2fr]">
+      <div className="grid grid-cols-1 justify-between gap-x-20 gap-y-4 lg-xl:grid-cols-[1fr,_2fr]">
         <ProsAndConsSection
           doubleDamageFromList={doubleDamageFromList}
           doubleDamageToList={doubleDamageToList}
@@ -97,12 +97,12 @@ const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
           formattedType={formattedType}
         />
 
-        <div className="mt-4 flex flex-col mdlg:mt-0">
+        <div className="mt-4 flex flex-col lg-xl:mt-0">
           <h2 className="text-4xl font-bold">Dual type attack pros & cons</h2>
           <p className="my-4">
             {`This chart shows the strength of the ${type} type against every type combination. The fraction of damage a ${type} type move will deal is shown - ½ means 50% damage (not very effective), 2 means 200% (super-effective) and so on.`}
           </p>
-          <div className="flex justify-center mdlg:justify-start">
+          <div className="flex justify-center lg-xl:justify-start">
             <DualTypeChart
               doubleDamageTo={doubleDamageTo}
               halfDamageTo={halfDamageTo}

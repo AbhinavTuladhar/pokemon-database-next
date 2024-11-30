@@ -144,7 +144,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             />
           </div>
 
-          <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 mdlg:col-span-1 mdlg:grid-cols-1">
+          <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 lg-xl:col-span-1 lg-xl:grid-cols-1">
             <TrainingInfo
               base_experience={base_experience}
               base_happiness={base_happiness}
@@ -165,7 +165,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <section className="col-span-2">
             <BaseStat stats={stats} />
           </section>
-          <section className="col-span-2 mdlg:col-span-1">
+          <section className="col-span-2 lg-xl:col-span-1">
             <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
           </section>
         </section>

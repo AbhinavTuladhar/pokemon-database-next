@@ -24,7 +24,7 @@ export const BerryDetails: FC<BerryDetailsProps> = async ({ itemName }) => {
   const { firmness, flavours, growthTime, maxHarvest, size, smoothness, soilDryness } = berryData
 
   return (
-    <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm-md:grid-cols-[1fr,_2fr]">
+    <div className="grid grid-cols-1 gap-x-10 gap-y-6 md-lg:grid-cols-[1fr,_2fr]">
       <BerryData
         firmness={firmness}
         growthTime={growthTime}
