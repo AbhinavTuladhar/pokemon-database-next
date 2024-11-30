@@ -102,7 +102,7 @@ export const PokeDexData: FC<DexDataProps> = ({
         entry_number,
         pokedex: { name: pokedexName },
       } = pokedex
-      const paddedNumber = entry_number.toString().padStart(4, '0')
+      const paddedNumber = entry_number.toString().padStart(3, '0')
       const gameNames = pokedexToGameMap[pokedexName] ?? 'Not implemented'
 
       return { number: paddedNumber, games: gameNames }

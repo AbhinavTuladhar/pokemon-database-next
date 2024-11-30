@@ -53,20 +53,25 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
         header: () => <span> # </span>,
         cell: info => {
           const { id, gameSprite } = info.row.original
+          const paddedId = id.toString().padStart(3, '0')
           return (
-            <div className="flex items-center gap-x-2">
+            <div className="flex items-center justify-end gap-x-2">
               {gameSprite ? (
-                <Image src={gameSprite} alt={id.toString()} height={32} width={32} />
+                <Image src={gameSprite} alt={id.toString()} height={60} width={60} />
               ) : null}
-              <span> {id} </span>
+              <span> {paddedId} </span>
             </div>
           )
+        },
+        meta: {
+          headerStyle: 'min-w-16',
+          cellStyle: 'flex justify-end',
         },
       }),
       helper.accessor('name', {
         header: () => <span> Name </span>,
         cell: info => (
-          <BlueLink boldFlag href={`/pokemon/${info.getValue()}`}>
+          <BlueLink boldFlag href={`/pokedex/${info.getValue()}`}>
             {formatName(info.getValue())}
           </BlueLink>
         ),
