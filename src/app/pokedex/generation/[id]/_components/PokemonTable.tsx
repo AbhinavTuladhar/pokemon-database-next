@@ -55,7 +55,7 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
           const { id, gameSprite } = info.row.original
           const paddedId = id.toString().padStart(3, '0')
           return (
-            <div className="flex items-center justify-end gap-x-2">
+            <div className="flex items-center justify-end gap-x-1">
               {gameSprite ? (
                 <Image src={gameSprite} alt={id.toString()} height={60} width={60} />
               ) : null}
@@ -64,8 +64,8 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
           )
         },
         meta: {
-          headerStyle: 'min-w-16',
-          cellStyle: 'flex justify-end',
+          headerStyle: 'min-w-28',
+          cellStyle: 'min-w-28',
         },
       }),
       helper.accessor('name', {
