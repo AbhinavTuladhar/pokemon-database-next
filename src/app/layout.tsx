@@ -8,6 +8,7 @@ import { Tooltip } from '@/components/client-components'
 import { AnimatedPageWrapper } from '@/components/containers'
 import Header from '@/components/header'
 import Navbar from '@/components/navbar'
+import ScreenSize from '@/components/screen-size'
 import Scroll from '@/components/scroll'
 
 import './globals.css'
@@ -48,6 +49,7 @@ export default function RootLayout({
               </div>
             </SkeletonTheme>
           </ThemeProvider>
+          {['development', 'preview'].includes(process.env.ENVIRONMENT) && <ScreenSize />}
         </body>
       </html>
     </ViewTransitions>
