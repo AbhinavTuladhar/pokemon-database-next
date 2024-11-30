@@ -119,7 +119,7 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
   }, [helper, levelFlag])
 
   return (
-    <div className="flex overflow-auto sm:justify-center mdlg:block">
+    <div className="flex overflow-auto sm:justify-center lg-xl:block">
       <TanStackTable
         data={smallerMoveData}
         columns={columns}
