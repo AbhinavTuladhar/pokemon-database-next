@@ -53,6 +53,9 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
         },
         sortingFn: 'basic',
         enableGlobalFilter: true,
+        meta: {
+          cellStyle: 'min-w-32',
+        },
       }),
       helper.accessor('moveType', {
         header: () => <span> Type </span>,
@@ -119,11 +122,12 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
   }, [helper, levelFlag])
 
   return (
-    <div className="flex overflow-auto sm:justify-center lg-xl:block">
+    <div className="overflow-auto sm:mx-auto lg-xl:mx-0">
       <TanStackTable
         data={smallerMoveData}
         columns={columns}
         firstColumn={levelFlag ? 'levelLearnedAt' : 'moveName'}
+        useFullWidth
       />
     </div>
   )

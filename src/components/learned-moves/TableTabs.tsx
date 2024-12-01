@@ -37,11 +37,13 @@ const TableTabs: FC<TableTabProps> = ({ pokemonName, movesData, versionGroupName
       </TabList>
       {versionGroupNames.map(versionName => (
         <TabPanel key={versionName}>
-          <AllMoveTables
-            pokemonName={pokemonName}
-            movesData={movesData}
-            versionGroupName={versionName}
-          />
+          <div className="-mt-4">
+            <AllMoveTables
+              pokemonName={pokemonName}
+              movesData={movesData}
+              versionGroupName={versionName}
+            />
+          </div>
         </TabPanel>
       ))}
     </Tabs>
