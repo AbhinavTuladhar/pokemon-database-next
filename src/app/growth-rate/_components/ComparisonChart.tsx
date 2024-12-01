@@ -62,7 +62,14 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
         fontSize: '1.125rem',
       },
     },
-    colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#90EE7E'],
+    colors: [
+      'hsl(205.8, 100%, 49.2%)',
+      'hsl(159.6, 100%, 44.5%)',
+      'hsl(39.6, 99.1%, 54.7%)',
+      'hsl(351.3, 100%, 63.5%)',
+      'hsl(253.6, 55%, 59%)',
+      'hsl(110.4, 76.7%, 71.4%)',
+    ],
     subtitle: {
       text: subTitle,
       style: {

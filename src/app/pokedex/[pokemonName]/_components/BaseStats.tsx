@@ -26,12 +26,12 @@ const getStatDetails = (stats: Array<PokemonStat>) => {
     const widthValue = `${(statValue / maxStatValue) * 100}%`
 
     // Now provide a colour to the bar graph depending on the value of the base stat.
-    if (statValue >= 0 && statValue < 30) colour = '#f34444'
-    else if (statValue >= 30 && statValue < 60) colour = '#ff7f0f'
-    else if (statValue >= 60 && statValue < 90) colour = '#ffdd57'
-    else if (statValue >= 90 && statValue < 120) colour = '#a0e515'
-    else if (statValue >= 120 && statValue < 150) colour = '#23cd5e'
-    else if (statValue >= 150) colour = '#00c2b8'
+    if (statValue >= 0 && statValue < 30) colour = 'hsl(0, 87.9%, 61%)'
+    else if (statValue >= 30 && statValue < 60) colour = 'hsl(28, 100%, 52.9%)'
+    else if (statValue >= 60 && statValue < 90) colour = 'hsl(47.9, 100%, 67.1%)'
+    else if (statValue >= 90 && statValue < 120) colour = 'hsl(79.9, 83.2%, 49%)'
+    else if (statValue >= 120 && statValue < 150) colour = 'hsl(140.8, 70.8%, 47.1%)'
+    else if (statValue >= 150) colour = 'hsl(176.9, 100%, 38%)'
     else {
       colour = 'transparent'
     }
