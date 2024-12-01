@@ -30,9 +30,9 @@ const ScreenSize = () => {
       <span className="inline sm:hidden"> XS </span>
       <span className="hidden sm:inline md:hidden"> SM </span>
       <span className="hidden md:inline md-lg:hidden"> MD </span>
-      <span className="hidden md-lg:inline lg:hidden"> md-lg </span>
+      <span className="hidden md-lg:inline lg:hidden"> MD-LG </span>
       <span className="hidden lg:inline lg-xl:hidden"> LG </span>
-      <span className="hidden lg-xl:inline xl:hidden"> MD-LG </span>
+      <span className="hidden lg-xl:inline xl:hidden"> LG-XL </span>
       <span className="hidden xl:inline 2xl:hidden"> XL </span>
       <span className="hidden 2xl:inline"> 2XL </span>
     </div>

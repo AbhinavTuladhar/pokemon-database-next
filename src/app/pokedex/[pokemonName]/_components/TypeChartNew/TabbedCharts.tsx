@@ -43,7 +43,7 @@ const TabbedCharts: FC<TabProps> = ({ typeCharts, defendingType }) => {
           <Tab
             key={tab + tabIndex}
             extraClassName={classNames('flex min-w-40 flex-1 justify-center p-1.5 text-sm', {
-              'last:lg-xl::w-full last:lg-xl:flex-none last:border-t last:!border-t-gray-300 dark:last:!border-t-gray-500':
+              'last:lg-xl::w-full last:border-t last:!border-t-gray-300 dark:last:!border-t-gray-500':
                 tabNames.length > 2,
             })}
           >
