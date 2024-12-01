@@ -77,17 +77,9 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
       },
     },
     legend: {
-      position: 'right',
+      position: 'bottom',
     },
     responsive: [
-      {
-        breakpoint: 1024,
-        options: {
-          legend: {
-            position: 'bottom',
-          },
-        },
-      },
       {
         breakpoint: 768,
         options: {
@@ -114,6 +106,7 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
         name: formatName(item.growthRate),
         data: item.levelData.map(level => level.experience),
       }))}
+      className="rounded-lg border border-bd-light p-4 dark:border-bd-dark"
     />
   )
 }
