@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --link-colour: #3b82f6;
-  --link-hover-colour: #ef4444;
+  --link-colour: hsl(217.2, 91.2%, 59.8%);
+  --link-hover-colour: hsl(0, 84.2%, 60.2%);
   --header-height: 188px;
 }
 
@@ -45,22 +45,22 @@
 
 /* Scrollbar colour  */
 ::-webkit-scrollbar-track {
-  background-color: #fafafa;
+  background-color: hsl(0, 0%, 98%);
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background-color: rgb(31, 41, 55);
+  background-color: hsl(215, 28%, 17%);
 }
 
 /* Scrollbar thumb colour */
 ::-webkit-scrollbar-thumb {
-  background-color: royalblue;
+  background-color: hsl(225, 73%, 57%);
   border-radius: 2px;
   transition: all 0.4s ease-in-out !important;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background-color: royalblue;
+  background-color: hsl(225, 73%, 57%);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -68,10 +68,8 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 html.dark .react-loading-skeleton {
-  /* --base-color: #2f333c !important;
-  --highlight-color: #444 !important; */
-  --base-color: #314158 !important;
-  --highlight-color: #435979 !important;
+  --base-color: hsl(215, 28%, 27%) !important;
+  --highlight-color: hsl(216, 29%, 37%) !important;
 }
 
 [data-testid='react-katex'] {
@@ -79,29 +77,29 @@ html.dark .react-loading-skeleton {
 }
 
 html.dark .apexcharts-text {
-  fill: #fff !important;
+  fill: hsl(0, 0%, 100%) !important;
 }
 
 html.dark .apexcharts-tooltip,
 html.dark .apexcharts-tooltip-title {
-  background-color: #333 !important;
-  color: #fff !important;
-  border: 1px solid #555555 !important;
+  background-color: hsl(0, 0%, 20%) !important;
+  color: hsl(0, 0%, 100%) !important;
+  border: 1px solid hsl(0, 0%, 33%) !important;
 }
 
 html.dark .apexcharts-legend-text {
-  color: #fff !important;
+  color: hsl(0, 0%, 100%) !important;
   border: none !important;
 }
 
 html.dark .apexcharts-title-text,
 html.dark .apexcharts-subtitle-text {
-  fill: #fff !important;
+  fill: hsl(0, 0%, 100%) !important;
 }
 
 html.dark .apexcharts-menu {
   background: black;
-  color: #ffffff;
+  color: hsl(0, 0%, 100%);
 }
 
 .apexcharts-menu-item {
@@ -110,7 +108,7 @@ html.dark .apexcharts-menu {
 
 html.dark .apexcharts-menu-item:hover {
   background: hsl(0, 0%, 20%);
-  color: white;
+  color: hsl(0, 0%, 100%);
 }
 
 .main-layout:has(.hero-banner) {
@@ -146,7 +144,7 @@ html.dark .apexcharts-menu-item:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: #1e2029a6;
+  background-color: hsla(229, 15%, 14%, 0.651);
   z-index: 0;
 }
 

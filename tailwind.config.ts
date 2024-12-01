@@ -5,11 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'hdr-dark': '#213578', // Colour of table header (and others) in dark mode
-        'bd-light': '#d4d4d4', // Border colour in light mode
-        'bd-dark': '#585858', // Border colour in dark mode
-        'muted-blue': '#334155', // Colour used in sections with links
-        'dark-highlighted': '#2c303b',
+        'hdr-dark': 'hsl(226.2, 56.9%, 30%)', // Colour of table header (and others) in dark mode
+        'bd-light': 'hsl(0, 0%, 83.1%)', // Border colour in light mode
+        'bd-dark': 'hsl(0, 0%, 34.5%)', // Border colour in dark mode
+        'muted-blue': 'hsl(229, 55%, 27%)', // Colour used in sections with links
+        'dark-highlighted': 'hsl(224, 14.6%, 20.2%)',
       },
 
       fontSize: {

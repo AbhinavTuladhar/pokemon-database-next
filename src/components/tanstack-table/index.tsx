@@ -143,7 +143,7 @@ const TanStackTable = <T extends object>({
         <tbody>
           {rows.map(row => (
             <TableRow
-              className="duration-300 even:bg-gray-100 hover:bg-gray-200 dark:even:bg-[#222f44] dark:hover:bg-[#2b3a55]"
+              className="duration-300 even:bg-gray-100 hover:bg-gray-200 dark:even:bg-[hsl(217.1,33.3%,20%)] dark:hover:bg-[hsl(218.6,32.8%,25.1%)]"
               key={row.id}
             >
               {row.getVisibleCells().map(cell => (

@@ -14,7 +14,7 @@ interface RowProps {
 const SearchResultRow: FC<RowProps> = ({ name, resourceType, closeMenu }) => {
   return (
     <Link
-      className="flex justify-between gap-x-2 border-b border-b-slate-700 bg-black px-2 py-1.5 text-white duration-300 last:border-b-0 hover:bg-slate-800 dark:bg-[#05014a] dark:hover:bg-blue-900"
+      className="flex justify-between gap-x-2 border-b border-b-slate-700 bg-black px-2 py-1.5 text-white duration-300 last:border-b-0 hover:bg-slate-800 dark:bg-[hsl(243.3,97.3%,14.7%)] dark:hover:bg-blue-900"
       key={name}
       href={`/${resourceType}/${name}`}
       onClick={closeMenu}
