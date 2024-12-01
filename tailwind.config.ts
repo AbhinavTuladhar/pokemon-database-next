@@ -27,7 +27,6 @@ module.exports = {
       },
       gridTemplateColumns: {
         'pokemon-detail-grid': 'repeat(auto-fill, minmax(min(350px, 90%), 1fr))',
-        'pokemon-move-grid': 'repeat(auto-fill, minmax(min(520px, 100%), 1fr))',
         '2-flexible': 'repeat(auto-fill, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fill, minmax(min(210px, 90%), 1fr))',
         'sprite-table': 'repeat(auto-fill, minmax(min(250px, 100%), 1fr))',

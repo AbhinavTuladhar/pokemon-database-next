@@ -6,7 +6,7 @@ interface RowProps extends React.HTMLAttributes<HTMLElement> {
 
 export const TableRow: React.FC<RowProps> = ({ children, className: extraClassName, ...props }) => {
   return (
-    <tr className={`table-row h-12 py-2 ${extraClassName}`} {...props}>
+    <tr className={`table-row ${extraClassName ? extraClassName : ''}`} {...props}>
       {children}
     </tr>
   )
