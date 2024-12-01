@@ -4,7 +4,7 @@ import { FC, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion'
 
-import { useMediaQuery } from '@/hooks/useMediaQuery'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 import DropDownItem from './drop-down-item'
 
