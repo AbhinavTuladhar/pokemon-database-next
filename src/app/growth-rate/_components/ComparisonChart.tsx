@@ -19,7 +19,9 @@ interface ChartProps {
 const ApexCharts = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
-  const labels = Array.from({ length: 101 }, (_, i) => i)
+  const labelLength = data[0].levelData.length
+
+  const labels = Array.from({ length: labelLength }, (_, i) => i)
   const options: ApexOptions = {
     chart: {
       type: 'line',
@@ -44,10 +46,12 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
     },
     xaxis: {
       categories: labels,
-      tickAmount: 20,
+      min: 0,
+      max: 100,
       labels: {
         rotate: 0,
       },
+      stepSize: 1,
     },
     stroke: {
       curve: 'monotoneCubic',
@@ -78,6 +82,10 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
     },
     legend: {
       position: 'bottom',
+      itemMargin: {
+        vertical: 16,
+      },
+      offsetY: 10,
     },
     responsive: [
       {
@@ -95,6 +103,8 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
       },
     ],
   }
+
+  console.log(data[0].levelData.length)
 
   return (
     <ApexCharts

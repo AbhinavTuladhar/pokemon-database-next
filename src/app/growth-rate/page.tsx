@@ -21,12 +21,12 @@ const page = async () => {
 
   const levelData = data.map(({ name, levels }) => ({
     growthRate: name,
-    levelData: levels,
+    levelData: [{ experience: 0, level: 0 }].concat(levels),
   }))
 
   const cumulativeLevelData = data.map(({ name, individualLevels }) => ({
     growthRate: name,
-    levelData: individualLevels,
+    levelData: [{ experience: 0, level: 0 }].concat(individualLevels),
   }))
 
   return (
