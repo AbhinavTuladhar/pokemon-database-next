@@ -5,7 +5,7 @@ export const GrowthRateExtractor = (data: GrowthRate) => {
   const { formula, levels, name, pokemon_species } = data
 
   // For finding out the experience required to gain that level
-  const experienceDifferences: GrowthRateExperienceLevel[] = []
+  const experienceDifferences: GrowthRateExperienceLevel[] = [{ level: 1, experience: 0 }]
   for (let i = 0; i < levels.length - 1; i++) {
     const difference = levels[i + 1].experience - levels[i].experience
     experienceDifferences.push({ level: levels[i + 1].level, experience: difference })

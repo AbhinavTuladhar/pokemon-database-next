@@ -16,7 +16,7 @@ interface SectionProps {
 
 export const GrowthRateSection: FC<SectionProps> = ({ name, formula, pokemonNames }) => {
   return (
-    <section>
+    <section className="rounded-lg border border-bd-light p-4 pt-2  dark:border-bd-dark ">
       <SectionTitle> {formatName(name)}</SectionTitle>
       <InlineMath math={formula} />
       <PokemonList pokemonNames={pokemonNames} />

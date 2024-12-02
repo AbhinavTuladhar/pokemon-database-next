@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
+import { PageTitle, SectionTitle } from '@/components/containers'
 import { GrowthRateExtractor } from '@/extractors'
 import { GrowthRateApi } from '@/services'
 
@@ -21,18 +21,18 @@ const page = async () => {
 
   const levelData = data.map(({ name, levels }) => ({
     growthRate: name,
-    levelData: levels,
+    levelData: [{ experience: 0, level: 0 }].concat(levels),
   }))
 
   const cumulativeLevelData = data.map(({ name, individualLevels }) => ({
     growthRate: name,
-    levelData: individualLevels,
+    levelData: [{ experience: 0, level: 0 }].concat(individualLevels),
   }))
 
   return (
     <main>
       <PageTitle> Pokémon growth rates </PageTitle>
-      <div>
+      <div className="space-y-4 lg:space-y-8">
         <ComparisonChart
           data={levelData}
           title="Experience required to reach each level"
@@ -44,7 +44,8 @@ const page = async () => {
           subTitle="Graph showing experience needed to gain a single level, for each level up to 100."
         />
       </div>
-      <div className="space-y-4">
+      <SectionTitle> Growth Rate Formulae and Pokémon </SectionTitle>
+      <div className="space-y-4 lg:space-y-8">
         {data.map(entry => (
           <GrowthRateSection
             formula={entry.formula}
