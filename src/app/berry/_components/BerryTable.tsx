@@ -69,7 +69,7 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
           const itemName = `${name}-berry`
           return (
             <div className="flex items-center">
-              <Image src={sprite} alt={name} width={30} height={30} />
+              <Image src={sprite} alt={name} width={30} height={30} className="size-[30px]" />
               <BlueLink boldFlag href={`/item/${itemName}`}>
                 {formatName(name)}
               </BlueLink>
