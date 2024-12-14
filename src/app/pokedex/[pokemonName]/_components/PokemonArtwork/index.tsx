@@ -32,7 +32,7 @@ export const PokemonArtwork: FC<ArtworkProps> = ({ defaultSprite, shinySprite, p
       {/* Overlap the empty div and the two images in the same area
       - prevent layout shift when the image loads
       - load both images at once to prevent loading upon state change */}
-      <div className="grid pt-4">
+      <div className="grid justify-center pt-4">
         <div className="col-start-1 row-start-1 h-[400px] w-[300px]" />
         <ArtworkImage
           src={defaultSprite}
