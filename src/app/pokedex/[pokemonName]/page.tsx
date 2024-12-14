@@ -115,9 +115,9 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <BasicIntro genus={genus} id={id} name={actualName} types={types} />
         <section
           id="info"
-          className="grid grid-cols-pokemon-detail-grid place-content-start gap-x-8 gap-y-6"
+          className="grid grid-cols-1 place-content-start gap-x-8 gap-y-6 md:grid-cols-2 xl:grid-cols-3"
         >
-          <div className="col-span-2 md:col-span-1">
+          <div className="">
             <PokemonArtwork
               pokemonName={pokemonName}
               defaultSprite={defaultSprite}
@@ -130,7 +130,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             />
           </div>
 
-          <div className="col-span-2 md:col-span-1">
+          <div className="">
             <PokeDexData
               abilities={abilities}
               genus={genus}
@@ -144,7 +144,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
             />
           </div>
 
-          <div className="col-span-2 grid w-full grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 lg-xl:col-span-1 lg-xl:grid-cols-1">
+          <div className="grid w-full grid-cols-1 gap-x-8 gap-y-6 md:col-span-2 md:grid-cols-2 lg:col-span-2 lg:grid-cols-2 xl:col-span-1 xl:grid-cols-1">
             <TrainingInfo
               base_experience={base_experience}
               base_happiness={base_happiness}
@@ -161,11 +161,11 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           </div>
         </section>
 
-        <section id="base-stats" className="grid grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
-          <section className="col-span-2">
+        <section className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
+          <section id="base-stats" className="col-span-2">
             <BaseStat stats={stats} />
           </section>
-          <section className="col-span-2 lg-xl:col-span-1">
+          <section className="col-span-2 lg-xl:col-span-2 xl:col-span-1">
             <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
           </section>
         </section>

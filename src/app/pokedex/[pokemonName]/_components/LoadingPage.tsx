@@ -12,7 +12,7 @@ export const LoadingPage = () => {
       <Skeleton height="1.5rem" width="100%" containerClassName="w-full flex-1" />
       <Skeleton height="3.5rem" width="100%" containerClassName="w-full flex-1" />
       <Skeleton height="1.5rem" width="100%" containerClassName="w-full flex-1" />
-      <div className="mt-2 grid w-full grid-cols-pokemon-detail-grid gap-x-8 gap-y-6">
+      <div className="mt-2 grid w-full grid-cols-1 place-content-start gap-x-8 gap-y-6 md:grid-cols-2 xl:grid-cols-3">
         {Array.from({ length: 3 }, (_, index) => (
           <Skeleton height="50vh" width="100%" containerClassName="w-full flex-1" key={index} />
         ))}
