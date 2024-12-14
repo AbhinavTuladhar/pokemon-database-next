@@ -4,7 +4,7 @@
 
 An 'inspired clone' of the website [pokemondb.net](https://pokemondb.net/) made with the help of the [PokéAPI](https://pokeapi.co/) to display various technical information about Pokémon.
 
-This project was initially written using React and vanilla JavaScript, then written in TypeScript and NextJS.
+This project was initially written using React and vanilla JavaScript, then re-written in TypeScript and NextJS.
 
 ## Built with
 
@@ -28,7 +28,7 @@ cd pokemon-database-next
 3. Install the dependencies
 
 ```bash
-npm install
+yarn
 ```
 
 ## Usage
@@ -38,28 +38,27 @@ npm install
 To see changes in the website as you make changes in the code, run the following command:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
-The app will be accessible at http://localhost:5173.
-
-Changing pages in development mode will be slow.
+The app will be accessible at <http://localhost:5173>.
+The port number can be changed in the package.json file, if desired.
 
 ### Production
 
 To view the site in production mode, you need to build the app first.
 
 ```bash
-npm run build
+yarn build
 ```
 
 Then run it:
 
 ```bash
-npm run start
+yarn start
 ```
 
-The app will be accessible at http://localhost:5173.
+The app will be accessible at <http://localhost:5173>.
 
 ## Other libraries used
 
@@ -70,6 +69,7 @@ The app will be accessible at http://localhost:5173.
 - [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
 - [React Tabs](https://github.com/reactjs/react-tabs)
 - [React Tooltip](https://github.com/ReactTooltip/react-tooltip)
+- [TanStack Table](https://github.com/TanStack/table)
 
 ## List of the pages
 
@@ -84,14 +84,14 @@ The app will be accessible at http://localhost:5173.
 9. List of Pokémon by growth rate with charts
 10. List of items by types
 11. Item details
-12. List of locations by each each
-13. Detailed Pokémon encounter information by each generation, and sublocation
+12. List of locations by each region
+13. Detailed Pokémon encounter information by each generation, and sub-location
 14. List of moves by generation introduced
 15. Details of each move
 16. List of natures
 17. List of Pokémon by generation introduced
 18. Detail of each Pokémon
 19. Normal and animated sprites list
-20. Comprehensive sprite gallery for each Pokémon
+20. Comprehensive sprite gallery for each Pokémon by generation
 21. List of Pokémon Types
 22. Detail of each type
