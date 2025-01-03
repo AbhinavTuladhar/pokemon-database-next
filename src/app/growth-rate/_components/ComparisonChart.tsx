@@ -104,8 +104,6 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
     ],
   }
 
-  console.log(data[0].levelData.length)
-
   return (
     <ApexCharts
       type="line"
