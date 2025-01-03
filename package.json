@@ -60,6 +60,9 @@
   "lint-staged": {
     "**/*.{ts,tsx,css}": [
       "yarn run format"
+    ],
+    "**/*.{ts,tsx}": [
+      "eslint --fix"
     ]
   }
 }
