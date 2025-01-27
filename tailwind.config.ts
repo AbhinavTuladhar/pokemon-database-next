@@ -53,6 +53,7 @@ module.exports = {
         { values: theme('textShadow') },
       )
     }),
+    require('@tailwindcss/typography'),
   ],
   darkMode: 'class',
   safelist: [
