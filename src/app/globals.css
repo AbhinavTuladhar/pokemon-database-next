@@ -14,6 +14,11 @@
   }
 }
 
+pre {
+  max-width: 100%;
+  text-wrap: wrap;
+}
+
 .fancy-link {
   background: linear-gradient(to bottom, var(--link-colour), var(--link-colour));
   background-size: 0% 1.5px;
@@ -153,4 +158,14 @@ html.dark .apexcharts-menu-item:hover {
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
+}
+
+.smogon-analysis h3 {
+  margin-block: 1rem;
+  font-weight: bold;
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 2rem);
+}
+
+.smogon-analysis p {
+  line-height: 1.6;
 }

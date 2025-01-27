@@ -11,9 +11,17 @@ interface InnerPokemonSet {
 }
 
 export interface PokemonSet {
-  // First key is the name of the Pokemon
+  /**
+   * First key is the name of the Pokemon
+   */
   [key: string]: {
-    // Second key is the name of the set
+    /**
+     * Second key is the name of the set
+     */
     [key: string]: InnerPokemonSet
   }
+}
+
+export interface FlatPokemonSet extends InnerPokemonSet {
+  set: string
 }
