@@ -1,10 +1,12 @@
 import React from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
+import { PageTitle } from '@/components/containers'
 import { SmogonApi } from '@/services/SmogonApi'
 import { FlatPokemonSet, InnerAnalysis, InnerPokemonSet, MinimalSetAnalysis } from '@/types'
 import { extractParts, findPokemonAnalysis, findPokemonSets } from '@/utils/smogon.utils'
+
+import { CommentsSection, OverviewSection } from './_components'
 
 const getFormatAnalyses = async (formatCode: string) => {
   const response = await SmogonApi.getAnalysis(formatCode)
@@ -80,15 +82,8 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
         {pokemon} - Gen {generation} {format.toUpperCase()}
       </PageTitle>
       <div className="smogon-analysis max-w-4xl space-y-2">
-        {overview ? (
-          <section>
-            <SectionTitle>Overview</SectionTitle>
-            <div dangerouslySetInnerHTML={{ __html: overview }} />
-          </section>
-        ) : null}
-        {comments ? (
-          <section className="space-y-2" dangerouslySetInnerHTML={{ __html: comments }} />
-        ) : null}
+        <OverviewSection overview={overview} />
+        <CommentsSection comment={comments} />
         <pre>{JSON.stringify(pokemonData, null, 2)}</pre>
       </div>
     </main>
