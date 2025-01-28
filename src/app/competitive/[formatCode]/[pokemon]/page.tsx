@@ -94,7 +94,6 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
           />
         ))}
         <CommentsSection comment={comments} />
-        <pre>{JSON.stringify(finalSetsData, null, 2)}</pre>
       </div>
     </main>
   )

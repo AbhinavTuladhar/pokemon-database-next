@@ -6,10 +6,10 @@ interface SetRowProps {
 }
 
 const SetRow: FC<SetRowProps> = ({ header, value }) => (
-  <div className="flex gap-x-4">
-    <span> {header}: </span>
-    <span>{typeof value === 'string' ? value : value.join('/')}</span>
-  </div>
+  <tr>
+    <th className="w-[1%] text-nowrap text-right font-normal"> {header}: </th>
+    <td className="pl-2">{typeof value === 'string' ? value : value.join('/')}</td>
+  </tr>
 )
 
 export default SetRow

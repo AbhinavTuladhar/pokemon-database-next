@@ -10,10 +10,10 @@ interface MoveListProps {
 
 export const MoveList: FC<MoveListProps> = ({ moves }) => {
   return (
-    <div className="flex flex-col">
+    <table>
       {moves.map((move, index) => (
         <SetRow key={index} header={`Move ${index + 1}`} value={move} />
       ))}
-    </div>
+    </table>
   )
 }

@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
 
+import { capitaliseFirstLetter } from '@/utils/formatName'
+
 import SetRow from './SetRow'
 
 interface EvRowProps {
@@ -14,13 +16,11 @@ const EvRow: FC<EvRowProps> = ({ evData }) => {
     evs: value,
   }))
 
-  const combinedEvString = formattedData.map(row => `${row.evs} ${row.stat}`).join(' / ')
+  const combinedEvString = formattedData
+    .map(row => `${row.evs} ${capitaliseFirstLetter(row.stat)}`)
+    .join(' / ')
 
-  return (
-    <div>
-      <SetRow header={'EVs'} value={combinedEvString} />
-    </div>
-  )
+  return <SetRow header={'EVs'} value={combinedEvString} />
 }
 
 export default EvRow
