@@ -160,7 +160,7 @@ html.dark .apexcharts-menu-item:hover {
   transition: none !important;
 }
 
-.smogon-analysis h3 {
+/* .smogon-analysis h3 {
   margin-block: 1rem;
   font-weight: bold;
   font-size: clamp(1.5rem, 1rem + 2.5vw, 2rem);
@@ -168,4 +168,4 @@ html.dark .apexcharts-menu-item:hover {
 
 .smogon-analysis p {
   line-height: 1.6;
-}
+} */

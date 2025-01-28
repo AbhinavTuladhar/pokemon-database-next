@@ -6,7 +6,7 @@ import { SmogonApi } from '@/services/SmogonApi'
 import { FlatPokemonSet, InnerAnalysis, InnerPokemonSet, MinimalSetAnalysis } from '@/types'
 import { extractParts, findPokemonAnalysis, findPokemonSets } from '@/utils/smogon.utils'
 
-import { CommentsSection, OverviewSection } from './_components'
+import { CommentsSection, OverviewSection, SetSection } from './_components'
 
 const getFormatAnalyses = async (formatCode: string) => {
   const response = await SmogonApi.getAnalysis(formatCode)
@@ -41,7 +41,7 @@ const combineSetData = (pokemonData: InnerAnalysis | null, setsData: SetsType | 
 
   // Now combine the two arrays
   return setDescriptions.map(obj1 => {
-    const foundObj = setDetails.find(obj2 => obj2.set === obj1.set)
+    const foundObj = setDetails.find(obj2 => obj2.set === obj1.set) as FlatPokemonSet
     return { ...obj1, ...foundObj }
   })
 }
@@ -74,8 +74,6 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
 
   const finalSetsData = combineSetData(pokemonData, setData)
 
-  console.log(finalSetsData)
-
   return (
     <main>
       <PageTitle>
@@ -83,8 +81,20 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
       </PageTitle>
       <div className="smogon-analysis max-w-4xl space-y-2">
         <OverviewSection overview={overview} />
+        {finalSetsData.map(set => (
+          <SetSection
+            key={set.set}
+            set={set.set}
+            ability={set.ability}
+            description={set.description}
+            evs={set.evs}
+            item={set.item}
+            nature={set.nature}
+            moves={set.moves}
+          />
+        ))}
         <CommentsSection comment={comments} />
-        <pre>{JSON.stringify(pokemonData, null, 2)}</pre>
+        <pre>{JSON.stringify(finalSetsData, null, 2)}</pre>
       </div>
     </main>
   )

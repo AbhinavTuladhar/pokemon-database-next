@@ -1,11 +1,11 @@
 type ResourceType = string | Array<string>
 
 interface InnerPokemonSet {
-  moves: Array<ResourceType>
-  ability: ResourceType
-  item: ResourceType
-  nature: ResourceType
-  evs: {
+  moves: (string | string[])[]
+  ability?: ResourceType
+  item?: ResourceType
+  nature?: ResourceType
+  evs?: {
     [key: string]: number
   }
 }
