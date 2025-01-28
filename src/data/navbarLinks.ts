@@ -15,6 +15,7 @@ export const pokemonDataLinks = [
   { path: '/sprites', name: 'Sprite gallery' },
   { path: '/sprites/animated', name: 'Animated sprites' },
   { path: '/location', name: 'Locations' },
+  { path: '/competitive', name: 'Competitive' },
 ]
 
 export const mechanicsLinks = [

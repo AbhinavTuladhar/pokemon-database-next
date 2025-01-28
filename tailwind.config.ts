@@ -29,6 +29,7 @@ module.exports = {
         'pokemon-detail-grid': 'repeat(auto-fill, minmax(min(350px, 90%), 1fr))',
         '2-flexible': 'repeat(auto-fill, minmax(min(420px, 90%), 1fr))',
         'card-list': 'repeat(auto-fill, minmax(min(210px, 90%), 1fr))',
+        'competitive-grid-list': 'repeat(auto-fill, minmax(min(180px, 100%), 1fr))',
         'sprite-table': 'repeat(auto-fill, minmax(min(250px, 100%), 1fr))',
         'mini-sprite-table': 'repeat(auto-fill, minmax(90px, 1fr))',
         'pokemon-list': 'repeat(auto-fill, minmax(120px, 1fr))',
@@ -53,6 +54,7 @@ module.exports = {
         { values: theme('textShadow') },
       )
     }),
+    require('@tailwindcss/typography'),
   ],
   darkMode: 'class',
   safelist: [
