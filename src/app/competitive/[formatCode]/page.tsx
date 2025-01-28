@@ -1,5 +1,6 @@
 import React from 'react'
 import { NextPage } from 'next'
+import Image from 'next/image'
 
 import { PageTitle } from '@/components/containers'
 import BlueLink from '@/components/link'
@@ -26,7 +27,7 @@ const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
 
   const { generation, format } = extractParts(formatCode)
 
-  const availablePokemon = Object.keys(data)
+  const availablePokemon = Object.keys(data).sort((a, b) => (a > b ? 1 : -1))
 
   return (
     <div>
@@ -34,9 +35,16 @@ const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
       <PageTitle>
         Gen {generation} {format.toUpperCase()} - Analyses and Sets
       </PageTitle>
-      <ul className="list-disc">
+      <ul className="grid list-none grid-cols-competitive-grid-list">
         {availablePokemon.map(pokemon => (
-          <li key={pokemon}>
+          <li className="flex items-center gap-x-4" key={pokemon}>
+            <Image
+              alt={pokemon}
+              className="size-12"
+              width={48}
+              height={48}
+              src={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon.toLowerCase()}.png`}
+            />
             <BlueLink href={`/competitive/${formatCode}/${pokemon}`}>{pokemon}</BlueLink>
           </li>
         ))}

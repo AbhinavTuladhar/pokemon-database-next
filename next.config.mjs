@@ -11,13 +11,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
         port: '',
-        // pathname: ''
       },
       {
         protocol: 'https',
         hostname: 'images7.alphacoders.com',
         port: '',
-        // pathname: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.pokemondb.net',
+        port: '',
       },
     ],
   },
