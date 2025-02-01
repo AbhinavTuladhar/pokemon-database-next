@@ -83,6 +83,10 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
 }) => {
   const { format, generation } = extractParts(formatCode)
 
+  // Sanitising the pokemon names for Farfetch'd
+  const actualPokemon =
+    pokemon === 'Farfetchd' ? 'Farfetch’d' : pokemon === 'Mr-Mime' ? 'Mr. Mime' : pokemon
+
   const [analysisData, setsData, extractedPokemonData] = await Promise.all([
     getFormatAnalyses(formatCode),
     getFormatSets(formatCode),
@@ -96,8 +100,8 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
   // Data from the actual pokemon api.
   const { abilities, sprite, stats, types } = getMinifiedData(extractedPokemonData, generation)
 
-  const pokemonData = findPokemonAnalysis(analysisData, pokemon)
-  const setData = findPokemonSets(setsData, pokemon)
+  const pokemonData = findPokemonAnalysis(analysisData, actualPokemon)
+  const setData = findPokemonSets(setsData, actualPokemon)
 
   const overview = pokemonData?.overview
   const comments = pokemonData?.comments
