@@ -2,11 +2,36 @@ import React from 'react'
 import { NextPage } from 'next'
 
 import { PageTitle } from '@/components/containers'
+import StatBarTable from '@/components/stat-bar-table'
+import { PokemonExtractor } from '@/extractors'
+import { PokemonApi } from '@/services'
 import { SmogonApi } from '@/services/SmogonApi'
-import { FlatPokemonSet, InnerAnalysis, InnerPokemonSet, MinimalSetAnalysis } from '@/types'
+import {
+  FlatPokemonSet,
+  InnerAnalysis,
+  InnerPokemonSet,
+  MinimalSetAnalysis,
+  TransformedPokemon,
+} from '@/types'
 import { extractParts, findPokemonAnalysis, findPokemonSets } from '@/utils/smogon.utils'
 
-import { CommentsSection, OverviewSection, SetSection } from './_components'
+import { AbilityAndType } from './_components/AbilityAndType'
+import { CommentsSection, OverviewSection, PokemonImage, SetSection } from './_components'
+
+const getPokemonData = async (pokemonName: string) => {
+  const response = await PokemonApi.getByName(pokemonName)
+  return PokemonExtractor(response)
+}
+
+const getMinifiedData = (pokemonData: TransformedPokemon, generation: number) => {
+  const { abilities, spriteCollection, stats, types } = pokemonData
+
+  const sprite = spriteCollection.find(
+    obj => obj.generation === `Generation ${generation}`,
+  )?.frontSprite
+
+  return { abilities, stats, types, sprite }
+}
 
 const getFormatAnalyses = async (formatCode: string) => {
   const response = await SmogonApi.getAnalysis(formatCode)
@@ -56,18 +81,27 @@ interface PokemonAnalysisParams {
 const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
   params: { pokemon, formatCode },
 }) => {
-  const [analysisData, setsData] = await Promise.all([
+  const { format, generation } = extractParts(formatCode)
+
+  // Sanitising the pokemon names for Farfetch'd
+  const actualPokemon =
+    pokemon === 'Farfetchd' ? 'Farfetch’d' : pokemon === 'Mr-Mime' ? 'Mr. Mime' : pokemon
+
+  const [analysisData, setsData, extractedPokemonData] = await Promise.all([
     getFormatAnalyses(formatCode),
     getFormatSets(formatCode),
+    getPokemonData(pokemon),
   ])
 
   if (!analysisData || !setsData) {
     return <div>Format not found</div>
   }
 
-  const pokemonData = findPokemonAnalysis(analysisData, pokemon)
-  const setData = findPokemonSets(setsData, pokemon)
-  const { format, generation } = extractParts(formatCode)
+  // Data from the actual pokemon api.
+  const { abilities, sprite, stats, types } = getMinifiedData(extractedPokemonData, generation)
+
+  const pokemonData = findPokemonAnalysis(analysisData, actualPokemon)
+  const setData = findPokemonSets(setsData, actualPokemon)
 
   const overview = pokemonData?.overview
   const comments = pokemonData?.comments
@@ -79,6 +113,13 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
       <PageTitle>
         {pokemon} - Gen {generation} {format.toUpperCase()}
       </PageTitle>
+      <div className="grid items-center gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-[auto,0.5fr,1fr]">
+        <PokemonImage pokemonName={pokemon} source={sprite} />
+        <AbilityAndType abilities={abilities} types={types} generation={generation} />
+        <div className="overflow-x-auto *:overflow-hidden sm:col-span-2 lg:col-span-1">
+          <StatBarTable stats={stats} showMinMax={false} />
+        </div>
+      </div>
       <div className="smogon-analysis max-w-4xl space-y-2">
         <OverviewSection overview={overview} />
         {finalSetsData.map(set => (

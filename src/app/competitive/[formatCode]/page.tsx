@@ -27,7 +27,10 @@ const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
 
   const { generation, format } = extractParts(formatCode)
 
-  const availablePokemon = Object.keys(data).sort((a, b) => (a > b ? 1 : -1))
+  // Sanitising the pokemon names for Farfetch'd
+  const availablePokemon = Object.keys(data)
+    .sort((a, b) => (a > b ? 1 : -1))
+    .map(pokemon => pokemon.replace(/’/g, '').replace(/.\s/g, '-'))
 
   return (
     <div>
