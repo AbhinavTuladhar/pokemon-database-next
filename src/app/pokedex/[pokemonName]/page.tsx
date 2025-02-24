@@ -165,7 +165,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
           <section id="base-stats" className="col-span-2">
             <BaseStat stats={stats} />
           </section>
-          <section className="col-span-2 lg-xl:col-span-2 xl:col-span-1">
+          <section className="lg-xl:col-span-2 col-span-2 xl:col-span-1">
             <TypeChart pokemonName={actualName} types={types} abilityNames={abilityNames} />
           </section>
         </section>
@@ -207,7 +207,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         </section>
 
         <section id="languages">
-          <div className="grid grid-cols-2-flexible gap-x-10 gap-y-16">
+          <div className="grid-cols-2-flexible grid gap-x-10 gap-y-16">
             <div>
               <OtherLanguages names={names} />
             </div>

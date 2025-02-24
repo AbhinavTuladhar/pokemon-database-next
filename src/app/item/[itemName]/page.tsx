@@ -69,7 +69,7 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
         </PageTitle>
         <Image src={sprite} alt={actualItemName} width={64} height={64} />
       </div>
-      <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr,_3fr]">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr__3fr]">
         <section>
           <ItemData
             attributes={attributes}
@@ -84,7 +84,7 @@ const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
         </section>
       </div>
 
-      <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr,_2fr]">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr__2fr]">
         <section>
           <OtherLanguages names={names} />
         </section>

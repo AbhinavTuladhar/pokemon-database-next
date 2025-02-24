@@ -15,7 +15,7 @@ const Sidebar = async () => {
   const pocketNames = await getPocketNames()
 
   return (
-    <aside className="self-start rounded bg-sky-100 px-4 pb-4 pt-px dark:bg-muted-blue">
+    <aside className="dark:bg-muted-blue self-start rounded-sm bg-sky-100 px-4 pt-px pb-4">
       <h2 className="my-4 text-2xl font-bold"> Pokémon Items by Category </h2>
       <ul className="flex list-inside list-disc flex-col gap-y-1">
         {pocketNames.map(name => (

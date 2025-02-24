@@ -40,7 +40,7 @@ const calculateScoresAndMultipliers = (
 }
 
 const ScoreCell: FC<PropsWithChildren> = ({ children }) => (
-  <div className="h-[37px] w-[46px] border border-bd-light p-2 text-center text-xs dark:border-bd-dark">
+  <div className="border-bd-light dark:border-bd-dark h-[37px] w-[46px] border p-2 text-center text-xs">
     {children}
   </div>
 )
@@ -61,7 +61,7 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
         {firstType !== secondType ? (
           <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
         ) : (
-          <div className="grid w-16 place-items-center rounded border border-bd-light bg-zinc-400 text-white dark:border-bd-dark">
+          <div className="border-bd-light dark:border-bd-dark grid w-16 place-items-center rounded-sm border bg-zinc-400 text-white">
             -
           </div>
         )}
@@ -99,9 +99,9 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
       {sectionTitleFlag && <SectionTitle> Type Chart </SectionTitle>}
       <div className="flex justify-center">
         <div className="overflow-auto">
-          <div className="grid grid-cols-dual-type-chart">
+          <div className="grid-cols-dual-type-chart grid">
             {/* Corner cell */}
-            <div className="-mb-px flex h-[36px] flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark">
+            <div className="border-bd-light dark:border-bd-dark -mb-px flex h-[36px] flex-col items-center justify-center rounded-sm border text-[10px]">
               <span> ATTACK → </span>
               <span> DEFENCE ↴ </span>
             </div>

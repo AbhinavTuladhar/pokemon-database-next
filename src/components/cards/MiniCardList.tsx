@@ -38,5 +38,5 @@ export const MiniCardList: FC<MiniCardListProps> = async ({ pokemonNames }) => {
     )
   })
 
-  return <div className="grid grid-cols-card-list gap-x-3 gap-y-8">{pokeCards}</div>
+  return <div className="grid-cols-card-list grid gap-x-3 gap-y-8">{pokeCards}</div>
 }

@@ -64,7 +64,7 @@ const AllMoveTables: FC<MovesLearnProps> = ({ movesData, pokemonName, versionGro
   ]
 
   return (
-    <div className="grid grid-cols-1 gap-x-8 lg-xl:grid-cols-2">
+    <div className="lg-xl:grid-cols-2 grid grid-cols-1 gap-x-8">
       <div className="flex flex-col">
         {sectionsData.slice(0, -1).map(({ title, data, subTitle, levelFlag, errorText }) => (
           <MoveSection

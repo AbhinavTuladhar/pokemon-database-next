@@ -113,7 +113,7 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
       <PageTitle>
         {pokemon} - Gen {generation} {format.toUpperCase()}
       </PageTitle>
-      <div className="grid items-center gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-[auto,0.5fr,1fr]">
+      <div className="grid items-center gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-[auto_0.5fr_1fr]">
         <PokemonImage pokemonName={pokemon} source={sprite} />
         <AbilityAndType abilities={abilities} types={types} generation={generation} />
         <div className="overflow-x-auto *:overflow-hidden sm:col-span-2 lg:col-span-1">

@@ -12,7 +12,7 @@ interface TableProps {
 }
 
 const TypeTable: FC<TableProps> = ({ defenceInfo, defendingType, abilityName }) => (
-  <div className="flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row md-lg:flex-col">
+  <div className="md-lg:flex-col flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row">
     <TypeRow
       typeDefenceInfo={defenceInfo.slice(0, 9)}
       extraClassName="mt-6"

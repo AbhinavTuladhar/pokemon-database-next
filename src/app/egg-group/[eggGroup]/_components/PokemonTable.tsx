@@ -49,10 +49,10 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
 
   const headerNames = ['#', 'Name', 'Types', 'Other group']
   const tableHeaders = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
+    <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {headerNames.map(name => (
         <TableCellHeader
-          className="min-w-24 border-r border-r-bd-light pr-4 last:border-r-0 dark:border-r-bd-dark"
+          className="border-r-bd-light dark:border-r-bd-dark min-w-24 border-r pr-4 last:border-r-0"
           type="column"
           key={name}
         >
@@ -76,7 +76,7 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
 
     return (
       <TableRow key={id}>
-        <TableCell extraClassName="w-[1%] whitespace-nowrap !pr-4">
+        <TableCell extraClassName="w-[1%] whitespace-nowrap pr-4!">
           <div className="flex items-center">
             {gameSprite && <Image src={gameSprite} alt="test" width={60} height={56} />}
             <span>{properId}</span>

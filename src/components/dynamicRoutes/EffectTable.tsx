@@ -16,10 +16,10 @@ interface TableProps {
 const TableComponent: FC<TableProps> = ({ headers, rows }) => (
   <TableContainer useFullWidth={false}>
     <thead>
-      <TableRow className="bg-neutral-200 font-bold duration-75 dark:bg-hdr-dark">
+      <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold duration-75">
         {headers.map(header => (
           <TableCellHeader
-            className="border-r border-r-bd-light last:border-r-0 dark:border-r-bd-dark"
+            className="border-r-bd-light dark:border-r-bd-dark border-r last:border-r-0"
             type="column"
             key={header}
           >

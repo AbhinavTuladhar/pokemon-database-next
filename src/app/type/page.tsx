@@ -39,7 +39,7 @@ const TypeListing = () => {
     <main>
       <PageTitle>Pokémon types & type chart</PageTitle>
       <section>
-        <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr,_2fr]">
+        <section className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr__2fr]">
           <div>
             <h2 className="mb-4 flex justify-center text-center text-4xl font-bold">
               Type quick-list

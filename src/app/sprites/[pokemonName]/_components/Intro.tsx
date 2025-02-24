@@ -16,7 +16,7 @@ export const Intro: FC<IntroProps> = ({ id, name }) => {
     </span>
   )
   return (
-    <div className="flex flex-col items-start justify-start gap-y-4 bg-sky-100 p-4 dark:bg-muted-blue">
+    <div className="dark:bg-muted-blue flex flex-col items-start justify-start gap-y-4 bg-sky-100 p-4">
       <span>Below are all the sprites of {pokemonSpan} used throughout the games.</span>
       <div className="flex flex-col items-start justify-start gap-y-px">
         <BlueLink href={`/pokedex/${name}`}>&lt;&lt; back to {formatName(name)} Pokédex</BlueLink>

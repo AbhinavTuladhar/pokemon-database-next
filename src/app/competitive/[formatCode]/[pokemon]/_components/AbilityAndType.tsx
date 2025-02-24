@@ -27,7 +27,7 @@ const AbilityList: FC<{ abilities: Array<string> }> = ({ abilities }) => (
 
 const TableRow: FC<{ header: string; content: ReactNode }> = ({ header, content }) => (
   <tr>
-    <th className="w-[1%] text-nowrap text-right font-normal"> {header}: </th>
+    <th className="w-[1%] text-right font-normal text-nowrap"> {header}: </th>
     <td className="pl-4">{content}</td>
   </tr>
 )

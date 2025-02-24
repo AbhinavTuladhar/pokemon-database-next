@@ -9,7 +9,7 @@ interface TableProps {
 export const TableContainer: FC<TableProps> = ({ children, className, useFullWidth = true }) => {
   const innerTable = (
     <div className={`overflow-x-auto overflow-y-hidden ${className ? className : ''}`}>
-      <table className="table min-w-full border-b border-bd-light dark:border-bd-dark">
+      <table className="border-bd-light dark:border-bd-dark table min-w-full border-b">
         {children}
       </table>
     </div>

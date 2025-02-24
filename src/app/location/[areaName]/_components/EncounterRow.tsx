@@ -165,8 +165,8 @@ export const EncounterRow: FC<RowProps> = ({
     <div
       className={classNames(
         'grid items-center justify-between gap-x-4',
-        { 'grid-cols-[repeat(3,_32px)]': encounterConditionName === 'time' },
-        { 'grid-cols-[repeat(4,_32px)]': encounterConditionName === 'season' },
+        { 'grid-cols-[repeat(3,32px)]': encounterConditionName === 'time' },
+        { 'grid-cols-[repeat(4,32px)]': encounterConditionName === 'season' },
       )}
     >
       {conditionImages}
@@ -182,15 +182,15 @@ export const EncounterRow: FC<RowProps> = ({
   ]
 
   return (
-    <TableRow className="duration-300 hover:bg-amber-50 dark:hover:bg-dark-highlighted">
+    <TableRow className="dark:hover:bg-dark-highlighted duration-300 hover:bg-amber-50">
       {cellData.map(({ key, value }, index) => (
         <TableCell
           key={index}
           extraClassName={classNames(
-            '!py-0',
-            { '!px-0': key === 'game' },
+            'py-0!',
+            { 'px-0!': key === 'game' },
             { 'min-w-40': key === 'pokemon' },
-            { '!pr-4': key === 'condition' },
+            { 'pr-4!': key === 'condition' },
           )}
           variant="column"
         >

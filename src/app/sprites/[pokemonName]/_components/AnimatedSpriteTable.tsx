@@ -59,13 +59,13 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
         <thead>{firstRow}</thead>
         <tbody>
           <tr>
-            <td className="table-cell w-36 border border-bd-light p-2 text-center font-bold dark:border-bd-dark">
+            <td className="border-bd-light dark:border-bd-dark table-cell w-36 border p-2 text-center font-bold">
               Showdown
             </td>
             {ordinarySprites.map((image, index) => (
               <td
                 key={(image ?? '') + index}
-                className="table-cell min-w-36 border border-bd-light py-6 text-center dark:border-bd-dark"
+                className="border-bd-light dark:border-bd-dark table-cell min-w-36 border py-6 text-center"
               >
                 <ImageTile imageSource={image} />
               </td>
@@ -74,7 +74,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
               ? femaleSprites.map((image, index) => (
                   <td
                     key={(image ?? '') + index}
-                    className="table-cell min-w-36 border border-bd-light py-6 text-center dark:border-bd-dark"
+                    className="border-bd-light dark:border-bd-dark table-cell min-w-36 border py-6 text-center"
                   >
                     <ImageTile imageSource={image} />
                   </td>

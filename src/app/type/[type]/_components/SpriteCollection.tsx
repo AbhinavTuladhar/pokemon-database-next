@@ -127,14 +127,14 @@ const SpriteTable: FC<SpriteTableProps> = ({ generationNumber, spritesList }) =>
     <TableContainer useFullWidth={true}>
       <thead>
         <th
-          className="border-x border-bd-light bg-neutral-200 py-2 dark:border-bd-dark dark:bg-hdr-dark"
+          className="border-bd-light dark:border-bd-dark dark:bg-hdr-dark border-x bg-neutral-200 py-2"
           colSpan={2}
         >
           Generation {generationNumber}
         </th>
       </thead>
       <tbody>
-        <tr className="flex flex-wrap justify-evenly gap-4 border-x border-bd-light px-4 py-6 dark:border-bd-dark">
+        <tr className="border-bd-light dark:border-bd-dark flex flex-wrap justify-evenly gap-4 border-x px-4 py-6">
           {spritesList.map((data, index) => {
             const { sprite, versionGroupName } = data
             return <SpriteCard key={index} sprite={sprite} versionGroupName={versionGroupName} />

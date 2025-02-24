@@ -9,7 +9,7 @@ import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffens
 // FirstRow component to display the first row with type cards
 const FirstRow: FC = () => (
   <>
-    <div className="-mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded border border-bd-light text-[10px] dark:border-bd-dark" />
+    <div className="border-bd-light dark:border-bd-dark -mb-px flex h-[36px] w-16 flex-col items-center justify-center rounded-sm border text-[10px]" />
     {typeList.map(type => (
       <MiniTypeCard typeName={type} key={type} />
     ))}
@@ -94,7 +94,7 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
   return (
     <div className="overflow-auto">
       <div className="inline-flex">
-        <div className="grid grid-cols-type-chart">
+        <div className="grid-cols-type-chart grid">
           <FirstRow />
           {typeList.map(typeRow => (
             <TypeRow

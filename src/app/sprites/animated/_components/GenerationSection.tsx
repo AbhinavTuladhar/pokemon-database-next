@@ -14,7 +14,7 @@ export const GenerationSection: FC<SectionProps> = ({ generationNumber, pokemonD
   return (
     <section className="border-b-2 border-gray-300 pb-8">
       <SectionTitle>Generation {generationNumber}</SectionTitle>
-      <div className="grid grid-cols-sprite-table gap-10">
+      <div className="grid-cols-sprite-table grid gap-10">
         {pokemonData.map((row, index) => {
           // Get the id number for the gif
           const idNumber = parseInt(row.url.match(/\/(\d+)\/$/)![1])

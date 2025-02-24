@@ -12,7 +12,7 @@ export const ContestTypeCard: FC<ContestCardProps> = ({ type }) => {
 
   return (
     <div
-      className={`${cardColour} flex h-[27px] w-16 flex-col items-center justify-center rounded text-xs uppercase text-white shadow-black/70 text-shadow`}
+      className={`${cardColour} text-shadow flex h-[27px] w-16 flex-col items-center justify-center rounded-sm text-xs text-white uppercase shadow-black/70`}
     >
       {formatName(type)}
     </div>
