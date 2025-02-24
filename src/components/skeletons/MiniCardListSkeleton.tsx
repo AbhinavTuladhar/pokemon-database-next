@@ -8,7 +8,7 @@ interface MiniCardListSkeletonProps {
 
 export const MiniCardListSkeleton: FC<MiniCardListSkeletonProps> = ({ pokemonCount }) => {
   return (
-    <div className="grid grid-cols-card-list gap-x-3 gap-y-8">
+    <div className="grid-cols-card-list grid gap-x-3 gap-y-8">
       {Array(pokemonCount)
         .fill(0)
         .map(value => (

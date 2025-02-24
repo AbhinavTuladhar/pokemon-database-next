@@ -44,14 +44,14 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
 
   // Now do some complicated shenanigans to use a one-step darker shade as the stopping colour for mono-type pokemon
   const endingColour = secondType === undefined ? darkenColour(firstColour) : `to-${secondColour}`
-  const gradientStyle = `bg-gradient-to-tr from-10% to-90% ${startingColour} ${endingColour}`
+  const gradientStyle = `bg-linear-to-tr from-10% to-90% ${startingColour} ${endingColour}`
 
   // For accessibility purposes
   const linkTitle = `View details about ${properName}`
 
   return (
     <div
-      className={`${gradientStyle} relative flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-gray-400 hover:drop-shadow-lg dark:hover:shadow-gray-600 sm:w-56`}
+      className={`${gradientStyle} relative flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-gray-400 hover:drop-shadow-lg sm:w-56 dark:hover:shadow-gray-600`}
     >
       <Link
         href={targetLink}
@@ -64,10 +64,10 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
       <div>
         {defaultSprite && <Image src={defaultSprite} height={100} width={100} alt={name} />}
       </div>
-      <div className="z-10 mb-2 mt-4 flex flex-row gap-x-2">
+      <div className="z-10 mt-4 mb-2 flex flex-row gap-x-2">
         {typeList.map((type, index) => {
           return (
-            <div className="shadow shadow-black/20" key={type + index}>
+            <div className="shadow-sm shadow-black/20" key={type + index}>
               <TypeCard typeName={type} variant="big" />
             </div>
           )

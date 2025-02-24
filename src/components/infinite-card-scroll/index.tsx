@@ -44,7 +44,7 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
           </div>
         }
       >
-        <div className="grid grid-cols-card-list gap-x-3 gap-y-8">
+        <div className="grid-cols-card-list grid gap-x-3 gap-y-8">
           {pokemonData.map((pokemon, index) => {
             const { id, name, nationalNumber, types, gameSprite } = pokemon
             return (

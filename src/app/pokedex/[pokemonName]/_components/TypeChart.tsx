@@ -70,7 +70,7 @@ export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
       <SectionTitle>Type Defences</SectionTitle>
       <span> {`The effectiveness of each type on ${formatName(pokemonName)}: `} </span>
 
-      <div className="flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row lg-xl:flex-col">
+      <div className="lg-xl:flex-col flex flex-col justify-center gap-x-px overflow-x-auto min-[720px]:flex-row md:flex-row">
         <TypeDefenceRow
           typeDefenceInfo={typeDefenseInfo.slice(0, 9)}
           extraClassName={firstClassName}

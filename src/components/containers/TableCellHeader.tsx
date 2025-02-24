@@ -29,7 +29,7 @@ export const TableCellHeader: FC<HeaderProps> = ({
     <th
       {...props}
       className={classNames(
-        'table-cell border-t border-gray-300 py-2 align-middle dark:border-bd-dark',
+        'dark:border-bd-dark table-cell border-t border-gray-300 py-2 align-middle',
         { 'px-2 text-right text-sm font-normal text-gray-500 dark:text-gray-200': type === 'row' },
         { 'w-min px-4 text-left': type === 'column' },
         { 'w-auto whitespace-break-spaces': wrapFlag },

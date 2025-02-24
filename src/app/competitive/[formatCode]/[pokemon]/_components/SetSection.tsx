@@ -23,7 +23,7 @@ export const SetSection: FC<SectionProps> = ({
   return (
     <section>
       <h4 className="my-2 text-2xl font-bold"> {set} </h4>
-      <article className="my-4 grid items-center gap-4 rounded border border-gray-300 px-8 py-4 dark:border-gray-700 sm:grid-cols-2">
+      <article className="my-4 grid items-center gap-4 rounded-sm border border-gray-300 px-8 py-4 sm:grid-cols-2 dark:border-gray-700">
         <MoveList moves={moves} />
         <table className="">
           <tbody>

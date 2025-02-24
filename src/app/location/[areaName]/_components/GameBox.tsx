@@ -27,9 +27,9 @@ const gameMapping: Record<string, IconColourMap> = {
   'soulsilver': { icon: 'SS', styles: 'bg-indigo-300' },
 
   'black': { icon: 'B', styles: 'bg-gray-900' },
-  'white': { icon: 'W', styles: 'bg-gray-400 !text-black' },
+  'white': { icon: 'W', styles: 'bg-gray-400 text-black!' },
   'black-2': { icon: 'B2', styles: 'bg-gray-900' },
-  'white-2': { icon: 'W2', styles: 'bg-gray-400 !text-black' },
+  'white-2': { icon: 'W2', styles: 'bg-gray-400 text-black!' },
 
   'x': { icon: 'X', styles: 'bg-blue-500' },
   'y': { icon: 'Y', styles: 'bg-red-500' },
@@ -54,7 +54,7 @@ export const GameBox: FC<GameBoxProps> = ({ gameName, activeFlag }) => {
 
   return (
     <div
-      className={`flex h-[67px] w-14 items-center justify-center border-x border-bd-light text-lg font-bold dark:border-bd-dark ${activeFlag ? activeClassName : 'text-gray-500'}`}
+      className={`border-bd-light dark:border-bd-dark flex h-[67px] w-14 items-center justify-center border-x text-lg font-bold ${activeFlag ? activeClassName : 'text-gray-500'}`}
     >
       {icon}
     </div>

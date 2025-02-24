@@ -92,9 +92,9 @@ const StatBarTable: FC<BaseStatProps> = ({ stats, showMinMax = true }) => {
         <TableCellHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>
         </TableCellHeader>
-        <td className="mx-0 table-cell min-w-[9.375rem] border-t border-bd-light px-0 align-middle dark:border-bd-dark">
+        <td className="border-bd-light dark:border-bd-dark mx-0 table-cell min-w-[9.375rem] border-t px-0 align-middle">
           <div
-            className="my-0 ml-2 h-3 rounded"
+            className="my-0 ml-2 h-3 rounded-sm"
             style={{
               width: stat.width,
               minWidth: '1rem',

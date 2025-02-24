@@ -83,7 +83,7 @@ const TopLevelMenu: FC<TopLevelProps> = ({ menuData, mobileText, icon, desktopTe
           <motion.ul
             {...dynamicProps}
             className={classNames(
-              'absolute left-0 right-0 top-16 z-50 text-center text-white transition-opacity duration-500 md:top-14',
+              'absolute top-16 right-0 left-0 z-50 text-center text-white transition-opacity duration-500 md:top-14',
             )}
           >
             {menuData.map(item => (

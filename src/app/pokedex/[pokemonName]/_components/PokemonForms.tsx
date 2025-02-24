@@ -27,7 +27,7 @@ export const PokemonForms: FC<FormProps> = async ({ urls }) => {
   return (
     <>
       <SectionTitle> Pokémon Forms </SectionTitle>
-      <div className="flex flex-wrap justify-center  gap-x-6 gap-y-8">
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-8">
         {formsData.map((data, index) => {
           const { defaultSprite, shinySprite, name, types } = data
           return (

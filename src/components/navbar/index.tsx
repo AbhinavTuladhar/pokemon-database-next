@@ -13,7 +13,7 @@ const Navbar = () => {
   const iconClassName = 'w-5 h-5'
 
   return (
-    <nav className="relative z-50 -mt-7 bg-gradient-to-b from-gray-700 to-gray-800 dark:from-blue-900 dark:to-slate-900 md:static md:rounded">
+    <nav className="relative z-50 -mt-7 bg-linear-to-b from-gray-700 to-gray-800 md:static md:rounded-sm dark:from-blue-900 dark:to-slate-900">
       <ul className="grid list-none grid-cols-3 md:grid-cols-4">
         <TopLevelMenu
           menuData={pokedexLinks}
@@ -32,7 +32,7 @@ const Navbar = () => {
           desktopText="Game Mechanics"
           icon={<BsGearFill className={iconClassName} />}
         />
-        <li className="col-span-3 flex min-w-48 items-center gap-x-2 px-2 pb-2 md:col-span-1 md:py-2 ">
+        <li className="col-span-3 flex min-w-48 items-center gap-x-2 px-2 pb-2 md:col-span-1 md:py-2">
           <div className="flex-1">
             <SearchBar />
           </div>

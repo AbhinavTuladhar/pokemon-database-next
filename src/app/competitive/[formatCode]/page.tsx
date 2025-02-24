@@ -38,7 +38,7 @@ const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
       <PageTitle>
         Gen {generation} {format.toUpperCase()} - Analyses and Sets
       </PageTitle>
-      <ul className="grid list-none grid-cols-competitive-grid-list">
+      <ul className="grid-cols-competitive-grid-list grid list-none">
         {availablePokemon.map(pokemon => (
           <li className="flex items-center gap-x-4" key={pokemon}>
             <Image

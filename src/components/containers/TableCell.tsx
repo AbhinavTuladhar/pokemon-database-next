@@ -25,7 +25,7 @@ export const TableCell: FC<CellProps> = ({
     <td
       {...props}
       className={classNames(
-        'table-cell border-t border-gray-300 py-2 align-middle dark:border-bd-dark ',
+        'dark:border-bd-dark table-cell border-t border-gray-300 py-2 align-middle',
         { 'px-2': variant === 'row' },
         { 'px-4': variant === 'column' },
         `${extraClassName ? extraClassName : ''}`,

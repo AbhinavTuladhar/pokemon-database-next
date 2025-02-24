@@ -112,12 +112,12 @@ const TanStackTable = <T extends object>({
     <div className="space-y-4" ref={tableRef}>
       <TableContainer useFullWidth={useFullWidth}>
         <thead>
-          <TableRow className="bg-neutral-200 font-bold duration-75 dark:bg-hdr-dark">
+          <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold duration-75">
             {headers.headers.map(header => (
               <TableCellHeader
                 type="column"
                 className={classNames(
-                  `border-r border-r-bd-light last:border-r-0 dark:border-r-bd-dark`,
+                  `border-r-bd-light dark:border-r-bd-dark border-r last:border-r-0`,
                   header.column.columnDef.meta?.headerStyle &&
                     `${header.column.columnDef.meta.headerStyle}`,
                   {

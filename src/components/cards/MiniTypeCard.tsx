@@ -12,9 +12,9 @@ export const MiniTypeCard: React.FC<CardProps> = ({ typeName }) => {
   const backgroundColourType = `bg-${typeMapping[typeName]}`
 
   return (
-    <Link className="shadow-black/70 text-shadow" href={`/type/${typeName}`}>
+    <Link className="text-shadow shadow-black/70" href={`/type/${typeName}`}>
       <div
-        className={`${backgroundColourType} flex h-[36px] w-[36px] items-center justify-center rounded text-xs tracking-tight text-white duration-300 hover:brightness-125`}
+        className={`${backgroundColourType} flex h-[36px] w-[36px] items-center justify-center rounded-sm text-xs tracking-tight text-white duration-300 hover:brightness-125`}
       >
         {typeName.slice(0, 3).toUpperCase()}
       </div>

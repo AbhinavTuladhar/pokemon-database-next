@@ -114,7 +114,7 @@ export const ComparisonChart: FC<ChartProps> = ({ data, title, subTitle }) => {
         name: formatName(item.growthRate),
         data: item.levelData.map(level => level.experience),
       }))}
-      className="rounded-lg border border-bd-light p-4 dark:border-bd-dark"
+      className="border-bd-light dark:border-bd-dark rounded-lg border p-4"
     />
   )
 }

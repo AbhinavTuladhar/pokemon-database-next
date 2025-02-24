@@ -8,7 +8,7 @@ const HtmlRenderer: FC<Props> = ({ html }) => (
   <>
     {html ? (
       <section
-        className="prose max-w-full space-y-2 text-black prose-p:leading-6 dark:text-white dark:prose-headings:text-white dark:prose-strong:text-white"
+        className="prose prose-p:leading-6 dark:prose-headings:text-white dark:prose-strong:text-white max-w-full space-y-2 text-black dark:text-white"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     ) : null}

@@ -22,7 +22,7 @@ export const PokeCardSkeleton: FC<CardSkeletonProps> = ({ cardCount }) => {
         <div className="flex-1">
           <Skeleton circle width="100px" height="100px" />
         </div>
-        <div className="mb-2 mt-4 w-full flex-1">
+        <div className="mt-4 mb-2 w-full flex-1">
           <Skeleton />
         </div>
       </div>

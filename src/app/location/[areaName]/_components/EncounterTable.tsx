@@ -50,13 +50,13 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
   ]
 
   const headerRow = (
-    <TableRow className="bg-neutral-200 font-bold dark:bg-hdr-dark">
+    <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {header.map((headerName, index) => (
         <TableCellHeader
           type="column"
           className={classNames(
-            'border border-r-bd-light pr-4 !text-center last:border-r-0 dark:border-r-bd-dark',
-            { '!px-0': headerName === 'Games' },
+            'border-r-bd-light dark:border-r-bd-dark border pr-4 text-center! last:border-r-0',
+            { 'px-0!': headerName === 'Games' },
             { 'min-w-48': headerName === 'Pokémon' },
             { 'min-w-40': headerName === 'Conditions' },
           )}

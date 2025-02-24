@@ -18,7 +18,7 @@ export const TypeDetailCard: FC<TypeCardProps> = ({ moveCount, pokemonCount, typ
   //   ?.filter((id) => id <= 10157)?.length
 
   return (
-    <section className="mb-3 mt-6 flex flex-row flex-wrap justify-center gap-x-20 gap-y-10">
+    <section className="mt-6 mb-3 flex flex-row flex-wrap justify-center gap-x-20 gap-y-10">
       <div className="flex w-40 flex-col items-center justify-center rounded-lg border border-slate-500 p-2 text-center">
         <span className="text-2xl font-bold">{pokemonCount}</span>
         <span className="text-sm"> {formatName(typeName)} type Pokémon </span>

@@ -64,10 +64,10 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
         onBlur={() => setFilteredData([])}
         onFocus={() => handleFilter(searchText)}
         onChange={handleChange}
-        className="w-full rounded-md bg-slate-500 py-1 pl-2 pr-8 text-white"
+        className="w-full rounded-md bg-slate-500 py-1 pr-8 pl-2 text-white"
         placeholder="Search"
       />
-      <IoMdSearch className="absolute right-2 top-1/2 h-5 w-5 -translate-y-1/2 text-white" />
+      <IoMdSearch className="absolute top-1/2 right-2 h-5 w-5 -translate-y-1/2 text-white" />
       <AnimatePresence>
         {filteredData.length > 0 && (
           <motion.div
@@ -75,7 +75,7 @@ const SearchInput: FC<InputProps> = ({ searchList }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="absolute left-0 top-[calc(100%+1rem)] grid w-full bg-black"
+            className="absolute top-[calc(100%+1rem)] left-0 grid w-full bg-black"
           >
             {filteredData.map(({ name, resourceType }) => (
               <SearchResultRow
