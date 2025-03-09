@@ -4,27 +4,6 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      colors: {
-        'hdr-dark': 'hsl(226.2, 56.9%, 30%)', // Colour of table header (and others) in dark mode
-        'bd-light': 'hsl(0, 0%, 83.1%)', // Border colour in light mode
-        'bd-dark': 'hsl(0, 0%, 34.5%)', // Border colour in dark mode
-        'muted-blue': 'hsl(229, 55%, 27%)', // Colour used in sections with links
-        'dark-highlighted': 'hsl(224, 14.6%, 20.2%)',
-      },
-
-      fontSize: {
-        '4xl': 'clamp(1.5rem, 1rem + 2.5vw, 2rem)',
-        '5xl': 'clamp(2rem, 1.5rem + 2.5vw, 2.5rem);',
-        '6xl': 'clamp(2.5rem, 2.143rem + 1.786vw, 3.75rem)',
-        'main-title': 'clamp(2rem, 1.571rem + 2.143vw, 3.5rem)',
-      },
-      screens: {
-        'md-lg': '820px',
-        'lg-xl': '1170px',
-      },
-      width: {
-        '475/1000': '47.5%',
-      },
       gridTemplateColumns: {
         'pokemon-detail-grid': 'repeat(auto-fill, minmax(min(350px, 90%), 1fr))',
         '2-flexible': 'repeat(auto-fill, minmax(min(420px, 90%), 1fr))',
