@@ -20,6 +20,22 @@
   }
 }
 
+@theme {
+  --color-hdr-dark: hsl(226.2, 56.9%, 30%); /* Colour of table header (and others) in dark mode */
+  --color-bd-light: hsl(0, 0%, 83.1%); /* Border colour in light mode */
+  --color-bd-dark: hsl(0, 0%, 34.5%); /* Border colour in dark mode */
+  --color-muted-blue: hsl(229, 55%, 27%); /* Colour used in sections with links */
+  --color-dark-highlighted: hsl(224, 14.6%, 20.2%);
+
+  --breakpoint-md-lg: 51.25rem;
+  --breakpoint-lg-xl: 73.125rem;
+
+  --text-4xl: clamp(1.5rem, 1rem + 2.5vw, 2rem);
+  --text-5xl: clamp(2rem, 1.5rem + 2.5vw, 2.5rem);
+  --text-6xl: clamp(2.5rem, 2.143rem + 1.786vw, 3.75rem);
+  --text-main-title: clamp(2rem, 1.571rem + 2.143vw, 3.5rem);
+}
+
 :root {
   --link-colour: hsl(217.2, 91.2%, 59.8%);
   --link-hover-colour: hsl(0, 84.2%, 60.2%);
@@ -177,13 +193,3 @@ html.dark .apexcharts-menu-item:hover {
   -o-transition: none !important;
   transition: none !important;
 }
-
-/* .smogon-analysis h3 {
-  margin-block: 1rem;
-  font-weight: bold;
-  font-size: clamp(1.5rem, 1rem + 2.5vw, 2rem);
-}
-
-.smogon-analysis p {
-  line-height: 1.6;
-} */
