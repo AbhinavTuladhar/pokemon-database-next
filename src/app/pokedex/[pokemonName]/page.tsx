@@ -105,8 +105,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
   const abilityNames = abilities.map(ability => ability.ability.name)
 
   return (
-    <Suspense fallback={<LoadingPage />}>
-      <main>
+    <main>
+      <Suspense fallback={<LoadingPage />}>
         <h1 className="mt-4 text-center text-5xl font-bold">{formatName(actualName)}</h1>
         <AdjacentLinks id={id} />
 
@@ -187,13 +187,16 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         <section>
           <PokemonForms urls={forms.map(form => form.url)} />
         </section>
+      </Suspense>
 
-        <Suspense fallback={<div> Loading moves data... </div>}>
-          <section id="moves-learned">
-            <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
-          </section>
-        </Suspense>
+      {/* There are a lot of fetch requests in the move tables, so wrapping in separate suspense. */}
+      <Suspense fallback={<div> Loading moves data... </div>}>
+        <section id="moves-learned">
+          <PokemonMovesLearned id={id} moves={moves} pokemonName={actualName} />
+        </section>
+      </Suspense>
 
+      <Suspense fallback={<div> Loading other data... </div>}>
         <section className="space-y-4" id="sprites">
           <SpriteSection pokemonName={actualName} spriteCollection={spriteCollection} />
         </section>
@@ -222,8 +225,8 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) =>
         </section>
 
         <AdjacentLinks id={id} />
-      </main>
-    </Suspense>
+      </Suspense>
+    </main>
   )
 }
 
