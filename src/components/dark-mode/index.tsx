@@ -6,7 +6,7 @@ import { FaMoon, FaSun } from 'react-icons/fa'
 
 const IconContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="grid h-10 w-10 place-items-center rounded-full duration-300 hover:bg-neutral-700 active:scale-95 dark:hover:bg-indigo-900">
+    <div className="grid h-10 w-10 cursor-pointer place-items-center rounded-full duration-300 hover:bg-neutral-700 active:scale-95 dark:hover:bg-indigo-900">
       {children}
     </div>
   )
@@ -14,7 +14,7 @@ const IconContainer: FC<PropsWithChildren> = ({ children }) => {
 
 const DarkModeSwitch = () => {
   const [isMounted, setIsMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
 
   const toggleTheme = () => {
     // Disable transitions temporarily
@@ -41,7 +41,7 @@ const DarkModeSwitch = () => {
   return (
     <button aria-label="Toggle Dark Mode" onClick={toggleTheme}>
       <IconContainer>
-        {theme === 'dark' ? (
+        {resolvedTheme === 'dark' ? (
           <FaSun className="size-5 text-white" />
         ) : (
           <FaMoon className="size-5 text-white" />
