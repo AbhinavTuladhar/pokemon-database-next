@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
+import NextTopLoader from 'nextjs-toploader'
 
 import {
   GlobalProviders,
@@ -31,6 +32,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en" className="scroll-smooth">
         <body className={`${FiraSans.className}`}>
+          <NextTopLoader height={5} speed={400} />
           <GlobalProviders>
             <PageLayout>
               <HeaderSection />
