@@ -6,6 +6,7 @@ export const pokedexLinks = [
   { path: '/pokedex/generation/5', name: 'Gen 5 (Unova)' },
   { path: '/pokedex/generation/6', name: 'Gen 6 (Kalos)' },
   { path: '/pokedex/generation/7', name: 'Gen 7 (Alola)' },
+  { path: '/pokedex/game', name: 'In-game Pokédexes' },
 ]
 
 export const pokemonDataLinks = [

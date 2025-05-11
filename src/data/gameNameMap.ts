@@ -83,4 +83,23 @@ export const individualRawGameMap: Record<string, string> = {
   'ultra-moon': 'ultra-moon',
 }
 
+export const gameNameMapLongVersion: Record<string, string> = {
+  'red-blue': 'Red / Blue',
+  'yellow': 'Yellow',
+  'gold-silver': 'Gold / Silver',
+  'crystal': 'Crystal',
+  'ruby-sapphire': 'Ruby / Sapphire',
+  'emerald': 'Emerald',
+  'firered-leafgreen': 'FireRed / Leafgreen',
+  'diamond-pearl': 'Diamond / Pearl',
+  'platinum': 'Platinum',
+  'heartgold-soulsilver': 'Heartgold / Soulsilver',
+  'black-white': 'Black / White',
+  'black-2-white-2': 'Black 2 / White 2',
+  'x-y': 'X / Y',
+  'omega-ruby-alpha-sapphire': 'Omega Ruby / Alpha Sapphire',
+  'sun-moon': 'Sun / Moon',
+  'ultra-sun-ultra-moon': 'Ultra Sun / Ultra Moon',
+}
+
 export default gameNameMap

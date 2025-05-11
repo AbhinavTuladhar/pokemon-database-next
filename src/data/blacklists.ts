@@ -6,6 +6,8 @@ export const gameBlackLists = [
   'sword',
   'sword-shield',
   'legends-arceus',
+  'xd',
+  'colosseum',
 ]
 
 /**
