@@ -1,11 +1,12 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import CardsStatsTabs from '@/components/cards-stats-tabs'
 import { PageTitle } from '@/components/containers'
 import generationData from '@/data/generationData'
 import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
+
+import { ViewTabs } from './_components'
 
 interface PageProps {
   params: {
@@ -64,7 +65,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   return (
     <main>
       <PageTitle>Pokémon of generation {generationNumber}</PageTitle>
-      <CardsStatsTabs cardData={cardData} tableData={tableData} />
+      <ViewTabs cardData={cardData} tableData={tableData} />
     </main>
   )
 }
