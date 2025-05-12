@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { NextPage } from 'next'
 
 import { PageTitle } from '@/components/containers'
+import Loader from '@/components/loader'
 import { GameApi } from '@/services'
 import { groupGamesByGeneration } from '@/utils/games.utils'
 
@@ -20,7 +21,7 @@ const PokedexPage: NextPage<{}> = async () => {
   return (
     <main>
       <PageTitle> In-game Pokédexes</PageTitle>
-      <Suspense fallback={<div> Loading.. </div>}>
+      <Suspense fallback={<Loader />}>
         <section className="grid gap-y-4">
           {properData.map(({ generation, versionGroups }) => (
             <GenerationGamesSection

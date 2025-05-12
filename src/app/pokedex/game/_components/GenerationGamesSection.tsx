@@ -16,11 +16,11 @@ const GenerationGamesSection: FC<GenerationGamesSectionProps> = ({
   versionGroups,
 }) => {
   return (
-    <section className="border-bd-light dark:border-bd-dark border *:px-4">
+    <section className="border-bd-light dark:border-bd-dark mx-auto w-full max-w-2xl border *:px-4">
       <div className="border-b-bd-light dark:border-b-bd-dark dark:bg-hdr-dark border-b bg-neutral-200 py-3">
         <h2 className="text-3xl font-bold"> {generationString}</h2>
       </div>
-      <ul className="list-inside list-disc py-4">
+      <ul className="flex list-inside list-disc flex-col gap-y-2 py-4">
         {versionGroups.map(versionGroup => (
           <li key={versionGroup}>
             <BlueLink href={`/pokedex/game/${versionGroup}`}>
