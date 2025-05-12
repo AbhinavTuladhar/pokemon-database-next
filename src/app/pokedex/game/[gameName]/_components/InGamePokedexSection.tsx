@@ -1,0 +1,55 @@
+import { FC } from 'react'
+
+import { PokeCard } from '@/components/cards'
+import { PokeCardContainer, SectionTitle } from '@/components/containers'
+import { PokemonExtractor } from '@/extractors'
+import { PokemonApi } from '@/services'
+import formatName from '@/utils/formatName'
+
+const getPokemonDataByIds = async (ids: Array<number>) => {
+  const response = await PokemonApi.getByIds(ids)
+  return response.map(PokemonExtractor)
+}
+
+interface PokedexSectionProps {
+  dexName: string
+  pokemonList: Array<{ entryNumber: number; pokemonId: string }>
+}
+
+const InGamePokedexSection: FC<PokedexSectionProps> = async ({ dexName, pokemonList }) => {
+  const pokemonData = await getPokemonDataByIds(
+    pokemonList.map(({ pokemonId }) => parseInt(pokemonId)),
+  )
+
+  const cardData = pokemonData.map(({ id, name, types, front_default }) => ({
+    id,
+    name,
+    types,
+    front_default,
+  }))
+
+  // Perform a join operation on pokemonData and cardData on the basis of the pokemon id
+  const combinedData = pokemonList.map(pokemon => {
+    const foundCardData = cardData.find(card => card.id === parseInt(pokemon.pokemonId))!
+    return { ...pokemon, ...foundCardData }
+  })
+
+  return (
+    <section>
+      <SectionTitle> {formatName(dexName)} </SectionTitle>
+      <PokeCardContainer>
+        {combinedData.map(({ id, name, types, front_default, entryNumber }) => (
+          <PokeCard
+            id={entryNumber}
+            defaultSprite={front_default ?? ''}
+            key={id}
+            name={name}
+            types={types}
+          />
+        ))}
+      </PokeCardContainer>
+    </section>
+  )
+}
+
+export default InGamePokedexSection

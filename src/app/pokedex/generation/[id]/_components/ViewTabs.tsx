@@ -3,11 +3,11 @@
 import React, { FC, useState } from 'react'
 
 import { PokeCard } from '@/components/cards'
+import { PokeCardContainer } from '@/components/containers'
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 
 import { CardProps, TableProps } from '../_types'
 
-import { PokeCardContainer } from './PokeCardContainer'
 import { PokemonTable } from './PokemonTable'
 
 interface ViewTabsProps {
