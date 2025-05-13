@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { isGen1to7 } from '@/utils/pokemonUtils'
@@ -18,7 +18,7 @@ const getPokemonData = async (names: Array<string>, abilityName: string) => {
 
   // We now need to find the pokemon name, icons and other abilities.
   const simplifiedResponse = responses.map(response => {
-    const { abilities, ...rest } = PokemonExtractor(response)
+    const { abilities, ...rest } = transformPokemon(response)
     const otherAbilities = abilities
       .filter(ability => ability.ability.name !== abilityName)
       .map(ability => ability.ability.name)

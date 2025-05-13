@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import generationData from '@/data/generationData'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
@@ -31,7 +31,7 @@ const useFeaturedPokemon = () => {
         return getRandomNumber(lowerLimit, upperLimit)
       })
       const responses = await PokemonApi.getByIds(generationIds)
-      const extractedData = responses.map(PokemonExtractor)
+      const extractedData = responses.map(transformPokemon)
       setPokemonData(extractedData)
       sessionStorage.setItem('pokemonData', JSON.stringify(extractedData))
     }

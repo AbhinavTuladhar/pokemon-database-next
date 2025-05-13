@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import { PokemonFormExtractor } from '@/extractors'
 import { PokeFormCard } from '@/features/pokemon/components/PokeFormCard'
+import { transformPokemonForm } from '@/features/pokemon/transformers/transformPokemonForm'
 import { PokemonApi } from '@/services'
 import { getResourceId } from '@/utils/urlUtils'
 
 const getFormData = async (ids: Array<string>) => {
   const response = await PokemonApi.getFormsByIds(ids)
-  return response.map(PokemonFormExtractor)
+  return response.map(transformPokemonForm)
 }
 
 interface FormProps {

@@ -3,7 +3,8 @@ import Image from 'next/image'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
-import { PokemonExtractor, SpeciesExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
+import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
 import { TypeCard } from '@/features/type/components/TypeCard'
 import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -17,7 +18,7 @@ interface TableProps {
 const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
   const responses = await SpeciesApi.getByIds(ids)
   return responses.map(species => {
-    const { id, egg_groups } = SpeciesExtractor(species)
+    const { id, egg_groups } = transformSpecies(species)
     const otherEggGroup = egg_groups
       .map(group => group.name)
       .filter(group => group !== eggGroupName)[0]
@@ -28,7 +29,7 @@ const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
 const getPokemonDataNew = async (ids: Array<number>) => {
   const responses = await PokemonApi.getByIds(ids)
   return responses.map(pokemon => {
-    const { id, nationalNumber, gameSprite, name, types } = PokemonExtractor(pokemon)
+    const { id, nationalNumber, gameSprite, name, types } = transformPokemon(pokemon)
     return { id, nationalNumber, gameSprite, name, types }
   })
 }

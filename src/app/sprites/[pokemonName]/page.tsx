@@ -4,7 +4,8 @@ import { Metadata } from 'next'
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
 import generationSpriteColumns from '@/data/generationSpriteColumns'
-import { PokemonExtractor, SpriteExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
+import transformSprites from '@/features/pokemon/transformers/transformSprites'
 import { PokemonApi } from '@/services'
 import { SpriteDataType } from '@/types'
 import formatName from '@/utils/formatName'
@@ -13,8 +14,8 @@ import { AnimatedSpriteTable, GenerationSection, Intro, OtherSprites } from './_
 
 const getPokemonData = async (name: string) => {
   const pokemonData = await PokemonApi.getByName(name)
-  const { id, spriteCollection } = PokemonExtractor(pokemonData)
-  const spriteData = SpriteExtractor(pokemonData)
+  const { id, spriteCollection } = transformPokemon(pokemonData)
+  const spriteData = transformSprites(pokemonData)
   return {
     id,
     spriteCollection,

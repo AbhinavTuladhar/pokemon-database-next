@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 
 import statMapping from '@/data/statMapping'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
@@ -29,7 +29,7 @@ interface RowProps {
 
 const getPokemonData = async (names: Array<string>) => {
   const response = await PokemonApi.getByNames(names)
-  return response.map(PokemonExtractor)
+  return response.map(transformPokemon)
 }
 
 export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {

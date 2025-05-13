@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import { PokemonExtractor } from '@/extractors'
 import EvolutionPokemonCard from '@/features/pokemon/components/EvolutionPokemonCard'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { EvolutionApi, PokemonApi } from '@/services'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
@@ -28,7 +28,7 @@ const getEvolutionData = async (id: number) => {
 const getAllPokemonData = async (ids: Array<number>) => {
   const responses = await PokemonApi.getByIds(ids)
   return responses.map(response => {
-    const { name, homeSprite, id, types } = PokemonExtractor(response)
+    const { name, homeSprite, id, types } = transformPokemon(response)
     return { name, homeSprite, id, types }
   })
 }

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 
 import { MiniPokeCard } from './MiniPokeCard'
@@ -11,7 +11,7 @@ interface MiniCardListProps {
 
 const fetchPokemonData = async (pokemonNames: Array<string>) => {
   const responses = await PokemonApi.getByNames(pokemonNames)
-  const extractedInfo = responses.map(PokemonExtractor)
+  const extractedInfo = responses.map(transformPokemon)
 
   // Sort the pokemon by their national number
   const sortedResponses = extractedInfo.sort((first, second) =>

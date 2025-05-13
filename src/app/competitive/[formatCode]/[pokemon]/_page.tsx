@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import StatBarTable from '@/components/stat-bar-table'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import { SmogonApi } from '@/services/SmogonApi'
 import {
@@ -20,7 +20,7 @@ import { CommentsSection, OverviewSection, PokemonImage, SetSection } from './_c
 
 const getPokemonData = async (pokemonName: string) => {
   const response = await PokemonApi.getByName(pokemonName)
-  return PokemonExtractor(response)
+  return transformPokemon(response)
 }
 
 const getMinifiedData = (pokemonData: TransformedPokemon, generation: number) => {

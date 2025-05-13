@@ -5,7 +5,7 @@ import { PageTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
 import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 
 const getPokemonData = async (pokemonName: string) => {
   const response = await PokemonApi.getByName(pokemonName)
-  return PokemonExtractor(response)
+  return transformPokemon(response)
 }
 
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {

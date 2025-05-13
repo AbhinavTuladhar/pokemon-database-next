@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/containers'
 import generationData from '@/data/generationData'
-import { PokemonExtractor } from '@/extractors'
+import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 
 import { ViewTabs } from './_components'
@@ -44,7 +44,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const generationResponse = await getPokemonDataByGeneration(offset, limit)
 
   const pokemonData = await getPokemonData(generationResponse.results.map(pokemon => pokemon.name))
-  const extractedPokemonData = pokemonData.map(PokemonExtractor)
+  const extractedPokemonData = pokemonData.map(transformPokemon)
 
   // Minify the data to be passed into the components. This avoids build errors of excessive ISR
   const cardData = extractedPokemonData.map(({ id, name, types, front_default }) => ({

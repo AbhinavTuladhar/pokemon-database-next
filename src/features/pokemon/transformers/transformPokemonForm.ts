@@ -1,6 +1,6 @@
 import { PokemonForm } from '@/types'
 
-export const PokemonFormExtractor = (data: PokemonForm) => {
+export const transformPokemonForm = (data: PokemonForm) => {
   const { form_name, name, sprites, types } = data
 
   const { front_default, front_shiny } = sprites
@@ -15,5 +15,3 @@ export const PokemonFormExtractor = (data: PokemonForm) => {
     types: typeNames,
   }
 }
-
-export default PokemonFormExtractor
