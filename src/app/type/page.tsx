@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 
-import { TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { PageTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
+import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/type/components/TypeMultiplierBox'
 
 import { TypeChart } from './_components'
 

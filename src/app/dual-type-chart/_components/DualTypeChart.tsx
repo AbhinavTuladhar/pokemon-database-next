@@ -1,8 +1,10 @@
 import React, { FC, Fragment, PropsWithChildren } from 'react'
 
-import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
 import typeList from '@/data/typeList'
+import { MiniTypeCard } from '@/features/type/components/MiniTypeCard'
+import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/type/components/TypeMultiplierBox'
 import { TransformedType } from '@/types'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'

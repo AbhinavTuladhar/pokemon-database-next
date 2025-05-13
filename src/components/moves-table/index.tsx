@@ -2,9 +2,9 @@
 
 import React, { ChangeEvent, FC, useMemo, useState } from 'react'
 
-import { TypeCard } from '@/components/cards'
 import Input from '@/components/input'
 import MoveCategoryImage from '@/components/move-category-image'
+import { TypeCard } from '@/features/type/components/TypeCard'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'

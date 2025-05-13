@@ -1,8 +1,10 @@
 import React, { FC, Fragment } from 'react'
 
-import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
 import typeList from '@/data/typeList'
 import { TypeExtractor } from '@/extractors'
+import { MiniTypeCard } from '@/features/type/components/MiniTypeCard'
+import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/type/components/TypeMultiplierBox'
 import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'

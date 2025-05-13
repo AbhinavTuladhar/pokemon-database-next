@@ -1,8 +1,9 @@
 import { FC } from 'react'
 
-import { MiniTypeCard, TypeMultiplierBox } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
 import { TypeExtractor } from '@/extractors'
+import { MiniTypeCard } from '@/features/type/components/MiniTypeCard'
+import { TypeMultiplierBox } from '@/features/type/components/TypeMultiplierBox'
 import { TypesApi } from '@/services'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'

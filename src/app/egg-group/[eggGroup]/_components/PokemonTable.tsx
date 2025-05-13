@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { TypeCard } from '@/components/cards'
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import BlueLink from '@/components/link'
 import { PokemonExtractor, SpeciesExtractor } from '@/extractors'
+import { TypeCard } from '@/features/type/components/TypeCard'
 import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { isGen1to7 } from '@/utils/pokemonUtils'

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { TypeCard } from '@/components/cards/TypeCard'
 import BlueLink from '@/components/link'
+import { TypeCard } from '@/features/type/components/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
