@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { SectionTitle } from '@/components/containers'
 import { TypeExtractor } from '@/extractors'
-import { MiniTypeCard } from '@/features/pokemon/components/MiniTypeCard'
+import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import { TypesApi } from '@/services'
 import { PokemonType } from '@/types'

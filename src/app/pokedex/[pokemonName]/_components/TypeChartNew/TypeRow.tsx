@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import specialAbilityList from '@/data/specialAbilityList'
-import { MiniTypeCard } from '@/features/pokemon/components/MiniTypeCard'
+import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'

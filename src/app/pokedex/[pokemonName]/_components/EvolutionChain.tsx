@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 import { SectionTitle } from '@/components/containers/SectionTitle'
-import EvolutionPokemonCard from '@/features/pokemon/components/EvolutionPokemonCard'
+import { EvolutionPokemonCard } from '@/features/pokemon/components/PokeCard'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { EvolutionApi, PokemonApi } from '@/services'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'

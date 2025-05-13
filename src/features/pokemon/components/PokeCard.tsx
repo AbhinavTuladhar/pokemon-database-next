@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
+import BlueLink from '@/components/link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
@@ -70,6 +71,92 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
             </div>
           )
         })}
+      </div>
+    </div>
+  )
+}
+
+interface MiniCardProps {
+  name: string
+  id: number
+  gameSprite: string | null
+  types: Array<PokemonType>
+  nationalNumber: number
+}
+
+export const MiniPokeCard: FC<MiniCardProps> = ({
+  name,
+  id,
+  gameSprite,
+  types,
+  nationalNumber,
+}) => {
+  const properId = `${'00' + nationalNumber}`.slice(-3)
+
+  if (gameSprite === null || id >= 10157) return
+
+  const typeDiv = types.map((type, index) => {
+    const typeName = type.type.name
+    return (
+      <div key={typeName + index}>
+        <TypeCard typeName={typeName} variant="text" />
+        {index !== types.length - 1 && <span>&nbsp;·&nbsp;</span>}
+      </div>
+    )
+  })
+
+  return (
+    <article className="flex w-full gap-x-1">
+      <Image src={gameSprite} width={64} height={64} alt={name} />
+      <div className="flex flex-col items-start justify-start">
+        <BlueLink href={`/pokedex/${name}`} boldFlag={true}>
+          {formatName(name)}
+        </BlueLink>
+        <span className="inline-flex text-sm">
+          {`#${properId}`} / &nbsp;{typeDiv}{' '}
+        </span>
+      </div>
+    </article>
+  )
+}
+
+interface EvolutionCardProps {
+  homeSprite: string | null
+  name: string
+  id: number
+  types: Array<PokemonType>
+  splitEvoFlag: boolean
+}
+
+export const EvolutionPokemonCard: FC<EvolutionCardProps> = ({
+  homeSprite,
+  name,
+  id,
+  types,
+  splitEvoFlag,
+}) => {
+  const typeDiv = types.map((type, index) => {
+    const typeName = type.type.name
+    return (
+      <span key={typeName + index}>
+        <TypeCard typeName={typeName} variant="text" />
+        {index !== types.length - 1 && <span> · </span>}
+      </span>
+    )
+  })
+
+  // For the identifying number
+  const formattedId = `#${('00' + id).slice(-3)}`
+
+  return (
+    <div
+      className={`flex ${splitEvoFlag ? 'flex-col' : 'flex-row sm:flex-row md:flex-col'} mx-auto w-fit items-center justify-center gap-y-2`}
+    >
+      {homeSprite && <Image src={homeSprite} alt={name} width={128} height={128} />}
+      <div className="flex w-full flex-col items-center justify-center">
+        {formattedId}
+        <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
+        <span className="text-center">{typeDiv}</span>
       </div>
     </div>
   )

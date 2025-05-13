@@ -3,7 +3,7 @@ import { FC } from 'react'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 
-import { MiniPokeCard } from './MiniPokeCard'
+import { MiniPokeCard } from './PokeCard'
 
 interface MiniCardListProps {
   pokemonNames: Array<string>
