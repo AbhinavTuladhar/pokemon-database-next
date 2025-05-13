@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 
 import { PageTitle } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { SmogonApi } from '@/services/SmogonApi'
 import { extractParts } from '@/utils/smogon.utils'
 

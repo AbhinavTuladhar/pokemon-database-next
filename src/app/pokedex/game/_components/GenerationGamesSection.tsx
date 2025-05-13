@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { gameNameMapLongVersion } from '@/data/gameNameMap'
 
 interface GenerationGamesSectionProps {

@@ -5,7 +5,7 @@ import { FlatResourceList, ResourceTypes } from '@/types'
 import formatName from '@/utils/formatName'
 
 import { SectionTitle } from '../containers'
-import BlueLink from '../link'
+import { BlueLink } from '../ui/Link'
 
 interface MatchesProps {
   param: string

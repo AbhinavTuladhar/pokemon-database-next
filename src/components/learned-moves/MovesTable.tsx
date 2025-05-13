@@ -2,8 +2,8 @@
 
 import { FC, useMemo } from 'react'
 
-import BlueLink from '@/components/link'
 import MoveCategoryImage from '@/components/move-category-image'
+import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'

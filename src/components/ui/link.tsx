@@ -7,12 +7,10 @@ interface BlueLinkProps extends LinkProps {
   boldFlag?: boolean
 }
 
-const BlueLink: FC<BlueLinkProps> = ({ children, boldFlag, ...props }) => {
+export const BlueLink: FC<BlueLinkProps> = ({ children, boldFlag, ...props }) => {
   return (
     <Link {...props} className={`${boldFlag ? 'font-bold' : ''} fancy-link`}>
       {children}
     </Link>
   )
 }
-
-export default BlueLink

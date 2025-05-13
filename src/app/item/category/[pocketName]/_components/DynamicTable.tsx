@@ -4,8 +4,8 @@ import React, { ChangeEvent, FC, useMemo, useState } from 'react'
 import Image from 'next/image'
 
 import Input from '@/components/input'
-import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
+import { BlueLink } from '@/components/ui/Link'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 

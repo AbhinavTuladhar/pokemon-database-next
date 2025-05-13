@@ -3,7 +3,7 @@ import Image from 'next/image'
 import classNames from 'classnames'
 
 import { TableCell, TableRow } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import encounterConditionData from '@/data/encounterConditionData'
 import { generationToGameListMap } from '@/data/generationToGameListMap'
 import { GroupedLocationArea } from '@/types'

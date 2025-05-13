@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { generationToGameListMapV2 } from '@/data/generationToGameListMap'
 import formatName from '@/utils/formatName'
 

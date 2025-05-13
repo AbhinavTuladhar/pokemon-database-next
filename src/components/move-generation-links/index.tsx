@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import idToGenerationMap from '@/data/idToGenerationMap'
 import { isLatestGeneration } from '@/utils/pokemonUtils'
 
-import BlueLink from '../link'
+import { BlueLink } from '../ui/Link'
 
 const generateArray = (start: number) => {
   const end = 6

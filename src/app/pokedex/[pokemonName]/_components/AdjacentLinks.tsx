@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 

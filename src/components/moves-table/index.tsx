@@ -9,8 +9,8 @@ import { TransformedMove } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 
-import BlueLink from '../link'
 import TanStackTable from '../tanstack-table'
+import { BlueLink } from '../ui/Link'
 
 interface TableProps {
   moveData: Array<TransformedMove>

@@ -3,8 +3,8 @@
 import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
+import { BlueLink } from '@/components/ui/Link'
 import { CombinedBerryItem } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 import { TableContainer } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import formatName from '@/utils/formatName'
 
 interface TableProps {

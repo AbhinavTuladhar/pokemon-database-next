@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ErrorContainerPage, PageTitle } from '../containers'
-import BlueLink from '../link'
+import { BlueLink } from '../ui/Link'
 
 export const ServerErrorPage = () => (
   <ErrorContainerPage>

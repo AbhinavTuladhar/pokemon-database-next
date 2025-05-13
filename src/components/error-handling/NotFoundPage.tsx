@@ -6,7 +6,7 @@ import useResourceList from '@/hooks/useResourceList'
 import { ResourceTypes } from '@/types'
 
 import { ErrorContainerPage, PageTitle } from '../containers'
-import BlueLink from '../link'
+import { BlueLink } from '../ui/Link'
 
 import SimilarMatches from './SimilarMatches'
 

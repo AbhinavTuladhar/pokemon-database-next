@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageTitle, SectionTitle } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { smogonFormats } from '@/data/smogonFormats'
 
 const GenerationColumn = ({ generation }: { generation: number }) => (

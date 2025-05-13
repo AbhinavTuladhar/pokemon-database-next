@@ -7,7 +7,7 @@ import {
   TableContainer,
   TableRow,
 } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { individualGameMap } from '@/data/gameNameMap'
 import { PokemonHeldItem } from '@/types'
 import formatName from '@/utils/formatName'

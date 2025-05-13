@@ -6,7 +6,7 @@ interface AccordionProps {
   visible: boolean
 }
 
-const Accordion: FC<AccordionProps> = ({ children, visible }) => {
+export const Accordion: FC<AccordionProps> = ({ children, visible }) => {
   return (
     <div
       className={classNames(
@@ -19,5 +19,3 @@ const Accordion: FC<AccordionProps> = ({ children, visible }) => {
     </div>
   )
 }
-
-export default Accordion

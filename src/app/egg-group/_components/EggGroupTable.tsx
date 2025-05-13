@@ -2,8 +2,8 @@
 
 import React, { FC, useMemo } from 'react'
 
-import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
+import { BlueLink } from '@/components/ui/Link'
 import { TransformedEggGroup } from '@/types'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'

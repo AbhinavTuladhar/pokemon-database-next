@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
