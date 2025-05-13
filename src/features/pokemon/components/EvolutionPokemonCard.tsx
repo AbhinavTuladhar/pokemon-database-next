@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
+import { TypeCard } from '@/components/cards/TypeCard'
 import BlueLink from '@/components/link'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
-
-import { TypeCard } from './TypeCard'
 
 interface CardProps {
   homeSprite: string | null
@@ -15,13 +14,7 @@ interface CardProps {
   splitEvoFlag: boolean
 }
 
-export const EvolutionPokemonCard: FC<CardProps> = ({
-  homeSprite,
-  name,
-  id,
-  types,
-  splitEvoFlag,
-}) => {
+const EvolutionPokemonCard: FC<CardProps> = ({ homeSprite, name, id, types, splitEvoFlag }) => {
   const typeDiv = types.map((type, index) => {
     const typeName = type.type.name
     return (
@@ -48,3 +41,5 @@ export const EvolutionPokemonCard: FC<CardProps> = ({
     </div>
   )
 }
+
+export default EvolutionPokemonCard

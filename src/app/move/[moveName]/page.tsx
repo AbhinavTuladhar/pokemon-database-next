@@ -3,9 +3,9 @@ import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import InfiniteMiniCardScroll from '@/components/infinite-card-scroll'
 import Loader from '@/components/loader'
 import { MoveExtractor } from '@/extractors'
+import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
 import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 

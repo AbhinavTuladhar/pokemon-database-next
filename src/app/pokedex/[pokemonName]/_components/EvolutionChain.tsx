@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 
-import { EvolutionPokemonCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers/SectionTitle'
 import { PokemonExtractor } from '@/extractors'
+import EvolutionPokemonCard from '@/features/pokemon/components/EvolutionPokemonCard'
 import { EvolutionApi, PokemonApi } from '@/services'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
@@ -211,7 +211,7 @@ export const EvolutionChain: React.FC<EvolutionProps> = async ({ url }) => {
       }
       return { ...pokemon, isSplitEvo: splitEvoFlag, nextEvoSplit }
     })
-    const individualWormPokemon = wurmpleEvsData?.map((pokemon, index) => {
+    const individualWormPokemon = wurmpleEvsData?.map(pokemon => {
       const { homeSprite, name, id, types } = pokemon
       return (
         <EvolutionPokemonCard

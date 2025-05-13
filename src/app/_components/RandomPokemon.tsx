@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-import { PokeCard } from '@/components/cards'
 import { SectionTitle } from '@/components/containers'
 import { PokeCardSkeleton } from '@/components/skeletons'
+import { PokeCard } from '@/features/pokemon/components/PokeCard'
 import useFeaturedPokemon from '@/hooks/useFeaturedPokemon'
 
 const RandomPokemon = () => {

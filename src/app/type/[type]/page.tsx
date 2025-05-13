@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { MiniCardList, TypeCard } from '@/components/cards'
+import { TypeCard } from '@/components/cards'
 import { PageTitle, SectionTitle } from '@/components/containers'
 import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
 import { TypeExtractor } from '@/extractors'
+import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
 import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 

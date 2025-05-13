@@ -2,12 +2,10 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
+import { TypeCard } from '@/components/cards/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
-
-import typeMapping from '../../utils/typeMapping'
-
-import { TypeCard } from './TypeCard'
+import typeMapping from '@/utils/typeMapping'
 
 const darkenColour = (colour: string) => {
   const colourName = colour.slice(0, -3)

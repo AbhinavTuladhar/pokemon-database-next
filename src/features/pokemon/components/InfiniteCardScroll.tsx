@@ -3,19 +3,19 @@
 import { FC, useState } from 'react'
 import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
+import { MiniCardListSkeleton } from '@/components/skeletons'
 import { PokemonExtractor } from '@/extractors'
 import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
-import { MiniPokeCard } from '../cards'
-import { MiniCardListSkeleton } from '../skeletons'
+import { MiniPokeCard } from './MiniPokeCard'
 
 interface ScrollProps {
   increment: number
   nameList: Array<string>
 }
 
-const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
+export const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
   const [offset, setOffset] = useState(0)
   const [pokemonData, setPokemonData] = useState<TransformedPokemon[]>([])
   const [hasMore, setHasMore] = useState(true)
@@ -45,7 +45,7 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
         }
       >
         <div className="grid-cols-card-list grid gap-x-3 gap-y-8">
-          {pokemonData.map((pokemon, index) => {
+          {pokemonData.map(pokemon => {
             const { id, name, nationalNumber, types, gameSprite } = pokemon
             return (
               <MiniPokeCard
@@ -63,5 +63,3 @@ const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList }) => {
     </div>
   )
 }
-
-export default InfiniteMiniCardScroll

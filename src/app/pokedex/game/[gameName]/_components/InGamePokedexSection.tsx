@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { PokeCard } from '@/components/cards'
 import { PokeCardContainer, SectionTitle } from '@/components/containers'
 import { PokemonExtractor } from '@/extractors'
+import { PokeCard } from '@/features/pokemon/components/PokeCard'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
