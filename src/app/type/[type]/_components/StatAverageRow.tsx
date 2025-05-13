@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from 'react'
 
 import statMapping from '@/data/statMapping'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
 import { TypeSummaryCard } from './TypeSummaryCard'
@@ -28,7 +28,7 @@ interface RowProps {
 }
 
 const getPokemonData = async (names: Array<string>) => {
-  const response = await PokemonApi.getByNames(names)
+  const response = await PokemonService.getByNames(names)
   return response.map(transformPokemon)
 }
 

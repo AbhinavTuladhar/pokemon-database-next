@@ -4,7 +4,7 @@ import { SectionTitle } from '@/components/ui/Title'
 import { TypeExtractor } from '@/extractors'
 import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
-import { TypesApi } from '@/services'
+import TypesService from '@/features/pokemon/services/types.service'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
@@ -46,7 +46,7 @@ interface TypeChartProps {
 
 // Fetches type data only for the one or two types of the Pokemon.
 const getTypesData = async (names: Array<string>) => {
-  const response = await TypesApi.getByNames(names.map(name => name.toLowerCase()))
+  const response = await TypesService.getByNames(names.map(name => name.toLowerCase()))
   return response.map(TypeExtractor)
 }
 

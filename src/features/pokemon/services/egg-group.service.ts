@@ -1,17 +1,16 @@
+import Api from '@/services/MainApi'
 import filterGens from '@/utils/filterGens'
 
-import Api from './MainApi'
-
-export const EggGroupApi = {
-  getAll: async function () {
+class EggGroupService {
+  static async getAll() {
     const response = await Api.pokemon.listEggGroups(0, 64)
     return response.results.map(group => group.name)
-  },
-  getByName: async function (name: string) {
+  }
+  static async getByName(name: string) {
     const response = await Api.pokemon.getEggGroupByName(name)
     return response
-  },
-  getByNames: async function (names: Array<string>) {
+  }
+  static async getByNames(names: Array<string>) {
     const requests = names.map(name => Api.pokemon.getEggGroupByName(name))
     const responses = await Promise.all(requests)
     return responses.map(group => {
@@ -25,5 +24,7 @@ export const EggGroupApi = {
         pokemon_species: reducedSpecies,
       }
     })
-  },
+  }
 }
+
+export default EggGroupService

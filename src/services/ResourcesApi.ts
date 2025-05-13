@@ -1,13 +1,13 @@
 import unusedItems from '@/data/unusedItems'
+import EggGroupService from '@/features/pokemon/services/egg-group.service'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import TypesService from '@/features/pokemon/services/types.service'
 import { FlatResourceList, ResourceList } from '@/types'
 
 import { AbilityApi } from './AbilityApi'
-import { EggGroupApi } from './EggGroupApi'
 import { ItemApi } from './ItemApi'
 import { LocationApi } from './LocationApi'
 import { MovesApi } from './MovesApi'
-import { PokemonApi } from './PokemonApi'
-import { TypesApi } from './TypesApi'
 
 const sortByName = (data: string[]) => data.sort((a, b) => a.localeCompare(b))
 
@@ -19,12 +19,12 @@ export const ResourceApi = {
     const [abilityData, eggGroupData, itemData, locationData, moveData, pokemonDataRaw, typesData] =
       await Promise.all([
         AbilityApi.getAllNames(),
-        EggGroupApi.getAll(),
+        EggGroupService.getAll(),
         ItemApi.getAllItems(),
         LocationApi.getAllNames(),
         MovesApi.getAllNames(),
-        PokemonApi.getByOffsetAndLimit(0, 807),
-        TypesApi.getAll(),
+        PokemonService.getByOffsetAndLimit(0, 807),
+        TypesService.getAll(),
       ])
     const pokemonData = pokemonDataRaw.results.map(pokemon => pokemon.name)
 

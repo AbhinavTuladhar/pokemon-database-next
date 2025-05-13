@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import generationData from '@/data/generationData'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 
 import { ViewTabs } from './_components'
 
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getPokemonData = async (names: Array<string>) => {
-  const responses = await PokemonApi.getByNames(names)
+  const responses = await PokemonService.getByNames(names)
   return responses
 }
 
 const getPokemonDataByGeneration = async (offset: number, limit: number) => {
-  const response = await PokemonApi.getByOffsetAndLimit(offset, limit)
+  const response = await PokemonService.getByOffsetAndLimit(offset, limit)
   return response
 }
 

@@ -1,10 +1,11 @@
+import Api from '@/services/MainApi'
 import { EvolutionChain } from '@/types'
 
-import Api from './MainApi'
-
-export const EvolutionApi = {
-  getById: async function (id: number) {
+class EvolutionService {
+  static async getById(id: number) {
     const response = await Api.evolution.getEvolutionChainById(id)
     return response as EvolutionChain
-  },
+  }
 }
+
+export default EvolutionService

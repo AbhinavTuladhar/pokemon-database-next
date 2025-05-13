@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { PageTitle } from '@/components/ui/Title'
 import { NatureExtractor } from '@/extractors'
-import { NatureApi } from '@/services'
+import NatureService from '@/features/pokemon/services/nature.service'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {
@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 }
 
 const getNatureNames = async () => {
-  const response = await NatureApi.getAllNames()
+  const response = await NatureService.getAllNames()
   return response
 }
 
 const getNaturesInformation = async (names: Array<string>) => {
-  const responses = await NatureApi.getByNames(names)
+  const responses = await NatureService.getByNames(names)
   return responses.map(NatureExtractor)
 }
 

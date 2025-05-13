@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PokemonTableSkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { EggGroupExtractor } from '@/extractors'
-import { EggGroupApi } from '@/services'
+import EggGroupService from '@/features/pokemon/services/egg-group.service'
 import formatName from '@/utils/formatName'
 import { getResourceId } from '@/utils/urlUtils'
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getEggGroupData = async (name: string) => {
-  const response = await EggGroupApi.getByName(name)
+  const response = await EggGroupService.getByName(name)
   return EggGroupExtractor(response)
 }
 

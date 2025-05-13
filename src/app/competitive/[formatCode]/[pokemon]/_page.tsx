@@ -3,8 +3,8 @@ import { NextPage } from 'next'
 
 import StatBarTable from '@/components/stat-bar-table'
 import { PageTitle } from '@/components/ui/Title'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 import { SmogonApi } from '@/services/SmogonApi'
 import {
   FlatPokemonSet,
@@ -19,7 +19,7 @@ import { AbilityAndType } from './_components/AbilityAndType'
 import { CommentsSection, OverviewSection, PokemonImage, SetSection } from './_components'
 
 const getPokemonData = async (pokemonName: string) => {
-  const response = await PokemonApi.getByName(pokemonName)
+  const response = await PokemonService.getByName(pokemonName)
   return transformPokemon(response)
 }
 

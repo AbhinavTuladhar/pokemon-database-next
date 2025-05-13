@@ -6,7 +6,7 @@ import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { TypeExtractor } from '@/extractors'
 import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
-import { TypesApi } from '@/services'
+import TypesService from '@/features/pokemon/services/types.service'
 import formatName from '@/utils/formatName'
 
 import {
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getTypeData = async (typeName: string) => {
-  const response = await TypesApi.getByName(typeName)
+  const response = await TypesService.getByName(typeName)
   return TypeExtractor(response)
 }
 

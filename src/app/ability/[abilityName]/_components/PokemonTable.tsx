@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 
@@ -14,7 +14,7 @@ interface PokemonTableProps {
 }
 
 const getPokemonData = async (names: Array<string>, abilityName: string) => {
-  const responses = await PokemonApi.getByNames(names)
+  const responses = await PokemonService.getByNames(names)
 
   // We now need to find the pokemon name, icons and other abilities.
   const simplifiedResponse = responses.map(response => {

@@ -4,9 +4,10 @@ import Image from 'next/image'
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import SpeciesService from '@/features/pokemon/services/species.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
-import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 
@@ -16,7 +17,7 @@ interface TableProps {
 }
 
 const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
-  const responses = await SpeciesApi.getByIds(ids)
+  const responses = await SpeciesService.getByIds(ids)
   return responses.map(species => {
     const { id, egg_groups } = transformSpecies(species)
     const otherEggGroup = egg_groups
@@ -27,7 +28,7 @@ const getSpeciesDataNew = async (ids: Array<number>, eggGroupName: string) => {
 }
 
 const getPokemonDataNew = async (ids: Array<number>) => {
-  const responses = await PokemonApi.getByIds(ids)
+  const responses = await PokemonService.getByIds(ids)
   return responses.map(pokemon => {
     const { id, nationalNumber, gameSprite, name, types } = transformPokemon(pokemon)
     return { id, nationalNumber, gameSprite, name, types }

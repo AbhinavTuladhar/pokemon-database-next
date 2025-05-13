@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
 import { TypeExtractor } from '@/extractors'
-import { TypesApi } from '@/services'
+import TypesService from '@/features/pokemon/services/types.service'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
@@ -16,7 +16,7 @@ interface TypeChartProps {
 }
 
 const getTypesData = async (names: Array<string>) => {
-  const response = await TypesApi.getByNames(names.map(name => name.toLowerCase()))
+  const response = await TypesService.getByNames(names.map(name => name.toLowerCase()))
   return response.map(TypeExtractor)
 }
 

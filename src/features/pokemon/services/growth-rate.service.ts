@@ -1,9 +1,8 @@
+import Api from '@/services/MainApi'
 import { GrowthRate } from '@/types'
 
-import Api from './MainApi'
-
-export const GrowthRateApi = {
-  getAllData: async function () {
+class GrowthRateService {
+  static async getAllData() {
     const listResponse = await Api.pokemon.listGrowthRates()
     const growthRateNames = listResponse.results.map(growthRate => growthRate.name)
 
@@ -11,5 +10,7 @@ export const GrowthRateApi = {
     const responses = await Promise.all(requests)
 
     return responses as unknown as GrowthRate[]
-  },
+  }
 }
+
+export default GrowthRateService

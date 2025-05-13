@@ -2,8 +2,9 @@ import React, { ReactNode } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
 import { EvolutionPokemonCard } from '@/features/pokemon/components/PokeCard'
+import EvolutionService from '@/features/pokemon/services/evolution.service'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { EvolutionApi, PokemonApi } from '@/services'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 
@@ -21,12 +22,12 @@ interface EvolutionProps {
 }
 
 const getEvolutionData = async (id: number) => {
-  const response = await EvolutionApi.getById(id)
+  const response = await EvolutionService.getById(id)
   return response
 }
 
 const getAllPokemonData = async (ids: Array<number>) => {
-  const responses = await PokemonApi.getByIds(ids)
+  const responses = await PokemonService.getByIds(ids)
   return responses.map(response => {
     const { name, homeSprite, id, types } = transformPokemon(response)
     return { name, homeSprite, id, types }

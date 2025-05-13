@@ -4,7 +4,7 @@ import typeList from '@/data/typeList'
 import { TypeExtractor } from '@/extractors'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
-import { TypesApi } from '@/services'
+import TypesService from '@/features/pokemon/services/types.service'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
@@ -48,7 +48,7 @@ const TypeChartRow: FC<RowProps> = ({ type, attackInfo }) => (
 )
 
 const getAllTypeData = async () => {
-  const typeData = await TypesApi.getByNames(typeList)
+  const typeData = await TypesService.getByNames(typeList)
 
   /**
    * Iterate over the fetched type data.

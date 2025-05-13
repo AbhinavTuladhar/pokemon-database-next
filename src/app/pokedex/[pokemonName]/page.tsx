@@ -2,9 +2,10 @@ import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import SpeciesService from '@/features/pokemon/services/species.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
-import { PokemonApi, SpeciesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import {
@@ -43,13 +44,13 @@ export async function generateMetadata({ params }: PokemonPageProps): Promise<Me
 }
 
 const getPokemonData = async (pokemonName: string) => {
-  const pokemonData = await PokemonApi.getByName(pokemonName)
+  const pokemonData = await PokemonService.getByName(pokemonName)
   return transformPokemon(pokemonData)
 }
 
 const getSpeciesData = async (id: number | string) => {
   const param = typeof id === 'string' ? +id : id
-  const speciesData = await SpeciesApi.getById(param)
+  const speciesData = await SpeciesService.getById(param)
   return transformSpecies(speciesData)
 }
 

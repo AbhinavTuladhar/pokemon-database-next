@@ -4,8 +4,8 @@ import { FC, useState } from 'react'
 import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
 import { MiniCardListSkeleton } from '@/components/skeletons'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 import { TransformedPokemon } from '@/types'
 
 import { MiniPokeCard } from './PokeCard'
@@ -21,7 +21,7 @@ export const InfiniteMiniCardScroll: FC<ScrollProps> = ({ increment, nameList })
   const [hasMore, setHasMore] = useState(true)
 
   const fetchMorePokemon = async () => {
-    const responses = await PokemonApi.getByNames(nameList.slice(offset, offset + increment))
+    const responses = await PokemonService.getByNames(nameList.slice(offset, offset + increment))
     setPokemonData(prevPokemon => {
       const extractedData = responses.map(transformPokemon)
       return [...prevPokemon, ...extractedData]

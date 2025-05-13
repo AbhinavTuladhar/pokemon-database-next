@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { GrowthRateExtractor } from '@/extractors'
-import { GrowthRateApi } from '@/services'
+import GrowthRateService from '@/features/pokemon/services/growth-rate.service'
 
 import { ComparisonChart, GrowthRateSection } from './_components'
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 const getGrowthRateData = async () => {
-  const response = await GrowthRateApi.getAllData()
+  const response = await GrowthRateService.getAllData()
   return response.map(GrowthRateExtractor)
 }
 

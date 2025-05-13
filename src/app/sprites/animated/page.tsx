@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import generationData from '@/data/generationData'
-import { PokemonApi } from '@/services'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 
 import { GenerationSection, PageNavigation } from './_components'
 
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 }
 
 const getPokemonList = async () => {
-  const response = await PokemonApi.getByOffsetAndLimit(0, 809)
-  // const response = await PokemonApi.getByGeneration(0, 10)
+  const response = await PokemonService.getByOffsetAndLimit(0, 809)
+  // const response = await PokemonService.getByGeneration(0, 10)
   return response.results
 }
 

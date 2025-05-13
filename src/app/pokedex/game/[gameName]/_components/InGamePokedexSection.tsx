@@ -3,12 +3,12 @@ import { FC } from 'react'
 import { PokeCardContainer } from '@/components/containers'
 import { SectionTitle } from '@/components/ui/Title'
 import { PokeCard } from '@/features/pokemon/components/PokeCard'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 const getPokemonDataByIds = async (ids: Array<number>) => {
-  const response = await PokemonApi.getByIds(ids)
+  const response = await PokemonService.getByIds(ids)
   return response.map(transformPokemon)
 }
 

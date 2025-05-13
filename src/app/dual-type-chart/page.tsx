@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PageTitle } from '@/components/ui/Title'
 import typeList from '@/data/typeList'
 import { TypeExtractor } from '@/extractors'
-import { TypesApi } from '@/services'
+import TypesService from '@/features/pokemon/services/types.service'
 
 import { DualTypeChart, SideDescription } from './_components'
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const getAllTypeData = async () => {
-  const typeData = await TypesApi.getByNames(typeList)
+  const typeData = await TypesService.getByNames(typeList)
 
   const transformedTypeData = typeData.map(type => {
     const extractedInfo = TypeExtractor(type)
