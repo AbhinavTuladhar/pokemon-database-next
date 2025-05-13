@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 
-import { TableContainer } from '../containers'
+import { Table } from '@/components/ui/Table'
 
 import DescriptionRow from './DescriptionRow'
 import { DescriptionProps } from './types'
 
 const GameWiseDescriptions: FC<DescriptionProps> = ({ descriptionData }) => {
   return (
-    <TableContainer>
+    <Table>
       <tbody>
         {descriptionData.map(({ description, versionGroupNames }) => {
           return (
@@ -19,7 +19,7 @@ const GameWiseDescriptions: FC<DescriptionProps> = ({ descriptionData }) => {
           )
         })}
       </tbody>
-    </TableContainer>
+    </Table>
   )
 }
 

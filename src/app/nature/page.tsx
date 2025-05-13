@@ -1,12 +1,7 @@
 import { Metadata } from 'next'
 
-import {
-  PageTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { PageTitle } from '@/components/containers'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { NatureExtractor } from '@/extractors'
 import { NatureApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -33,13 +28,13 @@ const NatureList = async () => {
   const tableHeaders = (
     <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {headerNames.map((header, index) => (
-        <TableCellHeader
+        <TableHeader
           className="dark:border-r-bd-dark w-36! border-r border-r-gray-300 pr-4 text-center last:border-r-0"
           type="column"
           key={header + index}
         >
           {header}
-        </TableCellHeader>
+        </TableHeader>
       ))}
     </TableRow>
   )
@@ -78,10 +73,10 @@ const NatureList = async () => {
   return (
     <main>
       <PageTitle>Natures</PageTitle>
-      <TableContainer useFullWidth={false}>
+      <Table useFullWidth={false}>
         {tableHeaders}
         {tableRows}
-      </TableContainer>
+      </Table>
     </main>
   )
 }

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
-import { SectionTitle, TableContainer } from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import { Table } from '@/components/ui/Table'
 import { TransformedSprites } from '@/types'
 
 import { ImageTile } from './ImageTile'
@@ -55,7 +56,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
   return (
     <section>
       <SectionTitle> Animated Sprites </SectionTitle>
-      <TableContainer useFullWidth={false}>
+      <Table useFullWidth={false}>
         <thead>{firstRow}</thead>
         <tbody>
           <tr>
@@ -82,7 +83,7 @@ export const AnimatedSpriteTable: FC<AnimatedSpriteProps> = ({ imageData }) => {
               : null}
           </tr>
         </tbody>
-      </TableContainer>
+      </Table>
     </section>
   )
 }

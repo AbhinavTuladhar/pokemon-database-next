@@ -1,12 +1,7 @@
 import React, { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { TransformedItem } from '@/types'
 import { formatText } from '@/utils/formatName'
 
@@ -41,18 +36,18 @@ export const ItemData: FC<DataProps> = ({
   return (
     <>
       <SectionTitle> Item Data </SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>
           {tableData.map(row => (
             <TableRow key={row.header}>
-              <TableCellHeader>
+              <TableHeader>
                 <span className="text-sm font-normal"> {row.header} </span>
-              </TableCellHeader>
+              </TableHeader>
               <TableCell> {row.children} </TableCell>
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

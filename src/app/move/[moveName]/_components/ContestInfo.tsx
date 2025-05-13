@@ -1,14 +1,9 @@
 import React, { FC } from 'react'
 
 import { ContestTypeCard } from '@/components/cards'
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
 import ContestHearts from '@/components/contest-hearts'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { ContestApi } from '@/services/ContestApi'
 
 const getContestEffectData = async (id: number) => {
@@ -36,16 +31,16 @@ export const ContestInfo: FC<ContestInfoProps> = async ({ effectId, typeName }) 
   return (
     <>
       <SectionTitle>Contest Information</SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>
           {tableData.map(row => (
             <TableRow key={row.header}>
-              <TableCellHeader>{row.header}</TableCellHeader>
+              <TableHeader>{row.header}</TableHeader>
               <TableCell>{row.children}</TableCell>
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

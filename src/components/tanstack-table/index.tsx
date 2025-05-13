@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react'
 import classNames from 'classnames'
 
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import {
   ColumnDef,
   flexRender,
@@ -13,8 +14,6 @@ import {
   SortingState,
   useReactTable,
 } from '@tanstack/react-table'
-
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '../containers'
 
 import PageChangeButton from './page-change-button'
 import PageDropdown from './page-dropdown'
@@ -110,11 +109,11 @@ const TanStackTable = <T extends object>({
 
   return (
     <div className="space-y-4" ref={tableRef}>
-      <TableContainer useFullWidth={useFullWidth}>
+      <Table useFullWidth={useFullWidth}>
         <thead>
           <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold duration-75">
             {headers.headers.map(header => (
-              <TableCellHeader
+              <TableHeader
                 type="column"
                 className={classNames(
                   `border-r-bd-light dark:border-r-bd-dark border-r last:border-r-0`,
@@ -136,7 +135,7 @@ const TanStackTable = <T extends object>({
                     <SortingArrows state={header.column.getIsSorted()} />
                   ) : null}
                 </div>
-              </TableCellHeader>
+              </TableHeader>
             ))}
           </TableRow>
         </thead>
@@ -160,7 +159,7 @@ const TanStackTable = <T extends object>({
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
       {usePagination && (
         <div className="flex flex-wrap items-center gap-x-1 gap-y-2 sm:justify-end">
           <div className="flex items-center gap-x-2">

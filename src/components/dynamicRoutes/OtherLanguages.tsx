@@ -1,14 +1,10 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
 import languageNameMapping from '@/data/languageNameMapping'
 import { Name } from '@/types'
+
+import { SectionTitle } from '../containers'
+import { Table, TableCell, TableHeader, TableRow } from '../ui/Table'
 
 const customOrder: Record<string, number> = {
   'English': 1,
@@ -56,7 +52,7 @@ export const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => 
   const nameRows = languagesListNew.map((row, index) => {
     return (
       <TableRow key={row.languageName + index}>
-        <TableCellHeader>{row.languageName}</TableCellHeader>
+        <TableHeader>{row.languageName}</TableHeader>
         <TableCell>{row.name}</TableCell>
       </TableRow>
     )
@@ -65,9 +61,9 @@ export const OtherLanguages: FC<OtherLanguageProps> = ({ names, hideTitle }) => 
   return (
     <>
       {!hideTitle && <SectionTitle>Other Languages</SectionTitle>}
-      <TableContainer>
+      <Table>
         <tbody>{nameRows}</tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

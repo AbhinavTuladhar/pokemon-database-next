@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { TableCell, TableCellHeader, TableRow } from '../containers'
+import { TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 
 import { RowProps } from './types'
 import VersionNameList from './VersionNameList'
@@ -8,9 +8,9 @@ import VersionNameList from './VersionNameList'
 const DescriptionRow: FC<RowProps> = ({ description, versionGroupNames }) => {
   return (
     <TableRow>
-      <TableCellHeader wrapFlag className="w-28 md:w-40">
+      <TableHeader wrapFlag className="w-28 md:w-40">
         <VersionNameList versionNames={versionGroupNames} />
-      </TableCellHeader>
+      </TableHeader>
       <TableCell>{description}</TableCell>
     </TableRow>
   )

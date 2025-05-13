@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import formatName from '@/utils/formatName'
@@ -42,13 +42,13 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
   const headerRow = (
     <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {headers.map(header => (
-        <TableCellHeader
+        <TableHeader
           className="dark:border-r-bd-dark border-r border-r-gray-300 pr-4 last:border-r-0"
           key={header}
           type="column"
         >
           {header}
-        </TableCellHeader>
+        </TableHeader>
       ))}
     </TableRow>
   )
@@ -89,9 +89,9 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
   })
 
   return (
-    <TableContainer className="w-auto lg:w-full">
+    <Table className="w-auto lg:w-full">
       <thead className="hdr-dark-group">{headerRow}</thead>
       <tbody>{pokemonRow}</tbody>
-    </TableContainer>
+    </Table>
   )
 }

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { TableContainer } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { Table } from '@/components/ui/Table'
 import formatName from '@/utils/formatName'
 
 interface TableProps {
@@ -17,7 +17,7 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
   ]
 
   return (
-    <TableContainer>
+    <Table>
       <thead>
         <th
           colSpan={2}
@@ -45,6 +45,6 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
           ))}
         </tr>
       </tbody>
-    </TableContainer>
+    </Table>
   )
 }

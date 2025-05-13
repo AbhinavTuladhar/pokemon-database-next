@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
-import { SectionTitle, TableContainer } from '@/components/containers'
+import { SectionTitle } from '@/components/containers'
+import { Table } from '@/components/ui/Table'
 import { SpriteDataType } from '@/types'
 
 import { SpriteTableHeader } from './SpriteTableHeader'
@@ -47,7 +48,7 @@ export const GenerationSection: FC<SectionProps> = ({
   return (
     <section>
       <SectionTitle> Generation {generation} </SectionTitle>
-      <TableContainer useFullWidth={false}>
+      <Table useFullWidth={false}>
         <SpriteTableHeader
           key={generation}
           columns={columnNames}
@@ -61,7 +62,7 @@ export const GenerationSection: FC<SectionProps> = ({
             imageStrings={gameSprites[index]}
           />
         ))}
-      </TableContainer>
+      </Table>
     </section>
   )
 }
