@@ -9,7 +9,7 @@ import {
 } from '@/components/containers'
 import BlueLink from '@/components/link'
 import pokedexToGameMap from '@/data/pokedexToGameMap'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 

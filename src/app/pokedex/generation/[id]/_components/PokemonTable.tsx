@@ -6,7 +6,7 @@ import Image from 'next/image'
 import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
 import statMapping from '@/data/statMapping'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 

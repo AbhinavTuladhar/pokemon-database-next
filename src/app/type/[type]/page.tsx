@@ -5,7 +5,7 @@ import { PageTitle, SectionTitle } from '@/components/containers'
 import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
 import { TypeExtractor } from '@/extractors'
 import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypesApi } from '@/services'
 import formatName from '@/utils/formatName'
 

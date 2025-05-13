@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 
 import BlueLink from '@/components/link'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedPokemon } from '@/types'
 import formatName from '@/utils/formatName'
 

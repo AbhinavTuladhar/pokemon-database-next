@@ -8,7 +8,7 @@ import {
   TableRow,
 } from '@/components/containers'
 import MoveCategoryImage from '@/components/move-category-image'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import formatName from '@/utils/formatName'
 
 interface MoveDataProps {

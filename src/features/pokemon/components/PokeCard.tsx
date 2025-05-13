@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 import typeMapping from '@/utils/typeMapping'

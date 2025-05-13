@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import idToGenerationMap from '@/data/idToGenerationMap'
-import { TypeCard } from '@/features/type/components/TypeCard'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
 import formatName from '@/utils/formatName'
 
