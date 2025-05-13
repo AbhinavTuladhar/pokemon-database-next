@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 
-import { SectionTitle } from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/ui/Title'
 import { EvolutionPokemonCard } from '@/features/pokemon/components/PokeCard'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { EvolutionApi, PokemonApi } from '@/services'

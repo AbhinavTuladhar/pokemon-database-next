@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers/SectionTitle'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokeFormCard } from '@/features/pokemon/components/PokeFormCard'
 import { transformPokemonForm } from '@/features/pokemon/transformers/transformPokemonForm'
 import { PokemonApi } from '@/services'

@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import generationSpriteColumns from '@/data/generationSpriteColumns'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import transformSprites from '@/features/pokemon/transformers/transformSprites'

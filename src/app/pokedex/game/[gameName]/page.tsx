@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import Loader from '@/components/loader'
+import { PageTitle } from '@/components/ui/Title'
 import { gameNameMapLongVersion } from '@/data/gameNameMap'
 import { GameApi, PokedexApi } from '@/services'
 import { getResourceId } from '@/utils/urlUtils'

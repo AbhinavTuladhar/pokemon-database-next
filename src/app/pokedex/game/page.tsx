@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import Loader from '@/components/loader'
+import { PageTitle } from '@/components/ui/Title'
 import { GameApi } from '@/services'
 import { groupGamesByGeneration } from '@/utils/games.utils'
 

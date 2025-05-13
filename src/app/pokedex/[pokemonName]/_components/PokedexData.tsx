@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import pokedexToGameMap from '@/data/pokedexToGameMap'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'

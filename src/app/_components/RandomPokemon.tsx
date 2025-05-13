@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { PokeCardSkeleton } from '@/components/skeletons'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokeCard } from '@/features/pokemon/components/PokeCard'
 import useFeaturedPokemon from '@/hooks/useFeaturedPokemon'
 

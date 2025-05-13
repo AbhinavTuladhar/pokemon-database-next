@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
+import { PageTitle } from '@/components/ui/Title'
 import { BerryExtractor, ItemExtractor } from '@/extractors'
 import { BerryApi, ItemApi } from '@/services'
 import { TransformedItem } from '@/types'

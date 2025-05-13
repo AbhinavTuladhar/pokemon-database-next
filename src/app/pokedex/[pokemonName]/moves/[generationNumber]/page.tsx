@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
+import { PageTitle } from '@/components/ui/Title'
 import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'

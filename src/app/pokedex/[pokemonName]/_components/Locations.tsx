@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
+import { SectionTitle } from '@/components/ui/Title'
 import { EncountersApi } from '@/services'
 import { LocationAreaEncounter } from '@/types'
 import formatName from '@/utils/formatName'

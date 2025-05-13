@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PageTitle } from '@/components/containers/PageTitle'
+import { PageTitle } from '../ui/Title'
 
 import { PokemonTableSkeleton } from './PokemonTableSkeleton'
 

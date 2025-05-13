@@ -3,8 +3,8 @@ import { FC } from 'react'
 import languageNameMapping from '@/data/languageNameMapping'
 import { Name } from '@/types'
 
-import { SectionTitle } from '../containers'
 import { Table, TableCell, TableHeader, TableRow } from '../ui/Table'
+import { SectionTitle } from '../ui/Title'
 
 const customOrder: Record<string, number> = {
   'English': 1,

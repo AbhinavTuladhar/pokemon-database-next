@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import { TypeExtractor } from '@/extractors'
 import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'

@@ -3,7 +3,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { HiSpeakerWave } from 'react-icons/hi2'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import formatName from '@/utils/formatName'
 
 interface CryProps {

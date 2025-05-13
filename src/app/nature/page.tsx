@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { PageTitle } from '@/components/ui/Title'
 import { NatureExtractor } from '@/extractors'
 import { NatureApi } from '@/services'
 import formatName from '@/utils/formatName'

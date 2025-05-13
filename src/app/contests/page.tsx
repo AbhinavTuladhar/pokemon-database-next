@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
+import { PageTitle } from '@/components/ui/Title'
 import { ContestApi } from '@/services/ContestApi'
 
 import { EffectTable } from './_components'

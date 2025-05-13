@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { InlineMath } from 'react-katex'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import formatName from '@/utils/formatName'
 
 import PokemonList from './PokemonList'

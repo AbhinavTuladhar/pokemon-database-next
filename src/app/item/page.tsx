@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { PageTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { PageTitle } from '@/components/ui/Title'
 import { ITEM_LIST_TEXT } from '@/data/hardCodedText'
 import { ItemApi } from '@/services'
 import formatName from '@/utils/formatName'

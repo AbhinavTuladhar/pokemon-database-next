@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import MoveCategoryImage from '@/components/move-category-image'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import formatName from '@/utils/formatName'
 

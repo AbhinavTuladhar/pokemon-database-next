@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { GrowthRateExtractor } from '@/extractors'
 import { GrowthRateApi } from '@/services'
 

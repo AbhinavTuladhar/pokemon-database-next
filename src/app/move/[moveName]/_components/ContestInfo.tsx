@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 
 import { ContestTypeCard } from '@/components/cards'
-import { SectionTitle } from '@/components/containers'
 import ContestHearts from '@/components/contest-hearts'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { ContestApi } from '@/services/ContestApi'
 
 const getContestEffectData = async (id: number) => {

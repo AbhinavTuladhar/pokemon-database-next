@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { TransformedMoveLevel } from '@/types'
 
-import { SectionTitle } from '../containers'
+import { SectionTitle } from '../ui/Title'
 
 import { MovesTable } from './MovesTable'
 

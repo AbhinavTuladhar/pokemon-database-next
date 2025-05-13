@@ -1,8 +1,8 @@
 import React from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import StatBarTable from '@/components/stat-bar-table'
+import { PageTitle } from '@/components/ui/Title'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'
 import { SmogonApi } from '@/services/SmogonApi'

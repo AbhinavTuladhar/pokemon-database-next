@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import { TypeExtractor } from '@/extractors'
 import { TypesApi } from '@/services'
 import { PokemonType } from '@/types'

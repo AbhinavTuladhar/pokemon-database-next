@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { MOVE_LIST_TEXT } from '@/data/hardCodedText'
 
 export const metadata: Metadata = {

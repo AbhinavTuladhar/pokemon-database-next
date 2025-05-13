@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { individualGameMap } from '@/data/gameNameMap'
 import { PokemonHeldItem } from '@/types'
 import formatName from '@/utils/formatName'

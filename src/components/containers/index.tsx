@@ -1,5 +1,3 @@
 export { AnimatedPageWrapper } from './AnimatedPageWrapper'
 export { ErrorContainerPage } from './ErrorContainerPage'
-export { PageTitle } from './PageTitle'
 export { PokeCardContainer } from './PokeCardContainer'
-export { SectionTitle } from './SectionTitle'

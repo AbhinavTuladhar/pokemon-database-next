@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
+import { PageTitle } from '@/components/ui/Title'
 import { LocationAreaExtractor, LocationExtractor } from '@/extractors'
 import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
 import { GroupedLocationArea } from '@/types'

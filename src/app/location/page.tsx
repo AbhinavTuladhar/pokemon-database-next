@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
+import { PageTitle } from '@/components/ui/Title'
 import { RegionExtractor } from '@/extractors'
 import { RegionApi } from '@/services'
 import { NamedApiResource } from '@/types'

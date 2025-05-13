@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { PokeCardContainer, SectionTitle } from '@/components/containers'
+import { PokeCardContainer } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokeCard } from '@/features/pokemon/components/PokeCard'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
 import { PokemonApi } from '@/services'

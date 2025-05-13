@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { Table } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { TransformedSprites } from '@/types'
 
 import { ImageTile } from './ImageTile'

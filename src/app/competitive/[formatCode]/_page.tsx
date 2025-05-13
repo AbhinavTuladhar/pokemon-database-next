@@ -2,8 +2,8 @@ import React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 
-import { PageTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { PageTitle } from '@/components/ui/Title'
 import { SmogonApi } from '@/services/SmogonApi'
 import { extractParts } from '@/utils/smogon.utils'
 

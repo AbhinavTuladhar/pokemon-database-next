@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import { SearchablePageSkeleton } from '@/components/skeletons'
+import { PageTitle } from '@/components/ui/Title'
 
 import { AbilityTableWrapper } from './_components'
 

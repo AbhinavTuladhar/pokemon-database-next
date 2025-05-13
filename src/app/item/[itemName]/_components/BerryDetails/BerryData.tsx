@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 
-import { SectionTitle } from '@/components/containers'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import formatName from '@/utils/formatName'
 
 interface BerryDataProps {

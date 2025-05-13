@@ -4,8 +4,8 @@ import leven from 'leven'
 import { FlatResourceList, ResourceTypes } from '@/types'
 import formatName from '@/utils/formatName'
 
-import { SectionTitle } from '../containers'
 import { BlueLink } from '../ui/Link'
+import { SectionTitle } from '../ui/Title'
 
 interface MatchesProps {
   param: string

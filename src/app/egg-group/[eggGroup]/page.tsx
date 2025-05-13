@@ -1,8 +1,8 @@
 import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { PokemonTableSkeleton } from '@/components/skeletons'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { EggGroupExtractor } from '@/extractors'
 import { EggGroupApi } from '@/services'
 import formatName from '@/utils/formatName'

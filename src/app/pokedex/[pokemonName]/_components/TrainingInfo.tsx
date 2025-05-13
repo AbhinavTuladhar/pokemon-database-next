@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokemonStat } from '@/types'
 import { getCatchRate } from '@/utils/pokemonUtils'
 

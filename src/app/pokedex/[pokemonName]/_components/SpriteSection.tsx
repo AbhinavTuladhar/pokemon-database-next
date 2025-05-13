@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
 import { BlueLink } from '@/components/ui/Link'
+import { SectionTitle } from '@/components/ui/Title'
 import { GenerationSprite } from '@/types'
 import formatName from '@/utils/formatName'
 

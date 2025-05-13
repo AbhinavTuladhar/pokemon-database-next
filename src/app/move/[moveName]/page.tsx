@@ -1,9 +1,9 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import Loader from '@/components/loader'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { MoveExtractor } from '@/extractors'
 import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
 import { MovesApi } from '@/services'

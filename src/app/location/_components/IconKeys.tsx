@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 
 interface KeyRow {
   imageSource: string

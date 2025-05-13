@@ -1,8 +1,8 @@
 import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import { LoadingPageFallback } from '@/components/skeletons'
+import { PageTitle } from '@/components/ui/Title'
 import { ItemApi } from '@/services'
 
 import { ItemTableWrapper } from './_components'

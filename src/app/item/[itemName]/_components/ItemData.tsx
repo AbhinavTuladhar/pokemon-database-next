@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { TransformedItem } from '@/types'
 import { formatText } from '@/utils/formatName'
 

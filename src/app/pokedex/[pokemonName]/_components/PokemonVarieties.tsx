@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import { BlueLink } from '@/components/ui/Link'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokemonSpeciesVariety } from '@/types'
 import formatName from '@/utils/formatName'
 
