@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PageTitle } from '@/components/ui/Title'
 import generationData from '@/data/generationData'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 
 import { ViewTabs } from './_components'
 

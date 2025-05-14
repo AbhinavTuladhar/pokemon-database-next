@@ -2,8 +2,8 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import { GrowthRateExtractor } from '@/extractors'
 import GrowthRateService from '@/features/pokemon/services/growth-rate.service'
+import { transformGrowthRate } from '@/features/pokemon/transformers/transform-growth-rate'
 
 import { ComparisonChart, GrowthRateSection } from './_components'
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const getGrowthRateData = async () => {
   const response = await GrowthRateService.getAllData()
-  return response.map(GrowthRateExtractor)
+  return response.map(transformGrowthRate)
 }
 
 const page = async () => {

@@ -1,6 +1,6 @@
 import { Nature } from '@/types'
 
-export const NatureExtractor = (nature: Nature) => {
+export const transformNature = (nature: Nature) => {
   const { id, name, decreased_stat, hates_flavor, increased_stat, likes_flavor } = nature
 
   const decreasedStat = (decreased_stat?.name ?? 'None').replace('defense', 'defence')
@@ -17,5 +17,3 @@ export const NatureExtractor = (nature: Nature) => {
     name,
   }
 }
-
-export default NatureExtractor

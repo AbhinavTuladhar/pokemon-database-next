@@ -6,7 +6,7 @@ import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import TypesService from '@/features/pokemon/services/types.service'
-import transformType from '@/features/pokemon/transformers/transform-type'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
 import formatName from '@/utils/formatName'
 
 import {

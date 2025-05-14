@@ -2,7 +2,7 @@ import React, { FC, Fragment } from 'react'
 
 import statMapping from '@/data/statMapping'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { TransformedPokemon } from '@/types'
 
 import { TypeSummaryCard } from './TypeSummaryCard'

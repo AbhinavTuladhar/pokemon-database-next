@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 
 import { PokemonTableSkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import { EggGroupExtractor } from '@/extractors'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
+import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
 import formatName from '@/utils/formatName'
 import { getResourceId } from '@/utils/urlUtils'
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const getEggGroupData = async (name: string) => {
   const response = await EggGroupService.getByName(name)
-  return EggGroupExtractor(response)
+  return transformEggGroup(response)
 }
 
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {

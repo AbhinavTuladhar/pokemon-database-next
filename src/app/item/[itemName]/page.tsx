@@ -5,15 +5,15 @@ import Image from 'next/image'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PageTitle } from '@/components/ui/Title'
 import { berryBlackLists } from '@/data/blacklists'
-import { ItemExtractor } from '@/extractors'
 import ItemService from '@/features/games/services/item.service'
+import { transformItem } from '@/features/games/transformers/transform-item'
 import formatName from '@/utils/formatName'
 
 import { BerryDetails, GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
   const response = await ItemService.getByName(name)
-  return ItemExtractor(response)
+  return transformItem(response)
 }
 
 interface PageProps {

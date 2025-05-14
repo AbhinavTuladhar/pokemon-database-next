@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
 import TypesService from '@/features/pokemon/services/types.service'
-import transformType from '@/features/pokemon/transformers/transform-type'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'

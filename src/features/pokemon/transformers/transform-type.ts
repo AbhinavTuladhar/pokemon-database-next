@@ -93,5 +93,3 @@ export const transformType = (data: Type) => {
     },
   }
 }
-
-export default transformType

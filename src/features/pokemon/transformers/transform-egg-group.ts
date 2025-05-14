@@ -1,7 +1,7 @@
 import type { EggGroup } from '@/types'
 import filterGens from '@/utils/filterGens'
 
-export const EggGroupExtractor = (data: EggGroup) => {
+export const transformEggGroup = (data: EggGroup) => {
   const { name, pokemon_species, id } = data
   const filteredSpecies = pokemon_species.filter(species => {
     const { url } = species
@@ -14,4 +14,4 @@ export const EggGroupExtractor = (data: EggGroup) => {
   }
 }
 
-export default EggGroupExtractor
+export default transformEggGroup

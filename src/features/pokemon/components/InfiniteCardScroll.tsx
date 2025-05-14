@@ -5,7 +5,7 @@ import InifiniteScrollComponent from 'react-infinite-scroll-component'
 
 import { MiniCardListSkeleton } from '@/components/skeletons'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { TransformedPokemon } from '@/types'
 
 import { MiniPokeCard } from './PokeCard'

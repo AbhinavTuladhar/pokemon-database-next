@@ -332,5 +332,3 @@ export const transformSprites = (data: Pokemon) => {
     generation7Sprites,
   }
 }
-
-export default transformSprites

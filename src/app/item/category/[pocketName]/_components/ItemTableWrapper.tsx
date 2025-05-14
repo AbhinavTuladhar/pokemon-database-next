@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { ItemExtractor } from '@/extractors'
 import ItemService from '@/features/games/services/item.service'
+import { transformItem } from '@/features/games/transformers/transform-item'
 
 import { DynamicTable } from './DynamicTable'
 
@@ -16,7 +16,7 @@ const getItemNames = async (pocketName: string) => {
 const getCategoryItemsData = async (itemNames: string[]) => {
   const itemData = await ItemService.getByNames(itemNames)
   return itemData
-    .map(ItemExtractor)
+    .map(transformItem)
     .filter(
       ({ shortEntry, longEntry, category }) =>
         shortEntry !== '' && longEntry !== '' && category !== 'unused',

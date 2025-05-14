@@ -4,7 +4,7 @@ import { SectionTitle } from '@/components/ui/Title'
 import { EvolutionPokemonCard } from '@/features/pokemon/components/PokeCard'
 import EvolutionService from '@/features/pokemon/services/evolution.service'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 

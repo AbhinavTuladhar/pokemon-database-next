@@ -2,9 +2,10 @@ import { FC } from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
-import { LocationAreaExtractor, LocationExtractor } from '@/extractors'
 import EncounterService from '@/features/games/services/encounter.service'
 import { LocationAreaApi, LocationService } from '@/features/games/services/location.service'
+import { transformLocation } from '@/features/games/transformers/transform-location'
+import { transformLocationArea } from '@/features/games/transformers/transform-location-area'
 import { GroupedLocationArea } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -40,7 +41,7 @@ interface LocationGroup {
 
 const getLocationData = async (name: string) => {
   const response = await LocationService.getByName(name)
-  return LocationExtractor(response)
+  return transformLocation(response)
 }
 
 const getMethodDescriptions = async () => {
@@ -50,7 +51,7 @@ const getMethodDescriptions = async () => {
 
 const getSubLocationData = async (names: string[]) => {
   const responses = await LocationAreaApi.getByNames(names)
-  return responses.map(LocationAreaExtractor)
+  return responses.map(transformLocationArea)
 }
 
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {

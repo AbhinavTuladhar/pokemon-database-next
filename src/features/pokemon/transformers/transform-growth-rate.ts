@@ -1,7 +1,7 @@
 import { GrowthRate, GrowthRateExperienceLevel } from '@/types'
 import filterGens from '@/utils/filterGens'
 
-export const GrowthRateExtractor = (data: GrowthRate) => {
+export const transformGrowthRate = (data: GrowthRate) => {
   const { formula, levels, name, pokemon_species } = data
 
   // For finding out the experience required to gain that level
@@ -24,5 +24,3 @@ export const GrowthRateExtractor = (data: GrowthRate) => {
     pokemonSpecies: filteredPokemonSpecies,
   }
 }
-
-export default GrowthRateExtractor

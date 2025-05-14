@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
-import { BerryExtractor, ItemExtractor } from '@/extractors'
 import BerryService from '@/features/games/services/berry.service'
 import ItemService from '@/features/games/services/item.service'
+import { transformBerry } from '@/features/games/transformers/transform-berry'
+import { transformItem } from '@/features/games/transformers/transform-item'
 import { TransformedItem } from '@/types'
 
 import { BerryTable } from './_components'
@@ -19,12 +20,12 @@ const getBerryNames = async () => {
 
 const getBerryInformationByNames = async (names: Array<string>) => {
   const responses = await BerryService.getByNames(names)
-  return responses.map(BerryExtractor)
+  return responses.map(transformBerry)
 }
 
 const getItemInformationByNames = async (names: Array<string>) => {
   const responses = await ItemService.getByNames(names)
-  return responses.map(ItemExtractor)
+  return responses.map(transformItem)
 }
 
 const page = async () => {

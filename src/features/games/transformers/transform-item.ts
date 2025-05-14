@@ -31,7 +31,7 @@ export const ItemCategoryExtractor = (data: ItemCategory) => {
   }
 }
 
-export const ItemExtractor = (item: Item) => {
+export const transformItem = (item: Item) => {
   const {
     attributes,
     category: tempCategory,

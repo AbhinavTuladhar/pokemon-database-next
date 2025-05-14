@@ -1,6 +1,6 @@
 import { Berry } from '@/types'
 
-export const BerryExtractor = (data: Berry) => {
+export const transformBerry = (data: Berry) => {
   const {
     firmness: { name: firmness },
     flavors,
@@ -39,5 +39,3 @@ export const BerryExtractor = (data: Berry) => {
     soilDryness,
   }
 }
-
-export default BerryExtractor

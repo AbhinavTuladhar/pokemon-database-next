@@ -3,20 +3,18 @@
  * during complex computations on array of objects
  */
 
-import {
-  BerryExtractor,
-  EggGroupExtractor,
-  EncounterExtractor,
-  GrowthRateExtractor,
-  ItemExtractor,
-  LocationExtractor,
-} from '@/extractors'
 import { transformAbility } from '@/features/battle/transformers/transform-ability'
 import { transformMove } from '@/features/battle/transformers/transform-move'
-import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
-import transformSpecies from '@/features/pokemon/transformers/transform-species'
-import transformSprites from '@/features/pokemon/transformers/transform-sprites'
-import transformType from '@/features/pokemon/transformers/transform-type'
+import { transformBerry } from '@/features/games/transformers/transform-berry'
+import { transformEncounter } from '@/features/games/transformers/transform-encounter'
+import { transformItem } from '@/features/games/transformers/transform-item'
+import { transformLocation } from '@/features/games/transformers/transform-location'
+import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
+import { transformGrowthRate } from '@/features/pokemon/transformers/transform-growth-rate'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
+import { transformSpecies } from '@/features/pokemon/transformers/transform-species'
+import { transformSprites } from '@/features/pokemon/transformers/transform-sprites'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
 
 import { EvolutionDetail } from '../Evolution/EvolutionChains'
 import type { PokemonType } from '../Pokemon/Pokemon'
@@ -24,15 +22,15 @@ import type { PokemonType } from '../Pokemon/Pokemon'
 type TransformedMove = ReturnType<typeof transformMove>
 type TransformedSpecies = ReturnType<typeof transformSpecies>
 type TransformedType = ReturnType<typeof transformType>
-type TransformedEncounter = ReturnType<typeof EncounterExtractor>
+type TransformedEncounter = ReturnType<typeof transformEncounter>
 type TransformedPokemon = ReturnType<typeof transformPokemon>
-type TransformedLocation = ReturnType<typeof LocationExtractor>
+type TransformedLocation = ReturnType<typeof transformLocation>
 type TransformedAbility = ReturnType<typeof transformAbility>
-type TransformedItem = ReturnType<typeof ItemExtractor>
+type TransformedItem = ReturnType<typeof transformItem>
 type TransformedSprites = ReturnType<typeof transformSprites>
-type TransformedGrowthRate = ReturnType<typeof GrowthRateExtractor>
-type TransformedEggGroup = ReturnType<typeof EggGroupExtractor>
-type TransformedBerry = ReturnType<typeof BerryExtractor>
+type TransformedGrowthRate = ReturnType<typeof transformGrowthRate>
+type TransformedEggGroup = ReturnType<typeof transformEggGroup>
+type TransformedBerry = ReturnType<typeof transformBerry>
 
 // TransformedEncounter returns an array of objects.
 // We need to find the interface of the objects in the array

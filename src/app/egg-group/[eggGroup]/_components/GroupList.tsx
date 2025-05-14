@@ -2,8 +2,8 @@ import React from 'react'
 
 import { BlueLink } from '@/components/ui/Link'
 import { SectionTitle } from '@/components/ui/Title'
-import { EggGroupExtractor } from '@/extractors'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
+import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
 import formatName from '@/utils/formatName'
 
 const getGroupList = async () => {
@@ -15,7 +15,7 @@ const getAllGroupData = async (names: string[]) => {
   const response = await EggGroupService.getByNames(names)
 
   // We now filter out gen 8+ pokemon from the list
-  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
+  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(transformEggGroup)
 }
 
 export const GroupList = async () => {

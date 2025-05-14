@@ -119,5 +119,3 @@ export const transformPokemon = (data: Pokemon) => {
     held_items,
   }
 }
-
-export default transformPokemon

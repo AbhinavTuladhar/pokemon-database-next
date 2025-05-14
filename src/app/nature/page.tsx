@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { PageTitle } from '@/components/ui/Title'
-import { NatureExtractor } from '@/extractors'
 import NatureService from '@/features/pokemon/services/nature.service'
+import { transformNature } from '@/features/pokemon/transformers/transform-nature'
 import formatName from '@/utils/formatName'
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ const getNatureNames = async () => {
 
 const getNaturesInformation = async (names: Array<string>) => {
   const responses = await NatureService.getByNames(names)
-  return responses.map(NatureExtractor)
+  return responses.map(transformNature)
 }
 
 const NatureList = async () => {

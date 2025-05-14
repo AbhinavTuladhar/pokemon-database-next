@@ -4,7 +4,7 @@ import {
 } from '@/data/gameNameToGenerationMap'
 import { Encounter, PokemonEncounter } from '@/types'
 
-const DetailedEncounterExtractor = (data: Encounter) => {
+const DetailedtransformEncounter = (data: Encounter) => {
   const { chance, condition_values, max_level, min_level, method } = data
   // Make a string for the level range.
   const conditionValuesNames = condition_values.map(value => value.name)
@@ -24,7 +24,7 @@ interface ModifiedEncounter extends Omit<Encounter, 'condition_values'> {
 }
 interface ReducedEncounterInterface extends ModifiedEncounter, AdditionalEncounterInfo {}
 
-export const EncounterExtractor = (encounterData: PokemonEncounter) => {
+export const transformEncounter = (encounterData: PokemonEncounter) => {
   const {
     pokemon: { name: pokemonName, url: pokemonUrl },
     version_details,
@@ -43,7 +43,7 @@ export const EncounterExtractor = (encounterData: PokemonEncounter) => {
     // This is to keep track of the remakes
     const generationInternal = gameNameToGenerationMapInternal[gameName]
 
-    const extractedEncounterInformation = encounter_details.map(DetailedEncounterExtractor)
+    const extractedEncounterInformation = encounter_details.map(DetailedtransformEncounter)
 
     return {
       iconSprite,
@@ -106,5 +106,3 @@ export const EncounterExtractor = (encounterData: PokemonEncounter) => {
     return { ...pokemonEncounter, levelRange, condition_values: encounterConditionnames }
   })
 }
-
-export default EncounterExtractor

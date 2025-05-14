@@ -74,5 +74,3 @@ export const transformSpecies = (data: PokemonSpecies) => {
     habitat: hatibatName,
   }
 }
-
-export default transformSpecies

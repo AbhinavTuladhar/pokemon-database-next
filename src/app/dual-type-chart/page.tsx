@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { PageTitle } from '@/components/ui/Title'
 import typeList from '@/data/typeList'
 import TypesService from '@/features/pokemon/services/types.service'
-import transformType from '@/features/pokemon/transformers/transform-type'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
 
 import { DualTypeChart, SideDescription } from './_components'
 
