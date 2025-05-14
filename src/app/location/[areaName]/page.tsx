@@ -3,7 +3,8 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import { LocationAreaExtractor, LocationExtractor } from '@/extractors'
-import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
+import EncounterService from '@/features/games/services/encounter.service'
+import { LocationAreaApi, LocationService } from '@/features/games/services/location.service'
 import { GroupedLocationArea } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -38,12 +39,12 @@ interface LocationGroup {
 }
 
 const getLocationData = async (name: string) => {
-  const response = await LocationApi.getByName(name)
+  const response = await LocationService.getByName(name)
   return LocationExtractor(response)
 }
 
 const getMethodDescriptions = async () => {
-  const responses = await EncountersApi.getAllMethodDescriptions()
+  const responses = await EncounterService.getAllMethodDescriptions()
   return responses
 }
 

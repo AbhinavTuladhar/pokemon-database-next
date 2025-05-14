@@ -4,7 +4,7 @@ import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { SectionTitle } from '@/components/ui/Title'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { versionNames } from '@/data/whiteLists'
-import { MachineApi } from '@/services'
+import MachineService from '@/features/games/services/machine.service'
 import type { MachineVersionDetail } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
 
@@ -13,7 +13,7 @@ interface RecordProps {
 }
 
 const getMachineInfo = async (ids: Array<number>) => {
-  const responses = await MachineApi.getByIds(ids)
+  const responses = await MachineService.getByIds(ids)
   return responses
 }
 

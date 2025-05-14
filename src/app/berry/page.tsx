@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import { BerryExtractor, ItemExtractor } from '@/extractors'
-import { BerryApi, ItemApi } from '@/services'
+import BerryService from '@/features/games/services/berry.service'
+import ItemService from '@/features/games/services/item.service'
 import { TransformedItem } from '@/types'
 
 import { BerryTable } from './_components'
@@ -12,17 +13,17 @@ export const metadata: Metadata = {
 }
 
 const getBerryNames = async () => {
-  const berryNames = await BerryApi.getAll()
+  const berryNames = await BerryService.getAll()
   return berryNames
 }
 
 const getBerryInformationByNames = async (names: Array<string>) => {
-  const responses = await BerryApi.getByNames(names)
+  const responses = await BerryService.getByNames(names)
   return responses.map(BerryExtractor)
 }
 
 const getItemInformationByNames = async (names: Array<string>) => {
-  const responses = await ItemApi.getByNames(names)
+  const responses = await ItemService.getByNames(names)
   return responses.map(ItemExtractor)
 }
 

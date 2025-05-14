@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import { RegionExtractor } from '@/extractors'
-import { RegionApi } from '@/services'
+import { RegionApi } from '@/features/games/services/location.service'
 import { NamedApiResource } from '@/types'
 
 import { IconKeys, RegionTabs } from './_components'

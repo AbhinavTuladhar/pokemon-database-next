@@ -4,7 +4,8 @@ import { NextPage } from 'next'
 import Loader from '@/components/loader'
 import { PageTitle } from '@/components/ui/Title'
 import { gameNameMapLongVersion } from '@/data/gameNameMap'
-import { GameApi, PokedexApi } from '@/services'
+import GameService from '@/features/games/services/game.service'
+import PokedexService from '@/features/games/services/pokedex.service'
 import { getResourceId } from '@/utils/urlUtils'
 
 import InGamePokedexSection from './_components'
@@ -16,12 +17,12 @@ interface GameNamePageProps {
 }
 
 const getPokedexes = async (versionGroup: string) => {
-  const response = await GameApi.getVersionGroupData(versionGroup)
+  const response = await GameService.getVersionGroupData(versionGroup)
   return response.pokedexes
 }
 
 const getPokedexPokemonList = async (pokedex: string) => {
-  const pokemonList = await PokedexApi.getPokedexData(pokedex)
+  const pokemonList = await PokedexService.getPokedexData(pokedex)
   return { pokedex, pokemonList }
 }
 

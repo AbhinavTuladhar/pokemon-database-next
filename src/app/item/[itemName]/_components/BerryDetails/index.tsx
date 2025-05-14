@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { BerryExtractor } from '@/extractors'
-import { BerryApi } from '@/services'
+import BerryService from '@/features/games/services/berry.service'
 
 import BerryData from './BerryData'
 import FlavourChart from './FlavourChart'
@@ -11,7 +11,7 @@ interface BerryDetailsProps {
 }
 
 const getBerryData = async (name: string) => {
-  const response = await BerryApi.getByName(name)
+  const response = await BerryService.getByName(name)
   return BerryExtractor(response)
 }
 

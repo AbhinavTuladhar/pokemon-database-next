@@ -3,13 +3,13 @@ import { NextPage } from 'next'
 
 import Loader from '@/components/loader'
 import { PageTitle } from '@/components/ui/Title'
-import { GameApi } from '@/services'
+import GameService from '@/features/games/services/game.service'
 import { groupGamesByGeneration } from '@/utils/games.utils'
 
 import GenerationGamesSection from './_components'
 
 const getGameNames = async () => {
-  const versionGroupNameData = await GameApi.getGames()
+  const versionGroupNameData = await GameService.getGames()
   return versionGroupNameData.map(game => game.name)
 }
 

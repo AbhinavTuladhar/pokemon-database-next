@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { SectionTitle } from '@/components/ui/Title'
-import { EncountersApi } from '@/services'
+import EncounterService from '@/features/games/services/encounter.service'
 import { LocationAreaEncounter } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -91,7 +91,7 @@ const groupByLocation = (data: Array<LocationAndVersion>) => {
 }
 
 const getLocationData = async (id: number) => {
-  const locationData = await EncountersApi.getById(id)
+  const locationData = await EncounterService.getById(id)
   const locationsAndVersions = findLocationsAndVersions(locationData)
   const groupedByGame = groupByGame(locationsAndVersions)
   const groupedByLocations = groupByLocation(groupedByGame)

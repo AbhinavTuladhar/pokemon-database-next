@@ -1,7 +1,0 @@
-export { BerryApi } from './BerryApi'
-export { EncountersApi } from './EncountersApi'
-export { GameApi } from './GameApi'
-export { ItemApi } from './ItemApi'
-export * from './LocationApi'
-export { MachineApi } from './MachineApi'
-export { PokedexApi } from './PokedexApi'

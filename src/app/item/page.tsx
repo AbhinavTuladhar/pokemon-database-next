@@ -3,11 +3,11 @@ import React, { FC } from 'react'
 import { BlueLink } from '@/components/ui/Link'
 import { PageTitle } from '@/components/ui/Title'
 import { ITEM_LIST_TEXT } from '@/data/hardCodedText'
-import { ItemApi } from '@/services'
+import ItemService from '@/features/games/services/item.service'
 import formatName from '@/utils/formatName'
 
 const getPocketNames = async () => {
-  const response = await ItemApi.getAllItemPockets()
+  const response = await ItemService.getAllItemPockets()
   return response.sort((a, b) => (a > b ? 1 : -1))
 }
 
