@@ -3,15 +3,15 @@ import React, { FC } from 'react'
 import { MoveTable } from '@/components/moves-table'
 import generationWiseMoveData from '@/data/moveData'
 import { MoveExtractor } from '@/extractors'
-import { MovesApi } from '@/services'
+import MoveService from '@/features/battle/services/move.service'
 
 const getMovesList = async (offset: number, limit: number) => {
-  const response = await MovesApi.getByOffsetAndLimit(offset, limit)
+  const response = await MoveService.getByOffsetAndLimit(offset, limit)
   return response
 }
 
 const getAllMoveData = async (names: Array<string>) => {
-  const movesData = await MovesApi.getByNames(names)
+  const movesData = await MoveService.getByNames(names)
   return movesData.map(MoveExtractor).sort((a, b) => (a.moveName > b.moveName ? 1 : -1))
 }
 

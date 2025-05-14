@@ -5,7 +5,7 @@ import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PokemonTableSkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { AbilityExtractor } from '@/extractors'
-import { AbilityApi } from '@/services'
+import AbilityService from '@/features/battle/services/ability.service'
 import formatName from '@/utils/formatName'
 
 import { AbilityDescription, PokemonTable } from './_components'
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: AbilityPageParams): Promise<M
 }
 
 const getAbilityData = async (name: string) => {
-  const response = await AbilityApi.getByName(name)
+  const response = await AbilityService.getByName(name)
   return AbilityExtractor(response)
 }
 

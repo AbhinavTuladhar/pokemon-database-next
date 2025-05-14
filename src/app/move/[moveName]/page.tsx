@@ -5,8 +5,8 @@ import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import Loader from '@/components/loader'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { MoveExtractor } from '@/extractors'
+import MoveService from '@/features/battle/services/move.service'
 import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
-import { MovesApi } from '@/services'
 import formatName from '@/utils/formatName'
 
 import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 }
 
 const getMoveData = async (moveName: string) => {
-  const response = await MovesApi.getByName(moveName)
+  const response = await MoveService.getByName(moveName)
   return MoveExtractor(response)
 }
 

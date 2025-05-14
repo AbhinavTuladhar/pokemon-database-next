@@ -4,10 +4,10 @@ import { ContestTypeCard } from '@/components/cards'
 import ContestHearts from '@/components/contest-hearts'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
-import { ContestApi } from '@/services/ContestApi'
+import ContestService from '@/features/battle/services/contest.service'
 
 const getContestEffectData = async (id: number) => {
-  const response = await ContestApi.getEffectById(id)
+  const response = await ContestService.getEffectById(id)
   return response
 }
 

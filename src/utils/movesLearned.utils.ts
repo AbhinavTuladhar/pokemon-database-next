@@ -1,5 +1,5 @@
 import { MoveExtractor } from '@/extractors'
-import { MovesApi } from '@/services'
+import MoveService from '@/features/battle/services/move.service'
 import { Move, NamedApiResource, PokemonMove, PokemonMoveVersion, TransformedMove } from '@/types'
 
 interface MoveData {
@@ -16,7 +16,7 @@ interface MoveDataWithVersionGroupNames extends Omit<MoveData, 'move'> {
 }
 
 const getMovesInformation = async (names: Array<string>) => {
-  const responses = await MovesApi.getByNames(names)
+  const responses = await MoveService.getByNames(names)
   return responses.map(MoveExtractor)
 }
 

@@ -1,7 +1,7 @@
 import { PokemonAnalysis, PokemonSet } from '@/types'
 
-export const SmogonApi = {
-  getAnalysis: async function (formatCode: string) {
+class SmogonService {
+  static async getAnalysis(formatCode: string) {
     try {
       const response = await fetch(
         `https://pkmn.github.io/smogon/data/analyses/${formatCode}.json`,
@@ -14,8 +14,9 @@ export const SmogonApi = {
     } catch (error) {
       console.error(error)
     }
-  },
-  getSets: async function (formatCode: string) {
+  }
+
+  static async getSets(formatCode: string) {
     try {
       const response = await fetch(`https://pkmn.github.io/smogon/data/sets/${formatCode}.json`, {
         cache: 'force-cache',
@@ -25,5 +26,7 @@ export const SmogonApi = {
     } catch (error) {
       console.error(error)
     }
-  },
+  }
 }
+
+export default SmogonService

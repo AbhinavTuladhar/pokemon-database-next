@@ -3,9 +3,9 @@ import { NextPage } from 'next'
 
 import StatBarTable from '@/components/stat-bar-table'
 import { PageTitle } from '@/components/ui/Title'
+import SmogonService from '@/features/battle/services/smogon.service'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import { SmogonApi } from '@/services/SmogonApi'
 import {
   FlatPokemonSet,
   InnerAnalysis,
@@ -34,12 +34,12 @@ const getMinifiedData = (pokemonData: TransformedPokemon, generation: number) =>
 }
 
 const getFormatAnalyses = async (formatCode: string) => {
-  const response = await SmogonApi.getAnalysis(formatCode)
+  const response = await SmogonService.getAnalysis(formatCode)
   return response
 }
 
 const getFormatSets = async (formatCode: string) => {
-  const response = await SmogonApi.getSets(formatCode)
+  const response = await SmogonService.getSets(formatCode)
   return response
 }
 

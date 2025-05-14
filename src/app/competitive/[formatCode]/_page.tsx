@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 import { BlueLink } from '@/components/ui/Link'
 import { PageTitle } from '@/components/ui/Title'
-import { SmogonApi } from '@/services/SmogonApi'
+import SmogonService from '@/features/battle/services/smogon.service'
 import { extractParts } from '@/utils/smogon.utils'
 
 const getFormatAnalyses = async (formatCode: string) => {
-  const response = await SmogonApi.getAnalysis(formatCode)
+  const response = await SmogonService.getAnalysis(formatCode)
   return response
 }
 
