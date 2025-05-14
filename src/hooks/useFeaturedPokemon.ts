@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import generationData from '@/data/generationData'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
+import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
 import { TransformedPokemon } from '@/types'
 
 const useFeaturedPokemon = () => {

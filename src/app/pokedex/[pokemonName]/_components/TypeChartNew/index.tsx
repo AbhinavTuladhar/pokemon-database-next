@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
-import { TypeExtractor } from '@/extractors'
 import TypesService from '@/features/pokemon/services/types.service'
+import transformType from '@/features/pokemon/transformers/transform-type'
 import { PokemonType } from '@/types'
 import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
 import formatName from '@/utils/formatName'
@@ -17,7 +17,7 @@ interface TypeChartProps {
 
 const getTypesData = async (names: Array<string>) => {
   const response = await TypesService.getByNames(names.map(name => name.toLowerCase()))
-  return response.map(TypeExtractor)
+  return response.map(transformType)
 }
 
 export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName, abilityNames }) => {

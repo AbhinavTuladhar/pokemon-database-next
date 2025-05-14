@@ -3,10 +3,10 @@ import { Metadata } from 'next'
 
 import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import { TypeExtractor } from '@/extractors'
 import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import TypesService from '@/features/pokemon/services/types.service'
+import transformType from '@/features/pokemon/transformers/transform-type'
 import formatName from '@/utils/formatName'
 
 import {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const getTypeData = async (typeName: string) => {
   const response = await TypesService.getByName(typeName)
-  return TypeExtractor(response)
+  return transformType(response)
 }
 
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {

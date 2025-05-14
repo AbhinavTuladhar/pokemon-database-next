@@ -5,7 +5,7 @@ import StatBarTable from '@/components/stat-bar-table'
 import { PageTitle } from '@/components/ui/Title'
 import SmogonService from '@/features/battle/services/smogon.service'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
+import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
 import {
   FlatPokemonSet,
   InnerAnalysis,

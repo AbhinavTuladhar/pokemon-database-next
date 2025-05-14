@@ -6,7 +6,7 @@ import MoveGenerationLinks from '@/components/move-generation-links'
 import { PageTitle } from '@/components/ui/Title'
 import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
+import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
 import formatName from '@/utils/formatName'
 
 import { IntroText } from './_components'

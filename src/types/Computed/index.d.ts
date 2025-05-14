@@ -12,24 +12,24 @@ import {
   ItemExtractor,
   LocationExtractor,
   MoveExtractor,
-  SpriteExtractor,
-  TypeExtractor,
 } from '@/extractors'
-import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
+import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import transformSpecies from '@/features/pokemon/transformers/transform-species'
+import transformSprites from '@/features/pokemon/transformers/transform-sprites'
+import transformType from '@/features/pokemon/transformers/transform-type'
 
 import { EvolutionDetail } from '../Evolution/EvolutionChains'
 import type { PokemonType } from '../Pokemon/Pokemon'
 
 type TransformedMove = ReturnType<typeof MoveExtractor>
 type TransformedSpecies = ReturnType<typeof transformSpecies>
-type TransformedType = ReturnType<typeof TypeExtractor>
+type TransformedType = ReturnType<typeof transformType>
 type TransformedEncounter = ReturnType<typeof EncounterExtractor>
 type TransformedPokemon = ReturnType<typeof transformPokemon>
 type TransformedLocation = ReturnType<typeof LocationExtractor>
 type TransformedAbility = ReturnType<typeof AbilityExtractor>
 type TransformedItem = ReturnType<typeof ItemExtractor>
-type TransformedSprites = ReturnType<typeof SpriteExtractor>
+type TransformedSprites = ReturnType<typeof transformSprites>
 type TransformedGrowthRate = ReturnType<typeof GrowthRateExtractor>
 type TransformedEggGroup = ReturnType<typeof EggGroupExtractor>
 type TransformedBerry = ReturnType<typeof BerryExtractor>

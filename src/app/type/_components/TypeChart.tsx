@@ -1,10 +1,10 @@
 import React, { FC, Fragment } from 'react'
 
 import typeList from '@/data/typeList'
-import { TypeExtractor } from '@/extractors'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import TypesService from '@/features/pokemon/services/types.service'
+import transformType from '@/features/pokemon/transformers/transform-type'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
@@ -56,7 +56,7 @@ const getAllTypeData = async () => {
    * For each type in the type list, calculate the effectiveness of each type against that type
    */
   const transformedData = typeData.map(outerType => {
-    const extractedData = TypeExtractor(outerType)
+    const extractedData = transformType(outerType)
     const attackInfo = typeList.map(innerType => {
       const newValue = calculateOffensiveTypeEffectiveness([innerType], extractedData)
       return { name: innerType, multiplier: newValue }

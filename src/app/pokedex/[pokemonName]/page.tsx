@@ -4,8 +4,8 @@ import { Metadata } from 'next'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import SpeciesService from '@/features/pokemon/services/species.service'
-import transformPokemon from '@/features/pokemon/transformers/transformPokemon'
-import transformSpecies from '@/features/pokemon/transformers/transformSpecies'
+import transformPokemon from '@/features/pokemon/transformers/transform-pokemon'
+import transformSpecies from '@/features/pokemon/transformers/transform-species'
 import formatName from '@/utils/formatName'
 
 import {

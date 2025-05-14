@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
 import typeList from '@/data/typeList'
-import { TypeExtractor } from '@/extractors'
 import TypesService from '@/features/pokemon/services/types.service'
+import transformType from '@/features/pokemon/transformers/transform-type'
 
 import { DualTypeChart, SideDescription } from './_components'
 
@@ -16,7 +16,7 @@ const getAllTypeData = async () => {
   const typeData = await TypesService.getByNames(typeList)
 
   const transformedTypeData = typeData.map(type => {
-    const extractedInfo = TypeExtractor(type)
+    const extractedInfo = transformType(type)
     const { name: typeName, doubleDamageTo, halfDamageTo, noDamageTo } = extractedInfo
     const attackingTypeInfo = {
       doubleDamageTo,
