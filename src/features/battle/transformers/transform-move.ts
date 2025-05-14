@@ -2,11 +2,10 @@ import gameToGenerationMap from '@/data/gameToGenerationMap'
 import numberMapper from '@/data/numberMapper'
 import { Move, NamedApiResource } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
+import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'
 
-import { isGen1to7 } from '../utils/pokemonUtils'
-
-export const MoveExtractor = (move: Move) => {
+export const transformMove = (move: Move) => {
   const {
     accuracy,
     contest_effect,
@@ -120,5 +119,3 @@ export const MoveExtractor = (move: Move) => {
     contestEffectId,
   }
 }
-
-export default MoveExtractor

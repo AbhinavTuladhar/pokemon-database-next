@@ -4,7 +4,7 @@ import { Ability, VerboseEffect } from '@/types'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'
 
-export const AbilityExtractor = (data: Ability) => {
+export const transformAbility = (data: Ability) => {
   const {
     effect_entries,
     flavor_text_entries,
@@ -54,5 +54,3 @@ export const AbilityExtractor = (data: Ability) => {
     names,
   }
 }
-
-export default AbilityExtractor

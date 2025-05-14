@@ -4,8 +4,8 @@ import { Metadata } from 'next'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import Loader from '@/components/loader'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import { MoveExtractor } from '@/extractors'
 import MoveService from '@/features/battle/services/move.service'
+import { transformMove } from '@/features/battle/transformers/transform-move'
 import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
 import formatName from '@/utils/formatName'
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 
 const getMoveData = async (moveName: string) => {
   const response = await MoveService.getByName(moveName)
-  return MoveExtractor(response)
+  return transformMove(response)
 }
 
 const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
