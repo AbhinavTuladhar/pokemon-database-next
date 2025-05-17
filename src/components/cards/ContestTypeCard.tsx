@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import contestTypeMapping from '@/data/contestTypeMapping'
+import { contestColourMapping } from '@/features/battle/data/contest.data'
 import formatName from '@/utils/formatName'
 
 interface ContestCardProps {
@@ -8,7 +8,7 @@ interface ContestCardProps {
 }
 
 export const ContestTypeCard: FC<ContestCardProps> = ({ type }) => {
-  const cardColour = `bg-${contestTypeMapping[type]}`
+  const cardColour = `bg-${contestColourMapping[type]}`
 
   return (
     <div

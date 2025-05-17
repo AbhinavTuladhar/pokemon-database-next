@@ -4,8 +4,8 @@ import classNames from 'classnames'
 
 import { BlueLink } from '@/components/ui/Link'
 import { TableCell, TableRow } from '@/components/ui/Table'
-import encounterConditionData from '@/data/encounterConditionData'
 import { generationToGameListMap } from '@/data/generationToGameListMap'
+import { encounterConditionMap } from '@/features/games/data/encounter.data'
 import { GroupedLocationArea } from '@/types'
 import buildConditionArray from '@/utils/buildConditionArray'
 import formatName, { capitaliseFirstLetter } from '@/utils/formatName'
@@ -35,10 +35,10 @@ const getFallBackTooltip = (encounterConditionName: EncounterConditionName, inde
 
   switch (encounterConditionName) {
     case 'season':
-      const seasonValue = encounterConditionData['season'][index]
+      const seasonValue = encounterConditionMap['season'][index]
       return `${baseString} ${seasonValue}`
     case 'time':
-      const timeValue = encounterConditionData['time'][index]
+      const timeValue = encounterConditionMap['time'][index]
       return `${baseString} ${timeValue}`
     default:
       return ''

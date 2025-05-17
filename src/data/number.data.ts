@@ -1,4 +1,4 @@
-const numberMapper: Record<string, string> = {
+export const numberMapper: Record<string, string> = {
   i: '1',
   ii: '2',
   iii: '3',
@@ -7,5 +7,3 @@ const numberMapper: Record<string, string> = {
   vi: '6',
   vii: '7',
 }
-
-export default numberMapper

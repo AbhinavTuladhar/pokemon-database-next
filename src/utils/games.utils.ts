@@ -1,4 +1,4 @@
-import { gameBlackLists } from '@/data/blacklists'
+import { gameBlackLists } from '@/data/blacklist.data'
 import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { NamedApiResource, VersionGroup } from '@/types'
 

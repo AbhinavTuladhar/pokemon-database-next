@@ -1,5 +1,5 @@
 import gameToGenerationMap from '@/data/gameToGenerationMap'
-import numberMapper from '@/data/numberMapper'
+import { numberMapper } from '@/data/number.data'
 import { Ability, VerboseEffect } from '@/types'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'

@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { SectionTitle } from '@/components/ui/Title'
-import { gameBlackLists } from '@/data/blacklists'
+import { gameBlackLists } from '@/data/blacklist.data'
 
 interface GameDescription {
   description: string

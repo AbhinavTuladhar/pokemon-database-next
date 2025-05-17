@@ -1,4 +1,4 @@
-import { gameBlackLists } from '@/data/blacklists'
+import { gameBlackLists } from '@/data/blacklist.data'
 import { gameNameToGenerationMapInternal } from '@/data/gameNameToGenerationMap'
 import { Genus, PokemonSpecies } from '@/types'
 

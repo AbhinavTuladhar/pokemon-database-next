@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PageTitle } from '@/components/ui/Title'
-import { berryBlackLists } from '@/data/blacklists'
+import { berryBlackLists } from '@/data/blacklist.data'
 import ItemService from '@/features/games/services/item.service'
 import { transformItem } from '@/features/games/transformers/transform-item'
 import formatName from '@/utils/formatName'
