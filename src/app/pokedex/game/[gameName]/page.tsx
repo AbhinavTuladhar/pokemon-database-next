@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 
 import Loader from '@/components/loader'
 import { PageTitle } from '@/components/ui/Title'
-import { gameNameMapLongVersion } from '@/data/gameNameMap'
+import { versionToProperNameLong } from '@/features/games/data/game-name.data'
 import GameService from '@/features/games/services/game.service'
 import PokedexService from '@/features/games/services/pokedex.service'
 import { getResourceId } from '@/utils/urlUtils'
@@ -27,7 +27,7 @@ const getPokedexPokemonList = async (pokedex: string) => {
 }
 
 const GamePage: NextPage<GameNamePageProps> = async ({ params: { gameName } }) => {
-  const properVersionGroup = gameNameMapLongVersion[gameName].split('/').join('&')
+  const properVersionGroup = versionToProperNameLong[gameName].split('/').join('&')
 
   /**
    * Perform get requests in two steps:

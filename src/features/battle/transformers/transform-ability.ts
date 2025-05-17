@@ -1,5 +1,5 @@
-import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { numberMapper } from '@/data/number.data'
+import { versionToGeneration } from '@/features/games/data/game-generation.data'
 import { Ability, VerboseEffect } from '@/types'
 import { isGen1to7 } from '@/utils/pokemonUtils'
 import { getResourceId } from '@/utils/urlUtils'
@@ -27,7 +27,7 @@ export const transformAbility = (data: Ability) => {
     .map(entry => ({
       description: entry.flavor_text,
       versionGroupName: entry.version_group.name,
-      generation: gameToGenerationMap[entry.version_group.name],
+      generation: versionToGeneration[entry.version_group.name],
     }))
 
   const pokemonList = pokemon

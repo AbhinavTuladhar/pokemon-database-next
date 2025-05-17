@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { BlueLink } from '@/components/ui/Link'
-import { gameNameMapLongVersion } from '@/data/gameNameMap'
+import { versionToProperNameLong } from '@/features/games/data/game-name.data'
 
 interface GenerationGamesSectionProps {
   generationString: string
@@ -24,7 +24,7 @@ const GenerationGamesSection: FC<GenerationGamesSectionProps> = ({
         {versionGroups.map(versionGroup => (
           <li key={versionGroup}>
             <BlueLink href={`/pokedex/game/${versionGroup}`}>
-              {gameNameMapLongVersion[versionGroup]}
+              {versionToProperNameLong[versionGroup]}
             </BlueLink>
           </li>
         ))}

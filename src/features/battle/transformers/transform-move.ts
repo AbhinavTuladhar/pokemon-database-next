@@ -1,5 +1,5 @@
-import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { numberMapper } from '@/data/number.data'
+import { versionToGeneration } from '@/features/games/data/game-generation.data'
 import { Move, NamedApiResource } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
 import { isGen1to7 } from '@/utils/pokemonUtils'
@@ -49,7 +49,7 @@ export const transformMove = (move: Move) => {
     .map(version => ({
       description: version.flavor_text,
       versionGroupName: version.version_group.name,
-      generation: gameToGenerationMap[version.version_group.name],
+      generation: versionToGeneration[version.version_group.name],
     }))
 
   // Find the English effect entry.

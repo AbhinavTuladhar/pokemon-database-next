@@ -1,5 +1,5 @@
 import { gameBlackLists } from '@/data/blacklist.data'
-import { gameNameToGenerationMapInternal } from '@/data/gameNameToGenerationMap'
+import { gameToGenerationInternal } from '@/features/games/data/game-generation.data'
 import { Genus, PokemonSpecies } from '@/types'
 
 export const transformSpecies = (data: PokemonSpecies) => {
@@ -48,7 +48,7 @@ export const transformSpecies = (data: PokemonSpecies) => {
     return {
       versionName,
       description: cleanedStr,
-      generationInternal: gameNameToGenerationMapInternal[versionName],
+      generationInternal: gameToGenerationInternal[versionName],
     }
   })
 

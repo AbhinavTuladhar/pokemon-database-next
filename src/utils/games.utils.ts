@@ -1,5 +1,5 @@
 import { gameBlackLists } from '@/data/blacklist.data'
-import gameToGenerationMap from '@/data/gameToGenerationMap'
+import { versionToGeneration } from '@/features/games/data/game-generation.data'
 import { NamedApiResource, VersionGroup } from '@/types'
 
 export const removeSpinOffGames = (data: Array<NamedApiResource<VersionGroup>>) =>
@@ -10,7 +10,7 @@ export const removeSpinOffGames = (data: Array<NamedApiResource<VersionGroup>>) 
  */
 export const groupGamesByGeneration = (data: Array<string>) => {
   const gamesWithGeneration = data.map(game => {
-    const generation = gameToGenerationMap[game]
+    const generation = versionToGeneration[game]
     return { generation, versionGroup: game }
   })
 

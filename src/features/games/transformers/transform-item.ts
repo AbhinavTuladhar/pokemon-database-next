@@ -1,7 +1,8 @@
-import gameToGenerationMap from '@/data/gameToGenerationMap'
 import { numberMapper } from '@/data/number.data'
 import { Item, ItemCategory, ItemPocket } from '@/types'
 import { getResourceId } from '@/utils/urlUtils'
+
+import { versionToGeneration } from '../data/game-generation.data'
 
 export const ItemPocketExtractor = (data: ItemPocket) => {
   const { categories, id, name } = data
@@ -72,7 +73,7 @@ export const transformItem = (item: Item) => {
     .map(entry => ({
       description: entry.text,
       versionGroupName: entry.version_group.name,
-      generation: gameToGenerationMap[entry.version_group.name],
+      generation: versionToGeneration[entry.version_group.name],
     }))
 
   const category = tempCategory.name ?? 'unknown'

@@ -3,7 +3,7 @@
 import React, { FC, useState } from 'react'
 
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
-import { versionNameBreakMap } from '@/data/gameNameMap'
+import { versionToArraySplit } from '@/features/games/data/game-name.data'
 import formatName from '@/utils/formatName'
 
 import AllMoveTables from './AllMoveTables'
@@ -20,7 +20,7 @@ const TableTabs: FC<TableTabProps> = ({ pokemonName, movesData, versionGroupName
 
   const tabNames = versionGroupNames.map(versionName => {
     // Break the unified version group names into their individual forms
-    const versionNames = versionNameBreakMap[versionName]
+    const versionNames = versionToArraySplit[versionName]
     return versionNames.map(formatName).join(' / ')
   })
 

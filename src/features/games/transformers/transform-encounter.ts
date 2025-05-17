@@ -1,8 +1,6 @@
-import {
-  gameNameToGenerationMap,
-  gameNameToGenerationMapInternal,
-} from '@/data/gameNameToGenerationMap'
 import { Encounter, PokemonEncounter } from '@/types'
+
+import { gameToGeneration, gameToGenerationInternal } from '../data/game-generation.data'
 
 const DetailedtransformEncounter = (data: Encounter) => {
   const { chance, condition_values, max_level, min_level, method } = data
@@ -39,9 +37,9 @@ export const transformEncounter = (encounterData: PokemonEncounter) => {
       version: { name: gameName },
       encounter_details,
     } = row
-    const generation = gameNameToGenerationMap[gameName]
+    const generation = gameToGeneration[gameName]
     // This is to keep track of the remakes
-    const generationInternal = gameNameToGenerationMapInternal[gameName]
+    const generationInternal = gameToGenerationInternal[gameName]
 
     const extractedEncounterInformation = encounter_details.map(DetailedtransformEncounter)
 

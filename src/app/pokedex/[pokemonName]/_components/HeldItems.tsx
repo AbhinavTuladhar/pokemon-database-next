@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
-import { individualGameMap } from '@/data/gameNameMap'
+import { gameToProperName } from '@/features/games/data/game-name.data'
 import { PokemonHeldItem } from '@/types'
 import formatName from '@/utils/formatName'
 
@@ -30,7 +30,7 @@ export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
       } = version
       return (
         <span key={version.version.name + innerIndex}>
-          {individualGameMap[versionName]} - {rarity}
+          {gameToProperName[versionName]} - {rarity}
           {innerIndex !== version_details.length - 1 ? ', ' : ''}
         </span>
       )

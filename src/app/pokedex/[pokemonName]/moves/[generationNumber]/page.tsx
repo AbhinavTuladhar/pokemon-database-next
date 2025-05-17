@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
 import { PageTitle } from '@/components/ui/Title'
-import { generationToGameListMapV3 } from '@/data/generationToGameListMap'
+import { generationNumberToGroupArray } from '@/features/games/data/game-generation.data'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import formatName from '@/utils/formatName'
@@ -32,7 +32,7 @@ const getPokemonData = async (pokemonName: string) => {
 
 const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {
   const pokemonData = await getPokemonData(pokemonName)
-  const versionGroupNames = generationToGameListMapV3[generationNumber]
+  const versionGroupNames = generationNumberToGroupArray[generationNumber]
 
   const { front_default: defaultSprite, id, moves } = pokemonData
 

@@ -4,8 +4,8 @@ import classNames from 'classnames'
 
 import { BlueLink } from '@/components/ui/Link'
 import { TableCell, TableRow } from '@/components/ui/Table'
-import { generationToGameListMap } from '@/data/generationToGameListMap'
 import { encounterConditionMap } from '@/features/games/data/encounter.data'
+import { generationInternalToGameArray } from '@/features/games/data/game-generation.data'
 import { GroupedLocationArea } from '@/types'
 import buildConditionArray from '@/utils/buildConditionArray'
 import formatName, { capitaliseFirstLetter } from '@/utils/formatName'
@@ -118,7 +118,7 @@ export const EncounterRow: FC<RowProps> = ({
   // For the game boxes
   const gameBoxDiv = (
     <div className="flex flex-row">
-      {generationToGameListMap[generationInternal].map((game, index) => (
+      {generationInternalToGameArray[generationInternal].map((game, index) => (
         <GameBox gameName={game} activeFlag={gameName.includes(game)} key={index} />
       ))}
     </div>

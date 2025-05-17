@@ -3,7 +3,7 @@ import { FaDatabase } from 'react-icons/fa'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
 import SearchBar from '@/components/searchbar'
-import { mechanicsLinks, pokedexLinks, pokemonDataLinks } from '@/data/navbarLinks'
+import { mechanicsLinks, pokedexLinks, pokemonDataLinks } from '@/data/navbar.data'
 
 import DarkModeSwitch from '../dark-mode'
 
