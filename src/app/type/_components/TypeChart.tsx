@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from 'react'
 
-import typeList from '@/data/typeList'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
 import formatName from '@/utils/formatName'

@@ -1,6 +1,6 @@
 // For getting the generation that pokemon was introduced on the basis of the id.
 
-const idToGenerationMap = (id: number) => {
+export const pokemonIdToGeneration = (id: number) => {
   const rangeMap: Record<string, string> = {
     '1-151': '1',
     '152-251': '2',
@@ -19,5 +19,3 @@ const idToGenerationMap = (id: number) => {
   }
   return 'default'
 }
-
-export default idToGenerationMap

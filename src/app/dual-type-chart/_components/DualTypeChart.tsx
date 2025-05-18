@@ -1,9 +1,9 @@
 import React, { FC, Fragment, PropsWithChildren } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
-import typeList from '@/data/typeList'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
 import { TransformedType } from '@/types'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'

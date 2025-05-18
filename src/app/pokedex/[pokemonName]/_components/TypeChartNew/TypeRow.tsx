@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import specialAbilityList from '@/data/specialAbilityList'
+import { specialAbilityList } from '@/features/battle/data/ability.data'
 import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import formatName from '@/utils/formatName'

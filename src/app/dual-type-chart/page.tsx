@@ -2,7 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import { PageTitle } from '@/components/ui/Title'
-import typeList from '@/data/typeList'
+import { typeList } from '@/features/pokemon/data/type.data'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
 

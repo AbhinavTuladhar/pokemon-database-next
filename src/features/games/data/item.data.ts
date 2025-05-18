@@ -1,4 +1,4 @@
-const unusedItems = [
+export const unusedItems = [
   'loot-sack',
   'rule-book',
   'seal-bag',
@@ -116,5 +116,3 @@ const unusedItems = [
   'battle-pocket',
   // 'rotom-bike',
 ]
-
-export default unusedItems

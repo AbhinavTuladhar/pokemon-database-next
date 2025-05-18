@@ -1,6 +1,6 @@
 import React, { FC, Fragment } from 'react'
 
-import statMapping from '@/data/statMapping'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { TransformedPokemon } from '@/types'
@@ -43,7 +43,7 @@ export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
     <div className="flex flex-row flex-wrap items-center justify-center gap-8">
       {statNames.map((statName, index) => (
         <Fragment key={statName + index}>
-          <TypeSummaryCard number={statAverages[index]} text={statMapping[statName]} />
+          <TypeSummaryCard number={statAverages[index]} text={statToProperName[statName]} />
         </Fragment>
       ))}
     </div>

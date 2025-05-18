@@ -1,4 +1,4 @@
-const typeList = [
+export const typeList = [
   'normal',
   'fire',
   'water',
@@ -18,5 +18,3 @@ const typeList = [
   'steel',
   'fairy',
 ]
-
-export default typeList

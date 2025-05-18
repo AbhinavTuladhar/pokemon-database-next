@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 
 import { SpriteTable } from '@/components/sprite-table'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import generationSpriteColumns from '@/data/generationSpriteColumns'
+import spriteTableColumns from '@/data/sprite.data'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { transformSprites } from '@/features/pokemon/transformers/transform-sprites'
@@ -43,7 +43,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
   const { otherSprites } = spriteData
   const { showdownSprites } = otherSprites
 
-  const sortedGenerationData = Object.entries(generationSpriteColumns).sort((a, b) =>
+  const sortedGenerationData = Object.entries(spriteTableColumns).sort((a, b) =>
     a[0] < b[0] ? 1 : -1,
   )
 

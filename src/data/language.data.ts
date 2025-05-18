@@ -1,4 +1,4 @@
-const languageNameMapping: Record<string, string> = {
+export const languageNameMapping: Record<string, string> = {
   'ja': 'Japanese',
   'ko': 'Korean',
   'en': 'English',
@@ -9,5 +9,3 @@ const languageNameMapping: Record<string, string> = {
   'zh-Hant': 'Chinese (Traditional)',
   'zh-Hans': 'Chinese (Simplified)',
 }
-
-export default languageNameMapping

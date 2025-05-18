@@ -3,7 +3,7 @@
 import React, { FC } from 'react'
 import { useParams } from 'next/navigation'
 
-import idToGenerationMap from '@/data/idToGenerationMap'
+import { pokemonIdToGeneration } from '@/features/battle/data/pokemon.data'
 import { isLatestGeneration } from '@/utils/pokemonUtils'
 
 import { BlueLink } from '../ui/Link'
@@ -49,7 +49,7 @@ const MoveGenerationLinks: FC<MoveGenerationLinksProps> = ({ id }) => {
   }>()
 
   // Get the generation of the Pokemon on the bassis of the id
-  const generation = parseInt(idToGenerationMap(id))
+  const generation = parseInt(pokemonIdToGeneration(id))
 
   // If the Pokemon is in the latest generation, don't show anything as there is previous generation
   // moveset to show

@@ -2,7 +2,7 @@
  * These are the abilities which can affect the type chart.
  */
 
-const specialAbilityList = [
+export const specialAbilityList = [
   'dry-skin',
   'filter',
   'flash-fire',
@@ -17,5 +17,3 @@ const specialAbilityList = [
   'water-absorb',
   'wonder-guard',
 ]
-
-export default specialAbilityList

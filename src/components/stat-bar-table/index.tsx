@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Table, TableHeader, TableRow } from '@/components/ui/Table'
-import statMapping from '@/data/statMapping'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
 import { PokemonStat } from '@/types'
 import calculateStats from '@/utils/calculateStats'
 /*
@@ -21,7 +21,7 @@ const getStatDetails = (stats: Array<PokemonStat>, showMinMax: boolean = true) =
       base_stat: statValue,
       stat: { name: statName },
     } = stat
-    const properStatName = statMapping[statName]
+    const properStatName = statToProperName[statName]
     // This is for determining the width of the bar graph.
     const widthValue = `${(statValue / maxStatValue) * 100}%`
 

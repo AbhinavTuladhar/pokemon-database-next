@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import languageNameMapping from '@/data/languageNameMapping'
+import { languageNameMapping } from '@/data/language.data'
 import { Name } from '@/types'
 
 import { Table, TableCell, TableHeader, TableRow } from '../ui/Table'

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BlueLink } from '@/components/ui/Link'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
-import { smogonFormats } from '@/data/smogonFormats'
+import { smogonFormats } from '@/features/battle/data/smogon.data'
 
 const GenerationColumn = ({ generation }: { generation: number }) => (
   <section>

@@ -1,4 +1,4 @@
-const statMapping: Record<string, string> = {
+export const statToProperName: Record<string, string> = {
   'hp': 'HP',
   'attack': 'Attack',
   'defense': 'Defence',
@@ -6,5 +6,3 @@ const statMapping: Record<string, string> = {
   'special-defense': 'Sp. Def',
   'speed': 'Speed',
 }
-
-export default statMapping

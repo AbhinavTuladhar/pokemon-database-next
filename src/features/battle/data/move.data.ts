@@ -1,4 +1,4 @@
-const generationWiseMoveData = [
+export const generationWiseMoveData = [
   {
     path: '/move/generation/1',
     offset: 0,
@@ -35,5 +35,3 @@ const generationWiseMoveData = [
     limit: 121,
   },
 ]
-
-export default generationWiseMoveData

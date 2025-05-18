@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { MoveTable } from '@/components/moves-table'
-import generationWiseMoveData from '@/data/moveData'
+import { generationWiseMoveData } from '@/features/battle/data/move.data'
 import MoveService from '@/features/battle/services/move.service'
 import { transformMove } from '@/features/battle/transformers/transform-move'
 

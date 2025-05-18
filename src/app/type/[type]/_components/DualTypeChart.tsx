@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import typeList from '@/data/typeList'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
 import formatName from '@/utils/formatName'
 import multiplierToString from '@/utils/multiplierToString'
 import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'

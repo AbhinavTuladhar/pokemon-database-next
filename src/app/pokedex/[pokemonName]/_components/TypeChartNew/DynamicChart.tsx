@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import specialAbilityList from '@/data/specialAbilityList'
+import { specialAbilityList } from '@/features/battle/data/ability.data'
 import modifyTypeChart from '@/utils/modifyTypeChart'
 
 import TabbedCharts from './TabbedCharts'

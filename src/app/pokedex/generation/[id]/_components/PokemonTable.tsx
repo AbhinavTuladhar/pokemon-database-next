@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import TanStackTable from '@/components/tanstack-table'
 import { BlueLink } from '@/components/ui/Link'
-import statMapping from '@/data/statMapping'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
 import formatName from '@/utils/formatName'
 import { createColumnHelper } from '@tanstack/react-table'
 
@@ -25,7 +25,7 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
         base_stat: statValue,
         stat: { name: statName },
       } = stat
-      const properName = statMapping[statName]
+      const properName = statToProperName[statName]
 
       return {
         name: properName,

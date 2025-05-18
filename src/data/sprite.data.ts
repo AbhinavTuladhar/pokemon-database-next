@@ -7,7 +7,7 @@ interface SpriteColumnType {
   }
 }
 
-const generationSpriteColumns: SpriteColumnType = {
+const spriteTableColumns: SpriteColumnType = {
   7: {
     columnNames: ['Icon', 'Normal', 'Shiny'],
     rowNames: ['Sun, Moon'],
@@ -52,4 +52,4 @@ const generationSpriteColumns: SpriteColumnType = {
   },
 }
 
-export default generationSpriteColumns
+export default spriteTableColumns

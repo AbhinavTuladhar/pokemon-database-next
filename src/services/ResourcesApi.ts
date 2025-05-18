@@ -1,6 +1,6 @@
-import unusedItems from '@/data/unusedItems'
 import AbilityService from '@/features/battle/services/ability.service'
 import MoveService from '@/features/battle/services/move.service'
+import { unusedItems } from '@/features/games/data/item.data'
 import ItemService from '@/features/games/services/item.service'
 import { LocationService } from '@/features/games/services/location.service'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
