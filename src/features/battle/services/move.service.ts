@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { Move } from '@/types'
 
 class MoveService {

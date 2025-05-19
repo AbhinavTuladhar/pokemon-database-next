@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-import { ResourceApi } from '@/services/ResourcesApi'
+import ResourceService from '@/services/resource.service'
 import { FlatResourceList } from '@/types'
 
 /**
@@ -15,7 +15,7 @@ const useResourceList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await ResourceApi.fetch()
+      const response = await ResourceService.fetch()
       setData(response)
     }
 

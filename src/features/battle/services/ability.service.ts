@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { Ability } from '@/types'
 
 class AbilityService {

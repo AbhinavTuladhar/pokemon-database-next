@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { Location, LocationArea, Region } from '@/types'
 
 export class LocationService {

@@ -1,5 +1,5 @@
 import { removeSpinOffGames } from '@/features/games/helpers/games.utils'
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { VersionGroup } from '@/types'
 
 class GameService {

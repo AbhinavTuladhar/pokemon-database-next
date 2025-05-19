@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { Item, ItemCategory, ItemPocket } from '@/types'
 
 class ItemService {

@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { ResourceApi } from '@/services/ResourcesApi'
+import ResourceService from '@/services/resource.service'
 
 import SearchInput from './search-input'
 
 const SearchbarWrapper = async () => {
-  const searchData = await ResourceApi.fetch()
+  const searchData = await ResourceService.fetch()
 
   return <SearchInput searchList={searchData} />
 }

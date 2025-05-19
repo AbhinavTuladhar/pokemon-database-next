@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 
 class PokedexService {
   static async getPokedexData(pokedex: string) {

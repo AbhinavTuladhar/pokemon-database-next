@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { GrowthRate } from '@/types'
 
 class GrowthRateService {

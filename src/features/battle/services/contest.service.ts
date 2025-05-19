@@ -1,4 +1,4 @@
-import Api from '@/services/MainApi'
+import Api from '@/services/api'
 import { ContestEffect } from '@/types'
 
 class ContestService {

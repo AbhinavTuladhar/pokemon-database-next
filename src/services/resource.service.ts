@@ -13,8 +13,8 @@ const sortByName = (data: string[]) => data.sort((a, b) => a.localeCompare(b))
 /**
  * The function that is used for fetching search data
  */
-export const ResourceApi = {
-  fetch: async function () {
+class ResourceService {
+  static async fetch() {
     const [abilityData, eggGroupData, itemData, locationData, moveData, pokemonDataRaw, typesData] =
       await Promise.all([
         AbilityService.getAllNames(),
@@ -45,5 +45,7 @@ export const ResourceApi = {
     )
 
     return filterList
-  },
+  }
 }
+
+export default ResourceService
