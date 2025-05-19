@@ -15,10 +15,10 @@ const getPocketNames = async () => {
   return response.sort((a, b) => (a > b ? 1 : -1))
 }
 
-// export async function generateStaticParams() {
-//   const pocketNames = await getPocketNames()
-//   return pocketNames.map(name => ({ pocketName: name }))
-// }
+export async function generateStaticParams() {
+  const pocketNames = await getPocketNames()
+  return pocketNames.map(name => ({ pocketName: name }))
+}
 
 interface PageProps {
   params: {

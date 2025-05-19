@@ -19,9 +19,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// export async function generateStaticParams() {
-//   return Array.from({ length: 7 }, (_, index) => ({ number: (index + 1).toString() }))
-// }
+export async function generateStaticParams() {
+  return Array.from({ length: 7 }, (_, index) => ({ number: (index + 1).toString() }))
+}
 
 const MoveList: FC<PageProps> = async ({ params: { number } }) => {
   const generationNumber = parseInt(number) || Infinity
