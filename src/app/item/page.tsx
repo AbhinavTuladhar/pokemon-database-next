@@ -4,7 +4,7 @@ import { BlueLink } from '@/components/ui/Link'
 import { PageTitle } from '@/components/ui/Title'
 import { ITEM_LIST_TEXT } from '@/data/hardCodedText'
 import ItemService from '@/features/games/services/item.service'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const getPocketNames = async () => {
   const response = await ItemService.getAllItemPockets()

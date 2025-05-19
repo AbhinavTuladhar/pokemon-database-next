@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import SpeciesService from '@/features/pokemon/services/species.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { transformSpecies } from '@/features/pokemon/transformers/transform-species'
-import formatName from '@/utils/formatName'
-import { isGen1to7 } from '@/utils/pokemonUtils'
+import { formatName } from '@/utils/string.utils'
 
 interface TableProps {
   eggGroup: string

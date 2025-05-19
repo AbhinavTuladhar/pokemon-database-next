@@ -6,7 +6,7 @@ import { PageTitle } from '@/components/ui/Title'
 import { versionToProperNameLong } from '@/features/games/data/game-name.data'
 import GameService from '@/features/games/services/game.service'
 import PokedexService from '@/features/games/services/pokedex.service'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 import InGamePokedexSection from './_components'
 

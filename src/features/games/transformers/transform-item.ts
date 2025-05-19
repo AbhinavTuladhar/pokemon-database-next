@@ -1,6 +1,6 @@
 import { numberMapper } from '@/data/number.data'
 import { Item, ItemCategory, ItemPocket } from '@/types'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 import { versionToGeneration } from '../data/game-generation.data'
 

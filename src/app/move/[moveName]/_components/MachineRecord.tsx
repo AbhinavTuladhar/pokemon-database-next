@@ -6,7 +6,7 @@ import { versionNames } from '@/data/whitelist.data'
 import { versionToGeneration } from '@/features/games/data/game-generation.data'
 import MachineService from '@/features/games/services/machine.service'
 import type { MachineVersionDetail } from '@/types'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 interface RecordProps {
   machineList: Array<MachineVersionDetail>

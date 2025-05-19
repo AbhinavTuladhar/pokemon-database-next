@@ -1,12 +1,10 @@
 /**
  * Used for modifying the type chart on the basis of some specific abilities.
  */
-
 interface TypeChart {
   type: string
   multiplier: number
 }
-
 // Negate water damage, increase fire damage by 25%
 const handleDrySkin = (typeChart: TypeChart): TypeChart => {
   const { type, multiplier } = typeChart
@@ -18,7 +16,6 @@ const handleDrySkin = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleFlashFire = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'fire') {
@@ -26,7 +23,6 @@ const handleFlashFire = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleHeatProof = (typeChart: TypeChart): TypeChart => {
   const { type, multiplier } = typeChart
   if (type === 'fire') {
@@ -34,7 +30,6 @@ const handleHeatProof = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleLevitate = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'ground') {
@@ -42,7 +37,6 @@ const handleLevitate = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleElectricAbsorb = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'electric') {
@@ -50,7 +44,6 @@ const handleElectricAbsorb = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handlePoweredDownMoves = (typeChart: TypeChart): TypeChart => {
   const { type, multiplier } = typeChart
   if (multiplier > 1) {
@@ -58,7 +51,6 @@ const handlePoweredDownMoves = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleGrassAbsorb = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'grass') {
@@ -66,7 +58,6 @@ const handleGrassAbsorb = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleWaterAbsorb = (typeChart: TypeChart): TypeChart => {
   const { type } = typeChart
   if (type === 'water') {
@@ -74,7 +65,6 @@ const handleWaterAbsorb = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleThickFat = (typeChart: TypeChart): TypeChart => {
   const { type, multiplier } = typeChart
   if (type === 'fire' || type === 'ice') {
@@ -82,7 +72,6 @@ const handleThickFat = (typeChart: TypeChart): TypeChart => {
   }
   return typeChart
 }
-
 const handleWonderGuard = (typeChart: TypeChart): TypeChart => {
   const { multiplier, type } = typeChart
   if (multiplier < 2) {
@@ -91,7 +80,7 @@ const handleWonderGuard = (typeChart: TypeChart): TypeChart => {
   return typeChart
 }
 
-const modifyTypeChart = (typeChart: Array<TypeChart>, ability: string) => {
+export const modifyTypeChart = (typeChart: Array<TypeChart>, ability: string) => {
   switch (ability) {
     // Negate water damage, increase fire damage by 25%
     case 'dry-skin':
@@ -131,5 +120,3 @@ const modifyTypeChart = (typeChart: Array<TypeChart>, ability: string) => {
       return typeChart
   }
 }
-
-export default modifyTypeChart

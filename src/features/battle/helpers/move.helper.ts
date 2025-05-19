@@ -6,7 +6,7 @@
  * @param {string} targetType
  * @param {string} moveName
  */
-const buildMoveTargetData = (targetType: string, moveName: string) => {
+export const buildMoveTargetData = (targetType: string, moveName: string) => {
   // First consider the base case, in which no one is the user and no one is targeted.
   const foeInformation = Array(3)
     .fill(0)
@@ -122,5 +122,9 @@ const buildMoveTargetData = (targetType: string, moveName: string) => {
 
   return { foeInformation, allyInformation, description }
 }
-
-export default buildMoveTargetData
+export const getMoveImage = (damageClass: string) => {
+  if (damageClass === 'physical') return 'move-physical.png'
+  else if (damageClass === 'special') return 'move-special.png'
+  else if (damageClass === 'status') return 'move-status.png'
+  else return ''
+}

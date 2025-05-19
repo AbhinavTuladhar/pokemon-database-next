@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
 
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface CardProps {
   pokemonName: string

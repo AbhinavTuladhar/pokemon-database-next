@@ -7,7 +7,7 @@ import { PageTitle } from '@/components/ui/Title'
 import { generationNumberToGroupArray } from '@/features/games/data/game-generation.data'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { IntroText } from './_components'
 

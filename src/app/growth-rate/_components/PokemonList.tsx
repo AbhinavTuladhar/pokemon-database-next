@@ -6,7 +6,7 @@ import { RxCaretDown } from 'react-icons/rx'
 
 import { Accordion } from '@/components/ui/Accordion'
 import { BlueLink } from '@/components/ui/Link'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface ListProps {
   pokemonNames: Array<string>

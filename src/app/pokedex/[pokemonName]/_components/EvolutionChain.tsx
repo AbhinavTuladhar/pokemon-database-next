@@ -6,7 +6,7 @@ import EvolutionService from '@/features/pokemon/services/evolution.service'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import type { ChainLink, EvolutionDetail, EvolutionPokemon } from '@/types'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 import EvolutionDiv from './EvolutionDiv'
 

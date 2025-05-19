@@ -1,5 +1,6 @@
 import type { EggGroup } from '@/types'
-import filterGens from '@/utils/filterGens'
+
+import { filterGens } from '../helpers/pokemon.helper'
 
 export const transformEggGroup = (data: EggGroup) => {
   const { name, pokemon_species, id } = data

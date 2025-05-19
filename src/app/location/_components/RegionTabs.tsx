@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 import { BlueLink } from '@/components/ui/Link'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface RegionData {
   regionName: string

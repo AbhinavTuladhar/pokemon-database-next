@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface PokeFormCardProps {
   typeNames: Array<string>

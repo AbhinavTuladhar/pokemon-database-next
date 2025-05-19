@@ -3,9 +3,9 @@ import { FC } from 'react'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import { typeList } from '@/features/pokemon/data/type.data'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
-import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
+import { calculateOffensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
+import { formatName } from '@/utils/string.utils'
 
 // FirstRow component to display the first row with type cards
 const FirstRow: FC = () => (

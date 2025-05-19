@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { capitaliseFirstLetter } from '@/utils/formatName'
+import { capitaliseFirstLetter } from '@/utils/string.utils'
 
 import SetRow from './SetRow'
 

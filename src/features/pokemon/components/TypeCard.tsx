@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'next-view-transitions'
 
-import typeMapping from '@/utils/typeMapping'
+import { typeMapping } from '../helpers/type.helper'
 
 interface TypeCardProps {
   typeName: string

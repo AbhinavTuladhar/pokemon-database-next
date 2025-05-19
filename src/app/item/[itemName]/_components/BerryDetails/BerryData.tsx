@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface BerryDataProps {
   firmness: string

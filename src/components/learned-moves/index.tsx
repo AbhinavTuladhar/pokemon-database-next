@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
+import { processMoveData } from '@/features/battle/helpers/moves-learned.helper'
 import { PokemonMove } from '@/types'
-import { processMoveData } from '@/utils/movesLearned.utils'
 
 import TableTabs from './TableTabs'
 

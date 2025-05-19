@@ -5,8 +5,8 @@ import { PokemonTableSkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
 import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
-import formatName from '@/utils/formatName'
-import { getResourceId } from '@/utils/urlUtils'
+import { formatName } from '@/utils/string.utils'
+import { getResourceId } from '@/utils/url.utils'
 
 import { GroupList, PokemonTable } from './_components'
 

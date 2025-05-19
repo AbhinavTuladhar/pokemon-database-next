@@ -1,5 +1,6 @@
 import Api from '@/services/MainApi'
-import filterGens from '@/utils/filterGens'
+
+import { filterGens } from '../helpers/pokemon.helper'
 
 class EggGroupService {
   static async getAll() {

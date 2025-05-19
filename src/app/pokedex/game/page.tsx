@@ -3,8 +3,8 @@ import { NextPage } from 'next'
 
 import Loader from '@/components/loader'
 import { PageTitle } from '@/components/ui/Title'
+import { groupGamesByGeneration } from '@/features/games/helpers/games.utils'
 import GameService from '@/features/games/services/game.service'
-import { groupGamesByGeneration } from '@/utils/games.utils'
 
 import GenerationGamesSection from './_components'
 

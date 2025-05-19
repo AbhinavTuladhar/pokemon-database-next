@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import { Table, TableHeader, TableRow } from '@/components/ui/Table'
 import { EncounterMethod } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { EncounterRow } from './EncounterRow'
 import { MethodGroup } from './types'

@@ -7,7 +7,7 @@ import { LocationAreaApi, LocationService } from '@/features/games/services/loca
 import { transformLocation } from '@/features/games/transformers/transform-location'
 import { transformLocationArea } from '@/features/games/transformers/transform-location-area'
 import { GroupedLocationArea } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { GenerationEncounters } from './_components'
 

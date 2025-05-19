@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { EncounterMethod } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { EncounterTable } from './EncounterTable'
 import { SubLocationGroup } from './types'

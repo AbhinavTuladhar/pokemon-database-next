@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
-import buildMoveTargetData from '@/utils/buildMoveTargetData'
+import { buildMoveTargetData } from '@/features/battle/helpers/move.helper'
 
 interface TargetBoxProps {
   text: string

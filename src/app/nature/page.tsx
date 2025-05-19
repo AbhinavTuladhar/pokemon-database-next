@@ -4,7 +4,7 @@ import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { PageTitle } from '@/components/ui/Title'
 import NatureService from '@/features/pokemon/services/nature.service'
 import { transformNature } from '@/features/pokemon/transformers/transform-nature'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 export const metadata: Metadata = {
   title: 'Pokémon Nature List | Pokémon Database',

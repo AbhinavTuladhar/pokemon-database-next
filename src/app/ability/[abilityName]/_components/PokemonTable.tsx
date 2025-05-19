@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
-import formatName from '@/utils/formatName'
-import { isGen1to7 } from '@/utils/pokemonUtils'
+import { formatName } from '@/utils/string.utils'
 
 interface PokemonTableProps {
   pokemonList: Array<string>

@@ -7,7 +7,7 @@ import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import MoveService from '@/features/battle/services/move.service'
 import { transformMove } from '@/features/battle/transformers/transform-move'
 import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 

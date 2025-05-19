@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { BlueLink } from '@/components/ui/Link'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const getAdjacentPokemonNames = async (offset: number) => {
   const adjcentPokemonResponse = await PokemonService.getByOffsetAndLimit(offset, 3)

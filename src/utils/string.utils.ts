@@ -3,7 +3,7 @@ export const capitaliseFirstLetter = (word: string) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
-const formatName = (name: string) => {
+export const formatName = (name: string) => {
   // Split the name by hyphen to and capitalise the first letter of each word.
   const wordList = name?.split('-')
   let properWordList = wordList?.map(word => capitaliseFirstLetter(word))
@@ -29,5 +29,3 @@ export const formatText = (text: string) => {
   })
   return properWordList.join(' ')
 }
-
-export default formatName

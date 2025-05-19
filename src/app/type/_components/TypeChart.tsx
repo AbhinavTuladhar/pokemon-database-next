@@ -3,11 +3,11 @@ import React, { FC, Fragment } from 'react'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
 import { typeList } from '@/features/pokemon/data/type.data'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
+import { calculateOffensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
-import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+import { formatName } from '@/utils/string.utils'
 
 const FirstRow = () => (
   <>

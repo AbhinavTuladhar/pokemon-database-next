@@ -4,7 +4,7 @@ import { SectionTitle } from '@/components/ui/Title'
 import { PokeFormCard } from '@/features/pokemon/components/PokeFormCard'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemonForm } from '@/features/pokemon/transformers/transform-pokemon-form'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 const getFormData = async (ids: Array<string>) => {
   const response = await PokemonService.getFormsByIds(ids)

@@ -1,9 +1,9 @@
 import { numberMapper } from '@/data/number.data'
 import { versionToGeneration } from '@/features/games/data/game-generation.data'
+import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
 import { Move, NamedApiResource } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
-import { isGen1to7 } from '@/utils/pokemonUtils'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 export const transformMove = (move: Move) => {
   const {

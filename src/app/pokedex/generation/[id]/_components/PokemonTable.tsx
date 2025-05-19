@@ -7,7 +7,7 @@ import TanStackTable from '@/components/tanstack-table'
 import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { statToProperName } from '@/features/pokemon/data/stat.data'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 import { TableData, TableProps } from '../_types'

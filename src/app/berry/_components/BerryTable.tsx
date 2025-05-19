@@ -6,7 +6,7 @@ import Image from 'next/image'
 import TanStackTable from '@/components/tanstack-table'
 import { BlueLink } from '@/components/ui/Link'
 import { CombinedBerryItem } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 interface BerryTableProps {

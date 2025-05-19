@@ -6,7 +6,7 @@ import { PokemonTableSkeleton } from '@/components/skeletons'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import AbilityService from '@/features/battle/services/ability.service'
 import { transformAbility } from '@/features/battle/transformers/transform-ability'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { AbilityDescription, PokemonTable } from './_components'
 

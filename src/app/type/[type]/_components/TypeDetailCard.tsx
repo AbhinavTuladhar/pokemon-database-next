@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface TypeCardProps {
   moveCount: number

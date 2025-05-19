@@ -5,7 +5,7 @@ import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { gameToProperName } from '@/features/games/data/game-name.data'
 import { PokemonHeldItem } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 // type HeldItemProps = Pick<TransformedPokemon, 'held_items'>
 

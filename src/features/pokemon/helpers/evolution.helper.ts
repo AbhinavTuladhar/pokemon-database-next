@@ -1,34 +1,5 @@
 import { EvolutionDetail } from '@/types'
-
-import formatName from './formatName'
-
-const evolutionStringFinder = (evolutionDetails: Array<Partial<EvolutionDetail>> | undefined) => {
-  const [evolutionStep] = evolutionDetails || []
-
-  if (!evolutionStep) {
-    return ''
-  }
-
-  const { trigger } = evolutionStep
-  const triggerName = trigger?.name ?? ''
-
-  switch (triggerName) {
-    case 'level-up':
-      return getLevelUpEvolutionString(evolutionStep)
-
-    case 'trade':
-      return getTradeEvolutionString(evolutionStep)
-
-    case 'use-item':
-      return getUseItemEvolutionString(evolutionStep)
-
-    case 'shed':
-      return 'Level 20, empty spot in party, Pokéball in bag'
-
-    default:
-      return 'Some uncoded method'
-  }
-}
+import { formatName } from '@/utils/string.utils'
 
 const getLevelUpEvolutionString = (evolutionStep: Partial<EvolutionDetail>) => {
   const {
@@ -156,4 +127,32 @@ const getUseItemEvolutionString = (evolutionStep: Partial<EvolutionDetail>) => {
   return `use ${formatName(itemName)}`
 }
 
-export default evolutionStringFinder
+export const getEvolutionString = (
+  evolutionDetails: Array<Partial<EvolutionDetail>> | undefined,
+) => {
+  const [evolutionStep] = evolutionDetails || []
+
+  if (!evolutionStep) {
+    return ''
+  }
+
+  const { trigger } = evolutionStep
+  const triggerName = trigger?.name ?? ''
+
+  switch (triggerName) {
+    case 'level-up':
+      return getLevelUpEvolutionString(evolutionStep)
+
+    case 'trade':
+      return getTradeEvolutionString(evolutionStep)
+
+    case 'use-item':
+      return getUseItemEvolutionString(evolutionStep)
+
+    case 'shed':
+      return 'Level 20, empty spot in party, Pokéball in bag'
+
+    default:
+      return 'Some uncoded method'
+  }
+}

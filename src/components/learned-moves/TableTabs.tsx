@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react'
 
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
 import { versionToArraySplit } from '@/features/games/data/game-name.data'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import AllMoveTables from './AllMoveTables'
 import { FinalMoveData } from './types'

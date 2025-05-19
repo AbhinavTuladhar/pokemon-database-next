@@ -4,7 +4,7 @@ import { BlueLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { EggGroup, NamedApiResource } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface BreedingInfoProps {
   egg_groups: Array<NamedApiResource<EggGroup>>

@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface EffectProps {
   entry: string

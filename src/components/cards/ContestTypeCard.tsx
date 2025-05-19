@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { contestColourMapping } from '@/features/battle/data/contest.data'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface ContestCardProps {
   type: string

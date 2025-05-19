@@ -1,5 +1,5 @@
 import { Pokemon } from '@/types'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 export const transformPokemon = (data: Pokemon) => {
   const {

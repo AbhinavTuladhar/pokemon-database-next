@@ -1,6 +1,7 @@
 import { NamedApiResource, Type } from '@/types'
-import { isGen1to7 } from '@/utils/pokemonUtils'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
+
+import { isGen1to7 } from '../helpers/pokemon.helper'
 
 export const transformType = (data: Type) => {
   const {

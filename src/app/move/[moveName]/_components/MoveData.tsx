@@ -4,7 +4,7 @@ import MoveCategoryImage from '@/components/move-category-image'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface MoveDataProps {
   moveType: string

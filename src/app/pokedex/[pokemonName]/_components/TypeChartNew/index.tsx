@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
+import { calculateDefensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
 import { PokemonType } from '@/types'
-import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import DynamicChart from './DynamicChart'
 
@@ -26,7 +26,7 @@ export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName, abilit
 
   const typeData = await getTypesData(typeNames)
 
-  const typeDefenseInfo = Object.entries(findTypeEffectiveness(typeData)).map(
+  const typeDefenseInfo = Object.entries(calculateDefensiveTypeEffectiveness(typeData)).map(
     ([type, multiplier]) => {
       return { type, multiplier }
     },

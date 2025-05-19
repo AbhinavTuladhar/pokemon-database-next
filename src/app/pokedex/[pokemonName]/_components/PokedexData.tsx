@@ -6,7 +6,7 @@ import { SectionTitle } from '@/components/ui/Title'
 import { pokedexToGameMap } from '@/features/games/data/pokedex.data'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const ignoredPokedexes = [
   'conquest-gallery',

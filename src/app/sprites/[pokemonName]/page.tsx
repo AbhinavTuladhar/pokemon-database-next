@@ -8,7 +8,7 @@ import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { transformSprites } from '@/features/pokemon/transformers/transform-sprites'
 import { SpriteDataType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { AnimatedSpriteTable, GenerationSection, Intro, OtherSprites } from './_components'
 

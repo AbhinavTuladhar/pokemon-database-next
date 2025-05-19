@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { versionToArraySplit } from '@/features/games/data/game-name.data'
 import { TransformedMoveLevel } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import MoveSection from './MoveSection'
 import { FinalMoveData } from './types'

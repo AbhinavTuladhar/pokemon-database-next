@@ -2,10 +2,10 @@ import { FC } from 'react'
 
 import { Table, TableHeader, TableRow } from '@/components/ui/Table'
 import { statToProperName } from '@/features/pokemon/data/stat.data'
+import { calculateStats } from '@/features/pokemon/helpers/stat.helper'
 import { PokemonStat } from '@/types'
-import calculateStats from '@/utils/calculateStats'
 /*
-Here, we define a function for returning an aray of objects containing:
+Here, we define a function for returning an array of objects containing:
 1. The name of the state,
 2. The base value,
 3. The maximum value,

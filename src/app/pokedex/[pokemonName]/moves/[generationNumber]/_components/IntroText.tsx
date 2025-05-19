@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { BlueLink } from '@/components/ui/Link'
 import { generationToGameArray } from '@/features/games/data/game-generation.data'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface IntroTextProps {
   image: string | null

@@ -7,7 +7,7 @@ import Input from '@/components/input'
 import TanStackTable from '@/components/tanstack-table'
 import { BlueLink } from '@/components/ui/Link'
 import { TransformedAbility } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 interface TableProps {

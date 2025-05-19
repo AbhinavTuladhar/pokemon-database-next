@@ -4,7 +4,7 @@ import GameWiseDescriptions from '@/components/game-wise-descriptions'
 import { SectionTitle } from '@/components/ui/Title'
 import EncounterService from '@/features/games/services/encounter.service'
 import { LocationAreaEncounter } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface LocationAndVersion {
   versionName: string

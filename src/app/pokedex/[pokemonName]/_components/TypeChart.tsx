@@ -3,12 +3,12 @@ import { FC } from 'react'
 import { SectionTitle } from '@/components/ui/Title'
 import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
 import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { calculateDefensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
 import { PokemonType } from '@/types'
-import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
+import { formatName } from '@/utils/string.utils'
 
 interface TypeRowProps {
   typeDefenceInfo: Array<{
@@ -57,7 +57,7 @@ export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeData = await getTypesData(typeNames)
 
   // Now calculate a type-effectiveness object
-  const obj = findTypeEffectiveness(typeData)
+  const obj = calculateDefensiveTypeEffectiveness(typeData)
   const typeDefenseInfo = Object.entries(obj).map(([type, multiplier]) => {
     return { type, multiplier }
   })

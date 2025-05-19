@@ -3,7 +3,7 @@
 import React, { FC } from 'react'
 import { Link } from 'next-view-transitions'
 
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface RowProps {
   name: string

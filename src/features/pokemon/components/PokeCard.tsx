@@ -5,8 +5,9 @@ import { Link } from 'next-view-transitions'
 import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
-import formatName from '@/utils/formatName'
-import typeMapping from '@/utils/typeMapping'
+import { formatName } from '@/utils/string.utils'
+
+import { typeMapping } from '../helpers/type.helper'
 
 const darkenColour = (colour: string) => {
   const colourName = colour.slice(0, -3)

@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
+import { getCatchRate } from '@/features/pokemon/helpers/pokemon.helper'
 import { PokemonStat } from '@/types'
-import { getCatchRate } from '@/utils/pokemonUtils'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
 const formatField = (field: string) => {

@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { TransformedItem } from '@/types'
-import { formatText } from '@/utils/formatName'
+import { formatText } from '@/utils/string.utils'
 
 type DataProps = Pick<
   TransformedItem,

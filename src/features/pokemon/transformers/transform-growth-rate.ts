@@ -1,5 +1,6 @@
 import { GrowthRate, GrowthRateExperienceLevel } from '@/types'
-import filterGens from '@/utils/filterGens'
+
+import { filterGens } from '../helpers/pokemon.helper'
 
 export const transformGrowthRate = (data: GrowthRate) => {
   const { formula, levels, name, pokemon_species } = data

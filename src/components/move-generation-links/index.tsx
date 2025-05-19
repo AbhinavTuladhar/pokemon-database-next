@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import { useParams } from 'next/navigation'
 
 import { pokemonIdToGeneration } from '@/features/battle/data/pokemon.data'
-import { isLatestGeneration } from '@/utils/pokemonUtils'
+import { isLatestGeneration } from '@/features/pokemon/helpers/pokemon.helper'
 
 import { BlueLink } from '../ui/Link'
 

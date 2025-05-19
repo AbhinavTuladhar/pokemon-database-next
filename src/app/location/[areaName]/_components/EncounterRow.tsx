@@ -6,12 +6,12 @@ import { BlueLink } from '@/components/ui/Link'
 import { TableCell, TableRow } from '@/components/ui/Table'
 import { encounterConditionMap } from '@/features/games/data/encounter.data'
 import { generationInternalToGameArray } from '@/features/games/data/game-generation.data'
+import { buildEncounterConditionData } from '@/features/games/helpers/encounter.helper'
+import { getFullRarityImage, getRarityString } from '@/features/games/helpers/encounter.helper'
+import { getFullSeasonImage } from '@/features/games/helpers/encounter.helper'
+import { getFullTimeImage } from '@/features/games/helpers/encounter.helper'
 import { GroupedLocationArea } from '@/types'
-import buildConditionArray from '@/utils/buildConditionArray'
-import formatName, { capitaliseFirstLetter } from '@/utils/formatName'
-import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
-import getFullSeasonImage from '@/utils/getSeasonImage'
-import getFullTimeImage from '@/utils/getTimeImage'
+import { capitaliseFirstLetter, formatName } from '@/utils/string.utils'
 
 import { GameBox } from './GameBox'
 import { ConditionArray, EncounterConditionName } from './types'
@@ -144,8 +144,8 @@ export const EncounterRow: FC<RowProps> = ({
 
   const conditionImagesData =
     encounterConditionName === 'time'
-      ? buildConditionArray('time', conditionValuesFiltered)
-      : buildConditionArray('season', conditionValuesFiltered)
+      ? buildEncounterConditionData('time', conditionValuesFiltered)
+      : buildEncounterConditionData('season', conditionValuesFiltered)
 
   const conditionImages = hasEncounterCondition ? (
     conditionValuesFiltered.length > 0 ? (

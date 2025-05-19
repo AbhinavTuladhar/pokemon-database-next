@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { ApexOptions } from 'apexcharts'
 
 import { TransformedBerry } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface FlavourChartProps {
   flavourData: Pick<TransformedBerry, 'flavours'>['flavours']

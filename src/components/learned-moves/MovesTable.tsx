@@ -6,7 +6,7 @@ import MoveCategoryImage from '@/components/move-category-image'
 import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedMove } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 import TanStackTable from '../tanstack-table'

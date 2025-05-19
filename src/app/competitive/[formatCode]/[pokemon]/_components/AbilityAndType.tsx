@@ -3,7 +3,7 @@ import React, { FC, ReactNode } from 'react'
 import { BlueLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedPokemon } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const TypeList: FC<{ types: Array<string> }> = ({ types }) => (
   <div>

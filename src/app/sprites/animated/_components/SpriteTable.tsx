@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { BlueLink } from '@/components/ui/Link'
 import { Table } from '@/components/ui/Table'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface TableProps {
   id: number

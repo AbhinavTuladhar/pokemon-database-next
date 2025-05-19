@@ -1,6 +1,6 @@
+import { removeSpinOffGames } from '@/features/games/helpers/games.utils'
 import Api from '@/services/MainApi'
 import { VersionGroup } from '@/types'
-import { removeSpinOffGames } from '@/utils/games.utils'
 
 class GameService {
   static async getGames() {

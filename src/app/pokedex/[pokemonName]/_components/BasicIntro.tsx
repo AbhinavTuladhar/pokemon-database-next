@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { pokemonIdToGeneration } from '@/features/battle/data/pokemon.data'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface IntroProps {
   id: number

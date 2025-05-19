@@ -4,7 +4,7 @@ import { BlueLink } from '@/components/ui/Link'
 import { SectionTitle } from '@/components/ui/Title'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
 import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const getGroupList = async () => {
   const response = await EggGroupService.getAll()
