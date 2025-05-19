@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { MiniCardList, TypeCard } from '@/components/cards'
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { MiniCardListSkeleton, TypeSummarySkeleton } from '@/components/skeletons'
-import { TypeExtractor } from '@/extractors'
-import { TypesApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import { MiniCardList } from '@/features/pokemon/components/MiniCardList'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import TypesService from '@/features/pokemon/services/types.service'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
+import { formatName } from '@/utils/string.utils'
 
 import {
   DualTypeChart,
@@ -31,8 +32,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getTypeData = async (typeName: string) => {
-  const response = await TypesApi.getByName(typeName)
-  return TypeExtractor(response)
+  const response = await TypesService.getByName(typeName)
+  return transformType(response)
 }
 
 const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {

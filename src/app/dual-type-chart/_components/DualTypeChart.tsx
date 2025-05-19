@@ -1,12 +1,13 @@
 import React, { FC, Fragment, PropsWithChildren } from 'react'
 
-import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
-import { SectionTitle } from '@/components/containers'
-import typeList from '@/data/typeList'
+import { SectionTitle } from '@/components/ui/Title'
+import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
+import { calculateOffensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
 import { TransformedType } from '@/types'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
-import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+import { formatName } from '@/utils/string.utils'
 
 type AttackingType = Pick<TransformedType, 'doubleDamageTo' | 'halfDamageTo' | 'noDamageTo'>
 

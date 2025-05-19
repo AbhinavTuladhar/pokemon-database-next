@@ -1,13 +1,13 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import InfiniteMiniCardScroll from '@/components/infinite-card-scroll'
 import Loader from '@/components/loader'
-import { MoveExtractor } from '@/extractors'
-import { MovesApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import MoveService from '@/features/battle/services/move.service'
+import { transformMove } from '@/features/battle/transformers/transform-move'
+import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
+import { formatName } from '@/utils/string.utils'
 
 import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 
@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: MovePageProps): Promise<Metad
 }
 
 const getMoveData = async (moveName: string) => {
-  const response = await MovesApi.getByName(moveName)
-  return MoveExtractor(response)
+  const response = await MoveService.getByName(moveName)
+  return transformMove(response)
 }
 
 const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {

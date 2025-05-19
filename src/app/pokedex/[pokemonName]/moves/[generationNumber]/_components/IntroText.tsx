@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import BlueLink from '@/components/link'
-import { generationToGameListMapV2 } from '@/data/generationToGameListMap'
-import formatName from '@/utils/formatName'
+import { BlueLink } from '@/components/ui/Link'
+import { generationToGameArray } from '@/features/games/data/game-generation.data'
+import { formatName } from '@/utils/string.utils'
 
 interface IntroTextProps {
   image: string | null
@@ -12,7 +12,7 @@ interface IntroTextProps {
 }
 
 export const IntroText: FC<IntroTextProps> = ({ image, pokemonName, generationNumber }) => {
-  const gameNames = generationToGameListMapV2[`Generation ${generationNumber}`]
+  const gameNames = generationToGameArray[`Generation ${generationNumber}`]
   const formattedName = formatName(pokemonName)
 
   return (

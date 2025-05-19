@@ -1,6 +1,6 @@
 import { FC, Fragment } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 
 import { EffectTable } from './EffectTable'
 

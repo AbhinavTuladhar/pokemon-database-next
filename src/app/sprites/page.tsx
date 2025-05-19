@@ -1,14 +1,14 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import generationData from '@/data/generationData'
-import { PokemonApi } from '@/services'
+import { PageTitle } from '@/components/ui/Title'
+import { generationData } from '@/features/games/data/pokedex.data'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
 
 import { GenerationSection, PageNavigation } from './_components'
 
 const getPokemonList = async () => {
-  const response = await PokemonApi.getByOffsetAndLimit(0, 809)
+  const response = await PokemonService.getByOffsetAndLimit(0, 809)
   return response.results
 }
 

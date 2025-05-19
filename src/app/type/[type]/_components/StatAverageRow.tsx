@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from 'react'
 
-import statMapping from '@/data/statMapping'
-import { PokemonExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import { TransformedPokemon } from '@/types'
 
 import { TypeSummaryCard } from './TypeSummaryCard'
@@ -28,8 +28,8 @@ interface RowProps {
 }
 
 const getPokemonData = async (names: Array<string>) => {
-  const response = await PokemonApi.getByNames(names)
-  return response.map(PokemonExtractor)
+  const response = await PokemonService.getByNames(names)
+  return response.map(transformPokemon)
 }
 
 export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
@@ -43,7 +43,7 @@ export const StatAverageRow: FC<RowProps> = async ({ pokemon }) => {
     <div className="flex flex-row flex-wrap items-center justify-center gap-8">
       {statNames.map((statName, index) => (
         <Fragment key={statName + index}>
-          <TypeSummaryCard number={statAverages[index]} text={statMapping[statName]} />
+          <TypeSummaryCard number={statAverages[index]} text={statToProperName[statName]} />
         </Fragment>
       ))}
     </div>

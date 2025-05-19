@@ -1,9 +1,10 @@
 import { FC } from 'react'
 
-import { MiniTypeCard, TypeMultiplierBox } from '@/components/cards'
-import specialAbilityList from '@/data/specialAbilityList'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
+import { specialAbilityList } from '@/features/battle/data/ability.data'
+import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
+import { formatName } from '@/utils/string.utils'
 
 interface TypeRowProps {
   typeDefenceInfo: Array<{

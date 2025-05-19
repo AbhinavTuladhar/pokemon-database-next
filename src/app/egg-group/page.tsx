@@ -1,9 +1,9 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import { EggGroupExtractor } from '@/extractors'
-import { EggGroupApi } from '@/services'
+import { PageTitle } from '@/components/ui/Title'
+import EggGroupService from '@/features/pokemon/services/egg-group.service'
+import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
 
 import { EggGroupTable } from './_components'
 
@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 }
 
 const getGroupList = async () => {
-  const response = await EggGroupApi.getAll()
+  const response = await EggGroupService.getAll()
   return response
 }
 
 const getAllGroupData = async (names: string[]) => {
-  const response = await EggGroupApi.getByNames(names)
+  const response = await EggGroupService.getByNames(names)
 
   // We now filter out gen 8+ pokemon from the list
-  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(EggGroupExtractor)
+  return response.sort((a, b) => (a.name > b.name ? 1 : -1)).map(transformEggGroup)
 }
 
 const EggGroupPage = async () => {

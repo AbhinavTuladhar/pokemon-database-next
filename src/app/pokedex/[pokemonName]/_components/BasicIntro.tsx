@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { TypeCard } from '@/components/cards'
-import idToGenerationMap from '@/data/idToGenerationMap'
+import { pokemonIdToGeneration } from '@/features/battle/data/pokemon.data'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface IntroProps {
   id: number
@@ -22,7 +22,7 @@ export const BasicIntro: FC<IntroProps> = ({ id, name, types, genus }) => {
 
   // Use the national number instead of the ID numbers to take into account the forms.
   // const generationIntroduced = generationMappingV2(pokedex_numbers?.slice(0, 1).entry_number)
-  const generationIntroduced = idToGenerationMap(id)
+  const generationIntroduced = pokemonIdToGeneration(id)
   // Use only the first word for the other forms.
   const properName = formatName(name).split(' ')[0]
 

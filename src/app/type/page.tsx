@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 
-import { TypeCard, TypeMultiplierBox } from '@/components/cards'
-import { PageTitle } from '@/components/containers'
-import typeList from '@/data/typeList'
+import { PageTitle } from '@/components/ui/Title'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
 
 import { TypeChart } from './_components'
 

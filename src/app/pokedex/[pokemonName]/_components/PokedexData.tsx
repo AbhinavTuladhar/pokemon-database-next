@@ -1,17 +1,12 @@
 import { FC } from 'react'
 
-import { TypeCard } from '@/components/cards'
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
-import BlueLink from '@/components/link'
-import pokedexToGameMap from '@/data/pokedexToGameMap'
+import { BlueLink } from '@/components/ui/Link'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import { pokedexToGameMap } from '@/features/games/data/pokedex.data'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonAbility, PokemonSpeciesDexEntry, PokemonType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 const ignoredPokedexes = [
   'conquest-gallery',
@@ -135,9 +130,9 @@ export const PokeDexData: FC<DexDataProps> = ({
   const tableEntries = tableData.map((row, rowIndex) => {
     return (
       <TableRow key={row.label + rowIndex}>
-        <TableCellHeader>
+        <TableHeader>
           <span className="text-sm"> {row.label}</span>
-        </TableCellHeader>
+        </TableHeader>
         <TableCell>
           <div className="flex">{row.value}</div>
         </TableCell>
@@ -148,9 +143,9 @@ export const PokeDexData: FC<DexDataProps> = ({
   return (
     <>
       <SectionTitle>Pokédex data</SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>{tableEntries}</tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

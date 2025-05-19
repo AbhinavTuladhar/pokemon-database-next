@@ -4,7 +4,7 @@ import { FC, useState } from 'react'
 import classNames from 'classnames'
 
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import TypeTable from './TypeTable'
 

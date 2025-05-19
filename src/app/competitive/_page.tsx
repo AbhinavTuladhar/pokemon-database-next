@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
-import BlueLink from '@/components/link'
-import { smogonFormats } from '@/data/smogonFormats'
+import { BlueLink } from '@/components/ui/Link'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import { smogonFormats } from '@/features/battle/data/smogon.data'
 
 const GenerationColumn = ({ generation }: { generation: number }) => (
   <section>

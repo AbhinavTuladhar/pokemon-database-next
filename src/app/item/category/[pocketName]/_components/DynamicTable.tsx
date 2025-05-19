@@ -4,9 +4,9 @@ import React, { ChangeEvent, FC, useMemo, useState } from 'react'
 import Image from 'next/image'
 
 import Input from '@/components/input'
-import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
-import formatName from '@/utils/formatName'
+import { BlueLink } from '@/components/ui/Link'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 interface ItemData {

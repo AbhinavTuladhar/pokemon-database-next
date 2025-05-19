@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import HtmlRenderer from '@/components/html-renderer'
+import { SectionTitle } from '@/components/ui/Title'
 
 interface SectionProps {
   overview: string | undefined

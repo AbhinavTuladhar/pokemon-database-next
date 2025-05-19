@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import BlueLink from '@/components/link'
-import formatName from '@/utils/formatName'
+import { BlueLink } from '@/components/ui/Link'
+import { formatName } from '@/utils/string.utils'
 
 interface IntroProps {
   id: number

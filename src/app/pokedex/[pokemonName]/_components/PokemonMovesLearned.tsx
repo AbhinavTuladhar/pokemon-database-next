@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import MovesLearned from '@/components/learned-moves'
 import MoveGenerationLinks from '@/components/move-generation-links'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokemonMove } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface MovesLearnedProps {
   pokemonName: string

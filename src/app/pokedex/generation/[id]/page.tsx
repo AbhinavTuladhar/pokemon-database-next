@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import generationData from '@/data/generationData'
-import { PokemonExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
+import { PageTitle } from '@/components/ui/Title'
+import { generationData } from '@/features/games/data/pokedex.data'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 
 import { ViewTabs } from './_components'
 
@@ -14,9 +14,9 @@ interface PageProps {
   }
 }
 
-export async function generateStaticParams() {
-  return Array.from({ length: 7 }, (_, index) => ({ id: (index + 1).toString() }))
-}
+// export async function generateStaticParams() {
+//   return Array.from({ length: 7 }, (_, index) => ({ id: (index + 1).toString() }))
+// }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = params
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getPokemonData = async (names: Array<string>) => {
-  const responses = await PokemonApi.getByNames(names)
+  const responses = await PokemonService.getByNames(names)
   return responses
 }
 
 const getPokemonDataByGeneration = async (offset: number, limit: number) => {
-  const response = await PokemonApi.getByOffsetAndLimit(offset, limit)
+  const response = await PokemonService.getByOffsetAndLimit(offset, limit)
   return response
 }
 
@@ -44,7 +44,7 @@ const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
   const generationResponse = await getPokemonDataByGeneration(offset, limit)
 
   const pokemonData = await getPokemonData(generationResponse.results.map(pokemon => pokemon.name))
-  const extractedPokemonData = pokemonData.map(PokemonExtractor)
+  const extractedPokemonData = pokemonData.map(transformPokemon)
 
   // Minify the data to be passed into the components. This avoids build errors of excessive ISR
   const cardData = extractedPokemonData.map(({ id, name, types, front_default }) => ({

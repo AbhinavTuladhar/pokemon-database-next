@@ -1,20 +1,21 @@
 import React, { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { SpriteTable } from '@/components/sprite-table'
-import generationSpriteColumns from '@/data/generationSpriteColumns'
-import { PokemonExtractor, SpriteExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import spriteTableColumns from '@/data/sprite.data'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
+import { transformSprites } from '@/features/pokemon/transformers/transform-sprites'
 import { SpriteDataType } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { AnimatedSpriteTable, GenerationSection, Intro, OtherSprites } from './_components'
 
 const getPokemonData = async (name: string) => {
-  const pokemonData = await PokemonApi.getByName(name)
-  const { id, spriteCollection } = PokemonExtractor(pokemonData)
-  const spriteData = SpriteExtractor(pokemonData)
+  const pokemonData = await PokemonService.getByName(name)
+  const { id, spriteCollection } = transformPokemon(pokemonData)
+  const spriteData = transformSprites(pokemonData)
   return {
     id,
     spriteCollection,
@@ -42,7 +43,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
   const { otherSprites } = spriteData
   const { showdownSprites } = otherSprites
 
-  const sortedGenerationData = Object.entries(generationSpriteColumns).sort((a, b) =>
+  const sortedGenerationData = Object.entries(spriteTableColumns).sort((a, b) =>
     a[0] < b[0] ? 1 : -1,
   )
 

@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import Loader from '@/components/loader'
-import { gameNameMapLongVersion } from '@/data/gameNameMap'
-import { GameApi, PokedexApi } from '@/services'
-import { getResourceId } from '@/utils/urlUtils'
+import { PageTitle } from '@/components/ui/Title'
+import { versionToProperNameLong } from '@/features/games/data/game-name.data'
+import GameService from '@/features/games/services/game.service'
+import PokedexService from '@/features/games/services/pokedex.service'
+import { getResourceId } from '@/utils/url.utils'
 
 import InGamePokedexSection from './_components'
 
@@ -16,17 +17,17 @@ interface GameNamePageProps {
 }
 
 const getPokedexes = async (versionGroup: string) => {
-  const response = await GameApi.getVersionGroupData(versionGroup)
+  const response = await GameService.getVersionGroupData(versionGroup)
   return response.pokedexes
 }
 
 const getPokedexPokemonList = async (pokedex: string) => {
-  const pokemonList = await PokedexApi.getPokedexData(pokedex)
+  const pokemonList = await PokedexService.getPokedexData(pokedex)
   return { pokedex, pokemonList }
 }
 
 const GamePage: NextPage<GameNamePageProps> = async ({ params: { gameName } }) => {
-  const properVersionGroup = gameNameMapLongVersion[gameName].split('/').join('&')
+  const properVersionGroup = versionToProperNameLong[gameName].split('/').join('&')
 
   /**
    * Perform get requests in two steps:

@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import { RegionExtractor } from '@/extractors'
-import { RegionApi } from '@/services'
+import { PageTitle } from '@/components/ui/Title'
+import { RegionApi } from '@/features/games/services/location.service'
+import { transformRegion } from '@/features/games/transformers/transform-region'
 import { NamedApiResource } from '@/types'
 
 import { IconKeys, RegionTabs } from './_components'
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const getRegionData = async (ids: Array<number>) => {
   const responses = await RegionApi.getByIds(ids)
-  return responses.map(RegionExtractor)
+  return responses.map(transformRegion)
 }
 
 const formatLocation = (location: NamedApiResource<Location>) => {

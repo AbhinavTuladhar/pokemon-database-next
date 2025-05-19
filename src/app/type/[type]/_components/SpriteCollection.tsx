@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { TableContainer } from '@/components/containers'
+import { Table } from '@/components/ui/Table'
 import { TransformedType } from '@/types'
 
 import { GameTypeSprite } from './types'
@@ -124,7 +124,7 @@ const SpriteTable: FC<SpriteTableProps> = ({ generationNumber, spritesList }) =>
   if (spritesList.some(sprite => sprite.sprite === null)) return null
 
   return (
-    <TableContainer useFullWidth={true}>
+    <Table useFullWidth={true}>
       <thead>
         <th
           className="border-bd-light dark:border-bd-dark dark:bg-hdr-dark border-x bg-neutral-200 py-2"
@@ -141,7 +141,7 @@ const SpriteTable: FC<SpriteTableProps> = ({ generationNumber, spritesList }) =>
           })}
         </tr>
       </tbody>
-    </TableContainer>
+    </Table>
   )
 }
 

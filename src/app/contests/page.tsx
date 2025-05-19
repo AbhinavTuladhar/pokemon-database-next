@@ -1,8 +1,8 @@
 import React from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import { ContestApi } from '@/services/ContestApi'
+import { PageTitle } from '@/components/ui/Title'
+import ContestService from '@/features/battle/services/contest.service'
 
 import { EffectTable } from './_components'
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 const getContestsData = async () => {
-  const response = await ContestApi.getAllEffectsData()
+  const response = await ContestService.getAllEffectsData()
   return response
 }
 

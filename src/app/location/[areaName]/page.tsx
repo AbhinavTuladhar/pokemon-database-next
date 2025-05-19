@@ -1,11 +1,13 @@
 import { FC } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle } from '@/components/containers'
-import { LocationAreaExtractor, LocationExtractor } from '@/extractors'
-import { EncountersApi, LocationApi, LocationAreaApi } from '@/services'
+import { PageTitle } from '@/components/ui/Title'
+import EncounterService from '@/features/games/services/encounter.service'
+import { LocationAreaApi, LocationService } from '@/features/games/services/location.service'
+import { transformLocation } from '@/features/games/transformers/transform-location'
+import { transformLocationArea } from '@/features/games/transformers/transform-location-area'
 import { GroupedLocationArea } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { GenerationEncounters } from './_components'
 
@@ -38,18 +40,18 @@ interface LocationGroup {
 }
 
 const getLocationData = async (name: string) => {
-  const response = await LocationApi.getByName(name)
-  return LocationExtractor(response)
+  const response = await LocationService.getByName(name)
+  return transformLocation(response)
 }
 
 const getMethodDescriptions = async () => {
-  const responses = await EncountersApi.getAllMethodDescriptions()
+  const responses = await EncounterService.getAllMethodDescriptions()
   return responses
 }
 
 const getSubLocationData = async (names: string[]) => {
   const responses = await LocationAreaApi.getByNames(names)
-  return responses.map(LocationAreaExtractor)
+  return responses.map(transformLocationArea)
 }
 
 const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {

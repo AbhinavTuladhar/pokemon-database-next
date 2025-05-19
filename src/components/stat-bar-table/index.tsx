@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import statMapping from '@/data/statMapping'
+import { Table, TableHeader, TableRow } from '@/components/ui/Table'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
+import { calculateStats } from '@/features/pokemon/helpers/stat.helper'
 import { PokemonStat } from '@/types'
-import calculateStats from '@/utils/calculateStats'
 /*
-Here, we define a function for returning an aray of objects containing:
+Here, we define a function for returning an array of objects containing:
 1. The name of the state,
 2. The base value,
 3. The maximum value,
@@ -21,7 +21,7 @@ const getStatDetails = (stats: Array<PokemonStat>, showMinMax: boolean = true) =
       base_stat: statValue,
       stat: { name: statName },
     } = stat
-    const properStatName = statMapping[statName]
+    const properStatName = statToProperName[statName]
     // This is for determining the width of the bar graph.
     const widthValue = `${(statValue / maxStatValue) * 100}%`
 
@@ -88,10 +88,10 @@ const StatBarTable: FC<BaseStatProps> = ({ stats, showMinMax = true }) => {
 
     return (
       <TableRow key={stat.name + index}>
-        <TableCellHeader>{stat.name}</TableCellHeader>
-        <TableCellHeader>
+        <TableHeader>{stat.name}</TableHeader>
+        <TableHeader>
           <span className={`${stringDecoration} text-left`}> {stat.value} </span>
-        </TableCellHeader>
+        </TableHeader>
         <td className="border-bd-light dark:border-bd-dark mx-0 table-cell min-w-[9.375rem] border-t px-0 align-middle">
           <div
             className="my-0 ml-2 h-3 rounded-sm"
@@ -105,8 +105,8 @@ const StatBarTable: FC<BaseStatProps> = ({ stats, showMinMax = true }) => {
         </td>
         {showMinMax && (
           <>
-            <TableCellHeader>{stat.min}</TableCellHeader>
-            <TableCellHeader>{stat.max}</TableCellHeader>
+            <TableHeader>{stat.min}</TableHeader>
+            <TableHeader>{stat.max}</TableHeader>
           </>
         )}
       </TableRow>
@@ -114,9 +114,9 @@ const StatBarTable: FC<BaseStatProps> = ({ stats, showMinMax = true }) => {
   })
 
   return (
-    <TableContainer>
+    <Table>
       <tbody>{rowValues}</tbody>
-    </TableContainer>
+    </Table>
   )
 }
 

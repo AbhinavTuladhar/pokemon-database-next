@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import { TransformedSprites } from '@/types'
 
 import ArtworkImage from './ArtworkImage'

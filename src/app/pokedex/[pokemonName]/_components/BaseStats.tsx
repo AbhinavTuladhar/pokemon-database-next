@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import StatBarTable from '@/components/stat-bar-table'
+import { SectionTitle } from '@/components/ui/Title'
 import { PokemonStat } from '@/types'
 /*
 Here, we define a function for returning an aray of objects containing:

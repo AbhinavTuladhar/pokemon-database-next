@@ -2,18 +2,18 @@ import React, { FC } from 'react'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
-import { PageTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
-import { berryBlackLists } from '@/data/blacklists'
-import { ItemExtractor } from '@/extractors'
-import { ItemApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { PageTitle } from '@/components/ui/Title'
+import { berryBlackLists } from '@/data/blacklist.data'
+import ItemService from '@/features/games/services/item.service'
+import { transformItem } from '@/features/games/transformers/transform-item'
+import { formatName } from '@/utils/string.utils'
 
 import { BerryDetails, GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
-  const response = await ItemApi.getByName(name)
-  return ItemExtractor(response)
+  const response = await ItemService.getByName(name)
+  return transformItem(response)
 }
 
 interface PageProps {

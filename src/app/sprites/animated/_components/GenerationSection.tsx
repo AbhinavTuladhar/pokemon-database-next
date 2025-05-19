@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import type { NamedApiResource, Pokemon } from '@/types'
 
 import { SpriteTable } from './SpriteTable'

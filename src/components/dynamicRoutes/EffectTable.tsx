@@ -1,8 +1,7 @@
 import React, { FC, Fragment } from 'react'
 
-import formatName from '@/utils/formatName'
-
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '../containers'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { formatName } from '@/utils/string.utils'
 
 interface EffectProps {
   entry: string
@@ -14,17 +13,17 @@ interface TableProps {
 }
 
 const TableComponent: FC<TableProps> = ({ headers, rows }) => (
-  <TableContainer useFullWidth={false}>
+  <Table useFullWidth={false}>
     <thead>
       <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold duration-75">
         {headers.map(header => (
-          <TableCellHeader
+          <TableHeader
             className="border-r-bd-light dark:border-r-bd-dark border-r last:border-r-0"
             type="column"
             key={header}
           >
             {header}
-          </TableCellHeader>
+          </TableHeader>
         ))}
       </TableRow>
     </thead>
@@ -39,7 +38,7 @@ const TableComponent: FC<TableProps> = ({ headers, rows }) => (
         </TableRow>
       ))}
     </tbody>
-  </TableContainer>
+  </Table>
 )
 
 export const EffectTable: FC<EffectProps> = ({ entry }) => {

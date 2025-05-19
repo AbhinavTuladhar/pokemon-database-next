@@ -1,12 +1,13 @@
 import React, { FC, Fragment } from 'react'
 
-import { MiniTypeCard, TypeCard, TypeMultiplierBox } from '@/components/cards'
-import typeList from '@/data/typeList'
-import { TypeExtractor } from '@/extractors'
-import { TypesApi } from '@/services'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
-import calculateOffensiveTypeEffectiveness from '@/utils/typeEffectivenessOffensive'
+import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { typeList } from '@/features/pokemon/data/type.data'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
+import { calculateOffensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
+import TypesService from '@/features/pokemon/services/types.service'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
+import { formatName } from '@/utils/string.utils'
 
 const FirstRow = () => (
   <>
@@ -47,7 +48,7 @@ const TypeChartRow: FC<RowProps> = ({ type, attackInfo }) => (
 )
 
 const getAllTypeData = async () => {
-  const typeData = await TypesApi.getByNames(typeList)
+  const typeData = await TypesService.getByNames(typeList)
 
   /**
    * Iterate over the fetched type data.
@@ -55,7 +56,7 @@ const getAllTypeData = async () => {
    * For each type in the type list, calculate the effectiveness of each type against that type
    */
   const transformedData = typeData.map(outerType => {
-    const extractedData = TypeExtractor(outerType)
+    const extractedData = transformType(outerType)
     const attackInfo = typeList.map(innerType => {
       const newValue = calculateOffensiveTypeEffectiveness([innerType], extractedData)
       return { name: innerType, multiplier: newValue }

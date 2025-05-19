@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 import { NamedApiResource, Pokemon } from '@/types'
 
 import { InfoCard } from './InfoCard'

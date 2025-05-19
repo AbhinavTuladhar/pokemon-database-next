@@ -2,16 +2,16 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 
-import { TableCell, TableRow } from '@/components/containers'
-import BlueLink from '@/components/link'
-import encounterConditionData from '@/data/encounterConditionData'
-import { generationToGameListMap } from '@/data/generationToGameListMap'
+import { BlueLink } from '@/components/ui/Link'
+import { TableCell, TableRow } from '@/components/ui/Table'
+import { encounterConditionMap } from '@/features/games/data/encounter.data'
+import { generationInternalToGameArray } from '@/features/games/data/game-generation.data'
+import { buildEncounterConditionData } from '@/features/games/helpers/encounter.helper'
+import { getFullRarityImage, getRarityString } from '@/features/games/helpers/encounter.helper'
+import { getFullSeasonImage } from '@/features/games/helpers/encounter.helper'
+import { getFullTimeImage } from '@/features/games/helpers/encounter.helper'
 import { GroupedLocationArea } from '@/types'
-import buildConditionArray from '@/utils/buildConditionArray'
-import formatName, { capitaliseFirstLetter } from '@/utils/formatName'
-import { getFullRarityImage, getRarityString } from '@/utils/getRarityInfo'
-import getFullSeasonImage from '@/utils/getSeasonImage'
-import getFullTimeImage from '@/utils/getTimeImage'
+import { capitaliseFirstLetter, formatName } from '@/utils/string.utils'
 
 import { GameBox } from './GameBox'
 import { ConditionArray, EncounterConditionName } from './types'
@@ -35,10 +35,10 @@ const getFallBackTooltip = (encounterConditionName: EncounterConditionName, inde
 
   switch (encounterConditionName) {
     case 'season':
-      const seasonValue = encounterConditionData['season'][index]
+      const seasonValue = encounterConditionMap['season'][index]
       return `${baseString} ${seasonValue}`
     case 'time':
-      const timeValue = encounterConditionData['time'][index]
+      const timeValue = encounterConditionMap['time'][index]
       return `${baseString} ${timeValue}`
     default:
       return ''
@@ -118,7 +118,7 @@ export const EncounterRow: FC<RowProps> = ({
   // For the game boxes
   const gameBoxDiv = (
     <div className="flex flex-row">
-      {generationToGameListMap[generationInternal].map((game, index) => (
+      {generationInternalToGameArray[generationInternal].map((game, index) => (
         <GameBox gameName={game} activeFlag={gameName.includes(game)} key={index} />
       ))}
     </div>
@@ -144,8 +144,8 @@ export const EncounterRow: FC<RowProps> = ({
 
   const conditionImagesData =
     encounterConditionName === 'time'
-      ? buildConditionArray('time', conditionValuesFiltered)
-      : buildConditionArray('season', conditionValuesFiltered)
+      ? buildEncounterConditionData('time', conditionValuesFiltered)
+      : buildEncounterConditionData('season', conditionValuesFiltered)
 
   const conditionImages = hasEncounterCondition ? (
     conditionValuesFiltered.length > 0 ? (

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import getMoveImage from '@/utils/getMoveImage'
+import { getMoveImage } from '@/features/battle/helpers/move.helper'
 
 interface MoveCategoryProps {
   category: string

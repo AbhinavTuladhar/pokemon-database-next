@@ -1,14 +1,9 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import { getCatchRate } from '@/features/pokemon/helpers/pokemon.helper'
 import { PokemonStat } from '@/types'
-import { getCatchRate } from '@/utils/pokemonUtils'
 
 // Formatting the fields from medium-slow to Medium Slow and so on.
 const formatField = (field: string) => {
@@ -73,9 +68,9 @@ export const TrainingInfo: FC<TrainingInfoProps> = ({
   const tableDiv = tableData.map((row, rowIndex) => {
     return (
       <TableRow key={row.label + rowIndex}>
-        <TableCellHeader>
+        <TableHeader>
           <span className="text-sm">{row.label}</span>
-        </TableCellHeader>
+        </TableHeader>
         <TableCell> {row.value} </TableCell>
       </TableRow>
     )
@@ -84,9 +79,9 @@ export const TrainingInfo: FC<TrainingInfoProps> = ({
   return (
     <div>
       <SectionTitle>Training Data</SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>{tableDiv}</tbody>
-      </TableContainer>
+      </Table>
     </div>
   )
 }

@@ -1,13 +1,14 @@
 import { FC } from 'react'
 
-import { MiniTypeCard, TypeMultiplierBox } from '@/components/cards'
-import { SectionTitle } from '@/components/containers'
-import { TypeExtractor } from '@/extractors'
-import { TypesApi } from '@/services'
+import { SectionTitle } from '@/components/ui/Title'
+import { MiniTypeCard } from '@/features/pokemon/components/TypeCard'
+import { TypeMultiplierBox } from '@/features/pokemon/components/TypeMultiplierBox'
+import { calculateDefensiveTypeEffectiveness } from '@/features/pokemon/helpers/type.helper'
+import { multiplierToString } from '@/features/pokemon/helpers/type.helper'
+import TypesService from '@/features/pokemon/services/types.service'
+import { transformType } from '@/features/pokemon/transformers/transform-type'
 import { PokemonType } from '@/types'
-import findTypeEffectiveness from '@/utils/findTypeEffectiveness'
-import formatName from '@/utils/formatName'
-import multiplierToString from '@/utils/multiplierToString'
+import { formatName } from '@/utils/string.utils'
 
 interface TypeRowProps {
   typeDefenceInfo: Array<{
@@ -45,8 +46,8 @@ interface TypeChartProps {
 
 // Fetches type data only for the one or two types of the Pokemon.
 const getTypesData = async (names: Array<string>) => {
-  const response = await TypesApi.getByNames(names.map(name => name.toLowerCase()))
-  return response.map(TypeExtractor)
+  const response = await TypesService.getByNames(names.map(name => name.toLowerCase()))
+  return response.map(transformType)
 }
 
 export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
@@ -56,7 +57,7 @@ export const TypeChart: FC<TypeChartProps> = async ({ types, pokemonName }) => {
   const typeData = await getTypesData(typeNames)
 
   // Now calculate a type-effectiveness object
-  const obj = findTypeEffectiveness(typeData)
+  const obj = calculateDefensiveTypeEffectiveness(typeData)
   const typeDefenseInfo = Object.entries(obj).map(([type, multiplier]) => {
     return { type, multiplier }
   })

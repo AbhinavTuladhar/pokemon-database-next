@@ -1,19 +1,19 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
-import gameToGenerationMap from '@/data/gameToGenerationMap'
-import { versionNames } from '@/data/whiteLists'
-import { MachineApi } from '@/services'
+import { SectionTitle } from '@/components/ui/Title'
+import { versionNames } from '@/data/whitelist.data'
+import { versionToGeneration } from '@/features/games/data/game-generation.data'
+import MachineService from '@/features/games/services/machine.service'
 import type { MachineVersionDetail } from '@/types'
-import { getResourceId } from '@/utils/urlUtils'
+import { getResourceId } from '@/utils/url.utils'
 
 interface RecordProps {
   machineList: Array<MachineVersionDetail>
 }
 
 const getMachineInfo = async (ids: Array<number>) => {
-  const responses = await MachineApi.getByIds(ids)
+  const responses = await MachineService.getByIds(ids)
   return responses
 }
 
@@ -30,7 +30,7 @@ const getTmNumbers = (responses: Awaited<ReturnType<typeof getMachineInfo>>) => 
       name: moveName,
       machine: formattedTM,
       versionName,
-      generation: gameToGenerationMap[versionName],
+      generation: versionToGeneration[versionName],
     }
   })
 }

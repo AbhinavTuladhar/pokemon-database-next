@@ -1,16 +1,11 @@
 import React, { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
-import BlueLink from '@/components/link'
-import { individualGameMap } from '@/data/gameNameMap'
+import { BlueLink } from '@/components/ui/Link'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import { gameToProperName } from '@/features/games/data/game-name.data'
 import { PokemonHeldItem } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 // type HeldItemProps = Pick<TransformedPokemon, 'held_items'>
 
@@ -35,16 +30,16 @@ export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
       } = version
       return (
         <span key={version.version.name + innerIndex}>
-          {individualGameMap[versionName]} - {rarity}
+          {gameToProperName[versionName]} - {rarity}
           {innerIndex !== version_details.length - 1 ? ', ' : ''}
         </span>
       )
     })
     return (
       <TableRow key={item.item.name + index}>
-        <TableCellHeader>
+        <TableHeader>
           <BlueLink href={`/item/${itemName}`}>{formatName(itemName)}</BlueLink>
-        </TableCellHeader>
+        </TableHeader>
         <TableCell>
           <span>{gamesAndRarity}</span>
         </TableCell>
@@ -58,7 +53,7 @@ export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
       <div className="mb-4">
         <span> The name of the game is followed by the rarity. </span>
       </div>
-      <TableContainer>{tableRows}</TableContainer>
+      <Table>{tableRows}</Table>
     </>
   )
 }

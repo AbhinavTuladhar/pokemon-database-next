@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import type { ApexOptions } from 'apexcharts'
 
 import { GrowthRateExperienceLevel } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface ChartProps {
   data: Array<{

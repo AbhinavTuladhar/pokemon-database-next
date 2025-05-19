@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import { SectionTitle } from '@/components/containers'
 import GameWiseDescriptions from '@/components/game-wise-descriptions'
-import { gameBlackLists } from '@/data/blacklists'
+import { SectionTitle } from '@/components/ui/Title'
+import { gameBlackLists } from '@/data/blacklist.data'
 
 interface DescriptionInterface {
   description: string

@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react'
 import { BsArrowDown, BsArrowDownRight, BsArrowRight, BsArrowUpRight } from 'react-icons/bs'
 
+import { getEvolutionString } from '@/features/pokemon/helpers/evolution.helper'
 import { EvolutionPokemon } from '@/types'
-import evolutionStringFinder from '@/utils/evolutionStringFinder'
 
 interface EvolutionSectionProps {
   individualPokemon: Array<ReactNode>
@@ -28,14 +28,14 @@ const EvolutionDiv: FC<EvolutionSectionProps> = ({ individualPokemon, finalPokem
     const { evolutionDetails } = pokemonData
     const { evolutionDetails: nextnextEvoDetail } = nextnextData
 
-    const evolutionExtractedInfo = evolutionStringFinder(evolutionDetails)
-    const evolutionExtractedInfoNext = evolutionStringFinder(nextnextEvoDetail)
+    const evolutionExtractedInfo = getEvolutionString(evolutionDetails)
+    const evolutionExtractedInfoNext = getEvolutionString(nextnextEvoDetail)
 
     // This is for a three-way evolution
     const finalPokemon = wurmpleFlag ? undefined : individualPokemon[index + 3]
     const lastPokemonData = finalPokemonData[index + 3]
     const { evolutionDetails: finalEvoDetail } = lastPokemonData || {}
-    const evolutionExtractedInfoFinal = evolutionStringFinder(finalEvoDetail)
+    const evolutionExtractedInfoFinal = getEvolutionString(finalEvoDetail)
 
     // For split evolutions
     /*

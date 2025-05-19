@@ -5,8 +5,9 @@ import { FC } from 'react'
 import useResourceList from '@/hooks/useResourceList'
 import { ResourceTypes } from '@/types'
 
-import { ErrorContainerPage, PageTitle } from '../containers'
-import BlueLink from '../link'
+import { ErrorContainerPage } from '../containers'
+import { BlueLink } from '../ui/Link'
+import { PageTitle } from '../ui/Title'
 
 import SimilarMatches from './SimilarMatches'
 

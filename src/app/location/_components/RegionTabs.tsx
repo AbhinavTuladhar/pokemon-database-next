@@ -3,9 +3,9 @@
 import { FC, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
-import BlueLink from '@/components/link'
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
-import formatName from '@/utils/formatName'
+import { BlueLink } from '@/components/ui/Link'
+import { formatName } from '@/utils/string.utils'
 
 interface RegionData {
   regionName: string

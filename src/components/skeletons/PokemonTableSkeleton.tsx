@@ -1,13 +1,13 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
-import { TableCell, TableContainer, TableRow } from '@/components/containers'
+import { Table, TableCell, TableRow } from '@/components/ui/Table'
 
 export const PokemonTableSkeleton = () => {
   return (
     <section className="min-w-64">
       {/* <SectionTitle>Loading Pokémon data...</SectionTitle> */}
-      <TableContainer>
+      <Table>
         <tbody>
           {Array(10)
             .fill(0)
@@ -19,7 +19,7 @@ export const PokemonTableSkeleton = () => {
               </TableRow>
             ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </section>
   )
 }

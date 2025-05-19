@@ -2,15 +2,15 @@
 
 import React, { ChangeEvent, FC, useMemo, useState } from 'react'
 
-import { TypeCard } from '@/components/cards'
 import Input from '@/components/input'
 import MoveCategoryImage from '@/components/move-category-image'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedMove } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
-import BlueLink from '../link'
 import TanStackTable from '../tanstack-table'
+import { BlueLink } from '../ui/Link'
 
 interface TableProps {
   moveData: Array<TransformedMove>

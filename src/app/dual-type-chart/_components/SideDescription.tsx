@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SectionTitle } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
 
 export const SideDescription = () => {
   return (

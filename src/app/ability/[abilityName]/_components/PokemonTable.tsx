@@ -1,12 +1,12 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { TableCell, TableCellHeader, TableContainer, TableRow } from '@/components/containers'
-import BlueLink from '@/components/link'
-import { PokemonExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
-import formatName from '@/utils/formatName'
-import { isGen1to7 } from '@/utils/pokemonUtils'
+import { BlueLink } from '@/components/ui/Link'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
+import { formatName } from '@/utils/string.utils'
 
 interface PokemonTableProps {
   pokemonList: Array<string>
@@ -14,11 +14,11 @@ interface PokemonTableProps {
 }
 
 const getPokemonData = async (names: Array<string>, abilityName: string) => {
-  const responses = await PokemonApi.getByNames(names)
+  const responses = await PokemonService.getByNames(names)
 
   // We now need to find the pokemon name, icons and other abilities.
   const simplifiedResponse = responses.map(response => {
-    const { abilities, ...rest } = PokemonExtractor(response)
+    const { abilities, ...rest } = transformPokemon(response)
     const otherAbilities = abilities
       .filter(ability => ability.ability.name !== abilityName)
       .map(ability => ability.ability.name)
@@ -42,13 +42,13 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
   const headerRow = (
     <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {headers.map(header => (
-        <TableCellHeader
+        <TableHeader
           className="dark:border-r-bd-dark border-r border-r-gray-300 pr-4 last:border-r-0"
           key={header}
           type="column"
         >
           {header}
-        </TableCellHeader>
+        </TableHeader>
       ))}
     </TableRow>
   )
@@ -89,9 +89,9 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
   })
 
   return (
-    <TableContainer className="w-auto lg:w-full">
+    <Table className="w-auto lg:w-full">
       <thead className="hdr-dark-group">{headerRow}</thead>
       <tbody>{pokemonRow}</tbody>
-    </TableContainer>
+    </Table>
   )
 }

@@ -1,12 +1,12 @@
 import { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { Description, OtherLanguages } from '@/components/dynamicRoutes'
 import { PokemonTableSkeleton } from '@/components/skeletons'
-import { AbilityExtractor } from '@/extractors'
-import { AbilityApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import AbilityService from '@/features/battle/services/ability.service'
+import { transformAbility } from '@/features/battle/transformers/transform-ability'
+import { formatName } from '@/utils/string.utils'
 
 import { AbilityDescription, PokemonTable } from './_components'
 
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: AbilityPageParams): Promise<M
 }
 
 const getAbilityData = async (name: string) => {
-  const response = await AbilityApi.getByName(name)
-  return AbilityExtractor(response)
+  const response = await AbilityService.getByName(name)
+  return transformAbility(response)
 }
 
 const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } }) => {

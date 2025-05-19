@@ -1,14 +1,9 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
-import formatName from '@/utils/formatName'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import { formatName } from '@/utils/string.utils'
 
 interface BerryDataProps {
   firmness: string
@@ -61,11 +56,11 @@ const BerryData: FC<BerryDataProps> = ({
   return (
     <section>
       <SectionTitle> Berry Information </SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>
           {tableData.map((row, rowIndex) => (
             <TableRow key={row.header + rowIndex}>
-              <TableCellHeader>
+              <TableHeader>
                 <span
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content={row?.tooltip}
@@ -75,12 +70,12 @@ const BerryData: FC<BerryDataProps> = ({
                 >
                   {row.header}
                 </span>
-              </TableCellHeader>
+              </TableHeader>
               <TableCell> {row.children} </TableCell>
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </section>
   )
 }

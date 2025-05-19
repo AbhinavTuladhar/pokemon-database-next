@@ -1,15 +1,10 @@
 import { FC } from 'react'
 
-import { TypeCard } from '@/components/cards'
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
 import MoveCategoryImage from '@/components/move-category-image'
-import formatName from '@/utils/formatName'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import { formatName } from '@/utils/string.utils'
 
 interface MoveDataProps {
   moveType: string
@@ -80,18 +75,18 @@ export const MoveData: FC<MoveDataProps> = ({
   return (
     <>
       <SectionTitle> Move Data </SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>
           {tableData.map((row, rowIndex) => (
             <TableRow key={row.header + rowIndex}>
-              <TableCellHeader>
+              <TableHeader>
                 <span className="text-sm font-normal"> {row.header} </span>
-              </TableCellHeader>
+              </TableHeader>
               <TableCell> {row.children} </TableCell>
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

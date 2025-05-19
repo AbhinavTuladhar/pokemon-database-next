@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import specialAbilityList from '@/data/specialAbilityList'
-import modifyTypeChart from '@/utils/modifyTypeChart'
+import { specialAbilityList } from '@/features/battle/data/ability.data'
+import { modifyTypeChart } from '@/features/pokemon/helpers/type-chart.helper'
 
 import TabbedCharts from './TabbedCharts'
 import TypeTable from './TypeTable'

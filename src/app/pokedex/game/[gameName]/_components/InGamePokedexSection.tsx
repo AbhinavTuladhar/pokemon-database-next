@@ -1,14 +1,15 @@
 import { FC } from 'react'
 
-import { PokeCard } from '@/components/cards'
-import { PokeCardContainer, SectionTitle } from '@/components/containers'
-import { PokemonExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { PokeCardContainer } from '@/components/containers'
+import { SectionTitle } from '@/components/ui/Title'
+import { PokeCard } from '@/features/pokemon/components/PokeCard'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
+import { formatName } from '@/utils/string.utils'
 
 const getPokemonDataByIds = async (ids: Array<number>) => {
-  const response = await PokemonApi.getByIds(ids)
-  return response.map(PokemonExtractor)
+  const response = await PokemonService.getByIds(ids)
+  return response.map(transformPokemon)
 }
 
 interface PokedexSectionProps {

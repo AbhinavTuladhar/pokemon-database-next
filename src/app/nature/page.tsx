@@ -1,28 +1,23 @@
 import { Metadata } from 'next'
 
-import {
-  PageTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
-import { NatureExtractor } from '@/extractors'
-import { NatureApi } from '@/services'
-import formatName from '@/utils/formatName'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { PageTitle } from '@/components/ui/Title'
+import NatureService from '@/features/pokemon/services/nature.service'
+import { transformNature } from '@/features/pokemon/transformers/transform-nature'
+import { formatName } from '@/utils/string.utils'
 
 export const metadata: Metadata = {
   title: 'Pokémon Nature List | Pokémon Database',
 }
 
 const getNatureNames = async () => {
-  const response = await NatureApi.getAllNames()
+  const response = await NatureService.getAllNames()
   return response
 }
 
 const getNaturesInformation = async (names: Array<string>) => {
-  const responses = await NatureApi.getByNames(names)
-  return responses.map(NatureExtractor)
+  const responses = await NatureService.getByNames(names)
+  return responses.map(transformNature)
 }
 
 const NatureList = async () => {
@@ -33,13 +28,13 @@ const NatureList = async () => {
   const tableHeaders = (
     <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {headerNames.map((header, index) => (
-        <TableCellHeader
+        <TableHeader
           className="dark:border-r-bd-dark w-36! border-r border-r-gray-300 pr-4 text-center last:border-r-0"
           type="column"
           key={header + index}
         >
           {header}
-        </TableCellHeader>
+        </TableHeader>
       ))}
     </TableRow>
   )
@@ -78,10 +73,10 @@ const NatureList = async () => {
   return (
     <main>
       <PageTitle>Natures</PageTitle>
-      <TableContainer useFullWidth={false}>
+      <Table useFullWidth={false}>
         {tableHeaders}
         {tableRows}
-      </TableContainer>
+      </Table>
     </main>
   )
 }

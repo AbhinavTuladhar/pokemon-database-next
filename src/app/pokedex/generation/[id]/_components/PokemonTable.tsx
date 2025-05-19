@@ -3,11 +3,11 @@
 import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
-import { TypeCard } from '@/components/cards'
-import BlueLink from '@/components/link'
 import TanStackTable from '@/components/tanstack-table'
-import statMapping from '@/data/statMapping'
-import formatName from '@/utils/formatName'
+import { BlueLink } from '@/components/ui/Link'
+import { TypeCard } from '@/features/pokemon/components/TypeCard'
+import { statToProperName } from '@/features/pokemon/data/stat.data'
+import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 import { TableData, TableProps } from '../_types'
@@ -25,7 +25,7 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
         base_stat: statValue,
         stat: { name: statName },
       } = stat
-      const properName = statMapping[statName]
+      const properName = statToProperName[statName]
 
       return {
         name: properName,

@@ -1,15 +1,10 @@
 import { FC } from 'react'
 
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
-import BlueLink from '@/components/link'
+import { BlueLink } from '@/components/ui/Link'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
 import { EggGroup, NamedApiResource } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 interface BreedingInfoProps {
   egg_groups: Array<NamedApiResource<EggGroup>>
@@ -71,9 +66,9 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
   const tableDiv = tableRows.map((row, rowIndex) => {
     return (
       <TableRow key={row.label + rowIndex}>
-        <TableCellHeader>
+        <TableHeader>
           <span className="text-sm">{row.label}</span>
-        </TableCellHeader>
+        </TableHeader>
         <TableCell> {row.value} </TableCell>
       </TableRow>
     )
@@ -82,9 +77,9 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
   return (
     <div>
       <SectionTitle>Breeding</SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>{tableDiv}</tbody>
-      </TableContainer>
+      </Table>
     </div>
   )
 }

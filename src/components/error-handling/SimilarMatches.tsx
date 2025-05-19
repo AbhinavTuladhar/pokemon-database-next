@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import leven from 'leven'
 
 import { FlatResourceList, ResourceTypes } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
-import { SectionTitle } from '../containers'
-import BlueLink from '../link'
+import { BlueLink } from '../ui/Link'
+import { SectionTitle } from '../ui/Title'
 
 interface MatchesProps {
   param: string

@@ -1,18 +1,13 @@
 import React, { FC } from 'react'
 
 import { ContestTypeCard } from '@/components/cards'
-import {
-  SectionTitle,
-  TableCell,
-  TableCellHeader,
-  TableContainer,
-  TableRow,
-} from '@/components/containers'
 import ContestHearts from '@/components/contest-hearts'
-import { ContestApi } from '@/services/ContestApi'
+import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
+import { SectionTitle } from '@/components/ui/Title'
+import ContestService from '@/features/battle/services/contest.service'
 
 const getContestEffectData = async (id: number) => {
-  const response = await ContestApi.getEffectById(id)
+  const response = await ContestService.getEffectById(id)
   return response
 }
 
@@ -36,16 +31,16 @@ export const ContestInfo: FC<ContestInfoProps> = async ({ effectId, typeName }) 
   return (
     <>
       <SectionTitle>Contest Information</SectionTitle>
-      <TableContainer>
+      <Table>
         <tbody>
           {tableData.map(row => (
             <TableRow key={row.header}>
-              <TableCellHeader>{row.header}</TableCellHeader>
+              <TableHeader>{row.header}</TableHeader>
               <TableCell>{row.children}</TableCell>
             </TableRow>
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </>
   )
 }

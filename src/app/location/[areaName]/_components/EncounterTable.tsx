@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 
-import { TableCellHeader, TableContainer, TableRow } from '@/components/containers'
+import { Table, TableHeader, TableRow } from '@/components/ui/Table'
 import { EncounterMethod } from '@/types'
-import formatName from '@/utils/formatName'
+import { formatName } from '@/utils/string.utils'
 
 import { EncounterRow } from './EncounterRow'
 import { MethodGroup } from './types'
@@ -52,7 +52,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
   const headerRow = (
     <TableRow className="dark:bg-hdr-dark bg-neutral-200 font-bold">
       {header.map((headerName, index) => (
-        <TableCellHeader
+        <TableHeader
           type="column"
           className={classNames(
             'border-r-bd-light dark:border-r-bd-dark border pr-4 text-center! last:border-r-0',
@@ -63,7 +63,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
           key={index}
         >
           {headerName}
-        </TableCellHeader>
+        </TableHeader>
       ))}
     </TableRow>
   )
@@ -75,7 +75,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
         <span className="text-sm text-gray-500 dark:text-gray-200">{encounterDescription}</span>
       </div>
 
-      <TableContainer useFullWidth={false}>
+      <Table useFullWidth={false}>
         <thead>{headerRow}</thead>
         <tbody>
           {encounterDetails.map((encounter, index) => (
@@ -88,7 +88,7 @@ export const EncounterTable: FC<TableProps> = ({ methods, methodData }) => {
             />
           ))}
         </tbody>
-      </TableContainer>
+      </Table>
     </div>
   )
 }

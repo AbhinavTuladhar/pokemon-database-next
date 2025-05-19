@@ -1,12 +1,12 @@
 import React, { FC, Suspense } from 'react'
 import { Metadata } from 'next'
 
-import { PageTitle, SectionTitle } from '@/components/containers'
 import { PokemonTableSkeleton } from '@/components/skeletons'
-import { EggGroupExtractor } from '@/extractors'
-import { EggGroupApi } from '@/services'
-import formatName from '@/utils/formatName'
-import { getResourceId } from '@/utils/urlUtils'
+import { PageTitle, SectionTitle } from '@/components/ui/Title'
+import EggGroupService from '@/features/pokemon/services/egg-group.service'
+import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
+import { formatName } from '@/utils/string.utils'
+import { getResourceId } from '@/utils/url.utils'
 
 import { GroupList, PokemonTable } from './_components'
 
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const getEggGroupData = async (name: string) => {
-  const response = await EggGroupApi.getByName(name)
-  return EggGroupExtractor(response)
+  const response = await EggGroupService.getByName(name)
+  return transformEggGroup(response)
 }
 
 const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {

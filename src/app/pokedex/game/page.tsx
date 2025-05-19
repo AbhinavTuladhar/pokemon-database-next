@@ -1,15 +1,15 @@
 import React, { Suspense } from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import Loader from '@/components/loader'
-import { GameApi } from '@/services'
-import { groupGamesByGeneration } from '@/utils/games.utils'
+import { PageTitle } from '@/components/ui/Title'
+import { groupGamesByGeneration } from '@/features/games/helpers/games.utils'
+import GameService from '@/features/games/services/game.service'
 
 import GenerationGamesSection from './_components'
 
 const getGameNames = async () => {
-  const versionGroupNameData = await GameApi.getGames()
+  const versionGroupNameData = await GameService.getGames()
   return versionGroupNameData.map(game => game.name)
 }
 

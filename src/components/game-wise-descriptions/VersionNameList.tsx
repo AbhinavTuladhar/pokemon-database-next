@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
-import { individualRawGameMap, versionNameBreakMap } from '@/data/gameNameMap'
-import { gameToColourAndNameMap } from '@/data/gameNameToColourMap'
+import { gameToUnformattedName, versionToArraySplit } from '@/features/games/data/game-name.data'
+import { gameToColourAndName } from '@/features/games/data/game-name.data'
 
 interface GameNameProps {
   gameName: string
@@ -21,7 +21,7 @@ const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
     {names
       .filter(name => name !== undefined)
       .map((name, index) => {
-        const { colour, properName } = gameToColourAndNameMap[name]
+        const { colour, properName } = gameToColourAndName[name]
         const isLast = index === names.length - 1
         return (
           <React.Fragment key={name + index}>
@@ -41,10 +41,10 @@ const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => {
   return (
     <ul>
       {versionNames.map((version, index) => {
-        const gameList = versionNameBreakMap[version]
+        const gameList = versionToArraySplit[version]
         // If gamelist is undefined, it means we're using individual game names.
         if (!gameList) {
-          const formattedGameNames = [individualRawGameMap[version]]
+          const formattedGameNames = [gameToUnformattedName[version]]
           return (
             <li key={version + index}>
               <GameNameRow names={formattedGameNames} />

@@ -1,11 +1,11 @@
 import React from 'react'
 import { NextPage } from 'next'
 
-import { PageTitle } from '@/components/containers'
 import StatBarTable from '@/components/stat-bar-table'
-import { PokemonExtractor } from '@/extractors'
-import { PokemonApi } from '@/services'
-import { SmogonApi } from '@/services/SmogonApi'
+import { PageTitle } from '@/components/ui/Title'
+import SmogonService from '@/features/battle/services/smogon.service'
+import PokemonService from '@/features/pokemon/services/pokemon.service'
+import { transformPokemon } from '@/features/pokemon/transformers/transform-pokemon'
 import {
   FlatPokemonSet,
   InnerAnalysis,
@@ -19,8 +19,8 @@ import { AbilityAndType } from './_components/AbilityAndType'
 import { CommentsSection, OverviewSection, PokemonImage, SetSection } from './_components'
 
 const getPokemonData = async (pokemonName: string) => {
-  const response = await PokemonApi.getByName(pokemonName)
-  return PokemonExtractor(response)
+  const response = await PokemonService.getByName(pokemonName)
+  return transformPokemon(response)
 }
 
 const getMinifiedData = (pokemonData: TransformedPokemon, generation: number) => {
@@ -34,12 +34,12 @@ const getMinifiedData = (pokemonData: TransformedPokemon, generation: number) =>
 }
 
 const getFormatAnalyses = async (formatCode: string) => {
-  const response = await SmogonApi.getAnalysis(formatCode)
+  const response = await SmogonService.getAnalysis(formatCode)
   return response
 }
 
 const getFormatSets = async (formatCode: string) => {
-  const response = await SmogonApi.getSets(formatCode)
+  const response = await SmogonService.getSets(formatCode)
   return response
 }
 
