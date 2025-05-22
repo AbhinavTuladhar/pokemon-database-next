@@ -95,9 +95,3 @@ The app will be accessible at <http://localhost:5173>.
 20. Comprehensive sprite gallery for each Pokémon by generation
 21. List of Pokémon Types
 22. Detail of each type
-- **Form Components**: Form fields, validation components, etc.
-- **Feedback Components**: Alerts, notifications, tooltips, etc.
-- **Data Display Components**: Tables, lists, charts, etc.
-- **Navigation Components**: Breadcrumbs, pagination, etc.
-- **Animation Components**: Loading spinners, transitions, etc.
-```
