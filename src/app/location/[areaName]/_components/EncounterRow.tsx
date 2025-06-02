@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TableCell, TableRow } from '@/components/ui/Table'
 import { encounterConditionMap } from '@/features/games/data/encounter.data'
 import { generationInternalToGameArray } from '@/features/games/data/game-generation.data'
@@ -109,9 +109,9 @@ export const EncounterRow: FC<RowProps> = ({
   const idDiv = (
     <div className="flex items-center pr-12 md:pr-4">
       <Image src={iconSprite} alt={pokemonName} width={66} height={66} />
-      <BlueLink boldFlag href={`/pokedex/${pokemonName}`}>
+      <TransitionLink boldFlag href={`/pokedex/${pokemonName}`}>
         {formatName(pokemonName)}
-      </BlueLink>
+      </TransitionLink>
     </div>
   )
 

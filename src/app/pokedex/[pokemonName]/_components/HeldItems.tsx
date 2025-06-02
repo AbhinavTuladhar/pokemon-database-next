@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { gameToProperName } from '@/features/games/data/game-name.data'
@@ -38,7 +38,7 @@ export const HeldItems: FC<HeldItemProps> = ({ held_items }) => {
     return (
       <TableRow key={item.item.name + index}>
         <TableHeader>
-          <BlueLink href={`/item/${itemName}`}>{formatName(itemName)}</BlueLink>
+          <TransitionLink href={`/item/${itemName}`}>{formatName(itemName)}</TransitionLink>
         </TableHeader>
         <TableCell>
           <span>{gamesAndRarity}</span>

@@ -163,6 +163,15 @@ html.dark .apexcharts-menu-item:hover {
   z-index: 0;
 }
 
+.main-layout {
+  transition: all 0.3s ease-out;
+}
+
+.main-layout.page-transition {
+  opacity: 0;
+  filter: blur(8px);
+}
+
 .hero-banner {
   position: relative;
   height: calc(100dvh - 92px);

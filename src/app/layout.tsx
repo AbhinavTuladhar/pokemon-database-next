@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
-import { ViewTransitions } from 'next-view-transitions'
 import NextTopLoader from 'nextjs-toploader'
 
 import {
@@ -29,20 +28,27 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en" className="scroll-smooth">
-        <body className={`${FiraSans.className}`}>
-          <NextTopLoader height={5} speed={400} />
-          <GlobalProviders>
-            <PageLayout>
-              <HeaderSection />
-              <MainLayout>{children}</MainLayout>
-              <Helpers />
-              <ToolTip />
-            </PageLayout>
-          </GlobalProviders>
-        </body>
-      </html>
-    </ViewTransitions>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${FiraSans.className}`}>
+        <NextTopLoader
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl
+          showSpinner
+          easing="ease"
+          speed={300}
+          zIndex={999999}
+        />
+        <GlobalProviders>
+          <PageLayout>
+            <HeaderSection />
+            <MainLayout>{children}</MainLayout>
+            <Helpers />
+            <ToolTip />
+          </PageLayout>
+        </GlobalProviders>
+      </body>
+    </html>
   )
 }

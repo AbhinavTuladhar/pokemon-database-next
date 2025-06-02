@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Metadata } from 'next'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { MOVE_LIST_TEXT } from '@/data/hardCodedText'
 
@@ -18,9 +18,9 @@ const SideBar: FC = () => {
       <ul className="list-inside list-disc space-y-2">
         {numbers.map(number => (
           <li key={number}>
-            <BlueLink href={`/move/generation/${number}`} key={number}>
+            <TransitionLink href={`/move/generation/${number}`} key={number}>
               Generation {number}
-            </BlueLink>
+            </TransitionLink>
           </li>
         ))}
       </ul>

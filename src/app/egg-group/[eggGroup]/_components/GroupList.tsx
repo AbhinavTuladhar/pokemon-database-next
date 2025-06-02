@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { SectionTitle } from '@/components/ui/Title'
 import EggGroupService from '@/features/pokemon/services/egg-group.service'
 import { transformEggGroup } from '@/features/pokemon/transformers/transform-egg-group'
@@ -31,7 +31,7 @@ export const GroupList = async () => {
           const pokemonCount = pokemonSpecies.length
           return (
             <li key={id}>
-              <BlueLink href={`/egg-group/${name}`}>{formatName(name)}</BlueLink>{' '}
+              <TransitionLink href={`/egg-group/${name}`}>{formatName(name)}</TransitionLink>{' '}
               <span>({pokemonCount})</span>
             </li>
           )

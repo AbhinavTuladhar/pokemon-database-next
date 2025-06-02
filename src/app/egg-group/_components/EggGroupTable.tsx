@@ -3,7 +3,7 @@
 import React, { FC, useMemo } from 'react'
 
 import TanStackTable from '@/components/tanstack-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TransformedEggGroup } from '@/types'
 import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
@@ -20,9 +20,9 @@ export const EggGroupTable: FC<{ eggGroupData: Array<TransformedEggGroup> }> = (
         cell: info => {
           const groupName = info.getValue()
           return (
-            <BlueLink href={`/egg-group/${groupName}`} boldFlag>
+            <TransitionLink href={`/egg-group/${groupName}`} boldFlag>
               {formatName(groupName)}
-            </BlueLink>
+            </TransitionLink>
           )
         },
         sortingFn: 'alphanumeric',

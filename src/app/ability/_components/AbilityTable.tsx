@@ -5,7 +5,7 @@ import debounce from 'lodash.debounce'
 
 import Input from '@/components/input'
 import TanStackTable from '@/components/tanstack-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TransformedAbility } from '@/types'
 import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
@@ -41,9 +41,9 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
         cell: info => {
           const abilityName = info.getValue()
           return (
-            <BlueLink href={`/ability/${abilityName}`} boldFlag={true}>
+            <TransitionLink href={`/ability/${abilityName}`} boldFlag={true}>
               {formatName(abilityName)}
-            </BlueLink>
+            </TransitionLink>
           )
         },
       }),

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { PageTitle, SectionTitle } from '@/components/ui/Title'
 import { smogonFormats } from '@/features/battle/data/smogon.data'
 
@@ -10,9 +10,9 @@ const GenerationColumn = ({ generation }: { generation: number }) => (
     <ul className="list-inside list-disc">
       {smogonFormats.map(format => (
         <li key={format}>
-          <BlueLink href={`/competitive/gen${generation}${format.toLowerCase()}`}>
+          <TransitionLink href={`/competitive/gen${generation}${format.toLowerCase()}`}>
             Gen {generation} {format}
-          </BlueLink>
+          </TransitionLink>
         </li>
       ))}
     </ul>

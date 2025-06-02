@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { generationToGameArray } from '@/features/games/data/game-generation.data'
 import { formatName } from '@/utils/string.utils'
 
@@ -34,9 +34,9 @@ export const IntroText: FC<IntroTextProps> = ({ image, pokemonName, generationNu
         {image && (
           <Image className="h-auto w-auto" src={image} width={0} height={0} alt={'image'} />
         )}
-        <BlueLink href={`/pokedex/${pokemonName}`}>
+        <TransitionLink href={`/pokedex/${pokemonName}`}>
           &lt;&lt; back to {formattedName} Pokédex
-        </BlueLink>
+        </TransitionLink>
       </div>
     </section>
   )

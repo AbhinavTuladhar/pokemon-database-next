@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 
 export const PageNavigation = () => {
   const linkData = [
@@ -19,7 +19,7 @@ export const PageNavigation = () => {
         <li className="px-4 font-bold text-black dark:text-white"> Jump to </li>
         {linkData.map(({ ref, text }, index) => (
           <li className="inline-flex w-max justify-center px-4" key={ref + index}>
-            <BlueLink href={ref}>{text}</BlueLink>
+            <TransitionLink href={ref}>{text}</TransitionLink>
           </li>
         ))}
       </ul>

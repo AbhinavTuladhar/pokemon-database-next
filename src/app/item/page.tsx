@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { PageTitle } from '@/components/ui/Title'
 import { ITEM_LIST_TEXT } from '@/data/hardCodedText'
 import ItemService from '@/features/games/services/item.service'
@@ -20,9 +20,9 @@ const Sidebar = async () => {
       <ul className="flex list-inside list-disc flex-col gap-y-1">
         {pocketNames.map(name => (
           <li key={name}>
-            <BlueLink href={`/item/category/${name}`}>
+            <TransitionLink href={`/item/category/${name}`}>
               {formatName(name)} {name.endsWith('s') ? '' : 'Items'}
-            </BlueLink>
+            </TransitionLink>
           </li>
         ))}
       </ul>

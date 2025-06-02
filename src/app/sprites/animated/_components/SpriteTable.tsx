@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table } from '@/components/ui/Table'
 import { formatName } from '@/utils/string.utils'
 
@@ -23,7 +23,9 @@ export const SpriteTable: FC<TableProps> = ({ id, pokemonName }) => {
           colSpan={2}
           className="border-bd-light dark:border-bd-dark dark:bg-hdr-dark table-cell border bg-neutral-200 py-2 pr-4 text-xl font-bold"
         >
-          <BlueLink href={`/pokedex/${pokemonName}`}>{formatName(pokemonName)}</BlueLink>
+          <TransitionLink href={`/pokedex/${pokemonName}`}>
+            {formatName(pokemonName)}
+          </TransitionLink>
         </th>
       </thead>
       <tbody>

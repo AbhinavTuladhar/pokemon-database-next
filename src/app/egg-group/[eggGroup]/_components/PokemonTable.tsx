@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
@@ -85,15 +85,15 @@ export const PokemonTable: FC<TableProps> = async ({ eggGroup, speciesIds }) => 
           </div>
         </TableCell>
         <TableCell variant="column">
-          <BlueLink href={`/pokedex/${name}`} boldFlag>
+          <TransitionLink href={`/pokedex/${name}`} boldFlag>
             {formatName(name)}
-          </BlueLink>
+          </TransitionLink>
         </TableCell>
         <TableCell variant="column">{typeDiv}</TableCell>
         <TableCell variant="column">
-          <BlueLink href={`/egg-group/${otherEggGroup}`} boldFlag>
+          <TransitionLink href={`/egg-group/${otherEggGroup}`} boldFlag>
             {formatName(otherEggGroup ?? '')}
-          </BlueLink>
+          </TransitionLink>
         </TableCell>
       </TableRow>
     )

@@ -3,7 +3,7 @@
 import { FC, useMemo } from 'react'
 
 import MoveCategoryImage from '@/components/move-category-image'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedMove } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -46,9 +46,9 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
         cell: info => {
           const moveName = info.getValue()
           return (
-            <BlueLink boldFlag href={`/move/${moveName}`}>
+            <TransitionLink boldFlag href={`/move/${moveName}`}>
               {formatName(moveName)}
-            </BlueLink>
+            </TransitionLink>
           )
         },
         sortingFn: 'basic',

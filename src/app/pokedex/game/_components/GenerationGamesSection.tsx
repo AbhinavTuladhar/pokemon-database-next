@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { versionToProperNameLong } from '@/features/games/data/game-name.data'
 
 interface GenerationGamesSectionProps {
@@ -23,9 +23,9 @@ const GenerationGamesSection: FC<GenerationGamesSectionProps> = ({
       <ul className="flex list-inside list-disc flex-col gap-y-2 py-4">
         {versionGroups.map(versionGroup => (
           <li key={versionGroup}>
-            <BlueLink href={`/pokedex/game/${versionGroup}`}>
+            <TransitionLink href={`/pokedex/game/${versionGroup}`}>
               {versionToProperNameLong[versionGroup]}
-            </BlueLink>
+            </TransitionLink>
           </li>
         ))}
       </ul>

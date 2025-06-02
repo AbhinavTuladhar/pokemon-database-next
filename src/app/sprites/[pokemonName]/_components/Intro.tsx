@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { formatName } from '@/utils/string.utils'
 
 interface IntroProps {
@@ -19,8 +19,10 @@ export const Intro: FC<IntroProps> = ({ id, name }) => {
     <div className="dark:bg-muted-blue flex flex-col items-start justify-start gap-y-4 bg-sky-100 p-4">
       <span>Below are all the sprites of {pokemonSpan} used throughout the games.</span>
       <div className="flex flex-col items-start justify-start gap-y-px">
-        <BlueLink href={`/pokedex/${name}`}>&lt;&lt; back to {formatName(name)} Pokédex</BlueLink>
-        <BlueLink href={`/sprites`}>&lt;&lt; back to sprite list</BlueLink>
+        <TransitionLink href={`/pokedex/${name}`}>
+          &lt;&lt; back to {formatName(name)} Pokédex
+        </TransitionLink>
+        <TransitionLink href={`/sprites`}>&lt;&lt; back to sprite list</TransitionLink>
       </div>
     </div>
   )

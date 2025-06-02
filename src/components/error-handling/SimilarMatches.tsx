@@ -4,7 +4,7 @@ import leven from 'leven'
 import { FlatResourceList, ResourceTypes } from '@/types'
 import { formatName } from '@/utils/string.utils'
 
-import { BlueLink } from '../ui/Link'
+import { TransitionLink } from '../ui/Link'
 import { SectionTitle } from '../ui/Title'
 
 interface MatchesProps {
@@ -29,9 +29,9 @@ const SimilarMatches: FC<MatchesProps> = ({ param, resourceType, resourcesList }
       <ul className="list-inside list-disc pl-4">
         {distances.map(resource => (
           <li key={resource.name}>
-            <BlueLink href={`/${resourceType}/${resource.name}`}>
+            <TransitionLink href={`/${resourceType}/${resource.name}`}>
               {formatName(resourceType)} - {formatName(resource.name)}
-            </BlueLink>
+            </TransitionLink>
           </li>
         ))}
       </ul>

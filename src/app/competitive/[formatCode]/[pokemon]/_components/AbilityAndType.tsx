@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { TransformedPokemon } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -19,7 +19,7 @@ const AbilityList: FC<{ abilities: Array<string> }> = ({ abilities }) => (
   <ul>
     {abilities.map(ability => (
       <li key={ability}>
-        <BlueLink href={`/ability/${ability}`}>{formatName(ability)}</BlueLink>
+        <TransitionLink href={`/ability/${ability}`}>{formatName(ability)}</TransitionLink>
       </li>
     ))}
   </ul>

@@ -4,7 +4,7 @@ import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
 import TanStackTable from '@/components/tanstack-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { CombinedBerryItem } from '@/types'
 import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
@@ -70,9 +70,9 @@ export const BerryTable: FC<BerryTableProps> = ({ berryData }) => {
           return (
             <div className="flex items-center">
               <Image src={sprite} alt={name} width={30} height={30} className="size-[30px]" />
-              <BlueLink boldFlag href={`/item/${itemName}`}>
+              <TransitionLink boldFlag href={`/item/${itemName}`}>
                 {formatName(name)}
-              </BlueLink>
+              </TransitionLink>
             </div>
           )
         },

@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
 import { Tab, TabList, TabPanel, Tabs } from '@/components/react-tabs'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { formatName } from '@/utils/string.utils'
 
 interface RegionData {
@@ -57,7 +57,9 @@ export const RegionTabs: FC<PanelProps> = ({ regionData }) => {
             >
               {locations.map((location, locationIndex) => (
                 <div key={location.locationName + locationIndex}>
-                  <BlueLink href={location.localUrl}>{formatName(location.locationName)}</BlueLink>
+                  <TransitionLink href={location.localUrl}>
+                    {formatName(location.locationName)}
+                  </TransitionLink>
                 </div>
               ))}
             </section>

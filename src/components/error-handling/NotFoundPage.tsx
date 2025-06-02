@@ -6,7 +6,7 @@ import useResourceList from '@/hooks/useResourceList'
 import { ResourceTypes } from '@/types'
 
 import { ErrorContainerPage } from '../containers'
-import { BlueLink } from '../ui/Link'
+import { TransitionLink } from '../ui/Link'
 import { PageTitle } from '../ui/Title'
 
 import SimilarMatches from './SimilarMatches'
@@ -55,7 +55,7 @@ export const NotFoundPage: FC<ContainerProps> = ({ param, pageUrl, resourceType 
         <div className="mt-4 pb-8">
           <span>
             <span> Or, return to the </span>
-            <BlueLink href="/"> Pokémon Database home page. </BlueLink>
+            <TransitionLink href="/"> Pokémon Database home page. </TransitionLink>
           </span>
         </div>
       </ErrorContainerPage>

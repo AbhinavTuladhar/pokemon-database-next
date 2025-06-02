@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { RxCaretDown } from 'react-icons/rx'
 
 import { Accordion } from '@/components/ui/Accordion'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { formatName } from '@/utils/string.utils'
 
 interface ListProps {
@@ -30,7 +30,7 @@ const PokemonList: FC<ListProps> = ({ pokemonNames }) => {
         <div className="grid-cols-pokemon-list mt-4 grid gap-x-4">
           {pokemonNames.map(name => (
             <span key={name}>
-              <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
+              <TransitionLink href={`/pokedex/${name}`}>{formatName(name)}</TransitionLink>
             </span>
           ))}
         </div>
