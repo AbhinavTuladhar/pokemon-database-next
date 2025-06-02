@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ErrorContainerPage } from '../containers'
-import { BlueLink } from '../ui/Link'
+import { TransitionLink } from '../ui/Link'
 import { PageTitle } from '../ui/Title'
 
 export const ServerErrorPage = () => (
@@ -12,7 +12,7 @@ export const ServerErrorPage = () => (
         <span> Oops, something went wrong.</span>
         <div>
           <span> Go back </span>
-          <BlueLink href="/"> to the home page.</BlueLink>
+          <TransitionLink href="/"> to the home page.</TransitionLink>
         </div>
       </div>
     </div>

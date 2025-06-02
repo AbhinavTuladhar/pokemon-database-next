@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 
 export const PageNavigation = () => {
   const linkData = [
@@ -22,7 +22,7 @@ export const PageNavigation = () => {
           const { ref, text } = row
           return (
             <li className="inline-flex w-max justify-center px-4" key={row.ref + index}>
-              <BlueLink href={ref}>{text}</BlueLink>
+              <TransitionLink href={ref}>{text}</TransitionLink>
             </li>
           )
         })}

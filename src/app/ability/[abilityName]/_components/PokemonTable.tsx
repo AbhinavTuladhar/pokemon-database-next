@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
@@ -67,16 +67,16 @@ export const PokemonTable: FC<PokemonTableProps> = async ({ abilityName, pokemon
           </div>
         </TableCell>
         <TableCell extraClassName="min-w-40 " variant="column">
-          <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
+          <TransitionLink href={`/pokedex/${name}`}>{formatName(name)}</TransitionLink>
         </TableCell>
         <TableCell extraClassName="min-w-32 " variant="column">
           {otherAbilities.length > 0 ? (
             <ul>
               {otherAbilities.map((ability, index) => (
                 <li key={index}>
-                  <BlueLink href={`/ability/${ability}`} boldFlag={true}>
+                  <TransitionLink href={`/ability/${ability}`} boldFlag={true}>
                     {formatName(ability)}
-                  </BlueLink>
+                  </TransitionLink>
                 </li>
               ))}
             </ul>

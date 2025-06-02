@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { PageTitle } from '@/components/ui/Title'
 import SmogonService from '@/features/battle/services/smogon.service'
 import { extractParts } from '@/utils/smogon.utils'
@@ -48,7 +48,9 @@ const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
               height={48}
               src={`https://img.pokemondb.net/sprites/x-y/normal/${pokemon.toLowerCase()}.png`}
             />
-            <BlueLink href={`/competitive/${formatCode}/${pokemon}`}>{pokemon}</BlueLink>
+            <TransitionLink href={`/competitive/${formatCode}/${pokemon}`}>
+              {pokemon}
+            </TransitionLink>
           </li>
         ))}
       </ul>

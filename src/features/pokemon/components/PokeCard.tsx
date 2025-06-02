@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { Link } from 'next-view-transitions'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { PokemonType } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -53,11 +52,11 @@ export const PokeCard: FC<PokeCardProps> = ({ id, name, defaultSprite, types }) 
     <div
       className={`${gradientStyle} relative flex w-48 flex-col items-center justify-center rounded-xl p-2 text-white duration-200 hover:scale-105 hover:shadow-xl hover:shadow-gray-400 hover:drop-shadow-lg sm:w-56 dark:hover:shadow-gray-600`}
     >
-      <Link
+      <TransitionLink
         href={targetLink}
         className="absolute inset-0"
         aria-label={linkTitle}
-        title={linkTitle}
+        nonTextFlag
       />
       <div className="font-bold">#{id}</div>
       <span className="text-center text-xl font-extrabold">{properName}</span>
@@ -110,9 +109,9 @@ export const MiniPokeCard: FC<MiniCardProps> = ({
     <article className="flex w-full gap-x-1">
       <Image src={gameSprite} width={64} height={64} alt={name} />
       <div className="flex flex-col items-start justify-start">
-        <BlueLink href={`/pokedex/${name}`} boldFlag={true}>
+        <TransitionLink href={`/pokedex/${name}`} boldFlag={true}>
           {formatName(name)}
-        </BlueLink>
+        </TransitionLink>
         <span className="inline-flex text-sm">
           {`#${properId}`} / &nbsp;{typeDiv}{' '}
         </span>
@@ -156,7 +155,7 @@ export const EvolutionPokemonCard: FC<EvolutionCardProps> = ({
       {homeSprite && <Image src={homeSprite} alt={name} width={128} height={128} />}
       <div className="flex w-full flex-col items-center justify-center">
         {formattedId}
-        <BlueLink href={`/pokedex/${name}`}>{formatName(name)}</BlueLink>
+        <TransitionLink href={`/pokedex/${name}`}>{formatName(name)}</TransitionLink>
         <span className="text-center">{typeDiv}</span>
       </div>
     </div>

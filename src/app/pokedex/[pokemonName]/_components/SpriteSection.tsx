@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { SpriteTable } from '@/components/sprite-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { SectionTitle } from '@/components/ui/Title'
 import { GenerationSprite } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -17,9 +17,9 @@ export const SpriteSection: FC<SpriteSectionProps> = ({ pokemonName, spriteColle
       <SectionTitle> {formatName(pokemonName)} Sprites </SectionTitle>
       <SpriteTable spriteCollection={spriteCollection} />
       <div>
-        <BlueLink boldFlag href={`/sprites/${pokemonName}/`}>
+        <TransitionLink boldFlag href={`/sprites/${pokemonName}/`}>
           &gt; View all {formatName(pokemonName)} sprites
-        </BlueLink>
+        </TransitionLink>
       </div>
     </>
   )

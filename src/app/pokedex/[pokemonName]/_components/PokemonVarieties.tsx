@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { SectionTitle } from '@/components/ui/Title'
 import { PokemonSpeciesVariety } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -33,7 +33,7 @@ export const PokemonVarieties: FC<VarietiesProps> = ({ pokemonName, varieties })
     const localUrl = `/pokedex/${formName}/`
     return (
       <li key={form.pokemon.name + index}>
-        <BlueLink href={localUrl}>{formatName(formName)}</BlueLink>
+        <TransitionLink href={localUrl}>{formatName(formName)}</TransitionLink>
       </li>
     )
   })

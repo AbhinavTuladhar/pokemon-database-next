@@ -10,7 +10,7 @@ import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 import TanStackTable from '../tanstack-table'
-import { BlueLink } from '../ui/Link'
+import { TransitionLink } from '../ui/Link'
 
 interface TableProps {
   moveData: Array<TransformedMove>
@@ -55,9 +55,9 @@ export const MoveTable: FC<TableProps> = ({ moveData, usePagination = false }) =
         cell: info => {
           const moveName = info.getValue()
           return (
-            <BlueLink boldFlag href={`/move/${moveName}`}>
+            <TransitionLink boldFlag href={`/move/${moveName}`}>
               {formatName(moveName)}
-            </BlueLink>
+            </TransitionLink>
           )
         },
         sortingFn: 'basic',

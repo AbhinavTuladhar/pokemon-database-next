@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { pokemonIdToGeneration } from '@/features/battle/data/pokemon.data'
 import { isLatestGeneration } from '@/features/pokemon/helpers/pokemon.helper'
 
-import { BlueLink } from '../ui/Link'
+import { TransitionLink } from '../ui/Link'
 
 const generateArray = (start: number) => {
   const end = 6
@@ -33,7 +33,7 @@ const ListItem: FC<ListItemProps> = ({ pokemonName, currentGenerationNumber, num
 
   return (
     <li className="inline-flex w-max justify-center px-4">
-      <BlueLink href={`/pokedex/${pokemonName}/moves/${number}`}>{number}</BlueLink>
+      <TransitionLink href={`/pokedex/${pokemonName}/moves/${number}`}>{number}</TransitionLink>
     </li>
   )
 }

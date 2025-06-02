@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import Input from '@/components/input'
 import TanStackTable from '@/components/tanstack-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
@@ -48,9 +48,9 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
               ) : (
                 <div className="h-8 w-8" />
               )}
-              <BlueLink boldFlag={true} href={`/item/${name}`}>
+              <TransitionLink boldFlag={true} href={`/item/${name}`}>
                 {formatName(name)}
-              </BlueLink>
+              </TransitionLink>
             </div>
           )
         },

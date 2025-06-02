@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import PokemonService from '@/features/pokemon/services/pokemon.service'
 import { formatName } from '@/utils/string.utils'
 
@@ -57,9 +57,9 @@ export const AdjacentLinks: FC<LinksParams> = async ({ id }) => {
         const leftPart = index === 0 && id !== 1 ? '←' : ''
         const rightPart = index !== 0 || id === 1 ? '→' : ''
         return (
-          <BlueLink href={`/pokedex/${name}`} key={pokemon.id}>
+          <TransitionLink href={`/pokedex/${name}`} key={pokemon.id}>
             {`${leftPart} ${formattedId} ${formatName(name)} ${rightPart}`}
-          </BlueLink>
+          </TransitionLink>
         )
       })}
     </div>

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { EggGroup, NamedApiResource } from '@/types'
@@ -31,7 +31,7 @@ export const BreedingInfo: FC<BreedingInfoProps> = ({
   // List the egg groups
   const eggGroupList = egg_groups.map((group, index) => (
     <span key={group.name + index}>
-      <BlueLink href={`/egg-group/${group.name}`}>{formatName(group.name)}</BlueLink>
+      <TransitionLink href={`/egg-group/${group.name}`}>{formatName(group.name)}</TransitionLink>
       {index < egg_groups.length - 1 && ', '}
     </span>
   ))

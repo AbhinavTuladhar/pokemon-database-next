@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import { SectionTitle } from '@/components/ui/Title'
 import { pokedexToGameMap } from '@/features/games/data/pokedex.data'
@@ -78,7 +78,7 @@ export const PokeDexData: FC<DexDataProps> = ({
     return (
       <li key={ability.ability.name}>
         {prefix}
-        <BlueLink href={`/ability/${name}`}>{formatName(name)}</BlueLink>
+        <TransitionLink href={`/ability/${name}`}>{formatName(name)}</TransitionLink>
         {hiddenExtraText}
       </li>
     )

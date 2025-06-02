@@ -4,7 +4,7 @@ import React, { FC, useMemo } from 'react'
 import Image from 'next/image'
 
 import TanStackTable from '@/components/tanstack-table'
-import { BlueLink } from '@/components/ui/Link'
+import { TransitionLink } from '@/components/ui/Link'
 import { TypeCard } from '@/features/pokemon/components/TypeCard'
 import { statToProperName } from '@/features/pokemon/data/stat.data'
 import { formatName } from '@/utils/string.utils'
@@ -71,9 +71,9 @@ export const PokemonTable: FC<PokemonTableProps> = ({ tableData }) => {
       helper.accessor('name', {
         header: () => <span> Name </span>,
         cell: info => (
-          <BlueLink boldFlag href={`/pokedex/${info.getValue()}`}>
+          <TransitionLink boldFlag href={`/pokedex/${info.getValue()}`}>
             {formatName(info.getValue())}
-          </BlueLink>
+          </TransitionLink>
         ),
       }),
       helper.accessor('types', {
