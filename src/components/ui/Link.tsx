@@ -42,6 +42,9 @@ export const TransitionLink: FC<BlueLinkProps> = ({
       return
     }
 
+    // Scroll to top of page when link is clicked
+    window.scroll(0, 0)
+
     mainPageLayout.classList.add('page-transition')
     await sleep(DELAY)
     router.push(props.href as string)
@@ -64,6 +67,7 @@ export const TransitionLink: FC<BlueLinkProps> = ({
         'fancy-link': !nonTextFlag,
       })}
       onClick={handleTransition}
+      scroll={false}
     >
       {children}
     </Link>
