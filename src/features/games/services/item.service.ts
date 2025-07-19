@@ -11,6 +11,11 @@ class ItemService {
     const responses = await Promise.all(requests)
     return responses as unknown as Item[]
   }
+  static async getByIds(ids: Array<number>) {
+    const requests = ids.map(id => Api.item.getItemById(id))
+    const responses = await Promise.all(requests)
+    return responses as unknown as Item[]
+  }
   static async getAllItemPockets() {
     const response = await Api.item.listItemPockets()
     return response.results.map(resource => resource.name)
