@@ -1,20 +1,26 @@
 import React, { FC } from 'react'
 
+import { isValidItem } from '@/features/games/helpers/item.helper'
 import ItemService from '@/features/games/services/item.service'
 import { transformItem } from '@/features/games/transformers/transform-item'
+import { getResourceId } from '@/utils/url.utils'
 
 import { DynamicTable } from './DynamicTable'
 
-const getItemNames = async (pocketName: string) => {
+const getItemIds = async (pocketName: string) => {
   const pocketData = await ItemService.getItemPocketByName(pocketName)
   const itemCategories = pocketData.categories.map(category => category.name)
   const categoriesData = await ItemService.getItemCategoriesByNames(itemCategories)
-  const itemNames = categoriesData.map(category => category.items.map(item => item.name)).flat()
-  return itemNames
+  // For each category, get the item ID and throw away items that are in gen 8+
+  const itemIds = categoriesData
+    .map(category => category.items.map(item => getResourceId(item.url)))
+    .flat()
+    .filter(id => isValidItem(+id))
+  return itemIds
 }
 
-const getCategoryItemsData = async (itemNames: string[]) => {
-  const itemData = await ItemService.getByNames(itemNames)
+const getCategoryItemsData = async (itemIds: number[]) => {
+  const itemData = await ItemService.getByIds(itemIds)
   return itemData
     .map(transformItem)
     .filter(
@@ -25,8 +31,8 @@ const getCategoryItemsData = async (itemNames: string[]) => {
 }
 
 const getFinalItemData = async (pocketName: string) => {
-  const itemNames = await getItemNames(pocketName)
-  const itemData = await getCategoryItemsData(itemNames)
+  const itemIds = await getItemIds(pocketName)
+  const itemData = await getCategoryItemsData(itemIds.map(id => +id))
   return itemData
 }
 
