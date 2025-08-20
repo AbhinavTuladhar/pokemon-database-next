@@ -13,7 +13,8 @@ interface EffectProps {
 export const Description: FC<EffectProps> = ({ entry, chance, title = 'Effect' }) => {
   // The chance props is for move effects.
   const updatedEntry = chance ? entry.replace('$effect_chance', `${chance}`) : entry
-  const paragraphs = updatedEntry.split('\n').filter(paragraph => paragraph !== '')
+  // This regex ensures that lines are split as long as there is no colon immediately after the newline character
+  const paragraphs = updatedEntry.split(/\n(?!:)/).filter(paragraph => paragraph !== '')
 
   // There are entries which are intended to be displayed in the form of a table.
   // This is parsed in the EffectTable component.
