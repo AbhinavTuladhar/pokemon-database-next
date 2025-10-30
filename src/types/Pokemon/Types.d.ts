@@ -51,7 +51,7 @@ interface Generation3Sprite {
   'colosseum': { name_icon: string | null }
   'emerald': { name_icon: string | null }
   'firered-leafgreen': { name_icon: string | null }
-  'ruby-saphire': { name_icon: string | null }
+  'ruby-sapphire': { name_icon: string | null }
   'xd': { name_icon: string | null }
 }
 
