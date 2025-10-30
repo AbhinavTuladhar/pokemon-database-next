@@ -12,14 +12,14 @@ import { formatName } from '@/utils/string.utils'
 import { IntroText } from './_components'
 
 interface MovePageProps {
-  params: {
+  params: Promise<{
     generationNumber: string
     pokemonName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: MovePageProps): Promise<Metadata> {
-  const { pokemonName, generationNumber } = params
+  const { pokemonName, generationNumber } = await params
   return {
     title: `${formatName(pokemonName)} generation ${generationNumber} move learnset | Pokémon Database`,
   }
@@ -30,7 +30,9 @@ const getPokemonData = async (pokemonName: string) => {
   return transformPokemon(response)
 }
 
-const MovePage: FC<MovePageProps> = async ({ params: { generationNumber, pokemonName } }) => {
+const MovePage: FC<MovePageProps> = async ({ params }) => {
+  const { generationNumber, pokemonName } = await params
+
   const pokemonData = await getPokemonData(pokemonName)
   const versionGroupNames = generationNumberToGroupArray[generationNumber]
 

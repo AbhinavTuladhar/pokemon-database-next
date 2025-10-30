@@ -9,9 +9,9 @@ import { transformPokemon } from '@/features/pokemon/transformers/transform-poke
 import { ViewTabs } from './_components'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = params
+  const { id } = await params
   return {
     title: `Generation ${id} Pokémon | Pokémon Database`,
   }
@@ -35,7 +35,9 @@ const getPokemonDataByGeneration = async (offset: number, limit: number) => {
   return response
 }
 
-const PokemonList: FC<PageProps> = async ({ params: { id } }) => {
+const PokemonList: FC<PageProps> = async ({ params }) => {
+  const { id } = await params
+
   const generationNumber = parseInt(id)
   // Getting the corresponding object from external file
   const routeData = generationData[generationNumber - 1]

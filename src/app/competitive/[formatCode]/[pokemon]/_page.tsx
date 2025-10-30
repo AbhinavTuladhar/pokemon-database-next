@@ -72,15 +72,15 @@ const combineSetData = (pokemonData: InnerAnalysis | null, setsData: SetsType | 
 }
 
 interface PokemonAnalysisParams {
-  params: {
+  params: Promise<{
     formatCode: string
     pokemon: string
-  }
+  }>
 }
 
-const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({
-  params: { pokemon, formatCode },
-}) => {
+const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({ params }) => {
+  const { pokemon, formatCode } = await params
+
   const { format, generation } = extractParts(formatCode)
 
   // Sanitising the pokemon names for Farfetch'd

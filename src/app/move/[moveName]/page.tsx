@@ -12,13 +12,13 @@ import { formatName } from '@/utils/string.utils'
 import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
 
 interface MovePageProps {
-  params: {
+  params: Promise<{
     moveName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: MovePageProps): Promise<Metadata> {
-  const { moveName } = params
+  const { moveName } = await params
   return {
     title: `${formatName(moveName)} | Pokémon moves | Pokémon Database`,
   }
@@ -29,7 +29,9 @@ const getMoveData = async (moveName: string) => {
   return transformMove(response)
 }
 
-const MoveDetail: FC<MovePageProps> = async ({ params: { moveName } }) => {
+const MoveDetail: FC<MovePageProps> = async ({ params }) => {
+  const { moveName } = await params
+
   const moveData = await getMoveData(moveName)
 
   const {

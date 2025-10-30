@@ -19,13 +19,13 @@ import {
 } from './_components'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     type: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { type } = params
+  const { type } = await params
   return {
     title: `${formatName(type)} type Pokémon | Pokémon Database`,
   }
@@ -36,7 +36,9 @@ const getTypeData = async (typeName: string) => {
   return transformType(response)
 }
 
-const TypeDetail: React.FC<PageProps> = async ({ params: { type } }) => {
+const TypeDetail: React.FC<PageProps> = async ({ params }) => {
+  const { type } = await params
+
   const typeInformation = await getTypeData(type)
 
   const { doubleDamageTo, halfDamageTo, noDamageTo, pokemon, moveList, spriteCollection } =

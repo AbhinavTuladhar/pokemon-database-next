@@ -31,13 +31,13 @@ import {
 } from './_components'
 
 interface PokemonPageProps {
-  params: {
+  params: Promise<{
     pokemonName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PokemonPageProps): Promise<Metadata> {
-  const { pokemonName } = params
+  const { pokemonName } = await params
   return {
     title: `${formatName(pokemonName)} Pokédex: stats, moves, evolution & locations | Pokémon Database`,
   }
@@ -54,7 +54,9 @@ const getSpeciesData = async (id: number | string) => {
   return transformSpecies(speciesData)
 }
 
-const PokemonPage: FC<PokemonPageProps> = async ({ params: { pokemonName } }) => {
+const PokemonPage: FC<PokemonPageProps> = async ({ params }) => {
+  const { pokemonName } = await params
+
   const pokemonData = await getPokemonData(pokemonName)
 
   const {
