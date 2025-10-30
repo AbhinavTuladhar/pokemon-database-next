@@ -42,6 +42,11 @@
   --header-height: 188px;
 }
 
+html,
+body {
+  scrollbar-gutter: stable;
+}
+
 @media (min-width: 1024px) {
   .hero-section {
     min-height: calc(100dvh - 188px);
@@ -169,7 +174,7 @@ html.dark .apexcharts-menu-item:hover {
 
 .main-layout.page-transition {
   opacity: 0;
-  filter: blur(8px);
+  filter: blur(4px);
 }
 
 .hero-banner {

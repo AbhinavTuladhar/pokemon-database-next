@@ -46,7 +46,7 @@ export const transformType = (data: Type) => {
   const {
     'generation-iii': {
       'firered-leafgreen': { name_icon: fireredLeafgreenSprite },
-      'ruby-saphire': { name_icon: rubySapphireSprite },
+      'ruby-sapphire': { name_icon: rubySapphireSprite },
       'emerald': { name_icon: emeraldSprite },
     },
     'generation-iv': {
