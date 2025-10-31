@@ -63,7 +63,7 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
   const isBerry = checkBerry(itemName, fling_effect?.name, category)
 
   return (
-    <main>
+    <>
       <div className="flex flex-wrap items-center justify-center">
         <PageTitle>
           <span> {formatName(actualItemName)}</span>
@@ -96,7 +96,7 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
       </div>
 
       {isBerry ? <BerryDetails itemName={actualItemName} /> : null}
-    </main>
+    </>
   )
 }
 

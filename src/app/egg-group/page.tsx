@@ -25,10 +25,10 @@ const getAllGroupData = async (names: string[]) => {
 
 const EggGroupPage = async () => {
   const groupNames = await getGroupList()
-
   const eggGroupData = await getAllGroupData(groupNames)
+
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Egg Groups</PageTitle>
 
       <div className="flex w-full justify-center">
@@ -36,7 +36,7 @@ const EggGroupPage = async () => {
           <EggGroupTable eggGroupData={eggGroupData} />
         </div>
       </div>
-    </main>
+    </>
   )
 }
 

@@ -22,7 +22,7 @@ const SpritePage = async () => {
   const generations = Array.from({ length: 7 }, (_, index) => index + 1)
 
   return (
-    <main>
+    <>
       <PageTitle> Pokémon Sprite Archive </PageTitle>
       <PageNavigation />
       {generations.map(generationNumber => {
@@ -40,7 +40,7 @@ const SpritePage = async () => {
           </section>
         )
       })}
-    </main>
+    </>
   )
 }
 

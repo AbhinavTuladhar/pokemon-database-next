@@ -30,7 +30,7 @@ const page = async () => {
   }))
 
   return (
-    <main>
+    <>
       <PageTitle> Pokémon growth rates </PageTitle>
       <div className="space-y-4 lg:space-y-8">
         <ComparisonChart
@@ -55,7 +55,7 @@ const page = async () => {
           />
         ))}
       </div>
-    </main>
+    </>
   )
 }
 

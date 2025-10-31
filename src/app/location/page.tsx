@@ -45,11 +45,11 @@ const LocationList = async () => {
   const regionData = formatRegionResponse(data)
 
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Locations</PageTitle>
       <RegionTabs regionData={regionData} />
       <IconKeys />
-    </main>
+    </>
   )
 }
 

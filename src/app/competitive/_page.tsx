@@ -23,14 +23,14 @@ const Page = () => {
   const generations = Array.from({ length: 7 }, (_, i) => i + 1)
 
   return (
-    <main>
+    <>
       <PageTitle> Competitive Pokémon Sets </PageTitle>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {generations.map(gen => (
           <GenerationColumn key={gen} generation={gen} />
         ))}
       </div>
-    </main>
+    </>
   )
 }
 

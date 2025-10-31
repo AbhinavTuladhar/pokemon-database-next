@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Fira_Sans } from 'next/font/google'
 import NextTopLoader from 'nextjs-toploader'
 
+import Header from '@/components/header'
 import {
   GlobalProviders,
-  HeaderSection,
   Helpers,
   MainLayout,
   PageLayout,
@@ -42,7 +42,7 @@ export default function RootLayout({
         />
         <GlobalProviders>
           <PageLayout>
-            <HeaderSection />
+            <Header />
             <MainLayout>{children}</MainLayout>
             <Helpers />
             <ToolTip />

@@ -74,7 +74,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
   ))
 
   return (
-    <main className="space-y-4">
+    <>
       <PageTitle>
         {formattedType}&nbsp;
         <span className="text-gray-400"> (type) </span>
@@ -89,7 +89,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
           />
         </Suspense>
       </section>
-      <div className="lg-xl:grid-cols-[1fr__2fr] grid grid-cols-1 justify-between gap-x-20 gap-y-4">
+      <div className="lg-xl:grid-cols-[1fr__2fr] mt-8 grid grid-cols-1 justify-between gap-x-20 gap-y-4">
         <ProsAndConsSection
           doubleDamageFromList={doubleDamageFromList}
           doubleDamageToList={doubleDamageToList}
@@ -141,7 +141,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
         <SectionTitle>{`${formatName(type)}`} Type Sprites </SectionTitle>
         <SpriteCollection spriteCollection={spriteCollection} />
       </section>
-    </main>
+    </>
   )
 }
 

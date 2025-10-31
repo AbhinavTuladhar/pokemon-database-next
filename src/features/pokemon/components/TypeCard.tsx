@@ -18,8 +18,10 @@ export const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'sm
   if (variant === 'text') {
     const fontColour = 'text-' + typeMapping[typeKey]
     const properName = typeName.charAt(0).toUpperCase() + typeName.slice(1)
+
+    // nonTextFlag is for disabling the fancy unfolding underline animation on hover, replacing it with a simple underline
     return (
-      <TransitionLink href={targetLink}>
+      <TransitionLink href={targetLink} nonTextFlag>
         <span className={`${fontColour} w-min hover:underline`}>{properName}</span>
       </TransitionLink>
     )

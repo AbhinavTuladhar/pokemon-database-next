@@ -39,7 +39,7 @@ const MovePage: FC<MovePageProps> = async ({ params }) => {
   const { front_default: defaultSprite, id, moves } = pokemonData
 
   return (
-    <main>
+    <>
       <PageTitle>
         {formatName(pokemonName)} - Generation {generationNumber} learnset
       </PageTitle>
@@ -50,7 +50,7 @@ const MovePage: FC<MovePageProps> = async ({ params }) => {
       />
       <MoveGenerationLinks id={id} />
       <MovesLearned versionNames={versionGroupNames} moves={moves} pokemonName={pokemonName} />
-    </main>
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ const PokedexPage: NextPage<{}> = async () => {
   const properData = groupGamesByGeneration(versionGroupNames)
 
   return (
-    <main>
+    <>
       <PageTitle> In-game Pokédexes</PageTitle>
       <Suspense fallback={<Loader />}>
         <section className="grid gap-y-4">
@@ -32,7 +32,7 @@ const PokedexPage: NextPage<{}> = async () => {
           ))}
         </section>
       </Suspense>
-    </main>
+    </>
   )
 }
 

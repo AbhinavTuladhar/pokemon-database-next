@@ -19,10 +19,10 @@ const ContestPage = async () => {
   const data = await getContestsData()
 
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Contests</PageTitle>
       <EffectTable contestData={data} />
-    </main>
+    </>
   )
 }
 

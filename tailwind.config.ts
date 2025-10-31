@@ -53,7 +53,7 @@ module.exports = {
     'bg-yellow-800',
     'bg-purple-600',
     'bg-indigo-600',
-    'bg-gray-700',
+    'bg-gray-600',
     'bg-gray-500',
     'bg-pink-300',
 
@@ -73,7 +73,7 @@ module.exports = {
     'from-yellow-800',
     'from-purple-600',
     'from-indigo-600',
-    'from-gray-700',
+    'from-gray-600',
     'from-gray-500',
     'from-pink-300',
 
@@ -94,7 +94,7 @@ module.exports = {
     'to-purple-600',
     'to-indigo-600',
     'to-gray-700',
-    'to-gray-500',
+    'to-gray-400',
     'to-pink-300',
 
     'to-gray-400',
@@ -134,6 +134,7 @@ module.exports = {
     'text-yellow-800',
     'text-purple-600',
     'text-indigo-600',
+    'text-gray-600',
     'text-gray-700',
     'text-gray-500',
     'text-pink-300',

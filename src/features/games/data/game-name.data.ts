@@ -162,7 +162,7 @@ export const gameToColourAndName: Record<string, GameData> = {
     properName: 'Soulsilver',
   },
   'black': {
-    colour: 'text-stone-700',
+    colour: 'text-stone-500',
     properName: 'Black',
   },
   'white': {
@@ -170,7 +170,7 @@ export const gameToColourAndName: Record<string, GameData> = {
     properName: 'White',
   },
   'black-2': {
-    colour: 'text-stone-700',
+    colour: 'text-stone-500',
     properName: 'Black 2',
   },
   'white-2': {

@@ -49,7 +49,7 @@ const MainDescription: FC = () => {
 
 const ItemPage = async () => {
   return (
-    <main>
+    <>
       <PageTitle> Pokémon Items List</PageTitle>
       <div className="grid gap-x-8 gap-y-4 lg:grid-cols-3">
         <Sidebar />
@@ -57,7 +57,7 @@ const ItemPage = async () => {
           <MainDescription />
         </div>
       </div>
-    </main>
+    </>
   )
 }
 

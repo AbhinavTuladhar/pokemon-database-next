@@ -111,7 +111,7 @@ export const typeMapping: Record<string, string> = {
   rock: 'yellow-800',
   ghost: 'purple-600',
   dragon: 'indigo-600',
-  dark: 'gray-700',
+  dark: 'gray-600',
   steel: 'gray-500',
   fairy: 'pink-300',
 }

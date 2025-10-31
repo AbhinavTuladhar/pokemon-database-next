@@ -30,12 +30,12 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
   const { pocketName } = await params
 
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Items List</PageTitle>
       <Suspense fallback={<LoadingPageFallback />}>
         <ItemTableWrapper pocketName={pocketName} />
       </Suspense>
-    </main>
+    </>
   )
 }
 

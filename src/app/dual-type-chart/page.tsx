@@ -33,7 +33,7 @@ const DualTypePage = async () => {
   const typeData = await getAllTypeData()
 
   return (
-    <main>
+    <>
       <PageTitle> Pokémon dual-type charts </PageTitle>
       <div className="grid grid-cols-12 justify-between gap-x-8 gap-y-6">
         <div className="lg-xl:col-span-3 col-span-12">
@@ -50,7 +50,7 @@ const DualTypePage = async () => {
           ))}
         </div>
       </div>
-    </main>
+    </>
   )
 }
 

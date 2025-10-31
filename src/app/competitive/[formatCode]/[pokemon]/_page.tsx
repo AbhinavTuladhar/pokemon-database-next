@@ -109,7 +109,7 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({ params }) => {
   const finalSetsData = combineSetData(pokemonData, setData)
 
   return (
-    <main>
+    <>
       <PageTitle>
         {pokemon} - Gen {generation} {format.toUpperCase()}
       </PageTitle>
@@ -136,7 +136,7 @@ const PokemonAnalysis: NextPage<PokemonAnalysisParams> = async ({ params }) => {
         ))}
         <CommentsSection comment={comments} />
       </div>
-    </main>
+    </>
   )
 }
 

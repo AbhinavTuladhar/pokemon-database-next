@@ -34,7 +34,13 @@ export const TransitionLink: FC<BlueLinkProps> = ({
   const router = useRouter()
   const pathname = usePathname()
 
+  // For checking if the link is an internal page link. If so, then skip the page transition logic.
+  const { href } = props
+  const isIdLink = href.toString().startsWith('#')
+
   const handleTransition = async (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isIdLink) return
+
     event.preventDefault()
     const mainPageLayout = document.querySelector('.main-layout')
 
@@ -67,7 +73,7 @@ export const TransitionLink: FC<BlueLinkProps> = ({
         'fancy-link': !nonTextFlag,
       })}
       onClick={handleTransition}
-      scroll={false}
+      scroll={isIdLink}
     >
       {children}
     </Link>

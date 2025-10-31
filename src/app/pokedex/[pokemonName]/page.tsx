@@ -109,7 +109,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params }) => {
   const abilityNames = abilities.map(ability => ability.ability.name)
 
   return (
-    <main>
+    <>
       <Suspense fallback={<LoadingPage />}>
         <h1 className="mt-4 text-center text-5xl font-bold">{formatName(actualName)}</h1>
         <AdjacentLinks id={id} />
@@ -230,7 +230,7 @@ const PokemonPage: FC<PokemonPageProps> = async ({ params }) => {
 
         <AdjacentLinks id={id} />
       </Suspense>
-    </main>
+    </>
   )
 }
 
