@@ -74,7 +74,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
   ))
 
   return (
-    <main className="space-y-4">
+    <>
       <PageTitle>
         {formattedType}&nbsp;
         <span className="text-gray-400"> (type) </span>
@@ -141,7 +141,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
         <SectionTitle>{`${formatName(type)}`} Type Sprites </SectionTitle>
         <SpriteCollection spriteCollection={spriteCollection} />
       </section>
-    </main>
+    </>
   )
 }
 

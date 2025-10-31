@@ -40,7 +40,7 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params }) => {
   } = await getAbilityData(abilityName)
 
   return (
-    <main>
+    <>
       <PageTitle>
         <span>{formatName(abilityNameActual)}</span>
         <span className="text-gray-400"> (ability) </span>
@@ -60,7 +60,7 @@ const AbilityDetail: FC<AbilityPageParams> = async ({ params }) => {
           </Suspense>
         </div>
       </div>
-    </main>
+    </>
   )
 }
 

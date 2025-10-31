@@ -71,13 +71,13 @@ const NatureList = async () => {
     })
 
   return (
-    <main>
+    <>
       <PageTitle>Natures</PageTitle>
       <Table useFullWidth={false}>
         {tableHeaders}
         {tableRows}
       </Table>
-    </main>
+    </>
   )
 }
 

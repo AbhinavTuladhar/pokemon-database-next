@@ -65,10 +65,10 @@ const PokemonList: FC<PageProps> = async ({ params }) => {
   }))
 
   return (
-    <main>
+    <>
       <PageTitle>Pokémon of generation {generationNumber}</PageTitle>
       <ViewTabs cardData={cardData} tableData={tableData} />
-    </main>
+    </>
   )
 }
 

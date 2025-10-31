@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Abilities</PageTitle>
       <Suspense fallback={<SearchablePageSkeleton />}>
         <AbilityTableWrapper />
       </Suspense>
-    </main>
+    </>
   )
 }
 

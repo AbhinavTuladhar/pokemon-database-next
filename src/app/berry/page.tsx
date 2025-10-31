@@ -41,10 +41,10 @@ const page = async () => {
   })
 
   return (
-    <main>
+    <>
       <PageTitle> Berries </PageTitle>
       <BerryTable berryData={combinedInformation} />
-    </main>
+    </>
   )
 }
 

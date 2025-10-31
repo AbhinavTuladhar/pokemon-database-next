@@ -39,7 +39,7 @@ const EggPage: FC<PageProps> = async ({ params }) => {
   })
 
   return (
-    <main>
+    <>
       <PageTitle>
         <span> {formatName(data.name)} </span>
         <span className="text-gray-400"> (egg group) </span>
@@ -57,7 +57,7 @@ const EggPage: FC<PageProps> = async ({ params }) => {
           </div>
         </Suspense>
       </div>
-    </main>
+    </>
   )
 }
 

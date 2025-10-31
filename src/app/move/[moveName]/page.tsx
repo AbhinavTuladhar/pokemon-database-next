@@ -55,7 +55,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params }) => {
   } = moveData
 
   return (
-    <main>
+    <>
       <Suspense fallback={<Loader />}>
         <PageTitle>
           <span>{formatName(actualMoveName)}</span>
@@ -103,7 +103,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params }) => {
           <InfiniteMiniCardScroll increment={50} nameList={pokemon} />
         </section>
       </Suspense>
-    </main>
+    </>
   )
 }
 

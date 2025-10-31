@@ -50,7 +50,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params }) => {
   )
 
   return (
-    <main>
+    <>
       <PageTitle>{formatName(pokemonName)} Sprites</PageTitle>
       <section>
         <Intro id={id} name={pokemonName} />
@@ -79,7 +79,7 @@ const SpritePage: FC<SpritePageProps> = async ({ params }) => {
       <section>
         <OtherSprites imageData={{ otherSprites }} />
       </section>
-    </main>
+    </>
   )
 }
 

@@ -23,7 +23,7 @@ const AnimatedSprites = async () => {
   const generations = Array.from({ length: 7 }, (_, index) => index + 1)
 
   return (
-    <main className="space-y-4">
+    <div className="space-y-4">
       <PageTitle>Animated Pokémon Sprite Collection</PageTitle>
       <p>The table represents the regular and shiny sprites in generation 7, respectively. </p>
       <PageNavigation />
@@ -43,7 +43,7 @@ const AnimatedSprites = async () => {
           </section>
         )
       })}
-    </main>
+    </div>
   )
 }
 

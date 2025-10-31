@@ -66,12 +66,12 @@ const LocationDetail: FC<PageProps> = async ({ params }) => {
   // Inform the user if there is no encounter information.
   if (subLocationData?.length === 0) {
     return (
-      <main>
+      <>
         <PageTitle>{formatName(areaName)}</PageTitle>
         <h2 className="text-center text-2xl font-bold">
           Could not find any encounter information for this location.
         </h2>
-      </main>
+      </>
     )
   }
 
@@ -126,7 +126,7 @@ const LocationDetail: FC<PageProps> = async ({ params }) => {
     .sort((prev, curr) => (prev.generation <= curr.generation ? 1 : -1)) // Next sort by the generation.
 
   return (
-    <main>
+    <>
       <PageTitle>
         <span>{formatName(locationData.locationName)}</span>
         <span className="text-gray-400"> (location) </span>
@@ -141,7 +141,7 @@ const LocationDetail: FC<PageProps> = async ({ params }) => {
           />
         )
       })}
-    </main>
+    </>
   )
 }
 

@@ -55,7 +55,7 @@ const GamePage: NextPage<GameNamePageProps> = async ({ params }) => {
   })
 
   return (
-    <main>
+    <>
       <PageTitle> {properVersionGroup} Pokédex </PageTitle>
       <Suspense fallback={<Loader />}>
         <div>
@@ -64,7 +64,7 @@ const GamePage: NextPage<GameNamePageProps> = async ({ params }) => {
           ))}
         </div>
       </Suspense>
-    </main>
+    </>
   )
 }
 export default GamePage

@@ -29,12 +29,12 @@ const MoveList: FC<PageProps> = async ({ params }) => {
   const generationNumber = parseInt(number) || Infinity
 
   return (
-    <main>
+    <>
       <PageTitle>Pokémon Moves from Generation {number}</PageTitle>
       <Suspense fallback={<SearchablePageSkeleton />}>
         <MoveTableWrapper generationNumber={generationNumber} />
       </Suspense>
-    </main>
+    </>
   )
 }
 
