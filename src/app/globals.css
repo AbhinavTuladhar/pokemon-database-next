@@ -78,6 +78,7 @@ pre {
   background-position: left 1.1em;
   color: var(--link-hover-colour);
   outline: none;
+  text-decoration: none;
 }
 
 /* Custom scrollbar size */

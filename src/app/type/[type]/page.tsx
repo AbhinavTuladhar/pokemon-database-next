@@ -89,7 +89,7 @@ const TypeDetail: React.FC<PageProps> = async ({ params }) => {
           />
         </Suspense>
       </section>
-      <div className="lg-xl:grid-cols-[1fr__2fr] grid grid-cols-1 justify-between gap-x-20 gap-y-4">
+      <div className="lg-xl:grid-cols-[1fr__2fr] mt-8 grid grid-cols-1 justify-between gap-x-20 gap-y-4">
         <ProsAndConsSection
           doubleDamageFromList={doubleDamageFromList}
           doubleDamageToList={doubleDamageToList}
