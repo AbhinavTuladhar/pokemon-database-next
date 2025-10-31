@@ -11,13 +11,13 @@ import { getResourceId } from '@/utils/url.utils'
 import { GroupList, PokemonTable } from './_components'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     eggGroup: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { eggGroup } = params
+  const { eggGroup } = await params
   return {
     title: `${formatName(eggGroup)} egg group | Pokémon Database`,
   }
@@ -28,7 +28,9 @@ const getEggGroupData = async (name: string) => {
   return transformEggGroup(response)
 }
 
-const EggPage: FC<PageProps> = async ({ params: { eggGroup } }) => {
+const EggPage: FC<PageProps> = async ({ params }) => {
+  const { eggGroup } = await params
+
   const data = await getEggGroupData(eggGroup)
 
   const speciesIds = data.pokemonSpecies.map(species => {

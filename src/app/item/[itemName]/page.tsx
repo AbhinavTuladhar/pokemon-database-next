@@ -17,13 +17,13 @@ const getItemData = async (name: string) => {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     itemName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { itemName } = params
+  const { itemName } = await params
   return {
     title: `${formatName(itemName)} | Pokémon Items | Pokémon Database`,
   }
@@ -42,7 +42,9 @@ const checkBerry = (itemName: string, flingEffect: string | undefined, category:
   )
 }
 
-const ItemPage: FC<PageProps> = async ({ params: { itemName } }) => {
+const ItemPage: FC<PageProps> = async ({ params }) => {
+  const { itemName } = await params
+
   const itemData = await getItemData(itemName)
 
   const {

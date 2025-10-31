@@ -11,13 +11,13 @@ import { formatName } from '@/utils/string.utils'
 import { AbilityDescription, PokemonTable } from './_components'
 
 interface AbilityPageParams {
-  params: {
+  params: Promise<{
     abilityName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: AbilityPageParams): Promise<Metadata> {
-  const { abilityName } = params
+  const { abilityName } = await params
   return {
     title: `${formatName(abilityName)} | Pokémon abilities | Pokémon Database`,
   }
@@ -28,7 +28,9 @@ const getAbilityData = async (name: string) => {
   return transformAbility(response)
 }
 
-const AbilityDetail: FC<AbilityPageParams> = async ({ params: { abilityName } }) => {
+const AbilityDetail: FC<AbilityPageParams> = async ({ params }) => {
+  const { abilityName } = await params
+
   const {
     descriptions,
     longEntry,

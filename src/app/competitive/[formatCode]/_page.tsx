@@ -13,12 +13,14 @@ const getFormatAnalyses = async (formatCode: string) => {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     formatCode: string
-  }
+  }>
 }
 
-const Page: NextPage<PageProps> = async ({ params: { formatCode } }) => {
+const Page: NextPage<PageProps> = async ({ params }) => {
+  const { formatCode } = await params
+
   const data = await getFormatAnalyses(formatCode)
 
   if (!data) {

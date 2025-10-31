@@ -24,19 +24,21 @@ const getPokemonData = async (name: string) => {
 }
 
 interface SpritePageProps {
-  params: {
+  params: Promise<{
     pokemonName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: SpritePageProps): Promise<Metadata> {
-  const { pokemonName } = params
+  const { pokemonName } = await params
   return {
     title: `${formatName(pokemonName)} sprites and artwork gallery | Pokémon Database`,
   }
 }
 
-const SpritePage: FC<SpritePageProps> = async ({ params: { pokemonName } }) => {
+const SpritePage: FC<SpritePageProps> = async ({ params }) => {
+  const { pokemonName } = await params
+
   const pokemonData = await getPokemonData(pokemonName)
 
   const { id, spriteCollection, ...spriteData } = pokemonData

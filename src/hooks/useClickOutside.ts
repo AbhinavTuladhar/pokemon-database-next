@@ -21,6 +21,7 @@ const useClickOutside = <T extends HTMLElement>(callback: ClickOutsideHandler): 
     }
   }, [callback])
 
+  // @ts-expect-error
   return ref
 }
 

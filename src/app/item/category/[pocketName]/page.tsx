@@ -21,12 +21,14 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     pocketName: string
-  }
+  }>
 }
 
-const ItemPage: FC<PageProps> = async ({ params: { pocketName } }) => {
+const ItemPage: FC<PageProps> = async ({ params }) => {
+  const { pocketName } = await params
+
   return (
     <main>
       <PageTitle>Pokémon Items List</PageTitle>

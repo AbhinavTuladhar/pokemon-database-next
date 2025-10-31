@@ -11,9 +11,9 @@ import { getResourceId } from '@/utils/url.utils'
 import InGamePokedexSection from './_components'
 
 interface GameNamePageProps {
-  params: {
+  params: Promise<{
     gameName: string
-  }
+  }>
 }
 
 const getPokedexes = async (versionGroup: string) => {
@@ -26,7 +26,9 @@ const getPokedexPokemonList = async (pokedex: string) => {
   return { pokedex, pokemonList }
 }
 
-const GamePage: NextPage<GameNamePageProps> = async ({ params: { gameName } }) => {
+const GamePage: NextPage<GameNamePageProps> = async ({ params }) => {
+  const { gameName } = await params
+
   const properVersionGroup = versionToProperNameLong[gameName].split('/').join('&')
 
   /**

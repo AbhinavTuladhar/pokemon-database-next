@@ -12,13 +12,13 @@ import { formatName } from '@/utils/string.utils'
 import { GenerationEncounters } from './_components'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     areaName: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { areaName } = params
+  const { areaName } = await params
   return {
     title: `${formatName(areaName)} | Pokémon locations | Pokémon Database`,
   }
@@ -54,7 +54,9 @@ const getSubLocationData = async (names: string[]) => {
   return responses.map(transformLocationArea)
 }
 
-const LocationDetail: FC<PageProps> = async ({ params: { areaName } }) => {
+const LocationDetail: FC<PageProps> = async ({ params }) => {
+  const { areaName } = await params
+
   const locationData = await getLocationData(areaName)
   const methodData = await getMethodDescriptions()
 

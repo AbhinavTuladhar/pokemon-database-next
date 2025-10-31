@@ -7,13 +7,13 @@ import { PageTitle } from '@/components/ui/Title'
 import { MoveTableWrapper } from './_components'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     number: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { number } = params
+  const { number } = await params
   return {
     title: `Generation ${number} moves | Pokémon Database`,
   }
@@ -23,7 +23,9 @@ export async function generateStaticParams() {
   return Array.from({ length: 7 }, (_, index) => ({ number: (index + 1).toString() }))
 }
 
-const MoveList: FC<PageProps> = async ({ params: { number } }) => {
+const MoveList: FC<PageProps> = async ({ params }) => {
+  const { number } = await params
+
   const generationNumber = parseInt(number) || Infinity
 
   return (
