@@ -1,7 +1,7 @@
 import { numberMapper } from '@/data/number.data'
 import { versionToGeneration } from '@/features/games/data/game-generation.data'
 import { isGen1to7 } from '@/features/pokemon/helpers/pokemon.helper'
-import { Move, NamedApiResource } from '@/types'
+import { Move, NamedApiResource, PartialExcept, PastMoveStatValues } from '@/types'
 import { VerboseEffect } from '@/types/utils/Common'
 import { getResourceId } from '@/utils/url.utils'
 
@@ -32,6 +32,7 @@ export const transformMove = (move: Move) => {
     power,
     pp: PP,
     priority,
+    past_values,
     target: { name: targetType },
     type: { name: moveType },
   } = move
@@ -89,6 +90,8 @@ export const transformMove = (move: Move) => {
     machine => machine.version_group.name !== 'scarlet-violet',
   )
 
+  const filteredPastValues = transformPastValues(past_values)
+
   return {
     accuracy: realAccuracy,
     damageClass,
@@ -117,5 +120,32 @@ export const transformMove = (move: Move) => {
     pokemon,
     contestTypeName,
     contestEffectId,
+    pastValues: filteredPastValues,
   }
+}
+
+export const transformPastValues = (data: Move['past_values']) => {
+  // Non-null values represent those values which have actually been changed throughout the generations.
+  // The 'effect_entries' array is also filtered out.
+  const changedValues = data.map(pastValue =>
+    Object.fromEntries(
+      Object.entries(pastValue).filter(
+        ([_, value]) => value !== null && !(Array.isArray(value) && value.length === 0),
+      ),
+    ),
+  ) as Array<PartialExcept<PastMoveStatValues, 'version_group'>>
+
+  // If the type has been changed, then return the name of the type.
+  const changedValuesWithGeneration = changedValues.map(({ version_group, type, ...rest }) => {
+    // Get the generation named based on the version group name
+    const generation = versionToGeneration[version_group.name]
+
+    return {
+      ...rest,
+      generation,
+      ...(type ? { type: type.name } : {}),
+    }
+  })
+
+  return changedValuesWithGeneration
 }
