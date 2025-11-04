@@ -4,7 +4,7 @@
  */
 
 import { transformAbility } from '@/features/battle/transformers/transform-ability'
-import { transformMove } from '@/features/battle/transformers/transform-move'
+import { transformMove, transformPastValues } from '@/features/battle/transformers/transform-move'
 import { transformBerry } from '@/features/games/transformers/transform-berry'
 import { transformEncounter } from '@/features/games/transformers/transform-encounter'
 import { transformItem } from '@/features/games/transformers/transform-item'
@@ -31,6 +31,7 @@ type TransformedSprites = ReturnType<typeof transformSprites>
 type TransformedGrowthRate = ReturnType<typeof transformGrowthRate>
 type TransformedEggGroup = ReturnType<typeof transformEggGroup>
 type TransformedBerry = ReturnType<typeof transformBerry>
+type TransformedPastMoveValue = ReturnType<typeof transformPastValues>
 
 // TransformedEncounter returns an array of objects.
 // We need to find the interface of the objects in the array
@@ -95,15 +96,20 @@ interface PokedexEntry {
   generationInternal: string
 }
 
+// Utility type for having all partial values except one
+type PartialExcept<T, K extends keyof T> = Partial<T> & Pick<T, K>
+
 // For combined berry and item information
 type CombinedBerryItem = TransformedBerry & TransformedItem
 
 export type {
   CombinedBerryItem,
+  ElementType,
   EvolutionPokemon,
   GenerationSprite,
   GenericNamedResource,
   GroupedLocationArea,
+  PartialExcept,
   PokedexEntry,
   SpriteDataType,
   StatTable,
@@ -116,6 +122,7 @@ export type {
   TransformedLocation,
   TransformedMove,
   TransformedMoveLevel,
+  TransformedPastMoveValue,
   TransformedPokemon,
   TransformedSpecies,
   TransformedSprites,

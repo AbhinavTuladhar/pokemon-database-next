@@ -76,6 +76,7 @@ export const versionToGeneration: Record<string, string> = {
   'omega-ruby-alpha-sapphire': 'Generation 6',
   'sun-moon': 'Generation 7',
   'ultra-sun-ultra-moon': 'Generation 7',
+  'lets-go-pikachu-lets-go-eevee': 'Generation 7',
   'sword-shield': 'Generation 8',
 }
 

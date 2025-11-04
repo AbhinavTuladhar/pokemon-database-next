@@ -9,7 +9,14 @@ import { transformMove } from '@/features/battle/transformers/transform-move'
 import { InfiniteMiniCardScroll } from '@/features/pokemon/components/InfiniteCardScroll'
 import { formatName } from '@/utils/string.utils'
 
-import { ContestInfo, GameDescription, MachineRecord, MoveData, MoveTarget } from './_components'
+import {
+  ContestInfo,
+  GameDescription,
+  MachineRecord,
+  MoveData,
+  MoveTarget,
+  PastValues,
+} from './_components'
 
 interface MovePageProps {
   params: Promise<{
@@ -52,6 +59,7 @@ const MoveDetail: FC<MovePageProps> = async ({ params }) => {
     moveName: actualMoveName,
     contestEffectId,
     contestTypeName,
+    pastValues,
   } = moveData
 
   return (
@@ -76,6 +84,9 @@ const MoveDetail: FC<MovePageProps> = async ({ params }) => {
           </section>
           <section>
             <Description entry={longEntry} chance={effect_chance} />
+            {pastValues.length > 0 ? (
+              <PastValues moveName={moveName} pastValues={pastValues} />
+            ) : null}
           </section>
         </div>
         <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-[1fr__2fr]">
