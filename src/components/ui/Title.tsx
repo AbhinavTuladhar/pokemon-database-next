@@ -5,5 +5,5 @@ export const PageTitle: FC<PropsWithChildren> = ({ children }) => (
 )
 
 export const SectionTitle: FC<PropsWithChildren> = ({ children }) => {
-  return <div className="mt-8 mb-4 text-4xl font-bold">{children}</div>
+  return <h2 className="mt-8 mb-4 text-4xl font-bold">{children}</h2>
 }

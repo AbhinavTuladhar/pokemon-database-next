@@ -163,7 +163,7 @@ html.dark .apexcharts-menu-item:hover {
   max-width: none;
 }
 
-.main-layout:has(.hero-banner) > * {
+.main-layout:has(.hero-banner) > *:first-child {
   @apply -mt-20 md:-mt-7;
   position: relative;
   z-index: 0;
