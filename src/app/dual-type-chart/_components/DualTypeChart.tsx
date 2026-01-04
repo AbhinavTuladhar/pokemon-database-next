@@ -1,4 +1,4 @@
-import React, { FC, Fragment, PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 
 import { SectionTitle } from '@/components/ui/Title'
 import { MiniTypeCard, TypeCard } from '@/features/pokemon/components/TypeCard'
@@ -56,11 +56,11 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
   const [firstType, secondType] = typeCombination
 
   return (
-    <Fragment key={`${firstType} ${secondType}`}>
+    <div className="actual-rows contents" key={`row-${firstType}-${secondType}`}>
       <div className="flex flex-row gap-x-px">
-        <TypeCard key={`${firstType} ${secondType}`} typeName={firstType} variant="big" />
+        <TypeCard key={`first-${firstType}-${secondType}`} typeName={firstType} variant="big" />
         {firstType !== secondType ? (
-          <TypeCard key={`${firstType} ${secondType}`} typeName={secondType} variant="big" />
+          <TypeCard key={`second-${firstType}-${secondType}`} typeName={secondType} variant="big" />
         ) : (
           <div className="border-bd-light dark:border-bd-dark grid w-16 place-items-center rounded-sm border bg-zinc-400 text-white">
             -
@@ -77,7 +77,7 @@ const TableRow: FC<RowProps> = ({ typeCombination, attackingTypeInfo }) => {
           </div>
         )
       })}
-    </Fragment>
+    </div>
   )
 }
 
@@ -101,17 +101,20 @@ export const DualTypeChart: FC<DualTypeChartProps> = ({
       <div className="flex justify-center">
         <div className="overflow-auto">
           <div className="grid-cols-dual-type-chart grid">
-            {/* Corner cell */}
-            <div className="border-bd-light dark:border-bd-dark -mb-px flex h-[36px] flex-col items-center justify-center rounded-sm border text-[10px]">
-              <span> ATTACK → </span>
-              <span> DEFENCE ↴ </span>
-            </div>
-
             {/* First row */}
-            <ScoreCell>Score</ScoreCell>
-            {typeList.map(type => (
-              <MiniTypeCard typeName={type} key={type} />
-            ))}
+            <div className="first-row contents">
+              {/* Corner cell */}
+              <div className="border-bd-light dark:border-bd-dark -mb-px flex h-9 flex-col items-center justify-center rounded-sm border text-[10px]">
+                <span> ATTACK → </span>
+                <span> DEFENCE ↴ </span>
+              </div>
+
+              {/* First row */}
+              <ScoreCell>Score</ScoreCell>
+              {typeList.map(type => (
+                <MiniTypeCard typeName={type} key={type} />
+              ))}
+            </div>
 
             {/* Other cells */}
             {typeCombinations.map(typeCombo => (

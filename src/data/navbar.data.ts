@@ -25,4 +25,5 @@ export const mechanicsLinks = [
   { path: '/egg-group', name: 'Egg groups' },
   { path: '/growth-rate', name: 'Growth rates' },
   { path: '/contests', name: 'Contests' },
+  { path: '/tools/type-coverage', name: 'Type coverage checker' },
 ]
