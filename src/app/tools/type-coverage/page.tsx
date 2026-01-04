@@ -3,7 +3,7 @@ import { typeList } from '@/features/pokemon/data/type.data'
 import TypesService from '@/features/pokemon/services/types.service'
 import { transformType } from '@/features/pokemon/transformers/transform-type'
 
-import MainPage from './_components'
+import { MainPage } from './_components'
 
 const getAllTypeData = async () => {
   const typeData = await TypesService.getByNames(typeList)

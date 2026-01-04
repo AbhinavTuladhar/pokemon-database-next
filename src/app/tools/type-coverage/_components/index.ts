@@ -1,1 +1,2 @@
-export { default } from './MainPage'
+export { MainPage } from './MainPage'
+export { TypeSelector } from './TypeSelector'

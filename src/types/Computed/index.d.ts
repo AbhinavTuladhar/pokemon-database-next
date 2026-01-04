@@ -102,7 +102,21 @@ type PartialExcept<T, K extends keyof T> = Partial<T> & Pick<T, K>
 // For combined berry and item information
 type CombinedBerryItem = TransformedBerry & TransformedItem
 
+// For the type coverage tool
+interface AttackingTypeInfo {
+  typeName: string
+  attackingTypeInfo: AttackingType
+}
+
+interface AttackingType {
+  doubleDamageTo: TransformedType['doubleDamageTo']
+  halfDamageTo: TransformedType['halfDamageTo']
+  noDamageTo: TransformedType['noDamageTo']
+}
+
 export type {
+  AttackingType,
+  AttackingTypeInfo,
   CombinedBerryItem,
   ElementType,
   EvolutionPokemon,
