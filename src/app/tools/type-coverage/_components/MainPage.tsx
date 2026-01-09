@@ -29,7 +29,7 @@ export const MainPage: FC<Props> = ({ data }) => {
   }
 
   return (
-    <div>
+    <div className="space-y-4 lg:space-y-10">
       <TypeSelector
         selectedTypes={selectedTypes}
         handleButtonClick={handleButtonClick}

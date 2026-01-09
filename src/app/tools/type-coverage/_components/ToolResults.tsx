@@ -7,24 +7,27 @@ import { calculateOffensiveTypeEffectiveness } from '@/features/pokemon/helpers/
 import { AttackingTypeInfo } from '@/types'
 import { combinationN } from '@/utils/array.utils'
 
+import { EffectType } from '../_types'
+
+import ToolsResultsSummary from './ToolResultsSummary'
+
 interface Props {
   selectedTypes: string[]
   typeData: AttackingTypeInfo[]
 }
 
-type EffectType = 'immune' | 'not-very-effective' | 'normal' | 'super-effective'
-
 const ToolResults: FC<Props> = memo(({ selectedTypes, typeData }) => {
   const finalResults = computeFinalResults(selectedTypes, typeData)
+  const resultsArray = Object.entries(finalResults) as [EffectType, string[][]][]
 
   return (
-    <div>
-      {selectedTypes.length > 0 && (
-        <>
-          <span>The results are</span>
-          <pre>{JSON.stringify(finalResults, null, 2)}</pre>
-        </>
-      )}
+    <div className="space-y-10">
+      <ToolsResultsSummary
+        data={resultsArray.map(([title, combos]) => ({
+          title: effectTypeToTitleMap[title],
+          count: combos.length,
+        }))}
+      />
     </div>
   )
 })
@@ -111,6 +114,13 @@ const getEffectType = (multiplier: number): EffectType => {
   } else {
     return 'super-effective'
   }
+}
+
+export const effectTypeToTitleMap: Record<EffectType, string> = {
+  'immune': 'No effect',
+  'not-very-effective': 'Not very effective',
+  'normal': 'Normal effectiveness',
+  'super-effective': 'Super effective',
 }
 
 export default ToolResults
