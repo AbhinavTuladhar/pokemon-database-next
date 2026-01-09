@@ -16,14 +16,15 @@ export const TypeSelector: FC<Props> = ({ selectedTypes, handleButtonClick, hand
     <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-9 gap-2">
         {typeList.map(type => (
-          <button
-            className={`${selectedTypes.includes(type) ? 'bg-gray-300 dark:bg-gray-700' : ''} grid cursor-pointer place-items-center px-2 py-6 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700`}
-            key={type}
-            onClick={() => handleButtonClick(type)}
-            type="button"
-          >
-            <TypeCard typeName={type} key={type} isLink={false} />
-          </button>
+          <div key={type}>
+            <button
+              className={`${selectedTypes.includes(type) ? 'bg-gray-300 dark:bg-gray-700' : ''} grid cursor-pointer place-items-center p-6 duration-300 hover:bg-gray-300 dark:hover:bg-gray-700`}
+              onClick={() => handleButtonClick(type)}
+              type="button"
+            >
+              <TypeCard typeName={type} key={type} isLink={false} />
+            </button>
+          </div>
         ))}
       </div>
       <div className="flex justify-center">
