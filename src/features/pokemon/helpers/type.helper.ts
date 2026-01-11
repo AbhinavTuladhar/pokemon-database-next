@@ -1,30 +1,12 @@
 import { TransformedType } from '@/types'
 
+import { typeList } from '../data/type.data'
+
 interface MappingInterface {
   [key: string]: number
 }
 
 export const calculateDefensiveTypeEffectiveness = (typeInfo: Array<TransformedType>) => {
-  const typeList = [
-    'normal',
-    'fire',
-    'water',
-    'electric',
-    'grass',
-    'ice',
-    'fighting',
-    'poison',
-    'ground',
-    'flying',
-    'psychic',
-    'bug',
-    'rock',
-    'ghost',
-    'dragon',
-    'dark',
-    'steel',
-    'fairy',
-  ]
   const typeEffectivenessList = typeList.reduce((acc, curr) => {
     acc[curr] = 1
     return acc

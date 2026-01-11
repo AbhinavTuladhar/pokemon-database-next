@@ -27,6 +27,7 @@
   --color-muted-blue: hsl(229, 55%, 27%); /* Colour used in sections with links */
   --color-dark-highlighted: hsl(224, 14.6%, 20.2%);
 
+  --breakpoint-xs: 30rem;
   --breakpoint-md-lg: 51.25rem;
   --breakpoint-lg-xl: 73.125rem;
 

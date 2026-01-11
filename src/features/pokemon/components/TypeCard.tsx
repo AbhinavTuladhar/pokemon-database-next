@@ -8,9 +8,35 @@ interface TypeCardProps {
   typeName: string
   className?: string
   variant?: 'small' | 'big' | 'text'
+  isLink?: boolean
 }
 
-export const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'small' }) => {
+interface BaseTypeCardProps {
+  backgroundColour: string
+  typeName: string
+  variant?: TypeCardProps['variant']
+  className?: string
+}
+
+const BaseTypeCard: FC<BaseTypeCardProps> = ({
+  backgroundColour,
+  typeName,
+  className,
+  variant = 'small',
+}) => (
+  <div
+    className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} text-shadow flex w-16 max-w-16 min-w-16 flex-col items-center justify-center rounded-sm text-xs text-white shadow-black/70 transition-all duration-200 hover:brightness-105`}
+  >
+    {typeName.toUpperCase()}
+  </div>
+)
+
+export const TypeCard: FC<TypeCardProps> = ({
+  typeName,
+  className,
+  variant = 'small',
+  isLink = true,
+}) => {
   const typeKey = typeName?.toLowerCase()
   const backgroundColour = 'bg-' + typeMapping[typeKey]
   const targetLink = `/type/${typeName}`
@@ -26,18 +52,27 @@ export const TypeCard: FC<TypeCardProps> = ({ typeName, className, variant = 'sm
       </TransitionLink>
     )
   }
+
   return (
-    <TransitionLink
-      className="text-shadow text-white shadow-black/70"
-      href={targetLink}
-      nonTextFlag
-    >
-      <div
-        className={`${backgroundColour} ${className} ${variant === 'big' ? 'h-9' : 'h-[27px]'} flex w-16 max-w-16 min-w-16 flex-col items-center justify-center rounded-sm text-xs transition-all duration-200 hover:brightness-105`}
-      >
-        {typeName?.toUpperCase()}
-      </div>
-    </TransitionLink>
+    <>
+      {isLink ? (
+        <TransitionLink href={targetLink} nonTextFlag>
+          <BaseTypeCard
+            backgroundColour={backgroundColour}
+            typeName={typeName}
+            variant={variant}
+            className={className}
+          />
+        </TransitionLink>
+      ) : (
+        <BaseTypeCard
+          backgroundColour={backgroundColour}
+          typeName={typeName}
+          variant={variant}
+          className={className}
+        />
+      )}
+    </>
   )
 }
 
@@ -50,9 +85,9 @@ export const MiniTypeCard: React.FC<MinCardProps> = ({ typeName }) => {
   const backgroundColourType = `bg-${typeMapping[typeName]}`
 
   return (
-    <TransitionLink className="text-shadow shadow-black/70" href={`/type/${typeName}`} nonTextFlag>
+    <TransitionLink href={`/type/${typeName}`} nonTextFlag>
       <div
-        className={`${backgroundColourType} flex h-[36px] w-[36px] items-center justify-center rounded-sm text-xs tracking-tight text-white duration-300 hover:brightness-125`}
+        className={`${backgroundColourType} text-shadow flex h-9 w-9 items-center justify-center rounded-sm text-xs tracking-tight text-white shadow-black/70 duration-300 hover:brightness-125`}
       >
         {typeName.slice(0, 3).toUpperCase()}
       </div>
