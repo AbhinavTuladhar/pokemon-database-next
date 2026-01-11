@@ -9,8 +9,8 @@ interface Props {
   data: Column[]
 }
 
-const ToolsResultsSummary: FC<Props> = ({ data }) => (
-  <ul className="mx-auto grid max-w-5xl grid-cols-4">
+const ResultsSummary: FC<Props> = ({ data }) => (
+  <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-y-4 sm:grid-cols-4">
     {data.map(({ title, count }) => (
       <li key={title} className="flex flex-col items-center gap-1">
         <span className="text-xl font-bold">{count}</span>
@@ -20,4 +20,4 @@ const ToolsResultsSummary: FC<Props> = ({ data }) => (
   </ul>
 )
 
-export default ToolsResultsSummary
+export default ResultsSummary

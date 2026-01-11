@@ -9,30 +9,40 @@ import { combinationN } from '@/utils/array.utils'
 
 import { EffectType } from '../_types'
 
-import ToolsResultsSummary from './ToolResultsSummary'
+import ResultsSection from './ResultsSection'
+import ResultsSummary from './ResultsSummary'
 
 interface Props {
   selectedTypes: string[]
   typeData: AttackingTypeInfo[]
 }
 
-const ToolResults: FC<Props> = memo(({ selectedTypes, typeData }) => {
+const Results: FC<Props> = memo(({ selectedTypes, typeData }) => {
   const finalResults = computeFinalResults(selectedTypes, typeData)
   const resultsArray = Object.entries(finalResults) as [EffectType, string[][]][]
 
   return (
     <div className="space-y-10">
-      <ToolsResultsSummary
+      <ResultsSummary
         data={resultsArray.map(([title, combos]) => ({
           title: effectTypeToTitleMap[title],
           count: combos.length,
         }))}
       />
+      <div className="flex flex-col gap-10">
+        {resultsArray.map(([title, combinations]) => (
+          <ResultsSection
+            key={title}
+            title={effectTypeToTitleMap[title]}
+            combinations={combinations}
+          />
+        ))}
+      </div>
     </div>
   )
 })
 
-ToolResults.displayName = 'ToolResults'
+Results.displayName = 'ToolResults'
 
 const computeFinalResults = (selectedTypes: string[], typeData: AttackingTypeInfo[]) => {
   // Dual type combinations, except for repeating types.
@@ -65,6 +75,11 @@ const computeFinalResults = (selectedTypes: string[], typeData: AttackingTypeInf
    */
   return finalResults.reduce(
     (acc, item) => {
+      // For the initial state in which no types are selected
+      if (selectedTypes.length === 0) {
+        return acc
+      }
+
       const { combination, multiplier } = item
       const effectType = getEffectType(multiplier)
       acc[effectType].push(combination)
@@ -123,4 +138,4 @@ export const effectTypeToTitleMap: Record<EffectType, string> = {
   'super-effective': 'Super effective',
 }
 
-export default ToolResults
+export default Results
