@@ -36,7 +36,6 @@ export const transformItem = (item: Item) => {
   const {
     attributes,
     category: tempCategory,
-    cost,
     effect_entries,
     flavor_text_entries,
     fling_effect,
@@ -46,6 +45,7 @@ export const transformItem = (item: Item) => {
     name,
     names,
     sprites: tempSprite,
+    prices,
   } = item
 
   const tempEntry = effect_entries.find(entry => entry.language.name === 'en')
@@ -80,10 +80,36 @@ export const transformItem = (item: Item) => {
 
   const sprite = tempSprite.default ?? ''
 
+  // Get an array of objects for the prices of the item. Only for Pokédollars.
+  const pricesList = prices
+    .filter(price => price.currency.name === 'poke-dollar')
+    .map(price => ({
+      purchasePrice: price.purchase_price,
+      sellPrice: price.sell_price,
+      versionGroup: price.version_group.name,
+    }))
+
+  // The buying and selling price should be preferably that of US/UM. If not available, it should be
+  // the latest generation.
+  let purchasePrice: number | null = null
+  let sellPrice: number | null = null
+
+  if (pricesList.length > 0) {
+    const usumPrice = pricesList.find(price => price.versionGroup === 'ultra-sun-ultra-moon')
+
+    if (usumPrice) {
+      purchasePrice = usumPrice.purchasePrice
+      sellPrice = usumPrice.sellPrice
+    } else {
+      const latestPrice = pricesList[pricesList.length - 1]
+      purchasePrice = latestPrice.purchasePrice
+      sellPrice = latestPrice.sellPrice
+    }
+  }
+
   return {
     attributes: attributeNames,
     category,
-    cost,
     shortEntry,
     generationIntroduced,
     id,
@@ -95,5 +121,8 @@ export const transformItem = (item: Item) => {
     fling_effect,
     fling_power,
     descriptions,
+    pricesList,
+    purchasePrice,
+    sellPrice,
   }
 }

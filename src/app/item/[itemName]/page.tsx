@@ -53,7 +53,6 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
     descriptions,
     fling_effect,
     fling_power,
-    cost,
     names,
     category,
     sprite,
@@ -71,12 +70,12 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
         </PageTitle>
         <Image src={sprite} alt={actualItemName} width={64} height={64} />
       </div>
+
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr__3fr]">
         <section>
           <ItemData
             attributes={attributes}
             category={category}
-            cost={cost}
             fling_effect={fling_effect}
             fling_power={fling_power}
           />

@@ -47,7 +47,7 @@ const MainDescription: FC = () => {
   )
 }
 
-const ItemPage = async () => {
+const ItemPage = () => {
   return (
     <>
       <PageTitle> Pokémon Items List</PageTitle>
