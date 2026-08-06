@@ -32,7 +32,7 @@ const page = async () => {
   return (
     <>
       <PageTitle> Pokémon growth rates </PageTitle>
-      <div className="space-y-4 lg:space-y-8">
+      <div className="space-y-4 pb-4 lg:space-y-8">
         <ComparisonChart
           data={levelData}
           title="Experience required to reach each level"

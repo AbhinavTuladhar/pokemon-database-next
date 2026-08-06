@@ -19,15 +19,7 @@ const useAccordion = () => {
   return context
 }
 
-interface AccordionTriggerProps extends PropsWithChildren {}
-interface AccordionContentProps extends PropsWithChildren {}
-interface AccordionProps extends PropsWithChildren {}
-type AccordionComponent = FC<AccordionProps> & {
-  Trigger: FC<AccordionTriggerProps>
-  Content: FC<AccordionContentProps>
-}
-
-const Accordion: AccordionComponent = ({ children }) => {
+export const Accordion: FC<PropsWithChildren> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
@@ -41,7 +33,7 @@ const Accordion: AccordionComponent = ({ children }) => {
   )
 }
 
-const AccordionTrigger: FC<AccordionTriggerProps> = ({ children }) => {
+export const AccordionTrigger: FC<PropsWithChildren> = ({ children }) => {
   const { isOpen, toggle } = useAccordion()
 
   return (
@@ -55,23 +47,18 @@ const AccordionTrigger: FC<AccordionTriggerProps> = ({ children }) => {
     </button>
   )
 }
-const AccordionContent: FC<AccordionContentProps> = ({ children }) => {
+export const AccordionContent: FC<PropsWithChildren> = ({ children }) => {
   const { isOpen } = useAccordion()
 
   return (
     <div
       className={classNames(
-        'grid transition-[grid-template-rows] duration-500 ease-in-out',
-        { 'grid-rows-[1fr]': isOpen },
-        { 'grid-rows-[0fr]': !isOpen },
+        'grid transition-all duration-500 ease-in-out',
+        { 'visible grid-rows-[1fr] opacity-100': isOpen },
+        { 'invisible grid-rows-[0fr] opacity-0': !isOpen },
       )}
     >
       <div className="overflow-hidden">{children}</div>
     </div>
   )
 }
-
-Accordion.Trigger = AccordionTrigger
-Accordion.Content = AccordionContent
-
-export default Accordion

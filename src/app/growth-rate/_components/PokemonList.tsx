@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react'
 
-import Accordion from '@/components/ui/Accordion'
+import { Accordion, AccordionContent, AccordionTrigger } from '@/components/ui/Accordion'
 import { TransitionLink } from '@/components/ui/Link'
 import { formatName } from '@/utils/string.utils'
 
@@ -12,10 +12,10 @@ interface ListProps {
 
 const PokemonList: FC<ListProps> = ({ pokemonNames }) => (
   <Accordion>
-    <Accordion.Trigger>
+    <AccordionTrigger>
       <span className="text-xl font-bold">List of Pokémon</span>
-    </Accordion.Trigger>
-    <Accordion.Content>
+    </AccordionTrigger>
+    <AccordionContent>
       <div className="grid-cols-pokemon-list mt-4 grid gap-x-4">
         {pokemonNames.map(name => (
           <span key={name}>
@@ -23,7 +23,7 @@ const PokemonList: FC<ListProps> = ({ pokemonNames }) => (
           </span>
         ))}
       </div>
-    </Accordion.Content>
+    </AccordionContent>
   </Accordion>
 )
 
