@@ -14,37 +14,27 @@ interface ItemData {
   sprite: string
   category: string
   name: string
-  purchasePrice: number
-  sellPrice: number
+  purchasePrice?: number
+  sellPrice?: number
 }
 
 interface TableProps {
-  itemData: Array<ItemData>
+  itemData: ItemData[]
 }
 
 export const DynamicTable: FC<TableProps> = ({ itemData }) => {
-  const tableItemData = itemData.map(
-    ({ name, sprite, category, shortEntry, purchasePrice, sellPrice }) => ({
-      name,
-      sprite,
-      category,
-      shortEntry,
-      purchasePrice,
-      sellPrice,
-    }),
-  )
-
-  const [filteredData, setFilteredData] = useState(tableItemData)
+  const [filteredData, setFilteredData] = useState<ItemData[]>(itemData)
   const [filterText, setFilterText] = useState('')
 
-  const helper = createColumnHelper<ItemData>()
+  const columns = useMemo(() => {
+    const helper = createColumnHelper<ItemData>()
 
-  const columns = useMemo(
-    () => [
+    return [
       helper.accessor('name', {
-        header: () => <span> Name </span>,
+        header: () => <span>Name</span>,
         cell: info => {
           const { name, sprite } = info.row.original
+
           return (
             <div className="flex items-center gap-x-2">
               {sprite ? (
@@ -52,6 +42,7 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
               ) : (
                 <div className="h-8 w-8" />
               )}
+
               <TransitionLink boldFlag={true} href={`/item/${name}`}>
                 {formatName(name)}
               </TransitionLink>
@@ -63,48 +54,57 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
           cellStyle: 'whitespace-nowrap',
         },
       }),
+
       helper.accessor('category', {
-        header: () => <span> Category </span>,
+        header: () => <span>Category</span>,
         cell: info => formatName(info.getValue()),
         meta: {
           cellStyle: 'whitespace-nowrap',
         },
       }),
+
       helper.accessor('shortEntry', {
-        header: () => <span> Effect </span>,
+        header: () => <span>Effect</span>,
         cell: info => formatName(info.getValue()),
         meta: {
           headerStyle: 'min-w-96',
         },
         enableSorting: false,
       }),
+
       helper.accessor('purchasePrice', {
-        header: () => <span> Purchase Price </span>,
+        header: () => <span>Purchase Price</span>,
         cell: info => {
-          return info.getValue() ? `₽${info.getValue()?.toLocaleString()}` : '—'
+          const value = info.getValue()
+
+          return value != null ? `₽${value.toLocaleString()}` : '—'
         },
         meta: {
           cellStyle: 'whitespace-nowrap',
         },
       }),
+
       helper.accessor('sellPrice', {
-        header: () => <span> Sell Price </span>,
+        header: () => <span>Sell Price</span>,
         cell: info => {
-          return info.getValue() ? `₽${info.getValue()?.toLocaleString()}` : '—'
+          const value = info.getValue()
+
+          return value != null ? `₽${value.toLocaleString()}` : '—'
         },
         meta: {
           cellStyle: 'whitespace-nowrap',
         },
       }),
-    ],
-    [helper],
-  )
+    ]
+  }, [])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchString = event.target.value.toLowerCase()
+
     setFilterText(searchString)
 
     const filteredItems = itemData.filter(item => item.name.toLowerCase().includes(searchString))
+
     setFilteredData(filteredItems)
   }
 
@@ -113,6 +113,7 @@ export const DynamicTable: FC<TableProps> = ({ itemData }) => {
       <div className="mb-8 flex w-full flex-wrap justify-center gap-4">
         <Input placeholder="Search for an item" onChange={handleChange} value={filterText} />
       </div>
+
       {filteredData.length ? (
         <TanStackTable data={filteredData} columns={columns} firstColumn="name" usePagination />
       ) : (
