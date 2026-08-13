@@ -14,11 +14,11 @@ import { NamedApiResource } from '../utils/NamedResource'
 import { ItemAttribute } from './ItemAttribute'
 import { ItemCategory } from './ItemCategory'
 import { ItemFlingEffect } from './ItemFlingEffect'
+import { ItemPrice } from './ItemPrices'
 
 export interface Item {
   id: number
   name: string
-  cost: number
   fling_power: number | null | undefined
   fling_effect: NamedApiResource<ItemFlingEffect> | null | undefined
   attributes: Array<NamedApiResource<ItemAttribute>>
@@ -31,6 +31,7 @@ export interface Item {
   held_by_pokemon: Array<ItemHolderPokemon>
   baby_trigger_for: APIResource<EvolutionChain>
   machines: Array<MachineVersionDetail>
+  prices: Array<ItemPrice>
 }
 
 interface ItemSprites {

@@ -5,18 +5,9 @@ import { SectionTitle } from '@/components/ui/Title'
 import { TransformedItem } from '@/types'
 import { formatText } from '@/utils/string.utils'
 
-type DataProps = Pick<
-  TransformedItem,
-  'attributes' | 'category' | 'cost' | 'fling_effect' | 'fling_power'
->
+type DataProps = Pick<TransformedItem, 'attributes' | 'category' | 'fling_effect' | 'fling_power'>
 
-export const ItemData: FC<DataProps> = ({
-  attributes,
-  category,
-  cost,
-  fling_effect,
-  fling_power,
-}) => {
+export const ItemData: FC<DataProps> = ({ attributes, category, fling_effect, fling_power }) => {
   const attributeDiv = (
     <ul>
       {attributes.map(attribute => (
@@ -28,7 +19,6 @@ export const ItemData: FC<DataProps> = ({
   const tableData = [
     ...(attributes.length > 0 ? [{ header: 'Attributes', children: attributeDiv }] : []),
     { header: 'Category', children: formatText(category) },
-    { header: 'Cost', children: `₽${cost}` },
     ...(fling_effect ? [{ header: 'Fling Effect', children: formatText(fling_effect.name) }] : []),
     ...(fling_power ? [{ header: 'Fling Power', children: fling_power }] : []),
   ]

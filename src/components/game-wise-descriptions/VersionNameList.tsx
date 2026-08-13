@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import classNames from 'classnames'
 
 import { gameToUnformattedName, versionToArraySplit } from '@/features/games/data/game-name.data'
 import { gameToColourAndName } from '@/features/games/data/game-name.data'
@@ -35,24 +36,39 @@ const GameNameRow: FC<GameNameRowProps> = ({ names }) => (
 
 interface VersionNameListProps {
   versionNames: string[]
+  inlineFlag?: boolean
 }
 
-const VersionNameList: FC<VersionNameListProps> = ({ versionNames }) => {
+const VersionNameList: FC<VersionNameListProps> = ({ versionNames, inlineFlag }) => {
   return (
-    <ul>
+    <ul
+      className={classNames({
+        'inline-flex flex-wrap gap-x-2 gap-y-1': inlineFlag,
+      })}
+    >
       {versionNames.map((version, index) => {
         const gameList = versionToArraySplit[version]
         // If gamelist is undefined, it means we're using individual game names.
         if (!gameList) {
           const formattedGameNames = [gameToUnformattedName[version]]
           return (
-            <li key={version + index}>
+            <li
+              key={version + index}
+              className={classNames({
+                "after:content-[',_'] last:after:content-['']": inlineFlag,
+              })}
+            >
               <GameNameRow names={formattedGameNames} />
             </li>
           )
         }
         return (
-          <li key={version + index}>
+          <li
+            key={version + index}
+            className={classNames({
+              "after:content-[',_'] last:after:content-['']": inlineFlag,
+            })}
+          >
             <GameNameRow names={gameList} />
           </li>
         )

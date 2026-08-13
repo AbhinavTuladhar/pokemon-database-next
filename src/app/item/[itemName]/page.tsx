@@ -9,6 +9,7 @@ import ItemService from '@/features/games/services/item.service'
 import { transformItem } from '@/features/games/transformers/transform-item'
 import { formatName } from '@/utils/string.utils'
 
+import ItemPrices from './_components/ItemPrices'
 import { BerryDetails, GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
@@ -53,7 +54,6 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
     descriptions,
     fling_effect,
     fling_power,
-    cost,
     names,
     category,
     sprite,
@@ -71,12 +71,12 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
         </PageTitle>
         <Image src={sprite} alt={actualItemName} width={64} height={64} />
       </div>
+
       <div className="grid grid-cols-1 gap-x-10 gap-y-6 min-[900px]:grid-cols-[1fr__3fr]">
         <section>
           <ItemData
             attributes={attributes}
             category={category}
-            cost={cost}
             fling_effect={fling_effect}
             fling_power={fling_power}
           />
@@ -90,9 +90,16 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
         <section>
           <OtherLanguages names={names} />
         </section>
-        <section>
-          <GameDescriptions descriptions={descriptions} />
-        </section>
+        <div className="flex flex-col gap-y-4">
+          <section>
+            <GameDescriptions descriptions={descriptions} />
+          </section>
+          <section>
+            {itemData.pricesList.length > 0 ? (
+              <ItemPrices pricesList={itemData.pricesList} />
+            ) : null}
+          </section>
+        </div>
       </div>
 
       {isBerry ? <BerryDetails itemName={actualItemName} /> : null}
