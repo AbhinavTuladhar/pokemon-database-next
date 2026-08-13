@@ -14,8 +14,8 @@ interface ItemData {
   sprite: string
   category: string
   name: string
-  purchasePrice?: number
-  sellPrice?: number
+  purchasePrice?: number | null
+  sellPrice?: number | null
 }
 
 interface TableProps {
