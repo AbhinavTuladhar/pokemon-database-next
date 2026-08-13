@@ -9,6 +9,7 @@ import ItemService from '@/features/games/services/item.service'
 import { transformItem } from '@/features/games/transformers/transform-item'
 import { formatName } from '@/utils/string.utils'
 
+import ItemPrices from './_components/ItemPrices'
 import { BerryDetails, GameDescriptions, ItemData } from './_components'
 
 const getItemData = async (name: string) => {
@@ -89,9 +90,16 @@ const ItemPage: FC<PageProps> = async ({ params }) => {
         <section>
           <OtherLanguages names={names} />
         </section>
-        <section>
-          <GameDescriptions descriptions={descriptions} />
-        </section>
+        <div className="flex flex-col gap-y-4">
+          <section>
+            <GameDescriptions descriptions={descriptions} />
+          </section>
+          <section>
+            {itemData.pricesList.length > 0 ? (
+              <ItemPrices pricesList={itemData.pricesList} />
+            ) : null}
+          </section>
+        </div>
       </div>
 
       {isBerry ? <BerryDetails itemName={actualItemName} /> : null}

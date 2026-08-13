@@ -5,9 +5,16 @@ export const gameBlackLists = [
   'shield',
   'sword',
   'sword-shield',
+  'scarlet-violet',
+  'scarlet',
+  'violet',
   'legends-arceus',
   'xd',
   'colosseum',
+  'legends-za',
+  'red-green-japan',
+  'blue-japan',
+  'brilliant-diamond-shining-pearl',
 ]
 
 /**
