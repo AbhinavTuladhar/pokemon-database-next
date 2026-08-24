@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useMemo } from 'react'
+import { FC } from 'react'
 
 import MoveCategoryImage from '@/components/move-category-image'
 import { TransitionLink } from '@/components/ui/Link'
@@ -10,6 +10,7 @@ import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
 import TanStackTable from '../tanstack-table'
+import { AppTableFeatures } from '../tanstack-table'
 
 interface TransformedMoveLevel extends TransformedMove {
   levelLearnedAt?: number
@@ -37,89 +38,70 @@ export const MovesTable: FC<MovesTableProps> = ({ movesData, levelFlag }) => {
     }),
   )
 
-  const helper = createColumnHelper<TableMoveData>()
+  const helper = createColumnHelper<AppTableFeatures, TableMoveData>()
 
-  const columns = useMemo(() => {
-    const baseColumns = [
-      helper.accessor('moveName', {
-        header: () => <span> Name </span>,
-        cell: info => {
-          const moveName = info.getValue()
-          return (
-            <TransitionLink boldFlag href={`/move/${moveName}`}>
-              {formatName(moveName)}
-            </TransitionLink>
-          )
-        },
-        sortingFn: 'basic',
-        enableGlobalFilter: true,
-        meta: {
-          cellStyle: 'min-w-32',
-        },
-      }),
-      helper.accessor('moveType', {
-        header: () => <span> Type </span>,
-        cell: info => <TypeCard typeName={info.getValue()} />,
-        sortingFn: 'basic',
-      }),
-      helper.accessor('damageClass', {
-        header: () => <span> Cat. </span>,
-        cell: info => (
-          <div className="flex w-full justify-end">
-            <MoveCategoryImage category={info.getValue()} />
-          </div>
-        ),
-        sortingFn: 'basic',
-      }),
-      helper.accessor('power', {
-        header: () => <span> Power </span>,
-        cell: info => {
-          const powerValue = info.getValue()
-          if (powerValue === 0) {
-            return '-'
-          }
-          return powerValue
-        },
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'alphanumeric',
-      }),
-      helper.accessor('accuracy', {
-        header: () => <span> Acc </span>,
-        cell: info => {
-          const accuracyValue = info.getValue()
-          if (accuracyValue === 0) {
-            return '-'
-          }
-          if (accuracyValue === Infinity) {
-            return '∞'
-          }
-          return accuracyValue
-        },
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'basic',
-      }),
-    ]
-
-    return [
-      ...(levelFlag
-        ? [
-            helper.accessor('levelLearnedAt', {
-              header: () => <span> Lv. </span>,
-              cell: info => info.getValue(),
-              meta: {
-                cellStyle: 'text-right',
-              },
-              sortingFn: 'basic',
-            }),
-          ]
-        : []),
-      ...baseColumns,
-    ]
-  }, [helper, levelFlag])
+  const columns = helper.columns([
+    helper.accessor('moveName', {
+      header: () => <span> Name </span>,
+      cell: info => {
+        const moveName = info.getValue()
+        return (
+          <TransitionLink boldFlag href={`/move/${moveName}`}>
+            {formatName(moveName)}
+          </TransitionLink>
+        )
+      },
+      sortFn: 'basic',
+      meta: {
+        cellStyle: 'min-w-32',
+      },
+    }),
+    helper.accessor('moveType', {
+      header: () => <span> Type </span>,
+      cell: info => <TypeCard typeName={info.getValue()} />,
+      sortFn: 'basic',
+    }),
+    helper.accessor('damageClass', {
+      header: () => <span> Cat. </span>,
+      cell: info => (
+        <div className="flex w-full justify-end">
+          <MoveCategoryImage category={info.getValue()} />
+        </div>
+      ),
+      sortFn: 'basic',
+    }),
+    helper.accessor('power', {
+      header: () => <span> Power </span>,
+      cell: info => {
+        const powerValue = info.getValue()
+        if (powerValue === 0) {
+          return '-'
+        }
+        return powerValue
+      },
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'alphanumeric',
+    }),
+    helper.accessor('accuracy', {
+      header: () => <span> Acc </span>,
+      cell: info => {
+        const accuracyValue = info.getValue()
+        if (accuracyValue === 0) {
+          return '-'
+        }
+        if (accuracyValue === Infinity) {
+          return '∞'
+        }
+        return accuracyValue
+      },
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'basic',
+    }),
+  ])
 
   return (
     <div className="lg-xl:mx-0 overflow-auto sm:mx-auto">

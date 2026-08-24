@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ChangeEvent, FC, useMemo, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 
 import Input from '@/components/input'
 import MoveCategoryImage from '@/components/move-category-image'
@@ -9,7 +9,7 @@ import { TransformedMove } from '@/types'
 import { formatName } from '@/utils/string.utils'
 import { createColumnHelper } from '@tanstack/react-table'
 
-import TanStackTable from '../tanstack-table'
+import TanStackTable, { AppTableFeatures } from '../tanstack-table'
 import { TransitionLink } from '../ui/Link'
 
 interface TableProps {
@@ -46,95 +46,91 @@ export const MoveTable: FC<TableProps> = ({ moveData, usePagination = false }) =
   const [filteredData, setFilteredData] = useState(tableMoveData)
   const [filterText, setFilterText] = useState('')
 
-  const helper = createColumnHelper<MoveTableColumns>()
+  const helper = createColumnHelper<AppTableFeatures, MoveTableColumns>()
 
-  const columns = useMemo(
-    () => [
-      helper.accessor('moveName', {
-        header: () => <span> Name </span>,
-        cell: info => {
-          const moveName = info.getValue()
-          return (
-            <TransitionLink boldFlag href={`/move/${moveName}`}>
-              {formatName(moveName)}
-            </TransitionLink>
-          )
-        },
-        sortingFn: 'basic',
-        enableGlobalFilter: true,
-      }),
-      helper.accessor('moveType', {
-        header: () => <span> Type </span>,
-        cell: info => <TypeCard typeName={info.getValue()} />,
-        sortingFn: 'basic',
-      }),
-      helper.accessor('damageClass', {
-        header: () => <span> Cat. </span>,
-        cell: info => (
-          <div className="flex w-full justify-end">
-            <MoveCategoryImage category={info.getValue()} />
-          </div>
-        ),
-        sortingFn: 'basic',
-      }),
-      helper.accessor('power', {
-        header: () => <span> Power </span>,
-        cell: info => {
-          const powerValue = info.getValue()
-          if (powerValue === 0) {
-            return '-'
-          }
-          return powerValue
-        },
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'alphanumeric',
-      }),
-      helper.accessor('accuracy', {
-        header: () => <span> Acc </span>,
-        cell: info => {
-          const accuracyValue = info.getValue()
-          if (accuracyValue === 0) {
-            return '-'
-          }
-          if (accuracyValue === Infinity) {
-            return '∞'
-          }
-          return accuracyValue
-        },
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'basic',
-      }),
-      helper.accessor('PP', {
-        header: () => <span> PP </span>,
-        cell: info => info.getValue(),
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'basic',
-      }),
-      helper.accessor('shortEntry', {
-        header: () => <span> Effect </span>,
-        cell: info => info.getValue(),
-        meta: {
-          headerStyle: 'min-w-[25rem]',
-        },
-        enableSorting: false,
-      }),
-      helper.accessor('effect_chance', {
-        header: () => <span> Prob (%) </span>,
-        cell: info => info.getValue(),
-        meta: {
-          cellStyle: 'text-right',
-        },
-        sortingFn: 'alphanumeric',
-      }),
-    ],
-    [helper],
-  )
+  const columns = helper.columns([
+    helper.accessor('moveName', {
+      header: () => <span> Name </span>,
+      cell: info => {
+        const moveName = info.getValue()
+        return (
+          <TransitionLink boldFlag href={`/move/${moveName}`}>
+            {formatName(moveName)}
+          </TransitionLink>
+        )
+      },
+      sortFn: 'basic',
+    }),
+    helper.accessor('moveType', {
+      header: () => <span> Type </span>,
+      cell: info => <TypeCard typeName={info.getValue()} />,
+      sortFn: 'basic',
+    }),
+    helper.accessor('damageClass', {
+      header: () => <span> Cat. </span>,
+      cell: info => (
+        <div className="flex w-full justify-end">
+          <MoveCategoryImage category={info.getValue()} />
+        </div>
+      ),
+      sortFn: 'basic',
+    }),
+    helper.accessor('power', {
+      header: () => <span> Power </span>,
+      cell: info => {
+        const powerValue = info.getValue()
+        if (powerValue === 0) {
+          return '-'
+        }
+        return powerValue
+      },
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'alphanumeric',
+    }),
+    helper.accessor('accuracy', {
+      header: () => <span> Acc </span>,
+      cell: info => {
+        const accuracyValue = info.getValue()
+        if (accuracyValue === 0) {
+          return '-'
+        }
+        if (accuracyValue === Infinity) {
+          return '∞'
+        }
+        return accuracyValue
+      },
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'basic',
+    }),
+    helper.accessor('PP', {
+      header: () => <span> PP </span>,
+      cell: info => info.getValue(),
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'basic',
+    }),
+    helper.accessor('shortEntry', {
+      header: () => <span> Effect </span>,
+      cell: info => info.getValue(),
+      meta: {
+        headerStyle: 'min-w-[25rem]',
+      },
+      enableSorting: false,
+    }),
+    helper.accessor('effect_chance', {
+      header: () => <span> Prob (%) </span>,
+      cell: info => info.getValue(),
+      meta: {
+        cellStyle: 'text-right',
+      },
+      sortFn: 'alphanumeric',
+    }),
+  ])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const rawInput = event.target.value

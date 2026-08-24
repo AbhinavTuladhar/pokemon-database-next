@@ -6,13 +6,16 @@ import classNames from 'classnames'
 import { Table, TableCell, TableHeader, TableRow } from '@/components/ui/Table'
 import {
   ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
   PaginationState,
+  rowPaginationFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_basic,
   SortingState,
-  useReactTable,
+  tableFeatures,
+  useTable,
 } from '@tanstack/react-table'
 
 import PageChangeButton from './page-change-button'
@@ -20,6 +23,25 @@ import PageDropdown from './page-dropdown'
 import SortingArrows from './sorting-arrows'
 
 const DEFAULT_ROW_COUNT = 25
+
+// Table V9 requires features to be declared explicitly (rather than always
+// being bundled in like V8). Core row model is automatic, so we only need
+// to register sorting + pagination here, matching what this component
+// actually uses.
+const appTableFeatures = tableFeatures({
+  rowSortingFeature,
+  rowPaginationFeature,
+  sortFns: {
+    alphanumeric: sortFn_alphanumeric,
+    basic: sortFn_basic,
+  },
+  sortedRowModel: createSortedRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+})
+
+// Exported so consumers can build columns with a matching
+// createColumnHelper<AppTableFeatures, T>() and type their ColumnDef arrays.
+export type AppTableFeatures = typeof appTableFeatures
 
 const getPaginationStrings = (pageIndex: number, pageSize: number, rowCount: number) => {
   const startingRow = pageIndex * pageSize + 1
@@ -32,7 +54,7 @@ const getPaginationStrings = (pageIndex: number, pageSize: number, rowCount: num
 
 interface TableProps<T> {
   data: Array<T>
-  columns: ColumnDef<T, any>[]
+  columns: ColumnDef<AppTableFeatures, any>[]
   firstColumn: keyof T
   useFullWidth?: boolean
   usePagination?: boolean
@@ -52,9 +74,23 @@ const TanStackTable = <T extends object>({
   })
   const tableRef = useRef<HTMLDivElement>(null)
 
+  const table = useTable({
+    features: appTableFeatures,
+    data,
+    columns,
+    state: {
+      sorting,
+      pagination,
+    },
+    onSortingChange: setSorting,
+    onPaginationChange: setPagination,
+    enableSortingRemoval: false, // disable the ability to remove sorting on columns (always none -> asc -> desc -> asc)
+  })
+
   const {
     getHeaderGroups,
     getRowModel,
+    getSortedRowModel,
     nextPage,
     previousPage,
     firstPage,
@@ -62,23 +98,14 @@ const TanStackTable = <T extends object>({
     getCanNextPage,
     getCanPreviousPage,
     getRowCount,
-  } = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: usePagination ? getPaginationRowModel() : undefined,
-    onPaginationChange: setPagination,
-    state: {
-      sorting,
-      pagination,
-    },
-    onSortingChange: setSorting,
-    enableSortingRemoval: false, // disable the ability to remove sorting on columns (always none -> asc -> desc -> asc)
-  })
+  } = table
 
   const headers = getHeaderGroups()[0]
-  const rows = getRowModel().rows
+  // The pagination row model is always registered now (features are declared
+  // once, statically), so when pagination is turned off for this instance we
+  // fall back to the sorted-but-unpaginated row model instead of the fully
+  // processed (paginated) one.
+  const rows = usePagination ? getRowModel().rows : getSortedRowModel().rows
 
   const paginationString = getPaginationStrings(
     pagination.pageIndex,
@@ -121,16 +148,14 @@ const TanStackTable = <T extends object>({
                     `${header.column.columnDef.meta.headerStyle}`,
                   {
                     'cursor-pointer': header.column.getCanSort(),
-                    'bg-gray-300 dark:bg-[hsl(226,_57%,_36%)]': header.column.getIsSorted(),
+                    'bg-gray-300 dark:bg-[hsl(226,57%,36%)]': header.column.getIsSorted(),
                   },
                 )}
                 key={header.id}
                 onClick={header.column.getToggleSortingHandler()}
               >
                 <div className="flex items-center justify-between gap-x-1">
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(header.column.columnDef.header, header.getContext())}
+                  {header.isPlaceholder ? null : <table.FlexRender header={header} />}
                   {header.column.getCanSort() ? (
                     <SortingArrows state={header.column.getIsSorted()} />
                   ) : null}
@@ -145,7 +170,7 @@ const TanStackTable = <T extends object>({
               className="duration-300 even:bg-gray-100 hover:bg-gray-200 dark:even:bg-[hsl(217.1,33.3%,20%)] dark:hover:bg-[hsl(218.6,32.8%,25.1%)]"
               key={row.id}
             >
-              {row.getVisibleCells().map(cell => (
+              {row.getAllCells().map(cell => (
                 <TableCell
                   variant="column"
                   extraClassName={
@@ -153,7 +178,7 @@ const TanStackTable = <T extends object>({
                   }
                   key={cell.id}
                 >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  <table.FlexRender cell={cell} />
                 </TableCell>
               ))}
             </TableRow>

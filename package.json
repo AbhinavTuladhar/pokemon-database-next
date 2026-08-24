@@ -16,7 +16,7 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@tanstack/react-table": "^8.20.5",
+    "@tanstack/react-table": "^9.1.2",
     "@types/react-katex": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
