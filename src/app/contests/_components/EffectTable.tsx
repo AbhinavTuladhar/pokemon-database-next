@@ -1,9 +1,10 @@
 'use client'
 
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 
 import ContestHearts from '@/components/contest-hearts'
 import TanStackTable from '@/components/tanstack-table'
+import { AppTableFeatures } from '@/components/tanstack-table/index'
 import { ContestEffect } from '@/types'
 import { createColumnHelper } from '@tanstack/react-table'
 
@@ -24,29 +25,26 @@ export const EffectTable: FC<EffectTableProps> = ({ contestData }) => {
     description: effect_entries[0].effect,
   }))
 
-  const helper = createColumnHelper<ContestData>()
+  const helper = createColumnHelper<AppTableFeatures, ContestData>()
 
-  const columns = useMemo(
-    () => [
-      helper.accessor('appeal', {
-        header: () => <span> Appeal </span>,
-        cell: info => <ContestHearts type="appeal" value={info.getValue()} />,
-      }),
-      helper.accessor('jam', {
-        header: () => <span> Jam </span>,
-        cell: info => <ContestHearts type="jam" value={info.getValue()} />,
-      }),
-      helper.accessor('description', {
-        header: () => <span> Description </span>,
-        cell: info => info.getValue(),
-        meta: {
-          headerStyle: 'max-w-[540px]',
-        },
-        enableSorting: false,
-      }),
-    ],
-    [helper],
-  )
+  const columns = helper.columns([
+    helper.accessor('appeal', {
+      header: () => <span> Appeal </span>,
+      cell: info => <ContestHearts type="appeal" value={info.getValue()} />,
+    }),
+    helper.accessor('jam', {
+      header: () => <span> Jam </span>,
+      cell: info => <ContestHearts type="jam" value={info.getValue()} />,
+    }),
+    helper.accessor('description', {
+      header: () => <span> Description </span>,
+      cell: info => info.getValue(),
+      meta: {
+        headerStyle: 'max-w-[540px]',
+      },
+      enableSorting: false,
+    }),
+  ])
 
   return (
     <TanStackTable

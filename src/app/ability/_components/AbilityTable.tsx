@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce'
 
 import Input from '@/components/input'
 import TanStackTable from '@/components/tanstack-table'
+import { AppTableFeatures } from '@/components/tanstack-table/index'
 import { TransitionLink } from '@/components/ui/Link'
 import { TransformedAbility } from '@/types'
 import { formatName } from '@/utils/string.utils'
@@ -32,49 +33,46 @@ export const AbilityTable: FC<TableProps> = ({ abilityData }) => {
   const [filteredData, setFilteredData] = useState(tableAbilityData)
   const [filterText, setFilterText] = useState('')
 
-  const helper = createColumnHelper<TableAbilityData>()
+  const helper = createColumnHelper<AppTableFeatures, TableAbilityData>()
 
-  const columns = useMemo(
-    () => [
-      helper.accessor('name', {
-        header: () => <span> Name </span>,
-        cell: info => {
-          const abilityName = info.getValue()
-          return (
-            <TransitionLink href={`/ability/${abilityName}`} boldFlag={true}>
-              {formatName(abilityName)}
-            </TransitionLink>
-          )
-        },
-      }),
-      helper.accessor('pokemonCount', {
-        header: () => <span> Pokémon </span>,
-        cell: info => info.getValue(),
-        meta: {
-          headerStyle: 'w-6',
-        },
-      }),
-      helper.accessor('shortEntry', {
-        header: () => <span> Description </span>,
-        cell: info => info.getValue(),
-        meta: {
-          headerStyle: 'min-w-[40rem]',
-        },
-        enableSorting: false,
-      }),
-      helper.accessor('generationIntroduced', {
-        header: () => <span> Gen.</span>,
-        cell: info => {
-          const gen = info.getValue()
-          return gen[gen.length - 1]
-        },
-        meta: {
-          headerStyle: 'w-1',
-        },
-      }),
-    ],
-    [helper],
-  )
+  const columns = helper.columns([
+    helper.accessor('name', {
+      header: () => <span> Name </span>,
+      cell: info => {
+        const abilityName = info.getValue()
+        return (
+          <TransitionLink href={`/ability/${abilityName}`} boldFlag={true}>
+            {formatName(abilityName)}
+          </TransitionLink>
+        )
+      },
+    }),
+    helper.accessor('pokemonCount', {
+      header: () => <span> Pokémon </span>,
+      cell: info => info.getValue(),
+      meta: {
+        headerStyle: 'w-6',
+      },
+    }),
+    helper.accessor('shortEntry', {
+      header: () => <span> Description </span>,
+      cell: info => info.getValue(),
+      meta: {
+        headerStyle: 'min-w-[40rem]',
+      },
+      enableSorting: false,
+    }),
+    helper.accessor('generationIntroduced', {
+      header: () => <span> Gen.</span>,
+      cell: info => {
+        const gen = info.getValue()
+        return gen[gen.length - 1]
+      },
+      meta: {
+        headerStyle: 'w-1',
+      },
+    }),
+  ])
 
   const handleFilter = useCallback(
     (value: string) => {
